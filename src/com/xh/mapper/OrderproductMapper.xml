@@ -1,0 +1,769 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xh.mapper.OrderproductMapper">
+  <resultMap id="BaseResultMap" type="com.xh.po.Orderproduct">
+    <id column="OrderProductId" jdbcType="INTEGER" property="orderproductid" />
+    <result column="ProductId" jdbcType="INTEGER" property="productid" />
+    <result column="OrderId" jdbcType="INTEGER" property="orderid" />
+    <result column="ShoppingCount" jdbcType="INTEGER" property="shoppingcount" />
+    <result column="TotalMoneyCount" jdbcType="DOUBLE" property="totalmoneycount" />
+    <result column="OrderProduct_A" jdbcType="VARCHAR" property="orderproductA" />
+    <result column="OrderProduct_B" jdbcType="VARCHAR" property="orderproductB" />
+    <result column="OrderProduct_C" jdbcType="VARCHAR" property="orderproductC" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    OrderProductId, ProductId, OrderId, ShoppingCount, TotalMoneyCount, OrderProduct_A, 
+    OrderProduct_B, OrderProduct_C
+  </sql>
+  <select id="selectByExample" parameterType="com.xh.po.OrderproductExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from orderproduct
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from orderproduct
+    where OrderProductId = #{orderproductid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from orderproduct
+    where OrderProductId = #{orderproductid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.xh.po.OrderproductExample">
+    delete from orderproduct
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.xh.po.Orderproduct">
+    insert into orderproduct (OrderProductId, ProductId, OrderId, 
+      ShoppingCount, TotalMoneyCount, OrderProduct_A, 
+      OrderProduct_B, OrderProduct_C)
+    values (#{orderproductid,jdbcType=INTEGER}, #{productid,jdbcType=INTEGER}, #{orderid,jdbcType=INTEGER}, 
+      #{shoppingcount,jdbcType=INTEGER}, #{totalmoneycount,jdbcType=DOUBLE}, #{orderproductA,jdbcType=VARCHAR}, 
+      #{orderproductB,jdbcType=VARCHAR}, #{orderproductC,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xh.po.Orderproduct">
+    insert into orderproduct
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="orderproductid != null">
+        OrderProductId,
+      </if>
+      <if test="productid != null">
+        ProductId,
+      </if>
+      <if test="orderid != null">
+        OrderId,
+      </if>
+      <if test="shoppingcount != null">
+        ShoppingCount,
+      </if>
+      <if test="totalmoneycount != null">
+        TotalMoneyCount,
+      </if>
+      <if test="orderproductA != null">
+        OrderProduct_A,
+      </if>
+      <if test="orderproductB != null">
+        OrderProduct_B,
+      </if>
+      <if test="orderproductC != null">
+        OrderProduct_C,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="orderproductid != null">
+        #{orderproductid,jdbcType=INTEGER},
+      </if>
+      <if test="productid != null">
+        #{productid,jdbcType=INTEGER},
+      </if>
+      <if test="orderid != null">
+        #{orderid,jdbcType=INTEGER},
+      </if>
+      <if test="shoppingcount != null">
+        #{shoppingcount,jdbcType=INTEGER},
+      </if>
+      <if test="totalmoneycount != null">
+        #{totalmoneycount,jdbcType=DOUBLE},
+      </if>
+      <if test="orderproductA != null">
+        #{orderproductA,jdbcType=VARCHAR},
+      </if>
+      <if test="orderproductB != null">
+        #{orderproductB,jdbcType=VARCHAR},
+      </if>
+      <if test="orderproductC != null">
+        #{orderproductC,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.xh.po.OrderproductExample" resultType="java.lang.Long">
+    select count(*) from orderproduct
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update orderproduct
+    <set>
+      <if test="record.orderproductid != null">
+        OrderProductId = #{record.orderproductid,jdbcType=INTEGER},
+      </if>
+      <if test="record.productid != null">
+        ProductId = #{record.productid,jdbcType=INTEGER},
+      </if>
+      <if test="record.orderid != null">
+        OrderId = #{record.orderid,jdbcType=INTEGER},
+      </if>
+      <if test="record.shoppingcount != null">
+        ShoppingCount = #{record.shoppingcount,jdbcType=INTEGER},
+      </if>
+      <if test="record.totalmoneycount != null">
+        TotalMoneyCount = #{record.totalmoneycount,jdbcType=DOUBLE},
+      </if>
+      <if test="record.orderproductA != null">
+        OrderProduct_A = #{record.orderproductA,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orderproductB != null">
+        OrderProduct_B = #{record.orderproductB,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orderproductC != null">
+        OrderProduct_C = #{record.orderproductC,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update orderproduct
+    set OrderProductId = #{record.orderproductid,jdbcType=INTEGER},
+      ProductId = #{record.productid,jdbcType=INTEGER},
+      OrderId = #{record.orderid,jdbcType=INTEGER},
+      ShoppingCount = #{record.shoppingcount,jdbcType=INTEGER},
+      TotalMoneyCount = #{record.totalmoneycount,jdbcType=DOUBLE},
+      OrderProduct_A = #{record.orderproductA,jdbcType=VARCHAR},
+      OrderProduct_B = #{record.orderproductB,jdbcType=VARCHAR},
+      OrderProduct_C = #{record.orderproductC,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xh.po.Orderproduct">
+    update orderproduct
+    <set>
+      <if test="productid != null">
+        ProductId = #{productid,jdbcType=INTEGER},
+      </if>
+      <if test="orderid != null">
+        OrderId = #{orderid,jdbcType=INTEGER},
+      </if>
+      <if test="shoppingcount != null">
+        ShoppingCount = #{shoppingcount,jdbcType=INTEGER},
+      </if>
+      <if test="totalmoneycount != null">
+        TotalMoneyCount = #{totalmoneycount,jdbcType=DOUBLE},
+      </if>
+      <if test="orderproductA != null">
+        OrderProduct_A = #{orderproductA,jdbcType=VARCHAR},
+      </if>
+      <if test="orderproductB != null">
+        OrderProduct_B = #{orderproductB,jdbcType=VARCHAR},
+      </if>
+      <if test="orderproductC != null">
+        OrderProduct_C = #{orderproductC,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where OrderProductId = #{orderproductid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xh.po.Orderproduct">
+    update orderproduct
+    set ProductId = #{productid,jdbcType=INTEGER},
+      OrderId = #{orderid,jdbcType=INTEGER},
+      ShoppingCount = #{shoppingcount,jdbcType=INTEGER},
+      TotalMoneyCount = #{totalmoneycount,jdbcType=DOUBLE},
+      OrderProduct_A = #{orderproductA,jdbcType=VARCHAR},
+      OrderProduct_B = #{orderproductB,jdbcType=VARCHAR},
+      OrderProduct_C = #{orderproductC,jdbcType=VARCHAR}
+    where OrderProductId = #{orderproductid,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.xh.po.Orderproduct">
+    <id column="OrderProductId" jdbcType="INTEGER" property="orderproductid" />
+    <result column="ProductId" jdbcType="INTEGER" property="productid" />
+    <result column="OrderId" jdbcType="INTEGER" property="orderid" />
+    <result column="ShoppingCount" jdbcType="INTEGER" property="shoppingcount" />
+    <result column="TotalMoneyCount" jdbcType="DOUBLE" property="totalmoneycount" />
+    <result column="OrderProduct_A" jdbcType="VARCHAR" property="orderproductA" />
+    <result column="OrderProduct_B" jdbcType="VARCHAR" property="orderproductB" />
+    <result column="OrderProduct_C" jdbcType="VARCHAR" property="orderproductC" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    OrderProductId, ProductId, OrderId, ShoppingCount, TotalMoneyCount, OrderProduct_A, 
+    OrderProduct_B, OrderProduct_C
+  </sql>
+  <select id="selectByExample" parameterType="com.xh.po.OrderproductExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from orderproduct
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from orderproduct
+    where OrderProductId = #{orderproductid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from orderproduct
+    where OrderProductId = #{orderproductid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.xh.po.OrderproductExample">
+    delete from orderproduct
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.xh.po.Orderproduct">
+    insert into orderproduct (OrderProductId, ProductId, OrderId, 
+      ShoppingCount, TotalMoneyCount, OrderProduct_A, 
+      OrderProduct_B, OrderProduct_C)
+    values (#{orderproductid,jdbcType=INTEGER}, #{productid,jdbcType=INTEGER}, #{orderid,jdbcType=INTEGER}, 
+      #{shoppingcount,jdbcType=INTEGER}, #{totalmoneycount,jdbcType=DOUBLE}, #{orderproductA,jdbcType=VARCHAR}, 
+      #{orderproductB,jdbcType=VARCHAR}, #{orderproductC,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xh.po.Orderproduct">
+    insert into orderproduct
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="orderproductid != null">
+        OrderProductId,
+      </if>
+      <if test="productid != null">
+        ProductId,
+      </if>
+      <if test="orderid != null">
+        OrderId,
+      </if>
+      <if test="shoppingcount != null">
+        ShoppingCount,
+      </if>
+      <if test="totalmoneycount != null">
+        TotalMoneyCount,
+      </if>
+      <if test="orderproductA != null">
+        OrderProduct_A,
+      </if>
+      <if test="orderproductB != null">
+        OrderProduct_B,
+      </if>
+      <if test="orderproductC != null">
+        OrderProduct_C,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="orderproductid != null">
+        #{orderproductid,jdbcType=INTEGER},
+      </if>
+      <if test="productid != null">
+        #{productid,jdbcType=INTEGER},
+      </if>
+      <if test="orderid != null">
+        #{orderid,jdbcType=INTEGER},
+      </if>
+      <if test="shoppingcount != null">
+        #{shoppingcount,jdbcType=INTEGER},
+      </if>
+      <if test="totalmoneycount != null">
+        #{totalmoneycount,jdbcType=DOUBLE},
+      </if>
+      <if test="orderproductA != null">
+        #{orderproductA,jdbcType=VARCHAR},
+      </if>
+      <if test="orderproductB != null">
+        #{orderproductB,jdbcType=VARCHAR},
+      </if>
+      <if test="orderproductC != null">
+        #{orderproductC,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.xh.po.OrderproductExample" resultType="java.lang.Long">
+    select count(*) from orderproduct
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update orderproduct
+    <set>
+      <if test="record.orderproductid != null">
+        OrderProductId = #{record.orderproductid,jdbcType=INTEGER},
+      </if>
+      <if test="record.productid != null">
+        ProductId = #{record.productid,jdbcType=INTEGER},
+      </if>
+      <if test="record.orderid != null">
+        OrderId = #{record.orderid,jdbcType=INTEGER},
+      </if>
+      <if test="record.shoppingcount != null">
+        ShoppingCount = #{record.shoppingcount,jdbcType=INTEGER},
+      </if>
+      <if test="record.totalmoneycount != null">
+        TotalMoneyCount = #{record.totalmoneycount,jdbcType=DOUBLE},
+      </if>
+      <if test="record.orderproductA != null">
+        OrderProduct_A = #{record.orderproductA,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orderproductB != null">
+        OrderProduct_B = #{record.orderproductB,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orderproductC != null">
+        OrderProduct_C = #{record.orderproductC,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update orderproduct
+    set OrderProductId = #{record.orderproductid,jdbcType=INTEGER},
+      ProductId = #{record.productid,jdbcType=INTEGER},
+      OrderId = #{record.orderid,jdbcType=INTEGER},
+      ShoppingCount = #{record.shoppingcount,jdbcType=INTEGER},
+      TotalMoneyCount = #{record.totalmoneycount,jdbcType=DOUBLE},
+      OrderProduct_A = #{record.orderproductA,jdbcType=VARCHAR},
+      OrderProduct_B = #{record.orderproductB,jdbcType=VARCHAR},
+      OrderProduct_C = #{record.orderproductC,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xh.po.Orderproduct">
+    update orderproduct
+    <set>
+      <if test="productid != null">
+        ProductId = #{productid,jdbcType=INTEGER},
+      </if>
+      <if test="orderid != null">
+        OrderId = #{orderid,jdbcType=INTEGER},
+      </if>
+      <if test="shoppingcount != null">
+        ShoppingCount = #{shoppingcount,jdbcType=INTEGER},
+      </if>
+      <if test="totalmoneycount != null">
+        TotalMoneyCount = #{totalmoneycount,jdbcType=DOUBLE},
+      </if>
+      <if test="orderproductA != null">
+        OrderProduct_A = #{orderproductA,jdbcType=VARCHAR},
+      </if>
+      <if test="orderproductB != null">
+        OrderProduct_B = #{orderproductB,jdbcType=VARCHAR},
+      </if>
+      <if test="orderproductC != null">
+        OrderProduct_C = #{orderproductC,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where OrderProductId = #{orderproductid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xh.po.Orderproduct">
+    update orderproduct
+    set ProductId = #{productid,jdbcType=INTEGER},
+      OrderId = #{orderid,jdbcType=INTEGER},
+      ShoppingCount = #{shoppingcount,jdbcType=INTEGER},
+      TotalMoneyCount = #{totalmoneycount,jdbcType=DOUBLE},
+      OrderProduct_A = #{orderproductA,jdbcType=VARCHAR},
+      OrderProduct_B = #{orderproductB,jdbcType=VARCHAR},
+      OrderProduct_C = #{orderproductC,jdbcType=VARCHAR}
+    where OrderProductId = #{orderproductid,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.xh.po.Orderproduct">
+    <id column="OrderProductId" jdbcType="INTEGER" property="orderproductid" />
+    <result column="ProductId" jdbcType="INTEGER" property="productid" />
+    <result column="OrderId" jdbcType="INTEGER" property="orderid" />
+    <result column="ShoppingCount" jdbcType="INTEGER" property="shoppingcount" />
+    <result column="TotalMoneyCount" jdbcType="DOUBLE" property="totalmoneycount" />
+    <result column="OrderProduct_A" jdbcType="VARCHAR" property="orderproductA" />
+    <result column="OrderProduct_B" jdbcType="VARCHAR" property="orderproductB" />
+    <result column="OrderProduct_C" jdbcType="VARCHAR" property="orderproductC" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    OrderProductId, ProductId, OrderId, ShoppingCount, TotalMoneyCount, OrderProduct_A, 
+    OrderProduct_B, OrderProduct_C
+  </sql>
+  <select id="selectByExample" parameterType="com.xh.po.OrderproductExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from orderproduct
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from orderproduct
+    where OrderProductId = #{orderproductid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from orderproduct
+    where OrderProductId = #{orderproductid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.xh.po.OrderproductExample">
+    delete from orderproduct
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.xh.po.Orderproduct">
+    insert into orderproduct (OrderProductId, ProductId, OrderId, 
+      ShoppingCount, TotalMoneyCount, OrderProduct_A, 
+      OrderProduct_B, OrderProduct_C)
+    values (#{orderproductid,jdbcType=INTEGER}, #{productid,jdbcType=INTEGER}, #{orderid,jdbcType=INTEGER}, 
+      #{shoppingcount,jdbcType=INTEGER}, #{totalmoneycount,jdbcType=DOUBLE}, #{orderproductA,jdbcType=VARCHAR}, 
+      #{orderproductB,jdbcType=VARCHAR}, #{orderproductC,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xh.po.Orderproduct">
+    insert into orderproduct
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="orderproductid != null">
+        OrderProductId,
+      </if>
+      <if test="productid != null">
+        ProductId,
+      </if>
+      <if test="orderid != null">
+        OrderId,
+      </if>
+      <if test="shoppingcount != null">
+        ShoppingCount,
+      </if>
+      <if test="totalmoneycount != null">
+        TotalMoneyCount,
+      </if>
+      <if test="orderproductA != null">
+        OrderProduct_A,
+      </if>
+      <if test="orderproductB != null">
+        OrderProduct_B,
+      </if>
+      <if test="orderproductC != null">
+        OrderProduct_C,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="orderproductid != null">
+        #{orderproductid,jdbcType=INTEGER},
+      </if>
+      <if test="productid != null">
+        #{productid,jdbcType=INTEGER},
+      </if>
+      <if test="orderid != null">
+        #{orderid,jdbcType=INTEGER},
+      </if>
+      <if test="shoppingcount != null">
+        #{shoppingcount,jdbcType=INTEGER},
+      </if>
+      <if test="totalmoneycount != null">
+        #{totalmoneycount,jdbcType=DOUBLE},
+      </if>
+      <if test="orderproductA != null">
+        #{orderproductA,jdbcType=VARCHAR},
+      </if>
+      <if test="orderproductB != null">
+        #{orderproductB,jdbcType=VARCHAR},
+      </if>
+      <if test="orderproductC != null">
+        #{orderproductC,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.xh.po.OrderproductExample" resultType="java.lang.Long">
+    select count(*) from orderproduct
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update orderproduct
+    <set>
+      <if test="record.orderproductid != null">
+        OrderProductId = #{record.orderproductid,jdbcType=INTEGER},
+      </if>
+      <if test="record.productid != null">
+        ProductId = #{record.productid,jdbcType=INTEGER},
+      </if>
+      <if test="record.orderid != null">
+        OrderId = #{record.orderid,jdbcType=INTEGER},
+      </if>
+      <if test="record.shoppingcount != null">
+        ShoppingCount = #{record.shoppingcount,jdbcType=INTEGER},
+      </if>
+      <if test="record.totalmoneycount != null">
+        TotalMoneyCount = #{record.totalmoneycount,jdbcType=DOUBLE},
+      </if>
+      <if test="record.orderproductA != null">
+        OrderProduct_A = #{record.orderproductA,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orderproductB != null">
+        OrderProduct_B = #{record.orderproductB,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orderproductC != null">
+        OrderProduct_C = #{record.orderproductC,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update orderproduct
+    set OrderProductId = #{record.orderproductid,jdbcType=INTEGER},
+      ProductId = #{record.productid,jdbcType=INTEGER},
+      OrderId = #{record.orderid,jdbcType=INTEGER},
+      ShoppingCount = #{record.shoppingcount,jdbcType=INTEGER},
+      TotalMoneyCount = #{record.totalmoneycount,jdbcType=DOUBLE},
+      OrderProduct_A = #{record.orderproductA,jdbcType=VARCHAR},
+      OrderProduct_B = #{record.orderproductB,jdbcType=VARCHAR},
+      OrderProduct_C = #{record.orderproductC,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xh.po.Orderproduct">
+    update orderproduct
+    <set>
+      <if test="productid != null">
+        ProductId = #{productid,jdbcType=INTEGER},
+      </if>
+      <if test="orderid != null">
+        OrderId = #{orderid,jdbcType=INTEGER},
+      </if>
+      <if test="shoppingcount != null">
+        ShoppingCount = #{shoppingcount,jdbcType=INTEGER},
+      </if>
+      <if test="totalmoneycount != null">
+        TotalMoneyCount = #{totalmoneycount,jdbcType=DOUBLE},
+      </if>
+      <if test="orderproductA != null">
+        OrderProduct_A = #{orderproductA,jdbcType=VARCHAR},
+      </if>
+      <if test="orderproductB != null">
+        OrderProduct_B = #{orderproductB,jdbcType=VARCHAR},
+      </if>
+      <if test="orderproductC != null">
+        OrderProduct_C = #{orderproductC,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where OrderProductId = #{orderproductid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xh.po.Orderproduct">
+    update orderproduct
+    set ProductId = #{productid,jdbcType=INTEGER},
+      OrderId = #{orderid,jdbcType=INTEGER},
+      ShoppingCount = #{shoppingcount,jdbcType=INTEGER},
+      TotalMoneyCount = #{totalmoneycount,jdbcType=DOUBLE},
+      OrderProduct_A = #{orderproductA,jdbcType=VARCHAR},
+      OrderProduct_B = #{orderproductB,jdbcType=VARCHAR},
+      OrderProduct_C = #{orderproductC,jdbcType=VARCHAR}
+    where OrderProductId = #{orderproductid,jdbcType=INTEGER}
+  </update>
+</mapper>

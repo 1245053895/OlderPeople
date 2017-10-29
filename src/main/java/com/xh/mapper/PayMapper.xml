@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xh.mapper.PayMapper">
+  <resultMap id="BaseResultMap" type="com.xh.po.Pay">
+    <id column="PayId" jdbcType="INTEGER" property="payid" />
+    <result column="PayName" jdbcType="VARCHAR" property="payname" />
+    <result column="PayPicture" jdbcType="VARCHAR" property="paypicture" />
+    <result column="Pay_A" jdbcType="VARCHAR" property="payA" />
+    <result column="Pay_B" jdbcType="VARCHAR" property="payB" />
+    <result column="Pay_C" jdbcType="VARCHAR" property="payC" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    PayId, PayName, PayPicture, Pay_A, Pay_B, Pay_C
+  </sql>
+  <select id="selectByExample" parameterType="com.xh.po.PayExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from pay
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from pay
+    where PayId = #{payid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from pay
+    where PayId = #{payid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.xh.po.PayExample">
+    delete from pay
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.xh.po.Pay">
+    insert into pay (PayId, PayName, PayPicture, 
+      Pay_A, Pay_B, Pay_C)
+    values (#{payid,jdbcType=INTEGER}, #{payname,jdbcType=VARCHAR}, #{paypicture,jdbcType=VARCHAR}, 
+      #{payA,jdbcType=VARCHAR}, #{payB,jdbcType=VARCHAR}, #{payC,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xh.po.Pay">
+    insert into pay
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="payid != null">
+        PayId,
+      </if>
+      <if test="payname != null">
+        PayName,
+      </if>
+      <if test="paypicture != null">
+        PayPicture,
+      </if>
+      <if test="payA != null">
+        Pay_A,
+      </if>
+      <if test="payB != null">
+        Pay_B,
+      </if>
+      <if test="payC != null">
+        Pay_C,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="payid != null">
+        #{payid,jdbcType=INTEGER},
+      </if>
+      <if test="payname != null">
+        #{payname,jdbcType=VARCHAR},
+      </if>
+      <if test="paypicture != null">
+        #{paypicture,jdbcType=VARCHAR},
+      </if>
+      <if test="payA != null">
+        #{payA,jdbcType=VARCHAR},
+      </if>
+      <if test="payB != null">
+        #{payB,jdbcType=VARCHAR},
+      </if>
+      <if test="payC != null">
+        #{payC,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.xh.po.PayExample" resultType="java.lang.Long">
+    select count(*) from pay
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update pay
+    <set>
+      <if test="record.payid != null">
+        PayId = #{record.payid,jdbcType=INTEGER},
+      </if>
+      <if test="record.payname != null">
+        PayName = #{record.payname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.paypicture != null">
+        PayPicture = #{record.paypicture,jdbcType=VARCHAR},
+      </if>
+      <if test="record.payA != null">
+        Pay_A = #{record.payA,jdbcType=VARCHAR},
+      </if>
+      <if test="record.payB != null">
+        Pay_B = #{record.payB,jdbcType=VARCHAR},
+      </if>
+      <if test="record.payC != null">
+        Pay_C = #{record.payC,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update pay
+    set PayId = #{record.payid,jdbcType=INTEGER},
+      PayName = #{record.payname,jdbcType=VARCHAR},
+      PayPicture = #{record.paypicture,jdbcType=VARCHAR},
+      Pay_A = #{record.payA,jdbcType=VARCHAR},
+      Pay_B = #{record.payB,jdbcType=VARCHAR},
+      Pay_C = #{record.payC,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xh.po.Pay">
+    update pay
+    <set>
+      <if test="payname != null">
+        PayName = #{payname,jdbcType=VARCHAR},
+      </if>
+      <if test="paypicture != null">
+        PayPicture = #{paypicture,jdbcType=VARCHAR},
+      </if>
+      <if test="payA != null">
+        Pay_A = #{payA,jdbcType=VARCHAR},
+      </if>
+      <if test="payB != null">
+        Pay_B = #{payB,jdbcType=VARCHAR},
+      </if>
+      <if test="payC != null">
+        Pay_C = #{payC,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where PayId = #{payid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xh.po.Pay">
+    update pay
+    set PayName = #{payname,jdbcType=VARCHAR},
+      PayPicture = #{paypicture,jdbcType=VARCHAR},
+      Pay_A = #{payA,jdbcType=VARCHAR},
+      Pay_B = #{payB,jdbcType=VARCHAR},
+      Pay_C = #{payC,jdbcType=VARCHAR}
+    where PayId = #{payid,jdbcType=INTEGER}
+  </update>
+</mapper>

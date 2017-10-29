@@ -1,0 +1,820 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xh.mapper.ProxyMapper">
+  <resultMap id="BaseResultMap" type="com.xh.po.Proxy">
+    <id column="ProxyId" jdbcType="INTEGER" property="proxyid" />
+    <result column="ProxyName" jdbcType="VARCHAR" property="proxyname" />
+    <result column="ProxyPwd" jdbcType="VARCHAR" property="proxypwd" />
+    <result column="ProxyAddr" jdbcType="VARCHAR" property="proxyaddr" />
+    <result column="ProxyPhone" jdbcType="VARCHAR" property="proxyphone" />
+    <result column="ProxyZip" jdbcType="INTEGER" property="proxyzip" />
+    <result column="Proxy_A" jdbcType="VARCHAR" property="proxyA" />
+    <result column="Proxy_B" jdbcType="VARCHAR" property="proxyB" />
+    <result column="Proxy_C" jdbcType="VARCHAR" property="proxyC" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    ProxyId, ProxyName, ProxyPwd, ProxyAddr, ProxyPhone, ProxyZip, Proxy_A, Proxy_B, 
+    Proxy_C
+  </sql>
+  <select id="selectByExample" parameterType="com.xh.po.ProxyExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from proxy
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from proxy
+    where ProxyId = #{proxyid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from proxy
+    where ProxyId = #{proxyid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.xh.po.ProxyExample">
+    delete from proxy
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.xh.po.Proxy">
+    insert into proxy (ProxyId, ProxyName, ProxyPwd, 
+      ProxyAddr, ProxyPhone, ProxyZip, 
+      Proxy_A, Proxy_B, Proxy_C
+      )
+    values (#{proxyid,jdbcType=INTEGER}, #{proxyname,jdbcType=VARCHAR}, #{proxypwd,jdbcType=VARCHAR}, 
+      #{proxyaddr,jdbcType=VARCHAR}, #{proxyphone,jdbcType=VARCHAR}, #{proxyzip,jdbcType=INTEGER}, 
+      #{proxyA,jdbcType=VARCHAR}, #{proxyB,jdbcType=VARCHAR}, #{proxyC,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.xh.po.Proxy">
+    insert into proxy
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="proxyid != null">
+        ProxyId,
+      </if>
+      <if test="proxyname != null">
+        ProxyName,
+      </if>
+      <if test="proxypwd != null">
+        ProxyPwd,
+      </if>
+      <if test="proxyaddr != null">
+        ProxyAddr,
+      </if>
+      <if test="proxyphone != null">
+        ProxyPhone,
+      </if>
+      <if test="proxyzip != null">
+        ProxyZip,
+      </if>
+      <if test="proxyA != null">
+        Proxy_A,
+      </if>
+      <if test="proxyB != null">
+        Proxy_B,
+      </if>
+      <if test="proxyC != null">
+        Proxy_C,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="proxyid != null">
+        #{proxyid,jdbcType=INTEGER},
+      </if>
+      <if test="proxyname != null">
+        #{proxyname,jdbcType=VARCHAR},
+      </if>
+      <if test="proxypwd != null">
+        #{proxypwd,jdbcType=VARCHAR},
+      </if>
+      <if test="proxyaddr != null">
+        #{proxyaddr,jdbcType=VARCHAR},
+      </if>
+      <if test="proxyphone != null">
+        #{proxyphone,jdbcType=VARCHAR},
+      </if>
+      <if test="proxyzip != null">
+        #{proxyzip,jdbcType=INTEGER},
+      </if>
+      <if test="proxyA != null">
+        #{proxyA,jdbcType=VARCHAR},
+      </if>
+      <if test="proxyB != null">
+        #{proxyB,jdbcType=VARCHAR},
+      </if>
+      <if test="proxyC != null">
+        #{proxyC,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.xh.po.ProxyExample" resultType="java.lang.Long">
+    select count(*) from proxy
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update proxy
+    <set>
+      <if test="record.proxyid != null">
+        ProxyId = #{record.proxyid,jdbcType=INTEGER},
+      </if>
+      <if test="record.proxyname != null">
+        ProxyName = #{record.proxyname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.proxypwd != null">
+        ProxyPwd = #{record.proxypwd,jdbcType=VARCHAR},
+      </if>
+      <if test="record.proxyaddr != null">
+        ProxyAddr = #{record.proxyaddr,jdbcType=VARCHAR},
+      </if>
+      <if test="record.proxyphone != null">
+        ProxyPhone = #{record.proxyphone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.proxyzip != null">
+        ProxyZip = #{record.proxyzip,jdbcType=INTEGER},
+      </if>
+      <if test="record.proxyA != null">
+        Proxy_A = #{record.proxyA,jdbcType=VARCHAR},
+      </if>
+      <if test="record.proxyB != null">
+        Proxy_B = #{record.proxyB,jdbcType=VARCHAR},
+      </if>
+      <if test="record.proxyC != null">
+        Proxy_C = #{record.proxyC,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update proxy
+    set ProxyId = #{record.proxyid,jdbcType=INTEGER},
+      ProxyName = #{record.proxyname,jdbcType=VARCHAR},
+      ProxyPwd = #{record.proxypwd,jdbcType=VARCHAR},
+      ProxyAddr = #{record.proxyaddr,jdbcType=VARCHAR},
+      ProxyPhone = #{record.proxyphone,jdbcType=VARCHAR},
+      ProxyZip = #{record.proxyzip,jdbcType=INTEGER},
+      Proxy_A = #{record.proxyA,jdbcType=VARCHAR},
+      Proxy_B = #{record.proxyB,jdbcType=VARCHAR},
+      Proxy_C = #{record.proxyC,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xh.po.Proxy">
+    update proxy
+    <set>
+      <if test="proxyname != null">
+        ProxyName = #{proxyname,jdbcType=VARCHAR},
+      </if>
+      <if test="proxypwd != null">
+        ProxyPwd = #{proxypwd,jdbcType=VARCHAR},
+      </if>
+      <if test="proxyaddr != null">
+        ProxyAddr = #{proxyaddr,jdbcType=VARCHAR},
+      </if>
+      <if test="proxyphone != null">
+        ProxyPhone = #{proxyphone,jdbcType=VARCHAR},
+      </if>
+      <if test="proxyzip != null">
+        ProxyZip = #{proxyzip,jdbcType=INTEGER},
+      </if>
+      <if test="proxyA != null">
+        Proxy_A = #{proxyA,jdbcType=VARCHAR},
+      </if>
+      <if test="proxyB != null">
+        Proxy_B = #{proxyB,jdbcType=VARCHAR},
+      </if>
+      <if test="proxyC != null">
+        Proxy_C = #{proxyC,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ProxyId = #{proxyid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xh.po.Proxy">
+    update proxy
+    set ProxyName = #{proxyname,jdbcType=VARCHAR},
+      ProxyPwd = #{proxypwd,jdbcType=VARCHAR},
+      ProxyAddr = #{proxyaddr,jdbcType=VARCHAR},
+      ProxyPhone = #{proxyphone,jdbcType=VARCHAR},
+      ProxyZip = #{proxyzip,jdbcType=INTEGER},
+      Proxy_A = #{proxyA,jdbcType=VARCHAR},
+      Proxy_B = #{proxyB,jdbcType=VARCHAR},
+      Proxy_C = #{proxyC,jdbcType=VARCHAR}
+    where ProxyId = #{proxyid,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.xh.po.Proxy">
+    <id column="ProxyId" jdbcType="INTEGER" property="proxyid" />
+    <result column="ProxyName" jdbcType="VARCHAR" property="proxyname" />
+    <result column="ProxyPwd" jdbcType="VARCHAR" property="proxypwd" />
+    <result column="ProxyAddr" jdbcType="VARCHAR" property="proxyaddr" />
+    <result column="ProxyPhone" jdbcType="VARCHAR" property="proxyphone" />
+    <result column="ProxyZip" jdbcType="INTEGER" property="proxyzip" />
+    <result column="Proxy_A" jdbcType="VARCHAR" property="proxyA" />
+    <result column="Proxy_B" jdbcType="VARCHAR" property="proxyB" />
+    <result column="Proxy_C" jdbcType="VARCHAR" property="proxyC" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    ProxyId, ProxyName, ProxyPwd, ProxyAddr, ProxyPhone, ProxyZip, Proxy_A, Proxy_B, 
+    Proxy_C
+  </sql>
+  <select id="selectByExample" parameterType="com.xh.po.ProxyExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from proxy
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from proxy
+    where ProxyId = #{proxyid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from proxy
+    where ProxyId = #{proxyid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.xh.po.ProxyExample">
+    delete from proxy
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.xh.po.Proxy">
+    insert into proxy (ProxyId, ProxyName, ProxyPwd, 
+      ProxyAddr, ProxyPhone, ProxyZip, 
+      Proxy_A, Proxy_B, Proxy_C
+      )
+    values (#{proxyid,jdbcType=INTEGER}, #{proxyname,jdbcType=VARCHAR}, #{proxypwd,jdbcType=VARCHAR}, 
+      #{proxyaddr,jdbcType=VARCHAR}, #{proxyphone,jdbcType=VARCHAR}, #{proxyzip,jdbcType=INTEGER}, 
+      #{proxyA,jdbcType=VARCHAR}, #{proxyB,jdbcType=VARCHAR}, #{proxyC,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.xh.po.Proxy">
+    insert into proxy
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="proxyid != null">
+        ProxyId,
+      </if>
+      <if test="proxyname != null">
+        ProxyName,
+      </if>
+      <if test="proxypwd != null">
+        ProxyPwd,
+      </if>
+      <if test="proxyaddr != null">
+        ProxyAddr,
+      </if>
+      <if test="proxyphone != null">
+        ProxyPhone,
+      </if>
+      <if test="proxyzip != null">
+        ProxyZip,
+      </if>
+      <if test="proxyA != null">
+        Proxy_A,
+      </if>
+      <if test="proxyB != null">
+        Proxy_B,
+      </if>
+      <if test="proxyC != null">
+        Proxy_C,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="proxyid != null">
+        #{proxyid,jdbcType=INTEGER},
+      </if>
+      <if test="proxyname != null">
+        #{proxyname,jdbcType=VARCHAR},
+      </if>
+      <if test="proxypwd != null">
+        #{proxypwd,jdbcType=VARCHAR},
+      </if>
+      <if test="proxyaddr != null">
+        #{proxyaddr,jdbcType=VARCHAR},
+      </if>
+      <if test="proxyphone != null">
+        #{proxyphone,jdbcType=VARCHAR},
+      </if>
+      <if test="proxyzip != null">
+        #{proxyzip,jdbcType=INTEGER},
+      </if>
+      <if test="proxyA != null">
+        #{proxyA,jdbcType=VARCHAR},
+      </if>
+      <if test="proxyB != null">
+        #{proxyB,jdbcType=VARCHAR},
+      </if>
+      <if test="proxyC != null">
+        #{proxyC,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.xh.po.ProxyExample" resultType="java.lang.Long">
+    select count(*) from proxy
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update proxy
+    <set>
+      <if test="record.proxyid != null">
+        ProxyId = #{record.proxyid,jdbcType=INTEGER},
+      </if>
+      <if test="record.proxyname != null">
+        ProxyName = #{record.proxyname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.proxypwd != null">
+        ProxyPwd = #{record.proxypwd,jdbcType=VARCHAR},
+      </if>
+      <if test="record.proxyaddr != null">
+        ProxyAddr = #{record.proxyaddr,jdbcType=VARCHAR},
+      </if>
+      <if test="record.proxyphone != null">
+        ProxyPhone = #{record.proxyphone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.proxyzip != null">
+        ProxyZip = #{record.proxyzip,jdbcType=INTEGER},
+      </if>
+      <if test="record.proxyA != null">
+        Proxy_A = #{record.proxyA,jdbcType=VARCHAR},
+      </if>
+      <if test="record.proxyB != null">
+        Proxy_B = #{record.proxyB,jdbcType=VARCHAR},
+      </if>
+      <if test="record.proxyC != null">
+        Proxy_C = #{record.proxyC,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update proxy
+    set ProxyId = #{record.proxyid,jdbcType=INTEGER},
+      ProxyName = #{record.proxyname,jdbcType=VARCHAR},
+      ProxyPwd = #{record.proxypwd,jdbcType=VARCHAR},
+      ProxyAddr = #{record.proxyaddr,jdbcType=VARCHAR},
+      ProxyPhone = #{record.proxyphone,jdbcType=VARCHAR},
+      ProxyZip = #{record.proxyzip,jdbcType=INTEGER},
+      Proxy_A = #{record.proxyA,jdbcType=VARCHAR},
+      Proxy_B = #{record.proxyB,jdbcType=VARCHAR},
+      Proxy_C = #{record.proxyC,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xh.po.Proxy">
+    update proxy
+    <set>
+      <if test="proxyname != null">
+        ProxyName = #{proxyname,jdbcType=VARCHAR},
+      </if>
+      <if test="proxypwd != null">
+        ProxyPwd = #{proxypwd,jdbcType=VARCHAR},
+      </if>
+      <if test="proxyaddr != null">
+        ProxyAddr = #{proxyaddr,jdbcType=VARCHAR},
+      </if>
+      <if test="proxyphone != null">
+        ProxyPhone = #{proxyphone,jdbcType=VARCHAR},
+      </if>
+      <if test="proxyzip != null">
+        ProxyZip = #{proxyzip,jdbcType=INTEGER},
+      </if>
+      <if test="proxyA != null">
+        Proxy_A = #{proxyA,jdbcType=VARCHAR},
+      </if>
+      <if test="proxyB != null">
+        Proxy_B = #{proxyB,jdbcType=VARCHAR},
+      </if>
+      <if test="proxyC != null">
+        Proxy_C = #{proxyC,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ProxyId = #{proxyid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xh.po.Proxy">
+    update proxy
+    set ProxyName = #{proxyname,jdbcType=VARCHAR},
+      ProxyPwd = #{proxypwd,jdbcType=VARCHAR},
+      ProxyAddr = #{proxyaddr,jdbcType=VARCHAR},
+      ProxyPhone = #{proxyphone,jdbcType=VARCHAR},
+      ProxyZip = #{proxyzip,jdbcType=INTEGER},
+      Proxy_A = #{proxyA,jdbcType=VARCHAR},
+      Proxy_B = #{proxyB,jdbcType=VARCHAR},
+      Proxy_C = #{proxyC,jdbcType=VARCHAR}
+    where ProxyId = #{proxyid,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.xh.po.Proxy">
+    <id column="ProxyId" jdbcType="INTEGER" property="proxyid" />
+    <result column="ProxyName" jdbcType="VARCHAR" property="proxyname" />
+    <result column="ProxyPwd" jdbcType="VARCHAR" property="proxypwd" />
+    <result column="ProxyAddr" jdbcType="VARCHAR" property="proxyaddr" />
+    <result column="ProxyPhone" jdbcType="VARCHAR" property="proxyphone" />
+    <result column="ProxyZip" jdbcType="INTEGER" property="proxyzip" />
+    <result column="Proxy_A" jdbcType="VARCHAR" property="proxyA" />
+    <result column="Proxy_B" jdbcType="VARCHAR" property="proxyB" />
+    <result column="Proxy_C" jdbcType="VARCHAR" property="proxyC" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    ProxyId, ProxyName, ProxyPwd, ProxyAddr, ProxyPhone, ProxyZip, Proxy_A, Proxy_B, 
+    Proxy_C
+  </sql>
+  <select id="selectByExample" parameterType="com.xh.po.ProxyExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from proxy
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from proxy
+    where ProxyId = #{proxyid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from proxy
+    where ProxyId = #{proxyid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.xh.po.ProxyExample">
+    delete from proxy
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.xh.po.Proxy">
+    insert into proxy (ProxyId, ProxyName, ProxyPwd, 
+      ProxyAddr, ProxyPhone, ProxyZip, 
+      Proxy_A, Proxy_B, Proxy_C
+      )
+    values (#{proxyid,jdbcType=INTEGER}, #{proxyname,jdbcType=VARCHAR}, #{proxypwd,jdbcType=VARCHAR}, 
+      #{proxyaddr,jdbcType=VARCHAR}, #{proxyphone,jdbcType=VARCHAR}, #{proxyzip,jdbcType=INTEGER}, 
+      #{proxyA,jdbcType=VARCHAR}, #{proxyB,jdbcType=VARCHAR}, #{proxyC,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.xh.po.Proxy">
+    insert into proxy
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="proxyid != null">
+        ProxyId,
+      </if>
+      <if test="proxyname != null">
+        ProxyName,
+      </if>
+      <if test="proxypwd != null">
+        ProxyPwd,
+      </if>
+      <if test="proxyaddr != null">
+        ProxyAddr,
+      </if>
+      <if test="proxyphone != null">
+        ProxyPhone,
+      </if>
+      <if test="proxyzip != null">
+        ProxyZip,
+      </if>
+      <if test="proxyA != null">
+        Proxy_A,
+      </if>
+      <if test="proxyB != null">
+        Proxy_B,
+      </if>
+      <if test="proxyC != null">
+        Proxy_C,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="proxyid != null">
+        #{proxyid,jdbcType=INTEGER},
+      </if>
+      <if test="proxyname != null">
+        #{proxyname,jdbcType=VARCHAR},
+      </if>
+      <if test="proxypwd != null">
+        #{proxypwd,jdbcType=VARCHAR},
+      </if>
+      <if test="proxyaddr != null">
+        #{proxyaddr,jdbcType=VARCHAR},
+      </if>
+      <if test="proxyphone != null">
+        #{proxyphone,jdbcType=VARCHAR},
+      </if>
+      <if test="proxyzip != null">
+        #{proxyzip,jdbcType=INTEGER},
+      </if>
+      <if test="proxyA != null">
+        #{proxyA,jdbcType=VARCHAR},
+      </if>
+      <if test="proxyB != null">
+        #{proxyB,jdbcType=VARCHAR},
+      </if>
+      <if test="proxyC != null">
+        #{proxyC,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.xh.po.ProxyExample" resultType="java.lang.Long">
+    select count(*) from proxy
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update proxy
+    <set>
+      <if test="record.proxyid != null">
+        ProxyId = #{record.proxyid,jdbcType=INTEGER},
+      </if>
+      <if test="record.proxyname != null">
+        ProxyName = #{record.proxyname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.proxypwd != null">
+        ProxyPwd = #{record.proxypwd,jdbcType=VARCHAR},
+      </if>
+      <if test="record.proxyaddr != null">
+        ProxyAddr = #{record.proxyaddr,jdbcType=VARCHAR},
+      </if>
+      <if test="record.proxyphone != null">
+        ProxyPhone = #{record.proxyphone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.proxyzip != null">
+        ProxyZip = #{record.proxyzip,jdbcType=INTEGER},
+      </if>
+      <if test="record.proxyA != null">
+        Proxy_A = #{record.proxyA,jdbcType=VARCHAR},
+      </if>
+      <if test="record.proxyB != null">
+        Proxy_B = #{record.proxyB,jdbcType=VARCHAR},
+      </if>
+      <if test="record.proxyC != null">
+        Proxy_C = #{record.proxyC,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update proxy
+    set ProxyId = #{record.proxyid,jdbcType=INTEGER},
+      ProxyName = #{record.proxyname,jdbcType=VARCHAR},
+      ProxyPwd = #{record.proxypwd,jdbcType=VARCHAR},
+      ProxyAddr = #{record.proxyaddr,jdbcType=VARCHAR},
+      ProxyPhone = #{record.proxyphone,jdbcType=VARCHAR},
+      ProxyZip = #{record.proxyzip,jdbcType=INTEGER},
+      Proxy_A = #{record.proxyA,jdbcType=VARCHAR},
+      Proxy_B = #{record.proxyB,jdbcType=VARCHAR},
+      Proxy_C = #{record.proxyC,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xh.po.Proxy">
+    update proxy
+    <set>
+      <if test="proxyname != null">
+        ProxyName = #{proxyname,jdbcType=VARCHAR},
+      </if>
+      <if test="proxypwd != null">
+        ProxyPwd = #{proxypwd,jdbcType=VARCHAR},
+      </if>
+      <if test="proxyaddr != null">
+        ProxyAddr = #{proxyaddr,jdbcType=VARCHAR},
+      </if>
+      <if test="proxyphone != null">
+        ProxyPhone = #{proxyphone,jdbcType=VARCHAR},
+      </if>
+      <if test="proxyzip != null">
+        ProxyZip = #{proxyzip,jdbcType=INTEGER},
+      </if>
+      <if test="proxyA != null">
+        Proxy_A = #{proxyA,jdbcType=VARCHAR},
+      </if>
+      <if test="proxyB != null">
+        Proxy_B = #{proxyB,jdbcType=VARCHAR},
+      </if>
+      <if test="proxyC != null">
+        Proxy_C = #{proxyC,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ProxyId = #{proxyid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xh.po.Proxy">
+    update proxy
+    set ProxyName = #{proxyname,jdbcType=VARCHAR},
+      ProxyPwd = #{proxypwd,jdbcType=VARCHAR},
+      ProxyAddr = #{proxyaddr,jdbcType=VARCHAR},
+      ProxyPhone = #{proxyphone,jdbcType=VARCHAR},
+      ProxyZip = #{proxyzip,jdbcType=INTEGER},
+      Proxy_A = #{proxyA,jdbcType=VARCHAR},
+      Proxy_B = #{proxyB,jdbcType=VARCHAR},
+      Proxy_C = #{proxyC,jdbcType=VARCHAR}
+    where ProxyId = #{proxyid,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,679 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xh.mapper.AdmingroupfirstviewMapper">
+  <resultMap id="BaseResultMap" type="com.xh.po.Admingroupfirstview">
+    <id column="AdminGroupFirstViewId" jdbcType="INTEGER" property="admingroupfirstviewid" />
+    <result column="FirstViewAction" jdbcType="VARCHAR" property="firstviewaction" />
+    <result column="AdminGroupId" jdbcType="INTEGER" property="admingroupid" />
+    <result column="AdminGroupFirstView_A" jdbcType="VARCHAR" property="admingroupfirstviewA" />
+    <result column="AdminGroupFirstView_B" jdbcType="VARCHAR" property="admingroupfirstviewB" />
+    <result column="AdminGroupFirstView_C" jdbcType="VARCHAR" property="admingroupfirstviewC" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    AdminGroupFirstViewId, FirstViewAction, AdminGroupId, AdminGroupFirstView_A, AdminGroupFirstView_B, 
+    AdminGroupFirstView_C
+  </sql>
+  <select id="selectByExample" parameterType="com.xh.po.AdmingroupfirstviewExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from admingroupfirstview
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from admingroupfirstview
+    where AdminGroupFirstViewId = #{admingroupfirstviewid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from admingroupfirstview
+    where AdminGroupFirstViewId = #{admingroupfirstviewid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.xh.po.AdmingroupfirstviewExample">
+    delete from admingroupfirstview
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.xh.po.Admingroupfirstview">
+    insert into admingroupfirstview (AdminGroupFirstViewId, FirstViewAction, 
+      AdminGroupId, AdminGroupFirstView_A, AdminGroupFirstView_B, 
+      AdminGroupFirstView_C)
+    values (#{admingroupfirstviewid,jdbcType=INTEGER}, #{firstviewaction,jdbcType=VARCHAR}, 
+      #{admingroupid,jdbcType=INTEGER}, #{admingroupfirstviewA,jdbcType=VARCHAR}, #{admingroupfirstviewB,jdbcType=VARCHAR}, 
+      #{admingroupfirstviewC,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xh.po.Admingroupfirstview">
+    insert into admingroupfirstview
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="admingroupfirstviewid != null">
+        AdminGroupFirstViewId,
+      </if>
+      <if test="firstviewaction != null">
+        FirstViewAction,
+      </if>
+      <if test="admingroupid != null">
+        AdminGroupId,
+      </if>
+      <if test="admingroupfirstviewA != null">
+        AdminGroupFirstView_A,
+      </if>
+      <if test="admingroupfirstviewB != null">
+        AdminGroupFirstView_B,
+      </if>
+      <if test="admingroupfirstviewC != null">
+        AdminGroupFirstView_C,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="admingroupfirstviewid != null">
+        #{admingroupfirstviewid,jdbcType=INTEGER},
+      </if>
+      <if test="firstviewaction != null">
+        #{firstviewaction,jdbcType=VARCHAR},
+      </if>
+      <if test="admingroupid != null">
+        #{admingroupid,jdbcType=INTEGER},
+      </if>
+      <if test="admingroupfirstviewA != null">
+        #{admingroupfirstviewA,jdbcType=VARCHAR},
+      </if>
+      <if test="admingroupfirstviewB != null">
+        #{admingroupfirstviewB,jdbcType=VARCHAR},
+      </if>
+      <if test="admingroupfirstviewC != null">
+        #{admingroupfirstviewC,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.xh.po.AdmingroupfirstviewExample" resultType="java.lang.Long">
+    select count(*) from admingroupfirstview
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update admingroupfirstview
+    <set>
+      <if test="record.admingroupfirstviewid != null">
+        AdminGroupFirstViewId = #{record.admingroupfirstviewid,jdbcType=INTEGER},
+      </if>
+      <if test="record.firstviewaction != null">
+        FirstViewAction = #{record.firstviewaction,jdbcType=VARCHAR},
+      </if>
+      <if test="record.admingroupid != null">
+        AdminGroupId = #{record.admingroupid,jdbcType=INTEGER},
+      </if>
+      <if test="record.admingroupfirstviewA != null">
+        AdminGroupFirstView_A = #{record.admingroupfirstviewA,jdbcType=VARCHAR},
+      </if>
+      <if test="record.admingroupfirstviewB != null">
+        AdminGroupFirstView_B = #{record.admingroupfirstviewB,jdbcType=VARCHAR},
+      </if>
+      <if test="record.admingroupfirstviewC != null">
+        AdminGroupFirstView_C = #{record.admingroupfirstviewC,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update admingroupfirstview
+    set AdminGroupFirstViewId = #{record.admingroupfirstviewid,jdbcType=INTEGER},
+      FirstViewAction = #{record.firstviewaction,jdbcType=VARCHAR},
+      AdminGroupId = #{record.admingroupid,jdbcType=INTEGER},
+      AdminGroupFirstView_A = #{record.admingroupfirstviewA,jdbcType=VARCHAR},
+      AdminGroupFirstView_B = #{record.admingroupfirstviewB,jdbcType=VARCHAR},
+      AdminGroupFirstView_C = #{record.admingroupfirstviewC,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xh.po.Admingroupfirstview">
+    update admingroupfirstview
+    <set>
+      <if test="firstviewaction != null">
+        FirstViewAction = #{firstviewaction,jdbcType=VARCHAR},
+      </if>
+      <if test="admingroupid != null">
+        AdminGroupId = #{admingroupid,jdbcType=INTEGER},
+      </if>
+      <if test="admingroupfirstviewA != null">
+        AdminGroupFirstView_A = #{admingroupfirstviewA,jdbcType=VARCHAR},
+      </if>
+      <if test="admingroupfirstviewB != null">
+        AdminGroupFirstView_B = #{admingroupfirstviewB,jdbcType=VARCHAR},
+      </if>
+      <if test="admingroupfirstviewC != null">
+        AdminGroupFirstView_C = #{admingroupfirstviewC,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where AdminGroupFirstViewId = #{admingroupfirstviewid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xh.po.Admingroupfirstview">
+    update admingroupfirstview
+    set FirstViewAction = #{firstviewaction,jdbcType=VARCHAR},
+      AdminGroupId = #{admingroupid,jdbcType=INTEGER},
+      AdminGroupFirstView_A = #{admingroupfirstviewA,jdbcType=VARCHAR},
+      AdminGroupFirstView_B = #{admingroupfirstviewB,jdbcType=VARCHAR},
+      AdminGroupFirstView_C = #{admingroupfirstviewC,jdbcType=VARCHAR}
+    where AdminGroupFirstViewId = #{admingroupfirstviewid,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.xh.po.Admingroupfirstview">
+    <id column="AdminGroupFirstViewId" jdbcType="INTEGER" property="admingroupfirstviewid" />
+    <result column="FirstViewAction" jdbcType="VARCHAR" property="firstviewaction" />
+    <result column="AdminGroupId" jdbcType="INTEGER" property="admingroupid" />
+    <result column="AdminGroupFirstView_A" jdbcType="VARCHAR" property="admingroupfirstviewA" />
+    <result column="AdminGroupFirstView_B" jdbcType="VARCHAR" property="admingroupfirstviewB" />
+    <result column="AdminGroupFirstView_C" jdbcType="VARCHAR" property="admingroupfirstviewC" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    AdminGroupFirstViewId, FirstViewAction, AdminGroupId, AdminGroupFirstView_A, AdminGroupFirstView_B, 
+    AdminGroupFirstView_C
+  </sql>
+  <select id="selectByExample" parameterType="com.xh.po.AdmingroupfirstviewExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from admingroupfirstview
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from admingroupfirstview
+    where AdminGroupFirstViewId = #{admingroupfirstviewid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from admingroupfirstview
+    where AdminGroupFirstViewId = #{admingroupfirstviewid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.xh.po.AdmingroupfirstviewExample">
+    delete from admingroupfirstview
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.xh.po.Admingroupfirstview">
+    insert into admingroupfirstview (AdminGroupFirstViewId, FirstViewAction, 
+      AdminGroupId, AdminGroupFirstView_A, AdminGroupFirstView_B, 
+      AdminGroupFirstView_C)
+    values (#{admingroupfirstviewid,jdbcType=INTEGER}, #{firstviewaction,jdbcType=VARCHAR}, 
+      #{admingroupid,jdbcType=INTEGER}, #{admingroupfirstviewA,jdbcType=VARCHAR}, #{admingroupfirstviewB,jdbcType=VARCHAR}, 
+      #{admingroupfirstviewC,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xh.po.Admingroupfirstview">
+    insert into admingroupfirstview
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="admingroupfirstviewid != null">
+        AdminGroupFirstViewId,
+      </if>
+      <if test="firstviewaction != null">
+        FirstViewAction,
+      </if>
+      <if test="admingroupid != null">
+        AdminGroupId,
+      </if>
+      <if test="admingroupfirstviewA != null">
+        AdminGroupFirstView_A,
+      </if>
+      <if test="admingroupfirstviewB != null">
+        AdminGroupFirstView_B,
+      </if>
+      <if test="admingroupfirstviewC != null">
+        AdminGroupFirstView_C,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="admingroupfirstviewid != null">
+        #{admingroupfirstviewid,jdbcType=INTEGER},
+      </if>
+      <if test="firstviewaction != null">
+        #{firstviewaction,jdbcType=VARCHAR},
+      </if>
+      <if test="admingroupid != null">
+        #{admingroupid,jdbcType=INTEGER},
+      </if>
+      <if test="admingroupfirstviewA != null">
+        #{admingroupfirstviewA,jdbcType=VARCHAR},
+      </if>
+      <if test="admingroupfirstviewB != null">
+        #{admingroupfirstviewB,jdbcType=VARCHAR},
+      </if>
+      <if test="admingroupfirstviewC != null">
+        #{admingroupfirstviewC,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.xh.po.AdmingroupfirstviewExample" resultType="java.lang.Long">
+    select count(*) from admingroupfirstview
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update admingroupfirstview
+    <set>
+      <if test="record.admingroupfirstviewid != null">
+        AdminGroupFirstViewId = #{record.admingroupfirstviewid,jdbcType=INTEGER},
+      </if>
+      <if test="record.firstviewaction != null">
+        FirstViewAction = #{record.firstviewaction,jdbcType=VARCHAR},
+      </if>
+      <if test="record.admingroupid != null">
+        AdminGroupId = #{record.admingroupid,jdbcType=INTEGER},
+      </if>
+      <if test="record.admingroupfirstviewA != null">
+        AdminGroupFirstView_A = #{record.admingroupfirstviewA,jdbcType=VARCHAR},
+      </if>
+      <if test="record.admingroupfirstviewB != null">
+        AdminGroupFirstView_B = #{record.admingroupfirstviewB,jdbcType=VARCHAR},
+      </if>
+      <if test="record.admingroupfirstviewC != null">
+        AdminGroupFirstView_C = #{record.admingroupfirstviewC,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update admingroupfirstview
+    set AdminGroupFirstViewId = #{record.admingroupfirstviewid,jdbcType=INTEGER},
+      FirstViewAction = #{record.firstviewaction,jdbcType=VARCHAR},
+      AdminGroupId = #{record.admingroupid,jdbcType=INTEGER},
+      AdminGroupFirstView_A = #{record.admingroupfirstviewA,jdbcType=VARCHAR},
+      AdminGroupFirstView_B = #{record.admingroupfirstviewB,jdbcType=VARCHAR},
+      AdminGroupFirstView_C = #{record.admingroupfirstviewC,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xh.po.Admingroupfirstview">
+    update admingroupfirstview
+    <set>
+      <if test="firstviewaction != null">
+        FirstViewAction = #{firstviewaction,jdbcType=VARCHAR},
+      </if>
+      <if test="admingroupid != null">
+        AdminGroupId = #{admingroupid,jdbcType=INTEGER},
+      </if>
+      <if test="admingroupfirstviewA != null">
+        AdminGroupFirstView_A = #{admingroupfirstviewA,jdbcType=VARCHAR},
+      </if>
+      <if test="admingroupfirstviewB != null">
+        AdminGroupFirstView_B = #{admingroupfirstviewB,jdbcType=VARCHAR},
+      </if>
+      <if test="admingroupfirstviewC != null">
+        AdminGroupFirstView_C = #{admingroupfirstviewC,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where AdminGroupFirstViewId = #{admingroupfirstviewid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xh.po.Admingroupfirstview">
+    update admingroupfirstview
+    set FirstViewAction = #{firstviewaction,jdbcType=VARCHAR},
+      AdminGroupId = #{admingroupid,jdbcType=INTEGER},
+      AdminGroupFirstView_A = #{admingroupfirstviewA,jdbcType=VARCHAR},
+      AdminGroupFirstView_B = #{admingroupfirstviewB,jdbcType=VARCHAR},
+      AdminGroupFirstView_C = #{admingroupfirstviewC,jdbcType=VARCHAR}
+    where AdminGroupFirstViewId = #{admingroupfirstviewid,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.xh.po.Admingroupfirstview">
+    <id column="AdminGroupFirstViewId" jdbcType="INTEGER" property="admingroupfirstviewid" />
+    <result column="FirstViewAction" jdbcType="VARCHAR" property="firstviewaction" />
+    <result column="AdminGroupId" jdbcType="INTEGER" property="admingroupid" />
+    <result column="AdminGroupFirstView_A" jdbcType="VARCHAR" property="admingroupfirstviewA" />
+    <result column="AdminGroupFirstView_B" jdbcType="VARCHAR" property="admingroupfirstviewB" />
+    <result column="AdminGroupFirstView_C" jdbcType="VARCHAR" property="admingroupfirstviewC" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    AdminGroupFirstViewId, FirstViewAction, AdminGroupId, AdminGroupFirstView_A, AdminGroupFirstView_B, 
+    AdminGroupFirstView_C
+  </sql>
+  <select id="selectByExample" parameterType="com.xh.po.AdmingroupfirstviewExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from admingroupfirstview
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from admingroupfirstview
+    where AdminGroupFirstViewId = #{admingroupfirstviewid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from admingroupfirstview
+    where AdminGroupFirstViewId = #{admingroupfirstviewid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.xh.po.AdmingroupfirstviewExample">
+    delete from admingroupfirstview
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.xh.po.Admingroupfirstview">
+    insert into admingroupfirstview (AdminGroupFirstViewId, FirstViewAction, 
+      AdminGroupId, AdminGroupFirstView_A, AdminGroupFirstView_B, 
+      AdminGroupFirstView_C)
+    values (#{admingroupfirstviewid,jdbcType=INTEGER}, #{firstviewaction,jdbcType=VARCHAR}, 
+      #{admingroupid,jdbcType=INTEGER}, #{admingroupfirstviewA,jdbcType=VARCHAR}, #{admingroupfirstviewB,jdbcType=VARCHAR}, 
+      #{admingroupfirstviewC,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xh.po.Admingroupfirstview">
+    insert into admingroupfirstview
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="admingroupfirstviewid != null">
+        AdminGroupFirstViewId,
+      </if>
+      <if test="firstviewaction != null">
+        FirstViewAction,
+      </if>
+      <if test="admingroupid != null">
+        AdminGroupId,
+      </if>
+      <if test="admingroupfirstviewA != null">
+        AdminGroupFirstView_A,
+      </if>
+      <if test="admingroupfirstviewB != null">
+        AdminGroupFirstView_B,
+      </if>
+      <if test="admingroupfirstviewC != null">
+        AdminGroupFirstView_C,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="admingroupfirstviewid != null">
+        #{admingroupfirstviewid,jdbcType=INTEGER},
+      </if>
+      <if test="firstviewaction != null">
+        #{firstviewaction,jdbcType=VARCHAR},
+      </if>
+      <if test="admingroupid != null">
+        #{admingroupid,jdbcType=INTEGER},
+      </if>
+      <if test="admingroupfirstviewA != null">
+        #{admingroupfirstviewA,jdbcType=VARCHAR},
+      </if>
+      <if test="admingroupfirstviewB != null">
+        #{admingroupfirstviewB,jdbcType=VARCHAR},
+      </if>
+      <if test="admingroupfirstviewC != null">
+        #{admingroupfirstviewC,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.xh.po.AdmingroupfirstviewExample" resultType="java.lang.Long">
+    select count(*) from admingroupfirstview
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update admingroupfirstview
+    <set>
+      <if test="record.admingroupfirstviewid != null">
+        AdminGroupFirstViewId = #{record.admingroupfirstviewid,jdbcType=INTEGER},
+      </if>
+      <if test="record.firstviewaction != null">
+        FirstViewAction = #{record.firstviewaction,jdbcType=VARCHAR},
+      </if>
+      <if test="record.admingroupid != null">
+        AdminGroupId = #{record.admingroupid,jdbcType=INTEGER},
+      </if>
+      <if test="record.admingroupfirstviewA != null">
+        AdminGroupFirstView_A = #{record.admingroupfirstviewA,jdbcType=VARCHAR},
+      </if>
+      <if test="record.admingroupfirstviewB != null">
+        AdminGroupFirstView_B = #{record.admingroupfirstviewB,jdbcType=VARCHAR},
+      </if>
+      <if test="record.admingroupfirstviewC != null">
+        AdminGroupFirstView_C = #{record.admingroupfirstviewC,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update admingroupfirstview
+    set AdminGroupFirstViewId = #{record.admingroupfirstviewid,jdbcType=INTEGER},
+      FirstViewAction = #{record.firstviewaction,jdbcType=VARCHAR},
+      AdminGroupId = #{record.admingroupid,jdbcType=INTEGER},
+      AdminGroupFirstView_A = #{record.admingroupfirstviewA,jdbcType=VARCHAR},
+      AdminGroupFirstView_B = #{record.admingroupfirstviewB,jdbcType=VARCHAR},
+      AdminGroupFirstView_C = #{record.admingroupfirstviewC,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xh.po.Admingroupfirstview">
+    update admingroupfirstview
+    <set>
+      <if test="firstviewaction != null">
+        FirstViewAction = #{firstviewaction,jdbcType=VARCHAR},
+      </if>
+      <if test="admingroupid != null">
+        AdminGroupId = #{admingroupid,jdbcType=INTEGER},
+      </if>
+      <if test="admingroupfirstviewA != null">
+        AdminGroupFirstView_A = #{admingroupfirstviewA,jdbcType=VARCHAR},
+      </if>
+      <if test="admingroupfirstviewB != null">
+        AdminGroupFirstView_B = #{admingroupfirstviewB,jdbcType=VARCHAR},
+      </if>
+      <if test="admingroupfirstviewC != null">
+        AdminGroupFirstView_C = #{admingroupfirstviewC,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where AdminGroupFirstViewId = #{admingroupfirstviewid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xh.po.Admingroupfirstview">
+    update admingroupfirstview
+    set FirstViewAction = #{firstviewaction,jdbcType=VARCHAR},
+      AdminGroupId = #{admingroupid,jdbcType=INTEGER},
+      AdminGroupFirstView_A = #{admingroupfirstviewA,jdbcType=VARCHAR},
+      AdminGroupFirstView_B = #{admingroupfirstviewB,jdbcType=VARCHAR},
+      AdminGroupFirstView_C = #{admingroupfirstviewC,jdbcType=VARCHAR}
+    where AdminGroupFirstViewId = #{admingroupfirstviewid,jdbcType=INTEGER}
+  </update>
+</mapper>

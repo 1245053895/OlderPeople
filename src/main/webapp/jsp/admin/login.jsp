@@ -135,7 +135,7 @@ $('#login_btn').on('click', function(){
                title: '提示框',				
 			   icon:1,		
 			  });
-	          location.href="/jsp/admin/index.html";
+	          location.href="/jsp/admin/index.jsp";
 			   layer.close(index);	
 		  }		  		     						
 		

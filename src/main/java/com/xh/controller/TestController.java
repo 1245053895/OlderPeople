@@ -1,7 +1,6 @@
 package com.xh.controller;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
@@ -11,6 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class TestController {
     @RequestMapping("/TestController")
     public String TestController(){
-        return  "/jsp/admin/login.html";
+        return "/jsp/admin/login.jsp";
     }
 }

@@ -292,10 +292,9 @@ $('.change_Password').on('click', function(){
 					<ul class="nav nav-list" id="nav_list">
 
 						<li class="home"><a href="javascript:void(0)" name="home.html" class="iframeurl" title=""><i class="icon-dashboard"></i><span class="menu-text"> 系统首页 </span></a></li>
-
 						<li><a href="#" class="dropdown-toggle"><i class="icon-desktop"></i><span class="menu-text"> 管理员管理 </span><b class="arrow icon-angle-down"></b></a>
 							<ul class="submenu">
-								<li class="home"><a href="javascript:void(0)" name="Category_Manage.html" title="权限管理"  class="iframeurl"><i class="icon-double-angle-right"></i>权限管理</a></li>
+								<li class="home"><a href="javascript:void(0)" name="admin_Competence.jsp" title="角色管理"  class="iframeurl"><i class="icon-double-angle-right"></i>角色管理</a></li>
 								<li class="home"><a  href="javascript:void(0)" name="Products_List.html"  title="管理员列表" class="iframeurl"><i class="icon-double-angle-right"></i>管理员列表</a></li>
 								<li class="home"><a href="javascript:void(0)" name="Category_Manage.html" title="个人信息"  class="iframeurl"><i class="icon-double-angle-right"></i>个人信息</a></li>
 							</ul>

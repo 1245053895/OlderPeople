@@ -14,7 +14,8 @@
 		http://www.springframework.org/schema/tx/spring-tx-3.2.xsd ">
 
 	<!--配置扫描包 ,使得可以扫描到注解进去的实例 -->
-	<context:component-scan base-package="com.xh.controller"></context:component-scan>
+<context:component-scan base-package="com.xh.controller"></context:component-scan>
+	<context:component-scan base-package="com.xh.mapper"></context:component-scan>
 	<!--配置处理器适配器和处理器映射器，视图解析器  -->
 	<!--注解的处理器映射器和处理器适配器  -->
 	<!-- <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping"/>

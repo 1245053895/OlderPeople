@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xh.mapper.StockMapper">
+  <resultMap id="BaseResultMap" type="com.xh.po.Stock">
+    <id column="StockId" jdbcType="INTEGER" property="stockid" />
+    <result column="ProductId" jdbcType="INTEGER" property="productid" />
+    <result column="ColorId" jdbcType="INTEGER" property="colorid" />
+    <result column="Sizes" jdbcType="VARCHAR" property="sizes" />
+    <result column="MarketPrice" jdbcType="DOUBLE" property="marketprice" />
+    <result column="Price" jdbcType="DOUBLE" property="price" />
+    <result column="Stock" jdbcType="INTEGER" property="stock" />
+    <result column="UpperLimit" jdbcType="INTEGER" property="upperlimit" />
+    <result column="CreateTime" jdbcType="TIMESTAMP" property="createtime" />
+    <result column="Stock_A" jdbcType="VARCHAR" property="stockA" />
+    <result column="Stock_B" jdbcType="VARCHAR" property="stockB" />
+    <result column="Stock_C" jdbcType="VARCHAR" property="stockC" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    StockId, ProductId, ColorId, Sizes, MarketPrice, Price, Stock, UpperLimit, CreateTime, 
+    Stock_A, Stock_B, Stock_C
+  </sql>
+  <select id="selectByExample" parameterType="com.xh.po.StockExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from stock
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from stock
+    where StockId = #{stockid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from stock
+    where StockId = #{stockid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.xh.po.StockExample">
+    delete from stock
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.xh.po.Stock">
+    insert into stock (StockId, ProductId, ColorId, 
+      Sizes, MarketPrice, Price, 
+      Stock, UpperLimit, CreateTime, 
+      Stock_A, Stock_B, Stock_C
+      )
+    values (#{stockid,jdbcType=INTEGER}, #{productid,jdbcType=INTEGER}, #{colorid,jdbcType=INTEGER}, 
+      #{sizes,jdbcType=VARCHAR}, #{marketprice,jdbcType=DOUBLE}, #{price,jdbcType=DOUBLE}, 
+      #{stock,jdbcType=INTEGER}, #{upperlimit,jdbcType=INTEGER}, #{createtime,jdbcType=TIMESTAMP}, 
+      #{stockA,jdbcType=VARCHAR}, #{stockB,jdbcType=VARCHAR}, #{stockC,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.xh.po.Stock">
+    insert into stock
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="stockid != null">
+        StockId,
+      </if>
+      <if test="productid != null">
+        ProductId,
+      </if>
+      <if test="colorid != null">
+        ColorId,
+      </if>
+      <if test="sizes != null">
+        Sizes,
+      </if>
+      <if test="marketprice != null">
+        MarketPrice,
+      </if>
+      <if test="price != null">
+        Price,
+      </if>
+      <if test="stock != null">
+        Stock,
+      </if>
+      <if test="upperlimit != null">
+        UpperLimit,
+      </if>
+      <if test="createtime != null">
+        CreateTime,
+      </if>
+      <if test="stockA != null">
+        Stock_A,
+      </if>
+      <if test="stockB != null">
+        Stock_B,
+      </if>
+      <if test="stockC != null">
+        Stock_C,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="stockid != null">
+        #{stockid,jdbcType=INTEGER},
+      </if>
+      <if test="productid != null">
+        #{productid,jdbcType=INTEGER},
+      </if>
+      <if test="colorid != null">
+        #{colorid,jdbcType=INTEGER},
+      </if>
+      <if test="sizes != null">
+        #{sizes,jdbcType=VARCHAR},
+      </if>
+      <if test="marketprice != null">
+        #{marketprice,jdbcType=DOUBLE},
+      </if>
+      <if test="price != null">
+        #{price,jdbcType=DOUBLE},
+      </if>
+      <if test="stock != null">
+        #{stock,jdbcType=INTEGER},
+      </if>
+      <if test="upperlimit != null">
+        #{upperlimit,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="stockA != null">
+        #{stockA,jdbcType=VARCHAR},
+      </if>
+      <if test="stockB != null">
+        #{stockB,jdbcType=VARCHAR},
+      </if>
+      <if test="stockC != null">
+        #{stockC,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.xh.po.StockExample" resultType="java.lang.Long">
+    select count(*) from stock
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update stock
+    <set>
+      <if test="record.stockid != null">
+        StockId = #{record.stockid,jdbcType=INTEGER},
+      </if>
+      <if test="record.productid != null">
+        ProductId = #{record.productid,jdbcType=INTEGER},
+      </if>
+      <if test="record.colorid != null">
+        ColorId = #{record.colorid,jdbcType=INTEGER},
+      </if>
+      <if test="record.sizes != null">
+        Sizes = #{record.sizes,jdbcType=VARCHAR},
+      </if>
+      <if test="record.marketprice != null">
+        MarketPrice = #{record.marketprice,jdbcType=DOUBLE},
+      </if>
+      <if test="record.price != null">
+        Price = #{record.price,jdbcType=DOUBLE},
+      </if>
+      <if test="record.stock != null">
+        Stock = #{record.stock,jdbcType=INTEGER},
+      </if>
+      <if test="record.upperlimit != null">
+        UpperLimit = #{record.upperlimit,jdbcType=INTEGER},
+      </if>
+      <if test="record.createtime != null">
+        CreateTime = #{record.createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.stockA != null">
+        Stock_A = #{record.stockA,jdbcType=VARCHAR},
+      </if>
+      <if test="record.stockB != null">
+        Stock_B = #{record.stockB,jdbcType=VARCHAR},
+      </if>
+      <if test="record.stockC != null">
+        Stock_C = #{record.stockC,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update stock
+    set StockId = #{record.stockid,jdbcType=INTEGER},
+      ProductId = #{record.productid,jdbcType=INTEGER},
+      ColorId = #{record.colorid,jdbcType=INTEGER},
+      Sizes = #{record.sizes,jdbcType=VARCHAR},
+      MarketPrice = #{record.marketprice,jdbcType=DOUBLE},
+      Price = #{record.price,jdbcType=DOUBLE},
+      Stock = #{record.stock,jdbcType=INTEGER},
+      UpperLimit = #{record.upperlimit,jdbcType=INTEGER},
+      CreateTime = #{record.createtime,jdbcType=TIMESTAMP},
+      Stock_A = #{record.stockA,jdbcType=VARCHAR},
+      Stock_B = #{record.stockB,jdbcType=VARCHAR},
+      Stock_C = #{record.stockC,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xh.po.Stock">
+    update stock
+    <set>
+      <if test="productid != null">
+        ProductId = #{productid,jdbcType=INTEGER},
+      </if>
+      <if test="colorid != null">
+        ColorId = #{colorid,jdbcType=INTEGER},
+      </if>
+      <if test="sizes != null">
+        Sizes = #{sizes,jdbcType=VARCHAR},
+      </if>
+      <if test="marketprice != null">
+        MarketPrice = #{marketprice,jdbcType=DOUBLE},
+      </if>
+      <if test="price != null">
+        Price = #{price,jdbcType=DOUBLE},
+      </if>
+      <if test="stock != null">
+        Stock = #{stock,jdbcType=INTEGER},
+      </if>
+      <if test="upperlimit != null">
+        UpperLimit = #{upperlimit,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null">
+        CreateTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="stockA != null">
+        Stock_A = #{stockA,jdbcType=VARCHAR},
+      </if>
+      <if test="stockB != null">
+        Stock_B = #{stockB,jdbcType=VARCHAR},
+      </if>
+      <if test="stockC != null">
+        Stock_C = #{stockC,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where StockId = #{stockid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xh.po.Stock">
+    update stock
+    set ProductId = #{productid,jdbcType=INTEGER},
+      ColorId = #{colorid,jdbcType=INTEGER},
+      Sizes = #{sizes,jdbcType=VARCHAR},
+      MarketPrice = #{marketprice,jdbcType=DOUBLE},
+      Price = #{price,jdbcType=DOUBLE},
+      Stock = #{stock,jdbcType=INTEGER},
+      UpperLimit = #{upperlimit,jdbcType=INTEGER},
+      CreateTime = #{createtime,jdbcType=TIMESTAMP},
+      Stock_A = #{stockA,jdbcType=VARCHAR},
+      Stock_B = #{stockB,jdbcType=VARCHAR},
+      Stock_C = #{stockC,jdbcType=VARCHAR}
+    where StockId = #{stockid,jdbcType=INTEGER}
+  </update>
+</mapper>

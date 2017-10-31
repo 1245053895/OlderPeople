@@ -2,7 +2,6 @@
 /*------------// Overall //------------------*/
 body{font:12px/180% Arial,Helvetica,Verdana;color:#5a5a5a; margin:0; background:#FFF;}
 body.login{
-	background-image: url(../images/91529.jpg);
 	background-repeat: no-repeat;
 	background-position: center center;
 }

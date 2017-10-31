@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xh.mapper.SecondviewMapper">
+  <resultMap id="BaseResultMap" type="com.xh.po.Secondview">
+    <id column="SecondViewId" jdbcType="INTEGER" property="secondviewid" />
+    <result column="SecondViewAction" jdbcType="VARCHAR" property="secondviewaction" />
+    <result column="SecondViewDescribe" jdbcType="VARCHAR" property="secondviewdescribe" />
+    <result column="SecondView_A" jdbcType="VARCHAR" property="secondviewA" />
+    <result column="SecondView_B" jdbcType="VARCHAR" property="secondviewB" />
+    <result column="SecondView_C" jdbcType="VARCHAR" property="secondviewC" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    SecondViewId, SecondViewAction, SecondViewDescribe, SecondView_A, SecondView_B, SecondView_C
+  </sql>
+  <select id="selectByExample" parameterType="com.xh.po.SecondviewExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from secondview
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from secondview
+    where SecondViewId = #{secondviewid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from secondview
+    where SecondViewId = #{secondviewid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.xh.po.SecondviewExample">
+    delete from secondview
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.xh.po.Secondview">
+    insert into secondview (SecondViewId, SecondViewAction, SecondViewDescribe, 
+      SecondView_A, SecondView_B, SecondView_C
+      )
+    values (#{secondviewid,jdbcType=INTEGER}, #{secondviewaction,jdbcType=VARCHAR}, #{secondviewdescribe,jdbcType=VARCHAR}, 
+      #{secondviewA,jdbcType=VARCHAR}, #{secondviewB,jdbcType=VARCHAR}, #{secondviewC,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.xh.po.Secondview">
+    insert into secondview
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="secondviewid != null">
+        SecondViewId,
+      </if>
+      <if test="secondviewaction != null">
+        SecondViewAction,
+      </if>
+      <if test="secondviewdescribe != null">
+        SecondViewDescribe,
+      </if>
+      <if test="secondviewA != null">
+        SecondView_A,
+      </if>
+      <if test="secondviewB != null">
+        SecondView_B,
+      </if>
+      <if test="secondviewC != null">
+        SecondView_C,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="secondviewid != null">
+        #{secondviewid,jdbcType=INTEGER},
+      </if>
+      <if test="secondviewaction != null">
+        #{secondviewaction,jdbcType=VARCHAR},
+      </if>
+      <if test="secondviewdescribe != null">
+        #{secondviewdescribe,jdbcType=VARCHAR},
+      </if>
+      <if test="secondviewA != null">
+        #{secondviewA,jdbcType=VARCHAR},
+      </if>
+      <if test="secondviewB != null">
+        #{secondviewB,jdbcType=VARCHAR},
+      </if>
+      <if test="secondviewC != null">
+        #{secondviewC,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.xh.po.SecondviewExample" resultType="java.lang.Long">
+    select count(*) from secondview
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update secondview
+    <set>
+      <if test="record.secondviewid != null">
+        SecondViewId = #{record.secondviewid,jdbcType=INTEGER},
+      </if>
+      <if test="record.secondviewaction != null">
+        SecondViewAction = #{record.secondviewaction,jdbcType=VARCHAR},
+      </if>
+      <if test="record.secondviewdescribe != null">
+        SecondViewDescribe = #{record.secondviewdescribe,jdbcType=VARCHAR},
+      </if>
+      <if test="record.secondviewA != null">
+        SecondView_A = #{record.secondviewA,jdbcType=VARCHAR},
+      </if>
+      <if test="record.secondviewB != null">
+        SecondView_B = #{record.secondviewB,jdbcType=VARCHAR},
+      </if>
+      <if test="record.secondviewC != null">
+        SecondView_C = #{record.secondviewC,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update secondview
+    set SecondViewId = #{record.secondviewid,jdbcType=INTEGER},
+      SecondViewAction = #{record.secondviewaction,jdbcType=VARCHAR},
+      SecondViewDescribe = #{record.secondviewdescribe,jdbcType=VARCHAR},
+      SecondView_A = #{record.secondviewA,jdbcType=VARCHAR},
+      SecondView_B = #{record.secondviewB,jdbcType=VARCHAR},
+      SecondView_C = #{record.secondviewC,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xh.po.Secondview">
+    update secondview
+    <set>
+      <if test="secondviewaction != null">
+        SecondViewAction = #{secondviewaction,jdbcType=VARCHAR},
+      </if>
+      <if test="secondviewdescribe != null">
+        SecondViewDescribe = #{secondviewdescribe,jdbcType=VARCHAR},
+      </if>
+      <if test="secondviewA != null">
+        SecondView_A = #{secondviewA,jdbcType=VARCHAR},
+      </if>
+      <if test="secondviewB != null">
+        SecondView_B = #{secondviewB,jdbcType=VARCHAR},
+      </if>
+      <if test="secondviewC != null">
+        SecondView_C = #{secondviewC,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where SecondViewId = #{secondviewid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xh.po.Secondview">
+    update secondview
+    set SecondViewAction = #{secondviewaction,jdbcType=VARCHAR},
+      SecondViewDescribe = #{secondviewdescribe,jdbcType=VARCHAR},
+      SecondView_A = #{secondviewA,jdbcType=VARCHAR},
+      SecondView_B = #{secondviewB,jdbcType=VARCHAR},
+      SecondView_C = #{secondviewC,jdbcType=VARCHAR}
+    where SecondViewId = #{secondviewid,jdbcType=INTEGER}
+  </update>
+</mapper>

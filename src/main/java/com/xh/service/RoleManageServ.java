@@ -2,7 +2,6 @@ package com.xh.service;
 
 
 import com.xh.po.AdminRole;
-import com.xh.po.Admingroup;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,6 +12,4 @@ import java.util.List;
 
 public interface RoleManageServ {
     public List<AdminRole> queryRoleAndAdmin();
-    public List<Admingroup>queryAllRole();
-    public  void deleteRoleById(int id);
 }

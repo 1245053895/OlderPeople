@@ -1,5 +1,12 @@
-﻿<!DOCTYPE html>
-<html lang="en">
+﻿<%--
+  Created by IntelliJ IDEA.
+  User: Administrator
+  Date: 2017/10/30
+  Time: 16:40
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
 	<head>
 		<meta charset="utf-8" />
 		<title>网站后台管理系统  </title>
@@ -198,13 +205,12 @@ $('.change_Password').on('click', function(){
 								<i class="icon-caret-down"></i>
 							</a>
 							<ul class="user-menu pull-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
-								<li><a href="#"><i class="icon-cog"></i>设置</a></li>
-								<li><a href="#"><i class="icon-user"></i>个人资料</a></li>
+								<li class="home"><a href="javascript:void(0)" name="admin_info.jsp" title="个人资料"  class="iframeurl"><i class="icon-double-angle-right"></i>个人资料</a></li>
 								<li class="divider"></li>
 								<li><a href="javascript:ovid(0)" id="Exit_system"><i class="icon-off"></i>退出</a></li>
 							</ul>
 						</li>
-	                   <li class="purple">
+	                   <%--<li class="purple">
 						<a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icon-bell-alt"></i><span class="badge badge-important">8</span></a>
 							<ul class="pull-right dropdown-navbar navbar-pink dropdown-menu dropdown-caret dropdown-close">
                             <li class="dropdown-header"><i class="icon-warning-sign"></i>8条通知</li>
@@ -258,7 +264,7 @@ $('.change_Password').on('click', function(){
 									</a>
 								</li>
 							</ul>
-						</li>
+						</li>--%>
 					</ul>
                 </div>
 			</div>
@@ -291,12 +297,13 @@ $('.change_Password').on('click', function(){
 
 					<ul class="nav nav-list" id="nav_list">
 
-						<li class="home"><a href="javascript:void(0)" name="home.html" class="iframeurl" title=""><i class="icon-dashboard"></i><span class="menu-text"> 系统首页 </span></a></li>
+						<li class="home"><a href="javascript:void(0)" name="home.jsp" class="iframeurl" title=""><i class="icon-dashboard"></i><span class="menu-text"> 系统首页 </span></a></li>
+
 						<li><a href="#" class="dropdown-toggle"><i class="icon-desktop"></i><span class="menu-text"> 管理员管理 </span><b class="arrow icon-angle-down"></b></a>
 							<ul class="submenu">
-								<li class="home"><a href="javascript:void(0)" name="admin_Competence.jsp" title="角色管理"  class="iframeurl"><i class="icon-double-angle-right"></i>角色管理</a></li>
-								<li class="home"><a  href="javascript:void(0)" name="Products_List.html"  title="管理员列表" class="iframeurl"><i class="icon-double-angle-right"></i>管理员列表</a></li>
-								<li class="home"><a href="javascript:void(0)" name="Category_Manage.html" title="个人信息"  class="iframeurl"><i class="icon-double-angle-right"></i>个人信息</a></li>
+								<li class="home"><a href="javascript:void(0)" name="admin_Competence.jsp" title="权限管理"  class="iframeurl"><i class="icon-double-angle-right"></i>权限管理</a></li>
+								<li class="home"><a  href="javascript:void(0)" name="administrator.jsp"  title="管理员列表" class="iframeurl"><i class="icon-double-angle-right"></i>管理员列表</a></li>
+
 							</ul>
 						</li>
 
@@ -366,8 +373,8 @@ $('.change_Password').on('click', function(){
 						</ul>
 					</div>
                     
-                 <iframe id="iframe" style="border:0; width:100%; background-color:#FFF;"name="iframe" frameborder="0" src="home.html">  </iframe>
-				 
+                 <iframe id="iframe" style="border:0; width:100%; background-color:#FFF;"name="iframe" frameborder="0" src="home.jsp">  </iframe>
+
 
 <!-- /.page-content -->
 				</div><!-- /.main-content -->	

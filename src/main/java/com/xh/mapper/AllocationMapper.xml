@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xh.mapper.AllocationMapper">
+  <resultMap id="BaseResultMap" type="com.xh.po.Allocation">
+    <id column="AllocationId" jdbcType="INTEGER" property="allocationid" />
+    <result column="ProductId" jdbcType="INTEGER" property="productid" />
+    <result column="ProxyId" jdbcType="INTEGER" property="proxyid" />
+    <result column="AllocationNumble" jdbcType="INTEGER" property="allocationnumble" />
+    <result column="Allocation_A" jdbcType="VARCHAR" property="allocationA" />
+    <result column="Allocation_B" jdbcType="VARCHAR" property="allocationB" />
+    <result column="Allocation_C" jdbcType="VARCHAR" property="allocationC" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    AllocationId, ProductId, ProxyId, AllocationNumble, Allocation_A, Allocation_B, Allocation_C
+  </sql>
+  <select id="selectByExample" parameterType="com.xh.po.AllocationExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from allocation
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from allocation
+    where AllocationId = #{allocationid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from allocation
+    where AllocationId = #{allocationid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.xh.po.AllocationExample">
+    delete from allocation
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.xh.po.Allocation">
+    insert into allocation (AllocationId, ProductId, ProxyId, 
+      AllocationNumble, Allocation_A, Allocation_B, 
+      Allocation_C)
+    values (#{allocationid,jdbcType=INTEGER}, #{productid,jdbcType=INTEGER}, #{proxyid,jdbcType=INTEGER}, 
+      #{allocationnumble,jdbcType=INTEGER}, #{allocationA,jdbcType=VARCHAR}, #{allocationB,jdbcType=VARCHAR}, 
+      #{allocationC,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xh.po.Allocation">
+    insert into allocation
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="allocationid != null">
+        AllocationId,
+      </if>
+      <if test="productid != null">
+        ProductId,
+      </if>
+      <if test="proxyid != null">
+        ProxyId,
+      </if>
+      <if test="allocationnumble != null">
+        AllocationNumble,
+      </if>
+      <if test="allocationA != null">
+        Allocation_A,
+      </if>
+      <if test="allocationB != null">
+        Allocation_B,
+      </if>
+      <if test="allocationC != null">
+        Allocation_C,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="allocationid != null">
+        #{allocationid,jdbcType=INTEGER},
+      </if>
+      <if test="productid != null">
+        #{productid,jdbcType=INTEGER},
+      </if>
+      <if test="proxyid != null">
+        #{proxyid,jdbcType=INTEGER},
+      </if>
+      <if test="allocationnumble != null">
+        #{allocationnumble,jdbcType=INTEGER},
+      </if>
+      <if test="allocationA != null">
+        #{allocationA,jdbcType=VARCHAR},
+      </if>
+      <if test="allocationB != null">
+        #{allocationB,jdbcType=VARCHAR},
+      </if>
+      <if test="allocationC != null">
+        #{allocationC,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.xh.po.AllocationExample" resultType="java.lang.Long">
+    select count(*) from allocation
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update allocation
+    <set>
+      <if test="record.allocationid != null">
+        AllocationId = #{record.allocationid,jdbcType=INTEGER},
+      </if>
+      <if test="record.productid != null">
+        ProductId = #{record.productid,jdbcType=INTEGER},
+      </if>
+      <if test="record.proxyid != null">
+        ProxyId = #{record.proxyid,jdbcType=INTEGER},
+      </if>
+      <if test="record.allocationnumble != null">
+        AllocationNumble = #{record.allocationnumble,jdbcType=INTEGER},
+      </if>
+      <if test="record.allocationA != null">
+        Allocation_A = #{record.allocationA,jdbcType=VARCHAR},
+      </if>
+      <if test="record.allocationB != null">
+        Allocation_B = #{record.allocationB,jdbcType=VARCHAR},
+      </if>
+      <if test="record.allocationC != null">
+        Allocation_C = #{record.allocationC,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update allocation
+    set AllocationId = #{record.allocationid,jdbcType=INTEGER},
+      ProductId = #{record.productid,jdbcType=INTEGER},
+      ProxyId = #{record.proxyid,jdbcType=INTEGER},
+      AllocationNumble = #{record.allocationnumble,jdbcType=INTEGER},
+      Allocation_A = #{record.allocationA,jdbcType=VARCHAR},
+      Allocation_B = #{record.allocationB,jdbcType=VARCHAR},
+      Allocation_C = #{record.allocationC,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xh.po.Allocation">
+    update allocation
+    <set>
+      <if test="productid != null">
+        ProductId = #{productid,jdbcType=INTEGER},
+      </if>
+      <if test="proxyid != null">
+        ProxyId = #{proxyid,jdbcType=INTEGER},
+      </if>
+      <if test="allocationnumble != null">
+        AllocationNumble = #{allocationnumble,jdbcType=INTEGER},
+      </if>
+      <if test="allocationA != null">
+        Allocation_A = #{allocationA,jdbcType=VARCHAR},
+      </if>
+      <if test="allocationB != null">
+        Allocation_B = #{allocationB,jdbcType=VARCHAR},
+      </if>
+      <if test="allocationC != null">
+        Allocation_C = #{allocationC,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where AllocationId = #{allocationid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xh.po.Allocation">
+    update allocation
+    set ProductId = #{productid,jdbcType=INTEGER},
+      ProxyId = #{proxyid,jdbcType=INTEGER},
+      AllocationNumble = #{allocationnumble,jdbcType=INTEGER},
+      Allocation_A = #{allocationA,jdbcType=VARCHAR},
+      Allocation_B = #{allocationB,jdbcType=VARCHAR},
+      Allocation_C = #{allocationC,jdbcType=VARCHAR}
+    where AllocationId = #{allocationid,jdbcType=INTEGER}
+  </update>
+</mapper>

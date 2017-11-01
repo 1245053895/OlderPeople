@@ -34,12 +34,16 @@ public class Mytest {
     public void servise() {
         Admin user = new Admin();
         //user.setAdminid(7);
-        user.setAdmingroupid(2);
-        user.setAdminname("chengsiding");
-        user.setAdminpwd("77777");
+        //user.setAdmingroupid(2);
+       // user.setAdminname("chengsiding");
+       // user.setAdminpwd("77777");
+        user.setAdminuser("啊");
+        user.setAdminsex("");
+        List<AdminVo> nameAndSex= adminManage.selectByAdminNameAndSex(user);
+        System.out.println(nameAndSex);
        // adminManage.deleteByPrimaryKey(12);
       // adminManage.updateByPrimaryKeySelective(user);
-      adminManage.insertSelective(user);
+     // adminManage.insertSelective(user);
    //   System.out.println(adminManage.selectAdmin());
 
 

@@ -52,4 +52,9 @@ public class AdminManageimpl implements AdminManage {
         List<kindOfAdmin> kindOfAdmins =  adminMapper.kindOfAdmin();
         return kindOfAdmins;
     }
+
+    public List<AdminVo> selectByAdminNameAndSex(Admin record) {
+        List<AdminVo> nameAndSex =adminMapper.selectByAdminNameAndSex(record);
+        return nameAndSex;
+    }
 }

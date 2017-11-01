@@ -30,4 +30,7 @@ public interface AdminMapper {
 
     //得到 “管理员种类(数量)” 如 超级管理员(2)
     List <kindOfAdmin> kindOfAdmin();
+
+     //  通过管理员姓名和性别组合搜索（姓名模糊查询，性别选择男、女、空）
+     List <AdminVo> selectByAdminNameAndSex(Admin record);
 }

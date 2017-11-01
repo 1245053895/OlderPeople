@@ -13,4 +13,10 @@ public class AdminVo extends Admin{
         this.admingroupname = admingroupname;
     }
 
+    @Override
+    public String toString() {
+        return "AdminVo{" +
+                "admingroupname='" + admingroupname + '\'' +
+                '}';
+    }
 }

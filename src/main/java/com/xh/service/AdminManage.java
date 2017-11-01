@@ -26,4 +26,7 @@ public interface AdminManage {
     List <AdminVo>  queryAdminAndGroup();
     List <kindOfAdmin> kindOfAdmin();
 
+    //  通过管理员姓名和性别组合搜索（姓名模糊查询，性别选择男、女、空）
+    List <AdminVo> selectByAdminNameAndSex(Admin record);
+
 }

@@ -15,4 +15,6 @@ public interface UserCsdMapper {
     void updateByPrimaryKeySelective(User record);
     //根据用户名查询用户
     public User selectByPrimaryKeyByname(String username);
+
+    public User wcy();
 }

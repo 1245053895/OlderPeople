@@ -20,7 +20,7 @@
         <link rel="stylesheet" href="/jsp/admin/assets/css/ace.min.css" />
         <link rel="stylesheet" href="/jsp/admin/font/css/font-awesome.min.css" />
         <!--[if lte IE 8]>
-		  <link rel="stylesheet" href="/jsp/admin/assets/css/ace-ie.min.css" />
+		<link rel="stylesheet" href="/jsp/admin/assets/css/ace-ie.min.css" />
 		<![endif]-->
 		<script src="/jsp/admin/js/jquery-1.9.1.min.js"></script>
         <script src="/jsp/admin/assets/js/bootstrap.min.js"></script>

@@ -16,7 +16,8 @@
 		<!--<bean id="itemsService" class="com.xh.serviceimp">
 		</bean>-->
 
-
+	<bean id="useService" class="com.xh.serviceimp.UserServiceimpl">
+	</bean>
 
 
 </beans>

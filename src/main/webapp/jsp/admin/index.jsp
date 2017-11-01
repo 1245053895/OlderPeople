@@ -302,7 +302,7 @@
 				<li><a href="#" class="dropdown-toggle"><i class="icon-desktop"></i><span class="menu-text"> 管理员管理 </span><b class="arrow icon-angle-down"></b></a>
 					<ul class="submenu">
 						<li class="home"><a href="javascript:void(0)" name="/RloeController.action" title="角色管理"  class="iframeurl"><i class="icon-double-angle-right"></i>角色管理</a></li>
-						<li class="home"><a  href="javascript:void(0)" name="/adminList.action"  title="管理员列表" class="iframeurl"><i class="icon-double-angle-right"></i>管理员列表</a></li>
+						<li class="home"><a  href="javascript:void(0)" name="/admin/adminList.action"  title="管理员列表" class="iframeurl"><i class="icon-double-angle-right"></i>管理员列表</a></li>
 						<li class="home"><a href="javascript:void(0)" name="/queryAllRole.action" title="角色修改"  class="iframeurl"><i class="icon-double-angle-right"></i>角色修改</a></li>
 					</ul>
 				</li>
@@ -310,6 +310,7 @@
 				<li><a href="#" class="dropdown-toggle"><i class="icon-desktop"></i><span class="menu-text"> 用户管理 </span><b class="arrow icon-angle-down"></b></a>
 					<ul class="submenu">
 						<li class="home"><a  href="javascript:void(0)" name="user_list.jsp"  title="用户信息" class="iframeurl"><i class="icon-double-angle-right"></i>用户信息</a></li>
+						<li class="home"><a  href="javascript:void(0)" name="integration.jsp"  title="用户记录" class="iframeurl"><i class="icon-double-angle-right"></i>用户记录</a></li>
 					</ul>
 				</li>
 

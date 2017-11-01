@@ -1,13 +1,12 @@
 package com.xh.controller;
 
 
-import com.xh.po.AdminRole;
+import com.xh.po.vo.AdminRole;
 import com.xh.po.Admingroup;
-import com.xh.po.AdminRoleCustom;
+import com.xh.po.vo.AdminRoleCustom;
 import com.xh.po.Firstview;
 import com.xh.service.RoleManageServ;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -47,10 +46,11 @@ public class RloeController {
         //通过新插入的角色名查找到
         Integer id=roleManageServ.selectRloeIdByName(adminRoleCustom.getAdmingroupname());
         adminRoleCustom.setAdmingroupid(id);
+
         //然后给角色分配权限
         roleManageServ.insertRloeAndFirstView(adminRoleCustom);
 
-        return "forward:getFirstview.action";
+        return "/jsp/admin/admin_Competence.jsp";
     }
     /**
      * 角色修改页面，只包括对角色表的查询

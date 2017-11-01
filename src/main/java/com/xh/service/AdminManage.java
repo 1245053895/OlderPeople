@@ -2,6 +2,7 @@ package com.xh.service;
 
 import com.xh.po.Admin;
 import com.xh.po.vo.AdminVo;
+import com.xh.po.vo.kindOfAdmin;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
@@ -23,5 +24,6 @@ public interface AdminManage {
     void updateByPrimaryKeySelective(Admin record);
 
     List <AdminVo>  queryAdminAndGroup();
+    List <kindOfAdmin> kindOfAdmin();
 
 }

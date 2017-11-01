@@ -208,4 +208,11 @@
   </select>
 
 
+  <select id="kindOfAdmin" resultType="com.xh.po.vo.kindOfAdmin">
+   SELECT CONCAT(AdminGroupName,"(",COUNT(*),")") AS allrloe
+   FROM admin a,admingroup b
+   WHERE   a.AdminGroupId=b.AdminGroupId
+   GROUP BY a.AdminGroupId
+  </select>
+
 </mapper>

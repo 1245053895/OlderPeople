@@ -11,7 +11,6 @@ import java.util.List;
 /**
  * Created by KAIRUN on 2017/10/30.
  */
-@Component
 public interface RoleManageServ {
     public List<AdminRole> queryRoleAndAdmin();
     public List<Admingroup>queryAllRole();

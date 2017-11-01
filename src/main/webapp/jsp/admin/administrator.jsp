@@ -10,29 +10,29 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="renderer" content="webkit|ie-comp|ie-stand">
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-         <link href="/jsp/admin/assets/css/bootstrap.min.css" rel="stylesheet" />
-        <link rel="stylesheet" href="/jsp/admin/css/style.css"/>
-        <link href="/jsp/admin/assets/css/codemirror.css" rel="stylesheet">
-        <link rel="stylesheet" href="/jsp/admin/assets/css/ace.min.css" />
-        <link rel="stylesheet" href="/jsp/admin/font/css/font-awesome.min.css" />
-        <!--[if lte IE 8]>
-		  <link rel="stylesheet" href="/jsp/admin/assets/css/ace-ie.min.css" />
-		<![endif]-->
-		<script src="/jsp/admin/js/jquery-1.9.1.min.js"></script>
-        <script src="/jsp/admin/assets/js/bootstrap.min.js"></script>
-        <script type="text/javascript" src="/jsp/admin/Widget/Validform/5.3.2/Validform.min.js"></script>
-		<script src="/jsp/admin/assets/js/typeahead-bs2.min.js"></script>
-		<script src="/jsp/admin/assets/js/jquery.dataTables.min.js"></script>
-		<script src="/jsp/admin/assets/js/jquery.dataTables.bootstrap.js"></script>
-        <script src="/jsp/admin/assets/layer/layer.js" type="text/javascript" ></script>
-		<script src="/jsp/admin/js/lrtk.js" type="text/javascript" ></script>
-         <script src="/jsp/admin/assets/layer/layer.js" type="text/javascript"></script>
-        <script src="/jsp/admin/assets/laydate/laydate.js" type="text/javascript"></script>
-<title>管理员</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link href="/jsp/admin/assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/jsp/admin/css/style.css"/>
+    <link href="/jsp/admin/assets/css/codemirror.css" rel="stylesheet">
+    <link rel="stylesheet" href="/jsp/admin/assets/css/ace.min.css" />
+    <link rel="stylesheet" href="/jsp/admin/font/css/font-awesome.min.css" />
+    <!--[if lte IE 8]>
+    <link rel="stylesheet" href="/jsp/admin/assets/css/ace-ie.min.css" />
+    <![endif]-->
+    <script src="/jsp/admin/js/jquery-1.9.1.min.js"></script>
+    <script src="/jsp/admin/assets/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/jsp/admin/Widget/Validform/5.3.2/Validform.min.js"></script>
+    <script src="/jsp/admin/assets/js/typeahead-bs2.min.js"></script>
+    <script src="/jsp/admin/assets/js/jquery.dataTables.min.js"></script>
+    <script src="/jsp/admin/assets/js/jquery.dataTables.bootstrap.js"></script>
+    <script src="/jsp/admin/assets/layer/layer.js" type="text/javascript" ></script>
+    <script src="/jsp/admin/js/lrtk.js" type="text/javascript" ></script>
+    <script src="/jsp/admin/assets/layer/layer.js" type="text/javascript"></script>
+    <script src="/jsp/admin/assets/laydate/laydate.js" type="text/javascript"></script>
+    <title>管理员</title>
 </head>
 
 <body>
@@ -93,37 +93,37 @@
                         </thead>
                         <tbody>
                         <%--<tr>--%>
-                            <%--<td><label><input type="checkbox" class="ace"><span class="lbl"></span></label></td>--%>
-                            <%--<td>1</td>--%>
-                            <%--<td>admin</td>--%>
-                            <%--<td>18934334544</td>--%>
-                            <%--<td>2345454@qq.com</td>--%>
-                            <%--<td>超级管理员</td>--%>
-                            <%--<td>2016-6-29 12:34</td>--%>
-                            <%--<td class="td-status"><span class="label label-success radius">已启用</span></td>--%>
-                            <%--<td class="td-manage">--%>
-                                <%--<a onClick="member_stop(this,'10001')"  href="javascript:;" title="停用"  class="btn btn-xs btn-success"><i class="fa fa-check  bigger-120"></i></a>--%>
-                                <%--<a title="编辑" onclick="member_edit('编辑','member-add.html','4','','510')" href="javascript:;"  class="btn btn-xs btn-info" ><i class="fa fa-edit bigger-120"></i></a>--%>
-                                <%--<a title="删除" href="javascript:;"  onclick="member_del(this,'1')" class="btn btn-xs btn-warning" ><i class="fa fa-trash  bigger-120"></i></a>--%>
-                            <%--</td>--%>
+                        <%--<td><label><input type="checkbox" class="ace"><span class="lbl"></span></label></td>--%>
+                        <%--<td>1</td>--%>
+                        <%--<td>admin</td>--%>
+                        <%--<td>18934334544</td>--%>
+                        <%--<td>2345454@qq.com</td>--%>
+                        <%--<td>超级管理员</td>--%>
+                        <%--<td>2016-6-29 12:34</td>--%>
+                        <%--<td class="td-status"><span class="label label-success radius">已启用</span></td>--%>
+                        <%--<td class="td-manage">--%>
+                        <%--<a onClick="member_stop(this,'10001')"  href="javascript:;" title="停用"  class="btn btn-xs btn-success"><i class="fa fa-check  bigger-120"></i></a>--%>
+                        <%--<a title="编辑" onclick="member_edit('编辑','member-add.html','4','','510')" href="javascript:;"  class="btn btn-xs btn-info" ><i class="fa fa-edit bigger-120"></i></a>--%>
+                        <%--<a title="删除" href="javascript:;"  onclick="member_del(this,'1')" class="btn btn-xs btn-warning" ><i class="fa fa-trash  bigger-120"></i></a>--%>
+                        <%--</td>--%>
                         <%--</tr>--%>
-<c:forEach items="${adminList }" var="user">
-                        <tr>
-                            <td><label><input type="checkbox" class="ace"><span class="lbl"></span></label></td>
-                            <td>${user.adminid}</td>
-                            <td>${user.adminname}</td>
-                            <td>18934334544</td>
-                            <td>2345454@qq.com</td>
-                            <td>${user.admingroupname}</td>
-                            <td>2016-6-29 12:34</td>
-                            <td class="td-status"><span class="label label-success radius">已启用</span></td>
-                            <td class="td-manage">
-                                <a onClick="member_stop(this,'10001')"  href="javascript:;" title="停用"  class="btn btn-xs btn-success"><i class="fa fa-check  bigger-120"></i></a>
-                                <a title="编辑" onclick="member_edit('编辑','member-add.html','4','','510')" href="javascript:;"  class="btn btn-xs btn-info" ><i class="fa fa-edit bigger-120"></i></a>
-                                <a title="删除" href="javascript:;"  onclick="member_del(this,'1')" class="btn btn-xs btn-warning" ><i class="fa fa-trash  bigger-120"></i></a>
-                            </td>
-                        </tr>
-</c:forEach>
+                        <c:forEach items="${adminList }" var="user">
+                            <tr>
+                                <td><label><input type="checkbox" class="ace"><span class="lbl"></span></label></td>
+                                <td>${user.adminid}</td>
+                                <td>${user.adminname}</td>
+                                <td>18934334544</td>
+                                <td>2345454@qq.com</td>
+                                <td>${user.admingroupname}</td>
+                                <td>2016-6-29 12:34</td>
+                                <td class="td-status"><span class="label label-success radius">已启用</span></td>
+                                <td class="td-manage">
+                                    <a onClick="member_stop(this,'10001')"  href="javascript:;" title="停用"  class="btn btn-xs btn-success"><i class="fa fa-check  bigger-120"></i></a>
+                                    <a title="编辑" onclick="member_edit('编辑','member-add.html','4','','510')" href="javascript:;"  class="btn btn-xs btn-info" ><i class="fa fa-edit bigger-120"></i></a>
+                                    <a title="删除" href="javascript:;"  onclick="member_del(this,'1')" class="btn btn-xs btn-warning" ><i class="fa fa-trash  bigger-120"></i></a>
+                                </td>
+                            </tr>
+                        </c:forEach>
                         </tbody>
                     </table>
                 </div>
@@ -198,6 +198,7 @@
             </div>
             <div>
                 <input class="btn btn-primary radius" type="submit" id="Add_Administrator" value="&nbsp;&nbsp;提交&nbsp;&nbsp;">
+            </div>
         </form>
     </div>
 </div>

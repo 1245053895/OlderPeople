@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Controller
 public class TestController {
-    @RequestMapping("/TestController")
+    @RequestMapping("/TestController.action")
     public String TestController(){
         return "/jsp/admin/login.jsp";
     }

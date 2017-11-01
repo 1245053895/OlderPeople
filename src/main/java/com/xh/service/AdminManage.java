@@ -1,4 +1,4 @@
-package com.xh.service.adminmanage;
+package com.xh.service;
 
 import com.xh.po.Admin;
 import com.xh.po.vo.AdminVo;
@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Component
 public interface AdminManage {
     //删除数据通过id
     void deleteByPrimaryKey(Integer adminid);

@@ -1,9 +1,8 @@
-package com.xh.controller.admincontroller;
+package com.xh.controller;
 
 import com.xh.po.Admin;
 import com.xh.po.vo.AdminVo;
-import com.xh.service.adminmanage.AdminManage;
-import com.xh.serviceimpl.adminmanageimpl.AdminManageimpl;
+import com.xh.service.AdminManage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -14,12 +13,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import java.util.List;
 
 @Controller
-@RequestMapping("admin")
 public class AdminController {
      @Autowired
-     @Qualifier("adminManage")
     private AdminManage adminManage;
-
      //查询全部管理员
    @RequestMapping(value="adminList.action",method={RequestMethod.POST,RequestMethod.GET})
     public String  queryAllUsers(Model model){

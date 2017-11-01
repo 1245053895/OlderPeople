@@ -5,6 +5,7 @@ import com.xh.po.AdminRole;
 import com.xh.po.Admingroup;
 import com.xh.service.RoleManageServ;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,6 +15,7 @@ import java.util.List;
  */
 
 
+@Component
 public class RoleManageServImp implements RoleManageServ {
     @Autowired
     private RoleMapper roleMapper;

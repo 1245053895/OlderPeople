@@ -118,7 +118,7 @@
                 title: '提示框',
                 icon: 1,
             });
-            location.href = "index.jsp";
+            location.href = "/jsp/admin/index.jsp";
             layer.close(index);
         }
 

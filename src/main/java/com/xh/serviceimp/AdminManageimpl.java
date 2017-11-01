@@ -1,14 +1,13 @@
-package com.xh.serviceimpl.adminmanageimpl;
+package com.xh.serviceimp;
 
 //import com.xh.po.Admin;
 import com.xh.mapper.AdminMapper;
 import com.xh.po.Admin;
 import com.xh.po.vo.AdminVo;
-import com.xh.service.adminmanage.AdminManage;
+import com.xh.service.AdminManage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 

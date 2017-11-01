@@ -87,53 +87,35 @@
                             <th width="25px" class="sorting_disabled" rowspan="1" colspan="1" aria-label="" style="width: 20px;">
                                 <label><input type="checkbox" class="ace"><span class="lbl"></span></label></th>
                             <th width="80px" class="sorting_desc" tabindex="0" aria-controls="sample_table" rowspan="1" colspan="1" aria-sort="descending" aria-label="编号: 升序排列" style="width: 48px;">编号</th>
-                            <th width="250px" class="sorting_disabled" rowspan="1" colspan="1" aria-label="登录名" style="width: 170px;">账号</th>
+                            <th width="250px" class="sorting_disabled" rowspan="1" colspan="1" aria-label="账号" style="width: 170px;">账号</th>
                             <th width="100px" class="sorting_disabled" rowspan="1" colspan="1" aria-label="密码" style="width: 63px;">密码</th>
                             <th width="100px" class="sorting_disabled" rowspan="1" colspan="1" aria-label="姓名" style="width: 63px;">姓名</th>
                             <th width="100px" rowspan="1" colspan="1" aria-label="性别" style="width: 63px;">性别</th>
                             <th width="100px" class="sorting_disabled" rowspan="1" colspan="1" aria-label="所在部门" style="width: 63px;">所在部门</th>
                             <th width="100px" class="sorting_disabled" rowspan="1" colspan="1" aria-label="电话" style="width: 63px;">电话</th>
-                            <th width="100px" class="sorting_disabled" rowspan="1" colspan="1" aria-label="角色" style="width: 63px;">角色</th>
-                            <th width="100px" class="sorting_disabled" rowspan="1" colspan="1" aria-label="状态" style="width: 63px;">状态</th>
-                            <th width="200px" class="sorting_disabled" rowspan="1" colspan="1" aria-label="操作" style="width: 143px;">操作</th></tr>
+                            <th width="200px">操作</th>
+                        </tr>
                         </thead>
                         <tbody>
 
+                        <c:forEach items="${adminList }" var="user">
+                            <tr>
+                                <td><label><input type="checkbox" class="ace"><span class="lbl"></span></label></td>
+                                <td>${user.adminid}</td>
+                                <td>${user.adminname}</td>
+                                <td>${user.adminpwd}</td>
+                                <td>${user.adminuser}</td>
+                                <td>${user.adminsex}</td>
+                                <td>${user.admindepart}</td>
+                                <td>${user.adminphone}</td>
+                                <td class="td-manage">
+                                    <a onClick="member_stop(this,'10001')"  href="javascript:;" title="停用"  class="btn btn-xs btn-success"><i class="fa fa-check  bigger-120"></i></a>
+                                    <a title="编辑" onclick="member_edit('编辑','member-add.html','4','','510')" href="javascript:;"  class="btn btn-xs btn-info" ><i class="fa fa-edit bigger-120"></i></a>
+                                    <a title="删除" href="javascript:;"  onclick="member_del(this,'1')" class="btn btn-xs btn-warning" ><i class="fa fa-trash  bigger-120"></i></a>
+                                </td>
+                            </tr>
+                        </c:forEach>
 
-                        <tr role="row" class="odd">
-                            <td><label><input type="checkbox" class="ace"><span class="lbl"></span></label></td>
-                            <td class="sorting_1">2</td>
-                            <td>admin12345</td>
-                            <td>123456</td>
-                            <td>陈思顶</td>
-                            <td>女</td>
-                            <td>孝和集团</td>
-                            <td>18888888888</td>
-                            <td>用户管理员</td>
-                            <td class="td-status"><span class="label label-success radius">已启用</span></td>
-                            <td class="td-manage">
-                                <a onclick="member_stop(this,'10001')" href="javascript:;" title="停用" class="btn btn-xs btn-success"><i class="fa fa-check  bigger-120"></i></a>
-                                <a title="编辑" onclick="member_edit('编辑','member-add.html','4','','510')" href="javascript:;" class="btn btn-xs btn-info"><i class="fa fa-edit bigger-120"></i></a>
-                                <a title="删除" href="javascript:;" onclick="member_del(this,'1')" class="btn btn-xs btn-warning"><i class="fa fa-trash  bigger-120"></i></a>
-                            </td>
-                        </tr>
-                        <tr role="row" class="even">
-                            <td><label><input type="checkbox" class="ace"><span class="lbl"></span></label></td>
-                            <td class="sorting_1">1</td>
-                            <td>admin12345</td>
-                            <td>123456</td>
-                            <td>陈思顶</td>
-                            <td>女</td>
-                            <td>孝和集团</td>
-                            <td>18888888888</td>
-                            <td>用户管理员</td>
-                            <td class="td-status"><span class="label label-success radius">已启用</span></td>
-                            <td class="td-manage">
-                                <a onclick="member_stop(this,'10001')" href="javascript:;" title="停用" class="btn btn-xs btn-success"><i class="fa fa-check  bigger-120"></i></a>
-                                <a title="编辑" onclick="member_edit('编辑','member-add.html','4','','510')" href="javascript:;" class="btn btn-xs btn-info"><i class="fa fa-edit bigger-120"></i></a>
-                                <a title="删除" href="javascript:;" onclick="member_del(this,'1')" class="btn btn-xs btn-warning"><i class="fa fa-trash  bigger-120"></i></a>
-                            </td>
-                        </tr>
                         </tbody>
                         </table>
                     </div>

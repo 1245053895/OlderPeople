@@ -30,8 +30,7 @@
             VALUES (#{admingroupname},#{admingroupdescription})
     </insert>
 
-    <insert id="
-" parameterType="adminRoleCustom">
+    <insert id="insertRloeAndFirstView" parameterType="adminRoleCustom">
         INSERT into admingroupfirstview
         (FirstViewAction, AdminGroupId)
         values

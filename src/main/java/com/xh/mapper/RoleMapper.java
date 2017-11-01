@@ -1,6 +1,4 @@
 package com.xh.mapper;
-import com.xh.po.AdminRole;
-import com.xh.po.Admingroup;
 import com.xh.po.*;
 import org.springframework.stereotype.Component;
 

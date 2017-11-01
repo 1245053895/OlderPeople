@@ -2,6 +2,9 @@ package com.xh.mapper;
 
 import com.xh.po.Admin;
 import com.xh.po.AdminExample;
+import com.xh.po.vo.AdminVo;
+import org.springframework.stereotype.Component;
+
 import java.util.List;
 
 import com.xh.po.vo.AdminVo;
@@ -23,6 +26,8 @@ public interface AdminMapper {
     void updateByPrimaryKeySelective(Admin record);
     //修改一条数据
     void updateByPrimaryKey(Admin record);
-
+    //根据用户名查询密码
+    public Admin selectUserByUsername(String username);
     List <AdminVo> queryAdminAndGroup();
 }
+

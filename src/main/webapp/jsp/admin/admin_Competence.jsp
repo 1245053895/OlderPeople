@@ -14,21 +14,21 @@
 	<meta name="renderer" content="webkit|ie-comp|ie-stand"/>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
 	<meta http-equiv="Cache-Control" content="no-siteapp" />
-	<link href="assets/css/bootstrap.min.css" rel="stylesheet" />
-	<link rel="stylesheet" href="css/style.css"/>
-	<link href="assets/css/codemirror.css" rel="stylesheet"/>
-	<link rel="stylesheet" href="assets/css/ace.min.css" />
-	<link rel="stylesheet" href="font/css/font-awesome.min.css" />
+	<link href="/jsp/admin/assets/css/bootstrap.min.css" rel="stylesheet" />
+	<link rel="stylesheet" href="/jsp/admin/css/style.css"/>
+	<link href="/jsp/admin/assets/css/codemirror.css" rel="stylesheet"/>
+	<link rel="stylesheet" href="/jsp/admin/assets/css/ace.min.css" />
+	<link rel="stylesheet" href="/jsp/admin/font/css/font-awesome.min.css" />
 	<!--[if lte IE 8]>
-	<link rel="stylesheet" href="assets/css/ace-ie.min.css" />
+	<link rel="stylesheet" href="/jsp/admin/assets/css/ace-ie.min.css" />
 	<![endif]-->
-	<script src="js/jquery-1.9.1.min.js"></script>
-	<script src="assets/js/bootstrap.min.js"></script>
-	<script src="assets/js/typeahead-bs2.min.js"></script>
-	<script src="assets/js/jquery.dataTables.min.js"></script>
-	<script src="assets/js/jquery.dataTables.bootstrap.js"></script>
-	<script src="assets/layer/layer.js" type="text/javascript" ></script>
-	<script src="assets/laydate/laydate.js" type="text/javascript"></script>
+	<script src="/jsp/admin/js/jquery-1.9.1.min.js"></script>
+	<script src="/jsp/admin/assets/js/bootstrap.min.js"></script>
+	<script src="/jsp/admin/assets/js/typeahead-bs2.min.js"></script>
+	<script src="/jsp/admin/assets/js/jquery.dataTables.min.js"></script>
+	<script src="/jsp/admin/assets/js/jquery.dataTables.bootstrap.js"></script>
+	<script src="/jsp/admin/assets/layer/layer.js" type="text/javascript" ></script>
+	<script src="/jsp/admin/assets/laydate/laydate.js" type="text/javascript"></script>
 	<title>管理权限</title>
 </head>
 

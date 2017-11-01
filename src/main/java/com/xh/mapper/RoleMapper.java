@@ -1,8 +1,5 @@
 package com.xh.mapper;
-import com.xh.po.Admin;
-import com.xh.po.AdminRole;
-import com.xh.po.Admingroup;
-import com.xh.po.Admingroupfirstview;
+import com.xh.po.*;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -76,5 +73,28 @@ public interface RoleMapper {
      */
     public void updataPasswordById(Integer id,String newPassword);
 
+    /**
+     * 查询所有一级菜单
+     * @return
+     */
+    public List<Firstview> selectAllFirstview();
 
+    /**
+     * 插入新角色
+     * @param adminRoleCustom
+     */
+    public void insertRole(AdminRoleCustom adminRoleCustom);
+
+    /**
+     * 通过角色名查找角色id
+     * @param admingroupname
+     * @return
+     */
+    public Integer selectRloeIdByName(String admingroupname);
+
+    /**
+     * 将角色对应的一个权限写入数据库
+     * @param adminRoleCustom
+     */
+    public void insertRloeAndFirstView(AdminRoleCustom adminRoleCustom);
 }

@@ -15,8 +15,6 @@
 		
 		<!--<bean id="itemsService" class="com.xh.serviceimp">
 		</bean>-->
-
-
-
-
-</beans>
+	<bean id="roleManageServ" class="com.xh.serviceimp.RoleManageServImp">
+            </bean>
+		</beans>

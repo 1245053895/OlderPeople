@@ -2,6 +2,7 @@ package com.xh.controller;
 
 import com.xh.po.Admin;
 import com.xh.po.vo.AdminVo;
+import com.xh.po.vo.kindOfAdmin;
 import com.xh.service.AdminManage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import java.util.List;
 
 @Controller
+@RequestMapping("admin")
 public class AdminController {
      @Autowired
     private AdminManage adminManage;
@@ -20,13 +22,15 @@ public class AdminController {
    @RequestMapping(value="adminList.action",method={RequestMethod.POST,RequestMethod.GET})
     public String  queryAllUsers(Model model){
         List<AdminVo> adminList = adminManage.queryAdminAndGroup();
+       List<kindOfAdmin> kindOfAdmins =  adminManage.kindOfAdmin();
         model.addAttribute("adminList", adminList);
+       model.addAttribute("kindOfAdmins", kindOfAdmins);
         //这个方法的返回值就是要跳转的页面的逻辑视图名称
         return "/jsp/admin/administrator.jsp";
     }
 
     //查询各类管理员
-    @RequestMapping(value="admin1.action",method={RequestMethod.POST,RequestMethod.GET})
+    @RequestMapping(value="kindOfAdmin.action",method={RequestMethod.POST,RequestMethod.GET})
     public String  queryKindOfAdmin(Model model){
         List<AdminVo> adminList = adminManage.queryAdminAndGroup();
         model.addAttribute("adminList", adminList);

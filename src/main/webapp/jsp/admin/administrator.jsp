@@ -65,11 +65,9 @@
                             <div class="side_list"><div class="widget-header header-color-green2"><h4 class="lighter smaller">管理员分类列表</h4></div>
                                 <div class="widget-body">
                                     <ul class="b_P_Sort_list">
-                                        <li><i class="fa fa-users green"></i> <a href="<%=request.getContextPath() %>/admin/adminList.action">全部管理员（13）</a></li>
-                                        <li><i class="fa fa-users orange"></i> <a href="#">超级管理员（1）</a></li>
-                                        <li><i class="fa fa-users orange"></i> <a href="#">普通管理员（5）</a></li>
-                                        <li><i class="fa fa-users orange"></i> <a href="#">产品编辑管理员（4）</a></li>
-                                        <li><i class="fa fa-users orange"></i> <a href="#">管理员（1）</a></li>
+                                 <c:forEach items="${kindOfAdmins }" var="user">
+                                        <li><i class="fa fa-users green"></i> <a href="<%=request.getContextPath() %>/admin/adminList.action">${user.allrloe } </a></li>
+                                 </c:forEach>
                                     </ul>
                                 </div>
                             </div>

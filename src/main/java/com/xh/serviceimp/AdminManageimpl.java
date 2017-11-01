@@ -4,14 +4,16 @@ package com.xh.serviceimp;
 import com.xh.mapper.AdminMapper;
 import com.xh.po.Admin;
 import com.xh.po.vo.AdminVo;
+import com.xh.po.vo.kindOfAdmin;
 import com.xh.service.AdminManage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Component
+//@Service
 public class AdminManageimpl implements AdminManage {
     @Autowired
     @Qualifier("adminMapper")
@@ -44,5 +46,10 @@ public class AdminManageimpl implements AdminManage {
     public List<AdminVo> queryAdminAndGroup() {
         List<AdminVo> adminList =  adminMapper.queryAdminAndGroup();
         return adminList;
+    }
+
+    public List<kindOfAdmin> kindOfAdmin() {
+        List<kindOfAdmin> kindOfAdmins =  adminMapper.kindOfAdmin();
+        return kindOfAdmins;
     }
 }

@@ -1,9 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xh.mapper.RoleMapper">
+    <!--查询每个后端用户对应的角色名称及角色的描述-->
     <select id="queryRoleAndAdmin" resultType="adminRole">
         SELECT AdminGroupName,AdminUser,AdminGroupDescription FROM admin JOIN admingroup
         ON admin.AdminGroupId=admingroup.AdminGroupId
     </select>
+
+    <!--角色修改页面，查询出所有角色名称和角色描述-->
+    <select id="queryAllRole" resultType="admingroup">
+        SELECT AdminGroupId,AdminGroupName,AdminGroupDescription FROM admingroup
+    </select>
+
+    <!--角色修改页面，实现角色的删除-->
+    <delete id="deleteRoleById" parameterType="int">
+        DELETE FROM admingroup WHERE AdminGroupId=#{AdminGroupId}
+    </delete>
+
+    <select id="selectAllFirstview" resultType="firstview">
+        SELECT FirstViewAction,firstviewdescription FROM firstview GROUP BY firstviewdescription;
+    </select>
+
+    <select id="selectRloeIdByName" parameterType="string" resultType="integer">
+        SELECT AdminGroupId FROM admingroup WHERE AdminGroupName=#{admingroupname}
+    </select>
+
+    <insert id="insertRole" parameterType="adminRoleCustom">
+        INSERT INTO admingroup(AdminGroupName,AdminGroupDescription)
+            VALUES (#{admingroupname},#{admingroupdescription})
+    </insert>
+
+    <insert id="
+" parameterType="adminRoleCustom">
+        INSERT into admingroupfirstview
+        (FirstViewAction, AdminGroupId)
+        values
+        <foreach collection ="firstViewAction" item="firstView" index= "index" separator =",">
+            (
+            #{firstView},
+            #{admingroupid}
+            )
+        </foreach >
+    </insert>
+
 
 </mapper>

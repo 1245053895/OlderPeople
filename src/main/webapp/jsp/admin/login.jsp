@@ -1,25 +1,19 @@
-﻿<%--
-  Created by IntelliJ IDEA.
-  User: Administrator
-  Date: 2017/10/30
-  Time: 16:40
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html >
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet"/>
-    <link rel="stylesheet" href="/jsp/admin/assets/css/font-awesome.min.css"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link href="/jsp/admin/assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/jsp/admin/assets/css/font-awesome.min.css" />
     <!--[if IE 7]>
-    <link rel="stylesheet" href="/jsp/admin/assets/css/font-awesome-ie7.min.css"/>
+    <link rel="stylesheet" href="/jsp/admin/assets/css/font-awesome-ie7.min.css" />
     <![endif]-->
-    <link rel="stylesheet" href="/jsp/admin/assets/css/ace.min.css"/>
-    <link rel="stylesheet" href="/jsp/admin/assets/css/ace-rtl.min.css"/>
-    <link rel="stylesheet" href="/jsp/admin/assets/css/ace-skins.min.css"/>
+    <link rel="stylesheet" href="/jsp/admin/assets/css/ace.min.css" />
+    <link rel="stylesheet" href="/jsp/admin/assets/css/ace-rtl.min.css" />
+    <link rel="stylesheet" href="/jsp/admin/assets/css/ace-skins.min.css" />
     <link rel="stylesheet" href="/jsp/admin/css/style.css"/>
     <!--[if lte IE 8]>
-    <link rel="stylesheet" href="/jsp/admin/assets/css/ace-ie.min.css"/>
+    <link rel="stylesheet" href="assets/css/ace-ie.min.css" />
     <![endif]-->
     <script src="/jsp/admin/assets/js/ace-extra.min.js"></script>
     <!--[if lt IE 9]>
@@ -29,41 +23,62 @@
     <script src="/jsp/admin/js/jquery-1.9.1.min.js"></script>
     <script src="/jsp/admin/assets/layer/layer.js" type="text/javascript"></script>
     <title>登陆</title>
+    <script type="text/javascript">
+        //去登陆页面
+        function login(){
+            window.location.href = "http://localhost:8080/login.aspx?returnUrl=" + encodeURIComponent(window.location.href);
+        }
+    </script>
+
 </head>
 
 <body class="login-layout">
-<img src="images/1.jpg" alt="" style="position: absolute; left: 0px; top: 0px;width: 100%; height: 100%"/>
 <div class="logintop">
-    <span>欢迎进入孝和集团后台管理</span>
+    <span>后台管理界面平台</span>
+    <ul>
+        <li><a href="#">返回首页</a></li>
+        <li><a href="#">帮助</a></li>
+        <li><a href="#">关于</a></li>
+    </ul>
 </div>
-
 <div class="loginbody">
     <div class="login-container">
-        <div class="position-relative">
-            <div>
-                <div>
+        <div class="center">
+            <h1>
+                <i class="icon-leaf green"></i>
+                <span class="orange">孝和集团</span>
+                <span class="white">后台管理系统</span>
+            </h1>
+            <h4 class="white">Background Management System</h4>
+        </div>
+
+        <div class="space-6"></div>
+
+        <div class="position-relative" style="margin: 0">
+            <div id="login-box" class="login-box widget-box no-border visible">
+                <div class="widget-body">
                     <div class="widget-main">
                         <h4 class="header blue lighter bigger">
                             <i class="icon-coffee green"></i>
-                            管理员登陆
+                            管理员登陆 ${error}
                         </h4>
 
-                        <div class="login_icon"><img src="images/login.png"/></div>
 
-                        <form>
+                        <div class="login_icon"><img src="/jsp/admin/images/login.png" /></div>
+
+                        <form  id="loginForm" action="${pageContext.request.contextPath}/LoginController.action" method="post">
+                            <input type="hidden" name="returnUrl" value="${param.returnUrl }"/>
                             <fieldset>
                                 <label class="block clearfix">
 														<span class="block input-icon input-icon-right">
-															<input type="text" class="form-control" placeholder="登录名"
-                                                                   name="登录名">
+															<input type="text" class="form-control" placeholder="登录名"  name="username" value="${usename}">
 															<i class="icon-user"></i>
 														</span>
                                 </label>
 
                                 <label class="block clearfix">
 														<span class="block input-icon input-icon-right">
-															<input type="password" class="form-control" placeholder="密码"
-                                                                   name="密码">
+															<input type="password" class="form-control" placeholder="密码" name="password" value=${passwd}>
 															<i class="icon-lock"></i>
 														</span>
                                 </label>
@@ -73,55 +88,82 @@
                                 <div class="clearfix">
                                     <label class="inline">
                                         <input type="checkbox" class="ace">
-                                        <span class="lbl" style="color: lightblue">保存密码</span>
+                                        <span class="lbl">保存密码</span>
                                     </label>
-
-                                    <button type="button" class="width-35 pull-right btn btn-sm btn-primary"
-                                            id="login_btn">
+                                    <a href="javascript:;" class="width-35 pull-right btn btn-sm btn-primary"
+                                       id="loginsubmit">
                                         <i class="icon-key"></i>
                                         登陆
-                                    </button>
+                                    </a>
+
+
+                                    <%--<button type="button" class="width-35 pull-right btn btn-sm btn-primary" id="login_btn">
+                                        <i class="icon-key"></i>
+                                        登陆
+                                    </button>--%>
                                 </div>
 
                                 <div class="space-4"></div>
                             </fieldset>
                         </form>
 
+                        <div class="social-or-login center">
+                            <span class="bigger-110">通知</span>
+                        </div>
+
+                        <div class="social-login center">
+                            本网站系统不再对IE8以下浏览器支持，请见谅。
+                        </div>
+                    </div><!-- /widget-main -->
+
+                    <div class="toolbar clearfix">
+
+
+
                     </div>
-                </div>
-            </div><!-- /widget-body -->
-        </div><!-- /login-box -->
-    </div><!-- /position-relative -->
+                </div><!-- /widget-body -->
+            </div><!-- /login-box -->
+        </div><!-- /position-relative -->
+    </div>
 </div>
+<div class="loginbm">版权所有  2016  <a href="">孝和集团软件系统有限公司</a> </div><strong></strong>
 </body>
 </html>
 <script>
-    $('#login_btn').on('click', function () {
-        var num = 0;
-        var str = "";
-        $("input[type$='text']").each(function (n) {
-            if ($(this).val() == "") {
+    $('#login_btn').on('click', function(){
+        var num=0;
+        var str="";
+        $("input[type$='text']").each(function(n){
+            if($(this).val()=="")
+            {
 
-                layer.alert(str += "" + $(this).attr("name") + "不能为空！\r\n", {
+                layer.alert(str+=""+$(this).attr("name")+"不能为空！\r\n",{
                     title: '提示框',
-                    icon: 0,
+                    icon:0,
                 });
                 num++;
                 return false;
             }
         });
-        if (num > 0) {
-            return false;
-        }
-        else {
-            layer.alert('登陆成功！', {
+        if(num>0){  return false;}
+        else{
+            layer.alert('登陆成功！',{
                 title: '提示框',
-                icon: 1,
+                icon:1,
             });
-            location.href = "/jsp/admin/index.jsp";
+            location.href="/jsp/admin/index.jsp";
             layer.close(index);
         }
 
     })
 
+</script>
+<script type="text/javascript">
+    $(function(){
+        $("#loginsubmit").click(function(){
+            console.log("hshhhkjhkj")
+            //执行程序   提交表单
+            $("#loginForm").submit();
+        });
+    });
 </script>

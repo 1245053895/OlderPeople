@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 import com.xh.po.vo.AdminVo;
+import com.xh.po.vo.kindOfAdmin;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;
 @Component
@@ -28,6 +29,10 @@ public interface AdminMapper {
     void updateByPrimaryKey(Admin record);
     //根据用户名查询密码
     public Admin selectUserByUsername(String username);
-    List <AdminVo> queryAdminAndGroup();
-}
 
+    //得到admin表的拓展（+admingroupname）
+    List <AdminVo> queryAdminAndGroup();
+
+    //得到 “管理员种类(数量)” 如 超级管理员(2)
+    List <kindOfAdmin> kindOfAdmin();
+}

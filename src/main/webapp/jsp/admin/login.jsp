@@ -54,7 +54,7 @@
 
         <div class="space-6"></div>
 
-        <div class="position-relative">
+        <div class="position-relative" style="margin: 0">
             <div id="login-box" class="login-box widget-box no-border visible">
                 <div class="widget-body">
                     <div class="widget-main">

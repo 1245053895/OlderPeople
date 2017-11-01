@@ -31,6 +31,24 @@
         <script src="/jsp/admin/assets/laydate/laydate.js" type="text/javascript"></script>
         <script src="/jsp/admin/js/dragDivResize.js" type="text/javascript"></script>
 <title>添加角色</title>
+
+	<script type="text/javascript">
+        function myCheck()
+        {
+            for(var i=0;i<document.itemsForm.elements.length-1;i++)
+            {
+                if(document.itemsForm.elements[i].value=="")
+                {
+
+                    alert("不能有空项");
+                    document.itemsForm.elements[i].focus();
+                    return false;
+                }
+            }
+            return true;
+        }
+	</script>
+
 </head>
 <body>
 	<c:if test="${empty firstviewList}">
@@ -44,14 +62,17 @@
 		}
 	</style>
 	<div id="role">
-		 <form  name="itemsForm" action="${pageContext.request.contextPath }/addRloeAndView.action" method="post">
-			 <div class="Competence_add">
+			 <form  name="itemsForm" action="${pageContext.request.contextPath }/addRloeAndView.action" method="post" onsubmit="return myCheck()">
+
+				 <div class="Competence_add">
 				 <div class="form-group">
 					 <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> 角色名称 </label>
 					 <div class="col-sm-9">
-						 <input type="text" name="admingroupname" id="form-field-1" placeholder="" class="col-xs-10 col-sm-5">
+							 <input type="text" name="admingroupname" id="form-field-1" placeholder="" class="col-xs-10 col-sm-5">
+
 					 </div>
 				 </div>
+
 				 <div class="form-group">
 					 <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> 角色描述 </label>
 					 <div class="col-sm-9">
@@ -59,11 +80,11 @@
 						 <span class="wordage">剩余字数：<span id="sy" style="color:Red;">200</span>字</span>
 					 </div>
 				 </div>
+
 				 <div class="form-group">
 					 <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> 权限分配 </label>
 					 <div class="col-sm-9">
 						 <c:forEach items="${firstviewList}" var="firstview" varStatus="status">
-							 <%--<label class="middle"><input class="flag_${status.index}" name="firstViewAction[${status.index}]" readonly="readonly" type="checkbox"  value="${firstview.firstviewaction}"></label>--%>
 							 <label class="middle"><input type="checkbox" name="firstViewAction[${status.index}]" value="${firstview.firstviewaction}" class="ace"><span class="lbl">${firstview.firstviewdescription}</span></label>
 						 </c:forEach>
 					 </div>
@@ -73,10 +94,13 @@
 					 <input class="btn btn-primary radius submitadmin" type="submit" value="保存并提交" />
 				 </div>
 			 </div>
+
 		 </form>
 	</div>
 </body>
 </html>
+
+
 <script type="text/javascript">
 //初始化宽度、高度  
  $(".left_Competence_add,.Competence_add_style").height($(window).height()).val();; 

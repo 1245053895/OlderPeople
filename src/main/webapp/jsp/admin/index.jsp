@@ -310,7 +310,7 @@
 				<li><a href="#" class="dropdown-toggle"><i class="icon-desktop"></i><span class="menu-text"> 用户管理 </span><b class="arrow icon-angle-down"></b></a>
 					<ul class="submenu">
 						<li class="home"><a  href="javascript:void(0)" name="/UserMessageController"  title="用户信息" class="iframeurl"><i class="icon-double-angle-right"></i>用户信息</a></li>
-						<li class="home"><a  href="javascript:void(0)" name="integration.jsp"  title="用户记录" class="iframeurl"><i class="icon-double-angle-right"></i>用户记录</a></li>
+						<li class="home"><a  href="javascript:void(0)" name="/getUserRecord.action"  title="用户记录" class="iframeurl"><i class="icon-double-angle-right"></i>用户记录</a></li>
 					</ul>
 				</li>
 

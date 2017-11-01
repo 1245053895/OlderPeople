@@ -8,7 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-@Service
+
 public interface AdminManage {
     //删除数据通过id
     void deleteByPrimaryKey(Integer adminid);

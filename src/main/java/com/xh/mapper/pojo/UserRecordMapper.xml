@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xh.mapper.pojo.UserRecordMapper">
+  <select id="queryUserLog" resultType="userAndUserLog">
+    SELECT user.UserId AS userid,
+      user.UserName AS username,
+      user.CreditsCore AS creditscore ,
+      user.UserInputDate AS userlogintime,
+      count(productslog.UserId) AS browseCount,
+      sum(productslog.IsShop)/count(productslog.UserId) AS ratio
+    FROM user
+      INNER JOIN userlog ON (user.UserId=userlog.UserId)
+      INNER JOIN productslog ON (user.UserId=productslog.UserId)
+    GROUP BY productslog.UserId;
+  </select>
+
+</mapper>

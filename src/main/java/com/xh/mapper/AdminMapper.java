@@ -32,4 +32,7 @@ public interface AdminMapper {
 
     //得到admin表的拓展（+admingroupname）
     List <AdminVo> queryAdminAndGroup();
+
+    //得到 “管理员种类(数量)” 如 超级管理员(2)
+    List <kindOfAdmin> kindOfAdmin();
 }

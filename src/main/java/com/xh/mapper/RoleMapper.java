@@ -1,8 +1,7 @@
 package com.xh.mapper;
-import com.xh.po.Admin;
 import com.xh.po.AdminRole;
 import com.xh.po.Admingroup;
-import com.xh.po.Admingroupfirstview;
+import com.xh.po.*;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -13,10 +12,24 @@ import java.util.List;
 @Component
 public interface RoleMapper {
     /**
+     *  查询出每个后台用户对应的角色名称和角色描述
+     */
+    /**
      * 查询每个用户对应的角色
      * @return
      */
     public List<AdminRole> queryRoleAndAdmin();
+
+    /**
+     *  查询出所有角色的角色名称和角色描述
+     */
+    public List<Admingroup>queryAllRole();
+
+    /**
+     * 实现对角色修改页面根据角色的id删除角色
+     * @param id
+     */
+    public  void deleteRoleById(int id);
 
     /**
      * 查询所有管理员列表
@@ -76,5 +89,28 @@ public interface RoleMapper {
      */
     public void updataPasswordById(Integer id,String newPassword);
 
+    /**
+     * 查询所有一级菜单
+     * @return
+     */
+    public List<Firstview> selectAllFirstview();
 
+    /**
+     * 插入新角色
+     * @param adminRoleCustom
+     */
+    public void insertRole(AdminRoleCustom adminRoleCustom);
+
+    /**
+     * 通过角色名查找角色id
+     * @param admingroupname
+     * @return
+     */
+    public Integer selectRloeIdByName(String admingroupname);
+
+    /**
+     * 将角色对应的一个权限写入数据库
+     * @param adminRoleCustom
+     */
+    public void insertRloeAndFirstView(AdminRoleCustom adminRoleCustom);
 }

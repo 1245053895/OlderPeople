@@ -120,4 +120,6 @@ public class Admin {
     public void setAdminC(String adminC) {
         this.adminC = adminC == null ? null : adminC.trim();
     }
+
+
 }

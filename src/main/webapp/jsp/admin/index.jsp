@@ -1,4 +1,4 @@
-﻿<%--
+<%--
   Created by IntelliJ IDEA.
   User: Administrator
   Date: 2017/10/30
@@ -301,9 +301,9 @@
 
 				<li><a href="#" class="dropdown-toggle"><i class="icon-desktop"></i><span class="menu-text"> 管理员管理 </span><b class="arrow icon-angle-down"></b></a>
 					<ul class="submenu">
-						<li class="home"><a href="javascript:void(0)" name="admin_Competence.jsp" title="角色管理"  class="iframeurl"><i class="icon-double-angle-right"></i>角色管理</a></li>
-						<li class="home"><a  href="javascript:void(0)" name="administrator.jsp"  title="管理员列表" class="iframeurl"><i class="icon-double-angle-right"></i>管理员列表</a></li>
-						<li class="home"><a href="javascript:void(0)" name="Category_Manage.jsp" title="角色修改"  class="iframeurl"><i class="icon-double-angle-right"></i>角色修改</a></li>
+						<li class="home"><a href="javascript:void(0)" name="/RloeController.action" title="角色管理"  class="iframeurl"><i class="icon-double-angle-right"></i>角色管理</a></li>
+						<li class="home"><a  href="javascript:void(0)" name="/adminList.action"  title="管理员列表" class="iframeurl"><i class="icon-double-angle-right"></i>管理员列表</a></li>
+						<li class="home"><a href="javascript:void(0)" name="/queryAllRole.action" title="角色修改"  class="iframeurl"><i class="icon-double-angle-right"></i>角色修改</a></li>
 					</ul>
 				</li>
 

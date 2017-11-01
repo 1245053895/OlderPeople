@@ -17,4 +17,6 @@ public interface UserCsdMapper {
     public User selectByPrimaryKeyByname(String username);
 
     public User wcy();
+
+    public User csd();
 }

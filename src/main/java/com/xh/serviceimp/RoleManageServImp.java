@@ -3,9 +3,10 @@ package com.xh.serviceimp;
 import com.xh.mapper.RoleMapper;
 import com.xh.po.AdminRole;
 import com.xh.po.Admingroup;
+import com.xh.po.AdminRoleCustom;
+import com.xh.po.Firstview;
 import com.xh.service.RoleManageServ;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,6 +20,7 @@ import java.util.List;
 public class RoleManageServImp implements RoleManageServ {
     @Autowired
     private RoleMapper roleMapper;
+
     public List<AdminRole> queryRoleAndAdmin() {
         List<AdminRole> adminRoles=roleMapper.queryRoleAndAdmin();
         return adminRoles;

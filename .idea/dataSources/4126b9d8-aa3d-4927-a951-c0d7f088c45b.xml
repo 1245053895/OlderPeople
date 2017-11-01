@@ -1,0 +1,1203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="ssm@localhost">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.4">
+    <root id="1"/>
+    <schema id="2" parent="1" name="estore"/>
+    <schema id="3" parent="1" name="information_schema"/>
+    <schema id="4" parent="1" name="music"/>
+    <schema id="5" parent="1" name="mybatis"/>
+    <schema id="6" parent="1" name="mydata"/>
+    <schema id="7" parent="1" name="mysql"/>
+    <schema id="8" parent="1" name="ssm">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="9" parent="1" name="test"/>
+    <schema id="10" parent="1" name="wcy"/>
+    <table id="11" parent="8" name="admin"/>
+    <table id="12" parent="8" name="admingroup"/>
+    <table id="13" parent="8" name="admingroupfirstview"/>
+    <table id="14" parent="8" name="allocation"/>
+    <table id="15" parent="8" name="color"/>
+    <table id="16" parent="8" name="comment"/>
+    <table id="17" parent="8" name="favorites"/>
+    <table id="18" parent="8" name="firstview"/>
+    <table id="19" parent="8" name="gainaddres"/>
+    <table id="20" parent="8" name="order"/>
+    <table id="21" parent="8" name="orderproduct"/>
+    <table id="22" parent="8" name="pay"/>
+    <table id="23" parent="8" name="product"/>
+    <table id="24" parent="8" name="productslog"/>
+    <table id="25" parent="8" name="producttype"/>
+    <table id="26" parent="8" name="proxy"/>
+    <table id="27" parent="8" name="secondview"/>
+    <table id="28" parent="8" name="shopcar"/>
+    <table id="29" parent="8" name="stock"/>
+    <table id="30" parent="8" name="transport"/>
+    <table id="31" parent="8" name="user"/>
+    <table id="32" parent="8" name="userlog"/>
+    <column id="33" parent="11" name="AdminId">
+      <Position>1</Position>
+      <DataType>INT(10)|4</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="34" parent="11" name="AdminName">
+      <Position>2</Position>
+      <DataType>VARCHAR(50)|12</DataType>
+    </column>
+    <column id="35" parent="11" name="AdminPic">
+      <Position>3</Position>
+      <DataType>VARCHAR(50)|12</DataType>
+    </column>
+    <column id="36" parent="11" name="AdminPwd">
+      <Position>4</Position>
+      <DataType>VARCHAR(50)|12</DataType>
+    </column>
+    <column id="37" parent="11" name="AdminUser">
+      <Position>5</Position>
+      <DataType>VARCHAR(50)|12</DataType>
+    </column>
+    <column id="38" parent="11" name="AdminSex">
+      <Position>6</Position>
+      <DataType>VARCHAR(10)|12</DataType>
+    </column>
+    <column id="39" parent="11" name="AdminDepart">
+      <Position>7</Position>
+      <DataType>VARCHAR(50)|12</DataType>
+    </column>
+    <column id="40" parent="11" name="AdminPhone">
+      <Position>8</Position>
+      <DataType>VARCHAR(50)|12</DataType>
+    </column>
+    <column id="41" parent="11" name="AdminGroupId">
+      <Position>9</Position>
+      <DataType>INT(10)|4</DataType>
+    </column>
+    <column id="42" parent="11" name="Admin_A">
+      <Position>10</Position>
+      <DataType>VARCHAR(20)|12</DataType>
+    </column>
+    <column id="43" parent="11" name="Admin_B">
+      <Position>11</Position>
+      <DataType>VARCHAR(20)|12</DataType>
+    </column>
+    <column id="44" parent="11" name="Admin_C">
+      <Position>12</Position>
+      <DataType>VARCHAR(20)|12</DataType>
+    </column>
+    <key id="45" parent="11" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>AdminId</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="46" parent="11" name="012">
+      <ColNames>AdminGroupId</ColNames>
+      <RefSchemaName>ssm</RefSchemaName>
+      <RefTableName>admingroup</RefTableName>
+      <RefKeyName>PRIMARY</RefKeyName>
+      <RefColNames>AdminGroupId</RefColNames>
+      <OnUpdate>cascade</OnUpdate>
+      <OnDelete>cascade</OnDelete>
+    </foreign-key>
+    <column id="47" parent="12" name="AdminGroupId">
+      <Position>1</Position>
+      <DataType>INT(10)|4</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="48" parent="12" name="AdminGroupName">
+      <Position>2</Position>
+      <DataType>VARCHAR(50)|12</DataType>
+    </column>
+    <column id="49" parent="12" name="AdminGroupDescription">
+      <Position>3</Position>
+      <DataType>VARCHAR(500)|12</DataType>
+    </column>
+    <column id="50" parent="12" name="AdminGroupId_A">
+      <Position>4</Position>
+      <DataType>VARCHAR(20)|12</DataType>
+    </column>
+    <column id="51" parent="12" name="AdminGroupId_B">
+      <Position>5</Position>
+      <DataType>VARCHAR(20)|12</DataType>
+    </column>
+    <column id="52" parent="12" name="AdminGroupId_C">
+      <Position>6</Position>
+      <DataType>VARCHAR(20)|12</DataType>
+    </column>
+    <key id="53" parent="12" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>AdminGroupId</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="54" parent="13" name="AdminGroupFirstViewId">
+      <Position>1</Position>
+      <DataType>INT(10)|4</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="55" parent="13" name="FirstViewAction">
+      <Position>2</Position>
+      <DataType>VARCHAR(50)|12</DataType>
+    </column>
+    <column id="56" parent="13" name="AdminGroupId">
+      <Position>3</Position>
+      <DataType>INT(10)|4</DataType>
+    </column>
+    <column id="57" parent="13" name="AdminGroupFirstView_A">
+      <Position>4</Position>
+      <DataType>VARCHAR(20)|12</DataType>
+    </column>
+    <column id="58" parent="13" name="AdminGroupFirstView_B">
+      <Position>5</Position>
+      <DataType>VARCHAR(20)|12</DataType>
+    </column>
+    <column id="59" parent="13" name="AdminGroupFirstView_C">
+      <Position>6</Position>
+      <DataType>VARCHAR(20)|12</DataType>
+    </column>
+    <key id="60" parent="13" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>AdminGroupFirstViewId</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="61" parent="13" name="060">
+      <ColNames>FirstViewAction</ColNames>
+      <RefSchemaName>ssm</RefSchemaName>
+      <RefTableName>firstview</RefTableName>
+      <RefColNames>FirstViewAction</RefColNames>
+      <OnUpdate>cascade</OnUpdate>
+      <OnDelete>cascade</OnDelete>
+    </foreign-key>
+    <foreign-key id="62" parent="13" name="061">
+      <ColNames>AdminGroupId</ColNames>
+      <RefSchemaName>ssm</RefSchemaName>
+      <RefTableName>admingroup</RefTableName>
+      <RefKeyName>PRIMARY</RefKeyName>
+      <RefColNames>AdminGroupId</RefColNames>
+      <OnUpdate>cascade</OnUpdate>
+      <OnDelete>cascade</OnDelete>
+    </foreign-key>
+    <column id="63" parent="14" name="AllocationId">
+      <Position>1</Position>
+      <DataType>INT(10)|4</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="64" parent="14" name="ProductId">
+      <Position>2</Position>
+      <DataType>INT(10)|4</DataType>
+    </column>
+    <column id="65" parent="14" name="ProxyId">
+      <Position>3</Position>
+      <DataType>INT(10)|4</DataType>
+    </column>
+    <column id="66" parent="14" name="AllocationNumble">
+      <Position>4</Position>
+      <DataType>INT(10)|4</DataType>
+      <DefaultExpression>0</DefaultExpression>
+    </column>
+    <column id="67" parent="14" name="Allocation_A">
+      <Position>5</Position>
+      <DataType>VARCHAR(20)|12</DataType>
+    </column>
+    <column id="68" parent="14" name="Allocation_B">
+      <Position>6</Position>
+      <DataType>VARCHAR(20)|12</DataType>
+    </column>
+    <column id="69" parent="14" name="Allocation_C">
+      <Position>7</Position>
+      <DataType>VARCHAR(20)|12</DataType>
+    </column>
+    <key id="70" parent="14" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>AllocationId</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="71" parent="14" name="010">
+      <ColNames>ProductId</ColNames>
+      <RefSchemaName>ssm</RefSchemaName>
+      <RefTableName>product</RefTableName>
+      <RefKeyName>PRIMARY</RefKeyName>
+      <RefColNames>ProductId</RefColNames>
+      <OnUpdate>cascade</OnUpdate>
+      <OnDelete>cascade</OnDelete>
+    </foreign-key>
+    <foreign-key id="72" parent="14" name="011">
+      <ColNames>ProxyId</ColNames>
+      <RefSchemaName>ssm</RefSchemaName>
+      <RefTableName>proxy</RefTableName>
+      <RefKeyName>PRIMARY</RefKeyName>
+      <RefColNames>ProxyId</RefColNames>
+      <OnUpdate>cascade</OnUpdate>
+      <OnDelete>cascade</OnDelete>
+    </foreign-key>
+    <column id="73" parent="15" name="ColorId">
+      <Position>1</Position>
+      <DataType>INT(10)|4</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="74" parent="15" name="ColorName">
+      <Position>2</Position>
+      <DataType>VARCHAR(50)|12</DataType>
+    </column>
+    <column id="75" parent="15" name="ProductId">
+      <Position>3</Position>
+      <DataType>INT(10)|4</DataType>
+    </column>
+    <column id="76" parent="15" name="Color_A">
+      <Position>4</Position>
+      <DataType>VARCHAR(20)|12</DataType>
+    </column>
+    <column id="77" parent="15" name="Color_B">
+      <Position>5</Position>
+      <DataType>VARCHAR(20)|12</DataType>
+    </column>
+    <column id="78" parent="15" name="Color_C">
+      <Position>6</Position>
+      <DataType>VARCHAR(20)|12</DataType>
+    </column>
+    <key id="79" parent="15" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>ColorId</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="80" parent="15" name="040">
+      <ColNames>ProductId</ColNames>
+      <RefSchemaName>ssm</RefSchemaName>
+      <RefTableName>product</RefTableName>
+      <RefKeyName>PRIMARY</RefKeyName>
+      <RefColNames>ProductId</RefColNames>
+      <OnUpdate>cascade</OnUpdate>
+      <OnDelete>cascade</OnDelete>
+    </foreign-key>
+    <column id="81" parent="16" name="CommentId">
+      <Position>1</Position>
+      <DataType>INT(10)|4</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="82" parent="16" name="ProductId">
+      <Position>2</Position>
+      <DataType>INT(10)|4</DataType>
+    </column>
+    <column id="83" parent="16" name="UserId">
+      <Position>3</Position>
+      <DataType>INT(10)|4</DataType>
+    </column>
+    <column id="84" parent="16" name="Comment">
+      <Position>4</Position>
+      <DataType>VARCHAR(500)|12</DataType>
+    </column>
+    <column id="85" parent="16" name="GoodComment">
+      <Position>5</Position>
+      <DataType>INT(10)|4</DataType>
+    </column>
+    <column id="86" parent="16" name="Comment_A">
+      <Position>6</Position>
+      <DataType>VARCHAR(20)|12</DataType>
+    </column>
+    <column id="87" parent="16" name="Comment_B">
+      <Position>7</Position>
+      <DataType>VARCHAR(20)|12</DataType>
+    </column>
+    <column id="88" parent="16" name="Comment_C">
+      <Position>8</Position>
+      <DataType>VARCHAR(20)|12</DataType>
+    </column>
+    <key id="89" parent="16" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>CommentId</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="90" parent="16" name="008">
+      <ColNames>ProductId</ColNames>
+      <RefSchemaName>ssm</RefSchemaName>
+      <RefTableName>product</RefTableName>
+      <RefKeyName>PRIMARY</RefKeyName>
+      <RefColNames>ProductId</RefColNames>
+      <OnUpdate>cascade</OnUpdate>
+      <OnDelete>cascade</OnDelete>
+    </foreign-key>
+    <foreign-key id="91" parent="16" name="009">
+      <ColNames>UserId</ColNames>
+      <RefSchemaName>ssm</RefSchemaName>
+      <RefTableName>user</RefTableName>
+      <RefKeyName>PRIMARY</RefKeyName>
+      <RefColNames>UserId</RefColNames>
+      <OnUpdate>cascade</OnUpdate>
+      <OnDelete>cascade</OnDelete>
+    </foreign-key>
+    <column id="92" parent="17" name="FavoritesId">
+      <Position>1</Position>
+      <DataType>INT(10)|4</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="93" parent="17" name="UserId">
+      <Position>2</Position>
+      <DataType>INT(10)|4</DataType>
+    </column>
+    <column id="94" parent="17" name="ProductId">
+      <Position>3</Position>
+      <DataType>INT(10)|4</DataType>
+    </column>
+    <column id="95" parent="17" name="Favorites_A">
+      <Position>4</Position>
+      <DataType>VARCHAR(20)|12</DataType>
+    </column>
+    <column id="96" parent="17" name="Favorites_B">
+      <Position>5</Position>
+      <DataType>VARCHAR(20)|12</DataType>
+    </column>
+    <column id="97" parent="17" name="Favorites_C">
+      <Position>6</Position>
+      <DataType>VARCHAR(20)|12</DataType>
+    </column>
+    <key id="98" parent="17" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>FavoritesId</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="99" parent="17" name="030">
+      <ColNames>UserId</ColNames>
+      <RefSchemaName>ssm</RefSchemaName>
+      <RefTableName>user</RefTableName>
+      <RefKeyName>PRIMARY</RefKeyName>
+      <RefColNames>UserId</RefColNames>
+      <OnUpdate>cascade</OnUpdate>
+      <OnDelete>cascade</OnDelete>
+    </foreign-key>
+    <foreign-key id="100" parent="17" name="031">
+      <ColNames>ProductId</ColNames>
+      <RefSchemaName>ssm</RefSchemaName>
+      <RefTableName>product</RefTableName>
+      <RefKeyName>PRIMARY</RefKeyName>
+      <RefColNames>ProductId</RefColNames>
+      <OnUpdate>cascade</OnUpdate>
+      <OnDelete>cascade</OnDelete>
+    </foreign-key>
+    <column id="101" parent="18" name="FirstViewId">
+      <Position>1</Position>
+      <DataType>INT(10)|4</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="102" parent="18" name="FirstViewAction">
+      <Position>2</Position>
+      <DataType>VARCHAR(50)|12</DataType>
+    </column>
+    <column id="103" parent="18" name="FirstViewDescription">
+      <Position>3</Position>
+      <DataType>VARCHAR(50)|12</DataType>
+    </column>
+    <column id="104" parent="18" name="SecondViewId">
+      <Position>4</Position>
+      <DataType>INT(10)|4</DataType>
+    </column>
+    <column id="105" parent="18" name="FirstView_A">
+      <Position>5</Position>
+      <DataType>VARCHAR(20)|12</DataType>
+    </column>
+    <column id="106" parent="18" name="FirstView_B">
+      <Position>6</Position>
+      <DataType>VARCHAR(20)|12</DataType>
+    </column>
+    <column id="107" parent="18" name="FirstView_C">
+      <Position>7</Position>
+      <DataType>VARCHAR(20)|12</DataType>
+    </column>
+    <index id="108" parent="18" name="FirstViewAction">
+      <ColNames>FirstViewAction</ColNames>
+    </index>
+    <key id="109" parent="18" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>FirstViewId</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="110" parent="18" name="020">
+      <ColNames>SecondViewId</ColNames>
+      <RefSchemaName>ssm</RefSchemaName>
+      <RefTableName>secondview</RefTableName>
+      <RefKeyName>PRIMARY</RefKeyName>
+      <RefColNames>SecondViewId</RefColNames>
+      <OnUpdate>cascade</OnUpdate>
+      <OnDelete>cascade</OnDelete>
+    </foreign-key>
+    <column id="111" parent="19" name="GainId">
+      <Position>1</Position>
+      <DataType>INT(10)|4</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="112" parent="19" name="UserId">
+      <Position>2</Position>
+      <DataType>INT(10)|4</DataType>
+    </column>
+    <column id="113" parent="19" name="GainName">
+      <Position>3</Position>
+      <DataType>VARCHAR(50)|12</DataType>
+    </column>
+    <column id="114" parent="19" name="GainMobile">
+      <Position>4</Position>
+      <DataType>VARCHAR(20)|12</DataType>
+    </column>
+    <column id="115" parent="19" name="GainAddress">
+      <Position>5</Position>
+      <DataType>VARCHAR(500)|12</DataType>
+    </column>
+    <column id="116" parent="19" name="GainCode">
+      <Position>6</Position>
+      <DataType>INT(10)|4</DataType>
+    </column>
+    <column id="117" parent="19" name="Gain_A">
+      <Position>7</Position>
+      <DataType>VARCHAR(20)|12</DataType>
+    </column>
+    <column id="118" parent="19" name="Gain_B">
+      <Position>8</Position>
+      <DataType>VARCHAR(20)|12</DataType>
+    </column>
+    <column id="119" parent="19" name="Gain_C">
+      <Position>9</Position>
+      <DataType>VARCHAR(20)|12</DataType>
+    </column>
+    <key id="120" parent="19" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>GainId</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="121" parent="19" name="003">
+      <ColNames>UserId</ColNames>
+      <RefSchemaName>ssm</RefSchemaName>
+      <RefTableName>user</RefTableName>
+      <RefKeyName>PRIMARY</RefKeyName>
+      <RefColNames>UserId</RefColNames>
+      <OnUpdate>cascade</OnUpdate>
+      <OnDelete>cascade</OnDelete>
+    </foreign-key>
+    <column id="122" parent="20" name="OrderId">
+      <Position>1</Position>
+      <DataType>INT(10)|4</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="123" parent="20" name="UserId">
+      <Position>2</Position>
+      <DataType>INT(10)|4</DataType>
+    </column>
+    <column id="124" parent="20" name="RealPay">
+      <Position>3</Position>
+      <DataType>DOUBLE(10,2)|8</DataType>
+    </column>
+    <column id="125" parent="20" name="AmountPay">
+      <Position>4</Position>
+      <DataType>DOUBLE(10,2)|8</DataType>
+    </column>
+    <column id="126" parent="20" name="PayType">
+      <Position>5</Position>
+      <DataType>INT(10)|4</DataType>
+    </column>
+    <column id="127" parent="20" name="PostFee">
+      <Position>6</Position>
+      <DataType>DOUBLE(10,2)|8</DataType>
+    </column>
+    <column id="128" parent="20" name="Status">
+      <Position>7</Position>
+      <DataType>INT(10)|4</DataType>
+    </column>
+    <column id="129" parent="20" name="PayStatus">
+      <Position>8</Position>
+      <DataType>INT(10)|4</DataType>
+    </column>
+    <column id="130" parent="20" name="CreateTime">
+      <Position>9</Position>
+      <DataType>DATETIME(19)|93</DataType>
+    </column>
+    <column id="131" parent="20" name="UpdateTime">
+      <Position>10</Position>
+      <DataType>DATETIME(19)|93</DataType>
+    </column>
+    <column id="132" parent="20" name="PaymentTime">
+      <Position>11</Position>
+      <DataType>DATETIME(19)|93</DataType>
+    </column>
+    <column id="133" parent="20" name="SendTime">
+      <Position>12</Position>
+      <DataType>DATETIME(19)|93</DataType>
+    </column>
+    <column id="134" parent="20" name="EndTime">
+      <Position>13</Position>
+      <DataType>DATETIME(19)|93</DataType>
+    </column>
+    <column id="135" parent="20" name="CloseTime">
+      <Position>14</Position>
+      <DataType>DATETIME(19)|93</DataType>
+    </column>
+    <column id="136" parent="20" name="ShippingName">
+      <Position>15</Position>
+      <DataType>VARCHAR(500)|12</DataType>
+    </column>
+    <column id="137" parent="20" name="ShippingCode">
+      <Position>16</Position>
+      <DataType>VARCHAR(50)|12</DataType>
+    </column>
+    <column id="138" parent="20" name="BuyerRequest">
+      <Position>17</Position>
+      <DataType>VARCHAR(500)|12</DataType>
+    </column>
+    <column id="139" parent="20" name="TotalCredit">
+      <Position>18</Position>
+      <DataType>INT(10)|4</DataType>
+    </column>
+    <column id="140" parent="20" name="Order_A">
+      <Position>19</Position>
+      <DataType>VARCHAR(20)|12</DataType>
+    </column>
+    <column id="141" parent="20" name="Order_B">
+      <Position>20</Position>
+      <DataType>VARCHAR(20)|12</DataType>
+    </column>
+    <column id="142" parent="20" name="Order_C">
+      <Position>21</Position>
+      <DataType>VARCHAR(20)|12</DataType>
+    </column>
+    <key id="143" parent="20" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>OrderId</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="144" parent="20" name="004">
+      <ColNames>UserId</ColNames>
+      <RefSchemaName>ssm</RefSchemaName>
+      <RefTableName>user</RefTableName>
+      <RefKeyName>PRIMARY</RefKeyName>
+      <RefColNames>UserId</RefColNames>
+      <OnUpdate>cascade</OnUpdate>
+      <OnDelete>cascade</OnDelete>
+    </foreign-key>
+    <column id="145" parent="21" name="OrderProductId">
+      <Position>1</Position>
+      <DataType>INT(10)|4</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="146" parent="21" name="ProductId">
+      <Position>2</Position>
+      <DataType>INT(10)|4</DataType>
+    </column>
+    <column id="147" parent="21" name="OrderId">
+      <Position>3</Position>
+      <DataType>INT(10)|4</DataType>
+    </column>
+    <column id="148" parent="21" name="ShoppingCount">
+      <Position>4</Position>
+      <DataType>INT(10)|4</DataType>
+    </column>
+    <column id="149" parent="21" name="TotalMoneyCount">
+      <Position>5</Position>
+      <DataType>DOUBLE(10,2)|8</DataType>
+    </column>
+    <column id="150" parent="21" name="OrderProduct_A">
+      <Position>6</Position>
+      <DataType>VARCHAR(20)|12</DataType>
+    </column>
+    <column id="151" parent="21" name="OrderProduct_B">
+      <Position>7</Position>
+      <DataType>VARCHAR(20)|12</DataType>
+    </column>
+    <column id="152" parent="21" name="OrderProduct_C">
+      <Position>8</Position>
+      <DataType>VARCHAR(20)|12</DataType>
+    </column>
+    <key id="153" parent="21" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>OrderProductId</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="154" parent="21" name="005">
+      <ColNames>ProductId</ColNames>
+      <RefSchemaName>ssm</RefSchemaName>
+      <RefTableName>product</RefTableName>
+      <RefKeyName>PRIMARY</RefKeyName>
+      <RefColNames>ProductId</RefColNames>
+      <OnUpdate>cascade</OnUpdate>
+      <OnDelete>cascade</OnDelete>
+    </foreign-key>
+    <foreign-key id="155" parent="21" name="006">
+      <ColNames>OrderId</ColNames>
+      <RefSchemaName>ssm</RefSchemaName>
+      <RefTableName>order</RefTableName>
+      <RefKeyName>PRIMARY</RefKeyName>
+      <RefColNames>OrderId</RefColNames>
+      <OnUpdate>cascade</OnUpdate>
+      <OnDelete>cascade</OnDelete>
+    </foreign-key>
+    <column id="156" parent="22" name="PayId">
+      <Position>1</Position>
+      <DataType>INT(10)|4</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="157" parent="22" name="PayName">
+      <Position>2</Position>
+      <DataType>VARCHAR(50)|12</DataType>
+    </column>
+    <column id="158" parent="22" name="PayPicture">
+      <Position>3</Position>
+      <DataType>VARCHAR(0)|12</DataType>
+    </column>
+    <column id="159" parent="22" name="Pay_A">
+      <Position>4</Position>
+      <DataType>VARCHAR(20)|12</DataType>
+    </column>
+    <column id="160" parent="22" name="Pay_B">
+      <Position>5</Position>
+      <DataType>VARCHAR(20)|12</DataType>
+    </column>
+    <column id="161" parent="22" name="Pay_C">
+      <Position>6</Position>
+      <DataType>VARCHAR(20)|12</DataType>
+    </column>
+    <key id="162" parent="22" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>PayId</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="163" parent="23" name="ProductId">
+      <Position>1</Position>
+      <DataType>INT(10)|4</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="164" parent="23" name="ProductTypeId">
+      <Position>2</Position>
+      <DataType>INT(10)|4</DataType>
+    </column>
+    <column id="165" parent="23" name="ProductName">
+      <Position>3</Position>
+      <DataType>VARCHAR(50)|12</DataType>
+    </column>
+    <column id="166" parent="23" name="ProductPrice">
+      <Position>4</Position>
+      <DataType>DOUBLE(10,2)|8</DataType>
+    </column>
+    <column id="167" parent="23" name="PictureSizes">
+      <Position>5</Position>
+      <DataType>VARCHAR(100)|12</DataType>
+    </column>
+    <column id="168" parent="23" name="PictureColors">
+      <Position>6</Position>
+      <DataType>VARCHAR(100)|12</DataType>
+    </column>
+    <column id="169" parent="23" name="ProductLookCount">
+      <Position>7</Position>
+      <DataType>INT(10)|4</DataType>
+    </column>
+    <column id="170" parent="23" name="ProductDescribe">
+      <Position>8</Position>
+      <DataType>VARCHAR(500)|12</DataType>
+    </column>
+    <column id="171" parent="23" name="ProductStoreTime">
+      <Position>9</Position>
+      <DataType>DATETIME(19)|93</DataType>
+    </column>
+    <column id="172" parent="23" name="ProductPicture">
+      <Position>10</Position>
+      <DataType>VARCHAR(500)|12</DataType>
+    </column>
+    <column id="173" parent="23" name="ProductNew">
+      <Position>11</Position>
+      <DataType>ENUM(1)|1</DataType>
+    </column>
+    <column id="174" parent="23" name="ProducthotSale">
+      <Position>12</Position>
+      <DataType>ENUM(1)|1</DataType>
+    </column>
+    <column id="175" parent="23" name="ProductDisabled">
+      <Position>13</Position>
+      <DataType>ENUM(1)|1</DataType>
+    </column>
+    <column id="176" parent="23" name="ProductCredits">
+      <Position>14</Position>
+      <DataType>ENUM(1)|1</DataType>
+    </column>
+    <column id="177" parent="23" name="ProductCreateTime">
+      <Position>15</Position>
+      <DataType>DATETIME(19)|93</DataType>
+    </column>
+    <column id="178" parent="23" name="Product_A">
+      <Position>16</Position>
+      <DataType>VARCHAR(20)|12</DataType>
+    </column>
+    <column id="179" parent="23" name="Product_B">
+      <Position>17</Position>
+      <DataType>VARCHAR(20)|12</DataType>
+    </column>
+    <column id="180" parent="23" name="Product_C">
+      <Position>18</Position>
+      <DataType>VARCHAR(20)|12</DataType>
+    </column>
+    <key id="181" parent="23" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>ProductId</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="182" parent="23" name="007">
+      <ColNames>ProductTypeId</ColNames>
+      <RefSchemaName>ssm</RefSchemaName>
+      <RefTableName>producttype</RefTableName>
+      <RefKeyName>PRIMARY</RefKeyName>
+      <RefColNames>ProductTypeId</RefColNames>
+      <OnUpdate>cascade</OnUpdate>
+      <OnDelete>cascade</OnDelete>
+    </foreign-key>
+    <column id="183" parent="24" name="ProductsLogId">
+      <Position>1</Position>
+      <DataType>INT(10)|4</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="184" parent="24" name="ProductId">
+      <Position>2</Position>
+      <DataType>INT(10)|4</DataType>
+    </column>
+    <column id="185" parent="24" name="UserId">
+      <Position>3</Position>
+      <DataType>INT(10)|4</DataType>
+    </column>
+    <column id="186" parent="24" name="StartBrowseTime">
+      <Position>4</Position>
+      <DataType>DATETIME(19)|93</DataType>
+    </column>
+    <column id="187" parent="24" name="EndBrowseTime">
+      <Position>5</Position>
+      <DataType>DATETIME(19)|93</DataType>
+    </column>
+    <column id="188" parent="24" name="IsShop">
+      <Position>6</Position>
+      <DataType>INT(10)|4</DataType>
+    </column>
+    <column id="189" parent="24" name="ProductsLog_A">
+      <Position>7</Position>
+      <DataType>VARCHAR(20)|12</DataType>
+    </column>
+    <column id="190" parent="24" name="ProductsLog_B">
+      <Position>8</Position>
+      <DataType>VARCHAR(20)|12</DataType>
+    </column>
+    <column id="191" parent="24" name="ProductsLog_c">
+      <Position>9</Position>
+      <DataType>VARCHAR(20)|12</DataType>
+    </column>
+    <key id="192" parent="24" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>ProductsLogId</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="193" parent="24" name="051">
+      <ColNames>ProductId</ColNames>
+      <RefSchemaName>ssm</RefSchemaName>
+      <RefTableName>product</RefTableName>
+      <RefKeyName>PRIMARY</RefKeyName>
+      <RefColNames>ProductId</RefColNames>
+      <OnUpdate>cascade</OnUpdate>
+      <OnDelete>cascade</OnDelete>
+    </foreign-key>
+    <foreign-key id="194" parent="24" name="052">
+      <ColNames>UserId</ColNames>
+      <RefSchemaName>ssm</RefSchemaName>
+      <RefTableName>user</RefTableName>
+      <RefKeyName>PRIMARY</RefKeyName>
+      <RefColNames>UserId</RefColNames>
+      <OnUpdate>cascade</OnUpdate>
+      <OnDelete>cascade</OnDelete>
+    </foreign-key>
+    <column id="195" parent="25" name="ProductTypeId">
+      <Position>1</Position>
+      <DataType>INT(10)|4</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="196" parent="25" name="ProductTypeName">
+      <Position>2</Position>
+      <DataType>VARCHAR(50)|12</DataType>
+    </column>
+    <column id="197" parent="25" name="ProductType_A">
+      <Position>3</Position>
+      <DataType>VARCHAR(20)|12</DataType>
+    </column>
+    <column id="198" parent="25" name="ProductType_B">
+      <Position>4</Position>
+      <DataType>VARCHAR(20)|12</DataType>
+    </column>
+    <column id="199" parent="25" name="ProductType_C">
+      <Position>5</Position>
+      <DataType>VARCHAR(20)|12</DataType>
+    </column>
+    <key id="200" parent="25" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>ProductTypeId</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="201" parent="26" name="ProxyId">
+      <Position>1</Position>
+      <DataType>INT(10)|4</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="202" parent="26" name="ProxyName">
+      <Position>2</Position>
+      <DataType>VARCHAR(50)|12</DataType>
+    </column>
+    <column id="203" parent="26" name="ProxyPwd">
+      <Position>3</Position>
+      <DataType>VARCHAR(50)|12</DataType>
+    </column>
+    <column id="204" parent="26" name="ProxyAddr">
+      <Position>4</Position>
+      <DataType>VARCHAR(500)|12</DataType>
+    </column>
+    <column id="205" parent="26" name="ProxyPhone">
+      <Position>5</Position>
+      <DataType>VARCHAR(20)|12</DataType>
+    </column>
+    <column id="206" parent="26" name="ProxyZip">
+      <Position>6</Position>
+      <DataType>INT(10)|4</DataType>
+    </column>
+    <column id="207" parent="26" name="Proxy_A">
+      <Position>7</Position>
+      <DataType>VARCHAR(20)|12</DataType>
+    </column>
+    <column id="208" parent="26" name="Proxy_B">
+      <Position>8</Position>
+      <DataType>VARCHAR(20)|12</DataType>
+    </column>
+    <column id="209" parent="26" name="Proxy_C">
+      <Position>9</Position>
+      <DataType>VARCHAR(20)|12</DataType>
+    </column>
+    <key id="210" parent="26" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>ProxyId</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="211" parent="27" name="SecondViewId">
+      <Position>1</Position>
+      <DataType>INT(10)|4</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="212" parent="27" name="SecondViewAction">
+      <Position>2</Position>
+      <DataType>VARCHAR(50)|12</DataType>
+    </column>
+    <column id="213" parent="27" name="SecondViewDescribe">
+      <Position>3</Position>
+      <DataType>VARCHAR(50)|12</DataType>
+    </column>
+    <column id="214" parent="27" name="SecondView_A">
+      <Position>4</Position>
+      <DataType>VARCHAR(20)|12</DataType>
+    </column>
+    <column id="215" parent="27" name="SecondView_B">
+      <Position>5</Position>
+      <DataType>VARCHAR(20)|12</DataType>
+    </column>
+    <column id="216" parent="27" name="SecondView_C">
+      <Position>6</Position>
+      <DataType>VARCHAR(20)|12</DataType>
+    </column>
+    <key id="217" parent="27" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>SecondViewId</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="218" parent="28" name="ShopCarId">
+      <Position>1</Position>
+      <DataType>INT(10)|4</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="219" parent="28" name="UserId">
+      <Position>2</Position>
+      <DataType>INT(10)|4</DataType>
+    </column>
+    <column id="220" parent="28" name="ProductId">
+      <Position>3</Position>
+      <DataType>INT(10)|4</DataType>
+    </column>
+    <column id="221" parent="28" name="orderamount">
+      <Position>4</Position>
+      <DataType>INT(10)|4</DataType>
+    </column>
+    <column id="222" parent="28" name="Price">
+      <Position>5</Position>
+      <DataType>DOUBLE(10,2)|8</DataType>
+    </column>
+    <column id="223" parent="28" name="ShopCar_A">
+      <Position>6</Position>
+      <DataType>VARCHAR(20)|12</DataType>
+    </column>
+    <column id="224" parent="28" name="ShopCar_B">
+      <Position>7</Position>
+      <DataType>VARCHAR(20)|12</DataType>
+    </column>
+    <column id="225" parent="28" name="ShopCar_C">
+      <Position>8</Position>
+      <DataType>VARCHAR(20)|12</DataType>
+    </column>
+    <key id="226" parent="28" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>ShopCarId</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="227" parent="28" name="021">
+      <ColNames>UserId</ColNames>
+      <RefSchemaName>ssm</RefSchemaName>
+      <RefTableName>user</RefTableName>
+      <RefKeyName>PRIMARY</RefKeyName>
+      <RefColNames>UserId</RefColNames>
+      <OnUpdate>cascade</OnUpdate>
+      <OnDelete>cascade</OnDelete>
+    </foreign-key>
+    <foreign-key id="228" parent="28" name="022">
+      <ColNames>ProductId</ColNames>
+      <RefSchemaName>ssm</RefSchemaName>
+      <RefTableName>product</RefTableName>
+      <RefKeyName>PRIMARY</RefKeyName>
+      <RefColNames>ProductId</RefColNames>
+      <OnUpdate>cascade</OnUpdate>
+      <OnDelete>cascade</OnDelete>
+    </foreign-key>
+    <column id="229" parent="29" name="StockId">
+      <Position>1</Position>
+      <DataType>INT(10)|4</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="230" parent="29" name="ProductId">
+      <Position>2</Position>
+      <DataType>INT(10)|4</DataType>
+    </column>
+    <column id="231" parent="29" name="ColorId">
+      <Position>3</Position>
+      <DataType>INT(10)|4</DataType>
+    </column>
+    <column id="232" parent="29" name="Sizes">
+      <Position>4</Position>
+      <DataType>VARCHAR(50)|12</DataType>
+    </column>
+    <column id="233" parent="29" name="MarketPrice">
+      <Position>5</Position>
+      <DataType>DOUBLE(10,2)|8</DataType>
+    </column>
+    <column id="234" parent="29" name="Price">
+      <Position>6</Position>
+      <DataType>DOUBLE(10,2)|8</DataType>
+    </column>
+    <column id="235" parent="29" name="Stock">
+      <Position>7</Position>
+      <DataType>INT(10)|4</DataType>
+    </column>
+    <column id="236" parent="29" name="UpperLimit">
+      <Position>8</Position>
+      <DataType>INT(10)|4</DataType>
+    </column>
+    <column id="237" parent="29" name="CreateTime">
+      <Position>9</Position>
+      <DataType>DATETIME(19)|93</DataType>
+    </column>
+    <column id="238" parent="29" name="Stock_A">
+      <Position>10</Position>
+      <DataType>VARCHAR(20)|12</DataType>
+    </column>
+    <column id="239" parent="29" name="Stock_B">
+      <Position>11</Position>
+      <DataType>VARCHAR(20)|12</DataType>
+    </column>
+    <column id="240" parent="29" name="Stock_C">
+      <Position>12</Position>
+      <DataType>VARCHAR(20)|12</DataType>
+    </column>
+    <key id="241" parent="29" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>StockId</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="242" parent="29" name="041">
+      <ColNames>ProductId</ColNames>
+      <RefSchemaName>ssm</RefSchemaName>
+      <RefTableName>product</RefTableName>
+      <RefKeyName>PRIMARY</RefKeyName>
+      <RefColNames>ProductId</RefColNames>
+      <OnUpdate>cascade</OnUpdate>
+      <OnDelete>cascade</OnDelete>
+    </foreign-key>
+    <foreign-key id="243" parent="29" name="042">
+      <ColNames>ColorId</ColNames>
+      <RefSchemaName>ssm</RefSchemaName>
+      <RefTableName>color</RefTableName>
+      <RefKeyName>PRIMARY</RefKeyName>
+      <RefColNames>ColorId</RefColNames>
+      <OnUpdate>cascade</OnUpdate>
+      <OnDelete>cascade</OnDelete>
+    </foreign-key>
+    <column id="244" parent="30" name="TransportId">
+      <Position>1</Position>
+      <DataType>INT(10)|4</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="245" parent="30" name="TransportName">
+      <Position>2</Position>
+      <DataType>VARCHAR(50)|12</DataType>
+    </column>
+    <column id="246" parent="30" name="TransportImg">
+      <Position>3</Position>
+      <DataType>VARCHAR(50)|12</DataType>
+    </column>
+    <column id="247" parent="30" name="Transport_A">
+      <Position>4</Position>
+      <DataType>VARCHAR(20)|12</DataType>
+    </column>
+    <column id="248" parent="30" name="Transport_B">
+      <Position>5</Position>
+      <DataType>VARCHAR(20)|12</DataType>
+    </column>
+    <column id="249" parent="30" name="Transport_C">
+      <Position>6</Position>
+      <DataType>VARCHAR(20)|12</DataType>
+    </column>
+    <key id="250" parent="30" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>TransportId</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="251" parent="31" name="UserId">
+      <Position>1</Position>
+      <DataType>INT(10)|4</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="252" parent="31" name="UserName">
+      <Position>2</Position>
+      <DataType>VARCHAR(50)|12</DataType>
+    </column>
+    <column id="253" parent="31" name="UserPwd">
+      <Position>3</Position>
+      <DataType>VARCHAR(50)|12</DataType>
+    </column>
+    <column id="254" parent="31" name="UserSex">
+      <Position>4</Position>
+      <DataType>VARCHAR(10)|12</DataType>
+    </column>
+    <column id="255" parent="31" name="UserRealName">
+      <Position>5</Position>
+      <DataType>VARCHAR(50)|12</DataType>
+    </column>
+    <column id="256" parent="31" name="UserPhone">
+      <Position>6</Position>
+      <DataType>VARCHAR(50)|12</DataType>
+    </column>
+    <column id="257" parent="31" name="UserBirthday">
+      <Position>7</Position>
+      <DataType>DATE(10)|91</DataType>
+    </column>
+    <column id="258" parent="31" name="UserAddress">
+      <Position>8</Position>
+      <DataType>VARCHAR(500)|12</DataType>
+    </column>
+    <column id="259" parent="31" name="UserEmail">
+      <Position>9</Position>
+      <DataType>VARCHAR(50)|12</DataType>
+    </column>
+    <column id="260" parent="31" name="CreditsCore">
+      <Position>10</Position>
+      <DataType>INT(10)|4</DataType>
+    </column>
+    <column id="261" parent="31" name="UserInputDate">
+      <Position>11</Position>
+      <DataType>DATE(10)|91</DataType>
+    </column>
+    <column id="262" parent="31" name="UserZip">
+      <Position>12</Position>
+      <DataType>INT(10)|4</DataType>
+    </column>
+    <column id="263" parent="31" name="UserLoginCount">
+      <Position>13</Position>
+      <DataType>INT(10)|4</DataType>
+    </column>
+    <column id="264" parent="31" name="UserLoginTime">
+      <Position>14</Position>
+      <DataType>DATETIME(19)|93</DataType>
+    </column>
+    <column id="265" parent="31" name="User_A">
+      <Position>15</Position>
+      <DataType>VARCHAR(20)|12</DataType>
+    </column>
+    <column id="266" parent="31" name="User_B">
+      <Position>16</Position>
+      <DataType>VARCHAR(20)|12</DataType>
+    </column>
+    <column id="267" parent="31" name="User_C">
+      <Position>17</Position>
+      <DataType>VARCHAR(20)|12</DataType>
+    </column>
+    <key id="268" parent="31" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>UserId</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="269" parent="32" name="UserLogId">
+      <Position>1</Position>
+      <DataType>INT(10)|4</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="270" parent="32" name="UserId">
+      <Position>2</Position>
+      <DataType>INT(10)|4</DataType>
+    </column>
+    <column id="271" parent="32" name="StartLoginTime">
+      <Position>3</Position>
+      <DataType>DATETIME(19)|93</DataType>
+    </column>
+    <column id="272" parent="32" name="EndLoginTime">
+      <Position>4</Position>
+      <DataType>DATETIME(19)|93</DataType>
+    </column>
+    <column id="273" parent="32" name="UserIp">
+      <Position>5</Position>
+      <DataType>VARCHAR(50)|12</DataType>
+    </column>
+    <column id="274" parent="32" name="UserLog_A">
+      <Position>6</Position>
+      <DataType>VARCHAR(20)|12</DataType>
+    </column>
+    <column id="275" parent="32" name="UserLog_B">
+      <Position>7</Position>
+      <DataType>VARCHAR(20)|12</DataType>
+    </column>
+    <column id="276" parent="32" name="UserLog_C">
+      <Position>8</Position>
+      <DataType>VARCHAR(20)|12</DataType>
+    </column>
+    <key id="277" parent="32" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>UserLogId</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="278" parent="32" name="050">
+      <ColNames>UserId</ColNames>
+      <RefSchemaName>ssm</RefSchemaName>
+      <RefTableName>user</RefTableName>
+      <RefKeyName>PRIMARY</RefKeyName>
+      <RefColNames>UserId</RefColNames>
+      <OnUpdate>cascade</OnUpdate>
+      <OnDelete>cascade</OnDelete>
+    </foreign-key>
+  </database-model>
+</dataSource>

@@ -5,150 +5,77 @@
   Time: 16:40
   To change this template use File | Settings | File Templates.
 --%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="renderer" content="webkit|ie-comp|ie-stand">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta http-equiv="Cache-Control" content="no-siteapp" />
-        <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
-        <link rel="stylesheet" href="css/style.css"/>       
-        <link href="assets/css/codemirror.css" rel="stylesheet">
-        <link rel="stylesheet" href="assets/css/ace.min.css" />
-        <link rel="stylesheet" href="font/css/font-awesome.min.css" />
+        <link href="/jsp/admin/assets/css/bootstrap.min.css" rel="stylesheet" />
+        <link rel="stylesheet" href="/jsp/admin/css/style.css"/>
+        <link href="/jsp/admin/assets/css/codemirror.css" rel="stylesheet">
+        <link rel="stylesheet" href="/jsp/admin/assets/css/ace.min.css" />
+        <link rel="stylesheet" href="/jsp/admin/font/css/font-awesome.min.css" />
         <!--[if lte IE 8]>
-		  <link rel="stylesheet" href="assets/css/ace-ie.min.css" />
+		  <link rel="stylesheet" href="/jsp/admin/assets/css/ace-ie.min.css" />
 		<![endif]-->
-		<script src="js/jquery-1.9.1.min.js"></script>
-        <script src="assets/js/bootstrap.min.js"></script>
-		<script src="assets/js/typeahead-bs2.min.js"></script>           	
-		<script src="assets/js/jquery.dataTables.min.js"></script>
-		<script src="assets/js/jquery.dataTables.bootstrap.js"></script>
-        <script src="assets/layer/layer.js" type="text/javascript" ></script>          
-        <script src="assets/laydate/laydate.js" type="text/javascript"></script>
-        <script src="js/dragDivResize.js" type="text/javascript"></script>
-<title>添加权限</title>
+		<script src="/jsp/admin/js/jquery-1.9.1.min.js"></script>
+        <script src="/jsp/admin/assets/js/bootstrap.min.js"></script>
+		<script src="/jsp/admin/assets/js/typeahead-bs2.min.js"></script>
+		<script src="/jsp/admin/assets/js/jquery.dataTables.min.js"></script>
+		<script src="/jsp/admin/assets/js/jquery.dataTables.bootstrap.js"></script>
+        <script src="/jsp/admin/assets/layer/layer.js" type="text/javascript" ></script>
+        <script src="/jsp/admin/assets/laydate/laydate.js" type="text/javascript"></script>
+        <script src="/jsp/admin/js/dragDivResize.js" type="text/javascript"></script>
+<title>添加角色</title>
 </head>
-
 <body>
-<div class="Competence_add_style clearfix">
-  <div class="left_Competence_add">
-   <div class="title_name">添加权限</div>
-    <div class="Competence_add">
-     <div class="form-group"><label class="col-sm-2 control-label no-padding-right" for="form-field-1"> 权限名称 </label>
-       <div class="col-sm-9"><input type="text" id="form-field-1" placeholder=""  name="权限名称" class="col-xs-10 col-sm-5"></div>
+	<c:if test="${empty firstviewList}">
+		<jsp:forward page="/getFirstview.action"/>
+	</c:if>
+	<style type="text/css">
+		#role{
+			width: 500px;
+			height:100%;
+			margin: 50px auto;
+		}
+	</style>
+	<div id="role">
+		 <form  name="itemsForm" action="${pageContext.request.contextPath }/addRloeAndView.action" method="post">
+			 <div class="Competence_add">
+				 <div class="form-group">
+					 <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> 角色名称 </label>
+					 <div class="col-sm-9">
+						 <input type="text" name="admingroupname" id="form-field-1" placeholder="" class="col-xs-10 col-sm-5">
+					 </div>
+				 </div>
+				 <div class="form-group">
+					 <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> 角色描述 </label>
+					 <div class="col-sm-9">
+						 <textarea name="admingroupdescription" class="form-control" id="form_textarea" placeholder="" onkeyup="checkLength(this);"></textarea>
+						 <span class="wordage">剩余字数：<span id="sy" style="color:Red;">200</span>字</span>
+					 </div>
+				 </div>
+				 <div class="form-group">
+					 <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> 权限分配 </label>
+					 <div class="col-sm-9">
+						 <c:forEach items="${firstviewList}" var="firstview" varStatus="status">
+							 <%--<label class="middle"><input class="flag_${status.index}" name="firstViewAction[${status.index}]" readonly="readonly" type="checkbox"  value="${firstview.firstviewaction}"></label>--%>
+							 <label class="middle"><input type="checkbox" name="firstViewAction[${status.index}]" value="${firstview.firstviewaction}" class="ace"><span class="lbl">${firstview.firstviewdescription}</span></label>
+						 </c:forEach>
+					 </div>
+				 </div>
+		<!--按钮操作-->
+				 <div class="Button_operation">
+					 <input class="btn btn-primary radius submitadmin" type="submit" value="保存并提交" />
+				 </div>
+			 </div>
+		 </form>
 	</div>
-     <div class="form-group"><label class="col-sm-2 control-label no-padding-right" for="form-field-1"> 权限描述 </label>
-      <div class="col-sm-9"><textarea name="权限描述" class="form-control" id="form_textarea" placeholder="" onkeyup="checkLength(this);"></textarea><span class="wordage">剩余字数：<span id="sy" style="color:Red;">200</span>字</span></div>
-	</div>
-   <!--按钮操作-->
-   <div class="Button_operation">
-				<button onclick="article_save_submit();" class="btn btn-primary radius submitadmin" type="submit"><i class="fa fa-save "></i> 保存并提交</button>
-			</div>
-   </div>
-   </div>
-   <!--权限分配-->
-   <div class="Assign_style">
-      <div class="title_name">权限分配</div>
-      <div class="Select_Competence">
-      <dl class="permission-list">
-		<dt><label class="middle"><input name="user-Character-0" class="ace" type="checkbox"><span class="lbl">用户管理</span></label></dt>
-		<dd>
-		 <dl class="cl permission-list2">
-		 <dt><label class="middle"><input type="checkbox" value="" class="ace"  name="user-Character-0-0"><span class="lbl">用户信息</span></label></dt>
-         <dd>
-		   <label class="middle"><input type="checkbox" value="" class="ace" name="user-Character-0-0-0"><span class="lbl">添加</span></label>
-		   <label class="middle"><input type="checkbox" value="" class="ace" name="user-Character-0-0-0"><span class="lbl">修改</span></label>
-		   <label class="middle"><input type="checkbox" value="" class="ace" name="user-Character-0-0-0"><span class="lbl">删除</span></label>
-		   <label class="middle"><input type="checkbox" value="" class="ace" name="user-Character-0-0-0"><span class="lbl">查看</span></label>
-		</dd>
-		</dl>
-		</dd>
-	    </dl>
-        <!--消息管理-->
-         <dl class="permission-list">
-		<dt><label class="middle"><input name="user-Character-0" class="ace" type="checkbox"><span class="lbl">消息管理</span></label></dt>
-		<dd>
-		 <dl class="cl permission-list2">
-		 <dt><label class="middle"><input type="checkbox" value="" class="ace"  name="user-Character-0-0"><span class="lbl">消息回复</span></label></dt>
-         <dd>
-		   <label class="middle"><input type="checkbox" value="" class="ace" name="user-Character-0-0-0"><span class="lbl">查看</span></label>
-		   <label class="middle"><input type="checkbox" value="" class="ace" name="user-Character-0-0-0" ><span class="lbl">回复</span></label>
-
-		</dd>
-		</dl>
-	     <dl class="cl permission-list2">
-		  <dt><label class="middle"><input type="checkbox" value="" class="ace"  name="user-Character-0-1"> <span class="lbl">评论回复</span></label></dt>
-		  <dd>
-		   <label class="middle"><input type="checkbox" value="" class="ace" name="user-Character-0-0-0"><span class="lbl">查看</span></label>
-		   <label class="middle"><input type="checkbox" value="" class="ace" name="user-Character-0-0-0"><span class="lbl">回复</span></label>
-		 </dd>
-		</dl>
-        </dd>
-	    </dl>
-        <!--商品管理-->
-        <dl class="permission-list">
-		<dt><label class="middle"><input name="user-Character-0" class="ace" type="checkbox"><span class="lbl">商品管理</span></label></dt>
-		<dd>
-		 <dl class="cl permission-list2">
-		 <dt><label class="middle"><input type="checkbox" value="" class="ace"  name="user-Character-0-0"><span class="lbl">商品分类</span></label></dt>
-         <dd>
-		   <label class="middle"><input type="checkbox" value="" class="ace" name="user-Character-0-0-0" ><span class="lbl">添加</span></label>
-		   <label class="middle"><input type="checkbox" value="" class="ace" name="user-Character-0-0-0"><span class="lbl">修改</span></label>
-		   <label class="middle"><input type="checkbox" value="" class="ace" name="user-Character-0-0-0" ><span class="lbl">删除</span></label>
-		   <label class="middle"><input type="checkbox" value="" class="ace" name="user-Character-0-0-0"><span class="lbl">查看</span></label>
-		</dd>
-		</dl>
-	     <dl class="cl permission-list2">
-		  <dt><label class="middle"><input type="checkbox" value="" class="ace"  name="user-Character-0-1"> <span class="lbl">商品列表</span></label></dt>
-		  <dd>
-		   <label class="middle"><input type="checkbox" value="" class="ace" name="user-Character-0-0-0"><span class="lbl">添加</span></label>
-		   <label class="middle"><input type="checkbox" value="" class="ace" name="user-Character-0-0-0"><span class="lbl">修改</span></label>
-		   <label class="middle"><input type="checkbox" value="" class="ace" name="user-Character-0-0-0" ><span class="lbl">删除</span></label>
-		   <label class="middle"><input type="checkbox" value="" class="ace" name="user-Character-0-0-0" ><span class="lbl">查看</span></label>
-		 </dd>
-        </dd>
-		</dl>
-
-          <!--订单管理-->
-        <dl class="permission-list">
-		<dt><label class="middle"><input name="user-Character-0" class="ace" type="checkbox" ><span class="lbl">订单管理</span></label></dt>
-		<dd>
-		 <dl class="cl permission-list2">
-		 <dt><label class="middle"><input type="checkbox" value="" class="ace"  name="user-Character-0-0" ><span class="lbl">用户订单</span></label></dt>
-         <dd>
-		   <label class="middle"><input type="checkbox" value="" class="ace" name="user-Character-0-0-0"><span class="lbl">添加</span></label>
-		   <label class="middle"><input type="checkbox" value="" class="ace" name="user-Character-0-0-0" ><span class="lbl">修改</span></label>
-		   <label class="middle"><input type="checkbox" value="" class="ace" name="user-Character-0-0-0" ><span class="lbl">删除</span></label>
-		   <label class="middle"><input type="checkbox" value="" class="ace" name="user-Character-0-0-0" ><span class="lbl">查看</span></label>
-		</dd>
-		</dl>
-	     <dl class="cl permission-list2">
-		  <dt><label class="middle"><input type="checkbox" value="" class="ace"  name="user-Character-0-1" > <span class="lbl">订单详情</span></label></dt>
-		  <dd>
-		   <label class="middle"><input type="checkbox" value="" class="ace" name="user-Character-0-0-0" ><span class="lbl">添加</span></label>
-		   <label class="middle"><input type="checkbox" value="" class="ace" name="user-Character-0-0-0" ><span class="lbl">修改</span></label>
-		   <label class="middle"><input type="checkbox" value="" class="ace" name="user-Character-0-0-0" ><span class="lbl">删除</span></label>
-		   <label class="middle"><input type="checkbox" value="" class="ace" name="user-Character-0-0-0" ><span class="lbl">查看</span></label>
-		 </dd>
-		</dl>
-			<dl class="cl permission-list2">
-		  <dt><label class="middle"><input type="checkbox" value="" class="ace"  name="user-Character-0-1"> <span class="lbl">退货订单</span></label></dt>
-		  <dd>
-		   <label class="middle"><input type="checkbox" value="" class="ace" name="user-Character-0-0-0"><span class="lbl">添加</span></label>
-		   <label class="middle"><input type="checkbox" value="" class="ace" name="user-Character-0-0-0"><span class="lbl">修改</span></label>
-		   <label class="middle"><input type="checkbox" value="" class="ace" name="user-Character-0-0-0"><span class="lbl">删除</span></label>
-		   <label class="middle"><input type="checkbox" value="" class="ace" name="user-Character-0-0-0"><span class="lbl">查看</span></label>
-		 </dd>
-		</dl>
-        </dd>
-		</dl>
-		</dd>
-		</dl>
-	  </div>
-  </div>
-</div>
 </body>
 </html>
 <script type="text/javascript">
@@ -181,28 +108,5 @@ function checkLength(which) {
 		return true;
 	}
 };
-/*按钮选择*/
-$(function(){
-	$(".permission-list dt input:checkbox").click(function(){
-		$(this).closest("dl").find("dd input:checkbox").prop("checked",$(this).prop("checked"));
-	});
-	$(".permission-list2 dd input:checkbox").click(function(){
-		var l =$(this).parent().parent().find("input:checked").length;
-		var l2=$(this).parents(".permission-list").find(".permission-list2 dd").find("input:checked").length;
-		if($(this).prop("checked")){
-			$(this).closest("dl").find("dt input:checkbox").prop("checked",true);
-			$(this).parents(".permission-list").find("dt").first().find("input:checkbox").prop("checked",true);
-		}
-		else{
-			if(l==0){
-				$(this).closest("dl").find("dt input:checkbox").prop("checked",false);
-			}
-			if(l2==0){
-				$(this).parents(".permission-list").find("dt").first().find("input:checkbox").prop("checked",false);
-			}
-		}
-		
-	});
-});
 
 </script>

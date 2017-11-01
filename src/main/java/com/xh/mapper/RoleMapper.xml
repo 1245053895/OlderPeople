@@ -17,4 +17,31 @@
         DELETE FROM admingroup WHERE AdminGroupId=#{AdminGroupId}
     </delete>
 
+    <select id="selectAllFirstview" resultType="firstview">
+        SELECT FirstViewAction,firstviewdescription FROM firstview GROUP BY firstviewdescription;
+    </select>
+
+    <select id="selectRloeIdByName" parameterType="string" resultType="integer">
+        SELECT AdminGroupId FROM admingroup WHERE AdminGroupName=#{admingroupname}
+    </select>
+
+    <insert id="insertRole" parameterType="adminRoleCustom">
+        INSERT INTO admingroup(AdminGroupName,AdminGroupDescription)
+            VALUES (#{admingroupname},#{admingroupdescription})
+    </insert>
+
+    <insert id="
+" parameterType="adminRoleCustom">
+        INSERT into admingroupfirstview
+        (FirstViewAction, AdminGroupId)
+        values
+        <foreach collection ="firstViewAction" item="firstView" index= "index" separator =",">
+            (
+            #{firstView},
+            #{admingroupid}
+            )
+        </foreach >
+    </insert>
+
+
 </mapper>

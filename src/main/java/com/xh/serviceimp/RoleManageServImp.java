@@ -7,6 +7,7 @@ import com.xh.po.AdminRoleCustom;
 import com.xh.po.Firstview;
 import com.xh.service.RoleManageServ;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -35,5 +36,23 @@ public class RoleManageServImp implements RoleManageServ {
         roleMapper.deleteRoleById(id);
     }
 
+
+    public List<Firstview> selectAllFirstview() {
+        List<Firstview> firstviewList =roleMapper.selectAllFirstview();
+        return firstviewList;
+    }
+
+    public void insertRloe(AdminRoleCustom adminRoleCustom) {
+        roleMapper.insertRole(adminRoleCustom);
+    }
+
+    public Integer selectRloeIdByName(String admingroupname) {
+        Integer rloe = roleMapper.selectRloeIdByName(admingroupname);
+        return rloe;
+    }
+
+    public void insertRloeAndFirstView(AdminRoleCustom adminRoleCustom) {
+        roleMapper.insertRloeAndFirstView(adminRoleCustom);
+    }
 
 }

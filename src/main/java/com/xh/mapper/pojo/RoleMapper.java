@@ -1,5 +1,7 @@
-package com.xh.mapper;
+package com.xh.mapper.pojo;
 import com.xh.po.*;
+import com.xh.po.vo.AdminRole;
+import com.xh.po.vo.AdminRoleCustom;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

@@ -1,4 +1,6 @@
-package com.xh.po;
+package com.xh.po.vo;
+
+import com.xh.po.Admingroup;
 
 import java.util.List;
 

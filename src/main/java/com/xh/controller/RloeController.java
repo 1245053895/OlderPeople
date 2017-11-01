@@ -1,13 +1,12 @@
 package com.xh.controller;
 
 
-import com.xh.po.AdminRole;
+import com.xh.po.vo.AdminRole;
 import com.xh.po.Admingroup;
-import com.xh.po.AdminRoleCustom;
+import com.xh.po.vo.AdminRoleCustom;
 import com.xh.po.Firstview;
 import com.xh.service.RoleManageServ;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;

@@ -1,12 +1,10 @@
 package com.xh.service;
 
 
-import com.xh.po.AdminRole;
+import com.xh.po.vo.AdminRole;
 import com.xh.po.Admingroup;
-import org.springframework.stereotype.Component;
-import com.xh.po.AdminRoleCustom;
+import com.xh.po.vo.AdminRoleCustom;
 import com.xh.po.Firstview;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 

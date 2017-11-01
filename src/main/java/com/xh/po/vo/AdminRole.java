@@ -1,4 +1,6 @@
-package com.xh.po;
+package com.xh.po.vo;
+
+import com.xh.po.Admin;
 
 /**
  * Created by KAIRUN on 2017/10/30.

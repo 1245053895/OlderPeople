@@ -6349,6 +6349,7 @@ input[type=checkbox].ace+.lbl,input[type=radio].ace+.lbl
   z-index: 11;
   display: inline-block;
   margin: 0;
+  margin-left: 1;
   line-height: 20px;
   min-height: 18px;
   min-width: 18px;

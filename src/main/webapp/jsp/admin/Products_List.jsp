@@ -60,18 +60,19 @@
      <!--产品列表展示-->
      <div class="h_products_list clearfix" id="products_list">
        <div id="scrollsidebar" class="left_Treeview">
-        <div class="show_btn" id="rightArrow"><span></span></div>
+        <div class="show_btn" id="rightArrow"></div>
         <div class="widget-box side_content" >
-         <div class="side_title"><a title="隐藏" class="close_btn"><span></span></a></div>
-         <div class="side_list"><div class="widget-header header-color-green2"><h4 class="lighter smaller">商品类型列表</h4></div>
-         <div class="widget-body">
-          <div class="widget-main padding-8"><div id="treeDemo" class="ztree"></div></div>
-        </div>
-       </div>
-      </div>  
+            <div class="side_title"><a title="隐藏" class="close_btn"><span></span></a></div>
+                <div class="side_list"><div class="widget-header header-color-green2"><h4 class="lighter smaller">商品类型列表</h4></div>
+             <div class="widget-body">
+              <div class="widget-main padding-8"><div id="treeDemo" class="ztree"></div></div>
+              </div>
+           </div>
+      </div>
      </div>
          <div class="table_menu_list" id="testIframe">
-       <table class="table table-striped table-bordered table-hover" id="sample-table">
+            <table class="table table-striped table-bordered table-hover" id="sample-table">
+
 		<thead>
         <tr>
             <th width="25px"><label><input type="checkbox" class="ace"><span class="lbl"></span></label></th>
@@ -375,7 +376,7 @@ jQuery(function($) {
     elem: '#start',
     event: 'focus' 
 });
-$(function() { 
+$(function() {
 	$("#products_style").fix({
 		float : 'left',
 		//minStatue : true,

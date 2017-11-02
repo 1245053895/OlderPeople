@@ -55,7 +55,9 @@
 				<th width="100">用户名</th>
 				<th width="80">积分</th>
 				<th width="120">浏览(条)</th>
-                <th width="120">购物(比)</th>
+                <th width="120">购买率</th>
+                <th width="120">登录总次数</th>
+                <th width="120">最新登录时间</th>
 				<th width="250">操作</th>
 			</tr>
 		</thead>
@@ -67,6 +69,8 @@
         <td><a href="javascript:ovid()" onclick="integration_history('23')">3434</a></td>
         <td><a href="javascript:ovid()" onclick="Browse_history('13')">3434</a></td>
         <td><a href="javascript:ovid()" onclick="Order_history('33')">34</a></td>
+        <td><a href="javascript:ovid()">20</a></td>
+        <td><a href="javascript:ovid()">2017.01.01</a></td>
         <td> <a title="删除" href="javascript:;"  onclick="member_del(this,'1')" class="btn btn-xs btn-warning" ><i class="fa fa-trash  bigger-120"></i></a></td>
         </tr>
        <tr>
@@ -76,6 +80,8 @@
         <td><a href="javascript:ovid()" onclick="integration_history('43')">45</a></td>
         <td><a href="javascript:ovid()" onclick="Browse_history('53')">11</a></td>
         <td><a href="javascript:ovid()" onclick="Order_history('23')">45</a></td>
+           <td><a href="javascript:ovid()">20</a></td>
+           <td><a href="javascript:ovid()">2017.01.01</a></td>
         <td> <a title="删除" href="javascript:;"  onclick="member_del(this,'2')" class="btn btn-xs btn-warning" ><i class="fa fa-trash  bigger-120"></i></a></td>
         </tr>
         <tr>
@@ -85,6 +91,8 @@
         <td><a href="javascript:ovid()" onclick="integration_history('5')">45</a></td>
         <td><a href="javascript:ovid()" onclick="Browse_history('4')">11</a></td>
         <td><a href="javascript:ovid()" onclick="Order_history('5')">45</a></td>
+            <td><a href="javascript:ovid()">20</a></td>
+            <td><a href="javascript:ovid()">2017.01.01</a></td>
         <td> <a title="删除" href="javascript:;"  onclick="member_del(this,'3')" class="btn btn-xs btn-warning" ><i class="fa fa-trash  bigger-120"></i></a></td>
         </tr>
         <tr>
@@ -94,6 +102,8 @@
         <td><a href="javascript:ovid()" onclick="integration_history('5')">245</a></td>
         <td><a href="javascript:ovid()" onclick="Browse_history('4')">131</a></td>
         <td><a href="javascript:ovid()" onclick="Order_history('7')">45</a></td>
+            <td><a href="javascript:ovid()">20</a></td>
+            <td><a href="javascript:ovid()">2017.01.01</a></td>
         <td> <a title="删除" href="javascript:;"  onclick="member_del(this,'5')" class="btn btn-xs btn-warning" ><i class="fa fa-trash  bigger-120"></i></a></td>
         </tr>
         </tbody>    
@@ -107,7 +117,7 @@
  <table class="table table-striped table-bordered table-hover" id="integration_history_list" width="100%">
      <thead>
 		 <tr>
-				<th width="80">用户</th>
+				<th width="80">用户名</th>
 				<th width="100">产品名称</th>
 				<th width="80">价格(元)</th>
 				<th width="120">积分</th>   
@@ -299,7 +309,7 @@
      <thead>
 		 <tr>
 				<th width="80">用户</th>
-				<th width="100">订单号</th>
+				<th width="100">订单ID</th>
 				<th width="80">数量</th>
 				<th width="120">交易状态</th>   
                 <th width="120">交易时间</th>              

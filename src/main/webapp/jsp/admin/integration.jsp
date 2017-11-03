@@ -45,7 +45,7 @@
     </div>
     <div class="border clearfix">
        <span class="l_f">
-        <a href="javascript:ovid()" class="btn btn-danger"><i class="fa fa-trash"></i>&nbsp;批量删除</a>
+        <a href="javascript:void(0)" class="btn btn-danger"><i class="fa fa-trash"></i>&nbsp;批量删除</a>
        </span>
        <span class="r_f">共：<b>2345</b>条</span>
      </div>
@@ -70,15 +70,13 @@
                 <td><label><input type="checkbox" class="ace"><span class="lbl"></span></label></td>
                 <td>${log.userid}</td>
                 <td>${log.username}</td>
-                <td><a href="javascript:ovid()" onclick="integration_history('23')">${log.creditscore}</a></td>
-                <td><a href="javascript:ovid()" onclick="Browse_history('13')"><fmt:formatDate value="${log.userlogintime}" pattern="yyyy-MM-dd HH:mm:ss"/></a></td>
-                <td><a href="javascript:ovid()" onclick="Browse_history('13')">${log.browseCount}</a></td>
-                <td><a href="javascript:ovid()" onclick="Order_history('33')">${log.ratio}</a></td>
-                <td> <a title="删除" href="javascript:;"  onclick="member_del(this,'1')" class="btn btn-xs btn-warning" ><i class="fa fa-trash  bigger-120"></i></a></td>
+                <td><a href="javascript:void(0)" onclick="integration_history('${log.userid}')">${log.creditscore}</a></td>
+                <td><a href="javascript:void(0)" onclick="Browse_history('${log.userid}')"><fmt:formatDate value="${log.userlogintime}" pattern="yyyy-MM-dd HH:mm:ss"/></a></td>
+                <td><a href="javascript:void(0)" onclick="Browse_history('${log.userid}')">${log.browseCount}</a></td>
+                <td><a href="javascript:void(0)" onclick="integration_history('${log.userid}')">${log.ratio}</a></td>
+                <td> <a title="删除" href="javascript:;"  onclick="member_del(this,'${log.userid}')" class="btn btn-xs btn-warning" ><i class="fa fa-trash  bigger-120"></i></a></td>
             </tr>
         </c:forEach>
-
-
     </tbody>
  </table>
  </div>
@@ -87,238 +85,42 @@
 </div>
 <!--积分-->
 <div id="integration_history" style="display:none; padding:10px;">
- <table class="table table-striped table-bordered table-hover" id="integration_history_list" width="100%">
+   <table class="table table-striped table-bordered table-hover" id="integration_history_list" width="100%">
      <thead>
-		 <tr>
-				<th width="80">用户</th>
-				<th width="100">产品名称</th>
-				<th width="80">价格(元)</th>
-				<th width="120">积分</th>   
-                <th width="120">获得时间</th>              
-			</tr>
-		</thead>
-	<tbody>
-		<tr>
-        <td>花海天天</td>
-        <td><a href="#">荣耀7i 海岛蓝 移动4G手机 双卡双待 </a></td>
-        <td>2565</td>
-        <td>1234</td>
-        <td>2016-7-12 12:23:34</td>
-        </tr>
-        <tr>
-        <td>花海天天</td>
-        <td><a href="#">荣耀7i 海岛蓝 移动4G手机 双卡双待 </a></td>
-        <td>2565</td>
-        <td>1234</td>
-        <td>2016-7-12 12:23:34</td>
-        </tr>
-        <tr>
-        <td>花海天天</td>
-        <td><a href="#">荣耀7i 海岛蓝 移动4G手机 双卡双待 </a></td>
-        <td>2565</td>
-        <td>1234</td>
-        <td>2016-7-12 12:23:34</td>
-        </tr>
-        <tr>
-        <td>花海天天</td>
-        <td><a href="#">荣耀7i 海岛蓝 移动4G手机 双卡双待 </a></td>
-        <td>2565</td>
-        <td>1234</td>
-        <td>2016-7-12 12:23:34</td>
-        </tr>
-        <tr>
-        <td>花海天天</td>
-        <td><a href="#">荣耀7i 海岛蓝 移动4G手机 双卡双待 </a></td>
-        <td>2565</td>
-        <td>1234</td>
-        <td>2016-7-12 12:23:34</td>
-        </tr>
-        <tr>
-        <td>花海天天</td>
-        <td><a href="#">荣耀7i 海岛蓝 移动4G手机 双卡双待 </a></td>
-        <td>2565</td>
-        <td>1234</td>
-        <td>2016-7-12 12:23:34</td>
-        </tr>
-        <tr>
-        <td>花海天天</td>
-        <td><a href="#">华为 畅享5S 金色 移动联通电信4G手机 </a></td>
-        <td>2565</td>
-        <td>1234</td>
-        <td>2016-7-12 12:23:34</td>
-        </tr>
-        <tr>
-        <td>花海天天</td>
-        <td><a href="#">荣耀7i 海岛蓝 移动4G手机 双卡双待 </a></td>
-        <td>345</td>
-        <td>232</td>
-        <td>2016-7-12 12:23:34</td>
-        </tr>
-        <tr>
-        <td>花海天天</td>
-        <td><a href="#">乐视（Le）乐2Pro 32GB 金色 移动联通</a></td>
-        <td>4566</td>
-        <td>3455</td>
-        <td>2016-7-12 12:23:34</td>
-        </tr>
-        <tr>
-        <td>花海天天</td>
-        <td><a href="#">华为 P9 plus 64GB 琥珀金 移动联通电信卡双待 </a></td>
-        <td>231</td>
-        <td>11</td>
-        <td>2016-7-12 12:23:34</td>
-        </tr>
-        <tr>
-        <td>花海天天</td>
-        <td><a href="#">华为 P9 plus 64GB 琥珀金 移动联通电信 </a></td>
-        <td>23</td>
-        <td>12</td>
-        <td>2016-7-12 12:23:34</td>
-        </tr>
-        </tbody>    
-     </table>     
-
+         <tr>
+             <th width="80">用户</th>
+             <th width="100">购买产品</th>
+             <th width="80">总价格(元)</th>
+             <th width="120">积分</th>
+             <th width="120">获得时间</th>
+         </tr>
+     </thead>
+     <tbody id="credits">
+         <tr>
+             <td></td>
+         </tr>
+     </tbody>
+   </table>
 </div>
 <!--浏览记录-->
 <div id="Browse_history" style="display:none; padding:10px">
 <table class="table table-striped table-bordered table-hover" id="Browse_history_list" width="100%">
      <thead>
 		 <tr>
-				<th width="80">用户</th>
-				<th width="100">产品名称</th>
-				<th width="80">价格(元)</th>
-				<th width="120">浏览次数</th>   
-                <th width="120">最新时间</th>              
+				<th width="80">用户名</th>
+				<th width="100">开始登录时间</th>
+				<th width="80">结束登录时间</th>
+				<th width="120">用户IP</th>
 			</tr>
 		</thead>
-	<tbody>
+	<tbody id="log">
 		<tr>
-        <td>花海天天</td>
-        <td><a href="#">荣耀7i 海岛蓝 移动4G手机 双卡双待 </a></td>
-        <td>2565</td>
-        <td>1234</td>
-        <td>2016-7-12 12:23:34</td>
-        </tr>
-        <tr>
-        <td>花海天天</td>
-        <td><a href="#">荣耀7i 海岛蓝 移动4G手机 双卡双待 </a></td>
-        <td>2565</td>
-        <td>1234</td>
-        <td>2016-7-12 12:23:34</td>
-        </tr>
-        <tr>
-        <td>花海天天</td>
-        <td><a href="#">荣耀7i 海岛蓝 移动4G手机 双卡双待 </a></td>
-        <td>2565</td>
-        <td>1234</td>
-        <td>2016-7-12 12:23:34</td>
-        </tr>
-        <tr>
-        <td>花海天天</td>
-        <td><a href="#">荣耀7i 海岛蓝 移动4G手机 双卡双待 </a></td>
-        <td>2565</td>
-        <td>1234</td>
-        <td>2016-7-12 12:23:34</td>
-        </tr>
-        <tr>
-        <td>花海天天</td>
-        <td><a href="#">荣耀7i 海岛蓝 移动4G手机 双卡双待 </a></td>
-        <td>2565</td>
-        <td>1234</td>
-        <td>2016-7-12 12:23:34</td>
-        </tr>
-        <tr>
-        <td>花海天天</td>
-        <td><a href="#">荣耀7i 海岛蓝 移动4G手机 双卡双待 </a></td>
-        <td>2565</td>
-        <td>1234</td>
-        <td>2016-7-12 12:23:34</td>
-        </tr>
-        <tr>
-        <td>花海天天</td>
-        <td><a href="#">华为 畅享5S 金色 移动联通电信4G手机 </a></td>
-        <td>2565</td>
-        <td>1234</td>
-        <td>2016-7-12 12:23:34</td>
-        </tr>
-        <tr>
-        <td>花海天天</td>
-        <td><a href="#">荣耀7i 海岛蓝 移动4G手机 双卡双待 </a></td>
-        <td>345</td>
-        <td>232</td>
-        <td>2016-7-12 12:23:34</td>
-        </tr>
-        <tr>
-        <td>花海天天</td>
-        <td><a href="#">乐视（Le）乐2Pro 32GB 金色 移动联通</a></td>
-        <td>4566</td>
-        <td>3455</td>
-        <td>2016-7-12 12:23:34</td>
-        </tr>
-        <tr>
-        <td>花海天天</td>
-        <td><a href="#">华为 P9 plus 64GB 琥珀金 移动联通电信卡双待 </a></td>
-        <td>231</td>
-        <td>11</td>
-        <td>2016-7-12 12:23:34</td>
-        </tr>
-        <tr>
-        <td>花海天天</td>
-        <td><a href="#">华为 P9 plus 64GB 琥珀金 移动联通电信 </a></td>
-        <td>23</td>
-        <td>12</td>
-        <td>2016-7-12 12:23:34</td>
+            <td></td>
         </tr>
         </tbody>    
      </table>     
 
 
-</div>
-
-<!--购物记录-->
-<div id="Order_history" style="display:none; padding:10px;">
-
-<table class="table table-striped table-bordered table-hover" id="Order_history_list" width="100%">
-     <thead>
-		 <tr>
-				<th width="80">用户</th>
-				<th width="100">订单号</th>
-				<th width="80">数量</th>
-				<th width="120">交易状态</th>   
-                <th width="120">交易时间</th>              
-			</tr>
-		</thead>
-	<tbody>
-		<tr>
-        <td>花海天天</td>
-        <td><a href="#">hd23342354534534 </a></td>
-        <td>2</td>
-        <td>已完成</td>
-        <td>2016-7-12 12:23:34</td>
-        </tr>
-        <tr>
-        <td>花海天天</td>
-        <td><a href="#">hd23342354534534</a></td>
-        <td>2</td>
-        <td>待收货</td>
-        <td>2016-7-12 12:23:34</td>
-        </tr>
-        <tr>
-        <td>花海天天</td>
-        <td><a href="#">hd23342354534534 </a></td>
-        <td>3</td>
-        <td>已完成</td>
-        <td>2016-7-12 12:23:34</td>
-        </tr>
-        <tr>
-        <td>花海天天</td>
-        <td><a href="#">hd2335464544534534</a></td>
-        <td>3</td>
-        <td>交易失败</td>
-        <td>2016-7-12 12:23:34</td>
-        </tr>
-        </tbody>    
-     </table>     
 </div>
 </body>
 </html>
@@ -355,43 +157,119 @@ function member_del(obj,id){
 }
 //积分浏览
 function integration_history(id){
-	layer.open({
-    type: 1,
-	title:'积分获取记录',
-	area: ['800px','400px'],
-	shadeClose: true,
-	content: $('#integration_history'),
-	})	
-		$('#integration_history_list').dataTable({
-		"aaSorting": [[ 1, "desc" ]],//默认第几个排序
-    "bStateSave": true,//状态保存
-    "aoColumnDefs": [{
-	  "bSortable": false, 
-	  "orderable":false, 
-	  "aTargets": [0,1]
-	 }]
-});
+    $(function () {
+        $.ajax({
+            url: '/getOrderDetail.action?id='+id,
+            type: 'GET',
+            dataType: 'json',
+            timeout: 10000,
+            cache: false,
+            beforeSend: LoadFunction, //加载执行方法
+            error: erryFunction,  //错误执行方法
+            success: succFunction //成功执行方法
+        })
+        function LoadFunction() {
+
+            $("#credits").html('加载中...');
+        }
+        function erryFunction() {
+            alert("error");
+        }
+        function succFunction(tt) {
+            var json = eval(tt); //数组
+            console.log(json);
+            var str="";
+            $.each(json, function (index, item) {
+                //循环获取数据
+                var orderid = json[index].orderid;
+                var username = json[index].username;
+                var amountpay = json[index].amountpay;
+                var totalcredit = json[index].totalcredit;
+                var createtime = json[index].createtime;
+                var products = json[index].products;
+                str=str+"<tr><td style='display:none'>"+ orderid + "</td>"
+                    +"<td>"+ username + "</td>"
+                    +"<td>"+ products + "</td>"
+                    +"<td>"+ amountpay + "</td>"
+                    +"<td>"+ totalcredit + "</td>"
+                    +"<td>"+ createtime + "</td></tr>"
+            });
+            $("#credits").html(str);
+        }
+    });
+    layer.open({
+       type: 1,
+       title:'积分获取记录',
+       area: ['800px','400px'],
+       shadeClose: true,
+       content: $('#integration_history'),
+    })
+    $('#integration_history_list').dataTable({
+       "aaSorting": [[ 1, "desc" ]],//默认第几个排序
+       "bStateSave": true,//状态保存
+       "aoColumnDefs": [{
+          "bSortable": false,
+          "orderable":false,
+          "aTargets": [0,1]
+       }]
+    });
 	
-	};
+};
 //浏览记录
 
 function Browse_history(id){
+    $(function () {
+        $.ajax({
+            url: '/getUserLogById.action?id='+id,
+            type: 'GET',
+            dataType: 'json',
+            timeout: 10000,
+            cache: false,
+            beforeSend: LoadFunction, //加载执行方法
+            error: erryFunction,  //错误执行方法
+            success: succFunction //成功执行方法
+        })
+        function LoadFunction() {
+
+            $("#log").html('加载中...');
+        }
+        function erryFunction() {
+            alert("error");
+        }
+        function succFunction(tt) {
+            var json = eval(tt); //数组
+            console.log(json);
+            var str="";
+            $.each(json, function (index, item) {
+                //循环获取数据
+                var username = json[index].username;
+                var startlogintime = json[index].startlogintime;
+                var endlogintime = json[index].endlogintime;
+                var userip = json[index].userip;
+                str=str+"<tr><td>"+ username + "</td>"
+                    +"<td>"+ startlogintime + "</td>"
+                    +"<td>"+ endlogintime + "</td>"
+                    +"<td>"+ userip + "</td></tr>"
+            });
+            $("#log").html(str);
+        }
+    });
 	layer.open({
-    type: 1,
-	title:'浏览记录',
-	area: ['800px','400px'],
-	shadeClose: true,
-	content: $('#Browse_history'),
+        type: 1,
+        title:'浏览记录',
+        area: ['800px','400px'],
+        shadeClose: true,
+        content: $('#Browse_history'),
 	})	
-$('#Browse_history_list').dataTable({
-	"aaSorting": [[ 1, "desc" ]],//默认第几个排序
-    "bStateSave": true,//状态保存
-    "aoColumnDefs": [{
-	  "bSortable": false, 
-	  "orderable":false, 
-	  "aTargets": [0,1]
-	}]
-});	
+    $('#Browse_history_list').dataTable({
+        "aaSorting": [[ 1, "desc" ]],//默认第几个排序
+        "bStateSave": true,//状态保存
+        "aoColumnDefs": [{
+          "bSortable": false,
+          "orderable":false,
+          "aTargets": [0,1]
+        }]
+    });
 }
 
 

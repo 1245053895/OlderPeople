@@ -10,8 +10,6 @@ public class UserAndUserLog extends User {
     Integer browseCount;
     //购买率
     Double ratio;
-    //用户日志
-    Userlog userlog;
 
     public Integer getBrowseCount() {
         return browseCount;
@@ -29,11 +27,4 @@ public class UserAndUserLog extends User {
         this.ratio = ratio;
     }
 
-    public Userlog getUserlog() {
-        return userlog;
-    }
-
-    public void setUserlog(Userlog userlog) {
-        this.userlog = userlog;
-    }
 }

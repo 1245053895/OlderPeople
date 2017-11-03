@@ -1,6 +1,8 @@
 package com.xh.mapper.pojo;
 
+import com.xh.po.vo.OrderDetails;
 import com.xh.po.vo.UserAndUserLog;
+import com.xh.po.vo.UserLogCustom;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -12,4 +14,8 @@ public interface UserRecordMapper {
      * @return UserAndUserLog
      */
     public List<UserAndUserLog> queryUserLog();
+
+    public List<OrderDetails> getOrderDetailsByUserId(Integer id);
+
+    public List<UserLogCustom> getUserLogById(Integer id);
 }

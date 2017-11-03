@@ -22,13 +22,13 @@
     <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter"/> -->
 	<!-- 使用此句代替注解的处理器映射器和处理器适配器-->
 	<mvc:annotation-driven ></mvc:annotation-driven>
-	<mvc:annotation-driven conversion-service="conversionService"></mvc:annotation-driven>-->
+	<mvc:annotation-driven conversion-service="conversionService"></mvc:annotation-driven>
 	<!-- 写好转化器后，向处理器适配器中注入转化器 -->
 	<bean id="conversionService"
 		  class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
 		<property name="converters">
 			<list>
-				<bean class="com.xh.controller.converter.DateConverte"/>
+				<bean class="com.xh.controller.converter.DateConverter"/>
 			</list>
 		</property>
 	</bean>

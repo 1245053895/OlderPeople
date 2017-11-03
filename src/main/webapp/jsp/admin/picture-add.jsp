@@ -33,10 +33,10 @@
 <title>新增商品</title>
 </head>
 <body>
-<div class="clearfix" id="add_picture">
-<div id="scrollsidebar" class="left_Treeview">
-    <div class="show_btn" id="rightArrow"><span></span></div>
-    <div class="widget-box side_content" >
+<%--<div class="clearfix" id="add_picture">--%>
+<%--<div id="scrollsidebar" class="left_Treeview">--%>
+    <%--<div class="show_btn" id="rightArrow"><span></span></div>
+    &lt;%&ndash;<div class="widget-box side_content" >
     <div class="side_title"><a title="隐藏" class="close_btn"><span></span></a></div>
      <div class="side_list">
       <div class="widget-header header-color-green2">
@@ -48,9 +48,9 @@
           </div>
   </div>
   </div>
-  </div>
-  </div>
-<div class="page_right_style">
+  </div>&ndash;%&gt;
+  </div>--%>
+<div>
    <div class="type_title">添加商品</div>
 	<form action="" method="post" class="form form-horizontal" id="form-article-add">
 		<div class="clearfix cl">
@@ -79,23 +79,23 @@
 			<div class="Add_p_s">
 				<label class="form-label col-2">现价：<div class="formControls col-2"><input type="text" class="input-text" >元</div></label>
 			</div>
-			<div>
+		</div>
+		<div class=" clearfix cl" style="margin-left: 15px;">
 				<div class="Add_p_s">
-					<label style="margin-left: 15px; margin-right: 8px;">是否新品： </label>
+					<label>是否新品： </label>
 					<label><input name="form-field-radio" type="radio" class="ace"><span class="lbl">是</span></label>&nbsp;&nbsp;
 					<label><input name="form-field-radio" type="radio" class="ace"><span class="lbl">否</span></label>
 				</div>
 				<div class="Add_p_s">
-					<label style="margin-left: 15px; margin-right: 8px;">是否热销： </label>
-					<label><input name="form-field-radio" type="radio" class="ace"><span class="lbl">是</span></label>&nbsp;&nbsp;
-					<label><input name="form-field-radio" type="radio" class="ace"><span class="lbl">否</span></label>
+					<label>是否热销： </label>
+					<label><input name="form-field-radio1" type="radio" class="ace"><span class="lbl">是</span></label>&nbsp;&nbsp;
+					<label><input name="form-field-radio1" type="radio" class="ace"><span class="lbl">否</span></label>
 				</div>
 				<div class="Add_p_s">
-					<label style="margin-left: 15px;margin-right: 8px;">是否可用积分兑换： </label>
-					<label><input name="form-field-radio" type="radio" class="ace"><span class="lbl">是</span></label>&nbsp;&nbsp;
-					<label><input name="form-field-radio" type="radio" class="ace"><span class="lbl">否</span></label>
+					<label>是否可用积分兑换： </label>
+					<label><input name="form-field-radio2" type="radio" class="ace"><span class="lbl">是</span></label>&nbsp;&nbsp;
+					<label><input name="form-field-radio2" type="radio" class="ace"><span class="lbl">否</span></label>
 				</div>
-			</div>
 		</div>
 		<div class="clearfix cl">
 			<label class="form-label col-2">商品详情：</label>
@@ -138,9 +138,8 @@
         </div>
 		<div class="clearfix cl">
 			<div class="Button_operation">
-				<button onClick="article_save_submit();" class="btn btn-primary radius" type="submit"><i class="icon-save "></i>保存并提交审核</button>
-				<button onClick="article_save();" class="btn btn-secondary  btn-warning" type="button"><i class="icon-save"></i>保存草稿</button>
-				<button onClick="layer_close();" class="btn btn-default radius" type="button">&nbsp;&nbsp;取消&nbsp;&nbsp;</button>
+				<button onClick="article_save_submit();" class="btn btn-primary radius" type="submit"><i class="icon-save "></i>保存并提交</button>
+				<button onClick="layer_close();" class="btn btn-default radius" type="button">&nbsp;&nbsp;取消添加&nbsp;&nbsp;</button>
 			</div>
 		</div>
 	</form>
@@ -938,4 +937,4 @@ $(function(){
 
 })( jQuery );
 </script>
-			</div></body></html>
+			</body></html>

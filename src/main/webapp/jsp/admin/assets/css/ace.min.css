@@ -6399,6 +6399,7 @@ input[type=checkbox].ace+.lbl::before,input[type=radio].ace+.lbl::before
   line-height: 14px;
   min-width: 16px;
   margin-right: 5px;
+  margin-top: 8px;
 }
 
 input[type=checkbox].ace:checked+.lbl::before,input[type=radio].ace:checked+.lbl::before

@@ -55,4 +55,9 @@ public class RoleManageServImp implements RoleManageServ {
         roleMapper.insertRloeAndFirstView(adminRoleCustom);
     }
 
+    public List<AdminRole> moHuSelectByAdminUser(String adminuser) {
+        List<AdminRole> adminRoles= roleMapper.moHuSelectByAdminUser(adminuser);
+        return adminRoles;
+    }
+
 }

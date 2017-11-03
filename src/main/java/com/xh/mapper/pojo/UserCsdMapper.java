@@ -22,4 +22,5 @@ public interface UserCsdMapper {
     List<User> qullyAllUser();
     //对用户的模糊查询
     public List<User> QueryUserConfuse(StringAndString stringAndString);
+
 }

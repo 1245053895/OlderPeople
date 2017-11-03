@@ -17,9 +17,10 @@ public class UserMessageServiceimpl implements UserMessageService {
     @Transactional
     public void deleteByPrimaryKey(Integer userid) {  userCsdMapper.deleteByPrimaryKey(userid); }
 
-    public void insertSelective(User record)
+    public void insertSelective(User user)
     {
-    userCsdMapper.insertSelective(record);
+
+        userCsdMapper.insertSelective(user);
     }
 
     public User selectByPrimaryKey(Integer userid) { return userCsdMapper.selectByPrimaryKey(userid); }

@@ -49,4 +49,12 @@ public class UserMessageController {
         model.addAttribute(userList);
         return "/jsp/admin/user_list.jsp";
     }
+    /*
+    * 添加用户
+    * */
+    @RequestMapping(value = "/insertSelective.action",method = {RequestMethod.POST,RequestMethod.GET})
+    public  String insertSelective(User user,Model model){
+        userMessageService.insertSelective(user);
+        return "redirect:/UserMessageController.action";
+    }
 }

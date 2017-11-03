@@ -49,116 +49,24 @@
     where UserId = #{userid,jdbcType=INTEGER}
   </delete>
 
+
   <!--插入一个用户-->
   <insert id="insertSelective" parameterType="com.xh.po.User">
-    insert into user
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="userid != null">
-        UserId,
-      </if>
-      <if test="username != null">
-        UserName,
-      </if>
-      <if test="userpwd != null">
-        UserPwd,
-      </if>
-      <if test="usersex != null">
-        UserSex,
-      </if>
-      <if test="userrealname != null">
-        UserRealName,
-      </if>
-      <if test="userphone != null">
-        UserPhone,
-      </if>
-      <if test="userbirthday != null">
-        UserBirthday,
-      </if>
-      <if test="useraddress != null">
-        UserAddress,
-      </if>
-      <if test="useremail != null">
-        UserEmail,
-      </if>
-      <if test="creditscore != null">
-        CreditsCore,
-      </if>
-      <if test="userinputdate != null">
-        UserInputDate,
-      </if>
-      <if test="userzip != null">
-        UserZip,
-      </if>
-      <if test="userlogincount != null">
-        UserLoginCount,
-      </if>
-      <if test="userlogintime != null">
-        UserLoginTime,
-      </if>
-      <if test="userA != null">
-        User_A,
-      </if>
-      <if test="userB != null">
-        User_B,
-      </if>
-      <if test="userC != null">
-        User_C,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="userid != null">
-        #{userid,jdbcType=INTEGER},
-      </if>
-      <if test="username != null">
-        #{username,jdbcType=VARCHAR},
-      </if>
-      <if test="userpwd != null">
-        #{userpwd,jdbcType=VARCHAR},
-      </if>
-      <if test="usersex != null">
-        #{usersex,jdbcType=VARCHAR},
-      </if>
-      <if test="userrealname != null">
-        #{userrealname,jdbcType=VARCHAR},
-      </if>
-      <if test="userphone != null">
-        #{userphone,jdbcType=VARCHAR},
-      </if>
-      <if test="userbirthday != null">
-        #{userbirthday,jdbcType=DATE},
-      </if>
-      <if test="useraddress != null">
-        #{useraddress,jdbcType=VARCHAR},
-      </if>
-      <if test="useremail != null">
-        #{useremail,jdbcType=VARCHAR},
-      </if>
-      <if test="creditscore != null">
-        #{creditscore,jdbcType=INTEGER},
-      </if>
-      <if test="userinputdate != null">
-        #{userinputdate,jdbcType=DATE},
-      </if>
-      <if test="userzip != null">
-        #{userzip,jdbcType=INTEGER},
-      </if>
-      <if test="userlogincount != null">
-        #{userlogincount,jdbcType=INTEGER},
-      </if>
-      <if test="userlogintime != null">
-        #{userlogintime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="userA != null">
-        #{userA,jdbcType=VARCHAR},
-      </if>
-      <if test="userB != null">
-        #{userB,jdbcType=VARCHAR},
-      </if>
-      <if test="userC != null">
-        #{userC,jdbcType=VARCHAR},
-      </if>
-    </trim>
+   insert into user (UserId, UserName, UserPwd,
+      UserSex, UserRealName, UserPhone,
+      UserBirthday, UserAddress, UserEmail,
+      CreditsCore, UserInputDate, UserZip,
+      UserLoginCount, UserLoginTime, User_A,
+      User_B, User_C)
+    values (#{userid,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{userpwd,jdbcType=VARCHAR},
+      #{usersex,jdbcType=VARCHAR}, #{userrealname,jdbcType=VARCHAR}, #{userphone,jdbcType=VARCHAR},
+      #{userbirthday,jdbcType=DATE}, #{useraddress,jdbcType=VARCHAR}, #{useremail,jdbcType=VARCHAR},
+      #{creditscore,jdbcType=INTEGER}, #{userinputdate,jdbcType=DATE}, #{userzip,jdbcType=INTEGER},
+      #{userlogincount,jdbcType=INTEGER}, #{userlogintime,jdbcType=TIMESTAMP}, #{userA,jdbcType=VARCHAR},
+      #{userB,jdbcType=VARCHAR}, #{userC,jdbcType=VARCHAR})
   </insert>
+
+
   <!--根据id更新用户信息-->
   <update id="updateByPrimaryKeySelective" parameterType="com.xh.po.User">
     update user

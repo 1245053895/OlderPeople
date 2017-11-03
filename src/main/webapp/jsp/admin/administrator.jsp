@@ -8,6 +8,7 @@
 
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -42,15 +43,18 @@
             <div class="search_style">
                 <div class="title_names">搜索查询</div>
                 <ul class="search_content clearfix">
-                    <li><label class="l_f">管理员名称</label><input name="" type="text" class="text_add" placeholder="" style=" width:400px"></li>
-                    <li style="width:90px;"><button type="button" class="btn_search"><i class="fa fa-search"></i>查询</button></li>
+                    <form action="${pageContext.request.contextPath}/admin/mohuSelectByName.action" method="post">
+                    <li><label class="l_f">管理员名称</label><input name="name" type="text" class="text_add" placeholder="请输入管理员的名称" style=" width:400px"></li>
+                    <%--<li style="width:90px;"><button type="button" class="btn_search"><i class="fa fa-search"></i>查询</button></li>--%>
+                        <input type="submit" value="查询"/>
+                    </form>
                 </ul>
             </div>
             <!--操作-->
             <div class="border clearfix">
        <span class="l_f">
-        <a href="javascript:ovid()" onclick="openThis()" id="administrator_add" class="btn btn-warning"><i class="fa fa-plus"></i> 添加管理员</a>
-        <a href="javascript:ovid()" class="btn btn-danger"><i class="fa fa-trash"></i> 批量删除</a>
+        <a href="javascript:void(0)" onclick="openThis()" id="administrator_add" class="btn btn-warning"><i class="fa fa-plus"></i> 添加管理员</a>
+        <a href="javascript:test()" class="btn btn-danger"><i class="fa fa-trash"></i> 批量删除</a>
        </span>
                 <span class="r_f">共：<b>5</b>人</span>
             </div>
@@ -64,14 +68,12 @@
                             <div class="side_list"><div class="widget-header header-color-green2"><h4 class="lighter smaller">管理员分类列表</h4></div>
                                 <div class="widget-body">
                                     <ul class="b_P_Sort_list">
-                                        <li><i class="fa fa-users green"></i> <a href="#">全部管理员（13）</a></li>
-                                        <li><i class="fa fa-users orange"></i> <a href="#">超级管理员（1）</a></li>
-                                        <li><i class="fa fa-users orange"></i> <a href="#">用户管理员（5）</a></li>
-                                        <li><i class="fa fa-users orange"></i> <a href="#">商品管理员（4）</a></li>
-                                        <li><i class="fa fa-users orange"></i> <a href="#">订单管理员（1）</a></li>
-                                        <li><i class="fa fa-users orange"></i> <a href="#">消息管理员（1）</a></li>
-                                        <li><i class="fa fa-users orange"></i> <a href="#">系统设置管理员（1）</a></li>
-                                        <li><i class="fa fa-users orange"></i> <a href="#">CEO（1）</a></li>
+                                        <c:forEach items="${kindOfAdmins}" var="admin" varStatus="index">
+                                            <c:if test="${index.count==1}">
+                                                <li><i class="fa fa-users green"></i> <a href="#">全部管理员(${fn:length(kindOfAdmins)})</a></li>
+                                            </c:if>
+                                            <li><i class="fa fa-users green"></i> <a href="#">${admin.allrloe}</a></li>
+                                        </c:forEach>
                                     </ul>
                                 </div>
                             </div>
@@ -80,44 +82,46 @@
                 </div>
                 <div class="table_menu_list" id="testIframe" style="width: 909px; height: 0px;">
                     <div id="sample_table_wrapper" class="dataTables_wrapper no-footer">
-
-                        <table class="table table-striped table-bordered table-hover dataTable no-footer" id="sample_table" role="grid" aria-describedby="sample_table_info">
-                        <thead>
-                        <tr role="row">
-                            <th width="25px" class="sorting_disabled" rowspan="1" colspan="1" aria-label="" style="width: 20px;">
-                                <label><input type="checkbox" class="ace"><span class="lbl"></span></label></th>
-                            <th width="80px" class="sorting_desc" tabindex="0" aria-controls="sample_table" rowspan="1" colspan="1" aria-sort="descending" aria-label="编号: 升序排列" style="width: 48px;">编号</th>
-                            <th width="250px" class="sorting_disabled" rowspan="1" colspan="1" aria-label="账号" style="width: 170px;">账号</th>
-                            <th width="100px" class="sorting_disabled" rowspan="1" colspan="1" aria-label="密码" style="width: 63px;">密码</th>
-                            <th width="100px" class="sorting_disabled" rowspan="1" colspan="1" aria-label="姓名" style="width: 63px;">姓名</th>
-                            <th width="100px" rowspan="1" colspan="1" aria-label="性别" style="width: 63px;">性别</th>
-                            <th width="100px" class="sorting_disabled" rowspan="1" colspan="1" aria-label="所在部门" style="width: 63px;">所在部门</th>
-                            <th width="100px" class="sorting_disabled" rowspan="1" colspan="1" aria-label="电话" style="width: 63px;">电话</th>
-                            <th width="200px">操作</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-
-                        <c:forEach items="${adminList }" var="user">
-                            <tr>
-                                <td><label><input type="checkbox" class="ace"><span class="lbl"></span></label></td>
-                                <td>${user.adminid}</td>
-                                <td>${user.adminname}</td>
-                                <td>${user.adminpwd}</td>
-                                <td>${user.adminuser}</td>
-                                <td>${user.adminsex}</td>
-                                <td>${user.admindepart}</td>
-                                <td>${user.adminphone}</td>
-                                <td class="td-manage">
-                                    <a onClick="member_stop(this,'10001')"  href="javascript:;" title="停用"  class="btn btn-xs btn-success"><i class="fa fa-check  bigger-120"></i></a>
-                                    <a title="编辑" onclick="member_edit('编辑','member-add.html','4','','510')" href="javascript:;"  class="btn btn-xs btn-info" ><i class="fa fa-edit bigger-120"></i></a>
-                                    <a title="删除" href="javascript:;"  onclick="member_del(this,'1')" class="btn btn-xs btn-warning" ><i class="fa fa-trash  bigger-120"></i></a>
-                                </td>
+                        <form id="my" name="my" action="${pageContext.request.contextPath}/admin/deleteBatch.action" method="post">
+                            <table class="table table-striped table-bordered table-hover dataTable no-footer" id="sample_table" role="grid" aria-describedby="sample_table_info">
+                            <thead>
+                            <tr role="row">
+                                <th width="25px" class="sorting_disabled" rowspan="1" colspan="1" aria-label="" style="width: 20px;">
+                                    <label><input type="checkbox" class="ace"><span class="lbl"></span></label></th>
+                                <th width="80px" class="sorting_desc" tabindex="0" aria-controls="sample_table" rowspan="1" colspan="1" aria-sort="descending" aria-label="编号: 升序排列" style="width: 48px;">编号</th>
+                                <th width="250px" class="sorting_disabled" rowspan="1" colspan="1" aria-label="账号" style="width: 170px;">账号</th>
+                                <th width="100px" class="sorting_disabled" rowspan="1" colspan="1" aria-label="密码" style="width: 63px;">密码</th>
+                                <th width="100px" class="sorting_disabled" rowspan="1" colspan="1" aria-label="姓名" style="width: 63px;">姓名</th>
+                                <th width="100px" rowspan="1" colspan="1" aria-label="性别" style="width: 63px;">性别</th>
+                                <th width="100px" class="sorting_disabled" rowspan="1" colspan="1" aria-label="所在部门" style="width: 63px;">所在部门</th>
+                                <th width="100px" class="sorting_disabled" rowspan="1" colspan="1" aria-label="电话" style="width: 63px;">电话</th>
+                                <th width="200px">操作</th>
                             </tr>
-                        </c:forEach>
+                            </thead>
+                            <tbody>
 
-                        </tbody>
-                        </table>
+                                    <c:forEach items="${adminList }" var="user">
+                                        <tr>
+                                            <td><label><input type="checkbox" name="postIds" value="${user.adminid}" class="ace"><span class="lbl"></span></label></td>
+                                            <td>${user.adminid}</td>
+                                            <td>${user.adminname}</td>
+                                            <td>${user.adminpwd}</td>
+                                            <td>${user.adminuser}</td>
+                                            <td>${user.adminsex}</td>
+                                            <td>${user.admindepart}</td>
+                                            <td>${user.adminphone}</td>
+                                            <td class="td-manage">
+                                                <%--<a onClick="member_stop(this,'10001')"  href="javascript:;" title="停用"  class="btn btn-xs btn-success"><i class="fa fa-check  bigger-120"></i></a>--%>
+                                                <a title="编辑" onclick="member_edit('编辑','member-add.html','4','','510')" href="javascript:void(0);"  class="btn btn-xs btn-info" ><i class="fa fa-edit bigger-120"></i></a>
+                                                <a title="删除" href="/admin/deleteByPrimaryKey.action?id=${user.adminid}" class="btn btn-xs btn-warning" ><i class="fa fa-trash  bigger-120"></i></a>
+                                            </td>
+                                        </tr>
+                                    </c:forEach>
+
+
+                                </tbody>
+                            </table>
+                        </form>
                     </div>
             </div>
         </div>
@@ -131,18 +135,18 @@
             <div class="layui-layer-title" style="cursor: move;" move="ok">添加管理员</div>
             <div id="" class="layui-layer-content" style="height: 479px;">
                 <div id="add_administrator_style" class="add_menber layui-layer-wrap">
-            <form action="" method="post" id="form-admin-add">
+            <form action="${pageContext.request.contextPath}/admin/insert.action" method="post" id="form-admin-add">
                 <div class="form-group">
                     <label class="form-label"><span class="c-red">*</span>账号：</label>
                     <div class="formControls">
-                        <input type="text" class="input-text" value="" placeholder="" id="account_num" name="account_num" datatype="*2-16" nullmsg="用户名不能为空">
+                        <input type="text" class="input-text" value="" placeholder="" id="adminname" name="adminname" datatype="*2-16" nullmsg="用户名不能为空">
                     </div>
                     <div class="col-4"> <span class="Validform_checktip"></span></div>
                 </div>
                 <div class="form-group">
                     <label class="form-label"><span class="c-red">*</span>初始密码：</label>
                     <div class="formControls">
-                        <input type="password" placeholder="密码" name="userpassword" autocomplete="off" value="" class="input-text" datatype="*6-20" nullmsg="密码不能为空">
+                        <input type="password" placeholder="密码" name="adminpwd" autocomplete="off" value="" class="input-text" datatype="*6-20" nullmsg="密码不能为空">
                     </div>
                     <div class="col-4"> <span class="Validform_checktip"></span></div>
                 </div>
@@ -156,44 +160,44 @@
                 <div class="form-group">
                     <label class="form-label"><span class="c-red">*</span>姓名：</label>
                     <div class="formControls">
-                        <input type="text" class="input-text" value="" placeholder="" id="user-name" name="user-name" datatype="*2-16" nullmsg="姓名不能为空">
+                        <input type="text" class="input-text" value="" placeholder="" id="user-name" name="adminuser" datatype="*2-16" nullmsg="姓名不能为空">
                     </div>
                     <div class="col-4"> <span class="Validform_checktip"></span></div>
                 </div>
                 <div class="form-group">
                     <label class="form-label "><span class="c-red">*</span>性别：</label>
-                    <div class="formControls  skin-minimal">
-                        <label><input name="form-field-radio" type="radio" class="ace" checked="checked"><span class="lbl">保密</span></label>&nbsp;&nbsp;
-                        <label><input name="form-field-radio" type="radio" class="ace"><span class="lbl">男</span></label>&nbsp;&nbsp;
-                        <label><input name="form-field-radio" type="radio" class="ace"><span class="lbl">女</span></label>
+                    <div class="formControls">
+                        <input type="text" class="input-text" value="" placeholder="" id="adminsex" name="adminsex" datatype="*2-16" nullmsg="所在部门不能为空">
                     </div>
+                   <%-- <div class="formControls  skin-minimal">
+                        <label><input name="adminsex" type="radio" class="ace" checked="checked"><span class="lbl">保密</span></label>&nbsp;&nbsp;
+                        <label><input name="adminsex" type="radio" class="ace"><span class="lbl">男</span></label>&nbsp;&nbsp;
+                        <label><input name="adminsex" type="radio" class="ace"><span class="lbl">女</span></label>
+                    </div>--%>
                     <div class="col-4"> <span class="Validform_checktip"></span></div>
                 </div>
                 <div class="form-group">
                     <label class="form-label"><span class="c-red">*</span>所在部门：</label>
                     <div class="formControls">
-                        <input type="text" class="input-text" value="" placeholder="" id="department" name="departmente" datatype="*2-16" nullmsg="所在部门不能为空">
+                        <input type="text" class="input-text" value="" placeholder="" id="department" name="admindepart" datatype="*2-16" nullmsg="所在部门不能为空">
                     </div>
                     <div class="col-4"> <span class="Validform_checktip"></span></div>
                 </div>
                 <div class="form-group">
                     <label class="form-label "><span class="c-red">*</span>手机：</label>
                     <div class="formControls ">
-                        <input type="text" class="input-text" value="" placeholder="" id="user-tel" name="user-tel" datatype="m" nullmsg="手机不能为空">
+                        <input type="text" class="input-text" value="" placeholder="" id="user-tel" name="adminphone" datatype="m" nullmsg="手机不能为空">
                     </div>
                     <div class="col-4"> <span class="Validform_checktip"></span></div>
                 </div>
                 <div class="form-group">
                     <label class="form-label">角色：</label>
                     <div class="formControls "> <span class="select-box" style="width:150px;">
-                    <select class="select" name="admin-role" size="1">
-                        <option value="0">超级管理员</option>
-                        <option value="1">用户管理员</option>
-                        <option value="2">商品管理员</option>
-                        <option value="3">订单管理员</option>
-                        <option value="4">消息管理员</option>
-                        <option value="5">系统设置管理员</option>
-                        <option value="6">CEO</option>
+
+                    <select class="select" name="admingroupid" size="1">
+                        <c:forEach items="${admingroupnames}" var="admingroup">
+                            <option value="${admingroup.admingroupid}">${admingroup.admingroupname}</option>
+                        </c:forEach>
                     </select>
                     </span> </div>
                 </div>
@@ -221,6 +225,13 @@
         function openThis() {
             var close =document.getElementById("closeThis");
             close.style.display="block";
+        }
+        function test() {
+            /*document.getElementById("postIds").submit();*/
+            //$("#postIds").attr("action",${pageContext.request.contextPath}+"/admin/deleteBatch.action");
+            $("#my").submit();
+            console.log("dfsfdsfs");
+
         }
     </script>
 

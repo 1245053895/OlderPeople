@@ -1,3 +1,5 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmd" uri="http://java.sun.com/jstl/fmt_rt" %>
 <%--aaaa
   Created by IntelliJ IDEA.
   User: Administrator
@@ -5,7 +7,7 @@
   Time: 16:40
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="utf-8" %>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -63,10 +65,12 @@
       <div class="d_Confirm_Order_style">
     <div class="search_style">
       <div class="title_names">搜索查询</div>
+        <form id="QueryUserConfuse"  action="${pageContext.request.contextPath}/QueryUserConfuse.action" method="post">
       <ul class="search_content clearfix">
-       <li><label class="l_f">会员名称</label><input name="" type="text"  class="text_add" placeholder="输入会员名称、电话、邮箱"  style=" width:400px"/></li>
-       <li style="width:90px;"><button type="button" class="btn_search"><i class="icon-search"></i>查询</button></li>
+       <li><label class="l_f">用户名称</label><input name="sqlString" type="text" value="${stringAndString.sqlString}"  class="text_add" placeholder="输入会员名称、电话、邮箱"  style=" width:400px" /></li>
+       <li style="width:90px;"><button type="submit" class="btn_search"><i class="icon-search"></i>查询</button></li>
       </ul>
+        </form>
     </div>
      <!---->
      <div class="border clearfix">
@@ -104,110 +108,30 @@
            <tbody>
 
            <tbody>
+    <c:forEach items="${userList}" var="userlist">
 		<tr>
           <td><label><input type="checkbox" class="ace"><span class="lbl"></span></label></td>
-          <td>1</td>
-          <td><u style="cursor:pointer" class="text-primary" onclick="member_show('chh','member-show.jsp','10001','500','400')">chh</u></td>
-          <td>******</td>
-          <td>男</td>
-          <td>陈思顶</td>
-          <td>18888888888</td>
-            <td>2014-6-11 11:11:42</td>
-            <td class="text-l">北京市 海淀区</td>
-            <td>1888@mail.com</td>
-            <td>1564511</td>
-            <td>2014-6-11 11:11:42</td>
+          <td>${userlist.userid}</td>
+          <td><u style="cursor:pointer" class="text-primary" onclick="member_show('chh','member-show.jsp','10001','500','400')">${userlist.username}</u></td>
+          <td>${userlist.userpwd}</td>
+          <td>${userlist.usersex}</td>
+          <td>${userlist.userrealname}</td>
+          <td>${userlist.userphone}</td>
+           <td><fmd:formatDate value="${userlist.userbirthday}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
+            <td class="text-l">${userlist.useraddress}</td>
+            <td>${userlist.useremail}</td>
+            <td>${userlist.userzip}</td>
+            <td><fmd:formatDate value="${userlist.userinputdate}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
           <td class="td-status"><span class="label label-success radius">已启用</span></td>
           <td class="td-manage">
           <a onClick="member_stop(this,'10001')"  href="javascript:;" title="停用"  class="btn btn-xs btn-success"><i class="icon-ok bigger-120"></i></a>
-          <a title="编辑" onclick="member_edit('550')" href="javascript:;"  class="btn btn-xs btn-info" ><i class="icon-edit bigger-120"></i></a>
-          <a title="删除" href="javascript:;"  onclick="member_del(this,'1')" class="btn btn-xs btn-warning" ><i class="icon-trash  bigger-120"></i></a>
+
+
+              <a title="删除"  href="${pageContext.request.contextPath}/DelectUserById.action?Userid=${userlist.userid}" class="btn btn-xs btn-warning" ><i class="icon-trash  bigger-120"></i></a>
           </td>
 		</tr>
-        <tr>
-          <td><label><input type="checkbox" class="ace"><span class="lbl"></span></label></td>
-          <td>2</td>
-            <td><u style="cursor:pointer" class="text-primary" onclick="member_show('chh','member-show.jsp','10001','500','400')">chh</u></td>
-            <td>******</td>
-            <td>男</td>
-            <td>陈思顶</td>
-            <td>18888888888</td>
-            <td>2014-6-11 11:11:42</td>
-            <td class="text-l">北京市 海淀区</td>
-            <td>1888@mail.com</td>
-            <td>1564511</td>
-            <td>2014-6-11 11:11:42</td>
-            <td class="td-status"><span class="label label-success radius">已启用</span></td>
-          <td class="td-manage">
-          <a onClick="member_stop(this,'10001')"  href="javascript:;" title="停用"  class="btn btn-xs btn-success"><i class="icon-ok bigger-120"></i></a> 
-          <a title="编辑" onclick="member_edit('310')" href="javascript:;"  class="btn btn-xs btn-info" ><i class="icon-edit bigger-120"></i></a> 
-        
-          <a title="删除" href="javascript:;"  onclick="member_del(this,'1')" class="btn btn-xs btn-warning" ><i class="icon-trash  bigger-120"></i></a>
-          </td>
-		</tr>
-         <tr>
-          <td><label><input type="checkbox" class="ace"><span class="lbl"></span></label></td>
-          <td>3</td>
-             <td><u style="cursor:pointer" class="text-primary" onclick="member_show('chh','member-show.jsp','10001','500','400')">chh</u></td>
-             <td>******</td>
-             <td>男</td>
-             <td>陈思顶</td>
-             <td>18888888888</td>
-             <td>2014-6-11 11:11:42</td>
-             <td class="text-l">北京市 海淀区</td>
-             <td>1888@mail.com</td>
-             <td>1564511</td>
-             <td>2014-6-11 11:11:42</td>
-             <td class="td-status"><span class="label label-success radius">已启用</span></td>
-          <td class="td-manage">
-          <a onClick="member_stop(this,'10001')"  href="javascript:;" title="停用"  class="btn btn-xs btn-success"><i class="icon-ok bigger-120"></i></a> 
-          <a title="编辑" onclick="member_edit('410')" href="javascript:;"  class="btn btn-xs btn-info" ><i class="icon-edit bigger-120"></i></a>
-         
-          <a title="删除" href="javascript:;"  onclick="member_del(this,'1')" class="btn btn-xs btn-warning" ><i class="icon-trash  bigger-120"></i></a>
-          </td>
-		</tr>
-         <tr>
-          <td><label><input type="checkbox" class="ace"><span class="lbl"></span></label></td>
-          <td>4</td>
-             <td><u style="cursor:pointer" class="text-primary" onclick="member_show('chh','member-show.jsp','10001','500','400')">chh</u></td>
-             <td>******</td>
-             <td>男</td>
-             <td>陈思顶</td>
-             <td>18888888888</td>
-             <td>2014-6-11 11:11:42</td>
-             <td class="text-l">北京市 海淀区</td>
-             <td>1888@mail.com</td>
-             <td>1564511</td>
-             <td>2014-6-11 11:11:42</td>
-             <td class="td-status"><span class="label label-success radius">已启用</span></td>
-          <td class="td-manage">
-          <a onClick="member_stop(this,'10001')"  href="javascript:;" title="停用"  class="btn btn-xs btn-success"><i class="icon-ok bigger-120"></i></a> 
-          <a title="编辑" onclick="member_edit('560')" href="javascript:;"  class="btn btn-xs btn-info" ><i class="icon-edit bigger-120"></i></a> 
-        
-          <a title="删除" href="javascript:;"  onclick="member_del(this,'1')" class="btn btn-xs btn-warning" ><i class="icon-trash  bigger-120"></i></a>
-          </td>
-		</tr>
-         <tr>
-          <td><label><input type="checkbox" class="ace"><span class="lbl"></span></label></td>
-          <td>5</td>
-             <td><u style="cursor:pointer" class="text-primary" onclick="member_show('chh','member-show.jsp','10001','500','400')">chh</u></td>
-             <td>******</td>
-             <td>男</td>
-             <td>陈思顶</td>
-             <td>18888888888</td>
-             <td>2014-6-11 11:11:42</td>
-             <td class="text-l">北京市 海淀区</td>
-             <td>1888@mail.com</td>
-             <td>1564511</td>
-             <td>2014-6-11 11:11:42</td>
-             <td class="td-status"><span class="label label-success radius">已启用</span></td>
-          <td class="td-manage">
-          <a onClick="member_stop(this,'10001')"  href="javascript:;" title="停用"  class="btn btn-xs btn-success"><i class="icon-ok bigger-120"></i></a> 
-          <a title="编辑" onclick="member_edit('510')" href="javascript:;"  class="btn btn-xs btn-info" ><i class="icon-edit bigger-120"></i></a> 
-        
-          <a title="删除" href="javascript:;"  onclick="member_del(this,'1')" class="btn btn-xs btn-warning" ><i class="icon-trash  bigger-120"></i></a>
-          </td>
-		</tr>
+    </c:forEach>
+
       </tbody>
 	</table>
    </div>
@@ -217,8 +141,8 @@
 <!--添加用户图层-->
 <div class="add_menber" id="add_menber_style" style="display:none;z-index: 19891022; width: 700px;top: 0px;left: 229.5px;">
     <ul class=" page-content">
-     <li><label class="label_name">用&nbsp;&nbsp;户 &nbsp;名：</label><span class="add_name"><input value="" name="用户名" type="text"  class="text_add"/></span><div class="prompt r_f"></div></li>
-     <li><label class="label_name">真实姓名：</label><span class="add_name"><input name="真实姓名" type="text"  class="text_add"/></span><div class="prompt r_f"></div></li>
+     <li><label class="label_name">用&nbsp;&nbsp;户 &nbsp;名：</label><span class="add_name"><input value="" name="username" type="text"  class="text_add"/></span><div class="prompt r_f"></div></li>
+     <li><label class="label_name">真实姓名：</label><span class="add_name"><input name="userrealname" type="text"  class="text_add"/></span><div class="prompt r_f"></div></li>
      <li><label class="label_name">性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别：</label><span class="add_name">
      <label><input name="form-field-radio" type="radio" checked="checked" class="ace"><span class="lbl">男</span></label>&nbsp;&nbsp;&nbsp;
      <label><input name="form-field-radio" type="radio" class="ace"><span class="lbl">女</span></label>&nbsp;&nbsp;&nbsp;

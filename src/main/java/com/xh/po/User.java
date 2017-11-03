@@ -172,4 +172,27 @@ public class User {
     public void setUserC(String userC) {
         this.userC = userC == null ? null : userC.trim();
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "userid=" + userid +
+                ", username='" + username + '\'' +
+                ", userpwd='" + userpwd + '\'' +
+                ", usersex='" + usersex + '\'' +
+                ", userrealname='" + userrealname + '\'' +
+                ", userphone='" + userphone + '\'' +
+                ", userbirthday=" + userbirthday +
+                ", useraddress='" + useraddress + '\'' +
+                ", useremail='" + useremail + '\'' +
+                ", creditscore=" + creditscore +
+                ", userinputdate=" + userinputdate +
+                ", userzip=" + userzip +
+                ", userlogincount=" + userlogincount +
+                ", userlogintime=" + userlogintime +
+                ", userA='" + userA + '\'' +
+                ", userB='" + userB + '\'' +
+                ", userC='" + userC + '\'' +
+                '}';
+    }
 }

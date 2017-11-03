@@ -50,7 +50,7 @@ public class RloeController {
         //然后给角色分配权限
         roleManageServ.insertRloeAndFirstView(adminRoleCustom);
 
-        return "/jsp/admin/admin_Competence.jsp";
+        return "forward:queryAllRole.action";
     }
     /**
      * 角色修改页面，只包括对角色表的查询
@@ -69,6 +69,12 @@ public class RloeController {
         roleManageServ.deleteRoleById(id);
         return "/jsp/admin/Category_Manage.jsp";
 
+    }
+    //根据管理员的名称来进行迷糊查询
+    @RequestMapping("/moHuSelectByAdminUser.action")
+    public String moHuSelectByAdminUser(String adminuser){
+        List<AdminRole> adminRoles=roleManageServ.moHuSelectByAdminUser(adminuser);
+        return  "/RloeController.action";
     }
 
 }

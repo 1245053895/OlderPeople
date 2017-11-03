@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xh.mapper.pojo.UserRecordMapper">
+  <select id="queryUserLog" resultType="userAndUserLog">
+    SELECT user.UserId AS userid,
+       user.UserName AS username,
+       user.CreditsCore AS creditscore ,
+       user.UserLoginTime AS userlogintime,
+       count(productslog.UserId) AS browseCount,
+       sum(productslog.IsShop)/count(productslog.UserId) AS ratio
+    FROM user
+      LEFT JOIN productslog ON (user.UserId=productslog.UserId)
+    GROUP BY user.UserId;
+  </select>
+
+
+  <select id="getOrderDetailsByUserId" parameterType="integer" resultType="orderDetails">
+    SELECT
+      user.UserName username,
+      `order`.OrderId orderid,
+      `order`.AmountPay amountpay,
+      `order`.TotalCredit totalcredit,
+      `order`.EndTime createtime,
+      GROUP_CONCAT(product.ProductName) products
+    FROM `order`
+      INNER JOIN  orderproduct ON (`order`.OrderId=orderproduct.OrderId)
+      INNER JOIN product ON (product.ProductId=orderproduct.ProductId)
+      INNER JOIN user ON (order.UserId=user.UserId)
+    WHERE `order`.UserId=#{id}
+    GROUP BY `order`.OrderId;
+  </select>
+
+  <select id="getUserLogById" parameterType="integer" resultType="userLogCustom">
+    SELECT user.UserName username,
+    userlog.StartLoginTime startlogintime,
+    userlog.EndLoginTime endlogintime,
+    userlog.UserIp userip
+    FROM user
+      LEFT JOIN userlog ON (user.UserId=userlog.UserId)
+    WHERE user.UserId=#{id};
+  </select>
+</mapper>

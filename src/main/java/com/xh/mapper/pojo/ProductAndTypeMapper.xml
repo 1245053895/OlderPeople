@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xh.mapper.pojo.ProductAndTypeMapper">
+
+  <resultMap id="BaseResultMap" type="com.xh.po.Product">
+    <id column="ProductId" jdbcType="INTEGER" property="productid" />
+    <result column="ProductTypeId" jdbcType="INTEGER" property="producttypeid" />
+    <result column="ProductName" jdbcType="VARCHAR" property="productname" />
+    <result column="ProductPrice" jdbcType="DOUBLE" property="productprice" />
+    <result column="PictureSizes" jdbcType="VARCHAR" property="picturesizes" />
+    <result column="PictureColors" jdbcType="VARCHAR" property="picturecolors" />
+    <result column="ProductLookCount" jdbcType="INTEGER" property="productlookcount" />
+    <result column="ProductDescribe" jdbcType="VARCHAR" property="productdescribe" />
+    <result column="ProductStoreTime" jdbcType="TIMESTAMP" property="productstoretime" />
+    <result column="ProductPicture" jdbcType="VARCHAR" property="productpicture" />
+    <result column="ProductNew" jdbcType="INTEGER" property="productnew" />
+    <result column="ProducthotSale" jdbcType="CHAR" property="producthotsale" />
+    <result column="ProductDisabled" jdbcType="CHAR" property="productdisabled" />
+    <result column="ProductCredits" jdbcType="CHAR" property="productcredits" />
+    <result column="ProductCreateTime" jdbcType="TIMESTAMP" property="productcreatetime" />
+    <result column="Product_A" jdbcType="VARCHAR" property="productA" />
+    <result column="Product_B" jdbcType="VARCHAR" property="productB" />
+    <result column="Product_C" jdbcType="VARCHAR" property="productC" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+    ProductId, ProductTypeId, ProductName, ProductPrice, PictureSizes, PictureColors, 
+    ProductLookCount, ProductDescribe, ProductStoreTime, ProductPicture, ProductNew, 
+    ProducthotSale, ProductDisabled, ProductCredits, ProductCreateTime, Product_A, Product_B, 
+    Product_C
+  </sql>
+
+  <delete id="deleteBatch" parameterType="java.util.List">
+    delete from product where ProductId in(
+    <foreach collection="list" item="item" separator=",">
+      #{item}
+    </foreach>
+    )
+  </delete>
+
+
+<!--查询出的商品类型至少有一个商品-->
+  <select id="productKindOf" resultType="com.xh.po.vo.KindOfProduct">
+  SELECT CONCAT(b.ProductTypeName,"(",COUNT(*),")") AS kindofproduct
+  FROM product a,producttype b
+  WHERE a.ProductTypeId=b.ProductTypeId
+  GROUP BY a.ProductTypeId
+  </select>
+
+  <!--查询出的商品类型没有商品-->
+  <select id="productNull" resultType="com.xh.po.vo.KindOfProduct">
+    SELECT CONCAT(ProductTypeName ,"(0)") AS kindofproduct
+    FROM producttype
+    WHERE ProductTypeName NOT IN(
+    SELECT DISTINCT ProductTypeName
+    FROM product a,producttype b
+    WHERE a.ProductTypeId=b.ProductTypeId)
+  </select>
+
+
+  <select id="productCount" resultType="com.xh.po.vo.Allproduct">
+    SELECT    CONCAT ("共：",COUNT(ProductId)," 件商品") AS productcount
+    FROM product
+  </select>
+
+  <!--查询通过个个个条件-->
+  <select id="selectByProduct" parameterType="com.xh.po.Product" resultType="com.xh.po.vo.ProductAndTypeVo">
+    select ProductId, a.ProductTypeId producttypeid, ProductName, ProductPrice, PictureSizes, PictureColors,
+    ProductLookCount, ProductDescribe, ProductStoreTime, ProductPicture, ProductNew,
+    ProducthotSale, ProductDisabled, ProductCredits, ProductCreateTime, Product_A, Product_B,
+    Product_C,b.ProductTypeName producttypename
+    from product a, producttype b
+    <where>
+      <if test="2>1">
+        and a.ProductTypeId = b.ProductTypeId
+      </if>
+      <if test="productid != null">
+        AND a.ProductId = #{productid}
+      </if>
+      <if test="productname != null and !&quot;&quot;.equals(productname.trim())">
+        and a.ProductName like '%' #{productname} '%'
+      </if>
+      <if test="productcreatetime != null ">
+        AND a.ProductCreateTime = #{productcreatetime}
+      </if>
+
+    </where>
+
+
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from product
+    where ProductId = #{productid,jdbcType=INTEGER}
+  </delete>
+
+  <insert id="insertSelective" parameterType="com.xh.po.Product">
+    insert into product
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="productid != null">
+        ProductId,
+      </if>
+      <if test="producttypeid != null">
+        ProductTypeId,
+      </if>
+      <if test="productname != null">
+        ProductName,
+      </if>
+      <if test="productprice != null">
+        ProductPrice,
+      </if>
+      <if test="picturesizes != null">
+        PictureSizes,
+      </if>
+      <if test="picturecolors != null">
+        PictureColors,
+      </if>
+      <if test="productlookcount != null">
+        ProductLookCount,
+      </if>
+      <if test="productdescribe != null">
+        ProductDescribe,
+      </if>
+      <if test="productstoretime != null">
+        ProductStoreTime,
+      </if>
+      <if test="productpicture != null">
+        ProductPicture,
+      </if>
+      <if test="productnew != null">
+        ProductNew,
+      </if>
+      <if test="producthotsale != null">
+        ProducthotSale,
+      </if>
+      <if test="productdisabled != null">
+        ProductDisabled,
+      </if>
+      <if test="productcredits != null">
+        ProductCredits,
+      </if>
+      <if test="productcreatetime != null">
+        ProductCreateTime,
+      </if>
+      <if test="productA != null">
+        Product_A,
+      </if>
+      <if test="productB != null">
+        Product_B,
+      </if>
+      <if test="productC != null">
+        Product_C,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="productid != null">
+        #{productid,jdbcType=INTEGER},
+      </if>
+      <if test="producttypeid != null">
+        #{producttypeid,jdbcType=INTEGER},
+      </if>
+      <if test="productname != null">
+        #{productname,jdbcType=VARCHAR},
+      </if>
+      <if test="productprice != null">
+        #{productprice,jdbcType=DOUBLE},
+      </if>
+      <if test="picturesizes != null">
+        #{picturesizes,jdbcType=VARCHAR},
+      </if>
+      <if test="picturecolors != null">
+        #{picturecolors,jdbcType=VARCHAR},
+      </if>
+      <if test="productlookcount != null">
+        #{productlookcount,jdbcType=INTEGER},
+      </if>
+      <if test="productdescribe != null">
+        #{productdescribe,jdbcType=VARCHAR},
+      </if>
+      <if test="productstoretime != null">
+        #{productstoretime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="productpicture != null">
+        #{productpicture,jdbcType=VARCHAR},
+      </if>
+      <if test="productnew != null">
+        #{productnew,jdbcType=INTEGER},
+      </if>
+      <if test="producthotsale != null">
+        #{producthotsale,jdbcType=CHAR},
+      </if>
+      <if test="productdisabled != null">
+        #{productdisabled,jdbcType=CHAR},
+      </if>
+      <if test="productcredits != null">
+        #{productcredits,jdbcType=CHAR},
+      </if>
+      <if test="productcreatetime != null">
+        #{productcreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="productA != null">
+        #{productA,jdbcType=VARCHAR},
+      </if>
+      <if test="productB != null">
+        #{productB,jdbcType=VARCHAR},
+      </if>
+      <if test="productC != null">
+        #{productC,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+
+  <update id="updateByPrimaryKeySelective" parameterType="com.xh.po.Product">
+    update product
+    <set>
+      <if test="producttypeid != null">
+        ProductTypeId = #{producttypeid,jdbcType=INTEGER},
+      </if>
+      <if test="productname != null">
+        ProductName = #{productname,jdbcType=VARCHAR},
+      </if>
+      <if test="productprice != null">
+        ProductPrice = #{productprice,jdbcType=DOUBLE},
+      </if>
+      <if test="picturesizes != null">
+        PictureSizes = #{picturesizes,jdbcType=VARCHAR},
+      </if>
+      <if test="picturecolors != null">
+        PictureColors = #{picturecolors,jdbcType=VARCHAR},
+      </if>
+      <if test="productlookcount != null">
+        ProductLookCount = #{productlookcount,jdbcType=INTEGER},
+      </if>
+      <if test="productdescribe != null">
+        ProductDescribe = #{productdescribe,jdbcType=VARCHAR},
+      </if>
+      <if test="productstoretime != null">
+        ProductStoreTime = #{productstoretime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="productpicture != null">
+        ProductPicture = #{productpicture,jdbcType=VARCHAR},
+      </if>
+      <if test="productnew != null">
+        ProductNew = #{productnew,jdbcType=INTEGER},
+      </if>
+      <if test="producthotsale != null">
+        ProducthotSale = #{producthotsale,jdbcType=CHAR},
+      </if>
+      <if test="productdisabled != null">
+        ProductDisabled = #{productdisabled,jdbcType=CHAR},
+      </if>
+      <if test="productcredits != null">
+        ProductCredits = #{productcredits,jdbcType=CHAR},
+      </if>
+      <if test="productcreatetime != null">
+        ProductCreateTime = #{productcreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="productA != null">
+        Product_A = #{productA,jdbcType=VARCHAR},
+      </if>
+      <if test="productB != null">
+        Product_B = #{productB,jdbcType=VARCHAR},
+      </if>
+      <if test="productC != null">
+        Product_C = #{productC,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ProductId = #{productid,jdbcType=INTEGER}
+  </update>
+
+</mapper>

@@ -4,7 +4,6 @@ import com.xh.po.User;
 import com.xh.po.UserExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 @Component

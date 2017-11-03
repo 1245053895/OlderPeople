@@ -22,7 +22,6 @@
 		<property name="password" value="${jdbc.password}"/>
 	</bean>
 
-
 <!--配置 sqlSessionFactory-->
 <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<!-- 数据库连接池 -->

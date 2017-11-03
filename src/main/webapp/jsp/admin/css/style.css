@@ -409,11 +409,11 @@ body
 #form-article-add{ padding:20px 0px;}
 #form-article-add .cl{ margin-bottom:15px; position:relative; min-height:35px; width:100%; left:0px}
 #form-article-add .cl .form-label{ line-height:35px; width:100px;}
-#form-article-add .cl .Add_p_s .form-label{}
-#form-article-add .cl .Add_p_s{ width:240px; position:relative; min-height:35px; float:left; margin-bottom:15px;}
+#form-article-add .cl .Add_p_s .form-label{ margin-left: -15px;}
+#form-article-add .cl .Add_p_s{ width:240px; position:relative; min-height:35px; float:left; margin-bottom:15px;margin-left: 20px;}
 #form-article-add .cl .Add_p_s .input-text,
-#form-article-add .cl .Add_p_s .select{width:85%; margin-right:5px;}
-#form-article-add .formControls{ width: auto; margin-left:20px; top:0px; float:left}
+#form-article-add .cl .Add_p_s .select{width:85%; margin-left: 7px;}
+#form-article-add .formControls{ width: auto;top:0px; float:left;}
 #form-article-add .formControls.col-10{ position:relative; width:90%; margin-left:10px}
 #form-article-add .formControls.col-10 textarea{ margin-left:0px; width:100%; height:250px;}
 #form-article-add .cl .input-text,

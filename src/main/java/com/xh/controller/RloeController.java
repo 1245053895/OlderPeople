@@ -89,4 +89,9 @@ public class RloeController {
         return "redirect:/queryAllRole.action";
     }
 
+    @RequestMapping("/updateRloeById")
+    public String updateRloeById(AdminRoleCustom adminRoleCustom){
+        roleManageServ.updateRloeById(adminRoleCustom);
+        return "redirect:/queryAllRole.action";
+    }
 }

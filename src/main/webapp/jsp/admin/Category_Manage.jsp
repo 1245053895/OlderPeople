@@ -23,7 +23,7 @@ To change this template use File | Settings | File Templates.
     <link href="/jsp/admin/assets/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="/jsp/admin/css/style.css"/>
     <link href="/jsp/admin/assets/css/codemirror.css" rel="stylesheet"/>
-    <link rel="stylesheet" href="/jsp/admin/assets/css/ace.min.css" />
+    <%--<link rel="stylesheet" href="/jsp/admin/assets/css/ace.min.css" />--%>
     <link rel="stylesheet" href="/jsp/admin/font/css/font-awesome.min.css" />
     <!--[if lte IE 8]>
     <link rel="stylesheet" href="/jsp/admin/assets/css/ace-ie.min.css" />
@@ -65,20 +65,18 @@ To change this template use File | Settings | File Templates.
             </thead>
             <tbody>
             <c:forEach items="${admingroups}" var="admingroup">
-                <%--<form action="${pageContext.request.contextPath}/deleteRoleById.action?id=${admingroup.admingroupid}" method="post">--%>
-                <tr>
-                    <td class="center"><label><input type="checkbox" name="RoleIds" value="${admingroup.admingroupid}"  class="ace"><span class="lbl"></span></label></td>
-                    <td>${admingroup.admingroupid}</td>
-                    <td class="hidden-480">${admingroup.admingroupname}</td>
-                    <td>${admingroup.admingroupdescription}</td>
-                    <td>
-                       <%-- <input type="submit" value="删除">--%>
-                           <a title="编辑" onclick="Competence_modify('560')" href="javascript:;"  class="btn btn-xs btn-info" ><i class="fa fa-edit bigger-120"></i></a>
+                <form id="form_${admingroup.admingroupid}" action="${pageContext.request.contextPath}/updateRloeById.action?id=${admingroup.admingroupid}" method="post">
+                    <tr>
+                        <td class="center"><label><input type="checkbox" name="RoleIds" value="${admingroup.admingroupid}"  class="ace"><span class="lbl"></span></label></td>
+                        <td><input type="text" value="${admingroup.admingroupid}" name="admingroupid" class="text_info" readonly="disabled"/></td>
+                        <td class="hidden-480"><input type="text" name="admingroupname" value="${admingroup.admingroupname}" class="text_info${admingroup.admingroupid}" disabled="disabled"/></td>
+                        <td><input type="text" value="${admingroup.admingroupdescription}" name="admingroupdescription" class="text_info${admingroup.admingroupid}" disabled="disabled"/></td>
+                        <td>
+                           <a title="编辑" onclick="modify(${admingroup.admingroupid})" href="javascript:void(0);"  class="btn btn-xs btn-info radius" ><i id="edit${admingroup.admingroupid}" class="fa bigger-120">编辑</i></a>
                            <a title="删除" href="${basePath}deleteRoleById.action?id=${admingroup.admingroupid}"  onclick="alert('您确定要删除吗？')" class="btn btn-xs btn-warning" ><i class="fa fa-trash  bigger-120"></i></a>
-                    </td>
-
-                </tr>
-              <%--  </form>--%>
+                        </td>
+                    </tr>
+              </form>
             </c:forEach>
 
             </tbody>
@@ -89,10 +87,70 @@ To change this template use File | Settings | File Templates.
 </body>
 </html>
 
-<script>
- function deleteBatch(basePath) {
-alert('您确定要删除吗？');
-$("#mainForm").attr("action",basePath + "deletBatchRole.action");
-$("#mainForm").submit();
+<<style type="text/css">
+
+.btn-xs{
+    border-width: 3px;
 }
+.btn-info,.btn-info:focus
+{
+background-color: #6fb3e0!important;
+border-color: #6fb3e0;
+}
+
+.btn-info:hover,.open .btn-info.dropdown-toggle
+{
+background-color: #4f99c6!important;
+
+border-color: #6fb3e0;
+}
+
+.btn-info.no-border:hover
+{
+border-color: #4f99c6;
+}
+
+.btn-info.no-hover:hover
+{
+background-color: #6fb3e0!important;
+}
+
+.btn-info.active
+{
+background-color: #5fa6d3!important;
+border-color: #4396cb;
+}
+
+.btn-info.no-border.active
+{
+background-color: #539fd0!important;
+border-color: #539fd0;
+}
+
+.btn-info.disabled,.btn-info[disabled],fieldset[disabled] .btn-info,.btn-info.disabled:hover,.btn-info[disabled]:hover,fieldset[disabled] .btn-info:hover,.btn-info.disabled:focus,.btn-info[disabled]:focus,fieldset[disabled] .btn-info:focus,.btn-info.disabled:active,.btn-info[disabled]:active,fieldset[disabled] .btn-info:active,.btn-info.disabled.active,.btn-info[disabled].active,fieldset[disabled] .btn-info.active
+{
+background-color: #6fb3e0!important;
+border-color: #6fb3e0;
+
+</style>
+
+<script>
+    var flag=true;
+    function modify(v) {
+        if(flag) {
+            console.log("dfds");
+            $('.text_info' + v).attr("disabled", false);
+            $('#edit'+v).text("提交");
+            flag = false;
+        }else{
+            console.log("#form_"+v);
+            $("#form_"+v).submit();
+            flag=true;
+        }
+    }
+    function deleteBatch(basePath) {
+        alert('您确定要删除吗？');
+        $("#mainForm").attr("action",basePath + "deletBatchRole.action");
+        $("#mainForm").submit();
+        }
 </script>

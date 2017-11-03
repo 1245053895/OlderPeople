@@ -60,4 +60,8 @@ public class RoleManageServImp implements RoleManageServ {
         return adminRoles;
     }
 
+    public void updateRloeById(AdminRoleCustom adminRoleCustom) {
+        roleMapper.updateRloeById(adminRoleCustom);
+    }
+
 }

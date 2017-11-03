@@ -222,4 +222,44 @@
    GROUP BY a.AdminGroupId
   </select>
 
+  <!--通过管理员姓名和性别组合搜索（姓名模糊查询，性别选择男、女、空）-->
+  <select id="selectByAdminNameAndSex" resultType="com.xh.po.vo.AdminVo" parameterType="com.xh.po.Admin">
+  select    a.AdminId adminid, a.AdminName adminname, a.AdminPic adminpic, a.AdminPwd adminpwd, a.AdminUser adminuser, a.AdminSex adminsex, a.AdminDepart admindepart, a.AdminPhone adminphone,
+  a.AdminGroupId admingroupid, a.Admin_A adminA, a.Admin_B adminB, a.Admin_C adminC,
+  b.AdminGroupName admingroupname
+  FROM admin a,admingroup b
+  <where>
+    <if test="2>1">
+      and a.AdminGroupId=b.AdminGroupId
+    </if>
+    <if test="adminuser != null and !&quot;&quot;.equals(adminuser.trim())">
+      and a.AdminUser like '%' #{adminuser} '%'
+    </if>
+    <if test="adminsex != null and !&quot;&quot;.equals(adminsex.trim())">
+      AND a.AdminSex = #{adminsex}
+    </if>
+  </where>
+  </select>
+
+  <!--通过管理员的登录名称来进行模糊查询-->
+  <select id="mohuSelectByName" parameterType="java.lang.String" resultType="admin">
+    SELECT AdminId adminid,AdminName adminname,AdminPwd adminpwd,AdminUser adminuser,AdminSex adminsex,AdminDepart admindepart,AdminPhone adminphone FROM Admin a
+        WHERE adminname LIKE '%${_parameter}%'
+  </select>
+
+
+  <!--查询出所有admingroupid表中的角色名称信息-->
+  <select id="selectAdminGroupName" resultType="admingroup">
+    SELECT AdminGroupId, AdminGroupName admingroupname FROM admingroup
+  </select>
+
+  <!--//批量删除通过id列表-->
+  <delete id="deleteBatch" parameterType="java.util.List">
+    delete from admin
+    where AdminId in
+    <foreach collection="list" item="item" separator="," open="(" close=")">
+      #{item}
+    </foreach>
+  </delete>
+
 </mapper>

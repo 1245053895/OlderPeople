@@ -385,8 +385,8 @@ body
 	 width:100%	
 	}
 .type_style .type_content{ width:500px; margin-left:auto; margin-right:auto; margin-top:50px;}
-.type_style .type_content .Operate_btn { border:1px solid #dddddd; padding:10px 0px; text-align:center}
-.form-label{ float:left; width:80px;text-align:right;}
+.form-label{ float:left; width:100px;text-align:right;}
+.c-red{color: red;}
 .formControls{ float:left; width:250px; margin-left:10px; }
 .formControls textarea{ width:390px; height:100px; resize: none  }
 .Operate_cont{ padding:10px;}

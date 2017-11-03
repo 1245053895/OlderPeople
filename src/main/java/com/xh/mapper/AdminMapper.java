@@ -2,6 +2,7 @@ package com.xh.mapper;
 
 import com.xh.po.Admin;
 import com.xh.po.AdminExample;
+import com.xh.po.Admingroup;
 import com.xh.po.vo.AdminVo;
 import org.springframework.stereotype.Component;
 
@@ -17,6 +18,9 @@ public interface AdminMapper {
     void deleteByPrimaryKey(Integer adminid);
     //增加一条数据
     void insert(Admin record);
+
+    //通过admingroupid查询出所有的admingroupname
+    public List<Admingroup> selectAdminGroupName();
     //增加一条数据  属性非空的不加
     void insertSelective(Admin record);
     //查询一条数据通过id
@@ -35,4 +39,14 @@ public interface AdminMapper {
 
     //得到 “管理员种类(数量)” 如 超级管理员(2)
     List <kindOfAdmin> kindOfAdmin();
+
+    //  通过管理员姓名和性别组合搜索（姓名模糊查询，性别选择男、女、空）
+    List <AdminVo> selectByAdminNameAndSex(Admin record);
+
+    //通过管理员的登录名称来进行模糊查询
+    public List<Admin> mohuSelectByName(String name);
+
+    //批量删除通过id列表
+    public void deleteBatch(int[] postIds);
+
 }

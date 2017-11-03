@@ -70,5 +70,11 @@ public class RloeController {
         return "/jsp/admin/Category_Manage.jsp";
 
     }
+    //根据管理员的名称来进行迷糊查询
+    @RequestMapping("/moHuSelectByAdminUser.action")
+    public String moHuSelectByAdminUser(String adminuser){
+        List<AdminRole> adminRoles=roleManageServ.moHuSelectByAdminUser(adminuser);
+        return  "/RloeController.action";
+    }
 
 }

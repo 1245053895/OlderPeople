@@ -1,7 +1,9 @@
 package com.xh.serviceimp;
 
 import com.xh.mapper.pojo.ProductAndTypeMapper;
+import com.xh.mapper.pojo.ProducTypeMapper;
 import com.xh.po.Product;
+import com.xh.po.Producttype;
 import com.xh.po.vo.Allproduct;
 import com.xh.po.vo.KindOfProduct;
 import com.xh.po.vo.ProductAndTypeVo;
@@ -16,6 +18,8 @@ public class ProductServiceimpl implements ProductService {
 
     @Autowired
     private ProductAndTypeMapper productAndTypeMapper;
+    @Autowired
+    private ProducTypeMapper producTypeMapper;
 
     public void deleteByPrimaryKey(Integer productid) {
         productAndTypeMapper.deleteByPrimaryKey(productid);
@@ -54,5 +58,14 @@ public class ProductServiceimpl implements ProductService {
         productAndTypeMapper.deleteBatch(idList);
 
 
+    }
+
+    @Override
+    public void TypeinsertSelective(Producttype record) {
+        producTypeMapper.TypeinsertSelective(record);
+    }
+    @Override
+    public void TypedeleteByName(String producttypename) {
+        producTypeMapper.TypedeleteByName(producttypename);
     }
 }

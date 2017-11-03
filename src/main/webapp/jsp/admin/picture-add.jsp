@@ -34,9 +34,9 @@
 </head>
 <body>
 <div class="clearfix" id="add_picture">
-<div id="scrollsidebar" class="left_Treeview">
+<%--<div id="scrollsidebar" class="left_Treeview">
     <div class="show_btn" id="rightArrow"><span></span></div>
-    <div class="widget-box side_content" >
+    &lt;%&ndash;<div class="widget-box side_content" >
     <div class="side_title"><a title="隐藏" class="close_btn"><span></span></a></div>
      <div class="side_list">
       <div class="widget-header header-color-green2">
@@ -48,8 +48,8 @@
           </div>
   </div>
   </div>
-  </div>
-  </div>
+  </div>&ndash;%&gt;
+  </div>--%>
 <div class="page_right_style">
    <div class="type_title">添加商品</div>
 	<form action="" method="post" class="form form-horizontal" id="form-article-add">

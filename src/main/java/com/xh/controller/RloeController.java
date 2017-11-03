@@ -67,14 +67,26 @@ public class RloeController {
     @RequestMapping("/deleteRoleById.action")
     public String deleteRoleById(int id){
         roleManageServ.deleteRoleById(id);
-        return "/jsp/admin/Category_Manage.jsp";
+       // return "/jsp/admin/Category_Manage.jsp";
+        return "redirect:/queryAllRole.action";
 
     }
     //根据管理员的名称来进行迷糊查询
     @RequestMapping("/moHuSelectByAdminUser.action")
-    public String moHuSelectByAdminUser(String adminuser){
+    public String moHuSelectByAdminUser(Model model,String adminuser){
         List<AdminRole> adminRoles=roleManageServ.moHuSelectByAdminUser(adminuser);
-        return  "/RloeController.action";
+        model.addAttribute("adminRoles",adminRoles);
+        return  "/jsp/admin/admin_Competence.jsp";
+    }
+
+
+    //对角色修改页面进行批量删除
+    @RequestMapping("/deletBatchRole.action")
+    public  String deletBatchRole(int[] RoleIds){
+        for (int i=0;i<RoleIds.length;i++){
+            roleManageServ.deleteRoleById(RoleIds[i]);
+        }
+        return "redirect:/queryAllRole.action";
     }
 
 }

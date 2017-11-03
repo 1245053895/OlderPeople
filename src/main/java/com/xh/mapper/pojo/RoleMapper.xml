@@ -45,8 +45,8 @@
     <!--输入管理员的名称来进行模糊查询-->
     <select id="moHuSelectByAdminUser" parameterType="String" resultType="adminRole">
         SELECT AdminGroupname admingroupname,AdminUser adminuser,AdminGroupDescription admingroupdescription
-                 FROM admingroup ag ,admin a WHERE adminuser  LIKE '%${_parameter}%' AND a.AdminGroupId=ag.AdminGroupId
+                 FROM admingroup ag ,admin a WHERE adminuser
+                LIKE '%${_parameter}%' AND a.AdminGroupId=ag.AdminGroupId
     </select>
-
 
 </mapper>

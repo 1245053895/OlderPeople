@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xh.mapper.pojo.UserCsdMapper">
+  <resultMap id="BaseResultMap" type="com.xh.po.User">
+    <id column="UserId" jdbcType="INTEGER" property="userid" />
+    <result column="UserName" jdbcType="VARCHAR" property="username" />
+    <result column="UserPwd" jdbcType="VARCHAR" property="userpwd" />
+    <result column="UserSex" jdbcType="VARCHAR" property="usersex" />
+    <result column="UserRealName" jdbcType="VARCHAR" property="userrealname" />
+    <result column="UserPhone" jdbcType="VARCHAR" property="userphone" />
+    <result column="UserBirthday" jdbcType="DATE" property="userbirthday" />
+    <result column="UserAddress" jdbcType="VARCHAR" property="useraddress" />
+    <result column="UserEmail" jdbcType="VARCHAR" property="useremail" />
+    <result column="CreditsCore" jdbcType="INTEGER" property="creditscore" />
+    <result column="UserInputDate" jdbcType="DATE" property="userinputdate" />
+    <result column="UserZip" jdbcType="INTEGER" property="userzip" />
+    <result column="UserLoginCount" jdbcType="INTEGER" property="userlogincount" />
+    <result column="UserLoginTime" jdbcType="TIMESTAMP" property="userlogintime" />
+    <result column="User_A" jdbcType="VARCHAR" property="userA" />
+    <result column="User_B" jdbcType="VARCHAR" property="userB" />
+    <result column="User_C" jdbcType="VARCHAR" property="userC" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+    UserId, UserName, UserPwd, UserSex, UserRealName, UserPhone, UserBirthday, UserAddress,
+    UserEmail, CreditsCore, UserInputDate, UserZip, UserLoginCount, UserLoginTime, User_A,
+    User_B, User_C
+  </sql>
+
+  <!--根据用户id查询到用户的所有列-->
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from user
+    where UserId = #{userid,jdbcType=INTEGER}
+  </select>
+
+  <!--根据用户名查询用户-->
+  <select id="selectByPrimaryKeyByname" parameterType="string" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from user
+    where Username= #{username,jdbcType=INTEGER}
+  </select>
+
+  <!--根据用户id删除用户-->
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from user
+    where UserId = #{userid,jdbcType=INTEGER}
+  </delete>
+
+  <!--插入一个用户-->
+  <insert id="insertSelective" parameterType="com.xh.po.User">
+    insert into user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userid != null">
+        UserId,
+      </if>
+      <if test="username != null">
+        UserName,
+      </if>
+      <if test="userpwd != null">
+        UserPwd,
+      </if>
+      <if test="usersex != null">
+        UserSex,
+      </if>
+      <if test="userrealname != null">
+        UserRealName,
+      </if>
+      <if test="userphone != null">
+        UserPhone,
+      </if>
+      <if test="userbirthday != null">
+        UserBirthday,
+      </if>
+      <if test="useraddress != null">
+        UserAddress,
+      </if>
+      <if test="useremail != null">
+        UserEmail,
+      </if>
+      <if test="creditscore != null">
+        CreditsCore,
+      </if>
+      <if test="userinputdate != null">
+        UserInputDate,
+      </if>
+      <if test="userzip != null">
+        UserZip,
+      </if>
+      <if test="userlogincount != null">
+        UserLoginCount,
+      </if>
+      <if test="userlogintime != null">
+        UserLoginTime,
+      </if>
+      <if test="userA != null">
+        User_A,
+      </if>
+      <if test="userB != null">
+        User_B,
+      </if>
+      <if test="userC != null">
+        User_C,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userid != null">
+        #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="userpwd != null">
+        #{userpwd,jdbcType=VARCHAR},
+      </if>
+      <if test="usersex != null">
+        #{usersex,jdbcType=VARCHAR},
+      </if>
+      <if test="userrealname != null">
+        #{userrealname,jdbcType=VARCHAR},
+      </if>
+      <if test="userphone != null">
+        #{userphone,jdbcType=VARCHAR},
+      </if>
+      <if test="userbirthday != null">
+        #{userbirthday,jdbcType=DATE},
+      </if>
+      <if test="useraddress != null">
+        #{useraddress,jdbcType=VARCHAR},
+      </if>
+      <if test="useremail != null">
+        #{useremail,jdbcType=VARCHAR},
+      </if>
+      <if test="creditscore != null">
+        #{creditscore,jdbcType=INTEGER},
+      </if>
+      <if test="userinputdate != null">
+        #{userinputdate,jdbcType=DATE},
+      </if>
+      <if test="userzip != null">
+        #{userzip,jdbcType=INTEGER},
+      </if>
+      <if test="userlogincount != null">
+        #{userlogincount,jdbcType=INTEGER},
+      </if>
+      <if test="userlogintime != null">
+        #{userlogintime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userA != null">
+        #{userA,jdbcType=VARCHAR},
+      </if>
+      <if test="userB != null">
+        #{userB,jdbcType=VARCHAR},
+      </if>
+      <if test="userC != null">
+        #{userC,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <!--根据id更新用户信息-->
+  <update id="updateByPrimaryKeySelective" parameterType="com.xh.po.User">
+    update user
+    <set>
+      <if test="username != null">
+        UserName = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="userpwd != null">
+        UserPwd = #{userpwd,jdbcType=VARCHAR},
+      </if>
+      <if test="usersex != null">
+        UserSex = #{usersex,jdbcType=VARCHAR},
+      </if>
+      <if test="userrealname != null">
+        UserRealName = #{userrealname,jdbcType=VARCHAR},
+      </if>
+      <if test="userphone != null">
+        UserPhone = #{userphone,jdbcType=VARCHAR},
+      </if>
+      <if test="userbirthday != null">
+        UserBirthday = #{userbirthday,jdbcType=DATE},
+      </if>
+      <if test="useraddress != null">
+        UserAddress = #{useraddress,jdbcType=VARCHAR},
+      </if>
+      <if test="useremail != null">
+        UserEmail = #{useremail,jdbcType=VARCHAR},
+      </if>
+      <if test="creditscore != null">
+        CreditsCore = #{creditscore,jdbcType=INTEGER},
+      </if>
+      <if test="userinputdate != null">
+        UserInputDate = #{userinputdate,jdbcType=DATE},
+      </if>
+      <if test="userzip != null">
+        UserZip = #{userzip,jdbcType=INTEGER},
+      </if>
+      <if test="userlogincount != null">
+        UserLoginCount = #{userlogincount,jdbcType=INTEGER},
+      </if>
+      <if test="userlogintime != null">
+        UserLoginTime = #{userlogintime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userA != null">
+        User_A = #{userA,jdbcType=VARCHAR},
+      </if>
+      <if test="userB != null">
+        User_B = #{userB,jdbcType=VARCHAR},
+      </if>
+      <if test="userC != null">
+        User_C = #{userC,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where UserId = #{userid,jdbcType=INTEGER}
+  </update>
+
+</mapper>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xh.mapper.pojo.ProducTypeMapper">
+  <resultMap id="BaseResultMap" type="com.xh.po.Producttype">
+    <id column="ProductTypeId" jdbcType="INTEGER" property="producttypeid" />
+    <result column="ProductTypeName" jdbcType="VARCHAR" property="producttypename" />
+    <result column="ProductType_A" jdbcType="VARCHAR" property="producttypeA" />
+    <result column="ProductType_B" jdbcType="VARCHAR" property="producttypeB" />
+    <result column="ProductType_C" jdbcType="VARCHAR" property="producttypeC" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+    ProductTypeId, ProductTypeName, ProductType_A, ProductType_B, ProductType_C
+  </sql>
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from producttype
+    where ProductTypeId = #{producttypeid,jdbcType=INTEGER}
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from producttype
+    where ProductTypeId = #{producttypeid,jdbcType=INTEGER}
+  </delete>
+
+  <insert id="insertSelective" parameterType="com.xh.po.Producttype">
+    insert into producttype
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="producttypeid != null">
+        ProductTypeId,
+      </if>
+      <if test="producttypename != null">
+        ProductTypeName,
+      </if>
+      <if test="producttypeA != null">
+        ProductType_A,
+      </if>
+      <if test="producttypeB != null">
+        ProductType_B,
+      </if>
+      <if test="producttypeC != null">
+        ProductType_C,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="producttypeid != null">
+        #{producttypeid,jdbcType=INTEGER},
+      </if>
+      <if test="producttypename != null">
+        #{producttypename,jdbcType=VARCHAR},
+      </if>
+      <if test="producttypeA != null">
+        #{producttypeA,jdbcType=VARCHAR},
+      </if>
+      <if test="producttypeB != null">
+        #{producttypeB,jdbcType=VARCHAR},
+      </if>
+      <if test="producttypeC != null">
+        #{producttypeC,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+
+  <update id="updateByPrimaryKeySelective" parameterType="com.xh.po.Producttype">
+    update producttype
+    <set>
+      <if test="producttypename != null">
+        ProductTypeName = #{producttypename,jdbcType=VARCHAR},
+      </if>
+      <if test="producttypeA != null">
+        ProductType_A = #{producttypeA,jdbcType=VARCHAR},
+      </if>
+      <if test="producttypeB != null">
+        ProductType_B = #{producttypeB,jdbcType=VARCHAR},
+      </if>
+      <if test="producttypeC != null">
+        ProductType_C = #{producttypeC,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ProductTypeId = #{producttypeid,jdbcType=INTEGER}
+  </update>
+
+
+</mapper>

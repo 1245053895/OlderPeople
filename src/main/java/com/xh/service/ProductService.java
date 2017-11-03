@@ -2,6 +2,8 @@ package com.xh.service;
 
 
 import com.xh.po.Product;
+
+import com.xh.po.Producttype;
 import com.xh.po.vo.Allproduct;
 import com.xh.po.vo.KindOfProduct;
 import com.xh.po.vo.ProductAndTypeVo;
@@ -23,5 +25,11 @@ public interface ProductService {
 
     //批量删除
     void  deleteBatch(String[] ids);
+
+ //    商品类型的增加
+    void TypeinsertSelective(Producttype record);
+ //    商品类型的删除
+    void TypedeleteByName(String producttypename);
+
 
 }

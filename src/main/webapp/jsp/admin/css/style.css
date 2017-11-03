@@ -33,9 +33,10 @@ a:hover{ color:#F90}
 .l_f{ float:left}
 .mleft{ margin-left:10px;}
 .margin{ margin:15px;}
-.border{ border:1px solid #ddd; padding:10px; height:60px; line-height:36px; margin-bottom:20px; }
-.border  span{ display:block; height:100%;}
+.border{ border:1px solid #ddd; padding:10px;line-height:36px; }
+.border  span{ display:block; }
 .table_menu_list{}
+.order_style{ width: 1300px;}
 .alert { margin-top:20px;}
 body
 {
@@ -390,8 +391,8 @@ body
 .formControls{ float:left; width:250px; margin-left:10px; }
 .formControls textarea{ width:390px; height:100px; resize: none  }
 .Operate_cont{ padding:10px;}
-#products_list .table_menu_list{ float:right; margin-left:230px;overflow:auto; position:absolute}
-#products_list .table_menu_list.Widescreen{ width:100%; margin-left:0px}
+#products_list .table_menu_list{float: left;overflow:auto; position:absolute;width: 100%;}
+#products_list .table_menu_list.Widescreen{ width:100%;}
 #products_list {
 	overflow: hidden;
     position: relative;
@@ -437,7 +438,7 @@ body
 #Order_form_style  .proportion{ float:left; margin:10px 20px; text-align:center}
 #Order_form_style  .proportion .name{ display:block; margin-top:5px; font-size:14px}
 .order_list .h_products_list { border-bottom:1px solid #dddddd;}
-#products_list .order_style{ padding:10px; margin-left:220px;}
+#products_list .order_style{ padding:10px;}
 #products_list .order_style .order_product_name img{ border:1px solid #dddddd; padding:1px; width:60px; height:60px; }
 #products_list .order_style .order_product_name i{ color:#CCC; font-size:24px;}
 /***********订单详细样式属性************/

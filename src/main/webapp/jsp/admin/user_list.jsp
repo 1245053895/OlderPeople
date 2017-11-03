@@ -199,9 +199,7 @@
                                                                                    class="text_add"/></span>
                 <div class="prompt r_f"></div>
             </li>
-<%--
-                     <li><label class="label_name">出生年月：</label><span class="add_name"><input name="user.userbirthday" type="text"  class="text_add"/></span><&lt;%&ndash;&ndash;%&gt;div class="prompt r_f"></div></li>
---%>
+                     <li><label class="label_name">出生年月：</label><span class="add_name"><input name="userbirthday" type="text"  class="text_add"/></span><<%----%>div class="prompt r_f"></div></li>
             <li><label class="label_name">电子邮箱：</label><span class="add_name"><input name="useremail" type="text"
                                                                                      class="text_add"/></span>
                 <div class="prompt r_f"></div>

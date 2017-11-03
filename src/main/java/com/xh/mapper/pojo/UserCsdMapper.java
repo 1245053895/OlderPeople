@@ -1,14 +1,10 @@
-package com.xh.mapper;
+package com.xh.mapper.pojo;
 
 import com.xh.po.User;
-import com.xh.po.UserExample;
-import java.util.List;
-import org.apache.ibatis.annotations.Param;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 @Component
-public interface UserMapper {
+public interface UserCsdMapper {
     //根据用户Id删除用户
     void deleteByPrimaryKey(Integer userid);
     //增加用户
@@ -19,4 +15,6 @@ public interface UserMapper {
     void updateByPrimaryKeySelective(User record);
     //根据用户名查询用户
     public User selectByPrimaryKeyByname(String username);
+
+    public User csd();
 }

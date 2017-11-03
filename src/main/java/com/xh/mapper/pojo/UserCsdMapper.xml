@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.xh.mapper.UserMapper">
+<mapper namespace="com.xh.mapper.pojo.UserCsdMapper">
   <resultMap id="BaseResultMap" type="com.xh.po.User">
     <id column="UserId" jdbcType="INTEGER" property="userid" />
     <result column="UserName" jdbcType="VARCHAR" property="username" />
@@ -22,14 +22,14 @@
   </resultMap>
 
   <sql id="Base_Column_List">
-    UserId, UserName, UserPwd, UserSex, UserRealName, UserPhone, UserBirthday, UserAddress, 
-    UserEmail, CreditsCore, UserInputDate, UserZip, UserLoginCount, UserLoginTime, User_A, 
+    UserId, UserName, UserPwd, UserSex, UserRealName, UserPhone, UserBirthday, UserAddress,
+    UserEmail, CreditsCore, UserInputDate, UserZip, UserLoginCount, UserLoginTime, User_A,
     User_B, User_C
   </sql>
 
-<!--根据用户id查询到用户的所有列-->
+  <!--根据用户id查询到用户的所有列-->
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
+    select
     <include refid="Base_Column_List" />
     from user
     where UserId = #{userid,jdbcType=INTEGER}
@@ -159,7 +159,7 @@
       </if>
     </trim>
   </insert>
-<!--根据id更新用户信息-->
+  <!--根据id更新用户信息-->
   <update id="updateByPrimaryKeySelective" parameterType="com.xh.po.User">
     update user
     <set>

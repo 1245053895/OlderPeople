@@ -68,9 +68,9 @@ To change this template use File | Settings | File Templates.
                 <form id="form_${admingroup.admingroupid}" action="${pageContext.request.contextPath}/updateRloeById.action?id=${admingroup.admingroupid}" method="post">
                     <tr>
                         <td class="center"><label><input type="checkbox" name="RoleIds" value="${admingroup.admingroupid}"  class="ace"><span class="lbl"></span></label></td>
-                        <td><input type="text" value="${admingroup.admingroupid}" name="admingroupid" class="text_info" readonly="disabled"/></td>
-                        <td class="hidden-480"><input type="text" name="admingroupname" value="${admingroup.admingroupname}" class="text_info${admingroup.admingroupid}" disabled="disabled"/></td>
-                        <td><input type="text" value="${admingroup.admingroupdescription}" name="admingroupdescription" class="text_info${admingroup.admingroupid}" disabled="disabled"/></td>
+                        <td><input type="text" value="${admingroup.admingroupid}" name="admingroupid" class="input_style text_info" readonly="true"/></td>
+                        <td class="hidden-480"><input type="text" name="admingroupname" value="${admingroup.admingroupname}" class="input_style text_info${admingroup.admingroupid}" readonly="true"/></td>
+                        <td><input type="text" value="${admingroup.admingroupdescription}" name="admingroupdescription" class="input_style text_info${admingroup.admingroupid}" readonly="true"/></td>
                         <td>
                            <a title="编辑" onclick="modify(${admingroup.admingroupid})" href="javascript:void(0);"  class="btn btn-xs btn-info radius" ><i id="edit${admingroup.admingroupid}" class="fa bigger-120">编辑</i></a>
                            <a title="删除" href="${basePath}deleteRoleById.action?id=${admingroup.admingroupid}"  onclick="alert('您确定要删除吗？')" class="btn btn-xs btn-warning" ><i class="fa fa-trash  bigger-120"></i></a>
@@ -87,8 +87,12 @@ To change this template use File | Settings | File Templates.
 </body>
 </html>
 
-<<style type="text/css">
-
+<style type="text/css">
+.input_style{
+width: 100%;
+background-color: transparent;
+border: 0px transparent solid;
+}
 .btn-xs{
     border-width: 3px;
 }
@@ -115,13 +119,13 @@ border-color: #4f99c6;
 background-color: #6fb3e0!important;
 }
 
-.btn-info.active
+.btn-info
 {
 background-color: #5fa6d3!important;
 border-color: #4396cb;
 }
 
-.btn-info.no-border.active
+.btn-info
 {
 background-color: #539fd0!important;
 border-color: #539fd0;
@@ -131,6 +135,7 @@ border-color: #539fd0;
 {
 background-color: #6fb3e0!important;
 border-color: #6fb3e0;
+}
 
 </style>
 
@@ -138,13 +143,13 @@ border-color: #6fb3e0;
     var flag=true;
     function modify(v) {
         if(flag) {
-            console.log("dfds");
-            $('.text_info' + v).attr("disabled", false);
+            $('.text_info' + v).attr("readonly", false);
+            $('.text_info' + v).parents("td").css("box-shadow","0px 0px 20px #888888 inset");
             $('#edit'+v).text("提交");
             flag = false;
         }else{
-            console.log("#form_"+v);
             $("#form_"+v).submit();
+            $('#edit'+v).text("编辑");
             flag=true;
         }
     }

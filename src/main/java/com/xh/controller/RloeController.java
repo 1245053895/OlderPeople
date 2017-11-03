@@ -89,6 +89,11 @@ public class RloeController {
         return "redirect:/queryAllRole.action";
     }
 
+    /**
+     * 通过角色id 修改角色信息
+     * @param adminRoleCustom
+     * @return
+     */
     @RequestMapping("/updateRloeById")
     public String updateRloeById(AdminRoleCustom adminRoleCustom){
         roleManageServ.updateRloeById(adminRoleCustom);

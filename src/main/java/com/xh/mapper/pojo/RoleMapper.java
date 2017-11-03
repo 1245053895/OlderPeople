@@ -115,5 +115,5 @@ public interface RoleMapper {
     public void insertRloeAndFirstView(AdminRoleCustom adminRoleCustom);
 
     //输入管理员的名称来进行模糊查询
-    public List<AdminRole> moHuSelectByAdminUser(String uadminuser);
+    public List<AdminRole> moHuSelectByAdminUser(String adminuser);
 }

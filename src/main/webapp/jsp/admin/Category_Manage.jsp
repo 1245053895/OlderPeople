@@ -39,16 +39,16 @@ To change this template use File | Settings | File Templates.
 </head>
 
 <body>
-
-<c:if test="${empty admingroups }">
+<form action="<%= basePath %>queryAllRole.action" id="mainForm" method="post">
+<%--<c:if test="${empty admingroups }">
     <jsp:forward page="/queryAllRole.action"/>
-</c:if>
+</c:if>--%>
 
 <div class="margin clearfix">
     <div class="border clearfix">
        <span class="l_f">
         <a href="/getFirstview.action" id="Competence_add" class="btn btn-warning" title="添加权限"><i class="fa fa-plus"></i> 添加权限</a>
-        <a href="javascript:void(0)" class="btn btn-danger"><i class="fa fa-trash"></i> 批量删除</a>
+       <a href="javascript:deleteBatch('<%=basePath%>');" class="btn btn-danger"><i class="icon-trash"></i>批量删除</a>
        </span>
         <span class="r_f">共：<b>5</b>类</span>
     </div>
@@ -65,26 +65,34 @@ To change this template use File | Settings | File Templates.
             </thead>
             <tbody>
             <c:forEach items="${admingroups}" var="admingroup">
-                <form action="${pageContext.request.contextPath}/deleteRoleById.action?id=${admingroup.admingroupid}" method="post">
+                <%--<form action="${pageContext.request.contextPath}/deleteRoleById.action?id=${admingroup.admingroupid}" method="post">--%>
                 <tr>
-                    <td class="center"><label><input type="checkbox" class="ace"/><span class="lbl"></span></label></td>
+                    <td class="center"><label><input type="checkbox" name="RoleIds" value="${admingroup.admingroupid}"  class="ace"><span class="lbl"></span></label></td>
                     <td>${admingroup.admingroupid}</td>
                     <td class="hidden-480">${admingroup.admingroupname}</td>
                     <td>${admingroup.admingroupdescription}</td>
                     <td>
                        <%-- <input type="submit" value="删除">--%>
                            <a title="编辑" onclick="Competence_modify('560')" href="javascript:;"  class="btn btn-xs btn-info" ><i class="fa fa-edit bigger-120"></i></a>
-                           <a title="删除" href="javascript:;"  onclick="Competence_del(this,'1')" class="btn btn-xs btn-warning" ><i class="fa fa-trash  bigger-120"></i></a>
+                           <a title="删除" href="${basePath}deleteRoleById.action?id=${admingroup.admingroupid}"  onclick="alert('您确定要删除吗？')" class="btn btn-xs btn-warning" ><i class="fa fa-trash  bigger-120"></i></a>
                     </td>
-                    </td>
+
                 </tr>
-                </form>
+              <%--  </form>--%>
             </c:forEach>
 
             </tbody>
         </table>
     </div>
 </div>
-
+</form>
 </body>
 </html>
+
+<script>
+ function deleteBatch(basePath) {
+alert('您确定要删除吗？');
+$("#mainForm").attr("action",basePath + "deletBatchRole.action");
+$("#mainForm").submit();
+}
+</script>

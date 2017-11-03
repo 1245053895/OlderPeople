@@ -1,7 +1,9 @@
 package com.xh.serviceimp;
 
 import com.xh.mapper.pojo.UserRecordMapper;
+import com.xh.po.vo.OrderDetails;
 import com.xh.po.vo.UserAndUserLog;
+import com.xh.po.vo.UserLogCustom;
 import com.xh.service.UserRecordService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -18,5 +20,14 @@ public class UserRecordServiceimpl implements UserRecordService {
     public List<UserAndUserLog> queryUserLog() {
         List<UserAndUserLog> userAndUserLogs =userRecordMapper.queryUserLog();
         return userAndUserLogs;
+    }
+
+    public List<OrderDetails> getOrderDetailsByUserId(Integer id) {
+        return userRecordMapper.getOrderDetailsByUserId(id);
+    }
+
+    public List<UserLogCustom> getUserLogById(Integer id) {
+        List<UserLogCustom> userLogCustoms= userRecordMapper.getUserLogById(id);
+        return userLogCustoms;
     }
 }

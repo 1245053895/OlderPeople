@@ -215,4 +215,14 @@
     where UserId = #{userid,jdbcType=INTEGER}
   </update>
 
+  <select id="qullyAllUser" parameterType="list" resultType="com.xh.po.User" >
+    SELECT UserId, UserName, UserPwd, UserSex, UserRealName, UserPhone, UserBirthday, UserAddress,
+  UserEmail, UserZip,UserInputDate FROM user;
+  </select>
+  <!--实现模糊查询-->
+  <select id="QueryUserConfuse" parameterType="com.xh.po.vo.StringAndString" resultType="com.xh.po.User">
+      SELECT *
+      FROM user WHERE UserEmail LIKE '%${sqlString}%' OR  UserPhone LIKE '%${sqlString}%'  OR UserName LIKE '%${sqlString}%'
+  </select>
+
 </mapper>

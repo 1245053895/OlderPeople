@@ -12,6 +12,7 @@ public interface AdminManage {
     //删除数据通过id
     void deleteByPrimaryKey(Integer adminid);
 
+
     //增加一条数据  属性非空的不加
     void insertSelective(Admin record);
 

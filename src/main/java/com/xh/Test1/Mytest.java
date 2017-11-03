@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import java.util.List;
+
 @SuppressWarnings("SpellCheckingInspection")
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations="classpath:/config/spring/applicationContext-*.xml")
@@ -17,8 +19,8 @@ public class Mytest {
     private UserMessageService userMessageService;
     @Test
     public void UseTest() {
-        User user=userMessageService.selectByPrimaryKeyByname("3");
-        System.out.print(user);
+
+
     }
 
 }

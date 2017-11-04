@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -56,5 +57,18 @@ public class UserMessageController {
     public  String insertSelective(User user,Model model){
         userMessageService.insertSelective(user);
         return "redirect:/UserMessageController.action";
+    }
+    /*
+    * 批量删除用户
+    * */
+    @RequestMapping(value = "/DelectUserArray.action" ,method = {RequestMethod.POST,RequestMethod.GET})
+    public String DelectUserArray( String[] ids) {
+        if (ids != null) {
+            for (String id : ids) {
+                userMessageService.deleteByPrimaryKey(Integer.parseInt(id));
+            }
+            return "redirect:/UserMessageController.action";
+        }else
+        return  "redirect:/UserMessageController.action";
     }
 }

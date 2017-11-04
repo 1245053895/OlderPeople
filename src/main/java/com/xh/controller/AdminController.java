@@ -1,7 +1,6 @@
 package com.xh.controller;
 
 import com.xh.po.Admin;
-import com.xh.po.Admingroup;
 import com.xh.po.vo.AdminVo;
 import com.xh.po.vo.kindOfAdmin;
 import com.xh.service.AdminManage;
@@ -24,10 +23,8 @@ public class AdminController {
     public String  queryAllUsers(Model model){
         List<AdminVo> adminList = adminManage.queryAdminAndGroup();
        List<kindOfAdmin> kindOfAdmins =  adminManage.kindOfAdmin();
-       model.addAttribute("kindOfAdmins", kindOfAdmins);
         model.addAttribute("adminList", adminList);
-       List<Admingroup> admingroupnames=adminManage.selectAdminGroupName();
-       model.addAttribute("admingroupnames",admingroupnames);
+       model.addAttribute("kindOfAdmins", kindOfAdmins);
         //这个方法的返回值就是要跳转的页面的逻辑视图名称
         return "/jsp/admin/administrator.jsp";
     }
@@ -35,39 +32,30 @@ public class AdminController {
     //查询各类管理员
     @RequestMapping(value="kindOfAdmin.action",method={RequestMethod.POST,RequestMethod.GET})
     public String  queryKindOfAdmin(Model model){
-        List<kindOfAdmin> kindOfAdmins =  adminManage.kindOfAdmin();
-        model.addAttribute("kindOfAdmins", kindOfAdmins);
+        List<AdminVo> adminList = adminManage.queryAdminAndGroup();
+        model.addAttribute("adminList", adminList);
         //这个方法的返回值就是要跳转的页面的逻辑视图名称
         return "/jsp/admin/administrator.jsp";
     }
 
-     //通过Id删除数据
-    @RequestMapping("/deleteByPrimaryKey.action")
-    public String deleteByPrimaryKey(Integer id){
-        adminManage.deleteByPrimaryKey(id);
-        return "/admin/adminList.action";
+
+
+
+
+
+
+
+
+    //查询一个管理员
+    @RequestMapping(value="admin.action",method={RequestMethod.POST,RequestMethod.GET})
+    // @RequestMapping("/adminList")
+    public String  queryAdmin(Model model){
+        Admin admin = adminManage.selectByPrimaryKey(1);
+        model.addAttribute("admin", admin);
+        //这个方法的返回值就是要跳转的页面的逻辑视图名称
+        return "";
     }
 
-    //通过管理员登录名称模糊查询
-    @RequestMapping("/mohuSelectByName.action")
-        public String mohuSelectByName(Model model,String name){
-          List<Admin> admins= adminManage.mohuSelectByName(name);
-          model.addAttribute("adminList",admins);
-              return  "/admin/kindOfAdmin.action";
-        }
-        //添加新的管理员
-    @RequestMapping("/insert.action")
-    public String  insert(Admin admin){
-        adminManage.insert(admin);
-        return  "/admin/adminList.action";
 
-    }
-    //批量删除管理员列表
-    @RequestMapping("/deleteBatch.action")
-    public String deleteBatch(int[] postIds){
-        for(int i=0;i<postIds.length;i++){
-            adminManage.deleteByPrimaryKey(postIds[i]);
-        }
-        return "/admin/adminList.action";
-    }
+
 }

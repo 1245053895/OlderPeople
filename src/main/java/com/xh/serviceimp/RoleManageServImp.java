@@ -8,7 +8,6 @@ import com.xh.po.Firstview;
 import com.xh.service.RoleManageServ;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -17,7 +16,7 @@ import java.util.List;
  */
 
 
-@Service
+@Component
 public class RoleManageServImp implements RoleManageServ {
     @Autowired
     private RoleMapper roleMapper;
@@ -53,11 +52,6 @@ public class RoleManageServImp implements RoleManageServ {
 
     public void insertRloeAndFirstView(AdminRoleCustom adminRoleCustom) {
         roleMapper.insertRloeAndFirstView(adminRoleCustom);
-    }
-
-    public List<AdminRole> moHuSelectByAdminUser(String adminuser) {
-        List<AdminRole> adminRoles= roleMapper.moHuSelectByAdminUser(adminuser);
-        return adminRoles;
     }
 
 }

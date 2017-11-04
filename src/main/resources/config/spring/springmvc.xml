@@ -49,4 +49,7 @@
 		</property>
 	</bean>
 
+    <!-- 全局异常处理器只要实现HandlerExceptionResolver接口就是全局异常处理器-->
+    <bean class="com.xh.exception.CustomExceptionResolver"></bean>
+
 </beans>

@@ -30,7 +30,7 @@ public interface ProductService {
     void TypeinsertSelective(Producttype record);
  //    商品类型的删除
     void TypedeleteByName(String producttypename);
-  //    商品查询
+  //    商品类型查询
   List<Producttype> selectByNothing();
 
 

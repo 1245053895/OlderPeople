@@ -61,7 +61,7 @@
             <a href="${basePath}AddToProductType.action" title="添加商品" class="btn btn-warning Order_form"><i class="icon-plus"></i>添加商品</a>
             <a href="javascript:deleteBatch('<%=basePath%>');" class="btn btn-danger"><i class="icon-trash"></i>批量删除</a>
            </span>
-           <span class="r_f">共：<b>2334</b>件商品</span>
+           <span class="r_f">共：<b>${allproduct.productcount}</b>件商品</span>
          </div>
          <%--<div class="table_menu_list" id="testIframe">--%>
              <table class="table table-striped table-bordered table-hover" id="sample-table">

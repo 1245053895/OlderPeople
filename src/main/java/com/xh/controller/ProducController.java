@@ -1,8 +1,10 @@
 package com.xh.controller;
 
 
+import com.xh.exception.CustomException;
 import com.xh.po.Product;
 import com.xh.po.Producttype;
+import com.xh.po.vo.Allproduct;
 import com.xh.po.vo.KindOfProduct;
 import com.xh.po.vo.ProductAndTypeVo;
 import com.xh.service.ProductService;
@@ -27,26 +29,32 @@ public class ProducController {
 //    查
     @RequestMapping("/ProducList.action")
     public String producList(String productname, Product product, Model model){
-            List<ProductAndTypeVo> productAndTypeVos= productService.selectByProduct(product);
-            model.addAttribute("productAndTypeVos",productAndTypeVos);
-            model.addAttribute("productname",productname);
-            return "/jsp/admin/Products_List.jsp";
+        //    得到总商品数  Allproduct productCount();
+        Allproduct allproduct =  productService.productCount();
+        List<ProductAndTypeVo> productAndTypeVos= productService.selectByProduct(product);
+        model.addAttribute("productAndTypeVos",productAndTypeVos);
+        model.addAttribute("productname",productname);
+        model.addAttribute("allproduct",allproduct);
+        return "/jsp/admin/Products_List.jsp";
     }
 //删除
     @RequestMapping("/DeleteOneProduct.action")
-    public String deleteOneProduct(int productid){
+
+    public String deleteOneProduct(int productid) throws Exception{
+        //判断商品是否为空，根据id没有查询到商品，抛出异常，提示用户商品信息不存 在
+        if(productid < 0){
+            throw new CustomException("没有选择删除的数据!");
+        }
         productService.deleteByPrimaryKey(productid);
         return "redirect:/ProducList.action";
     }
 //批量删除
     @RequestMapping("/DeleteBatchProduct.action")
-    public String deleteBatchProduct(String[] productid){
-        if (productid[0]!=null){
+    public String deleteBatchProduct(String[] productid) throws Exception{
+
         productService.deleteBatch(productid);
 //        重定向
         return "redirect:/ProducList.action";
-        }
-       else {return "/jsp/admin/login.jsp";}
     }
 //添加
     @RequestMapping("/AddProduct.action")

@@ -116,4 +116,10 @@ public interface RoleMapper {
 
     //输入管理员的名称来进行模糊查询
     public List<AdminRole> moHuSelectByAdminUser(String adminuser);
+
+    /**
+     * 通过角色id修改角色信息
+     * @param adminRoleCustom
+     */
+    public void updateRloeById(AdminRoleCustom adminRoleCustom);
 }

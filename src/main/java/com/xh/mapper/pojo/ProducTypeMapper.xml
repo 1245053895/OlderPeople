@@ -12,20 +12,18 @@
   <sql id="Base_Column_List">
     ProductTypeId, ProductTypeName, ProductType_A, ProductType_B, ProductType_C
   </sql>
-
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from producttype
     where ProductTypeId = #{producttypeid,jdbcType=INTEGER}
   </select>
-
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+  <delete id="TypedeleteByName" parameterType="string">
     delete from producttype
-    where ProductTypeId = #{producttypeid,jdbcType=INTEGER}
+    where ProductTypeName = #{producttypename,jdbcType=VARCHAR}
   </delete>
 
-  <insert id="insertSelective" parameterType="com.xh.po.Producttype">
+  <insert id="TypeinsertSelective" parameterType="com.xh.po.Producttype">
     insert into producttype
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="producttypeid != null">
@@ -81,6 +79,5 @@
     </set>
     where ProductTypeId = #{producttypeid,jdbcType=INTEGER}
   </update>
-
 
 </mapper>

@@ -90,10 +90,11 @@ public class LoginController {
         return new String(encodeHex);
     }
 
-    public static void main(String[] args) {
-        LoginController lo=new LoginController();
-        System.out.print(lo.encodePassword("123456"));
 
+    //个人资料的显示
+    @RequestMapping("/ShowInformation.action")
+    public String  ShowInformation(){
+        return "/jsp/admin/admin_info.jsp";
 
     }
 

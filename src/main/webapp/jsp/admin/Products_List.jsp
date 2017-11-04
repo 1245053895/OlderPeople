@@ -1,11 +1,11 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Administrator
-  Date: 2017/10/30
-  Time: 16:40
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%
+    String path = request.getContextPath();
+    String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
+
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -40,303 +40,90 @@
 <title>产品列表</title>
 </head>
 <body>
-<div class=" page-content clearfix">
- <div id="products_style">
-    <div class="search_style">
-      <div class="title_names">搜索查询</div>
-      <ul class="search_content clearfix">
-       <li><label class="l_f">产品名称</label><input name="" type="text"  class="text_add" placeholder="输入商品名称"  style=" width:250px"/></li>
-       <li><label class="l_f">添加时间</label><input class="inline laydate-icon" id="start" style=" margin-left:10px;"></li>
-       <li style="width:90px;"><button type="button" class="btn_search"><i class="icon-search"></i>查询</button></li>
-      </ul>
+
+<%--<c:if test="${empty productAndTypeVos }">--%>
+    <%--<jsp:forward page="/ProducList.action"/>--%>
+<%--</c:if>--%>
+<form action="<%= basePath %>ProducList.action" id="mainForm" method="post">
+    <div class=" page-content clearfix">
+
+     <div id="products_style">
+        <div class="search_style">
+          <div class="title_names">搜索查询</div>
+          <ul class="search_content clearfix">
+           <li><label class="l_f">产品名称</label><input name="productname" type="text"  class="text_add"  value="${productname}"  style=" width:250px"/></li>
+           <li><label class="l_f">添加时间</label><input name="" class="inline laydate-icon" id="start" style=" margin-left:10px;"></li>
+           <li style="width:90px;"><button type="submit" class="btn_search"><i class="icon-search"></i>查询</button></li>
+          </ul>
+        </div>
+         <div class="border clearfix">
+           <span class="l_f">
+            <a href="/jsp/admin/picture-add.jsp" title="添加商品" class="btn btn-warning Order_form"><i class="icon-plus"></i>添加商品</a>
+            <a href="javascript:deleteBatch('<%=basePath%>');" class="btn btn-danger"><i class="icon-trash"></i>批量删除</a>
+           </span>
+           <span class="r_f">共：<b>2334</b>件商品</span>
+         </div>
+         <%--<div class="table_menu_list" id="testIframe">--%>
+             <table class="table table-striped table-bordered table-hover" id="sample-table">
+                 <thead>
+                 <tr>
+                     <th width="25px"><label><input type="checkbox" class="ace"><span class="lbl"></span></label></th>
+                     <th width="80px">编号</th>
+                     <th width="250px">商品名称</th>
+                     <th width="250px">商品类型</th>
+                     <th width="100px">价格</th>
+                     <th width="100px">商品描述</th>
+                     <th width="180px">商品图片</th>
+                     <th width="80px">是否新品</th>
+                     <th width="80px">是否热销</th>
+                     <th width="80px">是否可用积分兑换</th>
+                     <th width="70px">状态</th>
+                     <th width="200px">操作</th>
+                 </tr>
+                 </thead>
+                 <tbody>
+                 <c:forEach items="${productAndTypeVos}" var="productAndTypeVos" varStatus="status">
+                     <tr>
+                         <td width="25px"><label><input type="checkbox" class="ace" name="productid" value="${productAndTypeVos.productid}" ><span class="lbl"></span></label></td>
+                         <td width="80px">${status.index + 1}</td>
+                         <td width="250px"><u style="cursor:pointer" class="text-primary" onclick="">${productAndTypeVos.productname}</u></td>
+                         <td width="100px">${productAndTypeVos.producttypename}</td>
+                         <td width="100px">${productAndTypeVos.productprice}</td>
+                         <td width="100px">${productAndTypeVos.productdescribe}</td>
+                         <td width="100px"><img src="images/1.jpg" width="20px" height="20px"></td>
+                         <td width="100px">${productAndTypeVos.productnew}</td>
+                         <td width="100px">${productAndTypeVos.producthotsale}</td>
+                         <td width="100px">${productAndTypeVos.productdisabled}</td>
+                         <td class="td-status"><span class="label label-success radius">已启用</span></td>
+                         <td class="td-manage">
+                             <a onClick="member_stop(this,'10001')"  href="javascript:;" title="停用"  class="btn btn-xs btn-success"><i class="icon-ok bigger-120"></i></a>
+                             <a title="编辑" onclick="member_edit('编辑','member-add.html','4','','510')" href="javascript:;"  class="btn btn-xs btn-info" ><i class="icon-edit bigger-120"></i></a>
+                                 <%--javascript:deleteBatch('<%=basePath%>');--%>
+                                 <%--<a title="删除" href="${basePath}DeleteOneProduct.action?productid=${productAndTypeVos.productid}"  onclick="member_del(this,'1')" class="btn btn-xs btn-warning" ><i class="icon-trash  bigger-120"></i></a>--%>
+                             <a title="删除" href="${basePath}DeleteOneProduct.action?productid=${productAndTypeVos.productid}"  onclick="alert('您确定要删除吗？')" class="btn btn-xs btn-warning" ><i class="icon-trash  bigger-120"></i></a>
+                         </td>
+                     </tr>
+                 </c:forEach>
+                 </tbody>
+             </table>
+         </div>
+
+     </div>
+     </div>
     </div>
-     <div class="border clearfix">
-       <span class="l_f">
-        <a href="picture-add.jsp" title="添加商品" class="btn btn-warning Order_form"><i class="icon-plus"></i>添加商品</a>
-        <a href="javascript:ovid()" class="btn btn-danger"><i class="icon-trash"></i>批量删除</a>
-       </span>
-       <span class="r_f">共：<b>2334</b>件商品</span>
-     </div>
-     <!--产品列表展示-->
-     <div class="h_products_list clearfix" id="products_list">
-       <div id="scrollsidebar" class="left_Treeview">
-        <div class="show_btn" id="rightArrow"></div>
-        <div class="widget-box side_content" >
-            <div class="side_title"><a title="隐藏" class="close_btn"><span></span></a></div>
-                <div class="side_list"><div class="widget-header header-color-green2"><h4 class="lighter smaller">商品类型列表</h4></div>
-             <div class="widget-body">
-              <div class="widget-main padding-8"><div id="treeDemo" class="ztree"></div></div>
-              </div>
-           </div>
-      </div>
-     </div>
-         <div class="table_menu_list" id="testIframe">
-            <table class="table table-striped table-bordered table-hover" id="sample-table">
-
-		<thead>
-        <tr>
-            <th width="25px"><label><input type="checkbox" class="ace"><span class="lbl"></span></label></th>
-            <th width="80px">商品ID</th>
-            <th width="250px">商品名称</th>
-            <th width="250px">商品类型</th>
-            <th width="100px">原价</th>
-            <th width="100px">现价</th>
-            <th width="100px">商品描述</th>
-            <th width="180px">商品图片</th>
-            <th width="80px">商品详情</th>
-            <th width="80px">是否新品</th>
-            <th width="80px">是否热销</th>
-            <th width="80px">是否可用积分兑换</th>
-            <th width="80px">入库时间</th>
-            <th width="70px">状态</th>
-            <th width="200px">操作</th>
-        </tr>
-		</thead>
-	<tbody>
-     <tr>
-        <td width="25px"><label><input type="checkbox" class="ace" ><span class="lbl"></span></label></td>
-        <td width="80px">45631</td>               
-        <td width="250px"><u style="cursor:pointer" class="text-primary" onclick="">小米 Max</u></td>
-        <td width="100px">电子产品</td>
-        <td width="100px">4525</td> 
-        <td width="100px">4000</td> 
-        <td width="100px"> 全网通 高配版 3GB内存 64GB ROM 金色 移动联通电信4G手机Y</td>
-         <td width="100px"><img src="images/1.jpg" width="20px" height="20px"></td>
-         <td width="100px">全网通 高配版 3GB内存 64GB ROM 金色 移动联通电信4G手机Y</td>
-        <td width="100px">是</td>
-        <td width="100px">是</td>
-        <td width="100px">是</td>
-        <td width="180px">2014-6-11 11:11:42</td>
-        <td class="td-status"><span class="label label-success radius">已启用</span></td>
-        <td class="td-manage">
-        <a onClick="member_stop(this,'10001')"  href="javascript:;" title="停用"  class="btn btn-xs btn-success"><i class="icon-ok bigger-120"></i></a> 
-        <a title="编辑" onclick="member_edit('编辑','member-add.html','4','','510')" href="javascript:;"  class="btn btn-xs btn-info" ><i class="icon-edit bigger-120"></i></a> 
-        <a title="删除" href="javascript:;"  onclick="member_del(this,'1')" class="btn btn-xs btn-warning" ><i class="icon-trash  bigger-120"></i></a>
-       </td>
-	  </tr>
-       <tr>
-        <td width="25px"><label><input type="checkbox" class="ace" ><span class="lbl"></span></label></td>
-        <td width="80px">45631</td>
-           <td width="250px"><u style="cursor:pointer" class="text-primary" onclick="">小米 Max</u></td>
-           <td width="100px">电子产品</td>
-           <td width="100px">4525</td>
-           <td width="100px">4000</td>
-           <td width="100px"> 全网通 高配版 3GB内存 64GB ROM 金色 移动联通电信4G手机Y</td>
-           <td width="100px"><img src="images/1.jpg" width="20px" height="20px"></td>
-           <td width="100px">全网通 高配版 3GB内存 64GB ROM 金色 移动联通电信4G手机Y</td>
-           <td width="100px">是</td>
-           <td width="100px">是</td>
-           <td width="100px">是</td>
-           <td width="180px">2014-6-11 11:11:42</td>
-        <td class="td-status"><span class="label label-success radius">已启用</span></td>
-        <td class="td-manage">
-        <a onClick="member_stop(this,'10001')"  href="javascript:;" title="停用"  class="btn btn-xs btn-success"><i class="icon-ok bigger-120"></i></a> 
-        <a title="编辑" onclick="member_edit('编辑','member-add.html','4','','510')" href="javascript:;"  class="btn btn-xs btn-info" ><i class="icon-edit bigger-120"></i></a> 
-        <a title="删除" href="javascript:;"  onclick="member_del(this,'1')" class="btn btn-xs btn-warning" ><i class="icon-trash  bigger-120"></i></a>
-       </td>
-	  </tr>
-       <tr>
-        <td width="25px"><label><input type="checkbox" class="ace" ><span class="lbl"></span></label></td>
-        <td width="80px">45631</td>
-           <td width="250px"><u style="cursor:pointer" class="text-primary" onclick="">小米 Max</u></td>
-           <td width="100px">电子产品</td>
-           <td width="100px">4525</td>
-           <td width="100px">4000</td>
-           <td width="100px"> 全网通 高配版 3GB内存 64GB ROM 金色 移动联通电信4G手机Y</td>
-           <td width="100px"><img src="images/1.jpg" width="20px" height="20px"></td>
-           <td width="100px">全网通 高配版 3GB内存 64GB ROM 金色 移动联通电信4G手机Y</td>
-           <td width="100px">是</td>
-           <td width="100px">是</td>
-           <td width="100px">是</td>
-           <td width="180px">2014-6-11 11:11:42</td>
-        <td class="td-status"><span class="label label-success radius">已启用</span></td>
-        <td class="td-manage">
-        <a onClick="member_stop(this,'10001')"  href="javascript:;" title="停用"  class="btn btn-xs btn-success"><i class="icon-ok bigger-120"></i></a> 
-        <a title="编辑" onclick="member_edit('编辑','member-add.html','4','','510')" href="javascript:;"  class="btn btn-xs btn-info" ><i class="icon-edit bigger-120"></i></a> 
-        <a title="删除" href="javascript:;"  onclick="member_del(this,'1')" class="btn btn-xs btn-warning" ><i class="icon-trash  bigger-120"></i></a>
-       </td>
-	  </tr>
-       <tr>
-        <td width="25px"><label><input type="checkbox" class="ace" ><span class="lbl"></span></label></td>
-        <td width="80px">543346</td>
-           <td width="250px"><u style="cursor:pointer" class="text-primary" onclick="">小米 Max</u></td>
-           <td width="100px">电子产品</td>
-           <td width="100px">4525</td>
-           <td width="100px">4000</td>
-           <td width="100px"> 全网通 高配版 3GB内存 64GB ROM 金色 移动联通电信4G手机Y</td>
-           <td width="100px"><img src="images/1.jpg" width="20px" height="20px"></td>
-           <td width="100px">全网通 高配版 3GB内存 64GB ROM 金色 移动联通电信4G手机Y</td>
-           <td width="100px">是</td>
-           <td width="100px">是</td>
-           <td width="100px">是</td>
-           <td width="180px">2014-6-11 11:11:42</td>
-        <td class="td-status"><span class="label label-success radius">已启用</span></td>
-        <td class="td-manage">
-        <a onClick="member_stop(this,'10001')"  href="javascript:;" title="停用"  class="btn btn-xs btn-success"><i class="icon-ok bigger-120"></i></a> 
-        <a title="编辑" onclick="member_edit('编辑','member-add.html','4','','510')" href="javascript:;"  class="btn btn-xs btn-info" ><i class="icon-edit bigger-120"></i></a> 
-        <a title="删除" href="javascript:;"  onclick="member_del(this,'1')" class="btn btn-xs btn-warning" ><i class="icon-trash  bigger-120"></i></a>
-       </td>
-	  </tr>
-       <tr>
-        <td width="25px"><label><input type="checkbox" class="ace" ><span class="lbl"></span></label></td>
-        <td width="80px">987767</td>
-           <td width="250px"><u style="cursor:pointer" class="text-primary" onclick="">小米 Max</u></td>
-           <td width="100px">电子产品</td>
-           <td width="100px">4525</td>
-           <td width="100px">4000</td>
-           <td width="100px"> 全网通 高配版 3GB内存 64GB ROM 金色 移动联通电信4G手机Y</td>
-           <td width="100px"><img src="images/1.jpg" width="20px" height="20px"></td>
-           <td width="100px">全网通 高配版 3GB内存 64GB ROM 金色 移动联通电信4G手机Y</td>
-           <td width="100px">是</td>
-           <td width="100px">是</td>
-           <td width="100px">是</td>
-           <td width="180px">2014-6-11 11:11:42</td>
-        <td class="td-status"><span class="label label-success radius">已启用</span></td>
-        <td class="td-manage">
-        <a onClick="member_stop(this,'10001')"  href="javascript:;" title="停用"  class="btn btn-xs btn-success"><i class="icon-ok bigger-120"></i></a> 
-        <a title="编辑" onclick="member_edit('编辑','member-add.html','4','','510')" href="javascript:;"  class="btn btn-xs btn-info" ><i class="icon-edit bigger-120"></i></a> 
-        <a title="删除" href="javascript:;"  onclick="member_del(this,'1')" class="btn btn-xs btn-warning" ><i class="icon-trash  bigger-120"></i></a>
-       </td>
-	  </tr>
-       <tr>
-        <td width="25px"><label><input type="checkbox" class="ace" ><span class="lbl"></span></label></td>
-        <td width="80px">54343</td>
-           <td width="250px"><u style="cursor:pointer" class="text-primary" onclick="">小米 Max</u></td>
-           <td width="100px">电子产品</td>
-           <td width="100px">4525</td>
-           <td width="100px">4000</td>
-           <td width="100px"> 全网通 高配版 3GB内存 64GB ROM 金色 移动联通电信4G手机Y</td>
-           <td width="100px"><img src="images/1.jpg" width="20px" height="20px"></td>
-           <td width="100px">全网通 高配版 3GB内存 64GB ROM 金色 移动联通电信4G手机Y</td>
-           <td width="100px">是</td>
-           <td width="100px">是</td>
-           <td width="100px">是</td>
-           <td width="180px">2014-6-11 11:11:42</td>
-        <td class="td-status"><span class="label label-success radius">已启用</span></td>
-        <td class="td-manage">
-        <a onClick="member_stop(this,'10001')"  href="javascript:;" title="停用"  class="btn btn-xs btn-success"><i class="icon-ok bigger-120"></i></a> 
-        <a title="编辑" onclick="member_edit('编辑','member-add.html','4','','510')" href="javascript:;"  class="btn btn-xs btn-info" ><i class="icon-edit bigger-120"></i></a> 
-        <a title="删除" href="javascript:;"  onclick="member_del(this,'1')" class="btn btn-xs btn-warning" ><i class="icon-trash  bigger-120"></i></a>
-       </td>
-	  </tr>
-       <tr>
-        <td width="25px"><label><input type="checkbox" class="ace" ><span class="lbl"></span></label></td>
-        <td width="80px">786554</td>
-           <td width="250px"><u style="cursor:pointer" class="text-primary" onclick="">小米 Max</u></td>
-           <td width="100px">电子产品</td>
-           <td width="100px">4525</td>
-           <td width="100px">4000</td>
-           <td width="100px"> 全网通 高配版 3GB内存 64GB ROM 金色 移动联通电信4G手机Y</td>
-           <td width="100px"><img src="images/1.jpg" width="20px" height="20px"></td>
-           <td width="100px">全网通 高配版 3GB内存 64GB ROM 金色 移动联通电信4G手机Y</td>
-           <td width="100px">是</td>
-           <td width="100px">是</td>
-           <td width="100px">是</td>
-           <td width="180px">2014-6-11 11:11:42</td>
-        <td class="td-status"><span class="label label-success radius">已启用</span></td>
-        <td class="td-manage">
-        <a onClick="member_stop(this,'10001')"  href="javascript:;" title="停用"  class="btn btn-xs btn-success"><i class="icon-ok bigger-120"></i></a> 
-        <a title="编辑" onclick="member_edit('编辑','member-add.html','4','','510')" href="javascript:;"  class="btn btn-xs btn-info" ><i class="icon-edit bigger-120"></i></a> 
-        <a title="删除" href="javascript:;"  onclick="member_del(this,'1')" class="btn btn-xs btn-warning" ><i class="icon-trash  bigger-120"></i></a>
-       </td>
-	  </tr>
-             <tr>
-        <td width="25px"><label><input type="checkbox" class="ace" ><span class="lbl"></span></label></td>
-        <td width="80px">32122</td>
-                 <td width="250px"><u style="cursor:pointer" class="text-primary" onclick="">小米 Max</u></td>
-                 <td width="100px">电子产品</td>
-                 <td width="100px">4525</td>
-                 <td width="100px">4000</td>
-                 <td width="100px"> 全网通 高配版 3GB内存 64GB ROM 金色 移动联通电信4G手机Y</td>
-                 <td width="100px"><img src="images/1.jpg" width="20px" height="20px"></td>
-                 <td width="100px">全网通 高配版 3GB内存 64GB ROM 金色 移动联通电信4G手机Y</td>
-                 <td width="100px">是</td>
-                 <td width="100px">是</td>
-                 <td width="100px">是</td>
-                 <td width="180px">2014-6-11 11:11:42</td>
-        <td class="td-status"><span class="label label-success radius">已启用</span></td>
-        <td class="td-manage">
-        <a onClick="member_stop(this,'10001')"  href="javascript:;" title="停用"  class="btn btn-xs btn-success"><i class="icon-ok bigger-120"></i></a> 
-        <a title="编辑" onclick="member_edit('编辑','member-add.html','4','','510')" href="javascript:;"  class="btn btn-xs btn-info" ><i class="icon-edit bigger-120"></i></a> 
-        <a title="删除" href="javascript:;"  onclick="member_del(this,'1')" class="btn btn-xs btn-warning" ><i class="icon-trash  bigger-120"></i></a>
-       </td>
-	  </tr>
-
-       <tr>
-        <td width="25px"><label><input type="checkbox" class="ace" ><span class="lbl"></span></label></td>
-        <td width="80px">767544</td>
-           <td width="250px"><u style="cursor:pointer" class="text-primary" onclick="">小米 Max</u></td>
-           <td width="100px">电子产品</td>
-           <td width="100px">4525</td>
-           <td width="100px">4000</td>
-           <td width="100px"> 全网通 高配版 3GB内存 64GB ROM 金色 移动联通电信4G手机Y</td>
-           <td width="100px"><img src="images/1.jpg" width="20px" height="20px"></td>
-           <td width="100px">全网通 高配版 3GB内存 64GB ROM 金色 移动联通电信4G手机Y</td>
-           <td width="100px">是</td>
-           <td width="100px">是</td>
-           <td width="100px">是</td>
-           <td width="180px">2014-6-11 11:11:42</td>
-        <td class="td-status"><span class="label label-success radius">已启用</span></td>
-        <td class="td-manage">
-        <a onClick="member_stop(this,'10001')"  href="javascript:;" title="停用"  class="btn btn-xs btn-success"><i class="icon-ok bigger-120"></i></a> 
-        <a title="编辑" onclick="member_edit('编辑','member-add.html','4','','510')" href="javascript:;"  class="btn btn-xs btn-info" ><i class="icon-edit bigger-120"></i></a> 
-        <a title="删除" href="javascript:;"  onclick="member_del(this,'1')" class="btn btn-xs btn-warning" ><i class="icon-trash  bigger-120"></i></a>
-       </td>
-	  </tr>
-
-       <tr>
-        <td width="25px"><label><input type="checkbox" class="ace" ><span class="lbl"></span></label></td>
-        <td width="80px">23466</td>
-           <td width="250px"><u style="cursor:pointer" class="text-primary" onclick="">小米 Max</u></td>
-           <td width="100px">电子产品</td>
-           <td width="100px">4525</td>
-           <td width="100px">4000</td>
-           <td width="100px"> 全网通 高配版 3GB内存 64GB ROM 金色 移动联通电信4G手机Y</td>
-           <td width="100px"><img src="images/1.jpg" width="20px" height="20px"></td>
-           <td width="100px">全网通 高配版 3GB内存 64GB ROM 金色 移动联通电信4G手机Y</td>
-           <td width="100px">是</td>
-           <td width="100px">是</td>
-           <td width="100px">是</td>
-           <td width="180px">2014-6-11 11:11:42</td>
-        <td class="td-status"><span class="label label-success radius">已启用</span></td>
-        <td class="td-manage">
-        <a onClick="member_stop(this,'10001')"  href="javascript:;" title="停用"  class="btn btn-xs btn-success"><i class="icon-ok bigger-120"></i></a> 
-        <a title="编辑" onclick="member_edit('编辑','member-add.html','4','','510')" href="javascript:;"  class="btn btn-xs btn-info" ><i class="icon-edit bigger-120"></i></a> 
-        <a title="删除" href="javascript:;"  onclick="member_del(this,'1')" class="btn btn-xs btn-warning" ><i class="icon-trash  bigger-120"></i></a>
-       </td>
-	  </tr>
-
-       <tr>
-        <td width="25px"><label><input type="checkbox" class="ace" ><span class="lbl"></span></label></td>
-        <td width="80px">54533</td>
-           <td width="250px"><u style="cursor:pointer" class="text-primary" onclick="">小米 Max</u></td>
-           <td width="100px">电子产品</td>
-           <td width="100px">4525</td>
-           <td width="100px">4000</td>
-           <td width="100px"> 全网通 高配版 3GB内存 64GB ROM 金色 移动联通电信4G手机Y</td>
-           <td width="100px"><img src="images/1.jpg" width="20px" height="20px"></td>
-           <td width="100px">全网通 高配版 3GB内存 64GB ROM 金色 移动联通电信4G手机Y</td>
-           <td width="100px">是</td>
-           <td width="100px">是</td>
-           <td width="100px">是</td>
-           <td width="180px">2014-6-11 11:11:42</td>
-        <td class="td-status"><span class="label label-success radius">已启用</span></td>
-        <td class="td-manage">
-        <a onClick="member_stop(this,'10001')"  href="javascript:;" title="停用"  class="btn btn-xs btn-success"><i class="icon-ok bigger-120"></i></a> 
-        <a title="编辑" onclick="member_edit('编辑','member-add.html','4','','510')" href="javascript:;"  class="btn btn-xs btn-info" ><i class="icon-edit bigger-120"></i></a> 
-        <a title="删除" href="javascript:;"  onclick="member_del(this,'1')" class="btn btn-xs btn-warning" ><i class="icon-trash  bigger-120"></i></a>
-       </td>
-	  </tr>
-
-    </tbody>
-    </table>
-    </div>     
-  </div>
- </div>
-</div>
+</form>
 </body>
 </html>
 <script>
+//下面1个函数需要优化
+
+    function deleteBatch(basePath) {
+        alert('您确定要删除吗？');
+        $("#mainForm").attr("action",basePath + "DeleteBatchProduct.action");
+        $("#mainForm").submit();
+    }
+
+
 jQuery(function($) {
 		var oTable1 = $('#sample-table').dataTable( {
 		"aaSorting": [[ 1, "desc" ]],//默认第几个排序
@@ -376,7 +163,7 @@ jQuery(function($) {
     elem: '#start',
     event: 'focus' 
 });
-$(function() {
+$(function() { 
 	$("#products_style").fix({
 		float : 'left',
 		//minStatue : true,
@@ -462,7 +249,7 @@ $(document).ready(function(){
 	demoIframe.bind("load", loadReady);
 	var zTree = $.fn.zTree.getZTreeObj("tree");
 	zTree.selectNode(zTree.getNodeByParam("id",'11'));
-});	
+});
 /*产品-停用*/
 function member_stop(obj,id){
 	layer.confirm('确认要停用吗？',function(index){

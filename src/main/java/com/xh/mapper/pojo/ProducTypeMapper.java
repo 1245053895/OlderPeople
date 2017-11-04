@@ -9,13 +9,10 @@ import java.util.List;
 @Component
 public interface ProducTypeMapper {
 
-    int deleteByPrimaryKey(Integer producttypeid);
-
-    int insertSelective(Producttype record);
-
-    List<Producttype> selectByPrimaryKey();
-
-    int updateByPrimaryKeySelective(Producttype record);
+//    删除
+    void TypedeleteByName(String producttypename);
+//    增加
+    void TypeinsertSelective(Producttype record);
 
 
 }

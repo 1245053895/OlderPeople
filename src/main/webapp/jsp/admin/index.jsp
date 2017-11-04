@@ -177,7 +177,7 @@
                         icon:2,
                     },
                     function(){
-                        location.href="login.jsp";
+                        location.href="/jsp/admin/login.jsp";
 
                     });
             });
@@ -205,9 +205,9 @@
 						<i class="icon-caret-down"></i>
 					</a>
 					<ul class="user-menu pull-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
-						<li class="home"><a href="javascript:void(0)" name="admin_info.jsp" title="个人资料"  class="iframeurl"><i class="icon-double-angle-right"></i>个人资料</a></li>
+						<li class="home"><a href="javascript:void(0)" name="/ShowInformation.action" title="个人资料"  class="iframeurl"><i class="icon-double-angle-right"></i>个人资料</a></li>
 						<li class="divider"></li>
-						<li><a href="javascript:ovid(0)" id="Exit_system"><i class="icon-off"></i>退出</a></li>
+						<li><a href="#" id="Exit_system"><i class="icon-off"></i>退出</a></li>
 					</ul>
 				</li>
 			</ul>
@@ -246,16 +246,16 @@
 
 				<li><a href="#" class="dropdown-toggle"><i class="icon-desktop"></i><span class="menu-text"> 管理员管理 </span><b class="arrow icon-angle-down"></b></a>
 					<ul class="submenu">
-						<li class="home"><a href="javascript:void(0)" name="/RloeController.action" title="角色管理"  class="iframeurl"><i class="icon-double-angle-right"></i>角色管理</a></li>
 						<li class="home"><a  href="javascript:void(0)" name="/admin/adminList.action"  title="管理员列表" class="iframeurl"><i class="icon-double-angle-right"></i>管理员列表</a></li>
+						<li class="home"><a href="javascript:void(0)" name="/RloeController.action" title="角色管理"  class="iframeurl"><i class="icon-double-angle-right"></i>角色管理</a></li>
 						<li class="home"><a href="javascript:void(0)" name="/queryAllRole.action" title="角色修改"  class="iframeurl"><i class="icon-double-angle-right"></i>角色修改</a></li>
 					</ul>
 				</li>
 
 				<li><a href="#" class="dropdown-toggle"><i class="icon-desktop"></i><span class="menu-text"> 用户管理 </span><b class="arrow icon-angle-down"></b></a>
 					<ul class="submenu">
-						<li class="home"><a  href="javascript:void(0)" name="user_list.jsp"  title="用户信息" class="iframeurl"><i class="icon-double-angle-right"></i>用户信息</a></li>
-						<li class="home"><a  href="javascript:void(0)" name="integration.jsp"  title="用户记录" class="iframeurl"><i class="icon-double-angle-right"></i>用户记录</a></li>
+						<li class="home"><a  href="javascript:void(0)" name="/UserMessageController.action"  title="用户信息" class="iframeurl"><i class="icon-double-angle-right"></i>用户信息</a></li>
+						<li class="home"><a  href="javascript:void(0)" name="/getUserRecord.action"  title="用户记录" class="iframeurl"><i class="icon-double-angle-right"></i>用户记录</a></li>
 					</ul>
 				</li>
 
@@ -268,8 +268,8 @@
 
 				<li><a href="#" class="dropdown-toggle"><i class="icon-desktop"></i><span class="menu-text"> 商品管理 </span><b class="arrow icon-angle-down"></b></a>
 					<ul class="submenu">
-						<li class="home"><a href="javascript:void(0)" name="Product_Manage.jsp" title="商品分类"  class="iframeurl"><i class="icon-double-angle-right"></i>商品分类</a></li>
-						<li class="home"><a  href="javascript:void(0)" name="Products_List.jsp"  title="商品列表" class="iframeurl"><i class="icon-double-angle-right"></i>商品列表</a></li>
+						<li class="home"><a href="javascript:void(0)" name="/ProductType.action" title="商品分类"  class="iframeurl"><i class="icon-double-angle-right"></i>商品分类</a></li>
+						<li class="home"><a  href="javascript:void(0)" name="/ProducList.action"  title="商品列表" class="iframeurl"><i class="icon-double-angle-right"></i>商品列表</a></li>
 					</ul>
 				</li>
 

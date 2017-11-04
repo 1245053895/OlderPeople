@@ -17,6 +17,7 @@
           <file>file://$MODULE_DIR$/src/main/resources/config/spring/applicationContext-transaction.xml</file>
           <file>file://$MODULE_DIR$/src/main/resources/config/spring/applicationContext-service.xml</file>
           <file>file://$MODULE_DIR$/src/main/resources/config/spring/applicationContext-mapper.xml</file>
+          <file>file://$MODULE_DIR$/src/main/resources/config/spring/springmvc.xml</file>
         </fileset>
       </configuration>
     </facet>
@@ -29,7 +30,7 @@
       <sourceFolder url="file://$MODULE_DIR$/src/main/java" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>
-    <orderEntry type="inheritedJdk" />
+    <orderEntry type="jdk" jdkName="1.7" jdkType="JavaSDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="Maven: commons-io:commons-io:2.4" level="project" />
     <orderEntry type="library" name="Maven: junit:junit:4.12" level="project" />

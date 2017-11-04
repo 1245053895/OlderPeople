@@ -61,10 +61,10 @@
 <div class="page-content clearfix">
     <div id="Member_Ratings">
       <div class="d_Confirm_Order_style">
-    <div class="search_style">
+    <div class="search_style" >
       <div class="title_names">搜索查询</div>
       <ul class="search_content clearfix">
-       <li><label class="l_f">会员名称</label><input name="" type="text"  class="text_add" placeholder="输入会员名称、电话、邮箱"  style=" width:400px"/></li>
+       <li><label class="l_f">用户名称</label><input name="" type="text"  class="text_add" placeholder="输入用员名称、电话、邮箱"  style=" width:400px"/></li>
        <li style="width:90px;"><button type="button" class="btn_search"><i class="icon-search"></i>查询</button></li>
       </ul>
     </div>

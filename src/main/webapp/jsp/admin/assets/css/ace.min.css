@@ -6184,7 +6184,7 @@ input[disabled]:hover
 input[readonly]
 {
   color: #939192;
-  background: #f5f5f5!important;
+  background: transparent!important;
   cursor: default;
 }
 

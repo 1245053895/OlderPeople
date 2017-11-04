@@ -36,96 +36,51 @@
  <div class="admin_info_style">
    <div class="admin_modify_style" id="Personal">
      <div class="type_title">管理员信息 </div>
-      <div class="xinxi">
-       <div class="info">
-        <div class="form-group"><label class="col-sm-3 control-label no-padding-right">账号： </label>
-          <div class="col-sm-9"><input type="text" name="账号" value="admin1" class="col-xs-7 text_info" disabled="disabled"></div>
-
-          <div class="form-group"><label class="col-sm-3 control-label no-padding-right">姓名： </label>
-          <div class="col-sm-9"><input type="text" name="姓名" value="陈思顶" class="col-xs-7 text_info" disabled="disabled"></div>
+       <div class="xinxi">
+       <div style="margin-top: 50px;margin-left: 200px; float: left;">
+           <img src="images/admintx.png" height="210px" width="190px">
+           <div class="Button_operation clearfix" >
+               <a href="javascript:ovid()" onclick="change_Password()" class="btn btn-warning btn-xs">修改密码</a>
+               <button onclick="modify();" class="btn btn-danger" type="submit">修改信息</button>
+               <button onclick="save_info();" class="btn btn-success" type="button">保存修改</button>
+           </div>
+       </div>
+         <div class="info">
+          <div class="form-group" style="height: 30px;">
+              <label class="col-sm-3 control-label no-padding-right">账号： </label>
+              <div class="col-sm-9"><input type="text" name="账号" value="admin1" class="col-xs-7 text_info" disabled="disabled"></div>
           </div>
-            <div class="form-group"><label class="col-sm-3 control-label no-padding-right">性别： </label>
-                <div class="col-sm-9">
-                    <span class="sex" id="admin_info_span">男</span>
-                    <div class="add_sex">
-                        <label><input name="form-field-radio" type="radio" class="ace" checked="checked"><span class="lbl">保密</span></label>&nbsp;&nbsp;
-                        <label><input name="form-field-radio" type="radio" class="ace"><span class="lbl">男</span></label>&nbsp;&nbsp;
-                        <label><input name="form-field-radio" type="radio" class="ace"><span class="lbl">女</span></label>
-                    </div>
-                </div>
+          <div class="form-group" style="height: 30px;">
+              <label class="col-sm-3 control-label no-padding-right">姓名： </label>
+              <div class="col-sm-9"><input type="text" name="姓名" value="陈思顶" class="col-xs-7 text_info" disabled="disabled"></div>
+          </div>
+          <div class="form-group" style="height: 30px;">
+              <label class="col-sm-3 control-label no-padding-right">性别： </label>
+              <div class="col-sm-9">
+                  <span class="sex" id="admin_info_span">男</span>
+                  <div class="add_sex">
+                      <label><input name="form-field-radio" type="radio" class="ace" checked="checked"><span class="lbl">保密</span></label>&nbsp;&nbsp;
+                      <label><input name="form-field-radio" type="radio" class="ace"><span class="lbl">男</span></label>&nbsp;&nbsp;
+                      <label><input name="form-field-radio" type="radio" class="ace"><span class="lbl">女</span></label>
+                  </div>
+              </div>
             </div>
-            <div class="form-group"><label class="col-sm-3 control-label no-padding-right" >所在部门： </label>
+            <div class="form-group" style="height: 30px;">
+                <label class="col-sm-3 control-label no-padding-right" >所在部门： </label>
                 <div class="col-sm-9"><input type="text" name="所在部门"  value="孝和集团" class="col-xs-7 text_info" disabled="disabled"></div>
             </div>
-          <div class="form-group"><label class="col-sm-3 control-label no-padding-right">电话： </label>
-          <div class="col-sm-9"><input type="text" name="电话" id="website-title" value="18888888888" class="col-xs-7 text_info" disabled="disabled"></div>
+          <div class="form-group" style="height: 30px;">
+              <label class="col-sm-3 control-label no-padding-right">电话： </label>
+              <div class="col-sm-9"><input type="text" name="电话" id="website-title" value="18888888888" class="col-xs-7 text_info" disabled="disabled"></div>
           </div>
-           <div class="form-group"><label class="col-sm-3 control-label no-padding-right">角色： </label>
-          <div class="col-sm-9" > <span  id="admin_info_span1">普通管理员</span></div>
+           <div class="form-group" style="height: 30px;">
+               <label class="col-sm-3 control-label no-padding-right">角色： </label>
+              <div class="col-sm-9" > <span  id="admin_info_span1">普通管理员</span></div>
           </div>
-        </div>
-           <div class="Button_operation clearfix">
-                <a href="javascript:ovid()" onclick="change_Password()" class="btn btn-warning btn-xs">修改密码</a>
-				<button onclick="modify();" class="btn btn-danger" type="submit">修改信息</button>
-				<button onclick="save_info();" class="btn btn-success" type="button">保存修改</button>
-           </div>
-			</div>
-            </div>
+	    </div>
+      </div>
     </div>
  </div>
-<%--    <div class="recording_style">
-    <div class="type_title">管理员登陆记录 </div>
-    <div class="recording_list">
-     <table class="table table-border table-bordered table-bg table-hover table-sort" id="sample-table">
-    <thead>
-      <tr class="text-c">
-        <th width="25"><label><input type="checkbox" class="ace"><span class="lbl"></span></label></th>
-        <th width="80">ID</th>
-        <th width="100">类型</th>
-        <th>内容</th>
-        <th width="17%">登陆地点</th>
-        <th width="10%">用户名</th>
-        <th width="120">客户端IP</th>
-        <th width="150">时间</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><label><input type="checkbox" class="ace"><span class="lbl"></span></label></td>
-        <td>15686</td>
-        <td>1</td>
-        <td>登录成功!</td>
-        <td>江苏南京</td>
-        <td>admin</td>
-        <td>61.233.7.80</td>
-        <td>2014-6-11 11:11:42</td>      
-      </tr>
-         <tr>
-        <td><label><input type="checkbox" class="ace"><span class="lbl"></span></label></td>
-        <td>15686</td>
-        <td>1</td>
-        <td>登录成功!</td>
-        <td>江苏南京</td>
-        <td>admin</td>
-        <td>61.233.7.80</td>
-        <td>2014-6-11 11:11:42</td>      
-      </tr>
-         <tr>
-        <td><label><input type="checkbox" class="ace"><span class="lbl"></span></label></td>
-        <td>15686</td>
-        <td>1</td>
-        <td>登录成功!</td>
-        <td>江苏南京</td>
-        <td>admin</td>
-        <td>61.233.7.80</td>
-        <td>2014-6-11 11:11:42</td>      
-      </tr>
-    </tbody>
-  </table>
-    </div>
-    </div>
- </div>
-</div>--%>
  <!--修改密码样式-->
          <div class="change_Pass_style" id="change_Pass">
             <ul class="xg_style">

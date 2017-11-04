@@ -421,7 +421,7 @@ body
 #form-article-add .cl .select{ width:100%; margin-left:0px}
 #form-article-add .cl .input-text.Wdate{ width:200px;}
 #form-article-add .cl .Add_p_s .formControls { position:absolute; top:0px; z-index:11; left:90px; width:59%}
-.Button_operation{ width:400px; margin-left:auto; margin-right:auto; text-align: center;}
+.Button_operation{margin-left:auto; margin-right:auto; text-align: center;margin-top: 20px;}
 .submitadmin{margin-left: 50px;}
 /*******************订单详细样式属性********************/
 .Order_Details_style{ margin-bottom:15px;}
@@ -548,7 +548,7 @@ body
 	width:1200px;
 	padding: 0px;
 }
-.info{margin-left: 360px;}
+.info{margin-left: 300px; margin-top: 50px;}
 #admin_info_span{float: left;}
 #admin_info_span1{float: left;}
 .admin_info_style .admin_modify_style{ text-align: center;  }
@@ -565,7 +565,7 @@ body
 .admin_info_style .Button_operation button{ float:left;}
 .admin_info_style .Button_operation .btn-success{ display:none}
 .admin_info_style  .xinxi span{ color:#858585}
-.admin_info_style .recording_style{ margin-left:400px; float:left; position:absolute;}
+.admin_info_style .recording_style{ float:left; position:absolute;}
 /*********************用户权限样式属性***************************/
 .Competence_info{ border:1px solid #ddd; margin:10px;}
 .Competence_info  .Competence_name{height:40px; line-height:40px; background-color:#E9EFFE;border-bottom:1px solid #ddd; text-align:center}

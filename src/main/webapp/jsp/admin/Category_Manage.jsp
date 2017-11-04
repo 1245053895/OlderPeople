@@ -8,6 +8,7 @@ To change this template use File | Settings | File Templates.
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%
     String path = request.getContextPath();
     String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -40,10 +41,6 @@ To change this template use File | Settings | File Templates.
 
 <body>
 <form action="<%= basePath %>queryAllRole.action" id="mainForm" method="post">
-<%--<c:if test="${empty admingroups }">
-    <jsp:forward page="/queryAllRole.action"/>
-</c:if>--%>
-
 <div class="margin clearfix">
     <div class="border clearfix">
        <span class="l_f">
@@ -64,20 +61,20 @@ To change this template use File | Settings | File Templates.
             </tr>
             </thead>
             <tbody>
-            <c:forEach items="${admingroups}" var="admingroup">
-                <form id="form_${admingroup.admingroupid}" action="${pageContext.request.contextPath}/updateRloeById.action?id=${admingroup.admingroupid}" method="post">
-                    <tr>
-                        <td class="center"><label><input type="checkbox" name="RoleIds" value="${admingroup.admingroupid}"  class="ace"><span class="lbl"></span></label></td>
-                        <td><input type="text" value="${admingroup.admingroupid}" name="admingroupid" class="input_style text_info" readonly="true"/></td>
-                        <td class="hidden-480"><input type="text" name="admingroupname" value="${admingroup.admingroupname}" class="input_style text_info${admingroup.admingroupid}" readonly="true"/></td>
-                        <td><input type="text" value="${admingroup.admingroupdescription}" name="admingroupdescription" class="input_style text_info${admingroup.admingroupid}" readonly="true"/></td>
-                        <td>
-                           <a title="编辑" onclick="modify(${admingroup.admingroupid})" href="javascript:void(0);"  class="btn btn-xs btn-info radius" ><i id="edit${admingroup.admingroupid}" class="fa bigger-120">编辑</i></a>
-                           <a title="删除" href="${basePath}deleteRoleById.action?id=${admingroup.admingroupid}"  onclick="alert('您确定要删除吗？')" class="btn btn-xs btn-warning" ><i class="fa fa-trash  bigger-120"></i></a>
-                        </td>
-                    </tr>
-              </form>
-            </c:forEach>
+                <c:forEach items="${admingroups}" var="admingroup">
+                    <form id="form_${admingroup.admingroupid}" class="rm_form" action="${pageContext.request.contextPath}/updateRloeById.action" method="post">
+                        <tr>
+                            <td class="center"><label><input type="checkbox" name="RoleIds" value="${admingroup.admingroupid}"  class="ace"><span class="lbl"></span></label></td>
+                            <td><input type="text" value="${admingroup.admingroupid}" name="admingroupid" class="input_style text_info" readonly="true"/></td>
+                            <td class="hidden-480"><input type="text" name="admingroupname" value="${admingroup.admingroupname}" class="input_style text_info${admingroup.admingroupid}" readonly="true"/></td>
+                            <td><input type="text" value="${admingroup.admingroupdescription}" name="admingroupdescription" class="input_style text_info${admingroup.admingroupid}" readonly="true"/></td>
+                            <td>
+                               <a title="编辑" onclick="modify(${admingroup.admingroupid})" href="javascript:void(0);"  class="btn btn-xs btn-info radius" ><i id="edit${admingroup.admingroupid}" class="fa bigger-120">编辑</i></a>
+                               <a title="删除" href="${basePath}deleteRoleById.action?id=${admingroup.admingroupid}"  onclick="alert('您确定要删除吗？')" class="btn btn-xs btn-warning" ><i class="fa fa-trash  bigger-120"></i></a>
+                            </td>
+                        </tr>
+                  </form>
+                </c:forEach>
 
             </tbody>
         </table>
@@ -139,7 +136,7 @@ border-color: #6fb3e0;
 
 </style>
 
-<script>
+<script type="text/javascript">
     var flag=true;
     function modify(v) {
         if(flag) {
@@ -148,14 +145,21 @@ border-color: #6fb3e0;
             $('#edit'+v).text("提交");
             flag = false;
         }else{
-            $("#form_"+v).submit();
-            $('#edit'+v).text("编辑");
-            flag=true;
+            if(confirm('您确定要修改吗？')) {
+                $("#form_" + v).submit();
+                $('#edit' + v).text("编辑");
+                flag = true;
+            }else{
+                $('#edit' + v).text("编辑");
+                flag = true;
+                $('.text_info' + v).parents("td").css("box-shadow","0px 0px 0px #888888 inset");
+                $('.text_info' + v).attr("readonly", true);
+            }
         }
     }
     function deleteBatch(basePath) {
         alert('您确定要删除吗？');
         $("#mainForm").attr("action",basePath + "deletBatchRole.action");
         $("#mainForm").submit();
-        }
+    }
 </script>

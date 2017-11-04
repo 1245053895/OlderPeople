@@ -13,6 +13,7 @@ public interface ProducTypeMapper {
     void TypedeleteByName(String producttypename);
 //    增加
     void TypeinsertSelective(Producttype record);
-
+//    查询
+    List<Producttype> selectByNothing();
 
 }

@@ -58,7 +58,7 @@
         </div>
          <div class="border clearfix">
            <span class="l_f">
-            <a href="/jsp/admin/picture-add.jsp" title="添加商品" class="btn btn-warning Order_form"><i class="icon-plus"></i>添加商品</a>
+            <a href="${basePath}AddToProductType.action" title="添加商品" class="btn btn-warning Order_form"><i class="icon-plus"></i>添加商品</a>
             <a href="javascript:deleteBatch('<%=basePath%>');" class="btn btn-danger"><i class="icon-trash"></i>批量删除</a>
            </span>
            <span class="r_f">共：<b>2334</b>件商品</span>
@@ -90,7 +90,9 @@
                          <td width="100px">${productAndTypeVos.producttypename}</td>
                          <td width="100px">${productAndTypeVos.productprice}</td>
                          <td width="100px">${productAndTypeVos.productdescribe}</td>
-                         <td width="100px"><img src="images/1.jpg" width="20px" height="20px"></td>
+
+                         <td width="100px">  <img src="/images/${productAndTypeVos.productpicture}" width="80px" height="110px">  </td>
+
                          <td width="100px">${productAndTypeVos.productnew}</td>
                          <td width="100px">${productAndTypeVos.producthotsale}</td>
                          <td width="100px">${productAndTypeVos.productdisabled}</td>

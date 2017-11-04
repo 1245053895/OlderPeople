@@ -30,7 +30,7 @@ public class ProducController {
             List<ProductAndTypeVo> productAndTypeVos= productService.selectByProduct(product);
             model.addAttribute("productAndTypeVos",productAndTypeVos);
             model.addAttribute("productname",productname);
-            return "/user.jsp";
+            return "/jsp/admin/Products_List.jsp";
     }
 //删除
     @RequestMapping("/DeleteOneProduct.action")
@@ -86,7 +86,7 @@ public class ProducController {
         // 页面请求转发，可带参数到转发的controller方法中（ProducList.action方法中能用本方法中的形参值）
         // return "forward:queryItems.action";
 
-        return "null";
+        return "redirect:/ProducList.action";
     }
 
 
@@ -101,7 +101,15 @@ public class ProducController {
 
 
 
+    //点击添加商品 得到商品类型列表  返回添加页面     Producttype producttype,Model model
+    @RequestMapping("/AddToProductType.action")
+    public String addToProductType(Model model){
+        List<Producttype> producttypeList= productService.selectByNothing();
+        model.addAttribute("producttypeList",producttypeList);
+        return "/jsp/admin/picture-add.jsp";
 
+
+    }
 
 
 

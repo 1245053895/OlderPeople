@@ -2,7 +2,10 @@
 		 pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt"  prefix="fmt"%>
-
+<%
+    String path = request.getContextPath();
+    String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
 <html>
 <head>
 <meta charset="utf-8">
@@ -32,11 +35,11 @@
 <body>
 
 <!-- 显示错误信息 -->
-<c:if test="${allErrors!=null }">
-    <c:forEach items="${allErrors }" var="error">
-        ${ error.defaultMessage}<br/>
-    </c:forEach>
-</c:if>
+<%--<c:if test="${allErrors!=null }">--%>
+    <%--<c:forEach items="${allErrors }" var="error">--%>
+        <%--${ error.defaultMessage}<br/>--%>
+    <%--</c:forEach>--%>
+<%--</c:if>--%>
 
 
 <div class="clearfix" id="add_picture">
@@ -44,29 +47,30 @@
    <div class="type_title">添加商品</div>
 
 
-	<form action="${pageContext.request.contextPath }/AddProduct.action" method="post" enctype="multipart/form-data" class="form form-horizontal" id="form-article-add">
+	<form action="<%= basePath %>AddProduct.action" method="post" enctype="multipart/form-data" class="form form-horizontal" id="form-article-add">
 		<div class="clearfix cl">
          <label class="form-label col-2"><span class="c-red">*</span>商品名称：</label>
 		 <div class="formControls col-10"><input name="productname" type="text" class="input-text"></div>
 		</div>
 		<div class=" clearfix cl">
          <label class="form-label col-2">商品描述：</label>
-	     <div class="formControls col-10"><input name="productprice" type="text" class="input-text"></div>
+	     <div class="formControls col-10"><input name="productdescribe" type="text" class="input-text"></div>
 		</div>
 		<div class=" clearfix cl">
 			<div class="Add_p_s">
 				<label class="form-label col-2">商品类型：</label>
 				<div class="formControls col-2"><span class="select-box">
-				<select class="select" name="">
-					<option value="1">蔬菜水果</option>
-					<option value="2">手机数码</option>
-					<option value="3">电脑配件</option>
-					<option value="4">服装鞋帽</option>
+				<select class="select" name="producttypeid">
+
+                     <c:forEach items="${producttypeList}" var="producttype1" varStatus="status">
+                         <option value="${producttype1.producttypeid}">${producttype1.producttypename}</option>
+                     </c:forEach>
+
 				</select>
 				</span></div>
 			</div>
 			<div class="Add_p_s">
-				<label class="form-label col-2" style="padding-left: 0px;">原价：<div class="formControls col-2"><input name="" type="text" class="input-text" >元</div></label>
+				<label class="form-label col-2" style="padding-left: 0px;">原价：<div class="formControls col-2"><input name="productprice" type="text" class="input-text" >元</div></label>
 			</div>
 			<div class="Add_p_s">
 				<label class="form-label col-2">现价：<div class="formControls col-2"><input name="" type="text" class="input-text" >元</div></label>
@@ -74,22 +78,22 @@
 			<div></br>
 				<div class="Add_p_s">
 					<label style="margin-left: 15px; margin-right: 8px;">是否新品： </label>
-					<label><input name="for" type="radio" class="ace"><span class="lbl">是</span></label>&nbsp;&nbsp;
-					<label><input name="for" type="radio" class="ace"><span class="lbl">否</span></label>
+					<label><input name="productnew" value="1" type="radio" class="ace"><span class="lbl">是</span></label>&nbsp;&nbsp;
+					<label><input name="productnew" value="0" type="radio" class="ace"><span class="lbl">否</span></label>
 				</div>
 				<div class="Add_p_s">
 					<label style="margin-left: 15px; margin-right: 8px;">是否热销： </label>
-					<label><input name="form-field" type="radio" class="ace"><span class="lbl">是</span></label>&nbsp;&nbsp;
-					<label><input name="form-field" type="radio" class="ace"><span class="lbl">否</span></label>
+					<label><input name="producthotsale" value="1" type="radio" class="ace"><span class="lbl">是</span></label>&nbsp;&nbsp;
+					<label><input name="producthotsale" value="0" type="radio" class="ace"><span class="lbl">否</span></label>
 				</div>
 				<div class="Add_p_s">
 					<label style="margin-left: 15px;margin-right: 8px;">是否可用积分兑换： </label>
-					<label><input name="form-field-radio" type="radio" class="ace"><span class="lbl">是</span></label>&nbsp;&nbsp;
-					<label><input name="form-field-radio" type="radio" class="ace"><span class="lbl">否</span></label>
+					<label><input name="productdisabled" value="1" type="radio" class="ace"><span class="lbl">是</span></label>&nbsp;&nbsp;
+					<label><input name="productdisabled" value="0" type="radio" class="ace"><span class="lbl">否</span></label>
 				</div>
 
                 <div class="Add_p_s">
-                    <label style="margin-left: 15px;margin-right: 8px;">时期 </label>
+                    <label style="margin-left: 15px;margin-right: 8px;">创建日期</label>
                     <input type="date" name="productcreatetime">
                 </div>
 

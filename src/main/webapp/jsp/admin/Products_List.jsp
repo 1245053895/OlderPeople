@@ -37,7 +37,7 @@
         <script src="/jsp/admin/assets/laydate/laydate.js" type="text/javascript"></script>
         <script type="text/javascript" src="/jsp/admin/Widget/zTree/js/jquery.ztree.all-3.5.min.js"></script>
         <script src="/jsp/admin/js/lrtk.js" type="text/javascript" ></script>
-<title>产品列表</title>
+<title>商品列表</title>
 </head>
 <body>
 
@@ -51,7 +51,7 @@
         <div class="search_style">
           <div class="title_names">搜索查询</div>
           <ul class="search_content clearfix">
-           <li><label class="l_f">产品名称</label><input name="productname" type="text"  class="text_add"  value="${productname}"  style=" width:250px"/></li>
+           <li><label class="l_f">商品名称</label><input name="productname" type="text"  class="text_add"  value="${productname}"  style=" width:250px"/></li>
            <li><label class="l_f">添加时间</label><input name="" class="inline laydate-icon" id="start" style=" margin-left:10px;"></li>
            <li style="width:90px;"><button type="submit" class="btn_search"><i class="icon-search"></i>查询</button></li>
           </ul>
@@ -185,7 +185,7 @@ $(".table_menu_list").width($(window).width()-260);
 	 $(".table_menu_list").width($(window).width()-260);
 	  $(".table_menu_list").height($(window).height()-215);
 	})
- 
+
 /*******树状图*******/
 var setting = {
 	view: {

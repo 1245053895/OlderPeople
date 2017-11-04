@@ -43,7 +43,7 @@
 		 <ul class="search_content clearfix">
 			 <form action="${pageContext.request.contextPath}/moHuSelectByAdminUser.action" method="post">
 				 <ul class="search_content clearfix">
-					 <li><label class="l_f">管理员名称</label><input name="adminuser" type="text" value="${adminuser}"  class="text_add" placeholder="请输入管理员名称"  style=" width:400px" /></li>
+					 <li><label class="l_f">请输入管理员名称</label><input name="adminuser" type="text" value="${adminuser}"  class="text_add" placeholder="请输入管理员名称"  style=" width:400px" /></li>
 					 <li style="width:90px;"><button type="submit" class="btn_search"><i class="icon-search"></i>查询</button></li>
 				 </ul>
 			 </form>

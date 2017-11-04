@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Administrator
@@ -60,13 +61,18 @@
       <div class="widget-body">
           <div class="widget-main padding-8">
               <div  id="treeDemo" class="ztree"></div>
+              <ul class="b_P_Sort_list">
+                  <c:forEach items="${kindOfProducts}" var="pro" varStatus="status">
+                      <li><i class="fa fa-users green"></i><a href="<%=request.getContextPath() %>/ProductType.action"> ${pro.kindofproduct}</a></li>
+                  </c:forEach>
+              </ul>
           </div>
-  </div>
+      </div>
   </div>
   </div>  
   </div>
 <!---->
- <iframe ID="testIframe" Name="testIframe" FRAMEBORDER=0 SCROLLING=AUTO  SRC="product-category-add.jsp" class="page_right_style"></iframe>
+ <iframe ID="testIframe" Name="testIframe" FRAMEBORDER=0 SCROLLING=AUTO  SRC="/jsp/admin/product-category-add.jsp" class="page_right_style"></iframe>
  </div>
 </div>
 </body>
@@ -121,22 +127,7 @@ var setting = {
 };
 
 var zNodes =[
-	{ id:1, pId:0, name:"商城分类列表", open:true},
-	{ id:11, pId:1, name:"蔬菜水果(10)"},
-	{ id:111, pId:11, name:"蔬菜(2)"},
-	{ id:112, pId:11, name:"苹果(3)"},
-	{ id:113, pId:11, name:"大蒜(1)"},
-	{ id:114, pId:11, name:"白菜(2)"},
-	{ id:115, pId:11, name:"青菜(2)"},
-	{ id:12, pId:1, name:"手机数码(15)"},
-	{ id:121, pId:12, name:"手机(10)"},
-	{ id:122, pId:12, name:"照相机(5)"},
-	{ id:13, pId:1, name:"电脑配件(16)"},
-	{ id:131, pId:13, name:"手机(10)"},
-	{ id:122, pId:13, name:"照相机(6)"},
-	{ id:14, pId:1, name:"服装鞋帽(23)"},
-	{ id:141, pId:14, name:"手机(21)"},
-	{ id:42, pId:14, name:"照相机(2)"},
+
 ];
 		
 var code;

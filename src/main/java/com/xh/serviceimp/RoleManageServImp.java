@@ -59,5 +59,7 @@ public class RoleManageServImp implements RoleManageServ {
         List<AdminRole> adminRoles=roleMapper.moHuSelectByAdminUser(adminuser);
         return adminRoles;
     }
-
+    public void updateRloeById(AdminRoleCustom adminRoleCustom) {
+        roleMapper.updateRloeById(adminRoleCustom);
+    }
 }

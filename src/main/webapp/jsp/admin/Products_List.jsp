@@ -58,10 +58,10 @@
         </div>
          <div class="border clearfix">
            <span class="l_f">
-            <a href="/jsp/admin/picture-add.jsp" title="添加商品" class="btn btn-warning Order_form"><i class="icon-plus"></i>添加商品</a>
+            <a href="${basePath}AddToProductType.action" title="添加商品" class="btn btn-warning Order_form"><i class="icon-plus"></i>添加商品</a>
             <a href="javascript:deleteBatch('<%=basePath%>');" class="btn btn-danger"><i class="icon-trash"></i>批量删除</a>
            </span>
-           <span class="r_f">共：<b>2334</b>件商品</span>
+           <span class="r_f">共：<b>${allproduct.productcount}</b>件商品</span>
          </div>
          <%--<div class="table_menu_list" id="testIframe">--%>
              <table class="table table-striped table-bordered table-hover" id="sample-table">
@@ -90,7 +90,9 @@
                          <td width="100px">${productAndTypeVos.producttypename}</td>
                          <td width="100px">${productAndTypeVos.productprice}</td>
                          <td width="100px">${productAndTypeVos.productdescribe}</td>
-                         <td width="100px"><img src="images/1.jpg" width="20px" height="20px"></td>
+
+                         <td width="100px">  <img src="/images/${productAndTypeVos.productpicture}" width="80px" height="110px">  </td>
+
                          <td width="100px">${productAndTypeVos.productnew}</td>
                          <td width="100px">${productAndTypeVos.producthotsale}</td>
                          <td width="100px">${productAndTypeVos.productdisabled}</td>
@@ -100,8 +102,9 @@
                              <a title="编辑" onclick="member_edit('编辑','member-add.html','4','','510')" href="javascript:;"  class="btn btn-xs btn-info" ><i class="icon-edit bigger-120"></i></a>
                                  <%--javascript:deleteBatch('<%=basePath%>');--%>
                                  <%--<a title="删除" href="${basePath}DeleteOneProduct.action?productid=${productAndTypeVos.productid}"  onclick="member_del(this,'1')" class="btn btn-xs btn-warning" ><i class="icon-trash  bigger-120"></i></a>--%>
-                             <a title="删除" href="${basePath}DeleteOneProduct.action?productid=${productAndTypeVos.productid}"  onclick="alert('您确定要删除吗？')" class="btn btn-xs btn-warning" ><i class="icon-trash  bigger-120"></i></a>
+                             <a title="删除" href="${basePath}DeleteOneProduct.action?productid=${productAndTypeVos.productid}"  onclick="return confirmAct();" class="btn btn-xs btn-warning" ><i class="icon-trash  bigger-120"></i></a>
                          </td>
+                             <%--${basePath}DeleteOneProduct.action?productid=${productAndTypeVos.productid}--%>
                      </tr>
                  </c:forEach>
                  </tbody>
@@ -122,6 +125,13 @@
         $("#mainForm").attr("action",basePath + "DeleteBatchProduct.action");
         $("#mainForm").submit();
     }
+
+function confirmAct(){
+        if (confirm("确定要执行此操作码？"))
+        {return true;}
+    return true;
+}
+
 
 
 jQuery(function($) {

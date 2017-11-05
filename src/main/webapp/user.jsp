@@ -12,9 +12,65 @@
     日期：    <input type="date" name="productcreatetime">
     <%--日期时间：    <input type="datetime-local" name="productcreatetime">--%>
     E-mail:   <input type="email" name="email">
-    搜索谷歌：<input type="search" name="googlesearch">
+    搜索谷歌：<input type="search" name="googlesearch">            </br>
+
+
+  多选  <input type="checkbox" name="item_id" value="001"/>
+    <input type="checkbox" name="item_id" value="002"/>
+    <input type="checkbox" name="item_id" value="002"/>                </br>
+
+    单选  <input type="radio" name="it" value="001"/>
+    <input type="radio" name="it" value="002"/>
+    <input type="radio" name="ite" value="002"/>
+
+
     <button type="submit" >添加</button>
+
+</form></br>
+
+
+修改的表单</br>
+<form action="${pageContext.request.contextPath }/user/modifyUser.action" method="post">
+    <input type="hidden" name="id" value="${user.id }">
+    用户名<input type="text" name="username" value="${user.username }"><br>
+    年龄<input type="text" name="age" value="${user.age }"><br>
+    <c:choose>
+        <c:when test="${user.sex==1 }">
+            性别  男<input type="radio" name="sex" value="1" checked="checked">女<input type="radio" name="sex" value="0"><br>
+        </c:when>
+        <c:when test="${user.sex==0 }">
+            性别  男<input type="radio" name="sex" value="1" >女<input type="radio" name="sex" value="0" checked="checked"><br>
+        </c:when>
+        <c:otherwise>
+            性别  男<input type="radio" name="sex" value="1" >女<input type="radio" name="sex" value="0"><br>
+        </c:otherwise>
+    </c:choose>
+    生日 <input type="text" name="birthday" value="${user.formatDateString }"><br>
+    表单名称 <input type="text" name="order.orderName" ><br>
+    <input type="submit" value="提交">
 </form>
+</br>
+
+
+添加的表单</br>
+<!-- 使用form表单上传文件
+  		1。提交方式是Post
+  		2. 必须显示指定属性 enctype="multipart/form-data"
+  		3.上传字段类型使用file
+  	 -->
+<form action="${pageContext.request.contextPath }/user/uploadUser.action" method="post" enctype="multipart/form-data">
+    用户名<input type="text" name="username" ><br>
+    年龄<input type="text" name="age" ><br>
+    性别  男<input type="radio" name="sex" value="1" >女<input type="radio" name="sex" value="0"><br>
+    生日 <input type="text" name="birthday" ><br>
+    头像 <input type="file" name="userphoto"><br>
+    <input type="submit" value="提交">
+</form></br>
+
+
+
+
+
 
 
 
@@ -31,19 +87,15 @@
 
 <table border = 1>
     <tr>
-        <td>编号</td>
-        <td>姓名</td>
-        <td>角色组</td>
-        <td>性别</td>
+
+        <td>时间</td>
     </tr>
 
     <c:forEach items="${productAndTypeVos }" var="user">
 
         <tr>
-            <td>${user.productid}</td>
-            <td>${user.adminuser }</td>
-            <td>${user.admingroupid}</td>
-            <td>${user.adminsex}</td>
+
+            <td> value="<fmt:formatDate value="${user.productcreatetime}" pattern="yyyy-MM-dd HH:mm:ss"/>"</td>
         </tr>
     </c:forEach>
 </table>

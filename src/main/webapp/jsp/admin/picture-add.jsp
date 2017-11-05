@@ -1,11 +1,11 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Administrator
-  Date: 2017/10/30
-  Time: 16:40
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+		 pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt"  prefix="fmt"%>
+<%
+    String path = request.getContextPath();
+    String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
 <html>
 <head>
 <meta charset="utf-8">
@@ -33,69 +33,71 @@
 <title>新增商品</title>
 </head>
 <body>
-<%--<div class="clearfix" id="add_picture">--%>
-<%--<div id="scrollsidebar" class="left_Treeview">--%>
-    <%--<div class="show_btn" id="rightArrow"><span></span></div>
-    &lt;%&ndash;<div class="widget-box side_content" >
-    <div class="side_title"><a title="隐藏" class="close_btn"><span></span></a></div>
-     <div class="side_list">
-      <div class="widget-header header-color-green2">
-          <h4 class="lighter smaller">选择产品类型</h4>
-      </div>
-      <div class="widget-body">
-          <div class="widget-main padding-8">
-              <div  id="treeDemo" class="ztree"></div>
-          </div>
-  </div>
-  </div>
-  </div>&ndash;%&gt;
-  </div>--%>
-<div>
+
+<!-- 显示错误信息 -->
+<%--<c:if test="${allErrors!=null }">--%>
+    <%--<c:forEach items="${allErrors }" var="error">--%>
+        <%--${ error.defaultMessage}<br/>--%>
+    <%--</c:forEach>--%>
+<%--</c:if>--%>
+
+
+<div class="clearfix" id="add_picture">
+<div class="page_right_style">
    <div class="type_title">添加商品</div>
-	<form action="" method="post" class="form form-horizontal" id="form-article-add">
+
+
+	<form action="<%= basePath %>AddProduct.action" method="post" enctype="multipart/form-data" class="form form-horizontal" id="form-article-add">
 		<div class="clearfix cl">
          <label class="form-label col-2"><span class="c-red">*</span>商品名称：</label>
-		 <div class="formControls col-10"><input type="text" class="input-text"></div>
+		 <div class="formControls col-10"><input name="productname" type="text" class="input-text"></div>
 		</div>
 		<div class=" clearfix cl">
          <label class="form-label col-2">商品描述：</label>
-	     <div class="formControls col-10"><input type="text" class="input-text"></div>
+	     <div class="formControls col-10"><input name="productdescribe" type="text" class="input-text"></div>
 		</div>
 		<div class=" clearfix cl">
 			<div class="Add_p_s">
 				<label class="form-label col-2">商品类型：</label>
 				<div class="formControls col-2"><span class="select-box">
-				<select class="select">
-					<option value="1">蔬菜水果</option>
-					<option value="2">手机数码</option>
-					<option value="3">电脑配件</option>
-					<option value="4">服装鞋帽</option>
+				<select class="select" name="producttypeid">
+
+                     <c:forEach items="${producttypeList}" var="producttype1" varStatus="status">
+                         <option value="${producttype1.producttypeid}">${producttype1.producttypename}</option>
+                     </c:forEach>
+
 				</select>
 				</span></div>
 			</div>
 			<div class="Add_p_s">
-				<label class="form-label col-2" style="padding-left: 0px;">原价：<div class="formControls col-2"><input type="text" class="input-text" >元</div></label>
+				<label class="form-label col-2" style="padding-left: 0px;">原价：<div class="formControls col-2"><input name="productprice" type="text" class="input-text" >元</div></label>
 			</div>
 			<div class="Add_p_s">
-				<label class="form-label col-2">现价：<div class="formControls col-2"><input type="text" class="input-text" >元</div></label>
+				<label class="form-label col-2">现价：<div class="formControls col-2"><input name="" type="text" class="input-text" >元</div></label>
 			</div>
-		</div>
-		<div class=" clearfix cl" style="margin-left: 15px;">
+			<div></br>
 				<div class="Add_p_s">
-					<label>是否新品： </label>
-					<label><input name="form-field-radio" type="radio" class="ace"><span class="lbl">是</span></label>&nbsp;&nbsp;
-					<label><input name="form-field-radio" type="radio" class="ace"><span class="lbl">否</span></label>
+					<label style="margin-left: 15px; margin-right: 8px;">是否新品： </label>
+					<label><input name="productnew" value="1" type="radio" class="ace"><span class="lbl">是</span></label>&nbsp;&nbsp;
+					<label><input name="productnew" value="0" type="radio" class="ace"><span class="lbl">否</span></label>
 				</div>
 				<div class="Add_p_s">
-					<label>是否热销： </label>
-					<label><input name="form-field-radio1" type="radio" class="ace"><span class="lbl">是</span></label>&nbsp;&nbsp;
-					<label><input name="form-field-radio1" type="radio" class="ace"><span class="lbl">否</span></label>
+					<label style="margin-left: 15px; margin-right: 8px;">是否热销： </label>
+					<label><input name="producthotsale" value="1" type="radio" class="ace"><span class="lbl">是</span></label>&nbsp;&nbsp;
+					<label><input name="producthotsale" value="0" type="radio" class="ace"><span class="lbl">否</span></label>
 				</div>
 				<div class="Add_p_s">
-					<label>是否可用积分兑换： </label>
-					<label><input name="form-field-radio2" type="radio" class="ace"><span class="lbl">是</span></label>&nbsp;&nbsp;
-					<label><input name="form-field-radio2" type="radio" class="ace"><span class="lbl">否</span></label>
+					<label style="margin-left: 15px;margin-right: 8px;">是否可用积分兑换： </label>
+					<label><input name="productdisabled" value="1" type="radio" class="ace"><span class="lbl">是</span></label>&nbsp;&nbsp;
+					<label><input name="productdisabled" value="0" type="radio" class="ace"><span class="lbl">否</span></label>
 				</div>
+
+                <div class="Add_p_s">
+                    <label style="margin-left: 15px;margin-right: 8px;">创建日期</label>
+                    <input type="date" name="productcreatetime">
+                </div>
+
+			</div>
 		</div>
 		<div class="clearfix cl">
 			<label class="form-label col-2">商品详情：</label>
@@ -113,7 +115,9 @@
 						<div id="dndArea" class="placeholder">
 							<div id="filePicker-2"></div>
 							<p>或将照片拖到这里，单次最多可选300张</p>
-						</div>
+
+                            <input type="file"  name="product_pic"/>
+                        </div>
 					</div>
 					<div class="statusBar" style="display:none;">
 						<div class="progress"> <span class="text">0%</span> <span class="percentage"></span> </div>
@@ -138,8 +142,9 @@
         </div>
 		<div class="clearfix cl">
 			<div class="Button_operation">
-				<button onClick="article_save_submit();" class="btn btn-primary radius" type="submit"><i class="icon-save "></i>保存并提交</button>
-				<button onClick="layer_close();" class="btn btn-default radius" type="button">&nbsp;&nbsp;取消添加&nbsp;&nbsp;</button>
+				<button onClick="article_save_submit();" class="btn btn-primary radius" type="submit"><i class="icon-save "></i>保存并提交审核</button>
+				<button onClick="article_save();" class="btn btn-secondary  btn-warning" type="button"><i class="icon-save"></i>保存草稿</button>
+				<button onClick="layer_close();" class="btn btn-default radius" type="button">&nbsp;&nbsp;取消&nbsp;&nbsp;</button>
 			</div>
 		</div>
 	</form>
@@ -937,4 +942,4 @@ $(function(){
 
 })( jQuery );
 </script>
-			</body></html>
+			</div></body></html>

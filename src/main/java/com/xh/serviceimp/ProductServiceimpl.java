@@ -68,4 +68,9 @@ public class ProductServiceimpl implements ProductService {
     public void TypedeleteByName(String producttypename) {
         producTypeMapper.TypedeleteByName(producttypename);
     }
+
+    @Override
+    public List<Producttype> selectByNothing() {
+        return  producTypeMapper.selectByNothing();
+    }
 }

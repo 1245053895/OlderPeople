@@ -73,6 +73,49 @@
            </div>
 			</div>
             </div>
+       <div class="xinxi">
+       <div style="margin-top: 50px;margin-left: 200px; float: left;">
+           <img src="images/admintx.png" height="210px" width="190px">
+           <div class="Button_operation clearfix" >
+               <a href="javascript:ovid()" onclick="change_Password()" class="btn btn-warning btn-xs">修改密码</a>
+               <button onclick="modify();" class="btn btn-danger" type="submit">修改信息</button>
+               <button onclick="save_info();" class="btn btn-success" type="button">保存修改</button>
+           </div>
+       </div>
+         <div class="info">
+          <div class="form-group" style="height: 30px;">
+              <label class="col-sm-3 control-label no-padding-right">账号： </label>
+              <div class="col-sm-9"><input type="text" name="账号" value="admin1" class="col-xs-7 text_info" disabled="disabled"></div>
+          </div>
+          <div class="form-group" style="height: 30px;">
+              <label class="col-sm-3 control-label no-padding-right">姓名： </label>
+              <div class="col-sm-9"><input type="text" name="姓名" value="陈思顶" class="col-xs-7 text_info" disabled="disabled"></div>
+          </div>
+          <div class="form-group" style="height: 30px;">
+              <label class="col-sm-3 control-label no-padding-right">性别： </label>
+              <div class="col-sm-9">
+                  <span class="sex" id="admin_info_span">男</span>
+                  <div class="add_sex">
+                      <label><input name="form-field-radio" type="radio" class="ace" checked="checked"><span class="lbl">保密</span></label>&nbsp;&nbsp;
+                      <label><input name="form-field-radio" type="radio" class="ace"><span class="lbl">男</span></label>&nbsp;&nbsp;
+                      <label><input name="form-field-radio" type="radio" class="ace"><span class="lbl">女</span></label>
+                  </div>
+              </div>
+            </div>
+            <div class="form-group" style="height: 30px;">
+                <label class="col-sm-3 control-label no-padding-right" >所在部门： </label>
+                <div class="col-sm-9"><input type="text" name="所在部门"  value="孝和集团" class="col-xs-7 text_info" disabled="disabled"></div>
+            </div>
+          <div class="form-group" style="height: 30px;">
+              <label class="col-sm-3 control-label no-padding-right">电话： </label>
+              <div class="col-sm-9"><input type="text" name="电话" id="website-title" value="18888888888" class="col-xs-7 text_info" disabled="disabled"></div>
+          </div>
+           <div class="form-group" style="height: 30px;">
+               <label class="col-sm-3 control-label no-padding-right">角色： </label>
+              <div class="col-sm-9" > <span  id="admin_info_span1">普通管理员</span></div>
+          </div>
+	    </div>
+      </div>
     </div>
  </div>
  <!--修改密码样式-->

@@ -49,4 +49,7 @@
                 LIKE '%${_parameter}%' AND a.AdminGroupId=ag.AdminGroupId
     </select>
 
+    <update id="updateRloeById" parameterType="adminRoleCustom">
+        UPDATE admingroup SET AdminGroupName=#{admingroupname},AdminGroupDescription=#{admingroupdescription} WHERE AdminGroupId=#{admingroupid}
+    </update>
 </mapper>

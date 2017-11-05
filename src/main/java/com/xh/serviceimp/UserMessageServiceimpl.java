@@ -17,10 +17,7 @@ public class UserMessageServiceimpl implements UserMessageService {
     @Transactional
     public void deleteByPrimaryKey(Integer userid) {  userCsdMapper.deleteByPrimaryKey(userid); }
 
-    public void insertSelective(User record)
-    {
-    userCsdMapper.insertSelective(record);
-    }
+    public void insertSelective(User user) { userCsdMapper.insertSelective(user); }
 
     public User selectByPrimaryKey(Integer userid) { return userCsdMapper.selectByPrimaryKey(userid); }
 
@@ -32,10 +29,7 @@ public class UserMessageServiceimpl implements UserMessageService {
     public User selectByPrimaryKeyByname(String username) { return userCsdMapper.selectByPrimaryKeyByname(username);
     }
 
-    public List<User> qullyAllUser() {
-        List<User> users=userCsdMapper.qullyAllUser();
-        return users;
-    }
+    public List<User> qullyAllUser() { List<User> users=userCsdMapper.qullyAllUser();return users; }
 
     public List<User> QueryUserConfuse(StringAndString stringAndString) {
         List<User> users=userCsdMapper.QueryUserConfuse(stringAndString);

@@ -38,32 +38,34 @@
      <div class="type_title">管理员信息 </div>
       <div class="xinxi">
        <div class="info">
-        <div class="form-group"><label class="col-sm-3 control-label no-padding-right">账号： </label>
-          <div class="col-sm-9"><input type="text" name="账号" value="admin1" class="col-xs-7 text_info" disabled="disabled"></div>
-
-          <div class="form-group"><label class="col-sm-3 control-label no-padding-right">姓名： </label>
-          <div class="col-sm-9"><input type="text" name="姓名" value="陈思顶" class="col-xs-7 text_info" disabled="disabled"></div>
-          </div>
-            <div class="form-group"><label class="col-sm-3 control-label no-padding-right">性别： </label>
-                <div class="col-sm-9">
-                    <span class="sex" id="admin_info_span">男</span>
-                    <div class="add_sex">
-                        <label><input name="form-field-radio" type="radio" class="ace" checked="checked"><span class="lbl">保密</span></label>&nbsp;&nbsp;
-                        <label><input name="form-field-radio" type="radio" class="ace"><span class="lbl">男</span></label>&nbsp;&nbsp;
-                        <label><input name="form-field-radio" type="radio" class="ace"><span class="lbl">女</span></label>
+           <form id="submitform" action="${pageContext.request.contextPath}/UpdateMyselfInformation.action" method="post">
+               <input type="hidden" name="adminid" value="${adminRole.adminid}"/>
+                <div class="form-group"><label class="col-sm-3 control-label no-padding-right">账号： </label>
+                  <div class="col-sm-9"><input type="text" name="adminname" value="${adminRole.adminname}" class="col-xs-7 text_info" disabled="disabled"></div>
+                  <div class="form-group"><label class="col-sm-3 control-label no-padding-right">姓名： </label>
+                  <div class="col-sm-9"><input type="text" name="adminuser" value="${adminRole.adminuser}" class="col-xs-7 text_info" disabled="disabled"></div>
+                  </div>
+                    <div class="form-group"><label class="col-sm-3 control-label no-padding-right">性别： </label>
+                        <div class="col-sm-9">
+                            <span class="sex" id="admin_info_span">${adminRole.adminsex}</span>
+                            <div class="add_sex">
+                                <label><input name="adminsex" type="radio" value="保密" class="ace" checked="checked"><span class="lbl">保密</span></label>&nbsp;&nbsp;
+                                <label><input name="adminsex" type="radio" value="男" class="ace"><span class="lbl">男</span></label>&nbsp;&nbsp;
+                                <label><input name="adminsex" type="radio" value="女" class="ace"><span class="lbl">女</span></label>
+                            </div>
+                        </div>
                     </div>
+                    <div class="form-group"><label class="col-sm-3 control-label no-padding-right" >所在部门： </label>
+                        <div class="col-sm-9"><input type="text" name="admindepart"  value="${adminRole.admindepart}" class="col-xs-7 text_info" disabled="disabled"></div>
+                    </div>
+                  <div class="form-group"><label class="col-sm-3 control-label no-padding-right">电话： </label>
+                  <div class="col-sm-9"><input type="text" name="adminphone" id="website-title" value="${adminRole.adminphone}" class="col-xs-7 text_info" disabled="disabled"></div>
+                  </div>
+                   <div class="form-group"><label class="col-sm-3 control-label no-padding-right">角色： </label>
+                  <div class="col-sm-9" > <span  id="admin_info_span1">${adminRole.admingroupname}</span></div>
+                  </div>
                 </div>
-            </div>
-            <div class="form-group"><label class="col-sm-3 control-label no-padding-right" >所在部门： </label>
-                <div class="col-sm-9"><input type="text" name="所在部门"  value="孝和集团" class="col-xs-7 text_info" disabled="disabled"></div>
-            </div>
-          <div class="form-group"><label class="col-sm-3 control-label no-padding-right">电话： </label>
-          <div class="col-sm-9"><input type="text" name="电话" id="website-title" value="18888888888" class="col-xs-7 text_info" disabled="disabled"></div>
-          </div>
-           <div class="form-group"><label class="col-sm-3 control-label no-padding-right">角色： </label>
-          <div class="col-sm-9" > <span  id="admin_info_span1">普通管理员</span></div>
-          </div>
-        </div>
+           </form>
            <div class="Button_operation clearfix">
                 <a href="javascript:ovid()" onclick="change_Password()" class="btn btn-warning btn-xs">修改密码</a>
 				<button onclick="modify();" class="btn btn-danger" type="submit">修改信息</button>
@@ -73,69 +75,18 @@
             </div>
     </div>
  </div>
-<%--    <div class="recording_style">
-    <div class="type_title">管理员登陆记录 </div>
-    <div class="recording_list">
-     <table class="table table-border table-bordered table-bg table-hover table-sort" id="sample-table">
-    <thead>
-      <tr class="text-c">
-        <th width="25"><label><input type="checkbox" class="ace"><span class="lbl"></span></label></th>
-        <th width="80">ID</th>
-        <th width="100">类型</th>
-        <th>内容</th>
-        <th width="17%">登陆地点</th>
-        <th width="10%">用户名</th>
-        <th width="120">客户端IP</th>
-        <th width="150">时间</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><label><input type="checkbox" class="ace"><span class="lbl"></span></label></td>
-        <td>15686</td>
-        <td>1</td>
-        <td>登录成功!</td>
-        <td>江苏南京</td>
-        <td>admin</td>
-        <td>61.233.7.80</td>
-        <td>2014-6-11 11:11:42</td>      
-      </tr>
-         <tr>
-        <td><label><input type="checkbox" class="ace"><span class="lbl"></span></label></td>
-        <td>15686</td>
-        <td>1</td>
-        <td>登录成功!</td>
-        <td>江苏南京</td>
-        <td>admin</td>
-        <td>61.233.7.80</td>
-        <td>2014-6-11 11:11:42</td>      
-      </tr>
-         <tr>
-        <td><label><input type="checkbox" class="ace"><span class="lbl"></span></label></td>
-        <td>15686</td>
-        <td>1</td>
-        <td>登录成功!</td>
-        <td>江苏南京</td>
-        <td>admin</td>
-        <td>61.233.7.80</td>
-        <td>2014-6-11 11:11:42</td>      
-      </tr>
-    </tbody>
-  </table>
-    </div>
-    </div>
- </div>
-</div>--%>
  <!--修改密码样式-->
+ <form action="${pageContext.request.contextPath}/updatePasswordById.action?adminid=${admin.adminid}" method="post">
          <div class="change_Pass_style" id="change_Pass">
             <ul class="xg_style">
-             <li><label class="label_name">原&nbsp;&nbsp;密&nbsp;码</label><input name="原密码" type="password" class="" id="password"></li>
-             <li><label class="label_name">新&nbsp;&nbsp;密&nbsp;码</label><input name="新密码" type="password" class="" id="Nes_pas"></li>
-             <li><label class="label_name">确认密码</label><input name="再次确认密码" type="password" class="" id="c_mew_pas"></li>
+             <li><label class="label_name">原&nbsp;&nbsp;密&nbsp;码</label><input name="${admin.adminpwd}" type="password" class="" id="password"></li>
+             <li><label class="label_name">新&nbsp;&nbsp;密&nbsp;码</label><input name="adminpwd" type="password" class="" id="Nes_pas"></li>
+             <li><label class="label_name">确认密码</label><input name="" type="password" class="" id="c_mew_pas"></li>
               
             </ul>
-     <!--       <div class="center"> <button class="btn btn-primary" type="button" id="submit">确认修改</button></div>-->
+        <div class="center"> <button class="btn btn-primary" type="submit" id="submit">确认修改</button></div>
          </div>
+ </form>
 </body>
 </html>
 <script>
@@ -164,7 +115,7 @@ function save_info(){
 		 });
 		  if(num>0){  return false;}	 	
           else{
-			  
+			  $("#submitform").submit();
 			   layer.alert('修改成功！',{
                title: '提示框',				
 			   icon:1,			   		
@@ -192,7 +143,7 @@ function save_info(){
 	area: ['300px','300px'],
 	shadeClose: true,
 	content: $('#change_Pass'),
-	btn:['确认修改'],
+	/*btn:['确认修改'],*/
 	yes:function(index, layero){		
 		   if ($("#password").val()==""){
 			  layer.alert('原密码不能为空!',{

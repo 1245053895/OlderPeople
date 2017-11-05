@@ -205,7 +205,7 @@
 						<i class="icon-caret-down"></i>
 					</a>
 					<ul class="user-menu pull-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
-						<li class="home"><a href="javascript:void(0)" name="/ShowInformation.action" title="个人资料"  class="iframeurl"><i class="icon-double-angle-right"></i>个人资料</a></li>
+						<li class="home"><a href="javascript:void(0)" name="/ShowInformation.action?adminid=${admin.adminid}" title="个人资料"  class="iframeurl"><i class="icon-double-angle-right"></i>个人资料</a></li>
 						<li class="divider"></li>
 						<li><a href="#" id="Exit_system"><i class="icon-off"></i>退出</a></li>
 					</ul>

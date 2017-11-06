@@ -334,7 +334,7 @@
 
     /*用户-停用*/
     function member_stop(obj, id) {
-       layer.confirm('确认要停用吗？', function (index) {
+        layer.confirm('确认要停用吗？', function (index) {
 
             $(obj).parents("tr").find(".td-manage").prepend('<a style="text-decoration:none" class="btn btn-xs " onClick="member_start(this,id)" href="javascript:void(0);" title="启用"><i class="icon-ok bigger-120"></i></a>');
             $(obj).parents("tr").find(".td-status").html('<span class="label label-defaunt radius">已停用</span>');

@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.List;
 @Controller
@@ -38,7 +39,28 @@ public class ProducController {
         productService.deleteBatch(productid);
         return "redirect:/ProducList.action";
     }
-
+    /*
+    * 启用状态
+    * */
+    @RequestMapping(value = "/UpdateStatusStartP.action",method = {RequestMethod.GET,RequestMethod.POST})
+    public String UpdateStatusStart(Integer productid){
+        Product product=new Product();
+        product.setProductid(productid);
+        product.setProductA("1");
+        productService.updateByPrimaryKeySelective(product);
+        return "redirect:/ProducList.action";
+    }
+    /*
+    * 停用状态
+    * */
+    @RequestMapping(value = "/UpdateStatusStopP.action",method = {RequestMethod.GET,RequestMethod.POST})
+    public String UpdateStatusStop(Integer productid){
+       Product product=new Product();
+       product.setProductid(productid);
+       product.setProductA("0");
+       productService.updateByPrimaryKeySelective(product);
+        return "redirect:/ProducList.action";
+    }
 
 //    /**
 //     * 获取所有一级菜单

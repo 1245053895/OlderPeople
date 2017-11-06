@@ -1,6 +1,7 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmd" uri="http://java.sun.com/jstl/fmt_rt" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
     String path = request.getContextPath();
     String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -108,22 +109,26 @@
          <td width="100px">${productAndTypeVos.productnew}</td>
         <td width="100px">${productAndTypeVos.producthotsale}</td>
         <td width="100px">${productAndTypeVos.productdisabled}</td>
-         <c:if test="${productAndTypeVos.productA==0}">
-             <td class="td-status"><span class="label label-defaunt radius">已停用</span></td>
-         </c:if>
          <c:if test="${productAndTypeVos.productA==1}">
              <td class="td-status"><span class="label label-success radius">已启用</span></td>
          </c:if>
+         <c:if test="${productAndTypeVos.productA==0}">
+            <td class="td-status"><span class="label label-default radius">已停用</span></td>
+         </c:if>
 
-         <td class="td-manage">
-             <c:if test="${productAndTypeVos.productA==0}">
-                 <a onClick="member_start(this,'${productAndTypeVos.productid}')" href="javascript:void(0);" title="启用"
-                    class="btn btn-xs btn-success"><i class="icon-ok bigger-120"></i></a>
-             </c:if>
-             <c:if test="${productAndTypeVos.productA==1}">
-                 <a onClick="member_stop(this,'${productAndTypeVos.productid}')" href="javascript:void(0);" title="停用"
-                    class="btn btn-xs btn-success"><i class="icon-ok bigger-120"></i></a>
-             </c:if>
+
+        <td class="td-manage">
+            <c:if test="${productAndTypeVos.productA==0}">
+                <a onClick="member_start(this,'${productAndTypeVos.productid}')" href="javascript:void(0);" title="启用"
+                   class="btn btn-xs btn-success"><i class="icon-ok bigger-120"></i></a>
+            </c:if>
+            <c:if test="${productAndTypeVos.productA==1}">
+                <a onClick="member_stop(this,'${productAndTypeVos.productid}')" href="javascript:void(0);" title="停用"
+                   class="btn btn-xs btn-success"><i class="icon-ok bigger-120"></i></a>
+            </c:if>
+
+
+
         <a title="编辑" onclick="member_edit('编辑','member-add.html','4','','510')" href="javascript:;"  class="btn btn-xs btn-info" ><i class="icon-edit bigger-120"></i></a>
             <%--javascript:deleteBatch('<%=basePath%>');--%>
             <%--<a title="删除" href="${basePath}DeleteOneProduct.action?productid=${productAndTypeVos.productid}"  onclick="member_del(this,'1')" class="btn btn-xs btn-warning" ><i class="icon-trash  bigger-120"></i></a>--%>
@@ -276,26 +281,27 @@ $(document).ready(function(){
 	var zTree = $.fn.zTree.getZTreeObj("tree");
 	zTree.selectNode(zTree.getNodeByParam("id",'11'));
 });
-/*产品-停用*/
-function member_stop(obj,id){
-	layer.confirm('确认要停用吗？',function(index){
-		$(obj).parents("tr").find(".td-manage").prepend('<a style="text-decoration:none" class="btn btn-xs " onClick="member_start(this,id)" href="javascript:;" title="启用"><i class="icon-ok bigger-120"></i></a>');
-		$(obj).parents("tr").find(".td-status").html('<span class="label label-defaunt radius">已停用</span>');
-		$(obj).remove();
-		layer.msg('已停用!',{icon: 5,time:1000});
-        window.location.href="${pageContext.request.contextPath}/UpdateStatusStop.action?productid="+id;
-	});
+/*用户-停用*/
+function member_stop(obj, id) {
+    layer.confirm('确认要停用吗？', function (index) {
+
+        $(obj).parents("tr").find(".td-manage").prepend('<a style="text-decoration:none" class="btn btn-xs " onClick="member_start(this,id)" href="javascript:void(0);" title="启用"><i class="icon-ok bigger-120"></i></a>');
+        $(obj).parents("tr").find(".td-status").html('<span class="label label-defaunt radius">已停用</span>');
+        $(obj).remove();
+        layer.msg('已停用!', {icon: 5, time: 1000});
+        window.location.href="${pageContext.request.contextPath}/UpdateStatusStopP.action?productid="+id;
+    });
 }
 
-/*产品-启用*/
-function member_start(obj,id){
-	layer.confirm('确认要启用吗？',function(index){
-		$(obj).parents("tr").find(".td-manage").prepend('<a style="text-decoration:none" class="btn btn-xs btn-success" onClick="member_stop(this,id)" href="javascript:;" title="停用"><i class="icon-ok bigger-120"></i></a>');
-		$(obj).parents("tr").find(".td-status").html('<span class="label label-success radius">已启用</span>');
-		$(obj).remove();
-		layer.msg('已启用!',{icon: 6,time:1000});
-        window.location.href="${pageContext.request.contextPath}/UpdateStatusStart.action?productid="+id;
-	});
+/*用户-启用*/
+function member_start(obj, id) {
+    layer.confirm('确认要启用吗？', function (index) {
+        $(obj).parents("tr").find(".td-manage").prepend('<a style="text-decoration:none" class="btn btn-xs btn-success" onClick="member_stop(this,id)" href="javascript:void(0);" title="停用"><i class="icon-ok bigger-120"></i></a>');
+        $(obj).parents("tr").find(".td-status").html('<span class="label label-success radius">已启用</span>');
+        $(obj).remove();
+        layer.msg('已启用!', {icon: 6, time: 1000});
+        window.location.href="${pageContext.request.contextPath}/UpdateStatusStartP.action?productid="+id;
+    });
 }
 /*产品-编辑*/
 function member_edit(title,url,id,w,h){

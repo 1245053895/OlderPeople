@@ -229,16 +229,27 @@
                                                                                      class="text_add"/></span>
                 <div class="prompt r_f"></div>
             </li>
-            <li class="adderss"><label class="label_name">家庭住址：</label><span class="add_name"><input
-                    name="useraddress" type="text" class="text_add" style=" width:350px"/></span>
+            <li class="adderss"><label class="label_name">家庭住址：</label><span class="add_name">
+                <input name="useraddress" type="text" class="text_add" style=" width:350px"/></span>
                 <div class="prompt r_f"></div>
             </li>
-            <li class="adderss"><label class="label_name">家庭住址：</label><span class="add_name"><input
-                    name="useraddress" type="text" class="text_add" style=" width:350px"/></span>
+            <li class="status"><label class="label_name">状态：</label><span class="add_name">
+                <%--<input name="userA" type="text" class="text_add" style=" width:350px"/>--%>
+                <label><input name="userA" type="radio" value="0" class="ace"><span class="lbl">停用</span></label>&nbsp;&nbsp;
+                <label><input name="userA" type="radio" value="1" class="ace"><span class="lbl">启用</span></label>
+                </span>
+                    <div class="prompt r_f"></div>
+            </li>
+            <%--<div class="status">
+                <label><input name="userA" type="radio" value="0" class="ace"><span class="lbl">停用</span></label>&nbsp;&nbsp;
+                <label><input name="userA" type="radio" value="1" class="ace"><span class="lbl">启用</span></label>
+            </div>--%>
+            <li class="adderss"><label class="label_name">邮编：</label><span class="add_name"><input
+                    name="userzip" type="text" class="text_add" style=" width:350px"/></span>
                 <div class="prompt r_f"></div>
             </li>
-            <li class="adderss"><label class="label_name">家庭住址：</label><span class="add_name"><input
-                    name="useraddress" type="text" class="text_add" style=" width:350px"/></span>
+            <li class="adderss"><label class="label_name">注册时间：</label><span class="add_name"><input
+                    name="userlogintime" type="text" class="text_add" style=" width:350px"/></span>
                 <div class="prompt r_f"></div>
             </li>
 

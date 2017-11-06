@@ -30,6 +30,15 @@
 <title>添加商品分类</title>
 </head>
 <body>
+
+<!-- 显示错误信息 -->
+<c:if test="${allErrors!=null}">
+    <c:forEach items="${allErrors }" var="error">
+        ${error.defaultMessage}</br>
+    </c:forEach>
+</c:if>
+
+
 <div class="type_style">
  <div class="type_title">商品类型信息</div>
   <div class="type_content">

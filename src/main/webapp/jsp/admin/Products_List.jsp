@@ -129,7 +129,7 @@
 function confirmAct(){
         if (confirm("确定要执行此操作码？"))
         {return true;}
-    return true;
+    return false;
 }
 
 

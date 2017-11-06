@@ -72,7 +72,7 @@
   </div>  
   </div>
 <!---->
- <iframe ID="testIframe" Name="testIframe" FRAMEBORDER=0 SCROLLING=AUTO  SRC="/jsp/admin/product-category-add.jsp" class="page_right_style"></iframe>
+ <iframe ID="testIframe" Name="testIframe" FRAMEBORDER=0 SCROLLING=AUTO  SRC="/jsp/admin/product-category-add.jsp" class="page_right_style" style="width: 100%;height: 100%;"></iframe>
  </div>
 </div>
 </body>

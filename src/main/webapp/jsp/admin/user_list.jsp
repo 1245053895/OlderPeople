@@ -248,10 +248,12 @@
                     name="userzip" type="text" class="text_add" style=" width:350px"/></span>
                 <div class="prompt r_f"></div>
             </li>
-            <%--<li class="adderss"><label class="label_name">注册时间：</label><span class="add_name"><input
-                  name="userinputdate" type="text" class="text_add" style=" width:350px"/></span>
+            <li class="adderss"><label class="label_name">注册时间：</label><span class="add_name"><input
+                    name="userlogintime" type="text" class="text_add" style=" width:350px"/></span>
                 <div class="prompt r_f"></div>
-            </li>--%>
+            </li>
+
+
         </ul>
     </form>
 </div>
@@ -343,7 +345,7 @@
 
     /*用户-停用*/
     function member_stop(obj, id) {
-        layer.confirm('确认要停用吗？', function (index) {
+       layer.confirm('确认要停用吗？', function (index) {
 
             $(obj).parents("tr").find(".td-manage").prepend('<a style="text-decoration:none" class="btn btn-xs " onClick="member_start(this,id)" href="javascript:void(0);" title="启用"><i class="icon-ok bigger-120"></i></a>');
             $(obj).parents("tr").find(".td-status").html('<span class="label label-defaunt radius">已停用</span>');

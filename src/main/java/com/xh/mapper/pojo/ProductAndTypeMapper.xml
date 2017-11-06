@@ -67,7 +67,7 @@
   <select id="selectByProduct" parameterType="com.xh.po.Product" resultType="com.xh.po.vo.ProductAndTypeVo">
     select ProductId, a.ProductTypeId producttypeid, ProductName, ProductPrice, PictureSizes, PictureColors,
     ProductLookCount, ProductDescribe, ProductStoreTime, ProductPicture, ProductNew,
-    ProducthotSale, ProductDisabled, ProductCredits, ProductCreateTime, Product_A, Product_B,
+    ProducthotSale, ProductDisabled, ProductCredits, ProductCreateTime, Product_A AS ProductA, Product_B,
     Product_C,b.ProductTypeName producttypename
     from product a, producttype b
     <where>

@@ -64,7 +64,7 @@ To change this template use File | Settings | File Templates.
                 <c:forEach items="${admingroups}" var="admingroup">
                     <form id="form_${admingroup.admingroupid}" class="rm_form" action="${pageContext.request.contextPath}/updateRloeById.action" method="post">
                         <tr>
-                            <td class="center"><label><input type="checkbox" name="RoleIds" value="${admingroup.admingroupid}"  class="ace"><span class="lbl"></span></label></td>
+                            <td class="center"><label><input style="border: 0px transparent solid;" type="checkbox" name="RoleIds" value="${admingroup.admingroupid}"  class="ace"><span class="lbl"></span></label></td>
                             <td><input type="text" value="${admingroup.admingroupid}" name="admingroupid" class="input_style text_info" readonly="true"/></td>
                             <td class="hidden-480"><input type="text" name="admingroupname" value="${admingroup.admingroupname}" class="input_style text_info${admingroup.admingroupid}" readonly="true"/></td>
                             <td><input type="text" value="${admingroup.admingroupdescription}" name="admingroupdescription" class="input_style text_info${admingroup.admingroupid}" readonly="true"/></td>
@@ -158,8 +158,10 @@ border-color: #6fb3e0;
         }
     }
     function deleteBatch(basePath) {
-        alert('您确定要删除吗？');
-        $("#mainForm").attr("action",basePath + "deletBatchRole.action");
-        $("#mainForm").submit();
+        /*if(confirm('您确定要删除吗？')) {
+            $("#mainForm").attr("action", basePath + "deletBatchRole.action");
+            $("#mainForm").submit();
+        }*/
+        //console.log($(":checked").css("border","1px #c1c1c1 solid"));
     }
 </script>

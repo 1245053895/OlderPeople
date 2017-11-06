@@ -83,8 +83,10 @@ public class RloeController {
     //对角色修改页面进行批量删除
     @RequestMapping("/deletBatchRole.action")
     public  String deletBatchRole(int[] RoleIds){
-        for (int i=0;i<RoleIds.length;i++){
-            roleManageServ.deleteRoleById(RoleIds[i]);
+        if(RoleIds!=null) {
+            for (int i = 0; i < RoleIds.length; i++) {
+                roleManageServ.deleteRoleById(RoleIds[i]);
+            }
         }
         return "redirect:/queryAllRole.action";
     }

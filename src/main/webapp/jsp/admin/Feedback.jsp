@@ -47,40 +47,42 @@
        </span>
        <span class="r_f">共：<b>2334</b>条</span>
      </div>
-    <div class="feedback">
-      <table class="table table-striped table-bordered table-hover" id="sample-table">
-      <thead>
-		 <tr>
-          <th width="25"><label><input type="checkbox" class="ace"><span class="lbl"></span></label></th>
-          <th width="80">ID</th>
-          <th width="80px">用户账号</th>
-          <th width="80px">用户名</th>
-          <th width="80px">客服</th>
-          <th width="">消息内容</th>
-          <th width="200px">消息时间</th>
-          <th width="100px">消息状态</th>
-          <th width="200">操作</th>
-          </tr>
-      </thead>
-	<tbody>
-		<tr>
-     <td><label><input type="checkbox" class="ace"><span class="lbl"></span></label></td>
-          <td>1</td>
-          <td>user1</td>
-          <td>陈思顶</td>
-          <td>客服007</td>
-          <td class="text-l">
-          <a href="javascript:;" onclick="Guestbook_iew('12')">值此京东“618品质狂欢节”之际，中国特产无锡馆限量上线618份8只装精品水蜜桃</a>
-          <td>2016-6-11 11:11:42</td>
-          <td class="td-status"><span class="label label-success radius">已浏览</span></td>
-          <td class="td-manage">
-            <a href="javascript:ovid()" class="btn btn-sm btn-primary"><i class="fa fa-check"></i>&nbsp;已浏览</a>
-            <a  href="javascript:;"  onclick="member_del(this,'1')" title="删除" class="btn btn-xs btn-warning" ><i class="fa fa-trash  bigger-120"></i></a>
-          </td>
-        </tr>
-        </tbody>
-      </table>
-    </div>
+
+     <div class="Guestbook_list">
+         <table class="table table-striped table-bordered table-hover" id="sample-table">
+             <thead>
+             <tr>
+                 <th width="25"><label><input type="checkbox" class="ace"><span class="lbl"></span></label></th>
+                 <th width="80">ID</th>
+                 <th width="100px">用户账号</th>
+                 <th width="150px">用户名</th>
+                 <th width="100px">客服</th>
+                 <th width="400px">消息内容</th>
+                 <th width="180px">消息时间</th>
+                 <th width="100px">消息状态</th>
+                 <th width="250">操作</th>
+             </tr>
+             </thead>
+             <tbody>
+             <tr>
+                 <td><label><input type="checkbox" class="ace"><span class="lbl"></span></label></td>
+                 <td>1</td>
+                 <td>user1</td>
+                 <td>陈思顶</td>
+                 <td>客服007</td>
+                 <td class="text-l">
+                     <a href="javascript:;" onclick="Guestbook_iew('12')">值此京东“618品质狂欢节”之际，中国特产无锡馆限量上线618份8只装精品水蜜桃</a>
+                 <td>2016-6-11 11:11:42</td>
+                 <td class="td-status"><span class="label label-success radius">已浏览</span></td>
+                 <td class="td-manage">
+                     <a href="javascript:ovid()" class="btn btn-sm btn-primary"><i class="fa fa-check"></i>&nbsp;已浏览</a>
+                     <a  href="javascript:;"  onclick="member_del(this,'1')" title="删除" class="btn btn-xs btn-warning" ><i class="fa fa-trash  bigger-120"></i></a>
+                 </td>
+             </tr>
+             </tbody>
+         </table>
+     </div>
+
  </div>
 </div>
 <!--留言详细-->
@@ -106,110 +108,114 @@
 </body>
 </html>
 <script type="text/javascript">
-/*留言查看*/
-function Guestbook_iew(id){
-	var index = layer.open({
-        type: 1,
-        title: '用户消息',
-		maxmin: true, 
-		shadeClose:false,
-        area : ['600px' , ''],
-        content:$('#Guestbook'),
-		btn:['确定','取消'],
-        yes: function(index, layero){
-            if($('input[name="checkbox"]').prop("checked")){
-                if($('.form-control').val()==""){
-                    layer.alert('回复内容不能为空！',{
-                        title: '提示框',
-                        icon:0,
-                    })
-                }else{
-                    layer.alert('确定回复该内容？',{
-                        title: '提示框',
-                        icon:0,
-                        btn:['确定','取消'],
-                        yes: function(index){
-                            layer.closeAll();
-                        }
-                    });
-                }
-            }else{
-                layer.alert('是否要取消回复！',{
-                    title: '提示框',
-                    icon:0,
-                });
-                layer.close(index);
-            }
-        }
-	})	
-};
-
-/*checkbox激发事件*/
-$('#checkbox').on('click',function(){
-    if($('input[name="checkbox"]').prop("checked")){
-        $('.Reply_style').css('display','block');
+    /*用户-查看*/
+    function member_show(title,url,id,w,h){
+        layer_show(title,url+'#?='+id,w,h);
     }
-    else{
-
-        $('.Reply_style').css('display','none');
-    }
-})
-
-/*字数限制*/
-function checkLength(which) {
-    var maxChars = 200; //
-    if(which.value.length > maxChars){
-        layer.open({
-            icon:2,
-            title:'提示框',
-            content:'您输入的字数超过限制!',
+    /*留言-删除*/
+    function member_del(obj,id){
+        layer.confirm('确认要删除吗？',function(index){
+            $(obj).parents("tr").remove();
+            layer.msg('已删除!',{icon:1,time:1000});
         });
-        // 超过限制的字数了就将 文本框中的内容按规定的字数 截取
-        which.value = which.value.substring(0,maxChars);
-        return false;
-    }else{
-        var curr = maxChars - which.value.length; //250 减去 当前输入的
-        document.getElementById("sy").innerHTML = curr.toString();
-        return true;
     }
-};
 
-/*留言-删除*/
-function member_del(obj,id){
-	layer.confirm('确认要删除吗？',function(index){
-		$(obj).parents("tr").remove();
-		layer.msg('已删除!',{icon:1,time:1000});
-	});
-}
-jQuery(function($) {
-		var oTable1 = $('#sample-table').dataTable( {
-		"aaSorting": [[ 1, "desc" ]],//默认第几个排序
-		"bStateSave": true,//状态保存
-		"aoColumnDefs": [
-		  //{"bVisible": false, "aTargets": [ 3 ]} //控制列的隐藏显示
-		  {"orderable":false,"aTargets":[0,2,3,4,5,6,7,8,9]}// 制定列不参与排序
-		] } );
-				$('table th input:checkbox').on('click' , function(){
-					var that = this;
-					$(this).closest('table').find('tr > td:first-child input:checkbox')
-					.each(function(){
-						this.checked = that.checked;
-						$(this).closest('tr').toggleClass('selected');
-					});
-						
-				});	
-				$('[data-rel="tooltip"]').tooltip({placement: tooltip_placement});
-				function tooltip_placement(context, source) {
-					var $source = $(source);
-					var $parent = $source.closest('table')
-					var off1 = $parent.offset();
-					var w1 = $parent.width();
-			
-					var off2 = $source.offset();
-					var w2 = $source.width();
-			
-					if( parseInt(off2.left) < parseInt(off1.left) + parseInt(w1 / 2) ) return 'right';
-					return 'left';
-				}
-			})
+    /*checkbox激发事件*/
+    $('#checkbox').on('click',function(){
+        if($('input[name="checkbox"]').prop("checked")){
+            $('.Reply_style').css('display','block');
+        }
+        else{
+
+            $('.Reply_style').css('display','none');
+        }
+    })
+    /*留言查看*/
+    function Guestbook_iew(id){
+        var index = layer.open({
+            type: 1,
+            title: '留言信息',
+            maxmin: true,
+            shadeClose:false,
+            area : ['600px' , ''],
+            content:$('#Guestbook'),
+            btn:['确定','取消'],
+            yes: function(index, layero){
+                if($('input[name="checkbox"]').prop("checked")){
+                    if($('.form-control').val()==""){
+                        layer.alert('回复内容不能为空！',{
+                            title: '提示框',
+                            icon:0,
+                        })
+                    }else{
+                        layer.alert('确定回复该内容？',{
+                            title: '提示框',
+                            icon:0,
+                            btn:['确定','取消'],
+                            yes: function(index){
+                                layer.closeAll();
+                            }
+                        });
+                    }
+                }else{
+                    layer.alert('是否要取消回复！',{
+                        title: '提示框',
+                        icon:0,
+                    });
+                    layer.close(index);
+                }
+            }
+        })
+    };
+    /*字数限制*/
+    function checkLength(which) {
+        var maxChars = 200; //
+        if(which.value.length > maxChars){
+            layer.open({
+                icon:2,
+                title:'提示框',
+                content:'您输入的字数超过限制!',
+            });
+            // 超过限制的字数了就将 文本框中的内容按规定的字数 截取
+            which.value = which.value.substring(0,maxChars);
+            return false;
+        }else{
+            var curr = maxChars - which.value.length; //250 减去 当前输入的
+            document.getElementById("sy").innerHTML = curr.toString();
+            return true;
+        }
+    };
+</script>
+<script type="text/javascript">
+    jQuery(function($) {
+        var oTable1 = $('#sample-table').dataTable( {
+            "aaSorting": [[ 1, "desc" ]],//默认第几个排序
+            "bStateSave": true,//状态保存
+            "aoColumnDefs": [
+                //{"bVisible": false, "aTargets": [ 3 ]} //控制列的隐藏显示
+                {"orderable":false,"aTargets":[0,2,3,5,6]}// 制定列不参与排序
+            ] } );
+        $('table th input:checkbox').on('click' , function(){
+            var that = this;
+            $(this).closest('table').find('tr > td:first-child input:checkbox')
+                .each(function(){
+                    this.checked = that.checked;
+                    $(this).closest('tr').toggleClass('selected');
+                });
+
+        });
+        $('[data-rel="tooltip"]').tooltip({placement: tooltip_placement});
+        function tooltip_placement(context, source) {
+            var $source = $(source);
+            var $parent = $source.closest('table')
+            var off1 = $parent.offset();
+            var w1 = $parent.width();
+
+            var off2 = $source.offset();
+            var w2 = $source.width();
+
+            if( parseInt(off2.left) < parseInt(off1.left) + parseInt(w1 / 2) ) return 'right';
+            return 'left';
+        }
+    })
 </script>

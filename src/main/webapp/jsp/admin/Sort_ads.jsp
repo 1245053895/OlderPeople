@@ -27,7 +27,7 @@
 		<script src="/jsp/admin/assets/js/jquery.dataTables.min.js"></script>
 		<script src="/jsp/admin/assets/js/jquery.dataTables.bootstrap.js"></script>
         <script src="/jsp/admin/assets/layer/layer.js" type="text/javascript" ></script>
-<title>商品详情</title>
+<title>订单详情</title>
 </head>
 
 <body>
@@ -36,17 +36,10 @@
      <div class="search_style">
          <div class="title_names">搜索查询</div>
          <ul class="search_content clearfix">
-             <li><label class="l_f">订单编号</label><input name="" type="text" class="text_add" placeholder="订单编号、商品编号" style=" width:250px"></li>
+             <li><label class="l_f">订单编号</label><input name="" type="text" class="text_add" placeholder="订单编号、商品名称" style=" width:250px"></li>
              <li style="width:90px;"><button type="button" class="btn_search"><i class="fa fa-search"></i>查询</button></li>
          </ul>
      </div>
-     <%--<div class="border clearfix">
-       <span class="l_f">
-        <a href="javascript:ovid()" id="sort_add" class="btn btn-warning"><i class="fa fa-plus"></i> 添加分类</a>
-        <a href="javascript:ovid()" class="btn btn-danger"><i class="fa fa-trash"></i> 批量删除</a>
-       </span>
-       <span class="r_f">共：<b>5</b>类</span>
-     </div>--%>
   <div class="sort_list">
     <table class="table table-striped table-bordered table-hover" id="sample-table">
 		<thead>
@@ -99,78 +92,7 @@
 </body>
 </html>
 <script type="text/javascript">
-/*$('#sort_add').on('click', function(){
-	  layer.open({
-        type: 1,
-        title: '添加分类',
-		maxmin: true, 
-		shadeClose: false, //点击遮罩关闭层
-        area : ['750px' , ''],
-        content:$('#sort_style_add'),
-		btn:['提交','取消'],
-		yes:function(index,layero){	
-		 var num=0;
-		 var str="";
-     $(".sort_style_add input[type$='text']").each(function(n){
-          if($(this).val()=="")
-          {
-               
-			   layer.alert(str+=""+$(this).attr("name")+"不能为空！\r\n",{
-                title: '提示框',				
-				icon:0,								
-          }); 
-		    num++;
-            return false;            
-          } 
-		 });
-		  if(num>0){  return false;}	 	
-          else{
-			  layer.alert('添加成功！',{
-               title: '提示框',				
-			icon:1,		
-			  });
-			   layer.close(index);	
-		  }		  		     				
-		}
-    });
-})
 
-
-function checkLength(which) {
-	var maxChars = 200; //
-	if(which.value.length > maxChars){
-	   layer.open({
-	   icon:2,
-	   title:'提示框',
-	   content:'您出入的字数超多限制!',	
-    });
-		// 超过限制的字数了就将 文本框中的内容按规定的字数 截取
-		which.value = which.value.substring(0,maxChars);
-		return false;
-	}else{
-		var curr = maxChars - which.value.length; //250 减去 当前输入的
-		document.getElementById("sy").innerHTML = curr.toString();
-		return true;
-	}
-};
-/!*广告图片-停用*!/
-function member_stop(obj,id){
-	layer.confirm('确认要关闭吗？',{icon:0,},function(index){
-		$(obj).parents("tr").find(".td-manage").prepend('<a style="text-decoration:none" class="btn btn-xs " onClick="member_start(this,id)" href="javascript:;" title="显示"><i class="fa fa-close bigger-120"></i></a>');
-		$(obj).parents("tr").find(".td-status").html('<span class="label label-defaunt radius">已关闭</span>');
-		$(obj).remove();
-		layer.msg('关闭!',{icon: 5,time:1000});
-	});
-}
-/!*广告图片-启用*!/
-function member_start(obj,id){
-	layer.confirm('确认要显示吗？',{icon:0,},function(index){
-		$(obj).parents("tr").find(".td-manage").prepend('<a style="text-decoration:none" class="btn btn-xs btn-success" onClick="member_stop(this,id)" href="javascript:;" title="关闭"><i class="fa fa-check  bigger-120"></i></a>');
-		$(obj).parents("tr").find(".td-status").html('<span class="label label-success radius">显示</span>');
-		$(obj).remove();
-		layer.msg('显示!',{icon: 6,time:1000});
-	});
-}*/
 /*广告图片-删除*/
 function member_del(obj,id){
 	layer.confirm('确认要删除吗？',{icon:0,},function(index){

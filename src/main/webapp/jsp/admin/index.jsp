@@ -193,7 +193,7 @@
 		<div class="navbar-header pull-left">
 			<a href="#" class="navbar-brand">
 				<small>
-					<img src="images/logo.png">
+					<img src="jsp/admin/images/logo.png">
 				</small>
 			</a><!-- /.brand -->
 		</div><!-- /.navbar-header -->

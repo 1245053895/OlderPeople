@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -58,6 +59,7 @@ public class UserMessageController {
     * */
     @RequestMapping(value = "/insertSelective.action",method = {RequestMethod.POST,RequestMethod.GET})
     public  String insertSelective(User user,Model model){
+        user.setUserinputdate(new Date());
         userMessageService.insertSelective(user);
         return "redirect:/UserMessageController.action";
     }

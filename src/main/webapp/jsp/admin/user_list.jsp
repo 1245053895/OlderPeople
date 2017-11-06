@@ -248,12 +248,10 @@
                     name="userzip" type="text" class="text_add" style=" width:350px"/></span>
                 <div class="prompt r_f"></div>
             </li>
-            <li class="adderss"><label class="label_name">注册时间：</label><span class="add_name"><input
-                    name="userlogintime" type="text" class="text_add" style=" width:350px"/></span>
+            <%--<li class="adderss"><label class="label_name">注册时间：</label><span class="add_name"><input
+                  name="userinputdate" type="text" class="text_add" style=" width:350px"/></span>
                 <div class="prompt r_f"></div>
-            </li>
-
-
+            </li>--%>
         </ul>
     </form>
 </div>

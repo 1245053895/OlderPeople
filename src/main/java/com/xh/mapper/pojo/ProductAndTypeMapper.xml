@@ -39,12 +39,12 @@
   </delete>
 
 
-<!--查询出的商品类型至少有一个商品-->
+  <!--查询出的商品类型至少有一个商品-->
   <select id="productKindOf" resultType="com.xh.po.vo.KindOfProduct">
-  SELECT CONCAT(b.ProductTypeName,"(",COUNT(*),")") AS kindofproduct
-  FROM product a,producttype b
-  WHERE a.ProductTypeId=b.ProductTypeId
-  GROUP BY a.ProductTypeId
+    SELECT CONCAT(b.ProductTypeName,"(",COUNT(*),")") AS kindofproduct
+    FROM product a,producttype b
+    WHERE a.ProductTypeId=b.ProductTypeId
+    GROUP BY a.ProductTypeId
   </select>
 
   <!--查询出的商品类型没有商品-->
@@ -59,7 +59,7 @@
 
 
   <select id="productCount" resultType="com.xh.po.vo.Allproduct">
-    SELECT  COUNT(ProductId) AS productcount
+    SELECT    CONCAT(COUNT(ProductId)) AS productcount
     FROM product
   </select>
 

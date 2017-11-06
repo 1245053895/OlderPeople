@@ -612,6 +612,7 @@ body
 	clear: both;
 	font-size: 0;
 	line-height: 0;
+	width: 100px;
 }
 /************会员等级*************/
 .grading_style .page_right_style{ left:220px; top:0px}
@@ -621,9 +622,10 @@ body
 .grading_style .page_right_style{ height:auto}
 .grading_style .table_menu_list{ width:100%}
 /********************************广告界面样式属性*************************/
-.Ads_list{ padding:15px;margin-left:220px; float:right; position: absolute}
-.Ads_list .ad_img{ overflow:hidden; width:250px; height:80px; display:block}
+.Ads_list{ padding:15px;float: left; position: absolute}
+.Ads_list .ad_img{ overflow:hidden; display:block;text-align: center;}
 .Ads_list.Widescreen { margin-left:0px;}
+.Ads_lists{ width: 100%;}
 #add_ads_style .add_adverts{ padding:15px;}
 #add_ads_style .add_adverts li{ height:32px; line-height:30px; margin:10px 0px;}
 #add_ads_style .add_adverts li .label_name{ width:80px; float:left;text-align:right}

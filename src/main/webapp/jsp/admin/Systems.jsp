@@ -42,41 +42,44 @@
 	<ul class="nav nav-tabs" id="myTab">
 	  <li class="active">
 		<a data-toggle="tab" href="#home"><i class="green fa fa-home bigger-110"></i>&nbsp;基本设置</a></li>
-      <li class="">
+      <%--<li class="">
 		<a data-toggle="tab" href="#profile">消息通知<span class="badge badge-danger">4</span></a></li>
       <li class="">
 		<a data-toggle="tab" data-toggle="dropdown" class="dropdown-toggle" href="#dropdown">底部菜单</a>
       </li>
         <li class="">
 		<a data-toggle="tab" data-toggle="dropdown" class="dropdown-toggle" href="#other">其他设置</a>
-      </li>
+      </li>--%>
 	</ul>
     <div class="tab-content">
 		<div id="home" class="tab-pane active">
-         <div class="form-group"><label class="col-sm-1 control-label no-padding-right" for="form-field-1"><i>*</i>网站名称： </label>
-          <div class="col-sm-9"><input type="text" id="website-title" placeholder="控制在25个字、50个字节以内" value="" class="col-xs-10 "></div>
+         <div class="form-group"><label class="col-sm-1 control-label no-padding-right"><i>*</i>网站名称： </label>
+          <div class="col-sm-9"><input type="text" placeholder="控制在25个字、50个字节以内" value="" class="col-xs-10 "></div>
           </div>
-           <div class="form-group"><label class="col-sm-1 control-label no-padding-right" for="form-field-1"><i>*</i>网站icon图标： </label>
+           <div class="form-group"><label class="col-sm-1 control-label no-padding-right"><i>*</i>网站icon图标： </label>
           <div class="col-sm-9"><input type="file" id="id-input-file-2"  /></div>
           </div>
-          <div class="form-group"><label class="col-sm-1 control-label no-padding-right" for="form-field-1"><i>*</i>关键词： </label>
-          <div class="col-sm-9"><input type="text" id="website-title" placeholder="5个左右,8汉字以内,用英文,隔开" value="" class="col-xs-10 "></div>
+          <div class="form-group"><label class="col-sm-1 control-label no-padding-right"><i>*</i>关键词： </label>
+          <div class="col-sm-9"><input type="text" placeholder="5个左右,8汉字以内,用英文,隔开" value="" class="col-xs-10 "></div>
           </div>
-	      <div class="form-group"><label class="col-sm-1 control-label no-padding-right" for="form-field-1"><i>*</i>文件路径配置： </label>
-          <div class="col-sm-9"><input type="text" id="website-title" placeholder="默认为空，为相对路径" value="" class="col-xs-10"></div>
+          <div class="form-group"><label class="col-sm-1 control-label no-padding-right"><i>*</i>屏蔽词： </label>
+          <div class="col-sm-9"><input type="text" placeholder="8汉字以内,用英文,隔开" value="" class="col-xs-10 "></div>
           </div>
-          <div class="form-group"><label class="col-sm-1 control-label no-padding-right" for="form-field-1"><i>*</i>描述： </label>
-          <div class="col-sm-9"><input type="text" id="website-title" placeholder="空制在80个汉字，160个字符以内" value="" class="col-xs-10"></div>
+	      <div class="form-group"><label class="col-sm-1 control-label no-padding-right"><i>*</i>文件路径配置： </label>
+          <div class="col-sm-9"><input type="text" placeholder="默认为空，为相对路径" value="" class="col-xs-10"></div>
           </div>
-          <div class="form-group"><label class="col-sm-1 control-label no-padding-right" for="form-field-1"><i>*</i>底部版权信息： </label>
-          <div class="col-sm-9"><input type="text" id="website-title" placeholder="" value="" class="col-xs-10 "></div>
+          <div class="form-group"><label class="col-sm-1 control-label no-padding-right"><i>*</i>描述： </label>
+          <div class="col-sm-9"><input type="text" placeholder="空制在80个汉字，160个字符以内" value="" class="col-xs-10"></div>
           </div>
-          <div class="form-group"><label class="col-sm-1 control-label no-padding-right" for="form-field-1"><i>*</i>备案号： </label>
-          <div class="col-sm-9"><input type="text" id="website-title" placeholder="" value="" class="col-xs-10 "></div>
+          <div class="form-group"><label class="col-sm-1 control-label no-padding-right"><i>*</i>底部版权信息： </label>
+          <div class="col-sm-9"><input type="text" placeholder="" value="" class="col-xs-10 "></div>
           </div>
-           <div class="form-group"><label class="col-sm-1 control-label no-padding-right" for="form-field-1"><i>*</i>统计代码： </label>
+          <div class="form-group"><label class="col-sm-1 control-label no-padding-right"><i>*</i>备案号： </label>
+          <div class="col-sm-9"><input type="text" placeholder="" value="" class="col-xs-10 "></div>
+          </div>
+          <%-- <div class="form-group"><label class="col-sm-1 control-label no-padding-right"><i>*</i>统计代码： </label>
           <div class="col-sm-9"><textarea class="textarea"></textarea></div>
-          </div>
+          </div>--%>
           <div class="Button_operation"> 
 				<button onclick="article_save_submit();" class="btn btn-primary radius" type="submit"><i class="fa fa-save "></i>&nbsp;保存</button>
 				
@@ -91,7 +94,7 @@
           
 		</div>
 		<div id="other" class="tab-pane">
-		   <div class="form-group"><label class="col-sm-1 control-label no-padding-right" for="form-field-1"><i>*</i>屏蔽词： </label>
+		   <div class="form-group"><label class="col-sm-1 control-label no-padding-right"><i>*</i>屏蔽词： </label>
           <div class="col-sm-9"><textarea class="textarea"></textarea></div>          
           </div>
           <div class="Button_operation"> 

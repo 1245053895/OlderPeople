@@ -125,8 +125,9 @@
 
   <select id="qullyAllUser" parameterType="list" resultType="com.xh.po.User" >
     SELECT UserId, UserName, UserPwd, UserSex, UserRealName, UserPhone, UserBirthday, UserAddress,
-  UserEmail, UserZip,UserInputDate FROM user;
+  UserEmail, UserZip,UserInputDate ,User_A AS UserA FROM user;
   </select>
+
   <!--实现模糊查询-->
   <select id="QueryUserConfuse" parameterType="com.xh.po.vo.StringAndString" resultType="com.xh.po.User">
       SELECT *

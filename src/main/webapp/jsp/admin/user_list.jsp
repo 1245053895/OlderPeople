@@ -3,6 +3,7 @@
 <%--aaaa
   Created by IntelliJ IDEA.
   User: Administrator
+
   Date: 2017/10/30
   Time: 16:40
   To change this template use File | Settings | File Templates.
@@ -157,14 +158,31 @@
                                         <td>${userlist.useremail}</td>
                                         <td>${userlist.userzip}</td>
                                         <td><fmd:formatDate value="${userlist.userinputdate}" pattern="yyyy-MM-dd"/></td>
-                                        <td class="td-status"><span class="label label-success radius">已启用</span></td>
+
+                                        <c:if test="${userlist.userA==0}">
+                                            <td class="td-status"><span class="label label-defaunt radius">已停用</span></td>
+                                        </c:if>
+                                        <c:if test="${userlist.userA==1}">
+                                            <td class="td-status"><span class="label label-success radius">已启用</span></td>
+                                        </c:if>
+
                                         <td class="td-manage">
-                                            <a onClick="member_stop(this,'10001')" href="javascript:;" title="停用"
-                                               class="btn btn-xs btn-success"><i class="icon-ok bigger-120"></i></a>
+                                            <c:if test="${userlist.userA==0}">
+                                                <a onClick="member_start(this,'${userlist.userid}')" href="javascript:void(0);" title="启用"
+                                                   class="btn btn-xs btn-success"><i class="icon-ok bigger-120"></i></a>
+                                            </c:if>
+                                            <c:if test="${userlist.userA==1}">
+                                                <a onClick="member_stop(this,'${userlist.userid}')" href="javascript:void(0);" title="停用"
+                                                   class="btn btn-xs btn-success"><i class="icon-ok bigger-120"></i></a>
+                                            </c:if>
 
 
 
-                                            <a title="删除"
+
+
+                                            <a
+                                               onclick="return confirm('确定删除？')"
+                                               title="删除"
                                                href="${pageContext.request.contextPath}/DelectUserById.action?Userid=${userlist.userid}"
                                                class="btn btn-xs btn-warning"><i class="icon-trash  bigger-120"></i></a>
                                         </td>
@@ -215,19 +233,15 @@
                     name="useraddress" type="text" class="text_add" style=" width:350px"/></span>
                 <div class="prompt r_f"></div>
             </li>
-            <li>
-                    <label class="label_name">状&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;态：</label>
-                <span class="add_name">
-                    <label><input name="userA" value="3" type="radio" checked="checked" class="ace">
-                        <span class="lbl">开启</span>
-                    </label>
-                    &nbsp;&nbsp;&nbsp;
-                    <label><input name="useB" value="4" type="radio" class="ace">
-                        <span class="lbl">关闭</span>
-                    </label>
-                </span>
+            <li class="adderss"><label class="label_name">家庭住址：</label><span class="add_name"><input
+                    name="useraddress" type="text" class="text_add" style=" width:350px"/></span>
                 <div class="prompt r_f"></div>
             </li>
+            <li class="adderss"><label class="label_name">家庭住址：</label><span class="add_name"><input
+                    name="useraddress" type="text" class="text_add" style=" width:350px"/></span>
+                <div class="prompt r_f"></div>
+            </li>
+
 
         </ul>
     </form>
@@ -274,7 +288,7 @@
     })
     /*用户-添加*/
     $('#member_add').on('click', function () {
-        $("#insertSelective").serialize();
+      /*  $("#insertSelective").serialize();*/
         layer.open({
             type: 1,
             title: '添加用户',
@@ -320,23 +334,24 @@
 
     /*用户-停用*/
     function member_stop(obj, id) {
-        layer.confirm('确认要停用吗？', function (index) {
-             /*location.href="{pageContext.request.contextPath}/insertSelective.action"*/
-            $(obj).parents("tr").find(".td-manage").prepend('<a style="text-decoration:none" class="btn btn-xs " onClick="member_start(this,id)" href="javascript:;" title="启用"><i class="icon-ok bigger-120"></i></a>');
+       layer.confirm('确认要停用吗？', function (index) {
+
+            $(obj).parents("tr").find(".td-manage").prepend('<a style="text-decoration:none" class="btn btn-xs " onClick="member_start(this,id)" href="javascript:void(0);" title="启用"><i class="icon-ok bigger-120"></i></a>');
             $(obj).parents("tr").find(".td-status").html('<span class="label label-defaunt radius">已停用</span>');
             $(obj).remove();
             layer.msg('已停用!', {icon: 5, time: 1000});
+            window.location.href="${pageContext.request.contextPath}/UpdateStatusStop.action?userid="+id;
         });
     }
 
     /*用户-启用*/
     function member_start(obj, id) {
         layer.confirm('确认要启用吗？', function (index) {
-
-            $(obj).parents("tr").find(".td-manage").prepend('<a style="text-decoration:none" class="btn btn-xs btn-success" onClick="member_stop(this,id)" href="javascript:;" title="停用"><i class="icon-ok bigger-120"></i></a>');
+            $(obj).parents("tr").find(".td-manage").prepend('<a style="text-decoration:none" class="btn btn-xs btn-success" onClick="member_stop(this,id)" href="javascript:void(0);" title="停用"><i class="icon-ok bigger-120"></i></a>');
             $(obj).parents("tr").find(".td-status").html('<span class="label label-success radius">已启用</span>');
             $(obj).remove();
             layer.msg('已启用!', {icon: 6, time: 1000});
+            window.location.href="${pageContext.request.contextPath}/UpdateStatusStart.action?userid="+id;
         });
     }
 
@@ -382,7 +397,7 @@
     /*用户-删除*/
     function member_del(obj, id) {
         layer.confirm('确认要删除吗？', function (index) {
-            $(obj).parents("tr").remove();
+
             layer.msg('已删除!', {icon: 1, time: 1000});
         });
     }

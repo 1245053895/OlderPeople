@@ -102,7 +102,7 @@
                              <a title="编辑" onclick="member_edit('编辑','member-add.html','4','','510')" href="javascript:;"  class="btn btn-xs btn-info" ><i class="icon-edit bigger-120"></i></a>
                                  <%--javascript:deleteBatch('<%=basePath%>');--%>
                                  <%--<a title="删除" href="${basePath}DeleteOneProduct.action?productid=${productAndTypeVos.productid}"  onclick="member_del(this,'1')" class="btn btn-xs btn-warning" ><i class="icon-trash  bigger-120"></i></a>--%>
-                             <a title="删除" href="${basePath}DeleteOneProduct.action?productid=${productAndTypeVos.productid}"  onclick="return confirmAct();" class="btn btn-xs btn-warning" ><i class="icon-trash  bigger-120"></i></a>
+                             <a title="删除" href="${basePath}DeleteOneProduct.action?productid=${productAndTypeVos.productid}"  onclick="return confirm('确定要执行此操作码？')" class="btn btn-xs btn-warning" ><i class="icon-trash  bigger-120"></i></a>
                          </td>
                              <%--${basePath}DeleteOneProduct.action?productid=${productAndTypeVos.productid}--%>
                      </tr>
@@ -126,11 +126,11 @@
         $("#mainForm").submit();
     }
 
-function confirmAct(){
+/*function confirmAct(){
         if (confirm("确定要执行此操作码？"))
         {return true;}
-    return true;
-}
+    return false;
+}*/
 
 
 

@@ -39,4 +39,5 @@
       LEFT JOIN userlog ON (user.UserId=userlog.UserId)
     WHERE user.UserId=#{id};
   </select>
+
 </mapper>

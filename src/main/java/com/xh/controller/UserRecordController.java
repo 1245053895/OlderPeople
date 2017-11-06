@@ -51,4 +51,8 @@ public class UserRecordController {
         return userLogById;
     }
 
+    //根据用户的id删除一条用户的记录
+    public String deleteOneRecord(Integer userid){
+        return null;
+    }
 }

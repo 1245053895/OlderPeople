@@ -1,5 +1,6 @@
 package com.xh.controller;
 
+import com.xh.mapper.pojo.UserCsdMapper;
 import com.xh.po.User;
 import com.xh.po.vo.StringAndString;
 import com.xh.service.UserMessageService;
@@ -21,6 +22,8 @@ public class UserMessageController {
 
     @Autowired
     UserMessageService userMessageService;
+    @Autowired
+    UserCsdMapper userCsdMapper;
     /*
     * 对用户全部查询输出到页面上
     * */
@@ -69,6 +72,28 @@ public class UserMessageController {
             }
             return "redirect:/UserMessageController.action";
         }else
-            return  "redirect:/UserMessageController.action";
+        return  "redirect:/UserMessageController.action";
+    }
+    /*
+    * 启用用户
+    * */
+    @RequestMapping(value = "/UpdateStatusStart.action",method = {RequestMethod.POST,RequestMethod.GET})
+    public  String UpdateStatusStart(Integer userid){
+        User user=new User();
+        user.setUserid(userid);
+        user.setUserA("1");
+        userMessageService.updateByPrimaryKeySelective(user);
+        return "redirect:/UserMessageController.action";
+    }
+    /*
+    * 禁用用户
+    * */
+    @RequestMapping(value = "/UpdateStatusStop.action",method = {RequestMethod.GET,RequestMethod.POST})
+    public String UpdateStatusStop(Integer userid){
+        User user=new User();
+        user.setUserid(userid);
+        user.setUserA("0");
+        userMessageService.updateByPrimaryKeySelective(user);
+        return "redirect:/UserMessageController.action";
     }
 }

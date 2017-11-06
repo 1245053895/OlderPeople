@@ -268,7 +268,7 @@
 
 				<li><a href="#" class="dropdown-toggle"><i class="icon-desktop"></i><span class="menu-text"> 商品管理 </span><b class="arrow icon-angle-down"></b></a>
 					<ul class="submenu">
-						<li class="home"><a href="javascript:void(0)" name="/ProductType.action" title="商品分类"  class="iframeurl"><i class="icon-double-angle-right"></i>商品分类</a></li>
+						<li class="home"><a href="javascript:void(0)" name="Product_Manage.jsp" title="商品分类"  class="iframeurl"><i class="icon-double-angle-right"></i>商品分类</a></li>
 						<li class="home"><a  href="javascript:void(0)" name="/ProducList.action"  title="商品列表" class="iframeurl"><i class="icon-double-angle-right"></i>商品列表</a></li>
 					</ul>
 				</li>

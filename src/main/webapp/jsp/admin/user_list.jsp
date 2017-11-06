@@ -3,6 +3,7 @@
 <%--aaaa
   Created by IntelliJ IDEA.
   User: Administrator
+
   Date: 2017/10/30
   Time: 16:40
   To change this template use File | Settings | File Templates.
@@ -95,81 +96,98 @@
                 <div class="table_menu_list">
                     <table class="table table-striped table-bordered table-hover" id="sample-table">
                         <thead>
-                        <tr>
-                            <th width="25">
-                                <label><input type="checkbox" class="ace"><span class="lbl"></span></label>
-                            </th>
-                            <th width="80px" class="sorting_desc" tabindex="0" aria-controls="sample_table" rowspan="1"
-                                colspan="1" aria-sort="descending" aria-label="编号: 升序排列" style="width: 48px;">编号
-                            </th>
-                            <th width="250px" class="sorting_disabled" rowspan="1" colspan="1" aria-label="用户名"
-                                style="width: 170px;">用户名
-                            </th>
-                            <th width="100px" class="sorting_disabled" rowspan="1" colspan="1" aria-label="密码"
-                                style="width: 63px;">密码
-                            </th>
-                            <th width="100px" class="sorting_disabled" rowspan="1" colspan="1" aria-label="性别"
-                                style="width: 63px;">性别
-                            </th>
-                            <th width="100px" class="sorting_disabled" rowspan="1" colspan="1" aria-label="真实姓名"
-                                style="width: 63px;">真实姓名
-                            </th>
-                            <th width="100px" class="sorting_disabled" rowspan="1" colspan="1" aria-label="电话"
-                                style="width: 63px;">电话
-                            </th>
-                            <th width="100px" class="sorting_disabled" rowspan="1" colspan="1" aria-label="出生年月"
-                                style="width: 63px;">出生年月
-                            </th>
-                            <th width="100px" class="sorting_disabled" rowspan="1" colspan="1" aria-label="收货地址"
-                                style="width: 63px;">收货地址
-                            </th>
-                            <th width="100px" rowspan="1" colspan="1" aria-label="e-mail" style="width: 63px;">e-mail</th>
-                            <th width="100px" class="sorting_disabled" rowspan="1" colspan="1" aria-label="邮编"
-                                style="width: 63px;">邮编
-                            </th>
-                            <th width="100px" class="sorting_disabled" rowspan="1" colspan="1" aria-label="注册时间"
-                                style="width: 63px;">注册时间
-                            </th>
-                            <th width="100px" class="sorting_disabled" rowspan="1" colspan="1" aria-label="状态"
-                                style="width: 63px;">状态
-                            </th>
-                            <th width="200px" class="sorting_disabled" rowspan="1" colspan="1" aria-label="操作"
-                                style="width: 143px;">操作
-                            </th>
+                            <tr>
+                                <th width="25">
+                                    <label><input type="checkbox" class="ace"><span class="lbl"></span></label>
+                                </th>
+                                <th width="80px" class="sorting_desc" tabindex="0" aria-controls="sample_table" rowspan="1"
+                                    colspan="1" aria-sort="descending" aria-label="编号: 升序排列" style="width: 48px;">编号
+                                </th>
+                                <th width="250px" class="sorting_disabled" rowspan="1" colspan="1" aria-label="用户名"
+                                    style="width: 170px;">用户名
+                                </th>
+                                <th width="100px" class="sorting_disabled" rowspan="1" colspan="1" aria-label="密码"
+                                    style="width: 63px;">密码
+                                </th>
+                                <th width="100px" class="sorting_disabled" rowspan="1" colspan="1" aria-label="性别"
+                                    style="width: 63px;">性别
+                                </th>
+                                <th width="100px" class="sorting_disabled" rowspan="1" colspan="1" aria-label="真实姓名"
+                                    style="width: 63px;">真实姓名
+                                </th>
+                                <th width="100px" class="sorting_disabled" rowspan="1" colspan="1" aria-label="电话"
+                                    style="width: 63px;">电话
+                                </th>
+                                <th width="100px" class="sorting_disabled" rowspan="1" colspan="1" aria-label="出生年月"
+                                    style="width: 63px;">出生年月
+                                </th>
+                                <th width="100px" class="sorting_disabled" rowspan="1" colspan="1" aria-label="收货地址"
+                                    style="width: 63px;">收货地址
+                                </th>
+                                <th width="100px" rowspan="1" colspan="1" aria-label="e-mail" style="width: 63px;">e-mail</th>
+                                <th width="100px" class="sorting_disabled" rowspan="1" colspan="1" aria-label="邮编"
+                                    style="width: 63px;">邮编
+                                </th>
+                                <th width="100px" class="sorting_disabled" rowspan="1" colspan="1" aria-label="注册时间"
+                                    style="width: 63px;">注册时间
+                                </th>
+                                <th width="100px" class="sorting_disabled" rowspan="1" colspan="1" aria-label="状态"
+                                    style="width: 63px;">状态
+                                </th>
+                                <th width="200px" class="sorting_disabled" rowspan="1" colspan="1" aria-label="操作"
+                                    style="width: 143px;">操作
+                                </th>
                         </tr>
                         </thead>
 
                         <tbody>
 
-                        <c:forEach items="${userList}" var="userlist">
-                            <tr>
-                                <td><label><input name="ids" value="${userlist.userid}" type="checkbox" class="ace"><span class="lbl"></span></label></td>
-                                <td>${userlist.userid}</td>
-                                <td><u style="cursor:pointer" class="text-primary"
-                                       onclick="member_show('chh','member-show.jsp','10001','500','400')">${userlist.username}</u>
-                                </td>
-                                <td>${userlist.userpwd}</td>
-                                <td>${userlist.usersex}</td>
-                                <td>${userlist.userrealname}</td>
-                                <td>${userlist.userphone}</td>
-                                <td><fmd:formatDate value="${userlist.userbirthday}" pattern="yyyy-MM-dd"/></td>
-                                <td class="text-l">${userlist.useraddress}</td>
-                                <td>${userlist.useremail}</td>
-                                <td>${userlist.userzip}</td>
-                                <td><fmd:formatDate value="${userlist.userinputdate}" pattern="yyyy-MM-dd"/></td>
-                                <td class="td-status"><span class="label label-success radius">已启用</span></td>
-                                <td class="td-manage">
-                                    <a onClick="member_stop(this,'10001')" href="javascript:;" title="停用"
-                                       class="btn btn-xs btn-success"><i class="icon-ok bigger-120"></i></a>
+                                <c:forEach items="${userList}" var="userlist">
+                                    <tr>
+                                        <td><label><input name="ids" value="${userlist.userid}" type="checkbox" class="ace"><span class="lbl"></span></label></td>
+                                        <td>${userlist.userid}</td>
+                                        <td><u style="cursor:pointer" class="text-primary"
+                                               onclick="member_show('chh','member-show.jsp','10001','500','400')">${userlist.username}</u>
+                                        </td>
+                                        <td>${userlist.userpwd}</td>
+                                        <td>${userlist.usersex}</td>
+                                        <td>${userlist.userrealname}</td>
+                                        <td>${userlist.userphone}</td>
+                                        <td><fmd:formatDate value="${userlist.userbirthday}" pattern="yyyy-MM-dd"/></td>
+                                        <td class="text-l">${userlist.useraddress}</td>
+                                        <td>${userlist.useremail}</td>
+                                        <td>${userlist.userzip}</td>
+                                        <td><fmd:formatDate value="${userlist.userinputdate}" pattern="yyyy-MM-dd"/></td>
+
+                                        <c:if test="${userlist.userA==0}">
+                                            <td class="td-status"><span class="label label-defaunt radius">已停用</span></td>
+                                        </c:if>
+                                        <c:if test="${userlist.userA==1}">
+                                            <td class="td-status"><span class="label label-success radius">已启用</span></td>
+                                        </c:if>
+
+                                        <td class="td-manage">
+                                            <c:if test="${userlist.userA==0}">
+                                                <a onClick="member_start(this,'${userlist.userid}')" href="javascript:void(0);" title="启用"
+                                                   class="btn btn-xs btn-success"><i class="icon-ok bigger-120"></i></a>
+                                            </c:if>
+                                            <c:if test="${userlist.userA==1}">
+                                                <a onClick="member_stop(this,'${userlist.userid}')" href="javascript:void(0);" title="停用"
+                                                   class="btn btn-xs btn-success"><i class="icon-ok bigger-120"></i></a>
+                                            </c:if>
 
 
 
-                                    <a title="删除"
-                                       href="${pageContext.request.contextPath}/DelectUserById.action?Userid=${userlist.userid}"
-                                       class="btn btn-xs btn-warning"><i class="icon-trash  bigger-120"></i></a>
-                                </td>
-                            </tr>
-                        </c:forEach>
+
+
+                                            <a
+                                               onclick="return confirm('确定删除？')"
+                                               title="删除"
+                                               href="${pageContext.request.contextPath}/DelectUserById.action?Userid=${userlist.userid}"
+                                               class="btn btn-xs btn-warning"><i class="icon-trash  bigger-120"></i></a>
+                                        </td>
+                                    </tr>
+                                </c:forEach>
 
 
                         </tbody>
@@ -206,7 +224,7 @@
                                                                                    class="text_add"/></span>
                 <div class="prompt r_f"></div>
             </li>
-            <li><label class="label_name">出生年月：</label><span class="add_name"><input name="userbirthday" type="text"  class="text_add"/></span><<%----%>div class="prompt r_f"></div></li>
+                     <li><label class="label_name">出生年月：</label><span class="add_name"><input name="userbirthday" type="text"  class="text_add"/></span><<%----%>div class="prompt r_f"></div></li>
             <li><label class="label_name">电子邮箱：</label><span class="add_name"><input name="useremail" type="text"
                                                                                      class="text_add"/></span>
                 <div class="prompt r_f"></div>
@@ -215,19 +233,15 @@
                     name="useraddress" type="text" class="text_add" style=" width:350px"/></span>
                 <div class="prompt r_f"></div>
             </li>
-            <li>
-                <label class="label_name">状&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;态：</label>
-                <span class="add_name">
-                    <label><input name="userA" value="3" type="radio" checked="checked" class="ace">
-                        <span class="lbl">开启</span>
-                    </label>
-                    &nbsp;&nbsp;&nbsp;
-                    <label><input name="useB" value="4" type="radio" class="ace">
-                        <span class="lbl">关闭</span>
-                    </label>
-                </span>
+            <li class="adderss"><label class="label_name">家庭住址：</label><span class="add_name"><input
+                    name="useraddress" type="text" class="text_add" style=" width:350px"/></span>
                 <div class="prompt r_f"></div>
             </li>
+            <li class="adderss"><label class="label_name">家庭住址：</label><span class="add_name"><input
+                    name="useraddress" type="text" class="text_add" style=" width:350px"/></span>
+                <div class="prompt r_f"></div>
+            </li>
+
 
         </ul>
     </form>
@@ -274,7 +288,7 @@
     })
     /*用户-添加*/
     $('#member_add').on('click', function () {
-        $("#insertSelective").serialize();
+      /*  $("#insertSelective").serialize();*/
         layer.open({
             type: 1,
             title: '添加用户',
@@ -320,23 +334,24 @@
 
     /*用户-停用*/
     function member_stop(obj, id) {
-        layer.confirm('确认要停用吗？', function (index) {
-            /*location.href="{pageContext.request.contextPath}/insertSelective.action"*/
-            $(obj).parents("tr").find(".td-manage").prepend('<a style="text-decoration:none" class="btn btn-xs " onClick="member_start(this,id)" href="javascript:;" title="启用"><i class="icon-ok bigger-120"></i></a>');
+       layer.confirm('确认要停用吗？', function (index) {
+
+            $(obj).parents("tr").find(".td-manage").prepend('<a style="text-decoration:none" class="btn btn-xs " onClick="member_start(this,id)" href="javascript:void(0);" title="启用"><i class="icon-ok bigger-120"></i></a>');
             $(obj).parents("tr").find(".td-status").html('<span class="label label-defaunt radius">已停用</span>');
             $(obj).remove();
             layer.msg('已停用!', {icon: 5, time: 1000});
+            window.location.href="${pageContext.request.contextPath}/UpdateStatusStop.action?userid="+id;
         });
     }
 
     /*用户-启用*/
     function member_start(obj, id) {
         layer.confirm('确认要启用吗？', function (index) {
-
-            $(obj).parents("tr").find(".td-manage").prepend('<a style="text-decoration:none" class="btn btn-xs btn-success" onClick="member_stop(this,id)" href="javascript:;" title="停用"><i class="icon-ok bigger-120"></i></a>');
+            $(obj).parents("tr").find(".td-manage").prepend('<a style="text-decoration:none" class="btn btn-xs btn-success" onClick="member_stop(this,id)" href="javascript:void(0);" title="停用"><i class="icon-ok bigger-120"></i></a>');
             $(obj).parents("tr").find(".td-status").html('<span class="label label-success radius">已启用</span>');
             $(obj).remove();
             layer.msg('已启用!', {icon: 6, time: 1000});
+            window.location.href="${pageContext.request.contextPath}/UpdateStatusStart.action?userid="+id;
         });
     }
 
@@ -382,7 +397,7 @@
     /*用户-删除*/
     function member_del(obj, id) {
         layer.confirm('确认要删除吗？', function (index) {
-            $(obj).parents("tr").remove();
+
             layer.msg('已删除!', {icon: 1, time: 1000});
         });
     }

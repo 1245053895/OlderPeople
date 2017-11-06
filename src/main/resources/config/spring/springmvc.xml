@@ -42,4 +42,14 @@
 		<property name="suffix" value=".jsp"/>-->
 	</bean>
 
+	<!-- 配置文件上传解析器 -->
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="maxUploadSize">
+			<value>5248800</value>
+		</property>
+	</bean>
+
+	<!-- 全局异常处理器只要实现HandlerExceptionResolver接口就是全局异常处理器-->
+	<bean class="com.xh.exception.CustomExceptionResolver"></bean>
+
 </beans>

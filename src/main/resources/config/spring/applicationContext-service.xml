@@ -15,7 +15,7 @@
 		
 		<!--<bean id="itemsService" class="com.xh.serviceimp">
 		</bean>-->
-	<!--  <bean id="adminManage" class="com.xh.serviceimp.AdminManageimpl"/>-->
+	  <bean id="adminManage" class="com.xh.serviceimp.AdminManageimpl"/>
 
 
 

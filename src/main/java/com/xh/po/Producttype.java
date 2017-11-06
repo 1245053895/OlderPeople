@@ -4,7 +4,7 @@ public class Producttype {
     private Integer producttypeid;
 
     private String producttypename;
-//描述     producttypeA
+
     private String producttypeA;
 
     private String producttypeB;

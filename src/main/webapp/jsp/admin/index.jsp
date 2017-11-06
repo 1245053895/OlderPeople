@@ -205,7 +205,7 @@
 						<i class="icon-caret-down"></i>
 					</a>
 					<ul class="user-menu pull-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
-						<li class="home"><a href="javascript:void(0)" name="/ShowInformation.action" title="个人资料"  class="iframeurl"><i class="icon-double-angle-right"></i>个人资料</a></li>
+						<li class="home"><a href="javascript:void(0)" name="/ShowInformation.action?adminid=${admin.adminid}" title="个人资料"  class="iframeurl"><i class="icon-double-angle-right"></i>个人资料</a></li>
 						<li class="divider"></li>
 						<li><a href="#" id="Exit_system"><i class="icon-off"></i>退出</a></li>
 					</ul>
@@ -268,20 +268,16 @@
 
 				<li><a href="#" class="dropdown-toggle"><i class="icon-desktop"></i><span class="menu-text"> 商品管理 </span><b class="arrow icon-angle-down"></b></a>
 					<ul class="submenu">
-						<li class="home"><a href="javascript:void(0)" name="/ProductType.action" title="商品分类"  class="iframeurl"><i class="icon-double-angle-right"></i>商品分类</a></li>
+						<li class="home"><a href="javascript:void(0)" name="Product_Manage.jsp" title="商品分类"  class="iframeurl"><i class="icon-double-angle-right"></i>商品分类</a></li>
 						<li class="home"><a  href="javascript:void(0)" name="/ProducList.action"  title="商品列表" class="iframeurl"><i class="icon-double-angle-right"></i>商品列表</a></li>
-						<li class="home"><a href="javascript:void(0)" name="Category_Manage.html" title="分类管理"  class="iframeurl"><i class="icon-double-angle-right"></i>商品查询</a></li>
-						<li class="home"><a  href="javascript:void(0)" name="Brand_Manage.html" title="品牌管理"  class="iframeurl"><i class="icon-double-angle-right"></i>商品添加</a></li>
-						<li class="home"><a href="javascript:void(0)" name="Category_Manage.html" title="分类管理"  class="iframeurl"><i class="icon-double-angle-right"></i>商品删除</a></li>
 					</ul>
 				</li>
 
 				<li><a href="#" class="dropdown-toggle"><i class="icon-desktop"></i><span class="menu-text"> 订单管理 </span><b class="arrow icon-angle-down"></b></a>
 					<ul class="submenu">
-						<li class="home"><a href="javascript:void(0)" name="Category_Manage.html" title="分类管理"  class="iframeurl"><i class="icon-double-angle-right"></i>用户订单</a></li>
-						<li class="home"><a  href="javascript:void(0)" name="Products_List.html"  title="产品类表" class="iframeurl"><i class="icon-double-angle-right"></i>订单详情</a></li>
-						<li class="home"><a  href="javascript:void(0)" name="Products_List.html"  title="产品类表" class="iframeurl"><i class="icon-double-angle-right"></i>退货订单</a></li>
-						<li class="home"><a  href="javascript:void(0)" name="Products_List.html"  title="产品类表" class="iframeurl"><i class="icon-double-angle-right"></i>订单详情</a></li>
+						<li class="home"><a href="javascript:void(0)" name="Orderform.jsp" title="订单列表"  class="iframeurl"><i class="icon-double-angle-right"></i>用户订单</a></li>
+						<li class="home"><a  href="javascript:void(0)" name="Sort_ads.jsp"  title="订单详情" class="iframeurl"><i class="icon-double-angle-right"></i>订单详情</a></li>
+						<li class="home"><a  href="javascript:void(0)" name="Products_List.html"  title="退货订单" class="iframeurl"><i class="icon-double-angle-right"></i>退货订单</a></li>
 					</ul>
 				</li>
 

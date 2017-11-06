@@ -17,17 +17,17 @@ import java.util.List;
 @Controller
 @RequestMapping("admin")
 public class AdminController {
-     @Autowired
+    @Autowired
     private AdminManage adminManage;
-     //查询全部管理员
-   @RequestMapping(value="adminList.action",method={RequestMethod.POST,RequestMethod.GET})
+    //查询全部管理员
+    @RequestMapping(value="adminList.action",method={RequestMethod.POST,RequestMethod.GET})
     public String  queryAllUsers(Model model){
         List<AdminVo> adminList = adminManage.queryAdminAndGroup();
-       List<kindOfAdmin> kindOfAdmins =  adminManage.kindOfAdmin();
-       model.addAttribute("kindOfAdmins", kindOfAdmins);
+        List<kindOfAdmin> kindOfAdmins =  adminManage.kindOfAdmin();
+        model.addAttribute("kindOfAdmins", kindOfAdmins);
         model.addAttribute("adminList", adminList);
-       List<Admingroup> admingroupnames=adminManage.selectAdminGroupName();
-       model.addAttribute("admingroupnames",admingroupnames);
+        List<Admingroup> admingroupnames=adminManage.selectAdminGroupName();
+        model.addAttribute("admingroupnames",admingroupnames);
         //这个方法的返回值就是要跳转的页面的逻辑视图名称
         return "/jsp/admin/administrator.jsp";
     }
@@ -41,7 +41,7 @@ public class AdminController {
         return "/jsp/admin/administrator.jsp";
     }
 
-     //通过Id删除数据
+    //通过Id删除数据
     @RequestMapping("/deleteByPrimaryKey.action")
     public String deleteByPrimaryKey(Integer id){
         adminManage.deleteByPrimaryKey(id);
@@ -50,12 +50,12 @@ public class AdminController {
 
     //通过管理员登录名称模糊查询
     @RequestMapping("/mohuSelectByName.action")
-        public String mohuSelectByName(Model model,String name){
-          List<Admin> admins= adminManage.mohuSelectByName(name);
-          model.addAttribute("adminList",admins);
-              return  "/admin/kindOfAdmin.action";
-        }
-        //添加新的管理员
+    public String mohuSelectByName(Model model,String name){
+        List<Admin> admins= adminManage.mohuSelectByName(name);
+        model.addAttribute("adminList",admins);
+        return  "/admin/kindOfAdmin.action";
+    }
+    //添加新的管理员
     @RequestMapping("/insert.action")
     public String  insert(Admin admin){
         adminManage.insert(admin);

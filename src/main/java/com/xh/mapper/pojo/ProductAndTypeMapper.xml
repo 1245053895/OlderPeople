@@ -59,7 +59,7 @@
 
 
   <select id="productCount" resultType="com.xh.po.vo.Allproduct">
-    SELECT    CONCAT ("共：",COUNT(ProductId)," 件商品") AS productcount
+    SELECT  COUNT(ProductId) AS productcount
     FROM product
   </select>
 

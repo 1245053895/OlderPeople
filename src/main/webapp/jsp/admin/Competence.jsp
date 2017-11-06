@@ -20,7 +20,7 @@
         <link rel="stylesheet" href="/jsp/admin/assets/css/ace.min.css" />
         <link rel="stylesheet" href="/jsp/admin/font/css/font-awesome.min.css" />
         <!--[if lte IE 8]>
-		<link rel="stylesheet" href="/jsp/admin/assets/css/ace-ie.min.css" />
+		  <link rel="stylesheet" href="/jsp/admin/assets/css/ace-ie.min.css" />
 		<![endif]-->
 		<script src="/jsp/admin/js/jquery-1.9.1.min.js"></script>
         <script src="/jsp/admin/assets/js/bootstrap.min.js"></script>
@@ -44,7 +44,7 @@
 		}
 	</style>
 	<div id="role">
-		 <form  name="itemsForm" action="${pageContext.request.contextPath }/addRloeAndView.action" method="post" onsubmit="return myCheck()">
+		 <form  name="itemsForm" action="${pageContext.request.contextPath }/addRloeAndView.action" method="post">
 			 <div class="Competence_add">
 				 <div class="form-group">
 					 <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> 角色名称 </label>
@@ -77,21 +77,6 @@
 	</div>
 </body>
 </html>
-<script type="text/javascript">
-    function myCheck()
-    {
-        for(var i=0;i<document.itemsForm.elements.length-1;i++)
-        {
-            if(document.itemsForm.elements[i].value=="")
-            {
-                alert("不能有空项");
-                document.itemsForm.elements[i].focus();
-                return false;
-            }
-        }
-        return true;
-    }
-</script>
 <script type="text/javascript">
 //初始化宽度、高度  
  $(".left_Competence_add,.Competence_add_style").height($(window).height()).val();; 

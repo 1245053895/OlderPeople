@@ -4,8 +4,10 @@ package com.xh.controller;
 
 
 import com.xh.po.Admin;
+import com.xh.po.vo.AdminRole;
 import com.xh.service.LoginService;
 //import org.apache.commons.codec.binary.Hex;
+import com.xh.service.RoleManageServ;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -35,6 +37,7 @@ public class LoginController {
     @Autowired
     private LoginService loginService;
 
+
     @RequestMapping(value = "/LoginController" ,method = RequestMethod.POST)
     public String login(String username, String password, String returnUrl , HttpServletRequest request, HttpServletResponse response , Model model){
         //1：用户名不能为空
@@ -49,7 +52,9 @@ public class LoginController {
                     if (admin.getAdminpwd().equals(password)){
                         HttpSession session = request.getSession();
                         session.setMaxInactiveInterval(52*60);
-                        session.setAttribute("username", username);
+                        /*session.setAttribute("username", username);
+                        session.setAttribute("password",password);*/
+                        session.setAttribute("admin",admin);
                         return "/jsp/admin/index.jsp";
                     }else {
                         model.addAttribute("error","密码不正确");
@@ -66,7 +71,6 @@ public class LoginController {
 
         return "/jsp/admin/login.jsp";
     }
-
     //加密
     public String encodePassword(String password){
         //
@@ -93,8 +97,26 @@ public class LoginController {
 
     //个人资料的显示
     @RequestMapping("/ShowInformation.action")
-    public String  ShowInformation(){
+    public String  ShowInformation(Model model,Integer adminid){
+       AdminRole adminRole=loginService.selectMyselfInformation(adminid) ;
+       adminRole.setAdminid(adminid);
+       model.addAttribute("adminRole",adminRole);
         return "/jsp/admin/admin_info.jsp";
+
+    }
+    //个人资料的保存修改，将修改后的信息写入到数据库中
+    @RequestMapping("/UpdateMyselfInformation.action")
+    public String UpdateMyselfInformation(Admin admin){
+        loginService.UpdateMyselfInformation(admin);
+        return  "redirect:/ShowInformation.action?adminid="+admin.getAdminid();
+    }
+
+    //个人资料修改中的密码修改
+    @RequestMapping("/updatePasswordById.action")
+    public String updatePasswordById(Admin admin){
+        loginService.updatePasswordById(admin);
+       // 没有经过查询显示出来的页面没有任何信息，return "/jsp/admin/admin_info.jsp";
+        return "redirect:/ShowInformation.action?adminid="+admin.getAdminid();
 
     }
 

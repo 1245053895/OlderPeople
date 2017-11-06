@@ -5,7 +5,6 @@ import com.xh.po.Admingroup;
 import com.xh.po.vo.AdminVo;
 import com.xh.po.vo.kindOfAdmin;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -42,4 +41,5 @@ public interface AdminManage {
 
     //批量删除通过id列表
     public void deleteBatch(int[] postIds);
+
 }

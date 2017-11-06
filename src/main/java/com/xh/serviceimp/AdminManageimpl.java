@@ -1,7 +1,6 @@
 package com.xh.serviceimp;
 
 //import com.xh.po.Admin;
-import com.oracle.jrockit.jfr.InvalidEventDefinitionException;
 import com.xh.mapper.AdminMapper;
 import com.xh.po.Admin;
 import com.xh.po.Admingroup;
@@ -15,7 +14,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
+//@Service
 public class AdminManageimpl implements AdminManage {
     @Autowired
     @Qualifier("adminMapper")
@@ -64,7 +63,7 @@ public class AdminManageimpl implements AdminManage {
     }
 
     public List<AdminVo> selectByAdminNameAndSex(Admin record) {
-       List<AdminVo> adminVos= adminMapper.selectByAdminNameAndSex(record);
+        List<AdminVo> adminVos= adminMapper.selectByAdminNameAndSex(record);
         return adminVos;
     }
 

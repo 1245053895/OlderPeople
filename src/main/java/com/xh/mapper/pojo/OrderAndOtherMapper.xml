@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xh.mapper.pojo.OrderAndOtherMapper">
+
+    <!--1.查询交易总金额-->
+<select id="totalAmountOfTransaction" resultType="com.xh.po.vo.OrderAndString" >
+    SELECT SUM(TotalMoneyCount) AS totalAmountOfTransaction
+    FROM orderproduct;
+</select>
+    <!--2.订单数量            parameterType="com.xh.po.vo"-->
+<select id="orderQuantity" resultType="com.xh.po.vo.OrderAndString" >
+    SELECT COUNT(OrderId) AS orderQuantity
+    FROM `order`;
+</select>
+    <!--3.交易成功-->
+<select id="successfulTrade" resultType="com.xh.po.vo.OrderAndString" >
+    SELECT COUNT(*) AS successfulTrade
+    FROM `order`
+    WHERE EndTime IS NOT NULL;
+</select>
+    <!--4.交易失败-->
+<select id="transactionFailure" resultType="com.xh.po.vo.OrderAndString" >
+        SELECT COUNT(*) AS transactionFailure
+        FROM `order`
+        WHERE CloseTime IS NOT NULL;
+</select>
+    <!--5.退款金额-->
+    <select id="refundAmount" resultType="com.xh.po.vo.OrderAndString" >
+    SELECT SUM(TotalMoneyCount) AS refundAmount
+    FROM `order` a,orderproduct b
+    WHERE a.OrderId=b.OrderId AND CloseTime IS NOT NULL;
+    </select>
+
+    <!--6.查询订单   根据	所有条件（订单编号、下单时间。。。。。）-->
+    <select id="selectOrderByAll" resultType="com.xh.po.Order" parameterType="com.xh.po.Order">
+        SELECT  *
+        FROM `order`
+        <where>
+            <if test="userid != null">
+              AND  UserId = #{userid,jdbcType=INTEGER}
+            </if>
+
+            <if test="paytype != null">
+                AND PayType = #{paytype,jdbcType=INTEGER}
+            </if>
+            <if test="postfee != null">
+                AND  PostFee = #{postfee,jdbcType=DOUBLE}
+            </if>
+            <if test="status != null">
+                AND Status = #{status,jdbcType=INTEGER}
+            </if>
+            <if test="paystatus != null">
+                AND   PayStatus = #{paystatus,jdbcType=INTEGER}
+            </if>
+            <if test="createtime != null">
+                AND  CreateTime = #{createtime,jdbcType=TIMESTAMP}
+            </if>
+            <if test="updatetime != null">
+                AND  UpdateTime = #{updatetime,jdbcType=TIMESTAMP}
+            </if>
+            <if test="paymenttime != null">
+                AND  PaymentTime = #{paymenttime,jdbcType=TIMESTAMP}
+            </if>
+            <if test="sendtime != null">
+                AND  SendTime = #{sendtime,jdbcType=TIMESTAMP}
+            </if>
+
+        </where>
+    </select>
+<!--7.各个商品类型的订单数 -->
+    <!--parameterType="com.xh.po.vo.OrderOfString"-->
+    <select id="selectNotName1" resultType="com.xh.po.vo.OrderAndString" >
+         SELECT CONCAT(ProductTypeName,"(",COUNT(*),")") AS notname1
+        FROM orderproduct a,product b,`order` c,producttype d
+        WHERE b.ProductTypeId=d.ProductTypeId AND a.ProductId=b.ProductId AND a.OrderId=c.OrderId
+        GROUP BY ProductTypeName
+    </select>
+
+    <!--8.各个商品类型的交易金额 -->
+    <!--parameterType="com.xh.po.vo.OrderOfString"-->
+    <select id="selectNotName2" resultType="com.xh.po.vo.OrderAndString" >
+        SELECT CONCAT(ProductTypeName,SUM(TotalMoneyCount)) AS notname2
+        FROM orderproduct a,product b,`order` c,producttype d
+        WHERE b.ProductTypeId=d.ProductTypeId AND a.ProductId=b.ProductId AND a.OrderId=c.OrderId
+        GROUP BY ProductTypeName
+    </select>
+
+    <!--<&#45;&#45;各个订单的商品&ndash;&gt;-->
+    <!--parameterType="com.xh.po.vo.OrderOfString"-->
+<select id="selectOrderAndOther" resultType="com.xh.po.vo.OrderAndOther" >
+SELECT a.OrderProductId AS orderproductid,a.ProductId AS productid,a.OrderId AS orderid,a.ShoppingCount AS shoppingcount,a.TotalMoneyCount AS totalmoneycount,
+       b.ProductPrice AS productprice,b.ProductName AS productname,b.ProductPicture AS productpicture,b.ProductNew AS productnew,b.ProducthotSale AS producthotsale,b.ProductDisabled AS productdisabled,b.ProductCredits AS productcredits,
+       c.UserId AS userid,c.AmountPay AS amountpay,c.RealPay AS realpay,c.PayType AS paytype,c.PostFee AS postfee,c.`Status` AS status,c.PayStatus AS paystatus,c.CreateTime AS createtime,c.UpdateTime AS updatetime,
+       c.PaymentTime AS paymenttime,c.SendTime AS sendtime,c.EndTime AS endtime,c.CloseTime AS closetime,c.ShippingName AS shippingname,c.ShippingCode AS shippingcode,c.BuyerRequest AS buyerrequest,c.TotalCredit AS totalcredit,
+       d.ProductTypeName AS producttypename
+FROM orderproduct a,product b,`order` c,producttype d
+    <where>
+        <if test="2>1">
+            AND  b.ProductTypeId=d.ProductTypeId AND a.ProductId=b.ProductId AND a.OrderId=c.OrderId
+        </if>
+    </where>
+
+
+</select>
+
+
+
+</mapper>

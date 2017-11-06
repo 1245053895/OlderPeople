@@ -102,6 +102,9 @@
                         <c:if test="${productAndTypeVos.productA==0}">
                             <td class="td-status"><span class="label label-default radius">已停用</span></td>
                         </c:if>
+                        <c:if test="${productAndTypeVos.productA==null}">
+                            <td class="td-status"><span class="label label-default radius">已停用</span></td>
+                        </c:if>
 
                         <td class="td-manage">
                             <c:if test="${productAndTypeVos.productA==0}">
@@ -109,6 +112,10 @@
                                    class="btn btn-xs btn-success"><i class="icon-ok bigger-120"></i></a>
                             </c:if>
                             <c:if test="${productAndTypeVos.productA==1}">
+                                <a onClick="member_stop(this,'${productAndTypeVos.productid}')" href="javascript:void(0);" title="停用"
+                                   class="btn btn-xs btn-success"><i class="icon-ok bigger-120"></i></a>
+                            </c:if>
+                            <c:if test="${productAndTypeVos.productA==null}">
                                 <a onClick="member_stop(this,'${productAndTypeVos.productid}')" href="javascript:void(0);" title="停用"
                                    class="btn btn-xs btn-success"><i class="icon-ok bigger-120"></i></a>
                             </c:if>

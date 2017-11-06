@@ -165,6 +165,9 @@
                                         <c:if test="${userlist.userA==1}">
                                             <td class="td-status"><span class="label label-success radius">已启用</span></td>
                                         </c:if>
+                                        <c:if test="${userlist.userA==null}">
+                                            <td class="td-status"><span class="label label-success radius">已启用</span></td>
+                                        </c:if>
 
                                         <td class="td-manage">
                                             <c:if test="${userlist.userA==0}">
@@ -172,6 +175,10 @@
                                                    class="btn btn-xs btn-success"><i class="icon-ok bigger-120"></i></a>
                                             </c:if>
                                             <c:if test="${userlist.userA==1}">
+                                                <a onClick="member_stop(this,'${userlist.userid}')" href="javascript:void(0);" title="停用"
+                                                   class="btn btn-xs btn-success"><i class="icon-ok bigger-120"></i></a>
+                                            </c:if>
+                                            <c:if test="${userlist.userA==null}">
                                                 <a onClick="member_stop(this,'${userlist.userid}')" href="javascript:void(0);" title="停用"
                                                    class="btn btn-xs btn-success"><i class="icon-ok bigger-120"></i></a>
                                             </c:if>

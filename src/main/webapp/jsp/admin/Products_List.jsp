@@ -108,9 +108,22 @@
          <td width="100px">${productAndTypeVos.productnew}</td>
         <td width="100px">${productAndTypeVos.producthotsale}</td>
         <td width="100px">${productAndTypeVos.productdisabled}</td>
-        <td class="td-status"><span class="label label-success radius">已启用</span></td>
-        <td class="td-manage">
-        <a onClick="member_stop(this,'10001')"  href="javascript:;" title="停用"  class="btn btn-xs btn-success"><i class="icon-ok bigger-120"></i></a> 
+         <c:if test="${productAndTypeVos.productA==0}">
+             <td class="td-status"><span class="label label-defaunt radius">已停用</span></td>
+         </c:if>
+         <c:if test="${productAndTypeVos.productA==1}">
+             <td class="td-status"><span class="label label-success radius">已启用</span></td>
+         </c:if>
+
+         <td class="td-manage">
+             <c:if test="${productAndTypeVos.productA==0}">
+                 <a onClick="member_start(this,'${productAndTypeVos.productid}')" href="javascript:void(0);" title="启用"
+                    class="btn btn-xs btn-success"><i class="icon-ok bigger-120"></i></a>
+             </c:if>
+             <c:if test="${productAndTypeVos.productA==1}">
+                 <a onClick="member_stop(this,'${productAndTypeVos.productid}')" href="javascript:void(0);" title="停用"
+                    class="btn btn-xs btn-success"><i class="icon-ok bigger-120"></i></a>
+             </c:if>
         <a title="编辑" onclick="member_edit('编辑','member-add.html','4','','510')" href="javascript:;"  class="btn btn-xs btn-info" ><i class="icon-edit bigger-120"></i></a>
             <%--javascript:deleteBatch('<%=basePath%>');--%>
             <%--<a title="删除" href="${basePath}DeleteOneProduct.action?productid=${productAndTypeVos.productid}"  onclick="member_del(this,'1')" class="btn btn-xs btn-warning" ><i class="icon-trash  bigger-120"></i></a>--%>
@@ -270,6 +283,7 @@ function member_stop(obj,id){
 		$(obj).parents("tr").find(".td-status").html('<span class="label label-defaunt radius">已停用</span>');
 		$(obj).remove();
 		layer.msg('已停用!',{icon: 5,time:1000});
+        window.location.href="${pageContext.request.contextPath}/UpdateStatusStop.action?productid="+id;
 	});
 }
 
@@ -280,6 +294,7 @@ function member_start(obj,id){
 		$(obj).parents("tr").find(".td-status").html('<span class="label label-success radius">已启用</span>');
 		$(obj).remove();
 		layer.msg('已启用!',{icon: 6,time:1000});
+        window.location.href="${pageContext.request.contextPath}/UpdateStatusStart.action?productid="+id;
 	});
 }
 /*产品-编辑*/

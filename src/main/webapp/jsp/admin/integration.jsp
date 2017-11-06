@@ -159,7 +159,8 @@ function member_del(obj,id){
 function integration_history(id){
     $(function () {
         $.ajax({
-            url: '/getOrderDetail.action?id='+id,
+            url: '${pageContext.request.contextPath}/getOrderDetail.action?id='+id,
+            async:true, //异步请求
             type: 'GET',
             dataType: 'json',
             timeout: 10000,

@@ -84,7 +84,7 @@
                  <tbody>
                  <c:forEach items="${productAndTypeVos}" var="productAndTypeVos" varStatus="status">
                      <tr>
-                         <td width="25px"><label><input type="checkbox" class="ace" name="productid" value="${productAndTypeVos.productid}" ><span class="lbl"></span></label></td>
+                         <td width="25px"><label><input checked="checked" type="checkbox" class="ace" name="productid" value="${productAndTypeVos.productid}" ><span class="lbl"></span></label></td>
                          <td width="80px">${status.index + 1}</td>
                          <td width="250px"><u style="cursor:pointer" class="text-primary" onclick="">${productAndTypeVos.productname}</u></td>
                          <td width="100px">${productAndTypeVos.producttypename}</td>

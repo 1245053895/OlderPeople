@@ -41,7 +41,7 @@
 
   <!--查询出的商品类型至少有一个商品-->
   <select id="productKindOf" resultType="com.xh.po.vo.KindOfProduct">
-    SELECT CONCAT(b.ProductTypeName,"(",COUNT(*),")") AS kindofproduct
+    SELECT a.ProductTypeId AS producttypeid,CONCAT(b.ProductTypeName,"(",COUNT(*),")") AS kindofproduct
     FROM product a,producttype b
     WHERE a.ProductTypeId=b.ProductTypeId
     GROUP BY a.ProductTypeId

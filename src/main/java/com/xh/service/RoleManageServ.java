@@ -5,6 +5,7 @@ import com.xh.po.vo.AdminRole;
 import com.xh.po.Admingroup;
 import com.xh.po.vo.AdminRoleCustom;
 import com.xh.po.Firstview;
+import com.xh.po.vo.kindOfAdmin;
 
 import java.util.List;
 
@@ -28,5 +29,7 @@ public interface RoleManageServ {
     public List<AdminRole> moHuSelectByAdminUser(String adminuser);
 
     public void updateRloeById(AdminRoleCustom adminRoleCustom);
+    kindOfAdmin adminGroupCount1();
+    kindOfAdmin adminCount2();
 
 }

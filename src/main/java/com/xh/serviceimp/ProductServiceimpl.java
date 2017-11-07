@@ -7,13 +7,11 @@ import com.xh.po.Producttype;
 import com.xh.po.vo.Allproduct;
 import com.xh.po.vo.KindOfProduct;
 import com.xh.po.vo.ProductAndTypeVo;
-import com.xh.po.vo.StringAndString;
 import com.xh.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 @Service
 public class ProductServiceimpl implements ProductService {
@@ -76,9 +74,9 @@ public class ProductServiceimpl implements ProductService {
         return  producTypeMapper.selectByNothing();
     }
 
-  @Override
-    public List<ProductAndTypeVo> moHuselectByTime(Date productstoretime) {
-        List<ProductAndTypeVo> productAndTypeVos= productAndTypeMapper.moHuselectByTime(productstoretime);
+    @Override
+    public List<ProductAndTypeVo> typeProductType(String producttypeid) {
+        List<ProductAndTypeVo> productAndTypeVos=producTypeMapper.typeProductType(producttypeid);
         return productAndTypeVos;
     }
 }

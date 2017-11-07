@@ -2,6 +2,7 @@ package com.xh.mapper.pojo;
 import com.xh.po.*;
 import com.xh.po.vo.AdminRole;
 import com.xh.po.vo.AdminRoleCustom;
+import com.xh.po.vo.kindOfAdmin;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -121,4 +122,9 @@ public interface RoleMapper {
      * @param adminRoleCustom
      */
     public void updateRloeById(AdminRoleCustom adminRoleCustom);
+
+    kindOfAdmin adminGroupCount1();
+
+    kindOfAdmin adminCount2();
+
 }

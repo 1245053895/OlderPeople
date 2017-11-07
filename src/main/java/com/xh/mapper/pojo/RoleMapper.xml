@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xh.mapper.pojo.RoleMapper">
+
+
+    <!--查询管理员的总数-->
+    <select id="adminCount2" resultType="com.xh.po.vo.kindOfAdmin">
+        SELECT COUNT(*) AS adminCount2 FROM `admin`
+    </select>
+
+    <!--查询角色的种类数-->
+    <select id="adminGroupCount1" resultType="com.xh.po.vo.kindOfAdmin">
+            SELECT COUNT(AdminGroupName) AS adminGroupCount1 FROM `admingroup`
+    </select>
+
+
     <!--查询每个后端用户对应的角色名称及角色的描述-->
     <select id="queryRoleAndAdmin" resultType="adminRole">
         SELECT AdminGroupName,AdminUser,AdminGroupDescription FROM admin JOIN admingroup

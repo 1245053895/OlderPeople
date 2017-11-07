@@ -41,5 +41,6 @@ public interface AdminManage {
 
     //批量删除通过id列表
     public void deleteBatch(int[] postIds);
+    List <AdminVo> queryAdminAndGroup3(String admingroupid);
 
 }

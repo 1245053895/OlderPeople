@@ -38,12 +38,19 @@
         <div class="type_title">管理员信息 </div>
         <div class="xinxi">
             <div style="margin-top: 50px;margin-left: 200px; float: left;">
-                <img src="images/admintx.png" height="210px" width="190px">
+                <form action="" method="post" enctype="multipart/form-data">
+                    <img src="jsp/admin/images/admintx.png" height="210px" width="190px">
+               <%--     <input type="file" name="adminpic" height="210px" width="190px">
+                    <input type="submit" value="提交">--%>
+                <%--<img src="images/admintx.png" height="210px" width="190px">--%>
+                    <button onclick="" class="btn btn-success" type="submit">上传图片</button>
+                </form>
                 <div class="Button_operation clearfix">
                     <a href="javascript:ovid()" onclick="change_Password()" class="btn btn-warning btn-xs">修改密码</a>
                     <button onclick="modify();" class="btn btn-danger" type="submit">修改信息</button>
                     <button onclick="save_info();" class="btn btn-success" type="button">保存修改</button>
                 </div>
+
             </div>
             <div class="info">
                 <form id="submitform" action="${pageContext.request.contextPath}/UpdateMyselfInformation.action" method="post">

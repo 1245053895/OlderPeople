@@ -51,8 +51,12 @@ public class UserRecordController {
         return userLogById;
     }
 
-    //根据用户的id删除一条用户的记录
-    public String deleteOneRecord(Integer userid){
-        return null;
+    //用户记录中根据用户的名称来进行模糊查询(模糊查询是返回多条数据，jsp是遍历集合不是一个对象)
+    @RequestMapping("/moHuSelectByUserId.action")
+    public String moHuSelectByUserId(Model model,String username){
+        List<UserAndUserLog> userAndUserLogs= userRecordService.moHuSelectByUserId(username);
+       model.addAttribute("userAndUserLog",userAndUserLogs);
+        return "/jsp/admin/integration.jsp";
     }
+
 }

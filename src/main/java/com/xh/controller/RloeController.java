@@ -76,6 +76,7 @@ public class RloeController {
     public String moHuSelectByAdminUser(Model model,String adminuser){
         List<AdminRole> adminRoles=roleManageServ.moHuSelectByAdminUser(adminuser);
         model.addAttribute("adminRoles",adminRoles);
+        model.addAttribute("adminuser",adminuser);
         return  "/jsp/admin/admin_Competence.jsp";
     }
 

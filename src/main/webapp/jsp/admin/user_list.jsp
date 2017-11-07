@@ -167,14 +167,14 @@
                                         </c:if>
 
                                         <td class="td-manage">
-                                            <c:if test="${userlist.userA==0}">
-                                                <a onClick="member_start(this,'${userlist.userid}')" href="javascript:void(0);" title="启用"
-                                                   class="btn btn-xs btn-success"><i class="icon-ok bigger-120"></i></a>
-                                            </c:if>
-                                            <c:if test="${userlist.userA==1}">
-                                                <a onClick="member_stop(this,'${userlist.userid}')" href="javascript:void(0);" title="停用"
-                                                   class="btn btn-xs btn-success"><i class="icon-ok bigger-120"></i></a>
-                                            </c:if>
+                                        <c:if test="${userlist.userA==0}">
+                                            <a onClick="member_start(this,'${userlist.userid}')" href="javascript:void(0);" title="启用"
+                                               class="btn btn-xs btn-success"><i class="icon-ok bigger-120"></i></a>
+                                        </c:if>
+                                        <c:if test="${userlist.userA==1}">
+                                            <a onClick="member_stop(this,'${userlist.userid}')" href="javascript:void(0);" title="停用"
+                                               class="btn btn-xs btn-success"><i class="icon-ok bigger-120"></i></a>
+                                        </c:if>
 
 
 

@@ -33,5 +33,5 @@ public interface ProductService {
   //    商品类型查询
   List<Producttype> selectByNothing();
 
-
+    List<ProductAndTypeVo> typeProductType(String producttypeid);
 }

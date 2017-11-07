@@ -2,6 +2,7 @@ package com.xh.mapper.pojo;
 
 import com.xh.po.Producttype;
 import com.xh.po.ProducttypeExample;
+import com.xh.po.vo.ProductAndTypeVo;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;
 
@@ -15,5 +16,6 @@ public interface ProducTypeMapper {
     void TypeinsertSelective(Producttype record);
 //    查询
     List<Producttype> selectByNothing();
+    List<ProductAndTypeVo> typeProductType(String producttypeid);
 
 }

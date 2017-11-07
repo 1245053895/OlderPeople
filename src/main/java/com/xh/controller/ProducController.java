@@ -116,6 +116,19 @@ public class ProducController {
         model.addAttribute("kindOfProducts",kindOfProducts);
         return "/jsp/admin/Product_Manage.jsp";
     }
+
+
+    //显示各商品类型的商品
+    @RequestMapping(value="typeProductType.action",method={RequestMethod.POST,RequestMethod.GET})
+    public String typeProductType(String producttypeid,Model model){
+        List<ProductAndTypeVo> productAndTypeVos=productService.typeProductType(producttypeid);
+        List<KindOfProduct> kindOfProducts= productService.KindOfProduct();
+        model.addAttribute("kindOfProducts",kindOfProducts);
+        model.addAttribute("productAndTypeVos", productAndTypeVos);
+        return "/jsp/admin/noname.jsp";
+    }
+
+
     //商品分类增加     Producttype producttype,Model model
     @RequestMapping("/ProductTypeAdd.action")
     public String productTypeAdd(String producttypename,Producttype producttype,Model model){

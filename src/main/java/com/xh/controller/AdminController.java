@@ -5,6 +5,7 @@ import com.xh.po.Admingroup;
 import com.xh.po.vo.AdminVo;
 import com.xh.po.vo.kindOfAdmin;
 import com.xh.service.AdminManage;
+import com.xh.service.RoleManageServ;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -19,11 +20,15 @@ import java.util.List;
 public class AdminController {
     @Autowired
     private AdminManage adminManage;
+    @Autowired
+    private RoleManageServ roleManageServ;
     //查询全部管理员
     @RequestMapping(value="adminList.action",method={RequestMethod.POST,RequestMethod.GET})
     public String  queryAllUsers(Model model){
         List<AdminVo> adminList = adminManage.queryAdminAndGroup();
         List<kindOfAdmin> kindOfAdmins =  adminManage.kindOfAdmin();
+        kindOfAdmin  kindOfAdmin2=roleManageServ.adminCount2();
+        model.addAttribute("kindOfAdmin2", kindOfAdmin2);
         model.addAttribute("kindOfAdmins", kindOfAdmins);
         model.addAttribute("adminList", adminList);
         List<Admingroup> admingroupnames=adminManage.selectAdminGroupName();
@@ -32,11 +37,28 @@ public class AdminController {
         return "/jsp/admin/administrator.jsp";
     }
 
+
+
     //查询各类管理员
     @RequestMapping(value="kindOfAdmin.action",method={RequestMethod.POST,RequestMethod.GET})
     public String  queryKindOfAdmin(Model model){
         List<kindOfAdmin> kindOfAdmins =  adminManage.kindOfAdmin();
         model.addAttribute("kindOfAdmins", kindOfAdmins);
+        //这个方法的返回值就是要跳转的页面的逻辑视图名称
+        return "/jsp/admin/administrator.jsp";
+    }
+
+
+
+    //显示各角色的管理员
+    @RequestMapping(value="adminkindOfAdmins.action",method={RequestMethod.POST,RequestMethod.GET})
+    public String  adminkindOfAdmins(String admingroupid,Model model){
+        List<AdminVo> adminList =  adminManage.queryAdminAndGroup3(admingroupid);
+        List<kindOfAdmin> kindOfAdmins =  adminManage.kindOfAdmin();
+        kindOfAdmin  kindOfAdmin2=roleManageServ.adminCount2();
+        model.addAttribute("kindOfAdmin2", kindOfAdmin2);
+        model.addAttribute("kindOfAdmins", kindOfAdmins);
+        model.addAttribute("adminList", adminList);
         //这个方法的返回值就是要跳转的页面的逻辑视图名称
         return "/jsp/admin/administrator.jsp";
     }
@@ -53,6 +75,7 @@ public class AdminController {
     public String mohuSelectByName(Model model,String name){
         List<Admin> admins= adminManage.mohuSelectByName(name);
         model.addAttribute("adminList",admins);
+        model.addAttribute("name",name);
         return  "/admin/kindOfAdmin.action";
     }
     //添加新的管理员

@@ -73,4 +73,10 @@ public class ProductServiceimpl implements ProductService {
     public List<Producttype> selectByNothing() {
         return  producTypeMapper.selectByNothing();
     }
+
+    @Override
+    public List<ProductAndTypeVo> typeProductType(String producttypeid) {
+        List<ProductAndTypeVo> productAndTypeVos=producTypeMapper.typeProductType(producttypeid);
+        return productAndTypeVos;
+    }
 }

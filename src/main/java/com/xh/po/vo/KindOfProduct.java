@@ -3,12 +3,17 @@ package com.xh.po.vo;
 public class KindOfProduct {
     private String kindofproduct;
 
-    @Override
-    public String toString() {
-        return "KindOfProduct{" +
-                "kindofproduct='" + kindofproduct + '\'' +
-                '}';
+    private Integer producttypeid;
+
+    public Integer getProducttypeid() {
+        return producttypeid;
     }
+
+    public void setProducttypeid(Integer producttypeid) {
+        this.producttypeid = producttypeid;
+    }
+
+
 
     public String getKindofproduct() {
         return kindofproduct;

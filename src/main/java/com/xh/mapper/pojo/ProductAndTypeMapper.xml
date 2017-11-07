@@ -268,4 +268,14 @@
     where ProductId = #{productid,jdbcType=INTEGER}
   </update>
 
+  <!--商品列表根据时间进行模糊查询-->
+  <select id="moHuselectByTime" parameterType="Date" resultType="productAndTypeVo">
+    select ProductId, ProductName,producttypename, ProductPrice, PictureSizes, PictureColors,
+         ProductLookCount, ProductDescribe, ProductStoreTime, ProductPicture, ProductNew,
+         ProducthotSale, ProductDisabled, ProductCredits, Product_A AS ProductA, Product_B,
+        Product_C from product a, producttype b WHERE a.ProductTypeId = b.ProductTypeId
+         AND ProductStoreTime LIKE '%${productstoretime}%'
+  </select>
+
+
 </mapper>

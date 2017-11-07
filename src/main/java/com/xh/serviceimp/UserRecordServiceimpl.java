@@ -30,4 +30,10 @@ public class UserRecordServiceimpl implements UserRecordService {
         List<UserLogCustom> userLogCustoms= userRecordMapper.getUserLogById(id);
         return userLogCustoms;
     }
+
+    @Override
+    public List<UserAndUserLog> moHuSelectByUserId(String username) {
+        List<UserAndUserLog> userAndUserLogs= userRecordMapper.moHuSelectByUserId(username);
+        return userAndUserLogs;
+    }
 }

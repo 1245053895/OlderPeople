@@ -43,7 +43,7 @@
 
 
 <div class="clearfix" id="add_picture">
-<div class="page_right_style">
+<div class="page_right_style" style="width: 100%">
    <div class="type_title">添加商品</div>
 
 
@@ -70,10 +70,10 @@
 				</span></div>
 			</div>
 			<div class="Add_p_s">
-				<label class="form-label col-2" style="padding-left: 0px;">原价：<div class="formControls col-2"><input name="productprice" type="text" class="input-text" >元</div></label>
+				<label class="form-label col-2" style="padding-left: 0px;">价格：<div class="formControls col-2"><input name="productprice" type="text" class="input-text" >元</div></label>
 			</div>
 			<div class="Add_p_s">
-				<label class="form-label col-2">现价：<div class="formControls col-2"><input name="" type="text" class="input-text" >元</div></label>
+				<label class="form-label col-2">商品积分：<div class="formControls col-2"><input name="productcredits" type="text" class="input-text" >分</div></label>
 			</div>
 			<div></br>
 				<div class="Add_p_s">
@@ -87,14 +87,14 @@
 					<label><input name="producthotsale" value="0" type="radio" class="ace"><span class="lbl">否</span></label>
 				</div>
 				<div class="Add_p_s">
-					<label style="margin-left: 15px;margin-right: 8px;">是否可用积分兑换： </label>
+					<label style="margin-left: 15px;margin-right: 8px;">是否失效下架： </label>
 					<label><input name="productdisabled" value="1" type="radio" class="ace"><span class="lbl">是</span></label>&nbsp;&nbsp;
 					<label><input name="productdisabled" value="0" type="radio" class="ace"><span class="lbl">否</span></label>
 				</div>
 
                 <div class="Add_p_s">
-                    <label style="margin-left: 15px;margin-right: 8px;">创建日期</label>
-                    <input type="date" name="productcreatetime">
+                    <label style="margin-left: 15px;margin-right: 8px;">上架日期</label>
+                    <input type="date" name="productstoretime">
                 </div>
 
 			</div>

@@ -7,7 +7,9 @@ import com.xh.po.Producttype;
 import com.xh.po.vo.Allproduct;
 import com.xh.po.vo.KindOfProduct;
 import com.xh.po.vo.ProductAndTypeVo;
+import com.xh.po.vo.StringAndString;
 
+import java.util.Date;
 import java.util.List;
 
 public interface ProductService {
@@ -33,5 +35,7 @@ public interface ProductService {
   //    商品类型查询
   List<Producttype> selectByNothing();
 
+    //模糊查询根据时间
+    public List<ProductAndTypeVo> moHuselectByTime(Date productstoretime);
 
 }

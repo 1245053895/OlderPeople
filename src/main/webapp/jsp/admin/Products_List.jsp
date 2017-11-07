@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%
     String path = request.getContextPath();
     String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -41,20 +42,20 @@
 </head>
 <body>
 
-<%--<c:if test="${empty productAndTypeVos }">--%>
-<%--<jsp:forward page="/ProducList.action"/>--%>
-<%--</c:if>--%>
-<form action="<%= basePath %>ProducList.action" id="mainForm" method="post">
+<%--<c:if test="${empty productAndTypeVos }">
+<jsp:forward page="/ProducList.action"/>
+</c:if>--%>
     <div class=" page-content clearfix">
-
         <div id="products_style">
             <div class="search_style">
+                <form action="<%= basePath %>ProducList.action" id="mainForm" method="post">
                 <div class="title_names">搜索查询</div>
                 <ul class="search_content clearfix">
-                    <li><label class="l_f">商品名称</label><input name="productname" type="text"  class="text_add"  value="${productname}"  style=" width:250px"/></li>
-                    <li><label class="l_f">添加时间</label><input name="" class="inline laydate-icon" id="start" style=" margin-left:10px;"></li>
+                    <li><label class="l_f" style="margin-right: 5px;">商品名称</label><input name="producname" type="text"  class="text_add"  value="${productname}"  style=" width:250px"/></li>
+                    <%--<li><label class="l_f">上架时间</label><input name="productstoretime" class="inline laydate-icon"   id="start" style=" margin-left:10px;"></li>--%>
                     <li style="width:90px;"><button type="submit" class="btn_search"><i class="icon-search"></i>查询</button></li>
                 </ul>
+                </form>
             </div>
             <div class="border clearfix">
            <span class="l_f">
@@ -71,12 +72,14 @@
                     <th width="80px">编号</th>
                     <th width="250px">商品名称</th>
                     <th width="250px">商品类型</th>
+                    <th width="100px">上架时间</th>
                     <th width="100px">价格</th>
                     <th width="100px">商品描述</th>
                     <th width="180px">商品图片</th>
+                    <th width="80px">商品积分</th>
                     <th width="80px">是否新品</th>
                     <th width="80px">是否热销</th>
-                    <th width="80px">是否可用积分兑换</th>
+                    <th width="80px">是否下架</th>
                     <th width="70px">状态</th>
                     <th width="200px">操作</th>
                 </tr>
@@ -84,26 +87,78 @@
                 <tbody>
                 <c:forEach items="${productAndTypeVos}" var="productAndTypeVos" varStatus="status">
                     <tr>
-                        <td width="25px"><label><input type="checkbox" class="ace" name="productid" value="${productAndTypeVos.productid}" ><span class="lbl"></span></label></td>
-                        <td width="80px">${status.index + 1}</td>
-                        <td width="250px"><u style="cursor:pointer" class="text-primary" onclick="">${productAndTypeVos.productname}</u></td>
-                        <td width="100px">${productAndTypeVos.producttypename}</td>
-                        <td width="100px">${productAndTypeVos.productprice}</td>
-                        <td width="100px">${productAndTypeVos.productdescribe}</td>
+                        <td width="25px">
+                            <label>
+                                <input type="checkbox" class="ace" name="productid" value="${productAndTypeVos.productid}" >
+                                <span class="lbl"></span>
+                            </label>
+                        </td>
+                        <td width="80px">
+                                ${status.index + 1}
+                        </td>
+                        <td width="150px">
+                            <input style="border-width: 0px;background-color: transparent;" type="text"
+                                                         value="${productAndTypeVos.productname}" name="productname"
+                                                         class="input_style text_info${productAndTypeVos.productid}" readonly="true"/>
+                        </td>
+                        <td width="100px">
+                            <input style="border-width: 0px;background-color: transparent;" type="text"
+                                                         value="${productAndTypeVos.producttypename}" name="producttypename"
+                                                         class="input_style text_info${productAndTypeVos.productid}" readonly="true"/>
+                        </td>
+                        <td width="100px">
+                            <input style="border-width: 0px;background-color: transparent;" type="text"
+                                                         value="<fmt:formatDate value="${productAndTypeVos.productstoretime}" pattern="yyyy-MM-dd HH:mm:ss"/>"
+                                                         name="productstoretime" class="input_style text_info${productAndTypeVos.productid}" readonly="true"/>
+                        </td>
+                        <td width="100px">
+                            <input style="border-width: 0px;background-color: transparent;" type="text"
+                                                         value="${productAndTypeVos.productprice}" name="productprice"
+                                                         class="input_style text_info${productAndTypeVos.productid}" readonly="true"/>
+                        </td>
+                        <td width="150px">
+                            <input style="border-width: 0px;background-color: transparent;" type="text"
+                                                                value="${productAndTypeVos.productdescribe}" name="productdescribe"
+                                                                class="input_style text_info${productAndTypeVos.productid}" readonly="true"/>
+                        </td>
+                        <td width="100px">
+                            <img src="/jsp/admin/images/upload/${productAndTypeVos.productpicture}" width="80px" height="110px">
+                        </td>
 
-                        <td width="100px">  <img src="/images/${productAndTypeVos.productpicture}" width="80px" height="110px">  </td>
+                        <td width="100px">
+                            <input style="border-width: 0px;background-color: transparent;" type="text"
+                                                 value="${productAndTypeVos.productcredits}" name="productcredits"
+                                                 class="input_style text_info${productAndTypeVos.productid}" readonly="true"/>
+                        </td>
 
-                        <td width="100px">${productAndTypeVos.productnew}</td>
-                        <td width="100px">${productAndTypeVos.producthotsale}</td>
-                        <td width="100px">${productAndTypeVos.productdisabled}</td>
+                        <td width="100px">
+                            <input style="border-width: 0px;background-color: transparent;" type="text"
+                                                         value="<c:if test="${productAndTypeVos.productnew==1}">√</c:if>
+                                                          <c:if test="${productAndTypeVos.productnew==0}">×</c:if>"
+                                                         name="productnew" class="input_style text_info${productAndTypeVos.productid}" readonly="true"/>
+                        </td>
+                        <td width="100px">
+                            <input style="border-width: 0px;background-color: transparent;" type="text"
+                                                         value=" <c:if test="${productAndTypeVos.producthotsale==1}">√</c:if>
+                                                            <c:if test="${productAndTypeVos.producthotsale==0}">×</c:if>"
+                                                         name="producthotsale" class="input_style text_info${productAndTypeVos.productid}" readonly="true"/>
+                        </td>
+                        <td width="100px">
+                            <input style="border-width: 0px;background-color: transparent;" type="text"
+                                   value=" <c:if test="${productAndTypeVos.producthotsale==1}">√</c:if>
+                                                            <c:if test="${productAndTypeVos.producthotsale==0}">×</c:if>"
+                                   name="producthotsale" class="input_style text_info${productAndTypeVos.productid}" readonly="true"/>
+                        </td>
                         <c:if test="${productAndTypeVos.productA==1}">
                             <td class="td-status"><span class="label label-success radius">已启用</span></td>
                         </c:if>
                         <c:if test="${productAndTypeVos.productA==0}">
                             <td class="td-status"><span class="label label-default radius">已停用</span></td>
                         </c:if>
-
-                        <td class="td-manage">
+                        <c:if test="${productAndTypeVos.productA==null}">
+                            <td class="td-status"><span class="label label-success radius">已启用</span></td>
+                        </c:if>
+                        <td>
                             <c:if test="${productAndTypeVos.productA==0}">
                                 <a onClick="member_start(this,'${productAndTypeVos.productid}')" href="javascript:void(0);" title="启用"
                                    class="btn btn-xs btn-success"><i class="icon-ok bigger-120"></i></a>
@@ -112,25 +167,87 @@
                                 <a onClick="member_stop(this,'${productAndTypeVos.productid}')" href="javascript:void(0);" title="停用"
                                    class="btn btn-xs btn-success"><i class="icon-ok bigger-120"></i></a>
                             </c:if>
-
-                            <a title="编辑" onclick="member_edit('编辑','member-add.html','4','','510')" href="javascript:;"  class="btn btn-xs btn-info" ><i class="icon-edit bigger-120"></i></a>
-                                <%--javascript:deleteBatch('<%=basePath%>');--%>
-                                <%--<a title="删除" href="${basePath}DeleteOneProduct.action?productid=${productAndTypeVos.productid}"  onclick="member_del(this,'1')" class="btn btn-xs btn-warning" ><i class="icon-trash  bigger-120"></i></a>--%>
+                            <c:if test="${productAndTypeVos.productA==null}">
+                                <a onClick="member_stop(this,'${productAndTypeVos.productid}')" href="javascript:void(0);" title="停用"
+                                   class="btn btn-xs btn-success"><i class="icon-ok bigger-120"></i></a>
+                            </c:if>
+                            <a title="编辑" onclick="modify(${productAndTypeVos.productid})" href="javascript:void(0);"  class="btn btn-xs btn-info radius" ><i id="edit${productAndTypeVos.productid}" class="fa bigger-120">编辑</i></a>
                             <a title="删除" href="${basePath}DeleteOneProduct.action?productid=${productAndTypeVos.productid}"  onclick="return confirmAct();" class="btn btn-xs btn-warning" ><i class="icon-trash  bigger-120"></i></a>
                         </td>
-                            <%--${basePath}DeleteOneProduct.action?productid=${productAndTypeVos.productid}--%>
                     </tr>
                 </c:forEach>
                 </tbody>
             </table>
         </div>
-
     </div>
     </div>
     </div>
-</form>
 </body>
 </html>
+
+<style type="text/css">
+    body{
+        font-size: 14px;
+        font-family: "Microsoft YaHei", Arial, Helvetica, sans-serif;
+        text-align: center;
+    }
+    .input_style{
+        border: none;
+        width: 100%;
+        text-align: center;
+        line-height: 30px;
+
+    }
+    .btn-xs{
+        border-width: 3px;
+    }
+    .btn-info,.btn-info:focus
+    {
+        background-color: #6fb3e0!important;
+        border-color: #6fb3e0;
+    }
+
+    .btn-info:hover,.open .btn-info.dropdown-toggle
+    {
+        background-color: #4f99c6!important;
+
+        border-color: #6fb3e0;
+    }
+
+    .btn-info.no-border:hover
+    {
+        border-color: #4f99c6;
+    }
+
+    .btn-info.no-hover:hover
+    {
+        background-color: #6fb3e0!important;
+    }
+
+    .btn-info
+    {
+        background-color: #5fa6d3!important;
+        border-color: #4396cb;
+    }
+
+    .btn-info
+    {
+        background-color: #539fd0!important;
+        border-color: #539fd0;
+    }
+
+    .btn-info.disabled,.btn-info[disabled],fieldset[disabled] .btn-info,.btn-info.disabled:hover,.btn-info[disabled]:hover,fieldset[disabled] .btn-info:hover,.btn-info.disabled:focus,.btn-info[disabled]:focus,fieldset[disabled] .btn-info:focus,.btn-info.disabled:active,.btn-info[disabled]:active,fieldset[disabled] .btn-info:active,.btn-info.disabled.active,.btn-info[disabled].active,fieldset[disabled] .btn-info.active
+    {
+        background-color: #6fb3e0!important;
+        border-color: #6fb3e0;
+    }
+    .dataTables_length{
+        margin-left: -400px;
+    }
+
+</style>
+
+
 <script>
     //下面1个函数需要优化
 
@@ -210,53 +327,6 @@
         $(".table_menu_list").height($(window).height()-215);
     })
 
-    /*******树状图*******/
-    var setting = {
-        view: {
-            dblClickExpand: false,
-            showLine: false,
-            selectedMulti: false
-        },
-        data: {
-            simpleData: {
-                enable:true,
-                idKey: "id",
-                pIdKey: "pId",
-                rootPId: ""
-            }
-        },
-        callback: {
-            beforeClick: function(treeId, treeNode) {
-                var zTree = $.fn.zTree.getZTreeObj("tree");
-                if (treeNode.isParent) {
-                    zTree.expandNode(treeNode);
-                    return false;
-                } else {
-                    demoIframe.attr("src",treeNode.file + ".html");
-                    return true;
-                }
-            }
-        }
-    };
-
-    var zNodes =[
-        { id:1, pId:0, name:"商城分类列表", open:true},
-        { id:11, pId:1, name:"蔬菜水果"},
-        { id:111, pId:11, name:"蔬菜"},
-        { id:112, pId:11, name:"苹果"},
-        { id:113, pId:11, name:"大蒜"},
-        { id:114, pId:11, name:"白菜"},
-        { id:115, pId:11, name:"青菜"},
-        { id:12, pId:1, name:"手机数码"},
-        { id:121, pId:12, name:"手机 "},
-        { id:122, pId:12, name:"照相机 "},
-        { id:13, pId:1, name:"电脑配件"},
-        { id:131, pId:13, name:"手机 "},
-        { id:122, pId:13, name:"照相机 "},
-        { id:14, pId:1, name:"服装鞋帽"},
-        { id:141, pId:14, name:"手机 "},
-        { id:42, pId:14, name:"照相机 "},
-    ];
 
     var code;
 
@@ -297,8 +367,20 @@
         });
     }
     /*产品-编辑*/
-    function member_edit(title,url,id,w,h){
-        layer_show(title,url,w,h);
+    var flag=true;
+    function modify(v) {
+        if(flag) {
+            $('.text_info' + v).attr("readonly", false);
+            $('.text_info' + v).parents("td").css("box-shadow","0px 0px 20px #888888 inset");
+            $('#edit'+v).text("提交");
+            flag = false;
+        }else{
+            $("#form_"+v).submit();
+            $('.text_info' + v).attr("readonly", true);
+            $('.text_info' + v).parents("td").css("box-shadow","0px 0px 0px #888888 inset");
+            $('#edit'+v).text("编辑");
+            flag=true;
+        }
     }
 
     /*产品-删除*/

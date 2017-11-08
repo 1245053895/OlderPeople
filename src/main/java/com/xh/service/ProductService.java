@@ -38,4 +38,7 @@ public interface ProductService {
     //模糊查询根据时间
     public List<ProductAndTypeVo> moHuselectByTime(Date productstoretime);
 
+    //根据商品的id对商品进行更新
+    public void updateById(ProductAndTypeVo productAndTypeVo);
+
 }

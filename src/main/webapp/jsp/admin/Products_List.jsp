@@ -86,95 +86,97 @@
                 </thead>
                 <tbody>
                 <c:forEach items="${productAndTypeVos}" var="productAndTypeVos" varStatus="status">
-                    <tr>
-                        <td width="25px">
-                            <label>
-                                <input type="checkbox" class="ace" name="productid" value="${productAndTypeVos.productid}" >
-                                <span class="lbl"></span>
-                            </label>
-                        </td>
-                        <td width="80px">
-                                ${status.index + 1}
-                        </td>
-                        <td width="150px">
-                            <input style="border-width: 0px;background-color: transparent;" type="text"
-                                                         value="${productAndTypeVos.productname}" name="productname"
-                                                         class="input_style text_info${productAndTypeVos.productid}" readonly="true"/>
-                        </td>
-                        <td width="100px">
-                            <input style="border-width: 0px;background-color: transparent;" type="text"
-                                                         value="${productAndTypeVos.producttypename}" name="producttypename"
-                                                         class="input_style text_info${productAndTypeVos.productid}" readonly="true"/>
-                        </td>
-                        <td width="100px">
-                            <input style="border-width: 0px;background-color: transparent;" type="text"
-                                                         value="<fmt:formatDate value="${productAndTypeVos.productstoretime}" pattern="yyyy-MM-dd HH:mm:ss"/>"
-                                                         name="productstoretime" class="input_style text_info${productAndTypeVos.productid}" readonly="true"/>
-                        </td>
-                        <td width="100px">
-                            <input style="border-width: 0px;background-color: transparent;" type="text"
-                                                         value="${productAndTypeVos.productprice}" name="productprice"
-                                                         class="input_style text_info${productAndTypeVos.productid}" readonly="true"/>
-                        </td>
-                        <td width="150px">
-                            <input style="border-width: 0px;background-color: transparent;" type="text"
-                                                                value="${productAndTypeVos.productdescribe}" name="productdescribe"
-                                                                class="input_style text_info${productAndTypeVos.productid}" readonly="true"/>
-                        </td>
-                        <td width="100px">
-                            <img src="/jsp/admin/images/upload/${productAndTypeVos.productpicture}" width="80px" height="110px">
-                        </td>
+                    <form id="form_${productAndTypeVos.productid}" action="${pageContext.request.contextPath}/updateById.action" method="post">
+                        <tr>
+                            <td width="25px">
+                                <label>
+                                    <input type="checkbox" class="ace" name="productid" value="${productAndTypeVos.productid}" >
+                                    <span class="lbl"></span>
+                                </label>
+                            </td>
+                            <td width="80px">
+                                    ${productAndTypeVos.productid}
+                            </td>
+                            <td width="150px">
+                                <input style="border-width: 0px;background-color: transparent;" type="text"
+                                                             value="${productAndTypeVos.productname}" name="productname"
+                                                             class="input_style text_info${productAndTypeVos.productid}" readonly="true"/>
+                            </td>
+                            <td width="100px">
+                                <input style="border-width: 0px;background-color: transparent;" type="text"
+                                                             value="${productAndTypeVos.producttypename}" name="producttypename"
+                                                             class="input_style text_info${productAndTypeVos.productid}" readonly="true"/>
+                            </td>
+                            <td width="100px">
+                                <input style="border-width: 0px;background-color: transparent;" type="text"
+                                                             value="<fmt:formatDate value="${productAndTypeVos.productstoretime}" pattern="yyyy-MM-dd HH:mm:ss"/>"
+                                                             name="productstoretime" class="input_style text_info${productAndTypeVos.productid}" readonly="true"/>
+                            </td>
+                            <td width="100px">
+                                <input style="border-width: 0px;background-color: transparent;" type="text"
+                                                             value="${productAndTypeVos.productprice}" name="productprice"
+                                                             class="input_style text_info${productAndTypeVos.productid}" readonly="true"/>
+                            </td>
+                            <td width="150px">
+                                <input style="border-width: 0px;background-color: transparent;" type="text"
+                                                                    value="${productAndTypeVos.productdescribe}" name="productdescribe"
+                                                                    class="input_style text_info${productAndTypeVos.productid}" readonly="true"/>
+                            </td>
+                            <td width="100px">
+                                <img src="/jsp/admin/images/upload/${productAndTypeVos.productpicture}" width="80px" height="110px">
+                            </td>
 
-                        <td width="100px">
-                            <input style="border-width: 0px;background-color: transparent;" type="text"
-                                                 value="${productAndTypeVos.productcredits}" name="productcredits"
-                                                 class="input_style text_info${productAndTypeVos.productid}" readonly="true"/>
-                        </td>
+                            <td width="100px">
+                                <input style="border-width: 0px;background-color: transparent;" type="text"
+                                                     value="${productAndTypeVos.productcredits}" name="productcredits"
+                                                     class="input_style text_info${productAndTypeVos.productid}" readonly="true"/>
+                            </td>
 
-                        <td width="100px">
-                            <input style="border-width: 0px;background-color: transparent;" type="text"
-                                                         value="<c:if test="${productAndTypeVos.productnew==1}">√</c:if>
-                                                          <c:if test="${productAndTypeVos.productnew==0}">×</c:if>"
-                                                         name="productnew" class="input_style text_info${productAndTypeVos.productid}" readonly="true"/>
-                        </td>
-                        <td width="100px">
-                            <input style="border-width: 0px;background-color: transparent;" type="text"
-                                                         value=" <c:if test="${productAndTypeVos.producthotsale==1}">√</c:if>
-                                                            <c:if test="${productAndTypeVos.producthotsale==0}">×</c:if>"
-                                                         name="producthotsale" class="input_style text_info${productAndTypeVos.productid}" readonly="true"/>
-                        </td>
-                        <td width="100px">
-                            <input style="border-width: 0px;background-color: transparent;" type="text"
-                                   value=" <c:if test="${productAndTypeVos.producthotsale==1}">√</c:if>
-                                                            <c:if test="${productAndTypeVos.producthotsale==0}">×</c:if>"
-                                   name="producthotsale" class="input_style text_info${productAndTypeVos.productid}" readonly="true"/>
-                        </td>
-                        <c:if test="${productAndTypeVos.productA==1}">
-                            <td class="td-status"><span class="label label-success radius">已启用</span></td>
-                        </c:if>
-                        <c:if test="${productAndTypeVos.productA==0}">
-                            <td class="td-status"><span class="label label-default radius">已停用</span></td>
-                        </c:if>
-                        <c:if test="${productAndTypeVos.productA==null}">
-                            <td class="td-status"><span class="label label-success radius">已启用</span></td>
-                        </c:if>
-                        <td>
-                            <c:if test="${productAndTypeVos.productA==0}">
-                                <a onClick="member_start(this,'${productAndTypeVos.productid}')" href="javascript:void(0);" title="启用"
-                                   class="btn btn-xs btn-success"><i class="icon-ok bigger-120"></i></a>
-                            </c:if>
+                            <td width="100px">
+                                <input style="border-width: 0px;background-color: transparent;" type="text"
+                                                             value="<c:if test="${productAndTypeVos.productnew==1}">√</c:if>
+                                                              <c:if test="${productAndTypeVos.productnew==0}">×</c:if>"
+                                                             name="productnew" class="input_style text_info${productAndTypeVos.productid}" readonly="true"/>
+                            </td>
+                            <td width="100px">
+                                <input style="border-width: 0px;background-color: transparent;" type="text"
+                                                             value=" <c:if test="${productAndTypeVos.producthotsale==1}">√</c:if>
+                                                                <c:if test="${productAndTypeVos.producthotsale==0}">×</c:if>"
+                                                             name="producthotsale" class="input_style text_info${productAndTypeVos.productid}" readonly="true"/>
+                            </td>
+                            <td width="100px">
+                                <input style="border-width: 0px;background-color: transparent;" type="text"
+                                       value=" <c:if test="${productAndTypeVos.producthotsale==1}">√</c:if>
+                                                                <c:if test="${productAndTypeVos.producthotsale==0}">×</c:if>"
+                                       name="producthotsale" class="input_style text_info${productAndTypeVos.productid}" readonly="true"/>
+                            </td>
                             <c:if test="${productAndTypeVos.productA==1}">
-                                <a onClick="member_stop(this,'${productAndTypeVos.productid}')" href="javascript:void(0);" title="停用"
-                                   class="btn btn-xs btn-success"><i class="icon-ok bigger-120"></i></a>
+                                <td class="td-status"><span class="label label-success radius">已启用</span></td>
+                            </c:if>
+                            <c:if test="${productAndTypeVos.productA==0}">
+                                <td class="td-status"><span class="label label-default radius">已停用</span></td>
                             </c:if>
                             <c:if test="${productAndTypeVos.productA==null}">
-                                <a onClick="member_stop(this,'${productAndTypeVos.productid}')" href="javascript:void(0);" title="停用"
-                                   class="btn btn-xs btn-success"><i class="icon-ok bigger-120"></i></a>
+                                <td class="td-status"><span class="label label-success radius">已启用</span></td>
                             </c:if>
-                            <a title="编辑" onclick="modify(${productAndTypeVos.productid})" href="javascript:void(0);"  class="btn btn-xs btn-info radius" ><i id="edit${productAndTypeVos.productid}" class="fa bigger-120">编辑</i></a>
-                            <a title="删除" href="${basePath}DeleteOneProduct.action?productid=${productAndTypeVos.productid}"  onclick="return confirmAct();" class="btn btn-xs btn-warning" ><i class="icon-trash  bigger-120"></i></a>
-                        </td>
-                    </tr>
+                            <td>
+                                <c:if test="${productAndTypeVos.productA==0}">
+                                    <a onClick="member_start(this,'${productAndTypeVos.productid}')" href="javascript:void(0);" title="启用"
+                                       class="btn btn-xs btn-success"><i class="icon-ok bigger-120"></i></a>
+                                </c:if>
+                                <c:if test="${productAndTypeVos.productA==1}">
+                                    <a onClick="member_stop(this,'${productAndTypeVos.productid}')" href="javascript:void(0);" title="停用"
+                                       class="btn btn-xs btn-success"><i class="icon-ok bigger-120"></i></a>
+                                </c:if>
+                                <c:if test="${productAndTypeVos.productA==null}">
+                                    <a onClick="member_stop(this,'${productAndTypeVos.productid}')" href="javascript:void(0);" title="停用"
+                                       class="btn btn-xs btn-success"><i class="icon-ok bigger-120"></i></a>
+                                </c:if>
+                                <a title="编辑" onclick="modify(${productAndTypeVos.productid})" href="javascript:void(0);"  class="btn btn-xs btn-info radius" ><i id="edit${productAndTypeVos.productid}" class="fa bigger-120">编辑</i></a>
+                                <a title="删除" href="${basePath}DeleteOneProduct.action?productid=${productAndTypeVos.productid}"  onclick="return confirmAct();" class="btn btn-xs btn-warning" ><i class="icon-trash  bigger-120"></i></a>
+                            </td>
+                        </tr>
+                    </form>
                 </c:forEach>
                 </tbody>
             </table>
@@ -368,6 +370,7 @@
     }
     /*产品-编辑*/
     var flag=true;
+
     function modify(v) {
         if(flag) {
             $('.text_info' + v).attr("readonly", false);

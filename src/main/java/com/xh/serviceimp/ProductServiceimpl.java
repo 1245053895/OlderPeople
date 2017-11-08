@@ -81,4 +81,9 @@ public class ProductServiceimpl implements ProductService {
         List<ProductAndTypeVo> productAndTypeVos= productAndTypeMapper.moHuselectByTime(productstoretime);
         return productAndTypeVos;
     }
+
+    @Override
+    public void updateById(ProductAndTypeVo productAndTypeVo) {
+        productAndTypeMapper.updateById(productAndTypeVo);
+    }
 }

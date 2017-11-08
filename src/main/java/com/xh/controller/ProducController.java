@@ -162,5 +162,13 @@ public class ProducController {
         return "redirect:/ProducList.action";
     }
 
+//根据商品的id更新商品的信息
+    @RequestMapping("/updateById.action")
+    public String updateById(ProductAndTypeVo productAndTypeVo){
+        productService.updateById(productAndTypeVo);
+        return "redirect:/ProducList.action";
+    }
+
+
 
 }

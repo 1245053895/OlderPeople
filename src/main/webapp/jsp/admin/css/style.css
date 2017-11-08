@@ -333,7 +333,7 @@ body
 .b_P_Sort_list li .grey,
 .b_P_Sort_list li .orange{ margin-right:5px;}
 /*******************************产品类型样式属性******************************************/
-.left_Treeview{ position:relative; float:left}
+.left_Treeview{ position:relative; float:left; width:230px;}
 .type_title{width: 100%;height: 40px;background-color: #F4F4F4;border-bottom:1px solid #dddddd;text-align: center;font-size: 16px;line-height: 40px; }
 .page_right_style.Widescreen{ left:0px}
 .show_btn {

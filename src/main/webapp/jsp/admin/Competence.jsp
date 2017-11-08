@@ -44,8 +44,10 @@
 		}
 	</style>
 	<div id="role">
+
 		 <form  name="itemsForm" action="${pageContext.request.contextPath }/addRloeAndView.action" method="post">
 			 <div class="Competence_add">
+				 <div class="type_title" style="margin-top: -50px;width: 100%;">添加权限</div>
 				 <div class="form-group">
 					 <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> 角色名称 </label>
 					 <div class="col-sm-9">

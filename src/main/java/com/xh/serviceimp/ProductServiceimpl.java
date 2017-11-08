@@ -79,4 +79,9 @@ public class ProductServiceimpl implements ProductService {
         List<ProductAndTypeVo> productAndTypeVos=producTypeMapper.typeProductType(producttypeid);
         return productAndTypeVos;
     }
+
+    @Override
+    public void updateById(ProductAndTypeVo productAndTypeVo) {
+        productAndTypeMapper.updateById(productAndTypeVo);
+    }
 }

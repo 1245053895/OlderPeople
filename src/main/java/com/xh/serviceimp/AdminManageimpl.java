@@ -75,4 +75,10 @@ public class AdminManageimpl implements AdminManage {
     public void deleteBatch(int[] postIds) {
         adminMapper.deleteBatch(postIds);
     }
+
+    @Override
+    public List<AdminVo> queryAdminAndGroup3(String admingroupid) {
+        List<AdminVo> voAdminVos= adminMapper.queryAdminAndGroup3(admingroupid);
+        return voAdminVos;
+    }
 }

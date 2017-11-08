@@ -35,8 +35,8 @@ public interface ProductService {
   //    商品类型查询
   List<Producttype> selectByNothing();
 
-    //模糊查询根据时间
-    public List<ProductAndTypeVo> moHuselectByTime(Date productstoretime);
+
+    List<ProductAndTypeVo> typeProductType(String producttypeid);
 
     //根据商品的id对商品进行更新
     public void updateById(ProductAndTypeVo productAndTypeVo);

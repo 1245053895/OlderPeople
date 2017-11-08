@@ -5,6 +5,7 @@ import com.xh.po.vo.AdminRole;
 import com.xh.po.Admingroup;
 import com.xh.po.vo.AdminRoleCustom;
 import com.xh.po.Firstview;
+import com.xh.po.vo.kindOfAdmin;
 import com.xh.service.RoleManageServ;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -61,5 +62,17 @@ public class RoleManageServImp implements RoleManageServ {
     }
     public void updateRloeById(AdminRoleCustom adminRoleCustom) {
         roleMapper.updateRloeById(adminRoleCustom);
+    }
+
+    @Override
+    public kindOfAdmin adminGroupCount1() {
+        kindOfAdmin  kindOfAdmin=roleMapper.adminGroupCount1();
+        return kindOfAdmin;
+    }
+
+    @Override
+    public kindOfAdmin adminCount2() {
+        kindOfAdmin  kindOfAdmin2=roleMapper.adminCount2();
+        return kindOfAdmin2;
     }
 }

@@ -44,7 +44,7 @@
                 <div class="title_names">搜索查询</div>
                 <ul class="search_content clearfix">
                     <form action="${pageContext.request.contextPath}/admin/mohuSelectByName.action" method="post">
-                        <li><label class="l_f">管理员名称</label><input name="name" type="text" class="text_add" placeholder="请输入管理员的名称" style=" width:400px"></li>
+                        <li><label class="l_f">管理员名称</label><input name="name" value="${name}" type="text" class="text_add" placeholder="请输入管理员的名称" style=" width:400px"></li>
                         <%--<li style="width:90px;"><button type="button" class="btn_search"><i class="fa fa-search"></i>查询</button></li>--%>
                         <input type="submit" value="查询"/>
                     </form>
@@ -56,7 +56,7 @@
         <a href="javascript:void(0)" onclick="openThis()" id="administrator_add" class="btn btn-warning"><i class="fa fa-plus"></i> 添加管理员</a>
         <a href="javascript:test()" class="btn btn-danger"><i class="fa fa-trash"></i> 批量删除</a>
        </span>
-                <span class="r_f">共：<b>5</b>人</span>
+                <span class="r_f">共：<b>${kindOfAdmin2.adminCount2}</b>人</span>
             </div>
             <!--管理员列表-->
             <div class="clearfix administrator_style side_green" id="administrator" style="left: 0px;">
@@ -70,9 +70,9 @@
                                     <ul class="b_P_Sort_list">
                                         <c:forEach items="${kindOfAdmins}" var="admin" varStatus="index">
                                             <c:if test="${index.count==1}">
-                                                <li><i class="fa fa-users green"></i> <a href="#">全部管理员(${fn:length(kindOfAdmins)})</a></li>
+                                                <li><i class="fa fa-users green"></i> <b>全部管理员(${fn:length(kindOfAdmins)} 种)</b></li>
                                             </c:if>
-                                            <li><i class="fa fa-users green"></i> <a href="#">${admin.allrloe}</a></li>
+                                            <li value="${admin.admingroupid}"><i  class="fa fa-users green"></i> <a  href="/admin/adminkindOfAdmins.action?admingroupid=${admin.admingroupid}" name="admingroupid" >${admin.allrloe}</a></li>
                                         </c:forEach>
                                     </ul>
                                 </div>

@@ -76,9 +76,9 @@ public class ProductServiceimpl implements ProductService {
         return  producTypeMapper.selectByNothing();
     }
 
-  @Override
-    public List<ProductAndTypeVo> moHuselectByTime(Date productstoretime) {
-        List<ProductAndTypeVo> productAndTypeVos= productAndTypeMapper.moHuselectByTime(productstoretime);
+    @Override
+    public List<ProductAndTypeVo> typeProductType(String producttypeid) {
+        List<ProductAndTypeVo> productAndTypeVos=producTypeMapper.typeProductType(producttypeid);
         return productAndTypeVos;
     }
 

@@ -44,10 +44,10 @@
 		}
 	</style>
 	<div id="role">
+		<div class="type_title" style="margin-bottom: 50px;margin-top:-50px;width:1142px;float: left;margin-left: -321px;">添加权限</div>
 
 		 <form  name="itemsForm" action="${pageContext.request.contextPath }/addRloeAndView.action" method="post">
 			 <div class="Competence_add">
-				 <div class="type_title" style="margin-top: -50px;width: 100%;">添加权限</div>
 				 <div class="form-group">
 					 <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> 角色名称 </label>
 					 <div class="col-sm-9">
@@ -57,7 +57,7 @@
 				 <div class="form-group">
 					 <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> 角色描述 </label>
 					 <div class="col-sm-9">
-						 <textarea name="admingroupdescription" class="form-control" id="form_textarea" placeholder="" onkeyup="checkLength(this);"></textarea>
+						 <textarea name="admingroupdescription" class="form-control" id="form_textarea" placeholder="" onkeyup="checkLength(this);" style="height: 150px;"></textarea>
 						 <span class="wordage">剩余字数：<span id="sy" style="color:Red;">200</span>字</span>
 					 </div>
 				 </div>
@@ -66,7 +66,7 @@
 					 <div class="col-sm-9">
 						 <c:forEach items="${firstviewList}" var="firstview" varStatus="status">
 							 <%--<label class="middle"><input class="flag_${status.index}" name="firstViewAction[${status.index}]" readonly="readonly" type="checkbox"  value="${firstview.firstviewaction}"></label>--%>
-							 <label class="middle"><input type="checkbox" name="firstViewAction[${status.index}]" value="${firstview.firstviewaction}" class="ace"><span class="lbl">${firstview.firstviewdescription}</span></label>
+							 <label class="middle" style=" padding:7px;"><input type="checkbox" name="firstViewAction[${status.index}]" value="${firstview.firstviewaction}" class="ace"><span class="lbl">${firstview.firstviewdescription}</span></label>
 						 </c:forEach>
 					 </div>
 				 </div>

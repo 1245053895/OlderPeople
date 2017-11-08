@@ -72,7 +72,7 @@
   </div>  
   </div>
 <!---->
- <iframe ID="testIframe" Name="testIframe" FRAMEBORDER=0 SCROLLING=AUTO  SRC="/jsp/admin/product-category-add.jsp" class="page_right_style" style="width: 100%;height: 100%;"></iframe>
+ <iframe ID="testIframe" Name="testIframe" FRAMEBORDER=0 SCROLLING=AUTO  SRC="/jsp/admin/product-category-add.jsp" class="page_right_style" style="width: 912px;height: 100%;"></iframe>
  </div>
 </div>
 </body>
@@ -90,11 +90,11 @@ $(function() {
 <script type="text/javascript">
 //初始化宽度、高度  
  $(".widget-box").height($(window).height()); 
- $(".page_right_style").width($(window).width()-220);
+ $(".page_right_style").width($(window).width()-250);
   //当文档窗口发生改变时 触发  
     $(window).resize(function(){
 	$(".widget-box").height($(window).height());
-	 $(".page_right_style").width($(window).width()-220);
+	 $(".page_right_style").width($(window).width()-250);
 	})
  
 /**************/

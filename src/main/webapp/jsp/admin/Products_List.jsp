@@ -134,14 +134,12 @@
 
                             <td width="100px">
                                 <input style="border-width: 0px;background-color: transparent;" type="text"
-                                                             value="<c:if test="${productAndTypeVos.productnew==1}">√</c:if>
-                                                              <c:if test="${productAndTypeVos.productnew==0}">×</c:if>"
+                                                             value="<c:if test="${productAndTypeVos.productnew==1}">√</c:if><c:if test="${productAndTypeVos.productnew==0}">×</c:if>"
                                                              name="productnew" class="input_style text_info${productAndTypeVos.productid}" readonly="true"/>
                             </td>
                             <td width="100px">
                                 <input style="border-width: 0px;background-color: transparent;" type="text"
-                                                             value=" <c:if test="${productAndTypeVos.producthotsale==1}">√</c:if>
-                                                                <c:if test="${productAndTypeVos.producthotsale==0}">×</c:if>"
+                                                             value=" <c:if test="${productAndTypeVos.producthotsale==1}">√</c:if><c:if test="${productAndTypeVos.producthotsale==0}">×</c:if>"
                                                              name="producthotsale" class="input_style text_info${productAndTypeVos.productid}" readonly="true"/>
                             </td>
                             <td width="100px">

@@ -39,7 +39,7 @@ To change this template use File | Settings | File Templates.
 </head>
 
 <body>
-<form action="<%= basePath %>queryAllRole.action" id="mainForm" method="post">
+<%--<form action="<%= basePath %>queryAllRole.action" id="mainForm" method="post">--%>
 <%--<c:if test="${empty admingroups }">
     <jsp:forward page="/queryAllRole.action"/>
 </c:if>--%>
@@ -65,8 +65,8 @@ To change this template use File | Settings | File Templates.
             </thead>
             <tbody>
             <c:forEach items="${admingroups}" var="admingroup">
-                <form id="form_${admingroup.admingroupid}" action="${pageContext.request.contextPath}/updateRloeById.action?id=${admingroup.admingroupid}" method="post">
                     <tr>
+                        <form id="form_${admingroup.admingroupid}" action="${pageContext.request.contextPath}/updateRloeById.action?id=${admingroup.admingroupid}" method="post">
                         <td class="center"><label><input type="checkbox" name="RoleIds" value="${admingroup.admingroupid}"  class="ace"><span class="lbl"></span></label></td>
                         <td><input type="text" value="${admingroup.admingroupid}" name="admingroupid" class="input_style text_info" readonly="true"/></td>
                         <td class="hidden-480"><input type="text" name="admingroupname" value="${admingroup.admingroupname}" class="input_style text_info${admingroup.admingroupid}" readonly="true"/></td>
@@ -75,15 +75,15 @@ To change this template use File | Settings | File Templates.
                            <a title="编辑" onclick="modify(${admingroup.admingroupid})" href="javascript:void(0);"  class="btn btn-xs btn-info radius" ><i id="edit${admingroup.admingroupid}" class="fa bigger-120">编辑</i></a>
                            <a title="删除" href="${basePath}deleteRoleById.action?id=${admingroup.admingroupid}"  onclick="alert('您确定要删除吗？')" class="btn btn-xs btn-warning" ><i class="fa fa-trash  bigger-120"></i></a>
                         </td>
+                        </form>
                     </tr>
-              </form>
             </c:forEach>
 
             </tbody>
         </table>
     </div>
 </div>
-</form>
+<%--</form>--%>
 </body>
 </html>
 

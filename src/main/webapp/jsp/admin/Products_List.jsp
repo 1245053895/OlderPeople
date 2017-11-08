@@ -86,7 +86,7 @@
                 </thead>
                 <tbody>
                 <c:forEach items="${productAndTypeVos}" var="productAndTypeVos" varStatus="status">
-                    <form id="form_${productAndTypeVos.productid}" action="${pageContext.request.contextPath}/updateById.action" method="post">
+                    <form id="form_${productAndTypeVos.productid}" action="${pageContext.request.contextPath}/updateById.action?id=${productAndTypeVos.productid}" method="post">
                         <tr>
                             <td width="25px">
                                 <label>

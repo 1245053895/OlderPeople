@@ -61,10 +61,10 @@
             <!--管理员列表-->
             <div class="clearfix administrator_style side_green" id="administrator" style="left: 0px;">
                 <div class="left_style">
-                    <div id="scrollsidebar" class="left_Treeview">
+                    <div id="scrollsidebar" class="left_Treeview" >
                         <div class="show_btn" id="rightArrow"><span></span></div>
                         <div class="widget-box side_content" style="height: 0px;">
-                            <div class="side_title"><a title="隐藏" class="close_btn"><span></span></a></div>
+                            <div class="side_title" style="width: 220px;"><a title="隐藏" class="close_btn"><span></span></a></div>
                             <div class="side_list"><div class="widget-header header-color-green2"><h4 class="lighter smaller">管理员分类列表</h4></div>
                                 <div class="widget-body">
                                     <ul class="b_P_Sort_list">
@@ -104,7 +104,7 @@
                                 <form id="form_${user.adminid}" action="${pageContext.request.contextPath}/updateByPrimaryKey.action?id=${user.adminid}" method="post">
                                     <tr>
                                         <td><label><input type="checkbox" name="postIds" value="${user.adminid}" class="ace"><span class="lbl"></span></label></td>
-                                        <td><input type="text" value="${user.adminid}" name="adminid" class="input_style text_info" readonly="true"/></td>
+                                        <td><input type="text" value="${user.adminid}" name="adminid" class="input_style text_info" style="background-color: transparent;border-color: transparent;" readonly="true"/></td>
                                         <td><input type="text" value="${user.adminname}" name="adminname" class="input_style text_info${user.adminid}" readonly="true"/></td>
                                         <td><input type="text" value="${user.adminpwd}" name="adminpwd" class="input_style text_info${user.adminid}" readonly="true"/></td>
                                         <td><input type="text" value="${user.adminuser}" name="adminuser" class="input_style text_info${user.adminid}" readonly="true"/></td>
@@ -126,7 +126,7 @@
             </div>
         </div>
 
-        <style type="text/css">
+<style type="text/css">
             .input_style{
                 width: 100%;
                 background-color: transparent;
@@ -175,8 +175,7 @@
                 background-color: #6fb3e0!important;
                 border-color: #6fb3e0;
             }
-
-        </style>
+</style>
 
 
 

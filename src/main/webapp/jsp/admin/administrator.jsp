@@ -101,24 +101,23 @@
                                 <tbody>
 
                                 <c:forEach items="${adminList }" var="user">
+                                <form id="form_${user.adminid}" action="${pageContext.request.contextPath}/updateByPrimaryKey.action?id=${user.adminid}" method="post">
                                     <tr>
                                         <td><label><input type="checkbox" name="postIds" value="${user.adminid}" class="ace"><span class="lbl"></span></label></td>
-                                        <td>${user.adminid}</td>
-                                        <td>${user.adminname}</td>
-                                        <td>${user.adminpwd}</td>
-                                        <td>${user.adminuser}</td>
-                                        <td>${user.adminsex}</td>
-                                        <td>${user.admindepart}</td>
-                                        <td>${user.adminphone}</td>
+                                        <td><input type="text" value="${user.adminid}" name="adminid" class="input_style text_info" readonly="true"/></td>
+                                        <td><input type="text" value="${user.adminname}" name="adminname" class="input_style text_info${user.adminid}" readonly="true"/></td>
+                                        <td><input type="text" value="${user.adminpwd}" name="adminpwd" class="input_style text_info${user.adminid}" readonly="true"/></td>
+                                        <td><input type="text" value="${user.adminuser}" name="adminuser" class="input_style text_info${user.adminid}" readonly="true"/></td>
+                                        <td><input type="text" value="${user.adminsex}" name="adminsex" class="input_style text_info${user.adminid}" readonly="true"/></td>
+                                        <td><input type="text" value="${user.admindepart}" name="admindepart" class="input_style text_info${user.adminid}" readonly="true"/></td>
+                                        <td><input type="text" value="${user.adminphone}" name="adminphone" class="input_style text_info${user.adminid}" readonly="true"/></td>
                                         <td class="td-manage">
-                                                <%--<a onClick="member_stop(this,'10001')"  href="javascript:;" title="停用"  class="btn btn-xs btn-success"><i class="fa fa-check  bigger-120"></i></a>--%>
-                                            <a title="编辑" onclick="member_edit('编辑','member-add.html','4','','510')" href="javascript:void(0);"  class="btn btn-xs btn-info" ><i class="fa fa-edit bigger-120"></i></a>
+                                            <a title="编辑" onclick="modify(${user.adminid})" href="javascript:void(0);"  class="btn btn-xs btn-info radius" ><i id="edit${user.adminid}" class="fa bigger-120">编辑</i></a>
                                             <a title="删除" href="/admin/deleteByPrimaryKey.action?id=${user.adminid}" class="btn btn-xs btn-warning" ><i class="fa fa-trash  bigger-120"></i></a>
                                         </td>
                                     </tr>
+                                </form>
                                 </c:forEach>
-
-
                                 </tbody>
                             </table>
                         </form>
@@ -126,6 +125,60 @@
                 </div>
             </div>
         </div>
+
+        <style type="text/css">
+            .input_style{
+                width: 100%;
+                background-color: transparent;
+                border: 0px transparent solid;
+            }
+            .btn-xs{
+                border-width: 3px;
+            }
+            .btn-info,.btn-info:focus
+            {
+                background-color: #6fb3e0!important;
+                border-color: #6fb3e0;
+            }
+
+            .btn-info:hover,.open .btn-info.dropdown-toggle
+            {
+                background-color: #4f99c6!important;
+
+                border-color: #6fb3e0;
+            }
+
+            .btn-info.no-border:hover
+            {
+                border-color: #4f99c6;
+            }
+
+            .btn-info.no-hover:hover
+            {
+                background-color: #6fb3e0!important;
+            }
+
+            .btn-info
+            {
+                background-color: #5fa6d3!important;
+                border-color: #4396cb;
+            }
+
+            .btn-info
+            {
+                background-color: #539fd0!important;
+                border-color: #539fd0;
+            }
+
+            .btn-info.disabled,.btn-info[disabled],fieldset[disabled] .btn-info,.btn-info.disabled:hover,.btn-info[disabled]:hover,fieldset[disabled] .btn-info:hover,.btn-info.disabled:focus,.btn-info[disabled]:focus,fieldset[disabled] .btn-info:focus,.btn-info.disabled:active,.btn-info[disabled]:active,fieldset[disabled] .btn-info:active,.btn-info.disabled.active,.btn-info[disabled].active,fieldset[disabled] .btn-info.active
+            {
+                background-color: #6fb3e0!important;
+                border-color: #6fb3e0;
+            }
+
+        </style>
+
+
 
         <!--添加管理员-->
         <div  id="closeThis" style="display: none;">
@@ -335,9 +388,19 @@
                     layer.msg('已启用!',{icon: 6,time:1000});
                 });
             }
-            /*产品-编辑*/
-            function member_edit(title,url,id,w,h){
-                layer_show(title,url,w,h);
+            /*管理员列表-编辑*/
+            var flag=true;
+            function modify(v) {
+                if(flag) {
+                    $('.text_info' + v).attr("readonly", false);
+                    $('.text_info' + v).parents("td").css("box-shadow","0px 0px 20px #888888 inset");
+                    $('#edit'+v).text("提交");
+                    flag = false;
+                }else{
+                    $("#form_"+v).submit();
+                    $('#edit'+v).text("编辑");
+                    flag=true;
+                }
             }
 
             /*产品-删除*/

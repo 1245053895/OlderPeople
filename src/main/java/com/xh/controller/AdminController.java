@@ -70,4 +70,11 @@ public class AdminController {
         }
         return "/admin/adminList.action";
     }
+
+    //根据管理员的id修改信息
+    @RequestMapping("/updateByPrimaryKey.action")
+    public String updateByPrimaryKey(Admin record){
+        adminManage.updateByPrimaryKeySelective(record);
+        return "redirect:/admin/adminList.action";
+    }
 }

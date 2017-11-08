@@ -39,9 +39,9 @@
         <div class="search_style">
             <div class="title_names">搜索查询</div>
             <ul class="search_content clearfix">
-                <li><label class="l_f">商品</label><input name="" type="text" class="text_add" placeholder="输入商品名" style=" width:250px"></li>
+                <li><label class="l_f">评论</label><input name="" type="text" class="text_add" placeholder="输入评论信息" style=" width:250px"></li>
                 <%--<li><label class="l_f">好评度</label><input class="inline laydate-icon" id="start" style=" margin-left:10px;" type="输入用户好评度"></li>--%>
-                <li><label class="l_f">平均好评度</label>
+                <li><label class="l_f">好评度</label>
                     <select style="margin-left: 10px">
                         <option value ="1">1</option>
                         <option value ="2">2</option>
@@ -68,28 +68,31 @@
                 <thead>
                 <tr>
                     <th width="25"><label><input type="checkbox" class="ace"><span class="lbl"></span></label></th>
-                    <th width="97px">id</th>
-                    <th width="100px">商品名</th>
-                    <%--<th width="100px">用户名</th>--%>
-                    <%--<th>评论内容</th>--%>
-                    <th width="97">平均好评度</th>
-                    <%--<th width="170">评论时间</th>--%>
+                    <%--<th width="97px">id</th>--%>
+                    <%--<th width="100px">商品名</th>--%>
+                    <th width="100px">用户名</th>
+                    <th width="25%">评论内容</th>
+                    <th width="97">好评度</th>
+                    <th width="170">评论时间</th>
                     <%--<th width="70">状态</th>                --%>
-                    <th width="120">操作</th>
+                    <th width="25%">回复内容</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr>
                     <td><label><input type="checkbox" class="ace"><span class="lbl"></span></label></td>
-                    <td>1</td>
-                    <td><a href="pl.jsp">秋裤</a></td>
-                    <%--<td><a href="member-show.jsp">张小泉</a></td>--%>
-                    <%--<td class="text-l">--%>
-                        <%--<a href="javascript:;" onclick="Guestbook_iew('12')">值此京东“618品质狂欢节”之际，中国特产无锡馆限量上线618份8只装精品水蜜桃</a>--%>
+                    <%--<td>1</td>--%>
+                    <%--<td>秋裤</td>--%>
+                    <td><a href="member-show.jsp">张小泉</a></td>
+                    <td class="text-l">
+
+                        <a href="javascript:;" onclick="Guestbook_iew('12')">值此京东“618品质狂欢节”之际，中国特产无锡馆限量上线618份8只装精品水蜜桃</a>
+
                     <td>4</td>
-                    <%--<td>2017.10.12</td>--%>
+                    <td>2017.10.12</td>
                     <td class="td-manage">
-                        <a href="javascript:;"  onclick="member_del(this,'1')" title="删除" class="btn btn-xs btn-warning" ><i class="fa fa-trash  bigger-120"></i></a>
+                        <%--<a  href="javascript:;"  onclick="member_del(this,'1')" title="删除" class="btn btn-xs btn-warning" ><i class="fa fa-trash  bigger-120"></i></a>--%>
+                        <span id="text"></span>
                     </td>
                 </tr>
                 </tbody>
@@ -106,10 +109,11 @@
         <div class="form-group"><label class="col-sm-2 control-label no-padding-right"> 评论内容 </label>
             <div class="col-sm-9">三年同窗，一起沐浴了一片金色的阳光，一起度过了一千个日夜，我们共同谱写了多少友谊的篇章?愿逝去的那些闪亮的日子，都化作美好的记忆，永远留在心房。认识您，不论是生命中的一段插曲，还是永久的知已，我都会珍惜，当我疲倦或老去，不再拥有青春的时候，这段旋律会滋润我生命的每一刻。在此我只想说：有您真好!无论你身在何方，我的祝福永远在您身边!</div>
         </div>
-        <div class="form-group"><label class="col-sm-2 control-label no-padding-right">是否回复 </label>
+        <div class="form-group">
+            <label class="col-sm-2 control-label no-padding-right">回复内容 </label>
             <div class="col-sm-9">
-                <label><input name="checkbox" type="checkbox" class="ace" id="checkbox"><span class="lbl"> 回复</span></label>
-                <div class="Reply_style" >
+                <%--<label><input name="checkbox" type="checkbox" class="ace" id="checkbox"><span class="lbl"> 回复</span></label>--%>
+                <div style="display: block;margin-top: 10px">
                     <textarea name="权限描述" class="form-control" id="form_textarea" placeholder="" onkeyup="checkLength(this);"></textarea>
                     <span class="wordage">剩余字数：<span id="sy" style="color:Red;">200</span>字</span>
                 </div>
@@ -133,17 +137,60 @@
     }
 
     /*checkbox激发事件*/
-    $('#checkbox').on('click',function(){
-        if($('input[name="checkbox"]').prop("checked")){
-            $('.Reply_style').css('display','block');
-        }
-        else{
-
-            $('.Reply_style').css('display','none');
-        }
-    })
+//    $('#checkbox').on('click',function(){
+//        if($('input[name="checkbox"]').prop("checked")){
+//            $('.Reply_style').css('display','block');
+//        }
+//        else{
+//
+//            $('.Reply_style').css('display','none');
+//        }
+//    })
     /*留言查看*/
     function Guestbook_iew(id){
+        var index = layer.open({
+            type: 1,
+            title: '留言信息',
+            maxmin: true,
+            shadeClose:false,
+            area : ['600px' , ''],
+            content:$('#Guestbook'),
+            btn:['确定','取消'],
+            yes: function(index, layero){
+//                if($('input[name="checkbox"]').prop("checked")){
+                    if($('.form-control').val()==""){
+                        layer.alert('回复内容不能为空！',{
+                            title: '提示框',
+                            icon:0,
+                        })
+                    }else if($('.form-control').val()!==""){
+                        layer.alert('确定回复该内容？',{
+                            title: '提示框',
+                            icon:0,
+                            btn:['确定','取消'],
+                            yes: function(index){
+                                layer.closeAll();
+                                hf();
+                            }
+                        });
+                    }
+//                }
+                else{
+                    layer.alert('是否要取消回复！',{
+                        title: '提示框',
+                        icon:0,
+                    });
+                    layer.close(index);
+                }
+            }
+        })
+    };
+    function hf() {
+//        var str = prompt("回复评论");
+        var str = document.getElementById('form_textarea').value;
+            document.getElementById('text').innerHTML = str;
+    }
+/*    function Guestbook_iew(id){
         var index = layer.open({
             type: 1,
             title: '留言信息',
@@ -178,7 +225,7 @@
                 }
             }
         })
-    };
+    };*/
     /*字数限制*/
     function checkLength(which) {
         var maxChars = 200; //

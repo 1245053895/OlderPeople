@@ -242,7 +242,7 @@
 
 			<ul class="nav nav-list" id="nav_list">
 
-				<li class="home"><a href="javascript:void(0)" name="home.jsp" class="iframeurl" title=""><i class="icon-dashboard"></i><span class="menu-text"> 系统首页 </span></a></li>
+				<li class="home"><a href="javascript:void(0)" name="jsp/admin/home.jsp" class="iframeurl" title=""><i class="icon-dashboard"></i><span class="menu-text"> 系统首页 </span></a></li>
 
 				<li><a href="#" class="dropdown-toggle"><i class="icon-desktop"></i><span class="menu-text"> 管理员管理 </span><b class="arrow icon-angle-down"></b></a>
 					<ul class="submenu">

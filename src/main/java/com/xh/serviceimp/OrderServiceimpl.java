@@ -2,8 +2,11 @@ package com.xh.serviceimp;
 
 import com.xh.mapper.pojo.OrderAndOtherMapper;
 import com.xh.po.Order;
+import com.xh.po.Transport;
 import com.xh.po.vo.OrderAndOther;
 import com.xh.po.vo.OrderAndString;
+import com.xh.po.vo.OrderCustom;
+import com.xh.po.vo.OrderDetailCustom;
 import com.xh.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -63,5 +66,35 @@ public class OrderServiceimpl implements OrderService {
     public List<OrderAndOther> selectOrderAndOther() {
         List<OrderAndOther> orderAndOtherList = orderAndOtherMapper.selectOrderAndOther();
         return orderAndOtherList;
+    }
+
+    @Override
+    public List<OrderCustom> queryByAny(OrderCustom orderCustom) {
+        return orderAndOtherMapper.queryByAny(orderCustom);
+    }
+
+    @Override
+    public List<Transport> getTransport() {
+        return orderAndOtherMapper.getTransport();
+    }
+
+    @Override
+    public void updateOrderShipping(OrderCustom orderCustom) {
+        orderAndOtherMapper.updateOrderShipping(orderCustom);
+    }
+
+    @Override
+    public void updateCloseDeal(OrderCustom orderCustom) {
+        orderAndOtherMapper.updateCloseDeal(orderCustom);
+    }
+
+    @Override
+    public List<OrderDetailCustom> getOrderDetailByOrderId(Integer id) {
+        return orderAndOtherMapper.getOrderDetailByOrderId(id);
+    }
+
+    @Override
+    public List<OrderCustom> getOrderByStatusOfSix(OrderCustom orderCustom) {
+        return orderAndOtherMapper.getOrderByStatusOfSix(orderCustom);
     }
 }

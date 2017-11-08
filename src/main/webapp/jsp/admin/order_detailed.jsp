@@ -1,3 +1,5 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%--
   Created by IntelliJ IDEA.
   User: Administrator
@@ -36,7 +38,7 @@
 <body>
 <div class="margin clearfix">
 <div class="Order_Details_style">
-<div class="Numbering">订单编号:<b>NJHDXJ201509-001</b></div></div>
+<div class="Numbering">订单编号:<b>${orderDetailCustoms.get(0).orderid}</b></div></div>
  <div class="detailed_style">
  <!--收件人信息-->
     <div class="Receiver_style">
@@ -44,19 +46,19 @@
      <div class="Info_style clearfix">
         <div class="col-xs-4">  
          <label class="label_name"> 收件人姓名： </label>
-         <div class="o_content">张孝全</div>
+         <div class="o_content">${orderDetailCustoms.get(0).gainname}</div>
         </div>
         <div class="col-xs-4">  
          <label class="label_name"> 收件人电话： </label>
-         <div class="o_content">16543432343</div>
+         <div class="o_content">${orderDetailCustoms.get(0).gainmobile}</div>
         </div>
          <div class="col-xs-4">  
          <label class="label_name"> 收件地邮编： </label>
-         <div class="o_content">104545</div>
+         <div class="o_content">${orderDetailCustoms.get(0).gaincode}</div>
         </div>
          <div class="col-xs-4">  
          <label class="label_name"> 收件地址： </label>
-         <div class="o_content">江苏南京市雨花台区郁金香软件大厦3懂3单元302室</div>
+         <div class="o_content">${orderDetailCustoms.get(0).gainaddress}</div>
         </div>
      </div>
     </div>
@@ -64,30 +66,33 @@
     <div class="product_style">
     <div class="title_name">商品信息</div>
     <div class="Info_style clearfix">
-      <div class="product_info clearfix">
-      <a href="#" class="img_link"><img src="images/spxq1.jpg"  width="200" height="200"/></a>
-      <span>
-      <a href="#" class="name_link">老年外套，老年外套老年外套老年外套老年外套</a>
-      <b>保暖舒服保暖舒服保暖舒服保暖舒服保暖舒服</b>
-      <p>规格：XXL</p>
-      <p>数量：2kg</p>
-      <p>价格：<b class="price"><i>￥</i>56</b></p>
-      <p>可获积分：23</p>
-      <p>订单状态：<i class="label label-success radius">代发货</i></p>
-      </span>
-      </div>
-      <div class="product_info clearfix">
-      <a href="#" class="img_link"><img src="images/spxq2.jpg"  width="200" height="200"/></a>
-      <span>
-     <a href="#" class="name_link">老年外套，老年外套老年外套老年外套老年外套</a>
-      <b>保暖舒服保暖舒服保暖舒服保暖舒服保暖舒服</b>
-      <p>规格：XXL</p>
-      <p>数量：2kg</p>
-      <p>价格：<b class="price"><i>￥</i>69.9</b></p>
-      <p>可获积分：23</p>
-      <p>订单状态：<i class="label label-success radius">已签收</i></p>
-      </span>
-      </div>
+        <c:forEach items="${orderDetailCustoms}" var="orderDetailCustom">
+          <div class="product_info clearfix">
+              <a href="#" class="img_link"><img src="${pageContext.request.contextPath}/jsp/admin/images/${orderDetailCustom.productpicture}"  width="200" height="200"/></a>
+              <span>
+                  <a href="#" class="name_link">${orderDetailCustom.productname}</a><br/>
+                  <b>${orderDetailCustom.productdescribe}</b>
+                  <p>规格: XXL</p>
+                  <p>数量: ${orderDetailCustom.shoppingcount}</p>
+                  <p>价格：<b class="price"><i>￥</i>${orderDetailCustom.productprice}</b></p>
+                  <p>可获积分：${orderDetailCustom.totalcredit}</p>
+                  <p>商品状态：
+
+                    <c:if test="${orderDetailCustom.stock>0}">
+                        <i class="label label-success radius">
+                            有货:
+                        </i>&nbsp;${orderDetailCustom.stock}
+                    </c:if>
+                    <c:if test="${orderDetailCustom.stock<1}">
+                        <i class="label label-warning radius">
+                            无货:
+                        </i>&nbsp;${orderDetailCustom.stock}
+                    </c:if>
+
+                  </p>
+              </span>
+          </div>
+        </c:forEach>
     </div>
     </div>
     <!--总价-->
@@ -95,36 +100,70 @@
      <div class="Info_style clearfix">
         <div class="col-xs-4">
          <label class="label_name"> 支付方式： </label>
-         <div class="o_content">在线支付</div>
+         <div class="o_content">
+             <c:if test="${orderDetailCustoms.get(0).paytype==0}">
+                 在线支付
+             </c:if>
+             <c:if test="${orderDetailCustoms.get(0).paytype==1}">
+                 货到付款
+             </c:if>
+         </div>
         </div>
         <div class="col-xs-4">  
          <label class="label_name"> 支付状态： </label>
-         <div class="o_content">已支付</div>
+         <div class="o_content">
+             <c:if test="${orderDetailCustoms.get(0).paystatus==0}">
+                 已支付
+             </c:if>
+             <c:if test="${orderDetailCustoms.get(0).paystatus==1}">
+                 未支付
+             </c:if>
+         </div>
         </div>
-        <div class="col-xs-4">
-         <label class="label_name"> 收货方式： </label>
-         <div class="o_content">自取</div>
-        </div>
-        <div class="col-xs-4">
-         <label class="label_name"> 物流名称： </label>
-         <div class="o_content">天天快递</div>
-        </div>
-        <div class="col-xs-4">
-         <label class="label_name"> 物流编号： </label>
-         <div class="o_content">142315</div>
-        </div>
+         <c:if test="${orderDetailCustoms.get(0).shippingname=='自取'}">
+         <div class="col-xs-4">
+             <label class="label_name"> 收货方式： </label>
+            <div class="o_content">
+                自取
+            </div>
+         </div>
+         </c:if>
+         <c:if test="${orderDetailCustoms.get(0).shippingname!='自取'}">
+             <div class="col-xs-4">
+                 <label class="label_name"> 收货方式： </label>
+                 <div class="o_content">
+                     邮寄
+                 </div>
+             </div>
+             <div class="col-xs-4">
+                 <label class="label_name"> 物流名称： </label>
+                 <div class="o_content">${orderDetailCustoms.get(0).shippingname}</div>
+             </div>
+             <div class="col-xs-4">
+                 <label class="label_name"> 物流编号： </label>
+                 <div class="o_content">${orderDetailCustoms.get(0).shippingcode}</div>
+             </div>
+         </c:if>
         <div class="col-xs-4">
          <label class="label_name"> 订单生成日期： </label>
-         <div class="o_content">2016-7-5</div>
+         <div class="o_content"><fmt:formatDate  value="${orderDetailCustoms.get(0).createtime}" pattern="yyyy-MM-dd hh:mm:ss"/></div>
         </div>
         </div>
-      <div class="Total_m_style"><span class="Total">商品总数：<b>10</b></span><span class="Total_price">总价：<b>345</b>元</span></div>
+      <div class="Total_m_style">
+          <span class="Total">商品总数：<b>${orderDetailCustoms.size()}</b></span>
+          <span class="Total_price">总价：<b>
+              ${orderDetailCustoms.get(0).amountpay}
+          </b>元</span>
+      </div>
     </div>
-<div class="Button_operation">
-				<button onclick="article_save_submit();" class="btn btn-primary radius" type="submit"><i class="icon-save "></i>返回上一步</button>
-				
-				<button onclick="layer_close();" class="btn btn-default radius" type="button">&nbsp;&nbsp;取消&nbsp;&nbsp;</button>
-			</div>
+    <div class="Button_operation">
+        <c:if test="${orderDetailCustoms.get(0).orderid>1}">
+            <a href="${pageContext.request.contextPath}/getOrderDetailByOrderId.action?id=${orderDetailCustoms.get(0).orderid-1}" class="btn btn-primary radius"><i class="icon-save "></i>上一个订单</a>
+        </c:if>
+        <a href="${pageContext.request.contextPath}/getOrderDetailByOrderId.action?id=${orderDetailCustoms.get(0).orderid+1}" class="btn btn-primary radius"><i class="icon-save "></i>下一个订单</a>
+
+        <%--<button onclick="layer_close();" class="btn btn-default radius" type="button">&nbsp;&nbsp;取消&nbsp;&nbsp;</button>--%>
+    </div>
  </div>
 </div>
 </body>

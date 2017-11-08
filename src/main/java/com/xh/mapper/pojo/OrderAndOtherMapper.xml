@@ -36,6 +36,10 @@
         SELECT  *
         FROM `order`
         <where>
+            <if test="orderid != null">
+            AND  orderid = #{orderid,jdbcType=INTEGER}
+            </if>
+
             <if test="userid != null">
               AND  UserId = #{userid,jdbcType=INTEGER}
             </if>
@@ -85,24 +89,125 @@
         GROUP BY ProductTypeName
     </select>
 
-    <!--<&#45;&#45;各个订单的商品&ndash;&gt;-->
-    <!--parameterType="com.xh.po.vo.OrderOfString"-->
-<select id="selectOrderAndOther" resultType="com.xh.po.vo.OrderAndOther" >
-SELECT a.OrderProductId AS orderproductid,a.ProductId AS productid,a.OrderId AS orderid,a.ShoppingCount AS shoppingcount,a.TotalMoneyCount AS totalmoneycount,
-       b.ProductPrice AS productprice,b.ProductName AS productname,b.ProductPicture AS productpicture,b.ProductNew AS productnew,b.ProducthotSale AS producthotsale,b.ProductDisabled AS productdisabled,b.ProductCredits AS productcredits,
-       c.UserId AS userid,c.AmountPay AS amountpay,c.RealPay AS realpay,c.PayType AS paytype,c.PostFee AS postfee,c.`Status` AS status,c.PayStatus AS paystatus,c.CreateTime AS createtime,c.UpdateTime AS updatetime,
-       c.PaymentTime AS paymenttime,c.SendTime AS sendtime,c.EndTime AS endtime,c.CloseTime AS closetime,c.ShippingName AS shippingname,c.ShippingCode AS shippingcode,c.BuyerRequest AS buyerrequest,c.TotalCredit AS totalcredit,
-       d.ProductTypeName AS producttypename
-FROM orderproduct a,product b,`order` c,producttype d
-    <where>
-        <if test="2>1">
-            AND  b.ProductTypeId=d.ProductTypeId AND a.ProductId=b.ProductId AND a.OrderId=c.OrderId
+        <!--<&#45;&#45;各个订单的商品&ndash;&gt;-->
+        <!--parameterType="com.xh.po.vo.OrderOfString"-->
+    <select id="selectOrderAndOther" resultType="com.xh.po.vo.OrderAndOther" >
+    SELECT a.OrderProductId AS orderproductid,a.ProductId AS productid,a.OrderId AS orderid,a.ShoppingCount AS shoppingcount,a.TotalMoneyCount AS totalmoneycount,
+           b.ProductPrice AS productprice,b.ProductName AS productname,b.ProductPicture AS productpicture,b.ProductNew AS productnew,b.ProducthotSale AS producthotsale,b.ProductDisabled AS productdisabled,b.ProductCredits AS productcredits,
+           c.UserId AS userid,c.AmountPay AS amountpay,c.RealPay AS realpay,c.PayType AS paytype,c.PostFee AS postfee,c.`Status` AS status,c.PayStatus AS paystatus,c.CreateTime AS createtime,c.UpdateTime AS updatetime,
+           c.PaymentTime AS paymenttime,c.SendTime AS sendtime,c.EndTime AS endtime,c.CloseTime AS closetime,c.ShippingName AS shippingname,c.ShippingCode AS shippingcode,c.BuyerRequest AS buyerrequest,c.TotalCredit AS totalcredit,
+           d.ProductTypeName AS producttypename
+    FROM orderproduct a,product b,`order` c,producttype d
+        <where>
+            <if test="2>1">
+                AND  b.ProductTypeId=d.ProductTypeId AND a.ProductId=b.ProductId AND a.OrderId=c.OrderId
+            </if>
+        </where>
+    </select>
+
+    <select id="queryByAny" resultType="orderCustom" parameterType="orderCustom">
+        SELECT OrderId orderid,
+               UserName username,
+               RealPay realpay,
+               TotalCredit totalcredit,
+               ShippingName shippingname,
+               ShippingCode shippingcode,
+               BuyerRequest buyerrequest,
+               Status status,
+               UpdateTime updatetime,
+               PayType paytype,
+               PayStatus paystatus,
+               PostFee postfee
+        from `order`
+        LEFT JOIN user
+        ON user.UserId = `order`.UserId
+        <if test="conditions != null">
+          <where>
+                OR  OrderId LIKE '%${conditions}%'
+                OR  UserName LIKE '%${conditions}%'
+                OR  RealPay LIKE '%${conditions}%'
+                OR  TotalCredit  LIKE '%${conditions}%'
+                OR  ShippingName  LIKE '%${conditions}%'
+                OR  ShippingCode LIKE '%${conditions}%'
+                OR  BuyerRequest  LIKE '%${conditions}%'
+                OR  Status  LIKE '%${conditions}%'
+                OR  PayStatus  LIKE '%${conditions}%'
+          </where>
         </if>
-    </where>
+    </select>
+
+    <select id="getOrderByStatusOfSix" resultType="orderCustom" parameterType="orderCustom">
+        SELECT OrderId orderid,
+        UserName username,
+        RealPay realpay,
+        TotalCredit totalcredit,
+        ShippingName shippingname,
+        ShippingCode shippingcode,
+        BuyerRequest buyerrequest,
+        Status status,
+        UpdateTime updatetime,
+        PayType paytype,
+        PayStatus paystatus,
+        PostFee postfee
+        from `order`
+        LEFT JOIN user
+        ON user.UserId = `order`.UserId
+        WHERE Status = #{conditions}
+    </select>
 
 
-</select>
+    <select id="getTransport" resultType="transport">
+        SELECT TransportId transportid,
+        TransportName transportname,
+        TransportImg transportimg
+        FROM transport
+    </select>
 
+    <update id="updateOrderShipping" parameterType="orderCustom">
+        UPDATE   `order`
+        SET
+        ShippingCode=#{shippingcode},
+        ShippingName=#{shippingname},
+        Status=#{status},
+        SendTime=#{sendtime}
+        WHERE OrderId=#{orderid};
+    </update>
 
+    <update id="updateCloseDeal" parameterType="orderCustom">
+        UPDATE   `order`
+        SET
+        Status=#{status},
+        CloseTime=#{closetime}
+        WHERE OrderId=#{orderid};
+    </update>
 
+    <select id="getOrderDetailByOrderId" resultType="orderDetailCustom" parameterType="java.lang.Integer">
+        SELECT o.OrderId orderid,
+           o.ShippingName shippingname,
+           o.ShippingCode shippingcode,
+           o.PayType paytype,
+           o.PayStatus paystatus,
+           o.CreateTime createtime,
+           o.AmountPay amountpay,
+           o.TotalCredit totalcredit,
+           o.Status status,
+           g.GainName gainname,
+           g.GainAddress gainaddress,
+           g.GainCode gaincode,
+           g.GainMobile gainmobile,
+           op.ShoppingCount shoppingcount,
+           op.OrderProduct_A orderproductA, /*购买时的商品价格*/
+           p.ProductId productid,
+           p.ProductDescribe productdescribe,
+           p.ProductPrice productprice,   /*商品实时价格*/
+           p.ProductName productname,
+           p.ProductPicture productpicture,
+           s.Stock stock
+        FROM `order` o
+        INNER JOIN orderproduct op ON (o.OrderId=op.OrderId)
+        INNER JOIN product p ON (p.ProductId=op.ProductId)
+        INNER JOIN gainaddres g ON (o.Order_A=g.GainId)
+        INNER JOIN stock s ON (s.ProductId=p.ProductId)
+        WHERE o.OrderId=${_parameter};
+    </select>
 </mapper>

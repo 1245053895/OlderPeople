@@ -79,4 +79,14 @@
     where ProductTypeId = #{producttypeid,jdbcType=INTEGER}
   </update>
 
+
+  <select id="typeProductType" resultType="com.xh.po.vo.ProductAndTypeVo" parameterType="string">
+    select  ProductId AS productid, b.ProductTypeId AS producttypeid, ProductName AS productname, ProductPrice AS productprice, PictureSizes AS picturesizes, PictureColors AS picturecolors,
+    ProductLookCount AS productlookcount, ProductDescribe AS productdescribe, ProductStoreTime AS productstoretime, ProductPicture AS productpicture, ProductNew AS productnew,
+    ProducthotSale AS producthotsale, ProductDisabled AS productdisabled, ProductCredits AS productcredits, ProductCreateTime AS productcreatetime,
+    b.ProductTypeName AS producttypename
+    FROM product a,producttype b
+    where a.ProductTypeId=b.ProductTypeId AND b.ProductTypeId=#{producttypeid};
+  </select>
+
 </mapper>

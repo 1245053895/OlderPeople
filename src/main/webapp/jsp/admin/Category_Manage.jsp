@@ -50,7 +50,7 @@ To change this template use File | Settings | File Templates.
         <a href="/getFirstview.action" id="Competence_add" class="btn btn-warning" title="添加权限"><i class="fa fa-plus"></i> 添加权限</a>
        <a href="javascript:deleteBatch('<%=basePath%>');" class="btn btn-danger"><i class="icon-trash"></i>批量删除</a>
        </span>
-        <span class="r_f">共：<b>5</b>类</span>
+        <span class="r_f">共：<b>${kindOfAdmin.adminGroupCount1}</b>类</span>
     </div>
     <div class="compete_list">
         <table id="sample-table-1" class="table table-striped table-bordered table-hover">

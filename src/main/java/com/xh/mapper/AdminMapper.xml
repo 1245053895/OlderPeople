@@ -27,7 +27,7 @@
     select
     <include refid="Base_Column_List" />
     from admin
-    where AdminName= #{adminanme,jdbcType=INTEGER}
+    where AdminName= #{username}
   </select>
 
   <!--//查询一条数据通过id-->
@@ -214,9 +214,19 @@
     on a.admingroupid = b.admingroupid;
   </select>
 
+  <!--//通过AdminGroupId 拓展查询admin group表  "-->
+  <select id="queryAdminAndGroup3" resultType="com.xh.po.vo.AdminVo" parameterType="string">
+    select    a.AdminId adminid, a.AdminName adminname, a.AdminPic adminpic, a.AdminPwd adminpwd, a.AdminUser adminuser, a.AdminSex adminsex, a.AdminDepart admindepart, a.AdminPhone adminphone,
+    a.AdminGroupId admingroupid, a.Admin_A adminA, a.Admin_B adminB, a.Admin_C adminC,
+    b.AdminGroupName admingroupname
+    from admin a,admingroup b
+    WHERE a.AdminGroupId = b.AdminGroupId AND b.AdminGroupId=#{admingroupid};
+  </select>
+
+
 
   <select id="kindOfAdmin" resultType="com.xh.po.vo.kindOfAdmin">
-   SELECT CONCAT(AdminGroupName,"(",COUNT(*),")") AS allrloe
+   SELECT a.AdminGroupId AS admingroupid,CONCAT(AdminGroupName,"(",COUNT(*),")") AS allrloe
    FROM admin a,admingroup b
    WHERE   a.AdminGroupId=b.AdminGroupId
    GROUP BY a.AdminGroupId

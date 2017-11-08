@@ -83,7 +83,7 @@ body
 /*****************************面包屑样式*****************************/
 #breadcrumbs .iframeurl{ color:#333;text-decoration : none;}
 /******************边框样式**************/
-.t_Record{ border:1px solid #ddd; border-radius:3px; -moz-border-radius:3px;-webkit-border-radius:3px; padding:10px; float:left}
+.t_Record{width: 1090px;border:1px solid #ddd; border-radius:3px; -moz-border-radius:3px;-webkit-border-radius:3px; padding:10px; float:left}
 .news_style{ width:250px; float:left; border:1px solid #ddd; margin-left:15px; height:320px; }
 .news_style .title_name{padding-left:20px;
 	font-size:16px;
@@ -333,7 +333,7 @@ body
 .b_P_Sort_list li .grey,
 .b_P_Sort_list li .orange{ margin-right:5px;}
 /*******************************产品类型样式属性******************************************/
-.left_Treeview{ position:relative; float:left}
+.left_Treeview{ position:relative; float:left; width:230px;}
 .type_title{width: 100%;height: 40px;background-color: #F4F4F4;border-bottom:1px solid #dddddd;text-align: center;font-size: 16px;line-height: 40px; }
 .page_right_style.Widescreen{ left:0px}
 .show_btn {

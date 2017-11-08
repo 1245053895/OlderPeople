@@ -7,6 +7,7 @@ import com.xh.po.Producttype;
 import com.xh.po.vo.Allproduct;
 import com.xh.po.vo.KindOfProduct;
 import com.xh.po.vo.ProductAndTypeVo;
+import com.xh.po.vo.StringAndString;
 import com.xh.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,6 +20,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -29,18 +31,21 @@ public class ProducController {
     private ProductService productService;
     //    查
     @RequestMapping("/ProducList.action")
-    public String producList(String productname, Product product, Model model){
+    public String producList(String producname, Product product, Model model){
         //    得到总商品数  Allproduct productCount();
+        product.setProductname(producname);
         Allproduct allproduct =  productService.productCount();
         List<ProductAndTypeVo> productAndTypeVos= productService.selectByProduct(product);
+     /*  List<ProductAndTypeVo> productsTime=productService.moHuselectByTime(productstoretime);*/
+      /*  model.addAttribute("productAndTypeVos",productstoretime);*/
         model.addAttribute("productAndTypeVos",productAndTypeVos);
-        model.addAttribute("productname",productname);
+        model.addAttribute("productname",producname);
         model.addAttribute("allproduct",allproduct);
         return "/jsp/admin/Products_List.jsp";
     }
+
     //删除
     @RequestMapping("/DeleteOneProduct.action")
-
     public String deleteOneProduct(int productid) throws Exception{
         //判断商品是否为空，根据id没有查询到商品，抛出异常，提示用户商品信息不存 在
         if(productid < 0){
@@ -61,13 +66,11 @@ public class ProducController {
     @RequestMapping("/AddProduct.action")
     public String addProduct(Product product, Model model,HttpServletRequest request,MultipartFile product_pic) throws ParseException {
 //       springmvc 没有办法去处理日期格式的字符串1990-01-01   1990/01/01     01/01 1990   Date
-
         //图片原始名称
         String originalFilename = product_pic.getOriginalFilename();
         //上传图片
         if(product_pic!=null && originalFilename!=null && originalFilename.length()>0){
-
-            //存储图片的物理路径
+           //存储图片的物理路径
             String pic_path = "E:\\IntelliJ IDEA\\images\\";
             //新的图片名称
             String newFileName = UUID.randomUUID() + originalFilename.substring(originalFilename.lastIndexOf("."));
@@ -116,6 +119,19 @@ public class ProducController {
         model.addAttribute("kindOfProducts",kindOfProducts);
         return "/jsp/admin/Product_Manage.jsp";
     }
+
+
+    //显示各商品类型的商品
+    @RequestMapping(value="typeProductType.action",method={RequestMethod.POST,RequestMethod.GET})
+    public String typeProductType(String producttypeid,Model model){
+        List<ProductAndTypeVo> productAndTypeVos=productService.typeProductType(producttypeid);
+        List<KindOfProduct> kindOfProducts= productService.KindOfProduct();
+        model.addAttribute("kindOfProducts",kindOfProducts);
+        model.addAttribute("productAndTypeVos", productAndTypeVos);
+        return "/jsp/admin/noname.jsp";
+    }
+
+
     //商品分类增加     Producttype producttype,Model model
     @RequestMapping("/ProductTypeAdd.action")
     public String productTypeAdd(String producttypename,Producttype producttype,Model model){
@@ -158,6 +174,14 @@ public class ProducController {
         productService.updateByPrimaryKeySelective(product);
         return "redirect:/ProducList.action";
     }
+
+//根据商品的id更新商品的信息
+    @RequestMapping("/updateById.action")
+    public String updateById(ProductAndTypeVo productAndTypeVo){
+        productService.updateById(productAndTypeVo);
+        return "redirect:/ProducList.action";
+    }
+
 
 
 }

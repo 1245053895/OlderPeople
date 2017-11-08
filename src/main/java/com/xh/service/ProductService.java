@@ -7,7 +7,9 @@ import com.xh.po.Producttype;
 import com.xh.po.vo.Allproduct;
 import com.xh.po.vo.KindOfProduct;
 import com.xh.po.vo.ProductAndTypeVo;
+import com.xh.po.vo.StringAndString;
 
+import java.util.Date;
 import java.util.List;
 
 public interface ProductService {
@@ -33,5 +35,10 @@ public interface ProductService {
   //    商品类型查询
   List<Producttype> selectByNothing();
 
+
+    List<ProductAndTypeVo> typeProductType(String producttypeid);
+
+    //根据商品的id对商品进行更新
+    public void updateById(ProductAndTypeVo productAndTypeVo);
 
 }

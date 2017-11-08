@@ -4,6 +4,7 @@ package com.xh.controller;
 import com.xh.po.vo.AdminRole;
 import com.xh.po.Admingroup;
 import com.xh.po.vo.AdminRoleCustom;
+import com.xh.po.vo.kindOfAdmin;
 import com.xh.po.Firstview;
 import com.xh.service.RoleManageServ;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,7 +58,9 @@ public class RloeController {
      */
     @RequestMapping("/queryAllRole.action")
     public String queryAllRole(Model model){
+        kindOfAdmin  kindOfAdmin=roleManageServ.adminGroupCount1();
         List<Admingroup> admingroups=roleManageServ.queryAllRole();
+        model.addAttribute("kindOfAdmin",kindOfAdmin);
         model.addAttribute("admingroups",admingroups);
         return "/jsp/admin/Category_Manage.jsp";
     }
@@ -76,6 +79,7 @@ public class RloeController {
     public String moHuSelectByAdminUser(Model model,String adminuser){
         List<AdminRole> adminRoles=roleManageServ.moHuSelectByAdminUser(adminuser);
         model.addAttribute("adminRoles",adminRoles);
+        model.addAttribute("adminuser",adminuser);
         return  "/jsp/admin/admin_Competence.jsp";
     }
 
@@ -99,4 +103,13 @@ public class RloeController {
         roleManageServ.updateRloeById(adminRoleCustom);
         return "redirect:/queryAllRole.action";
     }
+
+////查询角色的种类数
+//    @RequestMapping("/adminGroupCount1")
+//    public String adminGroupCount1(Model model){
+//        kindOfAdmin  kindOfAdmin=roleManageServ.adminGroupCount1();
+//        model.addAttribute("kindOfAdmin",kindOfAdmin);
+//        return "/jsp/admin/Category_Manage.jsp";
+//    }
+
 }

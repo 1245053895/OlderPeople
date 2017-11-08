@@ -38,12 +38,35 @@
         <div class="type_title">管理员信息 </div>
         <div class="xinxi">
             <div style="margin-top: 50px;margin-left: 200px; float: left;">
-                <img src="images/admintx.png" height="210px" width="190px">
-                <div class="Button_operation clearfix">
-                    <a href="javascript:ovid()" onclick="change_Password()" class="btn btn-warning btn-xs">修改密码</a>
-                    <button onclick="modify();" class="btn btn-danger" type="submit">修改信息</button>
-                    <button onclick="save_info();" class="btn btn-success" type="button">保存修改</button>
-                </div>
+                <form action="" method="post" enctype="multipart/form-data">
+                    <div id="headimg">
+                    <img src="/jsp/admin/images/upload/${admin.adminpic}" style="width: 190px;height: 210px;">
+                    </div>
+                   <%-- <button onclick="" class="btn btn-success" type="submit">上传图片</button>--%>
+                    <div style="margin-top: 10px">
+                        <input type="file" id="adminpic" name="adminpic" onchange="fileChange(this)" style="display: none">
+                        <button onclick="selectFile()" class="btn btn-success" type="button">上传图片</button>
+                        <button id="btn_upload" class="btn btn-success" type="submit" style="display: none">提交</button>
+                        <script>
+                            function selectFile() {
+                                $('#adminpic').click();
+                            }
+                            function fileChange(fl) {
+                                $('#btn_upload').show();
+                                reads(fl.files[0]);
+                            }
+                            function reads(fil){
+                                var reader = new FileReader();
+                                reader.readAsDataURL(fil);
+                                reader.onload = function()
+                                {
+                                    $("#headimg").html('<img src="'+reader.result+'" style="width: 190px;height: 210px;">');
+                                };
+                            }
+                        </script>
+                    </div>
+                </form>
+
             </div>
             <div class="info">
                 <form id="submitform" action="${pageContext.request.contextPath}/UpdateMyselfInformation.action" method="post">
@@ -80,7 +103,20 @@
                             <label class="col-sm-3 control-label no-padding-right">角色： </label>
                             <div class="col-sm-9" > <span  id="admin_info_span1">${adminRole.admingroupname}</span></div>
                         </div>
+                        <div class="form-group" style="height: 30px;" >
+                            <%--<label class="col-sm-3 control-label no-padding-right"></label>--%>
+                            <div class="col-sm-9" >
+                                <button onclick="change_Password();" class="btn btn-warning" type="button">修改密码</button>
+                                <button onclick="modify();" class="btn btn-danger" type="button">修改信息</button>
+                                <button onclick="save_info();" class="btn btn-success" type="button" style="display: none">保存修改</button>
+                            </div>
+                        </div>
                     </div>
+                    <%--<div class="Button_operation clearfix">--%>
+                        <%--<a href="javascript:ovid()" onclick="change_Password()" class="btn btn-warning btn-xs">修改密码</a>--%>
+                        <%--<button onclick="modify();" class="btn btn-danger" type="submit">修改信息</button>--%>
+                        <%--<button onclick="save_info();" class="btn btn-success" type="button">保存修改</button>--%>
+                    <%--</div>--%>
                 </form>
                 </div>
             </div>
@@ -108,7 +144,7 @@
         $('.text_info').attr("disabled", false);
         $('.text_info').addClass("add");
         $('#Personal').find('.xinxi').addClass("hover");
-        $('#Personal').find('.btn-success').css({'display':'block'});
+        $('#Personal').find('.btn-success').css({'display':'inline-block'});
     };
     function save_info(){
         var num=0;

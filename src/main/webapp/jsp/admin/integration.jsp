@@ -34,21 +34,23 @@
 </head>
 
 <body>
+
+<form action="${pageContext.request.contextPath}/moHuSelectByUserId.action" method="post">
 <div class="margin clearfix">
     <div class="" id="Other_Management">
         <div class="search_style">
-            <div class="title_names">搜索查询</div>
+            <div class="title_names">用户记录查询</div>
             <ul class="search_content clearfix">
-                <li><label class="l_f">会员名称</label><input name="" type="text" class="text_add" placeholder="输入会员名称、电话、邮箱" style=" width:400px"></li>
-                <li style="width:90px;"><button type="button" class="btn_search"><i class="fa fa-search"></i>查询</button></li>
+                <li><label class="l_f">用户名称</label><input name="username" type="text" class="text_add" placeholder="请输入用户名称" style=" width:400px"></li>
+                <li style="width:90px;"><button type="submit" class="btn_search"><i class="fa fa-search"></i>查询</button></li>
             </ul>
         </div>
-        <div class="border clearfix">
-       <span class="l_f">
+       <%-- <div class="border clearfix">
+      <span class="l_f">
         <a href="javascript:void(0)" class="btn btn-danger"><i class="fa fa-trash"></i>&nbsp;批量删除</a>
        </span>
             <span class="r_f">共：<b>2345</b>条</span>
-        </div>
+        </div>--%>
         <div class="list_style">
             <table class="table table-striped table-bordered table-hover" id="sample-table">
                 <thead>
@@ -60,7 +62,7 @@
                     <th width="120">最近登录时间</th>
                     <th width="120">浏览(条)</th>
                     <th width="120">购物(比)</th>
-                    <th width="250">操作</th>
+                    <%--<th width="250">操作</th>--%>
                 </tr>
                 </thead>
                 <tbody>
@@ -74,7 +76,8 @@
                         <td><a href="javascript:void(0)" onclick="Browse_history('${log.userid}')"><fmt:formatDate value="${log.userlogintime}" pattern="yyyy-MM-dd HH:mm:ss"/></a></td>
                         <td><a href="javascript:void(0)" onclick="Browse_history('${log.userid}')">${log.browseCount}</a></td>
                         <td><a href="javascript:void(0)" onclick="integration_history('${log.userid}')">${log.ratio}</a></td>
-                        <td> <a title="删除" href="javascript:;"  onclick="member_del(this,'${log.userid}')" class="btn btn-xs btn-warning" ><i class="fa fa-trash  bigger-120"></i></a></td>
+                       <%-- <td> <a title="删除" href="${basePath}deleteOneRecord.action?userid=${log.userid}"  onclick="return member_del();" class="btn btn-xs btn-warning" ><i class="fa fa-trash  bigger-120"></i></a></td>--%>
+                        <%--<a title="删除" href="${basePath}DeleteOneProduct.action?productid=${productAndTypeVos.productid}"  onclick="return confirmAct();" class="btn btn-xs btn-warning" ><i class="icon-trash  bigger-120"></i></a>--%>
                     </tr>
                 </c:forEach>
                 </tbody>
@@ -122,6 +125,8 @@
 
 
 </div>
+
+</form>
 </body>
 </html>
 <script>
@@ -149,11 +154,10 @@
 
 
     /*用户-删除*/
-    function member_del(obj,id){
-        layer.confirm('确认要删除吗？',function(index){
-            $(obj).parents("tr").remove();
-            layer.msg('已删除!',{icon:1,time:1000});
-        });
+    function member_del(){
+        if (confirm("确定要执行此操作码？"))
+        {return true;}
+        return false;
     }
     //积分浏览
     function integration_history(id){

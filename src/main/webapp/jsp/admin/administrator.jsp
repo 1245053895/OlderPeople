@@ -44,7 +44,7 @@
                 <div class="title_names">搜索查询</div>
                 <ul class="search_content clearfix">
                     <form action="${pageContext.request.contextPath}/admin/mohuSelectByName.action" method="post">
-                        <li><label class="l_f">管理员名称</label><input name="name" type="text" class="text_add" placeholder="请输入管理员的名称" style=" width:400px"></li>
+                        <li><label class="l_f">管理员名称</label><input name="name" value="${name}" type="text" class="text_add" placeholder="请输入管理员的名称" style=" width:400px"></li>
                         <%--<li style="width:90px;"><button type="button" class="btn_search"><i class="fa fa-search"></i>查询</button></li>--%>
                         <input type="submit" value="查询"/>
                     </form>
@@ -56,23 +56,23 @@
         <a href="javascript:void(0)" onclick="openThis()" id="administrator_add" class="btn btn-warning"><i class="fa fa-plus"></i> 添加管理员</a>
         <a href="javascript:test()" class="btn btn-danger"><i class="fa fa-trash"></i> 批量删除</a>
        </span>
-                <span class="r_f">共：<b>5</b>人</span>
+                <span class="r_f">共：<b>${kindOfAdmin2.adminCount2}</b>人</span>
             </div>
             <!--管理员列表-->
             <div class="clearfix administrator_style side_green" id="administrator" style="left: 0px;">
                 <div class="left_style">
-                    <div id="scrollsidebar" class="left_Treeview">
+                    <div id="scrollsidebar" class="left_Treeview" >
                         <div class="show_btn" id="rightArrow"><span></span></div>
                         <div class="widget-box side_content" style="height: 0px;">
-                            <div class="side_title"><a title="隐藏" class="close_btn"><span></span></a></div>
+                            <div class="side_title" style="width: 220px;"><a title="隐藏" class="close_btn"><span></span></a></div>
                             <div class="side_list"><div class="widget-header header-color-green2"><h4 class="lighter smaller">管理员分类列表</h4></div>
                                 <div class="widget-body">
                                     <ul class="b_P_Sort_list">
                                         <c:forEach items="${kindOfAdmins}" var="admin" varStatus="index">
                                             <c:if test="${index.count==1}">
-                                                <li><i class="fa fa-users green"></i> <a href="#">全部管理员(${fn:length(kindOfAdmins)})</a></li>
+                                                <li><i class="fa fa-users green"></i> <b>全部管理员(${fn:length(kindOfAdmins)} 种)</b></li>
                                             </c:if>
-                                            <li><i class="fa fa-users green"></i> <a href="#">${admin.allrloe}</a></li>
+                                            <li value="${admin.admingroupid}"><i  class="fa fa-users green"></i> <a  href="/admin/adminkindOfAdmins.action?admingroupid=${admin.admingroupid}" name="admingroupid" >${admin.allrloe}</a></li>
                                         </c:forEach>
                                     </ul>
                                 </div>
@@ -82,7 +82,7 @@
                 </div>
                 <div class="table_menu_list" id="testIframe" style="width: 909px; height: 0px;">
                     <div id="sample_table_wrapper" class="dataTables_wrapper no-footer">
-                        <form id="my" name="my" action="${pageContext.request.contextPath}/admin/deleteBatch.action" method="post">
+                        <%--<form id="my" name="my" action="${pageContext.request.contextPath}/admin/deleteBatch.action" method="post">--%>
                             <table class="table table-striped table-bordered table-hover dataTable no-footer" id="sample_table" role="grid" aria-describedby="sample_table_info">
                                 <thead>
                                 <tr role="row">
@@ -102,30 +102,82 @@
 
                                 <c:forEach items="${adminList }" var="user">
                                     <tr>
+                                        <form id="form_${user.adminid}" action="${pageContext.request.contextPath}/updateByPrimaryKey.action?id=${user.adminid}" method="post">
                                         <td><label><input type="checkbox" name="postIds" value="${user.adminid}" class="ace"><span class="lbl"></span></label></td>
-                                        <td>${user.adminid}</td>
-                                        <td>${user.adminname}</td>
-                                        <td>${user.adminpwd}</td>
-                                        <td>${user.adminuser}</td>
-                                        <td>${user.adminsex}</td>
-                                        <td>${user.admindepart}</td>
-                                        <td>${user.adminphone}</td>
+                                        <td><input type="text" value="${user.adminid}" name="adminid" class="input_style text_info" style="background-color: transparent;border-color: transparent;" readonly="true"/></td>
+                                        <td><input type="text" value="${user.adminname}" name="adminname" class="input_style text_info${user.adminid}" readonly="true"/></td>
+                                        <td><input type="text" value="${user.adminpwd}" name="adminpwd" class="input_style text_info${user.adminid}" readonly="true"/></td>
+                                        <td><input type="text" value="${user.adminuser}" name="adminuser" class="input_style text_info${user.adminid}" readonly="true"/></td>
+                                        <td><input type="text" value="${user.adminsex}" name="adminsex" class="input_style text_info${user.adminid}" readonly="true"/></td>
+                                        <td><input type="text" value="${user.admindepart}" name="admindepart" class="input_style text_info${user.adminid}" readonly="true"/></td>
+                                        <td><input type="text" value="${user.adminphone}" name="adminphone" class="input_style text_info${user.adminid}" readonly="true"/></td>
                                         <td class="td-manage">
-                                                <%--<a onClick="member_stop(this,'10001')"  href="javascript:;" title="停用"  class="btn btn-xs btn-success"><i class="fa fa-check  bigger-120"></i></a>--%>
-                                            <a title="编辑" onclick="member_edit('编辑','member-add.html','4','','510')" href="javascript:void(0);"  class="btn btn-xs btn-info" ><i class="fa fa-edit bigger-120"></i></a>
+                                            <a title="编辑" onclick="modify(${user.adminid})" href="javascript:void(0);"  class="btn btn-xs btn-info radius" ><i id="edit${user.adminid}" class="fa bigger-120">编辑</i></a>
                                             <a title="删除" href="/admin/deleteByPrimaryKey.action?id=${user.adminid}" class="btn btn-xs btn-warning" ><i class="fa fa-trash  bigger-120"></i></a>
                                         </td>
+                                        </form>
                                     </tr>
                                 </c:forEach>
-
-
                                 </tbody>
                             </table>
-                        </form>
+                        <%--</form>--%>
                     </div>
                 </div>
             </div>
         </div>
+
+<style type="text/css">
+            .input_style{
+                width: 100%;
+                background-color: transparent;
+                border: 0px transparent solid;
+            }
+            .btn-xs{
+                border-width: 3px;
+            }
+            .btn-info,.btn-info:focus
+            {
+                background-color: #6fb3e0!important;
+                border-color: #6fb3e0;
+            }
+
+            .btn-info:hover,.open .btn-info.dropdown-toggle
+            {
+                background-color: #4f99c6!important;
+
+                border-color: #6fb3e0;
+            }
+
+            .btn-info.no-border:hover
+            {
+                border-color: #4f99c6;
+            }
+
+            .btn-info.no-hover:hover
+            {
+                background-color: #6fb3e0!important;
+            }
+
+            .btn-info
+            {
+                background-color: #5fa6d3!important;
+                border-color: #4396cb;
+            }
+
+            .btn-info
+            {
+                background-color: #539fd0!important;
+                border-color: #539fd0;
+            }
+
+            .btn-info.disabled,.btn-info[disabled],fieldset[disabled] .btn-info,.btn-info.disabled:hover,.btn-info[disabled]:hover,fieldset[disabled] .btn-info:hover,.btn-info.disabled:focus,.btn-info[disabled]:focus,fieldset[disabled] .btn-info:focus,.btn-info.disabled:active,.btn-info[disabled]:active,fieldset[disabled] .btn-info:active,.btn-info.disabled.active,.btn-info[disabled].active,fieldset[disabled] .btn-info.active
+            {
+                background-color: #6fb3e0!important;
+                border-color: #6fb3e0;
+            }
+</style>
+
+
 
         <!--添加管理员-->
         <div  id="closeThis" style="display: none;">
@@ -335,9 +387,19 @@
                     layer.msg('已启用!',{icon: 6,time:1000});
                 });
             }
-            /*产品-编辑*/
-            function member_edit(title,url,id,w,h){
-                layer_show(title,url,w,h);
+            /*管理员列表-编辑*/
+            var flag=true;
+            function modify(v) {
+                if(!flag) {
+                    $('.text_info' + v).attr("readonly", false);
+//                    $('.text_info' + v).parents("td").css("box-shadow","0px 0px 20px #888888 inset");
+                    $('#edit'+v).text("提交");
+                    flag=true;
+                }else{
+                    $("#form_"+v).submit();
+                    $('#edit'+v).text("编辑");
+                    flag=false;
+                }
             }
 
             /*产品-删除*/

@@ -63,7 +63,7 @@
               <div  id="treeDemo" class="ztree"></div>
               <ul class="b_P_Sort_list">
                   <c:forEach items="${kindOfProducts}" var="pro" varStatus="status">
-                      <li><i class="fa fa-users green"></i><a href="<%=request.getContextPath() %>/ProductType.action"> ${pro.kindofproduct}</a></li>
+                      <li value="${pro.producttypeid}"><i class="fa fa-users green"></i><a href="<%=request.getContextPath() %>/typeProductType.action?producttypeid=${pro.producttypeid}" name="producttypeid"> ${pro.kindofproduct}</a></li>
                   </c:forEach>
               </ul>
           </div>

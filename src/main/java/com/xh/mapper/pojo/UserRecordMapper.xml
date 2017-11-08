@@ -40,4 +40,16 @@
     WHERE user.UserId=#{id};
   </select>
 
+ <!--用户记录中根据用户的名称进行模糊查询-->
+  <select id="moHuSelectByUserId" parameterType="String" resultType="userAndUserLog">
+   SELECT user.UserId AS userid,
+       user.UserName AS username,
+       user.CreditsCore AS creditscore ,
+       user.UserLoginTime AS userlogintime,
+       count(productslog.UserId) AS browseCount,
+       sum(productslog.IsShop)/count(productslog.UserId) AS ratio
+    FROM user LEFT JOIN productslog ON (user.UserId=productslog.UserId)
+     WHERE user.username LIKE '%${_parameter}%'
+    GROUP BY user.UserId
+  </select>
 </mapper>

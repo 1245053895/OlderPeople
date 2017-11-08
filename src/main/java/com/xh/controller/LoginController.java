@@ -14,11 +14,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
 
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
@@ -46,7 +48,7 @@ public class LoginController {
             if (password !=null){
                 //3:用户名必须正确
                 Admin admin =loginService.selectUserByUsername(username);
-                if (admin !=null){
+                 if (admin !=null){
                     //4:密码必须正确
 
                     if (admin.getAdminpwd().equals(password)){
@@ -120,4 +122,29 @@ public class LoginController {
 
     }
 
-}
+   /* @RequestMapping("uploadUser")
+    //MultipartFile userphoto 表示上传字段
+    public String addUser2(MultipartFile userphoto, HttpSession session) throws IllegalStateException, IOException {
+
+        if(userphoto != null && userphoto.getOriginalFilename()!=null){
+            //在这里进行文件保存操作
+            //传进去的是一个路径，返回的也是一个路径
+            String path = session.getServletContext().getRealPath("/upload");
+
+            String realName = userphoto.getOriginalFilename();
+
+            String realFilePath = path+File.separator+realName;
+
+            File file = new File(realFilePath);
+
+            userphoto.transferTo(file);
+
+
+            user.setUserPhotoPath(realFilePath);
+
+        }
+
+
+
+        return null;*/
+    }

@@ -5,9 +5,11 @@ import com.xh.po.ProductExample;
 import com.xh.po.vo.Allproduct;
 import com.xh.po.vo.KindOfProduct;
 import com.xh.po.vo.ProductAndTypeVo;
+import com.xh.po.vo.StringAndString;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;
 
+import java.util.Date;
 import java.util.List;
 @Component
 public interface ProductAndTypeMapper {
@@ -31,4 +33,10 @@ public interface ProductAndTypeMapper {
 
    //批量删除
     void  deleteBatch(List<Integer> ids);
+
+ //模糊查询根据时间
+    public List<ProductAndTypeVo> moHuselectByTime(Date productstoretime);
+
+    //根据商品的id对商品进行更新
+    public void updateById(ProductAndTypeVo productAndTypeVo);
 }

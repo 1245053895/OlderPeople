@@ -8,6 +8,15 @@ import com.xh.po.Admin;
 public class AdminRole extends Admin {
     private String admingroupdescription;
     private String admingroupname;
+    private String adminusers;
+
+    public String getAdminusers() {
+        return adminusers;
+    }
+
+    public void setAdminusers(String adminusers) {
+        this.adminusers = adminusers;
+    }
 
     public String getAdmingroupdescription() {
         return admingroupdescription;

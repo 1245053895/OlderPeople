@@ -14,10 +14,11 @@
     </select>
 
 
-    <!--查询每个后端用户对应的角色名称及角色的描述-->
+    <!--查询每个后端用户对应的角色名称及角色的描述,将相同的角色名称的管理员写在一行，默认以逗号分隔开-->
     <select id="queryRoleAndAdmin" resultType="adminRole">
-        SELECT AdminGroupName,AdminUser,AdminGroupDescription FROM admin JOIN admingroup
-        ON admin.AdminGroupId=admingroup.AdminGroupId
+       SELECT AdminGroupName,GROUP_CONCAT(AdminUser) AS AdminUsers,AdminGroupDescription
+        FROM admin JOIN admingroup ON admin.AdminGroupId=admingroup.AdminGroupId
+        GROUP BY AdminGroupName;
     </select>
 
     <!--角色修改页面，查询出所有角色名称和角色描述-->
@@ -57,9 +58,9 @@
 
     <!--输入管理员的名称来进行模糊查询-->
     <select id="moHuSelectByAdminUser" parameterType="String" resultType="adminRole">
-        SELECT AdminGroupname admingroupname,AdminUser adminuser,AdminGroupDescription admingroupdescription
-                 FROM admingroup ag ,admin a WHERE adminuser
-                LIKE '%${_parameter}%' AND a.AdminGroupId=ag.AdminGroupId
+        SELECT AdminGroupName,GROUP_CONCAT(AdminUser) AS AdminUsers,AdminGroupDescription
+           FROM admin JOIN admingroup ON admin.AdminGroupId=admingroup.AdminGroupId AND AdminUser
+                LIKE '%${_parameter}%' GROUP BY AdminGroupName;
     </select>
 
     <update id="updateRloeById" parameterType="adminRoleCustom">

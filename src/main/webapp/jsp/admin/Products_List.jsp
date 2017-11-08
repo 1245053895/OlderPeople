@@ -51,7 +51,7 @@
                 <form action="<%= basePath %>ProducList.action" id="mainForm" method="post">
                 <div class="title_names">搜索查询</div>
                 <ul class="search_content clearfix">
-                    <li><label class="l_f" style="margin-right: 5px;">商品名称</label><input name="producname" type="text"  class="text_add"  value="${productname}"  style=" width:250px"/></li>
+                    <li><label class="l_f" style="margin-right: 5px;">商品名称</label><input name="producname" type="text"  class="text_add"  value="${productname}" class="text_add" placeholder="请输入商品名称进行查询"  style=" width:400px"/></li>
                     <%--<li><label class="l_f">上架时间</label><input name="productstoretime" class="inline laydate-icon"   id="start" style=" margin-left:10px;"></li>--%>
                     <li style="width:90px;"><button type="submit" class="btn_search"><i class="icon-search"></i>查询</button></li>
                 </ul>

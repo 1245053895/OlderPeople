@@ -27,7 +27,7 @@
     select
     <include refid="Base_Column_List" />
     from admin
-    where AdminName= #{adminanme,jdbcType=INTEGER}
+    where AdminName= #{username}
   </select>
 
   <!--//查询一条数据通过id-->

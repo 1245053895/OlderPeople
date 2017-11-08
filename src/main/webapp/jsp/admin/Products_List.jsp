@@ -86,8 +86,8 @@
                 </thead>
                 <tbody>
                 <c:forEach items="${productAndTypeVos}" var="productAndTypeVos" varStatus="status">
-                    <form id="form_${productAndTypeVos.productid}" action="${pageContext.request.contextPath}/updateById.action?id=${productAndTypeVos.productid}" method="post">
                         <tr>
+                            <form id="form_${productAndTypeVos.productid}" action="${pageContext.request.contextPath}/updateById.action?id=${productAndTypeVos.productid}" method="post">
                             <td width="25px">
                                 <label>
                                     <input type="checkbox" class="ace" name="productid" value="${productAndTypeVos.productid}" >
@@ -146,9 +146,8 @@
                             </td>
                             <td width="100px">
                                 <input style="border-width: 0px;background-color: transparent;" type="text"
-                                       value=" <c:if test="${productAndTypeVos.producthotsale==1}">√</c:if>
-                                                                <c:if test="${productAndTypeVos.producthotsale==0}">×</c:if>"
-                                       name="producthotsale" class="input_style text_info${productAndTypeVos.productid}" readonly="true"/>
+                                       value="<c:choose><c:when test="${productAndTypeVos.productdisabled==1}">√</c:when><c:otherwise>×</c:otherwise></c:choose>"
+                                       name="productdisabled" class="input_style text_info${productAndTypeVos.productid}" readonly="true"/>
                             </td>
                             <c:if test="${productAndTypeVos.productA==1}">
                                 <td class="td-status"><span class="label label-success radius">已启用</span></td>
@@ -175,8 +174,8 @@
                                 <a title="编辑" onclick="modify(${productAndTypeVos.productid})" href="javascript:void(0);"  class="btn btn-xs btn-info radius" ><i id="edit${productAndTypeVos.productid}" class="fa bigger-120">编辑</i></a>
                                 <a title="删除" href="${basePath}DeleteOneProduct.action?productid=${productAndTypeVos.productid}"  onclick="return confirmAct();" class="btn btn-xs btn-warning" ><i class="icon-trash  bigger-120"></i></a>
                             </td>
+                            </form>
                         </tr>
-                    </form>
                 </c:forEach>
                 </tbody>
             </table>

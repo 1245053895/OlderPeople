@@ -48,7 +48,7 @@ public class LoginController {
             if (password !=null){
                 //3:用户名必须正确
                 Admin admin =loginService.selectUserByUsername(username);
-                if (admin !=null){
+                 if (admin !=null){
                     //4:密码必须正确
 
                     if (admin.getAdminpwd().equals(password)){

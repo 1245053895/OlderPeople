@@ -82,7 +82,7 @@
                 </div>
                 <div class="table_menu_list" id="testIframe" style="width: 909px; height: 0px;">
                     <div id="sample_table_wrapper" class="dataTables_wrapper no-footer">
-                        <form id="my" name="my" action="${pageContext.request.contextPath}/admin/deleteBatch.action" method="post">
+                        <%--<form id="my" name="my" action="${pageContext.request.contextPath}/admin/deleteBatch.action" method="post">--%>
                             <table class="table table-striped table-bordered table-hover dataTable no-footer" id="sample_table" role="grid" aria-describedby="sample_table_info">
                                 <thead>
                                 <tr role="row">
@@ -101,8 +101,8 @@
                                 <tbody>
 
                                 <c:forEach items="${adminList }" var="user">
-                                <form id="form_${user.adminid}" action="${pageContext.request.contextPath}/updateByPrimaryKey.action?id=${user.adminid}" method="post">
                                     <tr>
+                                        <form id="form_${user.adminid}" action="${pageContext.request.contextPath}/updateByPrimaryKey.action?id=${user.adminid}" method="post">
                                         <td><label><input type="checkbox" name="postIds" value="${user.adminid}" class="ace"><span class="lbl"></span></label></td>
                                         <td><input type="text" value="${user.adminid}" name="adminid" class="input_style text_info" readonly="true"/></td>
                                         <td><input type="text" value="${user.adminname}" name="adminname" class="input_style text_info${user.adminid}" readonly="true"/></td>
@@ -115,12 +115,12 @@
                                             <a title="编辑" onclick="modify(${user.adminid})" href="javascript:void(0);"  class="btn btn-xs btn-info radius" ><i id="edit${user.adminid}" class="fa bigger-120">编辑</i></a>
                                             <a title="删除" href="/admin/deleteByPrimaryKey.action?id=${user.adminid}" class="btn btn-xs btn-warning" ><i class="fa fa-trash  bigger-120"></i></a>
                                         </td>
+                                        </form>
                                     </tr>
-                                </form>
                                 </c:forEach>
                                 </tbody>
                             </table>
-                        </form>
+                        <%--</form>--%>
                     </div>
                 </div>
             </div>
@@ -391,15 +391,15 @@
             /*管理员列表-编辑*/
             var flag=true;
             function modify(v) {
-                if(flag) {
+                if(!flag) {
                     $('.text_info' + v).attr("readonly", false);
-                    $('.text_info' + v).parents("td").css("box-shadow","0px 0px 20px #888888 inset");
+//                    $('.text_info' + v).parents("td").css("box-shadow","0px 0px 20px #888888 inset");
                     $('#edit'+v).text("提交");
-                    flag = false;
+                    flag=true;
                 }else{
                     $("#form_"+v).submit();
                     $('#edit'+v).text("编辑");
-                    flag=true;
+                    flag=false;
                 }
             }
 

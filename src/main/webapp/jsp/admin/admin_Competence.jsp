@@ -65,7 +65,7 @@
 				<tr>
 						<%--<td class="center"><label><input type="checkbox" class="ace"/><span class="lbl"></span></label></td>--%>
 					<td>${adminRole.admingroupname}</td>
-					<td class="hidden-480">${adminRole.adminuser}</td>
+					<td class="hidden-480">${adminRole.adminusers}</td>
 					<td>${adminRole.admingroupdescription}</td>
 						<%--<td>
                          <a title="编辑" onclick="Competence_modify('560')" href="javascript:;"  class="btn btn-xs btn-info" ><i class="fa fa-edit bigger-120"></i></a>

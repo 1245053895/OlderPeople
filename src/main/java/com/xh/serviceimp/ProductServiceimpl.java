@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 @Service
 public class ProductServiceimpl implements ProductService {
@@ -72,6 +73,13 @@ public class ProductServiceimpl implements ProductService {
     @Override
     public List<Producttype> selectByNothing() {
         return  producTypeMapper.selectByNothing();
+    }
+
+
+    @Override
+    public List<ProductAndTypeVo> moHuselectByTime(Date productstoretime) {
+        List<ProductAndTypeVo> productAndTypeVos= productAndTypeMapper.moHuselectByTime(productstoretime);
+        return productAndTypeVos;
     }
 
     @Override

@@ -13,7 +13,7 @@ import java.util.List;
 @Component
 public interface OrderAndOtherMapper {
 
-//   如果 OrderOfString orderOfString=null代表查询全部订单
+    //   如果 OrderOfString orderOfString=null代表查询全部订单
     List<Order> selectOrderByAll(Order order);
 
     OrderAndString totalAmountOfTransaction();

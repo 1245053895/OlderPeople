@@ -37,142 +37,142 @@
 
 <body>
 <!--订单列表-->
-    <form action="${pageContext.request.contextPath}/getAllOrder.action" method="post">
-        <div class="search_style">
-            <div class="title_names">搜索查询</div>
-            <ul class="search_content clearfix">
-                <li><label class="l_f">任意条件</label><input name="conditions" type="text" class="text_add" placeholder="订单编号" style=" width:250px"></li>
-                <li><label class="l_f">时间</label><input class="inline laydate-icon" id="start" style=" margin-left:10px;"></li>
-                <li style="width:90px;"><button type="submit" class="btn_search"><i class="fa fa-search"></i>查询</button></li>
-            </ul>
-        </div>
-    </form>
-    <!--订单列表展示-->
-    <table class="table table-striped table-bordered table-hover" id="sample-table">
-        <thead>
+<form action="${pageContext.request.contextPath}/getAllOrder.action" method="post">
+    <div class="search_style">
+        <div class="title_names">搜索查询</div>
+        <ul class="search_content clearfix">
+            <li><label class="l_f">任意条件</label><input name="conditions" type="text" class="text_add" placeholder="订单编号" style=" width:250px"></li>
+            <li><label class="l_f">时间</label><input class="inline laydate-icon" id="start" style=" margin-left:10px;"></li>
+            <li style="width:90px;"><button type="submit" class="btn_search"><i class="fa fa-search"></i>查询</button></li>
+        </ul>
+    </div>
+</form>
+<!--订单列表展示-->
+<table class="table table-striped table-bordered table-hover" id="sample-table">
+    <thead>
+    <tr>
+        <th width="25px"><label><input type="checkbox" class="ace"><span class="lbl"></span></label></th>
+        <th width="200px">订单ID</th>
+        <th width="200px">用户名</th>
+        <th width="100px">商品金额</th>
+        <th width="100px">可获积分</th>
+        <th width="200px">配送方式</th>
+        <th width="200px">买家备注</th>
+        <th width="200px">订单状态</th>
+        <th width="200px">支付类型</th>
+        <th width="200px">支付状态</th>
+        <th width="500px">操作</th>
+    </tr>
+    </thead>
+    <tbody>
+    <c:forEach items="${orderCustoms}" var="order">
         <tr>
-            <th width="25px"><label><input type="checkbox" class="ace"><span class="lbl"></span></label></th>
-            <th width="200px">订单ID</th>
-            <th width="200px">用户名</th>
-            <th width="100px">商品金额</th>
-            <th width="100px">可获积分</th>
-            <th width="200px">配送方式</th>
-            <th width="200px">买家备注</th>
-            <th width="200px">订单状态</th>
-            <th width="200px">支付类型</th>
-            <th width="200px">支付状态</th>
-            <th width="500px">操作</th>
-        </tr>
-        </thead>
-        <tbody>
-        <c:forEach items="${orderCustoms}" var="order">
-            <tr>
-                <td><label><input type="checkbox" value="${order.orderid}" class="ace"><span class="lbl"></span></label></td>
-                <td>${order.orderid}</td>
-                <td>${order.username}</td>
-                <td class="pay"onmouseover="getPayDetail(this)" onmouseout="removePayDetail(this)">
-                    <fmt:formatNumber value="${order.realpay}" type="currency"/>
-                    <div id="payDetail">
-                        <div>商品金额:<fmt:formatNumber value="${order.realpay}" type="currency"/></div>
-                        <div>邮费:<fmt:formatNumber value="${order.postfee}" type="currency"/></div>
-                        <div>总金额:<fmt:formatNumber value="${order.realpay+order.postfee}" type="currency"/></div>
-                    </div>
-                </td>
-                <td>${order.totalcredit}</td>
-                <td>
-                    <c:if test="${order.shippingname==''&&order.shippingcode==''}">
+            <td><label><input type="checkbox" value="${order.orderid}" class="ace"><span class="lbl"></span></label></td>
+            <td>${order.orderid}</td>
+            <td>${order.username}</td>
+            <td class="pay"onmouseover="getPayDetail(this)" onmouseout="removePayDetail(this)">
+                <fmt:formatNumber value="${order.realpay}" type="currency"/>
+                <div id="payDetail">
+                    <div>商品金额:<fmt:formatNumber value="${order.realpay}" type="currency"/></div>
+                    <div>邮费:<fmt:formatNumber value="${order.postfee}" type="currency"/></div>
+                    <div>总金额:<fmt:formatNumber value="${order.realpay+order.postfee}" type="currency"/></div>
+                </div>
+            </td>
+            <td>${order.totalcredit}</td>
+            <td>
+                <c:if test="${order.shippingname==''&&order.shippingcode==''}">
                         <span class="label label-success radius">
                             自提
                         </span>
-                    </c:if>
-                    <c:if test="${order.shippingname!=null&&order.shippingcode!=null}">
-                        ${order.shippingname}<br/>
-                        <a href="http://www.kuaidi100.com" target="view_window">${order.shippingcode}</a>
-                    </c:if>
-                </td>
-                <td>${order.buyerrequest}</td>
-                <td class="td-status">
-                    <c:if test="${order.status==0}">
+                </c:if>
+                <c:if test="${order.shippingname!=null&&order.shippingcode!=null}">
+                    ${order.shippingname}<br/>
+                    <a href="http://www.kuaidi100.com" target="view_window">${order.shippingcode}</a>
+                </c:if>
+            </td>
+            <td>${order.buyerrequest}</td>
+            <td class="td-status">
+                <c:if test="${order.status==0}">
                         <span class="label label-default radius">
                             交易关闭
                         </span>
-                    </c:if>
+                </c:if>
 
-                    <c:if test="${order.status==1}">
+                <c:if test="${order.status==1}">
                         <span class="label label-success radius">
                             待发货
                         </span>
-                    </c:if>
-                    <c:if test="${order.status==2}">
+                </c:if>
+                <c:if test="${order.status==2}">
                         <span class="label label-success radius">
                             已发货
                         </span>
-                    </c:if>
-                    <c:if test="${order.status==3}">
+                </c:if>
+                <c:if test="${order.status==3}">
                         <span class="label label-success radius">
                             已签收
                         </span>
-                    </c:if>
-                    <c:if test="${order.status==4}">
+                </c:if>
+                <c:if test="${order.status==4}">
                         <span class="label label-success radius">
                             已完成
                         </span>
-                    </c:if>
-                    <c:if test="${order.status==5}">
+                </c:if>
+                <c:if test="${order.status==5}">
                         <span class="label label-warning radius">
                             拒收
                         </span>
-                    </c:if>
-                    <c:if test="${order.status==6}">
+                </c:if>
+                <c:if test="${order.status==6}">
                         <span class="label label-warning radius">
                             退货
                         </span>
-                    </c:if>
-                    <c:if test="${order.status==null}">
-                        未查到
-                    </c:if>
-                    </span><br/>
-                    <fmt:formatDate value="${order.updatetime}" pattern="yyyy-MM-dd hh:mm:ss"/>
-                </td>
-                <td>
-                    <c:if test="${order.paytype==0}">
-                        在线支付
-                    </c:if>
-                    <c:if test="${order.paytype==1}">
-                        货到付款
-                    </c:if>
-                </td>
-                <td>
-                    <c:if test="${order.paystatus==0}">
-                        <span class="label label-success radius">已支付</span>
-                    </c:if>
-                    <c:if test="${order.paystatus==1}">
-                        <span class="label label-defaunt radius">未支付</span>
-                    </c:if>
+                </c:if>
+                <c:if test="${order.status==null}">
+                    未查到
+                </c:if>
+                </span><br/>
+                <fmt:formatDate value="${order.updatetime}" pattern="yyyy-MM-dd hh:mm:ss"/>
+            </td>
+            <td>
+                <c:if test="${order.paytype==0}">
+                    在线支付
+                </c:if>
+                <c:if test="${order.paytype==1}">
+                    货到付款
+                </c:if>
+            </td>
+            <td>
+                <c:if test="${order.paystatus==0}">
+                    <span class="label label-success radius">已支付</span>
+                </c:if>
+                <c:if test="${order.paystatus==1}">
+                    <span class="label label-defaunt radius">未支付</span>
+                </c:if>
 
-                </td>
-                <td>
-                    <c:if test="${order.status==1}">
-                        <a onClick="shipping(this,${order.orderid})"  href="javascript:void(0);" title="发货"  class="btn btn-xs btn-success">发货</a>
-                    </c:if>
-                    <c:if test="${order.status!=0&&order.status!=1}">
-                        <a onClick="Delivery_stop(this,'10001')"  href="javascript:void(0);" title="物流详情"  class="btn btn-xs btn-success">物流详情</a>
-                    </c:if>
-                    <c:if test="${order.status==5}">
-                        <a onClick="Delivery_stop(this,'10001')"  href="javascript:void(0);" title="拒收理由"  class="btn btn-xs btn-success">拒收理由</a>
-                    </c:if>
-                    <c:if test="${order.status==6}">
-                        <a onClick="Delivery_stop(this,'10001')"  href="javascript:void(0);" title="审核"  class="btn btn-xs btn-success">审核</a>
-                    </c:if>
-                    <a title="订单详情"  href="${pageContext.request.contextPath}/getOrderDetailByOrderId.action?id=${order.orderid}"  class="btn btn-xs btn-info order_detailed" >订单详情</a>
-                    <c:if test="${order.status!=4 && order.status!=0}">
-                        <a id="CloseDeal" title="关闭交易" href="javascript:void(0);"  onclick="CloseDeal(this,${order.orderid})" class="btn btn-xs btn-warning" >关闭交易</a>
-                    </c:if>
-                </td>
-            </tr>
-        </c:forEach>
-        </tbody>
-    </table>
+            </td>
+            <td>
+                <c:if test="${order.status==1}">
+                    <a onClick="shipping(this,${order.orderid})"  href="javascript:void(0);" title="发货"  class="btn btn-xs btn-success">发货</a>
+                </c:if>
+                <c:if test="${order.status!=0&&order.status!=1}">
+                    <a onClick="Delivery_stop(this,'10001')"  href="javascript:void(0);" title="物流详情"  class="btn btn-xs btn-success">物流详情</a>
+                </c:if>
+                <c:if test="${order.status==5}">
+                    <a onClick="Delivery_stop(this,'10001')"  href="javascript:void(0);" title="拒收理由"  class="btn btn-xs btn-success">拒收理由</a>
+                </c:if>
+                <c:if test="${order.status==6}">
+                    <a onClick="Delivery_stop(this,'10001')"  href="javascript:void(0);" title="审核"  class="btn btn-xs btn-success">审核</a>
+                </c:if>
+                <a title="订单详情"  href="${pageContext.request.contextPath}/getOrderDetailByOrderId.action?id=${order.orderid}"  class="btn btn-xs btn-info order_detailed" >订单详情</a>
+                <c:if test="${order.status!=4 && order.status!=0}">
+                    <a id="CloseDeal" title="关闭交易" href="javascript:void(0);"  onclick="CloseDeal(this,${order.orderid})" class="btn btn-xs btn-warning" >关闭交易</a>
+                </c:if>
+            </td>
+        </tr>
+    </c:forEach>
+    </tbody>
+</table>
 </div>
 </div>
 <!--发货-->
@@ -306,12 +306,12 @@
                     }else{
                         $("#updateOrderShipping").submit();
                         /*layer.confirm('提交成功！',function(index){
-                            /!*$(obj).parents("tr").find(".td-manage").prepend('<a style=" display:none" class="btn btn-xs btn-success" onClick="member_stop(this,id)" href="javascript:;" title="已发货"><i class="fa fa-cubes bigger-120"></i></a>');
-                            $(obj).parents("tr").find(".td-status").html('<span class="label label-success radius">已发货</span>');
-                            $(obj).remove();
-                            layer.msg('已发货!',{icon: 6,time:1000});*!/
-                            //window.location.href="${pageContext.request.contextPath}/UpdateStatusStart.action?userid="+id;
-                        });*/
+                         /!*$(obj).parents("tr").find(".td-manage").prepend('<a style=" display:none" class="btn btn-xs btn-success" onClick="member_stop(this,id)" href="javascript:;" title="已发货"><i class="fa fa-cubes bigger-120"></i></a>');
+                         $(obj).parents("tr").find(".td-status").html('<span class="label label-success radius">已发货</span>');
+                         $(obj).remove();
+                         layer.msg('已发货!',{icon: 6,time:1000});*!/
+                         //window.location.href="${pageContext.request.contextPath}/UpdateStatusStart.action?userid="+id;
+                         });*/
                         layer.close(index);
                     }
 

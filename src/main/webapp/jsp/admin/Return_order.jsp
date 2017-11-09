@@ -301,12 +301,11 @@
                     }else{
                         $("#updateOrderShipping").submit();
                         /*layer.confirm('提交成功！',function(index){
-                            /!*$(obj).parents("tr").find(".td-manage").prepend('<a style=" display:none" class="btn btn-xs btn-success" onClick="member_stop(this,id)" href="javascript:;" title="已发货"><i class="fa fa-cubes bigger-120"></i></a>');
-                            $(obj).parents("tr").find(".td-status").html('<span class="label label-success radius">已发货</span>');
-                            $(obj).remove();
-                            layer.msg('已发货!',{icon: 6,time:1000});*!/
-                            //window.location.href="${pageContext.request.contextPath}/UpdateStatusStart.action?userid="+id;
-                        });*/
+                         /!*$(obj).parents("tr").find(".td-manage").prepend('<a style=" display:none" class="btn btn-xs btn-success" onClick="member_stop(this,id)" href="javascript:;" title="已发货"><i class="fa fa-cubes bigger-120"></i></a>');
+                         $(obj).parents("tr").find(".td-status").html('<span class="label label-success radius">已发货</span>');
+                         $(obj).remove();
+                         layer.msg('已发货!',{icon: 6,time:1000});*!/
+                         });*/
                         layer.close(index);
                     }
 

@@ -13,7 +13,7 @@ import java.util.Date;
 import java.util.List;
 
 public interface ProductService {
-                                                                 //    产品管理接口
+    //    产品管理接口
     void deleteByPrimaryKey(Integer productid);
     void insertSelective(Product record);
     //    得到商品列表 包含对应的商品类型
@@ -28,17 +28,19 @@ public interface ProductService {
     //批量删除
     void  deleteBatch(String[] ids);
 
- //    商品类型的增加
+    //    商品类型的增加
     void TypeinsertSelective(Producttype record);
- //    商品类型的删除
+    //    商品类型的删除
     void TypedeleteByName(String producttypename);
-  //    商品类型查询
-  List<Producttype> selectByNothing();
+    //    商品类型查询
+    List<Producttype> selectByNothing();
 
     //模糊查询根据时间
     public List<ProductAndTypeVo> moHuselectByTime(Date productstoretime);
 
     //根据商品的id对商品进行更新
     public void updateById(ProductAndTypeVo productAndTypeVo);
+
+    List<ProductAndTypeVo> typeProductType(String producttypeid);
 
 }

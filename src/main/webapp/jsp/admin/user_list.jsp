@@ -71,7 +71,7 @@
                     <ul class="search_content clearfix">
                         <li><label class="l_f">查找用户</label><input name="sqlString" type="text"
                                                                   value="${stringAndString.sqlString}" class="text_add"
-                                                                  placeholder="输入用户名称、电话、邮箱" style=" width:400px"/></li>
+                                                                  placeholder="输入用户名称、电话、邮箱、生日" style=" width:400px"/></li>
                         <li style="width:90px;">
                             <button type="submit" class="btn_search"><i class="icon-search"></i>查询</button>
                         </li>
@@ -82,6 +82,7 @@
             <div class="border clearfix">
        <span class="l_f">
         <a href="javascript:ovid(0)" id="member_add" class="btn btn-warning"><i class="icon-plus"></i>添加用户</a>
+
 
            <a title="批量删除"
               href="javascript:ovid(0)" onclick="arrayDelect()"
@@ -153,11 +154,11 @@
                                         <td>${userlist.usersex}</td>
                                         <td>${userlist.userrealname}</td>
                                         <td>${userlist.userphone}</td>
-                                        <td><fmd:formatDate value="${userlist.userbirthday}" pattern="yyyy-MM-dd"/></td>
+                                        <td><fmd:formatDate value="${userlist.userbirthday}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
                                         <td class="text-l">${userlist.useraddress}</td>
                                         <td>${userlist.useremail}</td>
                                         <td>${userlist.userzip}</td>
-                                        <td><fmd:formatDate value="${userlist.userinputdate}" pattern="yyyy-MM-dd"/></td>
+                                        <td><fmd:formatDate value="${userlist.userinputdate}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
 
                                         <c:if test="${userlist.userA==0}">
                                             <td class="td-status"><span class="label label-defaunt radius">已停用</span></td>
@@ -231,7 +232,7 @@
                                                                                    class="text_add"/></span>
                 <div class="prompt r_f"></div>
             </li>
-                     <li><label class="label_name">出生年月：</label><span class="add_name"><input name="userbirthday" type="text"  class="text_add"/></span><<%----%>div class="prompt r_f"></div></li>
+            <li><label class="label_name">出生年月：</label><span class="add_name"><input name="userbirthday" type="text"  class="text_add"/></span><<%----%>div class="prompt r_f"></div></li>
             <li><label class="label_name">电子邮箱：</label><span class="add_name"><input name="useremail" type="text"
                                                                                      class="text_add"/></span>
                 <div class="prompt r_f"></div>

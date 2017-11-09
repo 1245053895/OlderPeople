@@ -1,5 +1,7 @@
 package com.xh.po;
 
+import java.util.Date;
+
 public class Pay {
     private Integer payid;
 
@@ -7,7 +9,7 @@ public class Pay {
 
     private String paypicture;
 
-    private String payA;
+    private Date payA;
 
     private String payB;
 
@@ -37,12 +39,12 @@ public class Pay {
         this.paypicture = paypicture == null ? null : paypicture.trim();
     }
 
-    public String getPayA() {
+    public Date getPayA() {
         return payA;
     }
 
-    public void setPayA(String payA) {
-        this.payA = payA == null ? null : payA.trim();
+    public void setPayA(Date payA) {
+        this.payA = payA == null ? null : payA;
     }
 
     public String getPayB() {

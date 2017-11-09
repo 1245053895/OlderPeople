@@ -2,6 +2,7 @@ package com.xh.mapper.pojo;
 
 import com.xh.po.User;
 import com.xh.po.vo.StringAndString;
+import com.xh.po.vo.SystemSitings;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -22,5 +23,6 @@ public interface UserCsdMapper {
     List<User> qullyAllUser();
     //对用户的模糊查询
     public List<User> QueryUserConfuse(StringAndString stringAndString);
-
+    //
+    public void insertSystem(SystemSitings systemSitings);
 }

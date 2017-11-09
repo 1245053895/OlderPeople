@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xh.mapper.pojo.ConveyanceMapper">
+  <resultMap id="BaseResultMap" type="com.xh.po.Transport">
+    <id column="TransportId" jdbcType="INTEGER" property="transportid" />
+    <result column="TransportName" jdbcType="VARCHAR" property="transportname" />
+    <result column="TransportImg" jdbcType="VARCHAR" property="transportimg" />
+    <result column="Transport_A" jdbcType="VARCHAR" property="transportA" />
+    <result column="Transport_B" jdbcType="VARCHAR" property="transportB" />
+    <result column="Transport_C" jdbcType="VARCHAR" property="transportC" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+    TransportId, TransportName, TransportImg, Transport_A, Transport_B, Transport_C
+  </sql>
+ <!--根据id查询所有物流-->
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from transport
+    where TransportId = #{transportid,jdbcType=INTEGER}
+  </select>
+  <!--根据id删除物流-->
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from transport
+    where TransportId = #{transportid,jdbcType=INTEGER}
+  </delete>
+
+ <!--根据Id插入物流信息-->
+  <insert id="insert" parameterType="com.xh.po.Transport">
+    insert into transport (TransportId, TransportName, TransportImg,
+    Transport_A, Transport_B, Transport_C
+    )
+    values (#{transportid,jdbcType=INTEGER}, #{transportname,jdbcType=VARCHAR}, #{transportimg,jdbcType=VARCHAR},
+    #{transportA,jdbcType=VARCHAR}, #{transportB,jdbcType=VARCHAR}, #{transportC,jdbcType=VARCHAR}
+    )
+  </insert>
+  <insert id="insertSelective" parameterType="com.xh.po.Transport">
+    insert into transport
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="transportid != null">
+        TransportId,
+      </if>
+      <if test="transportname != null">
+        TransportName,
+      </if>
+      <if test="transportimg != null">
+        TransportImg,
+      </if>
+      <if test="transportA != null">
+        Transport_A,
+      </if>
+      <if test="transportB != null">
+        Transport_B,
+      </if>
+      <if test="transportC != null">
+        Transport_C,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="transportid != null">
+        #{transportid,jdbcType=INTEGER},
+      </if>
+      <if test="transportname != null">
+        #{transportname,jdbcType=VARCHAR},
+      </if>
+      <if test="transportimg != null">
+        #{transportimg,jdbcType=VARCHAR},
+      </if>
+      <if test="transportA != null">
+        #{transportA,jdbcType=VARCHAR},
+      </if>
+      <if test="transportB != null">
+        #{transportB,jdbcType=VARCHAR},
+      </if>
+      <if test="transportC != null">
+        #{transportC,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+
+<!--更新物流表-->
+  <update id="updateByPrimaryKeySelective" parameterType="com.xh.po.Transport">
+    update transport
+    <set>
+      <if test="transportname != null">
+        TransportName = #{transportname,jdbcType=VARCHAR},
+      </if>
+      <if test="transportimg != null">
+        TransportImg = #{transportimg,jdbcType=VARCHAR},
+      </if>
+      <if test="transportA != null">
+        Transport_A = #{transportA,jdbcType=VARCHAR},
+      </if>
+      <if test="transportB != null">
+        Transport_B = #{transportB,jdbcType=VARCHAR},
+      </if>
+      <if test="transportC != null">
+        Transport_C = #{transportC,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where TransportId = #{transportid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xh.po.Transport">
+    update transport
+    set TransportName = #{transportname,jdbcType=VARCHAR},
+    TransportImg = #{transportimg,jdbcType=VARCHAR},
+    Transport_A = #{transportA,jdbcType=VARCHAR},
+    Transport_B = #{transportB,jdbcType=VARCHAR},
+    Transport_C = #{transportC,jdbcType=VARCHAR}
+    where TransportId = #{transportid,jdbcType=INTEGER}
+  </update>
+
+  <!--查询所有物流信息-->
+  <select id="QuerryAllTranSport" parameterType="list" resultType="com.xh.po.Transport">
+    SELECT TransportId ,TransportName,TransportImg,Transport_A AS TransportA ,Transport_B AS TransportB FROM transport
+  </select>
+  <!--实现模糊查询-->
+  <select id="QueryTransportConfuse" parameterType="com.xh.po.vo.StringAndString" resultType="com.xh.po.Transport">
+    SELECT *
+    FROM transport WHERE TransportId LIKE '%${sqlString}%' OR TransportName LIKE '%${sqlString}%'
+  </select>
+</mapper>

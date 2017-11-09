@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.xh.mapper.pojo.UserCsdMapper">
-  <resultMap id="BaseResultMap" type="com.xh.po.User">
+<mapper namespace="com.xh.mapper.pojo.SystemSetingsMapper">
+  <resultMap id="BaseResultMap" type="com.xh.po.vo.SystemSitings">
     <id column="UserId" jdbcType="INTEGER" property="userid" />
     <result column="UserName" jdbcType="VARCHAR" property="username" />
     <result column="UserPwd" jdbcType="VARCHAR" property="userpwd" />
@@ -52,18 +52,18 @@
 
   <!--插入一个用户-->
   <insert id="insertSelective" parameterType="com.xh.po.User">
-   insert into user (UserId, UserName, UserPwd,
-      UserSex, UserRealName, UserPhone,
-      UserBirthday, UserAddress, UserEmail,
-      CreditsCore, UserInputDate, UserZip,
-      UserLoginCount, UserLoginTime, User_A,
-      User_B, User_C)
+    insert into user (UserId, UserName, UserPwd,
+    UserSex, UserRealName, UserPhone,
+    UserBirthday, UserAddress, UserEmail,
+    CreditsCore, UserInputDate, UserZip,
+    UserLoginCount, UserLoginTime, User_A,
+    User_B, User_C)
     values (#{userid,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{userpwd,jdbcType=VARCHAR},
-      #{usersex,jdbcType=VARCHAR}, #{userrealname,jdbcType=VARCHAR}, #{userphone,jdbcType=VARCHAR},
-      #{userbirthday,jdbcType=DATE}, #{useraddress,jdbcType=VARCHAR}, #{useremail,jdbcType=VARCHAR},
-      #{creditscore,jdbcType=INTEGER}, #{userinputdate,jdbcType=DATE}, #{userzip,jdbcType=INTEGER},
-      #{userlogincount,jdbcType=INTEGER}, #{userlogintime,jdbcType=TIMESTAMP}, #{userA,jdbcType=VARCHAR},
-      #{userB,jdbcType=VARCHAR}, #{userC,jdbcType=VARCHAR})
+    #{usersex,jdbcType=VARCHAR}, #{userrealname,jdbcType=VARCHAR}, #{userphone,jdbcType=VARCHAR},
+    #{userbirthday,jdbcType=DATE}, #{useraddress,jdbcType=VARCHAR}, #{useremail,jdbcType=VARCHAR},
+    #{creditscore,jdbcType=INTEGER}, #{userinputdate,jdbcType=DATE}, #{userzip,jdbcType=INTEGER},
+    #{userlogincount,jdbcType=INTEGER}, #{userlogintime,jdbcType=TIMESTAMP}, #{userA,jdbcType=VARCHAR},
+    #{userB,jdbcType=VARCHAR}, #{userC,jdbcType=VARCHAR})
   </insert>
 
 
@@ -122,17 +122,17 @@
     </set>
     where UserId = #{userid,jdbcType=INTEGER}
   </update>
-<!--查询所有信息-->
+  <!--查询所有信息-->
   <select id="qullyAllUser" parameterType="list" resultType="com.xh.po.User" >
     SELECT UserId, UserName, UserPwd, UserSex, UserRealName, UserPhone, UserBirthday, UserAddress,
-  UserEmail, UserZip,UserInputDate ,User_A AS UserA FROM user;
+    UserEmail, UserZip,UserInputDate ,User_A AS UserA FROM user;
   </select>
 
   <!--实现模糊查询-->
   <select id="QueryUserConfuse" parameterType="com.xh.po.vo.StringAndString" resultType="com.xh.po.User">
-      SELECT *
-      FROM user WHERE UserEmail LIKE '%${sqlString}%' OR  UserPhone LIKE '%${sqlString}%'
-      OR UserName LIKE '%${sqlString}%'  OR UserBirthday LIKE '%${sqlString}%'
+    SELECT *
+    FROM user WHERE UserEmail LIKE '%${sqlString}%' OR  UserPhone LIKE '%${sqlString}%'
+    OR UserName LIKE '%${sqlString}%'  OR UserBirthday LIKE '%${sqlString}%'
   </select>
 
 

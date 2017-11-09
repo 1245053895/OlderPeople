@@ -15,13 +15,5 @@ import java.util.List;
 @ContextConfiguration(locations="classpath:/config/spring/applicationContext-*.xml")
 public class Mytest {
 
-    @Autowired
-    private UserMessageService userMessageService;
-    @Test
-    public void UseTest() {
-
-
-    }
-
 }
 

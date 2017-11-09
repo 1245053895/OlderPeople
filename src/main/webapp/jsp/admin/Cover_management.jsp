@@ -1,3 +1,5 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmd" uri="http://java.sun.com/jstl/fmt_rt" %>
 <%--
   Created by IntelliJ IDEA.
   User: Administrator
@@ -38,70 +40,106 @@
 <div class="border clearfix">
        <span class="l_f">
         <a href="javascript:ovid()" id="ads_add" class="btn btn-warning"><i class="fa fa-plus"></i> 添加支付方式</a>
-        <a href="javascript:ovid()" class="btn btn-danger"><i class="fa fa-trash"></i> 批量删除</a>
+       <a title="批量删除"
+
+          href="javascript:ovid(0)" onclick="PayDelect()"
+          class="btn btn-xs btn-warning"><i class="icon-trash  bigger-120"></i>批量删除</a>
+
        </span>
     <span class="r_f">共：<b>45</b>条</span>
 </div>
+<form action="${pageContext.request.contextPath}/DelectPayQuerry.action" id="arrayDelectForm" method="post">
+    <div class="Guestbook_list">
+        <table class="table table-striped table-bordered table-hover" id="sample-table">
+            <thead>
+            <tr>
+                <th width="25"><label><input type="checkbox" class="ace"><span class="lbl"></span></label></th>
+                <th width="80">支付ID</th>
+                <th width="100">支付名称</th>
+                <th width="240px">支付图片</th>
+                <th width="180">加入时间</th>
+                <th width="70">状态</th>
+                <th width="250">操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <c:forEach items="${payList}" var="payList">
+            <tr>
+                    <td><label><input name="payid" value="${payList.payid}"  type="checkbox" class="ace"><span class="lbl"></span></label></td>
+                    <td>${payList.payid}</td>
+                    <td width="200px;">${payList.payname}</td>
+                    <td><span class="ad_img"><img src="/images/${payList.paypicture}"  width="150px" height="60px"/></span></td>
+                    <td><fmd:formatDate value="${payList.payA}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
 
-<div class="Guestbook_list">
-    <table class="table table-striped table-bordered table-hover" id="sample-table">
-        <thead>
-        <tr>
-            <th width="25"><label><input type="checkbox" class="ace"><span class="lbl"></span></label></th>
-            <th width="80">支付ID</th>
-            <th width="100">支付名称</th>
-            <th width="240px">支付图片</th>
-            <th width="180">加入时间</th>
-            <th width="70">状态</th>
-            <th width="250">操作</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td><label><input type="checkbox" class="ace"><span class="lbl"></span></label></td>
-            <td>1</td>
-            <td width="200px;">支付宝</td>
-            <td><span class="ad_img"><img src="images/zfb.png"  width="100%" height="100%"/></span></td>
-            <td width="150px;">2016-6-29 12:34</td>
-            <td class="td-status"><span class="label label-success radius">已启用</span></td>
-            <td class="td-manage">
-                <a onClick="member_stop(this,'10001')"  href="javascript:;" title="停用"  class="btn btn-xs btn-success"><i class="fa fa-check  bigger-120"></i></a>
-                <a title="删除" href="javascript:;"  onclick="member_del(this,'1')" class="btn btn-xs btn-warning" ><i class="fa fa-trash  bigger-120"></i></a>
-            </td>
-        </tr>
-        </tbody>
-    </table>
-</div>
+                        <c:if test="${payList.payB==null}">
+                            <td class="td-status"><span class="label label-success radius">已启用</span></td>
+                        </c:if>
+                        <c:if test="${payList.payB==1}">
+                            <td class="td-status"><span class="label label-success radius">已启用</span></td>
+                        </c:if>
+                        <c:if test="${payList.payB==0}">
+                            <td class="td-status"><span class="label label-default radius">已停用</span></td>
+                        </c:if>
 
-<!--添加物流方式-->
+
+
+                    <td class="td-manage">
+                        <c:if test="${payList.payB==0}">
+                            <a onClick="member_start(this,'${payList.payid}')" href="javascript:void(0);" title="启用"
+                               class="btn btn-xs btn-success"><i class="fa fa-check  bigger-120"></i></a>
+                        </c:if>
+                        <c:if test="${payList.payB==1}">
+                            <a onClick="member_stop(this,'${payList.payid}')" href="javascript:void(0);" title="停用"
+                               class="btn btn-xs btn-success"><i class="fa fa-check  bigger-120"></i></a>
+                        </c:if>
+                        <c:if test="${payList.payB==null}">
+                            <a onClick="member_stop(this,'${payList.payid}')" href="javascript:void(0);" title="启用"
+                               class="btn btn-xs btn-success"><i class="fa fa-check  bigger-120"></i></a>
+                        </c:if>
+
+                        <a
+                                onclick="return confirm('确定删除？')"
+                                title="删除"
+                                href="${pageContext.request.contextPath}/DelectPayById.action?payid=${payList.payid}"
+                                class="btn btn-xs btn-warning"><i class="fa fa-trash  bigger-120"></i></a>
+
+
+                    </td>
+            </tr>
+            </c:forEach>
+            </tbody>
+        </table>
+    </div>
+</form>
+
+<!--添加支付方式-->
 <div id="add_ads_style"  style="display:none">
     <div class="add_adverts">
-        <ul>
+        <form id="Addpay" action="${pageContext.request.contextPath}/AddPay.action" enctype="multipart/form-data"  method="post">
+            <ul>
+                <li><label class="label_name">支付名称</label>
+                    <span class="cont_style"><input name="payname" type="text" placeholder="请输支付入名称" class="col-xs-10 col-sm-5"></span>
+                </li>
 
-            <li><label class="label_name">支付名称</label>
-                <span class="cont_style"><input name="支付名称" type="text" placeholder="请输支付入名称" class="col-xs-10 col-sm-5"></span>
-            </li>
-            <li><label class="label_name">图片尺寸</label><span class="cont_style">
-      <input name="长" type="text" placeholder="0" class="col-xs-10 col-sm-5" style="width:80px">
-      <span class="l_f" style="margin-left:10px;">x</span><input name="宽" type="text" placeholder="0" class="col-xs-10 col-sm-5" style="width:80px"></span>
-            </li>
-            <li><label class="label_name">支付图片</label><span class="cont_style">
- <div class="demo">
-	           <div class="logobox"><div class="resizebox"><img src="images/image.png" width="100px" alt="" height="100px"/></div></div>
-               <div class="logoupload">
-                  <div class="btnbox"><a id="uploadBtnHolder" class="uploadbtn" href="javascript:;">上传替换</a></div>
-                  <div style="clear:both;height:0;overflow:hidden;"></div>
-                  <div class="progress-box" style="display:none;">
-                    <div class="progress-num">上传进度：<b>0%</b></div>
-                    <div class="progress-bar"><div style="width:0%;" class="bar-line"></div></div>
-                  </div>  <div class="prompt"><p>图片大小小于5MB,支持.jpg;.gif;.png;.jpeg格式的图片</p></div>
-              </div>
-           </div>
-   </span>
-            </li>
+                <li><label class="label_name">支付图片</label>
+                    <span class="cont_style">
+                        <div class="demo">
+                                 <div style="border:2px dashed rgba(255,0,0,0.76);">
+                                    <p>
+                                        图片上传前预览：<input width="100px" height="100px"type="file" id="xdaTanFileImg" onchange="xmTanUploadImg(this)" accept="image/*"   name="Pay_pic" />
+                                        <input width="100px" height="100px"  type="button" value="隐藏图片" onclick="document.getElementById('xmTanImg').style.display = 'none';"/>
+                                        <input width="100px" height="100px" type="button" value="显示图片" onclick="document.getElementById('xmTanImg').style.display = 'block';"/>
+                                    </p>
+                                     <img name="paypicture" id="xmTanImg" width="100px" height="100px"/>
+                                     <div id="xmTanDiv"></div>
+                                  </div>
+                        </div>
 
 
-        </ul>
+                    </span>
+                </li>
+            </ul>
+        </form>
     </div>
 </div>
 </body>
@@ -135,6 +173,7 @@
             $(obj).parents("tr").find(".td-status").html('<span class="label label-defaunt radius">已停用</span>');
             $(obj).remove();
             layer.msg('停用!',{icon: 5,time:1000});
+            window.location.href="${pageContext.request.contextPath}/PayStatusStop.action?payId="+id;
         });
     }
     /*广告图片-启用*/
@@ -144,6 +183,7 @@
             $(obj).parents("tr").find(".td-status").html('<span class="label label-success radius">已启用</span>');
             $(obj).remove();
             layer.msg('启用!',{icon: 6,time:1000});
+            window.location.href="${pageContext.request.contextPath}/PayStatusStart.action?payId="+id;
         });
     }
     /*广告图片-删除*/
@@ -157,7 +197,7 @@
     $('#ads_add').on('click', function(){
         layer.open({
             type: 1,
-            title: '添加广告',
+            title: '添加支付方式',
             maxmin: true,
             shadeClose: false, //点击遮罩关闭层
             area : ['800px' , ''],
@@ -180,6 +220,7 @@
                 });
                 if(num>0){  return false;}
                 else{
+                    $("#Addpay").submit();
                     layer.alert('添加成功！',{
                         title: '提示框',
                         icon:1,
@@ -385,4 +426,57 @@
             return 'left';
         }
     })
+    function PayDelect() {
+        /*document.getElementById("#arrayDelectForm").submit();*/
+        /*document.arrayDelectForm.submit();*/
+        $("#arrayDelectForm").submit();
+        console.log("dyfygj");
+    }
+
+
+
+//山川图片
+    //判断浏览器是否支持FileReader接口
+    if (typeof FileReader == 'undefined') {
+        document.getElementById("xmTanDiv").InnerHTML = "<h1>当前浏览器不支持FileReader接口</h1>";
+        //使选择控件不可操作
+        document.getElementById("xdaTanFileImg").setAttribute("disabled", "disabled");
+    }
+
+    //选择图片，马上预览
+    function xmTanUploadImg(obj) {
+        var file = obj.files[0];
+
+        console.log(obj);console.log(file);
+        console.log("file.size = " + file.size);  //file.size 单位为byte
+
+        var reader = new FileReader();
+
+        //读取文件过程方法
+        reader.onloadstart = function (e) {
+            console.log("开始读取....");
+        }
+        reader.onprogress = function (e) {
+            console.log("正在读取中....");
+        }
+        reader.onabort = function (e) {
+            console.log("中断读取....");
+        }
+        reader.onerror = function (e) {
+            console.log("读取异常....");
+        }
+        reader.onload = function (e) {
+            console.log("成功读取....");
+
+            var img = document.getElementById("xmTanImg");
+            img.src = e.target.result;
+            //或者 img.src = this.result;  //e.target == this
+        }
+
+        reader.readAsDataURL(file)
+    }
 </script>
+
+
+
+

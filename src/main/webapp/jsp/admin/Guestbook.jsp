@@ -87,7 +87,7 @@
                     <%--<td><a href="member-show.jsp">张小泉</a></td>--%>
                     <%--<td class="text-l">--%>
                         <%--<a href="javascript:;" onclick="Guestbook_iew('12')">值此京东“618品质狂欢节”之际，中国特产无锡馆限量上线618份8只装精品水蜜桃</a>--%>
-                    <td>${commentRate.GoodRate}</td>
+                    <td>${commentRate.goodrate}</td>
                     <%--<td>2017.10.12</td>--%>
                     <td class="td-manage">
                         <a href="javascript:;"  onclick="member_del(this,'1')" title="删除" class="btn btn-xs btn-warning" ><i class="fa fa-trash  bigger-120"></i></a>

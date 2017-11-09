@@ -43,9 +43,4 @@ public interface ProductService {
 
     List<ProductAndTypeVo> typeProductType(String producttypeid);
 
-    List<ProductAndTypeVo> typeProductType(String producttypeid);
-
-    //根据商品的id对商品进行更新
-    public void updateById(ProductAndTypeVo productAndTypeVo);
-
 }

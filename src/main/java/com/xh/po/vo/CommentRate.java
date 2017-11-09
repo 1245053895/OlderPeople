@@ -8,7 +8,7 @@ public class CommentRate {
 
     private String productname;
 
-    private Integer GoodRate;
+    private Integer goodrate;
 
     public Integer getCommentid() {
         return commentid;
@@ -26,11 +26,11 @@ public class CommentRate {
         this.productname = productname;
     }
 
-    public Integer getGoodRate() {
-        return GoodRate;
+    public Integer getGoodrate() {
+        return goodrate;
     }
 
-    public void setGoodRate(Integer goodRate) {
-        GoodRate = goodRate;
+    public void setGoodrate(Integer goodrate) {
+        this.goodrate = goodrate;
     }
 }

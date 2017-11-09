@@ -81,7 +81,7 @@
                 <td><label><input name="Transpostids" value="${transportslist.transportid}" type="checkbox" class="ace"><span class="lbl"></span></label></td>
                 <td>${transportslist.transportid}</td>
                 <td width="200px;">${transportslist.transportname}</td>
-                <td><span class="ad_img"><img src="/jsp/admin/images/${transportslist.transportimg}"  width="100%" height="100%"/></span></td>
+                <td><span class="ad_img"><img src="/images/${transportslist.transportimg}"  width="200px" height="100px"/></span></td>
                 <td><fmd:formatDate value="${transportslist.transportA}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
 
                 <c:if test="${transportslist.transportB==null}">
@@ -128,7 +128,7 @@
 <!--添加物流方式-->
 <div id="add_ads_style"  style="display:none">
  <div class="add_adverts">
-     <form id="AddTransport" action="${pageContext.request.contextPath}/AddTransport.action" method="post">
+     <form id="AddTransport" action="${pageContext.request.contextPath}/AddTransport.action" enctype="multipart/form-data"  method="post">
          <ul>
               <li><label class="label_name">物流名称</label>
                   <span class="cont_style"><input name="transportname" type="text" placeholder="请输入物流名称" class="col-xs-10 col-sm-5"></span>
@@ -136,22 +136,9 @@
              <li><label class="label_name">加入时间</label>
                  <span class="cont_style"><input name="transportA" type="text" placeholder="请输加入物流名称" class="col-xs-10 col-sm-5"></span>
              </li>
-              <li><label class="label_name">图片尺寸</label><span class="cont_style">
-                  <input name="长" type="text" placeholder="0" class="col-xs-10 col-sm-5" style="width:80px">
-                  <span class="l_f" style="margin-left:10px;">x</span><input name="宽" type="text" placeholder="0" class="col-xs-10 col-sm-5" style="width:80px"></span>
-              </li>
+
               <li><label class="label_name">物流图片</label><span class="cont_style">
-                       <div class="demo">
-                           <div class="logobox"><div class="resizebox"><img src="/jsp/admin/images/image.png" width="100px" alt="" height="100px"/></div></div>
-                           <div class="logoupload">
-                              <div class="btnbox"><a id="uploadBtnHolder" class="uploadbtn" href="javascript:;">上传替换</a></div>
-                              <div style="clear:both;height:0;overflow:hidden;"></div>
-                              <div class="progress-box" style="display:none;">
-                                <div class="progress-num">上传进度：<b>0%</b></div>
-                                <div class="progress-bar"><div style="width:0%;" class="bar-line"></div></div>
-                              </div>  <div class="prompt"><p>图片大小小于5MB,支持.jpg;.gif;.png;.jpeg格式的图片</p></div>
-                          </div>
-                       </div>
+                       ky8
                </span>
               </li>
          </ul>
@@ -451,5 +438,46 @@ $(document).ready(function() {
         /*document.arrayDelectForm.submit();*/
         $("#arrayDelectForm").submit();
         console.log("dyfygj");
+    }
+
+
+    //判断浏览器是否支持FileReader接口
+    if (typeof FileReader == 'undefined') {
+        document.getElementById("xmTanDiv").InnerHTML = "<h1>当前浏览器不支持FileReader接口</h1>";
+        //使选择控件不可操作
+        document.getElementById("xdaTanFileImg").setAttribute("disabled", "disabled");
+    }
+
+    //选择图片，马上预览
+    function xmTanUploadImg(obj) {
+        var file = obj.files[0];
+
+        console.log(obj);console.log(file);
+        console.log("file.size = " + file.size);  //file.size 单位为byte
+
+        var reader = new FileReader();
+
+        //读取文件过程方法
+        reader.onloadstart = function (e) {
+            console.log("开始读取....");
+        }
+        reader.onprogress = function (e) {
+            console.log("正在读取中....");
+        }
+        reader.onabort = function (e) {
+            console.log("中断读取....");
+        }
+        reader.onerror = function (e) {
+            console.log("读取异常....");
+        }
+        reader.onload = function (e) {
+            console.log("成功读取....");
+
+            var img = document.getElementById("xmTanImg");
+            img.src = e.target.result;
+            //或者 img.src = this.result;  //e.target == this
+        }
+
+        reader.readAsDataURL(file)
     }
 </script>

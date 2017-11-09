@@ -136,12 +136,17 @@
   </select>
 
 
-
+<!--系统设置的Sql-->
+  <!--插入-->
   <insert id="insertSystem" parameterType="com.xh.po.vo.SystemSitings">
     INSERT INTO systemset(WebName,WebIcon,KeyWords,BlockWords,WebfilePatn,
     WebDescribe,BottomCopyright,RecordNumber)VALUES (
     #{webname},#{webicon},#{keywords},#{blockwords},#{webfilepath},#{webdescrible},#{bottomcopyright},#{recordnumber}
     )
   </insert>
+  <!--查询系统设置-->
+  <select id="SelectSystemsQuerry" parameterType="list" resultType="com.xh.po.vo.SystemSitings" >
+    SELECT * FROM systemset;
+  </select>
 
 </mapper>

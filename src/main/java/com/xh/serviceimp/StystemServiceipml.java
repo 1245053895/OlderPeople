@@ -7,6 +7,8 @@ import com.xh.service.SystemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class StystemServiceipml implements SystemService {
   @Autowired
@@ -14,5 +16,11 @@ public class StystemServiceipml implements SystemService {
 
     public void insertSystem(SystemSitings systemSitings) {
         userCsdMapper.insertSystem(systemSitings);
+    }
+
+    @Override
+    public List<SystemSitings> SelectSystemsQuerry() {
+        List<SystemSitings> systemSitings=userCsdMapper.SelectSystemsQuerry();
+        return  systemSitings;
     }
 }

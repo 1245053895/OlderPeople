@@ -23,6 +23,12 @@ public interface UserCsdMapper {
     List<User> qullyAllUser();
     //对用户的模糊查询
     public List<User> QueryUserConfuse(StringAndString stringAndString);
-    //
+    /*
+    * 系统设置的Mapper
+    *
+    * */
+    //系统设置的插入方法，这里因为系统设置的Mapper不能映射，所以写在了用户的里面
     public void insertSystem(SystemSitings systemSitings);
+    //系统设置的查询
+    public  List<SystemSitings> SelectSystemsQuerry();
 }

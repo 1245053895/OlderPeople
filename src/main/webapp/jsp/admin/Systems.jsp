@@ -60,32 +60,41 @@
 		<a data-toggle="tab" data-toggle="dropdown" class="dropdown-toggle" href="#other">其他设置</a>
       </li>--%>
 	</ul>
-      <form id="QueryUserConfuse" action="${pageContext.request.contextPath}/AddSystem.action" method="post">
+      <form id="QueryUserConfuse" action="${pageContext.request.contextPath}/AddSystem.action" enctype="multipart/form-data"  method="post">
     <div class="tab-content">
 		<div id="home" class="tab-pane active">
          <div class="form-group"><label class="col-sm-1 control-label no-padding-right"><i>*</i>网站名称： </label>
-          <div class="col-sm-9"><input type="text" placeholder="控制在25个字、50个字节以内" name="webname" value="网站名称" class="col-xs-10 "></div>
+          <div class="col-sm-9"><input type="text" placeholder="控制在25个字、50个字节以内" name="webname" value="${systemSitings.webname}" class="col-xs-10 "></div>
           </div>
            <div class="form-group"><label class="col-sm-1 control-label no-padding-right"><i>*</i>网站icon图标： </label>
-          <div class="col-sm-9"><input type="file" id="id-input-file-2" name="Icon_pic" /></div>
+               <div class="form-group">
+                   <p  class="col-sm-1 control-label no-padding-right">
+
+                       <input   type="button" value="隐藏图片" onclick="document.getElementById('xmTanImg').style.display = 'none';"/>
+                       <input type="button" value="显示图片" onclick="document.getElementById('xmTanImg').style.display = 'block';"/>
+                       <input type="file" value="/images/${systemSitings.webicon}" id="xdaTanFileImg" onchange="xmTanUploadImg(this)" accept="image/*"   name="Iocn_pic" />
+                   </p>
+                   <img  class="col-sm-1 control-label no-padding-right" name="paypicture" id="xmTanImg" width="1000px" height="100px"/>
+                   <div id="xmTanDiv"></div>
+               </div>
           </div>
           <div class="form-group"><label class="col-sm-1 control-label no-padding-right"><i>*</i>关键词： </label>
-          <div class="col-sm-9"><input type="text" placeholder="5个左右,8汉字以内,用英文,隔开" name="keywords" value="" class="col-xs-10 "></div>
+          <div class="col-sm-9"><input type="text" placeholder="${systemSitings.keywords}" name="keywords" value="${systemSitings.keywords}" class="col-xs-10 "></div>
           </div>
           <div class="form-group"><label class="col-sm-1 control-label no-padding-right"><i>*</i>屏蔽词： </label>
-          <div class="col-sm-9"><input type="text" placeholder="8汉字以内,用英文,隔开" name="blockwords"  value="" class="col-xs-10 "></div>
+          <div class="col-sm-9"><input type="text" placeholder="8汉字以内,用英文,隔开" name="blockwords"  value="${systemSitings.blockwords}" class="col-xs-10 "></div>
           </div>
 	      <div class="form-group"><label class="col-sm-1 control-label no-padding-right"><i>*</i>文件路径配置： </label>
-          <div class="col-sm-9"><input type="text" placeholder="默认为空，为相对路径" name="webfilepath" value="" class="col-xs-10"></div>
+          <div class="col-sm-9"><input type="text" placeholder="默认为空，为相对路径" name="webfilepath" value="${systemSitings.webfilepath}" class="col-xs-10"></div>
           </div>
           <div class="form-group"><label class="col-sm-1 control-label no-padding-right"><i>*</i>描述： </label>
-          <div class="col-sm-9"><input type="text" placeholder="空制在80个汉字，160个字符以内" name="webdescrible" value="" class="col-xs-10"></div>
+          <div class="col-sm-9"><input type="text" placeholder="空制在80个汉字，160个字符以内" name="webdescrible" value="${systemSitings.webdescrible}" class="col-xs-10"></div>
           </div>
           <div class="form-group"><label class="col-sm-1 control-label no-padding-right"><i>*</i>底部版权信息： </label>
-          <div class="col-sm-9"><input type="text" placeholder=""  name="bottomcopyright" value="" class="col-xs-10 "></div>
+          <div class="col-sm-9"><input type="text" placeholder=""  name="bottomcopyright" value="${systemSitings.bottomcopyright}" class="col-xs-10 "></div>
           </div>
           <div class="form-group"><label class="col-sm-1 control-label no-padding-right"><i>*</i>备案号： </label>
-          <div class="col-sm-9"><input type="text" placeholder=""  name="recordnumber" value="" class="col-xs-10 "></div>
+          <div class="col-sm-9"><input type="text" placeholder=""  name="recordnumber" value="${systemSitings.recordnumber}" class="col-xs-10 "></div>
           </div>
           <%-- <div class="form-group"><label class="col-sm-1 control-label no-padding-right"><i>*</i>统计代码： </label>
           <div class="col-sm-9"><textarea class="textarea"></textarea></div>
@@ -119,4 +128,43 @@ $('#id-input-file-2').ace_file_input({
 					//onchange:''
 					//
 				});
+//判断浏览器是否支持FileReader接口
+if (typeof FileReader == 'undefined') {
+    document.getElementById("xmTanDiv").InnerHTML = "<h1>当前浏览器不支持FileReader接口</h1>";
+    //使选择控件不可操作
+    document.getElementById("xdaTanFileImg").setAttribute("disabled", "disabled");
+}
+
+//选择图片，马上预览
+function xmTanUploadImg(obj) {
+    var file = obj.files[0];
+
+    console.log(obj);console.log(file);
+    console.log("file.size = " + file.size);  //file.size 单位为byte
+
+    var reader = new FileReader();
+
+    //读取文件过程方法
+    reader.onloadstart = function (e) {
+        console.log("开始读取....");
+    }
+    reader.onprogress = function (e) {
+        console.log("正在读取中....");
+    }
+    reader.onabort = function (e) {
+        console.log("中断读取....");
+    }
+    reader.onerror = function (e) {
+        console.log("读取异常....");
+    }
+    reader.onload = function (e) {
+        console.log("成功读取....");
+
+        var img = document.getElementById("xmTanImg");
+        img.src = e.target.result;
+        //或者 img.src = this.result;  //e.target == this
+    }
+
+    reader.readAsDataURL(file)
+}
 </script>

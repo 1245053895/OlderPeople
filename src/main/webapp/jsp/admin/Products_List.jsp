@@ -97,17 +97,17 @@
                             <td width="80px">
                                     ${productAndTypeVos.productid}
                             </td>
-                            <td width="150px">
+                            <td width="200px">
                                 <input style="border-width: 0px;background-color: transparent;" type="text"
                                                              value="${productAndTypeVos.productname}" name="productname"
                                                              class="input_style text_info${productAndTypeVos.productid}" readonly="true"/>
                             </td>
-                            <td width="100px">
+                            <td width="150px">
                                 <input style="border-width: 0px;background-color: transparent;" type="text"
                                                              value="${productAndTypeVos.producttypename}" name="producttypename"
                                                              class="input_style text_info${productAndTypeVos.productid}" readonly="true"/>
                             </td>
-                            <td width="100px">
+                            <td width="250px">
                                 <input style="border-width: 0px;background-color: transparent;" type="text"
                                                              value="<fmt:formatDate value="${productAndTypeVos.productstoretime}" pattern="yyyy-MM-dd HH:mm:ss"/>"
                                                              name="productstoretime" class="input_style text_info${productAndTypeVos.productid}" readonly="true"/>
@@ -117,7 +117,7 @@
                                                              value="${productAndTypeVos.productprice}" name="productprice"
                                                              class="input_style text_info${productAndTypeVos.productid}" readonly="true"/>
                             </td>
-                            <td width="150px">
+                            <td width="250px">
                                 <input style="border-width: 0px;background-color: transparent;" type="text"
                                                                     value="${productAndTypeVos.productdescribe}" name="productdescribe"
                                                                     class="input_style text_info${productAndTypeVos.productid}" readonly="true"/>
@@ -156,7 +156,7 @@
                             <c:if test="${productAndTypeVos.productA==null}">
                                 <td class="td-status"><span class="label label-success radius">已启用</span></td>
                             </c:if>
-                            <td>
+                            <td width="50px;">
                                 <c:if test="${productAndTypeVos.productA==0}">
                                     <a onClick="member_start(this,'${productAndTypeVos.productid}')" href="javascript:void(0);" title="启用"
                                        class="btn btn-xs btn-success"><i class="icon-ok bigger-120"></i></a>
@@ -371,13 +371,13 @@
     function modify(v) {
         if(flag) {
             $('.text_info' + v).attr("readonly", false);
-            $('.text_info' + v).parents("td").css("box-shadow","0px 0px 20px #888888 inset");
+            //$('.text_info' + v).parents("td").css("box-shadow","0px 0px 20px #888888 inset");
             $('#edit'+v).text("提交");
             flag = false;
         }else{
             $("#form_"+v).submit();
             $('.text_info' + v).attr("readonly", true);
-            $('.text_info' + v).parents("td").css("box-shadow","0px 0px 0px #888888 inset");
+            //$('.text_info' + v).parents("td").css("box-shadow","0px 0px 0px #888888 inset");
             $('#edit'+v).text("编辑");
             flag=true;
         }

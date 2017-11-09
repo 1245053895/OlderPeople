@@ -289,4 +289,9 @@
   <update id="updatePasswordById" parameterType="admin">
         UPDATE admin SET AdminPwd=#{adminpwd} WHERE AdminId=#{adminid}
   </update>
+
+  <!--修改数据库中管理员的头像-->
+  <update id="updateAdminPic" parameterType="admin">
+    UPDATE admin SET AdminPic=#{adminpic} WHERE AdminId=#{adminid}
+  </update>
 </mapper>

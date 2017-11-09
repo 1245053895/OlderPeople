@@ -45,8 +45,8 @@
                 <ul class="search_content clearfix">
                     <form action="${pageContext.request.contextPath}/admin/mohuSelectByName.action" method="post">
                         <li><label class="l_f">管理员名称</label><input name="name" value="${name}" type="text" class="text_add" placeholder="请输入管理员的名称" style=" width:400px"></li>
-                        <%--<li style="width:90px;"><button type="button" class="btn_search"><i class="fa fa-search"></i>查询</button></li>--%>
-                        <input type="submit" value="查询"/>
+                        <li style="width:90px;"><button  type="submit" class="btn_search"><i class="fa fa-search"></i>查询</button></li>
+                    <%--    <input value="查询"/>--%>
                     </form>
                 </ul>
             </div>

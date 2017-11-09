@@ -20,6 +20,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.File;
 import java.io.IOException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -30,8 +31,8 @@ import java.security.NoSuchAlgorithmException;
 @Controller
 public class LoginController {
     //去登录页面
-    @RequestMapping(value = "/LoginController",method= RequestMethod.GET)
-    public String login(){
+    @RequestMapping(value = "/LoginController", method = RequestMethod.GET)
+    public String login() {
         return "/jsp/admin/login.jsp";
     }
     //提交登录
@@ -40,41 +41,42 @@ public class LoginController {
     private LoginService loginService;
 
 
-    @RequestMapping(value = "/LoginController" ,method = RequestMethod.POST)
-    public String login(String username, String password, String returnUrl , HttpServletRequest request, HttpServletResponse response , Model model){
+    @RequestMapping(value = "/LoginController", method = RequestMethod.POST)
+    public String login(String username, String password, String returnUrl, HttpServletRequest request, HttpServletResponse response, Model model) {
         //1：用户名不能为空
-        if (username !=null){
+        if (username != null) {
             //2:密码不能为空
-            if (password !=null){
+            if (password != null) {
                 //3:用户名必须正确
-                Admin admin =loginService.selectUserByUsername(username);
-                 if (admin !=null){
+                Admin admin = loginService.selectUserByUsername(username);
+                if (admin != null) {
                     //4:密码必须正确
 
-                    if (admin.getAdminpwd().equals(password)){
+                    if (admin.getAdminpwd().equals(password)) {
                         HttpSession session = request.getSession();
-                        session.setMaxInactiveInterval(52*60);
+                        session.setMaxInactiveInterval(52 * 60);
                         /*session.setAttribute("username", username);
                         session.setAttribute("password",password);*/
-                        session.setAttribute("admin",admin);
+                        session.setAttribute("admin", admin);
                         return "/jsp/admin/index.jsp";
-                    }else {
-                        model.addAttribute("error","密码不正确");
+                    } else {
+                        model.addAttribute("error", "密码不正确");
                     }
-                }else {
-                    model.addAttribute("error","用户名必须正确");
+                } else {
+                    model.addAttribute("error", "用户名必须正确");
                 }
-            }else {
-                model.addAttribute("error","密码不能为空");
+            } else {
+                model.addAttribute("error", "密码不能为空");
             }
-        }else{
-            model.addAttribute("error","用户名不能为空");
+        } else {
+            model.addAttribute("error", "用户名不能为空");
         }
 
         return "/jsp/admin/login.jsp";
     }
+
     //加密
-    public String encodePassword(String password){
+    public String encodePassword(String password) {
         //
         //password = "gxzcwefxcbergfd123456errttyyytytrnfzeczxcvertwqqcxvxb";
         //1:MD5  算法
@@ -99,52 +101,50 @@ public class LoginController {
 
     //个人资料的显示
     @RequestMapping("/ShowInformation.action")
-    public String  ShowInformation(Model model,Integer adminid){
-       AdminRole adminRole=loginService.selectMyselfInformation(adminid) ;
-       adminRole.setAdminid(adminid);
-       model.addAttribute("adminRole",adminRole);
+    public String ShowInformation(Model model, Integer adminid) {
+        AdminRole adminRole = loginService.selectMyselfInformation(adminid);
+        adminRole.setAdminid(adminid);
+        model.addAttribute("adminRole", adminRole);
         return "/jsp/admin/admin_info.jsp";
 
     }
+
     //个人资料的保存修改，将修改后的信息写入到数据库中
     @RequestMapping("/UpdateMyselfInformation.action")
-    public String UpdateMyselfInformation(Admin admin){
+    public String UpdateMyselfInformation(Admin admin) {
         loginService.UpdateMyselfInformation(admin);
-        return  "redirect:/ShowInformation.action?adminid="+admin.getAdminid();
+        return "redirect:/ShowInformation.action?adminid=" + admin.getAdminid();
     }
 
     //个人资料修改中的密码修改
     @RequestMapping("/updatePasswordById.action")
-    public String updatePasswordById(Admin admin){
+    public String updatePasswordById(Admin admin) {
         loginService.updatePasswordById(admin);
-       // 没有经过查询显示出来的页面没有任何信息，return "/jsp/admin/admin_info.jsp";
-        return "redirect:/ShowInformation.action?adminid="+admin.getAdminid();
+        // 没有经过查询显示出来的页面没有任何信息，return "/jsp/admin/admin_info.jsp";
+        return "redirect:/ShowInformation.action?adminid=" + admin.getAdminid();
 
     }
 
-   /* @RequestMapping("uploadUser")
+    @RequestMapping("/uploadUser.action")
     //MultipartFile userphoto 表示上传字段
-    public String addUser2(MultipartFile userphoto, HttpSession session) throws IllegalStateException, IOException {
-
-        if(userphoto != null && userphoto.getOriginalFilename()!=null){
+    public String addUser2(Integer adminid,MultipartFile adminpic, HttpSession session) throws IllegalStateException, IOException {
+        Admin admin=new Admin();
+        String sqlPath = null;
+        if (adminpic != null && adminpic.getOriginalFilename() != null) {
             //在这里进行文件保存操作
             //传进去的是一个路径，返回的也是一个路径
-            String path = session.getServletContext().getRealPath("/upload");
-
-            String realName = userphoto.getOriginalFilename();
-
-            String realFilePath = path+File.separator+realName;
-
+            String path = session.getServletContext().getRealPath("/jsp/admin/images/upload");
+            String realName = adminpic.getOriginalFilename();
+            String realFilePath = path + File.separator + realName;
             File file = new File(realFilePath);
-
-            userphoto.transferTo(file);
-
-
-            user.setUserPhotoPath(realFilePath);
-
+            adminpic.transferTo(file);
+            admin.setAdminpic(realFilePath);
+            sqlPath = "jsp/admin/images/upload/"+realName;
+            admin.setAdminid(adminid);
+            admin.setAdminpic(sqlPath);
+            loginService.updateAdminPic(admin);
+            return "redirect:/ShowInformation.action?adminid=" + admin.getAdminid();
         }
-
-
-
-        return null;*/
+        return null;
     }
+}

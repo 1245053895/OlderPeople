@@ -40,12 +40,12 @@ To change this template use File | Settings | File Templates.
 </head>
 
 <body>
-<form action="<%= basePath %>queryAllRole.action" id="mainForm" method="post">
+<%--<form action="<%= basePath %>queryAllRole.action" id="mainForm" method="post">--%>
 <div class="margin clearfix">
     <div class="border clearfix">
        <span class="l_f">
         <a href="/getFirstview.action" id="Competence_add" class="btn btn-warning" title="添加权限"><i class="fa fa-plus"></i> 添加权限</a>
-       <a href="javascript:deleteBatch('<%=basePath%>');" class="btn btn-danger"><i class="icon-trash"></i>批量删除</a>
+       <a href="javascript:deleteBatch(<%--'<%=basePath%>'--%>);" class="btn btn-danger"><i class="icon-trash"></i>批量删除</a>
        </span>
         <span class="r_f">共：<b>5</b>类</span>
     </div>
@@ -53,7 +53,7 @@ To change this template use File | Settings | File Templates.
         <table id="sample-table-1" class="table table-striped table-bordered table-hover">
             <thead>
             <tr>
-                <th class="center"><label><input type="checkbox" class="ace"/><span class="lbl"></span></label></th>
+                <th class="center"><label><input id="allChk" type="checkbox" class="ace"/><span class="lbl"></span></label></th>
                 <th>角色id</th>
                 <th>角色名称</th>
                 <th class="hidden-480">角色描述</th>
@@ -80,7 +80,7 @@ To change this template use File | Settings | File Templates.
         </table>
     </div>
 </div>
-</form>
+<%--</form>--%>
 </body>
 </html>
 
@@ -157,11 +157,29 @@ border-color: #6fb3e0;
             }
         }
     }
-    function deleteBatch(basePath) {
-        /*if(confirm('您确定要删除吗？')) {
-            $("#mainForm").attr("action", basePath + "deletBatchRole.action");
-            $("#mainForm").submit();
-        }*/
-        //console.log($(":checked").css("border","1px #c1c1c1 solid"));
+    function deleteBatch(/*basePath*/) {
+        // 判断是否至少选择一项
+        var checkedNum = $("input[name='RoleIds']:checked").length;
+        if (checkedNum == 0) {
+            alert("请选择至少一项！");
+            return;
+        }
+        // 批量选择
+        if (confirm("确定要删除所选项目？")) {
+            var checkedList = new Array();
+            $("input[name='RoleIds']:checked").each(function () {
+                checkedList.push($(this).val());
+            });
+            checkedList;
+            $.ajax({
+                type: "POST",
+                url: "/deletBatchRole.action",
+                data: {'RoleIds': checkedList.toString()},
+                success: function (result) {
+                    //$("[name ='RoleIds']:checkbox").attr("checked", false);
+                    window.location.reload();
+                }
+            });
+        }
     }
 </script>

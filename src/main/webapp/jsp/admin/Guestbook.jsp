@@ -68,7 +68,7 @@
                 <thead>
                 <tr>
                     <th width="25"><label><input type="checkbox" class="ace"><span class="lbl"></span></label></th>
-                    <th width="97px">id</th>
+                    <th width="97px">评论编号</th>
                     <th width="100px">商品名</th>
                     <%--<th width="100px">用户名</th>--%>
                     <%--<th>评论内容</th>--%>
@@ -79,19 +79,21 @@
                 </tr>
                 </thead>
                 <tbody>
+                <c:forEach items="${commentRates}" var="commentRate">
                 <tr>
                     <td><label><input type="checkbox" class="ace"><span class="lbl"></span></label></td>
-                    <td>1</td>
-                    <td><a href="pl.jsp">秋裤</a></td>
+                    <td>${commentRate.commentid}</td>
+                    <td><a href="pl.jsp">${commentRate.productname}</a></td>
                     <%--<td><a href="member-show.jsp">张小泉</a></td>--%>
                     <%--<td class="text-l">--%>
                         <%--<a href="javascript:;" onclick="Guestbook_iew('12')">值此京东“618品质狂欢节”之际，中国特产无锡馆限量上线618份8只装精品水蜜桃</a>--%>
-                    <td>4</td>
+                    <td>${commentRate.GoodRate}</td>
                     <%--<td>2017.10.12</td>--%>
                     <td class="td-manage">
                         <a href="javascript:;"  onclick="member_del(this,'1')" title="删除" class="btn btn-xs btn-warning" ><i class="fa fa-trash  bigger-120"></i></a>
                     </td>
                 </tr>
+                </c:forEach>
                 </tbody>
             </table>
         </div>

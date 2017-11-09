@@ -51,7 +51,7 @@ public class UserMessageController {
     public String QueryUserConfuse(StringAndString stringAndString ,Model model ){
         model.addAttribute("stringAndString",stringAndString);
         List<User> userList=userMessageService.QueryUserConfuse(stringAndString);
-        model.addAttribute(userList);
+        model.addAttribute("userList",userList);
         return "/jsp/admin/user_list.jsp";
     }
     /*

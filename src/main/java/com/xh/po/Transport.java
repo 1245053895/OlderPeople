@@ -1,5 +1,7 @@
 package com.xh.po;
 
+import java.util.Date;
+
 public class Transport {
     private Integer transportid;
 
@@ -7,7 +9,7 @@ public class Transport {
 
     private String transportimg;
 
-    private String transportA;
+    private Date transportA;
 
     private String transportB;
 
@@ -37,12 +39,12 @@ public class Transport {
         this.transportimg = transportimg == null ? null : transportimg.trim();
     }
 
-    public String getTransportA() {
+    public Date getTransportA() {
         return transportA;
     }
 
-    public void setTransportA(String transportA) {
-        this.transportA = transportA == null ? null : transportA.trim();
+    public void setTransportA(Date transportA) {
+        this.transportA = transportA == null ? null : transportA;
     }
 
     public String getTransportB() {

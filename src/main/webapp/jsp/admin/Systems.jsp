@@ -48,34 +48,44 @@
 		<a data-toggle="tab" data-toggle="dropdown" class="dropdown-toggle" href="#dropdown">底部菜单</a>
       </li>
         <li class="">
+         private int webid;
+ private String webname;
+ private String webicon;
+ private String keywords;
+ private  String blockwords;
+ private  String webfilepath;
+ private  String webdescrible;
+ private  String bottomcopyright;
+ private  String recordnumber;
 		<a data-toggle="tab" data-toggle="dropdown" class="dropdown-toggle" href="#other">其他设置</a>
       </li>--%>
 	</ul>
+      <form id="QueryUserConfuse" action="${pageContext.request.contextPath}/AddSystem.action" method="post">
     <div class="tab-content">
 		<div id="home" class="tab-pane active">
          <div class="form-group"><label class="col-sm-1 control-label no-padding-right"><i>*</i>网站名称： </label>
-          <div class="col-sm-9"><input type="text" placeholder="控制在25个字、50个字节以内" value="" class="col-xs-10 "></div>
+          <div class="col-sm-9"><input type="text" placeholder="控制在25个字、50个字节以内" name="webname" value="网站名称" class="col-xs-10 "></div>
           </div>
            <div class="form-group"><label class="col-sm-1 control-label no-padding-right"><i>*</i>网站icon图标： </label>
-          <div class="col-sm-9"><input type="file" id="id-input-file-2"  /></div>
+          <div class="col-sm-9"><input type="file" id="id-input-file-2" name="Icon_pic" /></div>
           </div>
           <div class="form-group"><label class="col-sm-1 control-label no-padding-right"><i>*</i>关键词： </label>
-          <div class="col-sm-9"><input type="text" placeholder="5个左右,8汉字以内,用英文,隔开" value="" class="col-xs-10 "></div>
+          <div class="col-sm-9"><input type="text" placeholder="5个左右,8汉字以内,用英文,隔开" name="keywords" value="" class="col-xs-10 "></div>
           </div>
           <div class="form-group"><label class="col-sm-1 control-label no-padding-right"><i>*</i>屏蔽词： </label>
-          <div class="col-sm-9"><input type="text" placeholder="8汉字以内,用英文,隔开" value="" class="col-xs-10 "></div>
+          <div class="col-sm-9"><input type="text" placeholder="8汉字以内,用英文,隔开" name="blockwords"  value="" class="col-xs-10 "></div>
           </div>
 	      <div class="form-group"><label class="col-sm-1 control-label no-padding-right"><i>*</i>文件路径配置： </label>
-          <div class="col-sm-9"><input type="text" placeholder="默认为空，为相对路径" value="" class="col-xs-10"></div>
+          <div class="col-sm-9"><input type="text" placeholder="默认为空，为相对路径" name="webfilepath" value="" class="col-xs-10"></div>
           </div>
           <div class="form-group"><label class="col-sm-1 control-label no-padding-right"><i>*</i>描述： </label>
-          <div class="col-sm-9"><input type="text" placeholder="空制在80个汉字，160个字符以内" value="" class="col-xs-10"></div>
+          <div class="col-sm-9"><input type="text" placeholder="空制在80个汉字，160个字符以内" name="webdescrible" value="" class="col-xs-10"></div>
           </div>
           <div class="form-group"><label class="col-sm-1 control-label no-padding-right"><i>*</i>底部版权信息： </label>
-          <div class="col-sm-9"><input type="text" placeholder="" value="" class="col-xs-10 "></div>
+          <div class="col-sm-9"><input type="text" placeholder=""  name="bottomcopyright" value="" class="col-xs-10 "></div>
           </div>
           <div class="form-group"><label class="col-sm-1 control-label no-padding-right"><i>*</i>备案号： </label>
-          <div class="col-sm-9"><input type="text" placeholder="" value="" class="col-xs-10 "></div>
+          <div class="col-sm-9"><input type="text" placeholder=""  name="recordnumber" value="" class="col-xs-10 "></div>
           </div>
           <%-- <div class="form-group"><label class="col-sm-1 control-label no-padding-right"><i>*</i>统计代码： </label>
           <div class="col-sm-9"><textarea class="textarea"></textarea></div>
@@ -87,24 +97,9 @@
                
 			</div>
         </div>
-        <div id="profile" class="tab-pane ">
-        
-        </div>
-        <div id="dropdown" class="tab-pane">
-          
+
 		</div>
-		<div id="other" class="tab-pane">
-		   <div class="form-group"><label class="col-sm-1 control-label no-padding-right"><i>*</i>屏蔽词： </label>
-          <div class="col-sm-9"><textarea class="textarea"></textarea></div>          
-          </div>
-          <div class="Button_operation"> 
-				<button onclick="article_save_submit();" class="btn btn-primary radius" type="submit"><i class="fa fa-save "></i>&nbsp;保存</button>
-				
-				<button onclick="layer_close();" class="btn btn-default radius" type="button">&nbsp;&nbsp;取消&nbsp;&nbsp;</button>
-               
-			</div>
-	    </div>
-		</div>
+      </form>
 		</div>
  </div>
 

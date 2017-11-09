@@ -242,7 +242,7 @@
 
 			<ul class="nav nav-list" id="nav_list">
 
-				<li class="home"><a href="javascript:void(0)" name="jsp/admin/home.jsp" class="iframeurl" title=""><i class="icon-dashboard"></i><span class="menu-text"> 系统首页 </span></a></li>
+				<li class="home"><a href="javascript:void(0)" name="/jsp/admin/home.jsp" class="iframeurl" title=""><i class="icon-dashboard"></i><span class="menu-text"> 系统首页 </span></a></li>
 
 				<li><a href="#" class="dropdown-toggle"><i class="icon-desktop"></i><span class="menu-text"> 管理员管理 </span><b class="arrow icon-angle-down"></b></a>
 					<ul class="submenu">
@@ -262,7 +262,7 @@
 				<li><a href="#" class="dropdown-toggle"><i class="icon-desktop"></i><span class="menu-text"> 消息管理 </span><b class="arrow icon-angle-down"></b></a>
 					<ul class="submenu">
 						<li class="home"><a  href="javascript:void(0)" name="Feedback.jsp"  title="用户消息" class="iframeurl"><i class="icon-double-angle-right"></i>用户消息</a></li>
-						<li class="home"><a  href="javascript:void(0)" name="Guestbook.jsp" title="用户评论"  class="iframeurl"><i class="icon-double-angle-right"></i>用户评论</a></li>
+						<li class="home"><a  href="javascript:void(0)" name="/selectCommentRate.action" title="用户评论"  class="iframeurl"><i class="icon-double-angle-right"></i>用户评论</a></li>
 					</ul>
 				</li>
 
@@ -315,7 +315,7 @@
 				</ul>
 			</div>
 
-			<iframe id="iframe" style="border:0; width:100%; background-color:#FFF;"name="iframe" frameborder="0" src="home.jsp">  </iframe>
+			<iframe id="iframe" style="border:0; width:100%; background-color:#FFF;"name="iframe" frameborder="0" src="/jsp/admin/home.jsp">  </iframe>
 
 
 			<!-- /.page-content -->

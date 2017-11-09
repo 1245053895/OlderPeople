@@ -17,4 +17,7 @@ public interface LoginService {
 
     //个人资料中根据管理员的id修改密码
     public void updatePasswordById(Admin admin);
+
+    //根据Id修改管理员的头像
+    public void updateAdminPic(Admin admin);
 }

@@ -40,5 +40,10 @@ public class LoginServiceimpl implements LoginService {
         adminMapper.updatePasswordById(admin);
     }
 
+    @Override
+    public void updateAdminPic(Admin admin) {
+        adminMapper.updateAdminPic(admin);
+    }
+
 
 }

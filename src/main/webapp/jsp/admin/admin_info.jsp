@@ -38,9 +38,9 @@
         <div class="type_title">管理员信息 </div>
         <div class="xinxi">
             <div style="margin-top: 50px;margin-left: 200px; float: left;">
-                <form action="" method="post" enctype="multipart/form-data">
+                <form action="${pageContext.request.contextPath}/uploadUser.action?adminid=${admin.adminid}" method="post" enctype="multipart/form-data">
                     <div id="headimg">
-                    <img src="/jsp/admin/images/upload/${admin.adminpic}" style="width: 190px;height: 210px;">
+                    <img src="${admin.adminpic}" style="width: 190px;height: 210px;">
                     </div>
                    <%-- <button onclick="" class="btn btn-success" type="submit">上传图片</button>--%>
                     <div style="margin-top: 10px">

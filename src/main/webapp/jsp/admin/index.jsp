@@ -205,7 +205,7 @@
 						<i class="icon-caret-down"></i>
 					</a>
 					<ul class="user-menu pull-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
-						<li class="home"><a href="javascript:void(0)" name="/ShowInformation.action" title="个人资料"  class="iframeurl"><i class="icon-double-angle-right"></i>个人资料</a></li>
+						<li class="home"><a href="javascript:void(0)" name="/ShowInformation.action?adminid=${admin.adminid}" title="个人资料"  class="iframeurl"><i class="icon-double-angle-right"></i>个人资料</a></li>
 						<li class="divider"></li>
 						<li><a href="#" id="Exit_system"><i class="icon-off"></i>退出</a></li>
 					</ul>
@@ -261,8 +261,8 @@
 
 				<li><a href="#" class="dropdown-toggle"><i class="icon-desktop"></i><span class="menu-text"> 消息管理 </span><b class="arrow icon-angle-down"></b></a>
 					<ul class="submenu">
-						<li class="home"><a  href="javascript:void(0)" name="Products_List.html"  title="消息回复" class="iframeurl"><i class="icon-double-angle-right"></i>消息回复</a></li>
-						<li class="home"><a  href="javascript:void(0)" name="Brand_Manage.html" title="评论回复"  class="iframeurl"><i class="icon-double-angle-right"></i>评论回复</a></li>
+						<li class="home"><a  href="javascript:void(0)" name="Feedback.jsp"  title="用户消息" class="iframeurl"><i class="icon-double-angle-right"></i>用户消息</a></li>
+						<li class="home"><a  href="javascript:void(0)" name="/selectCommentRate.action" title="用户评论"  class="iframeurl"><i class="icon-double-angle-right"></i>用户评论</a></li>
 					</ul>
 				</li>
 
@@ -275,16 +275,17 @@
 
 				<li><a href="#" class="dropdown-toggle"><i class="icon-desktop"></i><span class="menu-text"> 订单管理 </span><b class="arrow icon-angle-down"></b></a>
 					<ul class="submenu">
-						<li class="home"><a href="javascript:void(0)" name="/getAllOrder.action" title="订单列表"  class="iframeurl"><i class="icon-double-angle-right"></i>用户订单</a></li>
-						<li class="home"><a  href="javascript:void(0)" name="/getOrderByStatusOfSix.action"  title="退货订单" class="iframeurl"><i class="icon-double-angle-right"></i>退货订单</a></li>
+						<li class="home"><a href="javascript:void(0)" name="Orderform.jsp" title="订单列表"  class="iframeurl"><i class="icon-double-angle-right"></i>用户订单</a></li>
+						<li class="home"><a  href="javascript:void(0)" name="Sort_ads.jsp"  title="订单详情" class="iframeurl"><i class="icon-double-angle-right"></i>订单详情</a></li>
+						<li class="home"><a  href="javascript:void(0)" name="Return_order.jsp"  title="退货订单" class="iframeurl"><i class="icon-double-angle-right"></i>退货订单</a></li>
 					</ul>
 				</li>
 
 				<li><a href="#" class="dropdown-toggle"><i class="icon-desktop"></i><span class="menu-text"> 系统设置 </span><b class="arrow icon-angle-down"></b></a>
 					<ul class="submenu">
-						<li class="home"><a href="javascript:void(0)" name="Category_Manage.html" title="分类管理"  class="iframeurl"><i class="icon-double-angle-right"></i>物流方式</a></li>
-						<li class="home"><a  href="javascript:void(0)" name="Products_List.html"  title="产品类表" class="iframeurl"><i class="icon-double-angle-right"></i>支付方式</a></li>
-						<li class="home"><a href="javascript:void(0)" name="Category_Manage.html" title="分类管理"  class="iframeurl"><i class="icon-double-angle-right"></i>日志查看</a></li>
+						<li class="home"><a href="javascript:void(0)" name="Systems.jsp" title="系统设置"  class="iframeurl"><i class="icon-double-angle-right"></i>系统设置</a></li>
+						<li class="home"><a href="javascript:void(0)" name="advertising.jsp" title="物流管理"  class="iframeurl"><i class="icon-double-angle-right"></i>物流管理</a></li>
+						<li class="home"><a  href="javascript:void(0)" name="Cover_management.jsp"  title="支付管理" class="iframeurl"><i class="icon-double-angle-right"></i>支付管理</a></li>
 					</ul>
 				</li>
 

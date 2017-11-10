@@ -138,7 +138,13 @@
              </li>
 
               <li><label class="label_name">物流图片</label><span class="cont_style">
-                       ky8
+                        <p>
+                                图片上传前预览：<input width="100px" height="100px"type="file" id="xdaTanFileImg" onchange="xmTanUploadImg(this)" accept="image/*"   name="Transport_pic" />
+                                <input width="100px" height="100px"  type="button" value="隐藏图片" onclick="document.getElementById('xmTanImg').style.display = 'none';"/>
+                                <input width="100px" height="100px" type="button" value="显示图片" onclick="document.getElementById('xmTanImg').style.display = 'block';"/>
+                        </p>
+                             <img name="paypicture" id="xmTanImg" width="100px" height="100px"/>
+                             <div id="xmTanDiv"></div>
                </span>
               </li>
          </ul>

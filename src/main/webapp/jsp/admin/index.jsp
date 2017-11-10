@@ -282,7 +282,7 @@
 
 				<li><a href="#" class="dropdown-toggle"><i class="icon-desktop"></i><span class="menu-text"> 系统设置 </span><b class="arrow icon-angle-down"></b></a>
 					<ul class="submenu">
-						<li class="home"><a href="javascript:void(0)" name="/jsp/admin/Systems.jsp" title="系统设置"  class="iframeurl"><i class="icon-double-angle-right"></i>系统设置</a></li>
+						<li class="home"><a href="javascript:void(0)" name="/SelectSystems.action" title="系统设置"  class="iframeurl"><i class="icon-double-angle-right"></i>系统设置</a></li>
 						<li class="home"><a href="javascript:void(0)" name="/Advertising.action" title="物流管理"  class="iframeurl"><i class="icon-double-angle-right"></i>物流管理</a></li>
 						<li class="home"><a  href="javascript:void(0)" name="/QuerryAllPay.action"  title="支付管理" class="iframeurl"><i class="icon-double-angle-right"></i>支付管理</a></li>
 					</ul>

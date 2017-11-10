@@ -14,9 +14,6 @@ import java.util.List;
 
 @Controller
 public class SystemController {
-    /*
-    * 系统设置
-    * */
 
     /*
     * 物流管理

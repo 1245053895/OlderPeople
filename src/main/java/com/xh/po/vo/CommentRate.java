@@ -4,18 +4,18 @@ package com.xh.po.vo;
  * Created by KAIRUN on 2017/11/9.
  */
 public class CommentRate {
-    private Integer commentid;
+    private Integer productid;
 
     private String productname;
 
     private Integer goodrate;
 
-    public Integer getCommentid() {
-        return commentid;
+    public Integer getProductid() {
+        return productid;
     }
 
-    public void setCommentid(Integer commentid) {
-        this.commentid = commentid;
+    public void setProductid(Integer productid) {
+        this.productid = productid;
     }
 
     public String getProductname() {

@@ -9,6 +9,7 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -34,15 +35,17 @@
 </head>
 
 <body>
+<form action="${pageContext.request.contextPath}/selectCommentGood.action?productid=${commentRate.productid}" method="post">
 <div class="margin clearfix">
     <div class="Guestbook_style">
         <div class="search_style">
             <div class="title_names">搜索查询</div>
             <ul class="search_content clearfix">
-                <li><label class="l_f">评论</label><input name="" type="text" class="text_add" placeholder="输入评论信息" style=" width:250px"></li>
+                <li><label class="l_f">评论</label><input name="comment" type="text" class="text_add" placeholder="输入评论信息" style=" width:250px"></li>
                 <%--<li><label class="l_f">好评度</label><input class="inline laydate-icon" id="start" style=" margin-left:10px;" type="输入用户好评度"></li>--%>
                 <li><label class="l_f">好评度</label>
-                    <select style="margin-left: 10px">
+                    <select name="goodcomment" style="margin-left: 10px">
+                        <option value =""></option>
                         <option value ="1">1</option>
                         <option value ="2">2</option>
                         <option value="3">3</option>
@@ -50,8 +53,7 @@
                         <option value="5">5</option>
                     </select>
                 </li>
-
-                <li style="width:90px;"><button type="button" class="btn_search"><i class="icon-search"></i>查询</button></li>
+                <li style="width:90px;"><button type="submit" class="btn_search"><i class="icon-search"></i>查询</button></li>
             </ul>
         </div>
         <div class="border clearfix">
@@ -79,22 +81,21 @@
                 </tr>
                 </thead>
                 <tbody>
+                <c:forEach items="${messageReviews}" var="messageReview" varStatus="status">
                 <tr>
                     <td><label><input type="checkbox" class="ace"><span class="lbl"></span></label></td>
                     <%--<td>1</td>--%>
                     <%--<td>秋裤</td>--%>
-                    <td><a href="member-show.jsp">张小泉</a></td>
+                    <td id="username${status.index}">${messageReview.username}</td>
                     <td class="text-l">
-
-                        <a href="javascript:;" onclick="Guestbook_iew('12')">值此京东“618品质狂欢节”之际，中国特产无锡馆限量上线618份8只装精品水蜜桃</a>
-
-                    <td>4</td>
-                    <td>2017.10.12</td>
+                        <a href="javascript:;" onclick="Guestbook_iew(this,${status.index})">${messageReview.comment}</a>
+                    <td>${messageReview.goodcomment}</td>
+                    <td><fmt:formatDate value="${messageReview.commentTime}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
                     <td class="td-manage">
-                        <%--<a  href="javascript:;"  onclick="member_del(this,'1')" title="删除" class="btn btn-xs btn-warning" ><i class="fa fa-trash  bigger-120"></i></a>--%>
-                        <span id="text"></span>
+                        <span id="text_${status.index}"></span>
                     </td>
                 </tr>
+                </c:forEach>
                 </tbody>
             </table>
         </div>
@@ -104,10 +105,10 @@
 <div id="Guestbook" style="display:none">
     <div class="content_style">
         <div class="form-group"><label class="col-sm-2 control-label no-padding-right">评论用户 </label>
-            <div class="col-sm-9">胡海天堂</div>
+            <div  id="username" class="col-sm-9">${messageReview.username}</div>
         </div>
         <div class="form-group"><label class="col-sm-2 control-label no-padding-right"> 评论内容 </label>
-            <div class="col-sm-9">三年同窗，一起沐浴了一片金色的阳光，一起度过了一千个日夜，我们共同谱写了多少友谊的篇章?愿逝去的那些闪亮的日子，都化作美好的记忆，永远留在心房。认识您，不论是生命中的一段插曲，还是永久的知已，我都会珍惜，当我疲倦或老去，不再拥有青春的时候，这段旋律会滋润我生命的每一刻。在此我只想说：有您真好!无论你身在何方，我的祝福永远在您身边!</div>
+           <div id="comment" class="col-sm-9">${messageReview.comment}</div>
         </div>
         <div class="form-group">
             <label class="col-sm-2 control-label no-padding-right">回复内容 </label>
@@ -121,6 +122,7 @@
         </div>
     </div>
 </div>
+</form>
 </body>
 </html>
 <script type="text/javascript">
@@ -128,26 +130,16 @@
     function member_show(title,url,id,w,h){
         layer_show(title,url+'#?='+id,w,h);
     }
-    /*留言-删除*/
-    function member_del(obj,id){
-        layer.confirm('确认要删除吗？',function(index){
-            $(obj).parents("tr").remove();
-            layer.msg('已删除!',{icon:1,time:1000});
-        });
-    }
-
-    /*checkbox激发事件*/
-//    $('#checkbox').on('click',function(){
-//        if($('input[name="checkbox"]').prop("checked")){
-//            $('.Reply_style').css('display','block');
-//        }
-//        else{
-//
-//            $('.Reply_style').css('display','none');
-//        }
-//    })
     /*留言查看*/
-    function Guestbook_iew(id){
+    function Guestbook_iew(obj,id){
+        var name=$("#username"+id).text();
+        var ff=$(obj).parents("td").eq(1).text();
+        var comment=$(obj).text();
+        console.log(ff);
+        $("#username").text(name);
+        $("#comment").text(comment);
+
+
         var index = layer.open({
             type: 1,
             title: '留言信息',
@@ -170,7 +162,7 @@
                             btn:['确定','取消'],
                             yes: function(index){
                                 layer.closeAll();
-                                hf();
+                                hf(id);
                             }
                         });
                     }
@@ -185,10 +177,10 @@
             }
         })
     };
-    function hf() {
+    function hf(ind) {
 //        var str = prompt("回复评论");
         var str = document.getElementById('form_textarea').value;
-            document.getElementById('text').innerHTML = str;
+            document.getElementById('text_'+ind).innerHTML = str;
     }
 /*    function Guestbook_iew(id){
         var index = layer.open({

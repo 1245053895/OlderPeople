@@ -1,5 +1,7 @@
 package com.xh.po;
 
+import java.util.Date;
+
 public class Comment {
     private Integer commentid;
 
@@ -11,9 +13,9 @@ public class Comment {
 
     private Integer goodcomment;
 
-    private String commentA;
+    private Date CommentTime;
 
-    private String commentB;
+    private String CommentReview;
 
     private String commentC;
 
@@ -57,20 +59,20 @@ public class Comment {
         this.goodcomment = goodcomment;
     }
 
-    public String getCommentA() {
-        return commentA;
+    public Date getCommentTime() {
+        return CommentTime;
     }
 
-    public void setCommentA(String commentA) {
-        this.commentA = commentA == null ? null : commentA.trim();
+    public void setCommentTime(Date commentTime) {
+        CommentTime = commentTime;
     }
 
-    public String getCommentB() {
-        return commentB;
+    public String getCommentReview() {
+        return CommentReview;
     }
 
-    public void setCommentB(String commentB) {
-        this.commentB = commentB == null ? null : commentB.trim();
+    public void setCommentReview(String commentReview) {
+        CommentReview = commentReview;
     }
 
     public String getCommentC() {

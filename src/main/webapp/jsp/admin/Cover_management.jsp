@@ -34,6 +34,12 @@
     <script type="text/javascript" src="/jsp/admin/Widget/swfupload/swfupload.speed.js"></script>
     <script type="text/javascript" src="/jsp/admin/Widget/swfupload/handlers.js"></script>
     <title>支付管理</title>
+    <style>
+        body{
+            width: 100%;
+            height: 100%;
+        }
+    </style>
 </head>
 
 <body>
@@ -46,7 +52,7 @@
           class="btn btn-xs btn-warning"><i class="icon-trash  bigger-120"></i>批量删除</a>
 
        </span>
-    <span class="r_f">共：<b>45</b>条</span>
+    <span class="r_f">共：<b>${totalMessage.totalpay}</b>种</span>
 </div>
 <form action="${pageContext.request.contextPath}/DelectPayQuerry.action" id="arrayDelectForm" method="post">
     <div class="Guestbook_list">
@@ -68,7 +74,7 @@
                     <td><label><input name="payid" value="${payList.payid}"  type="checkbox" class="ace"><span class="lbl"></span></label></td>
                     <td>${payList.payid}</td>
                     <td width="200px;">${payList.payname}</td>
-                    <td><span class="ad_img"><img src="/images/${payList.paypicture}"  width="150px" height="60px"/></span></td>
+                    <td><span class="ad_img"><img src="${payList.paypicture}"  width="150px" height="60px"/></span></td>
                     <td><fmd:formatDate value="${payList.payA}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
 
                         <c:if test="${payList.payB==null}">
@@ -97,13 +103,14 @@
                                class="btn btn-xs btn-success"><i class="fa fa-check  bigger-120"></i></a>
                         </c:if>
 
-                        <a
-                                onclick="return confirm('确定删除？')"
-                                title="删除"
-                                href="${pageContext.request.contextPath}/DelectPayById.action?payid=${payList.payid}"
-                                class="btn btn-xs btn-warning"><i class="fa fa-trash  bigger-120"></i></a>
+                <a title="删除" href="javascript:void(0);"
+                   onclick="member_del(this,'${payList.payid}')" class="btn btn-xs btn-warning" ><i class="fa fa-trash  bigger-120"></i>
+                </a>
 
-
+                      <%--  <a onclick="return confirm('确定删除？')"  title="删除"
+                           href="${pageContext.request.contextPath}/DelectPayById.action?payid=${payList.payid}"
+                           class="btn btn-xs btn-warning"><i class="fa fa-trash  bigger-120"></i>
+                        </a>--%>
                     </td>
             </tr>
             </c:forEach>
@@ -121,22 +128,22 @@
                     <span class="cont_style"><input name="payname" type="text" placeholder="请输支付入名称" class="col-xs-10 col-sm-5"></span>
                 </li>
 
-                <li><label class="label_name">支付图片</label>
+                <li><label class="label_name">状&nbsp;&nbsp;&nbsp;&nbsp;态：</label>
                     <span class="cont_style">
-                        <div class="demo">
-                                 <div style="border:2px dashed rgba(255,0,0,0.76);">
-                                    <p>
-                                        图片上传前预览：<input width="100px" height="100px"type="file" id="xdaTanFileImg" onchange="xmTanUploadImg(this)" accept="image/*"   name="Pay_pic" />
-                                        <input width="100px" height="100px"  type="button" value="隐藏图片" onclick="document.getElementById('xmTanImg').style.display = 'none';"/>
-                                        <input width="100px" height="100px" type="button" value="显示图片" onclick="document.getElementById('xmTanImg').style.display = 'block';"/>
-                                    </p>
-                                     <img name="paypicture" id="xmTanImg" width="100px" height="100px"/>
-                                     <div id="xmTanDiv"></div>
-                                  </div>
-                        </div>
-
-
+                     <label><input name="payB" value="1" type="radio" class="ace"><span class="lbl">启用</span></label>&nbsp;&nbsp;&nbsp;
+                     <label><input name="payB" value="0" type="radio" class="ace"><span class="lbl">禁用</span></label>&nbsp;&nbsp;&nbsp;
                     </span>
+                    <div class="prompt r_f"></div>
+                </li>
+
+
+                <li><label class="label_name">支付图片</label><span class="cont_style">
+                  <input width="100px" height="100px"type="file" id="xdaTanFileImg" onchange="xmTanUploadImg(this)" accept="image/*"   name="Pay_pic" style="display: none" />
+                  <img name="paypicture" id="xmTanImg" width="100px" height="100px" style="margin-left: 10px"/>
+                  <div id="xmTanDiv" style="margin-top: 10px">
+                        <button onclick="$('#xdaTanFileImg').click();" class="btn btn-success" type="button">上传图片</button>
+                  </div>
+               </span>
                 </li>
             </ul>
         </form>
@@ -191,6 +198,7 @@
         layer.confirm('确认要删除吗？',{icon:0,},function(index){
             $(obj).parents("tr").remove();
             layer.msg('已删除!',{icon:1,time:1000});
+            window.location.href="${pageContext.request.contextPath}/DelectPayById.action?payid="+id;
         });
     }
     /*******添加广告*********/

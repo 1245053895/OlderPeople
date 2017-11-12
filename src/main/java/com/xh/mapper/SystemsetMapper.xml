@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xh.mapper.SystemsetMapper" >
+  <resultMap id="BaseResultMap" type="com.xh.po.Systemset" >
+    <id column="WebId" property="webid" jdbcType="INTEGER" />
+    <result column="WebName" property="webname" jdbcType="VARCHAR" />
+    <result column="WebIcon" property="webicon" jdbcType="VARCHAR" />
+    <result column="KeyWords" property="keywords" jdbcType="VARCHAR" />
+    <result column="BlockWords" property="blockwords" jdbcType="VARCHAR" />
+    <result column="WebfilePatn" property="webfilepatn" jdbcType="VARCHAR" />
+    <result column="WebDescribe" property="webdescribe" jdbcType="VARCHAR" />
+    <result column="BottomCopyright" property="bottomcopyright" jdbcType="VARCHAR" />
+    <result column="RecordNumber" property="recordnumber" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    WebId, WebName, WebIcon, KeyWords, BlockWords, WebfilePatn, WebDescribe, BottomCopyright, 
+    RecordNumber
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.xh.po.SystemsetExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from systemset
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from systemset
+    where WebId = #{webid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from systemset
+    where WebId = #{webid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.xh.po.SystemsetExample" >
+    delete from systemset
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.xh.po.Systemset" >
+    insert into systemset (WebId, WebName, WebIcon, 
+      KeyWords, BlockWords, WebfilePatn, 
+      WebDescribe, BottomCopyright, RecordNumber
+      )
+    values (#{webid,jdbcType=INTEGER}, #{webname,jdbcType=VARCHAR}, #{webicon,jdbcType=VARCHAR}, 
+      #{keywords,jdbcType=VARCHAR}, #{blockwords,jdbcType=VARCHAR}, #{webfilepatn,jdbcType=VARCHAR}, 
+      #{webdescribe,jdbcType=VARCHAR}, #{bottomcopyright,jdbcType=VARCHAR}, #{recordnumber,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.xh.po.Systemset" >
+    insert into systemset
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="webid != null" >
+        WebId,
+      </if>
+      <if test="webname != null" >
+        WebName,
+      </if>
+      <if test="webicon != null" >
+        WebIcon,
+      </if>
+      <if test="keywords != null" >
+        KeyWords,
+      </if>
+      <if test="blockwords != null" >
+        BlockWords,
+      </if>
+      <if test="webfilepatn != null" >
+        WebfilePatn,
+      </if>
+      <if test="webdescribe != null" >
+        WebDescribe,
+      </if>
+      <if test="bottomcopyright != null" >
+        BottomCopyright,
+      </if>
+      <if test="recordnumber != null" >
+        RecordNumber,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="webid != null" >
+        #{webid,jdbcType=INTEGER},
+      </if>
+      <if test="webname != null" >
+        #{webname,jdbcType=VARCHAR},
+      </if>
+      <if test="webicon != null" >
+        #{webicon,jdbcType=VARCHAR},
+      </if>
+      <if test="keywords != null" >
+        #{keywords,jdbcType=VARCHAR},
+      </if>
+      <if test="blockwords != null" >
+        #{blockwords,jdbcType=VARCHAR},
+      </if>
+      <if test="webfilepatn != null" >
+        #{webfilepatn,jdbcType=VARCHAR},
+      </if>
+      <if test="webdescribe != null" >
+        #{webdescribe,jdbcType=VARCHAR},
+      </if>
+      <if test="bottomcopyright != null" >
+        #{bottomcopyright,jdbcType=VARCHAR},
+      </if>
+      <if test="recordnumber != null" >
+        #{recordnumber,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.xh.po.SystemsetExample" resultType="java.lang.Integer" >
+    select count(*) from systemset
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update systemset
+    <set >
+      <if test="record.webid != null" >
+        WebId = #{record.webid,jdbcType=INTEGER},
+      </if>
+      <if test="record.webname != null" >
+        WebName = #{record.webname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.webicon != null" >
+        WebIcon = #{record.webicon,jdbcType=VARCHAR},
+      </if>
+      <if test="record.keywords != null" >
+        KeyWords = #{record.keywords,jdbcType=VARCHAR},
+      </if>
+      <if test="record.blockwords != null" >
+        BlockWords = #{record.blockwords,jdbcType=VARCHAR},
+      </if>
+      <if test="record.webfilepatn != null" >
+        WebfilePatn = #{record.webfilepatn,jdbcType=VARCHAR},
+      </if>
+      <if test="record.webdescribe != null" >
+        WebDescribe = #{record.webdescribe,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bottomcopyright != null" >
+        BottomCopyright = #{record.bottomcopyright,jdbcType=VARCHAR},
+      </if>
+      <if test="record.recordnumber != null" >
+        RecordNumber = #{record.recordnumber,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update systemset
+    set WebId = #{record.webid,jdbcType=INTEGER},
+      WebName = #{record.webname,jdbcType=VARCHAR},
+      WebIcon = #{record.webicon,jdbcType=VARCHAR},
+      KeyWords = #{record.keywords,jdbcType=VARCHAR},
+      BlockWords = #{record.blockwords,jdbcType=VARCHAR},
+      WebfilePatn = #{record.webfilepatn,jdbcType=VARCHAR},
+      WebDescribe = #{record.webdescribe,jdbcType=VARCHAR},
+      BottomCopyright = #{record.bottomcopyright,jdbcType=VARCHAR},
+      RecordNumber = #{record.recordnumber,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xh.po.Systemset" >
+    update systemset
+    <set >
+      <if test="webname != null" >
+        WebName = #{webname,jdbcType=VARCHAR},
+      </if>
+      <if test="webicon != null" >
+        WebIcon = #{webicon,jdbcType=VARCHAR},
+      </if>
+      <if test="keywords != null" >
+        KeyWords = #{keywords,jdbcType=VARCHAR},
+      </if>
+      <if test="blockwords != null" >
+        BlockWords = #{blockwords,jdbcType=VARCHAR},
+      </if>
+      <if test="webfilepatn != null" >
+        WebfilePatn = #{webfilepatn,jdbcType=VARCHAR},
+      </if>
+      <if test="webdescribe != null" >
+        WebDescribe = #{webdescribe,jdbcType=VARCHAR},
+      </if>
+      <if test="bottomcopyright != null" >
+        BottomCopyright = #{bottomcopyright,jdbcType=VARCHAR},
+      </if>
+      <if test="recordnumber != null" >
+        RecordNumber = #{recordnumber,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where WebId = #{webid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xh.po.Systemset" >
+    update systemset
+    set WebName = #{webname,jdbcType=VARCHAR},
+      WebIcon = #{webicon,jdbcType=VARCHAR},
+      KeyWords = #{keywords,jdbcType=VARCHAR},
+      BlockWords = #{blockwords,jdbcType=VARCHAR},
+      WebfilePatn = #{webfilepatn,jdbcType=VARCHAR},
+      WebDescribe = #{webdescribe,jdbcType=VARCHAR},
+      BottomCopyright = #{bottomcopyright,jdbcType=VARCHAR},
+      RecordNumber = #{recordnumber,jdbcType=VARCHAR}
+    where WebId = #{webid,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -3,6 +3,7 @@ package com.xh.serviceimp;
 import com.xh.mapper.pojo.PayforMapper;
 import com.xh.po.Pay;
 import com.xh.po.vo.StringAndString;
+import com.xh.po.vo.TotalMessage;
 import com.xh.service.PayforService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -51,5 +52,11 @@ public class PayforServiceimpl implements PayforService {
     public List<Pay> QuerryConfuse(StringAndString stringAndString) {
         List<Pay> pays=payforMapper.QuerryConfuse(stringAndString);
         return pays;
+    }
+
+    @Override
+    public TotalMessage totalpay() {
+       TotalMessage totalMessage= payforMapper.totalpay();
+        return totalMessage;
     }
 }

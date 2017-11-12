@@ -93,8 +93,14 @@
 				</div>
 
                 <div class="Add_p_s">
-                    <label style="margin-left: 15px;margin-right: 8px;">上架日期</label>
-                    <input type="date" name="productstoretime">
+                  <%--  <label style="margin-left: 15px;margin-right: 8px;">上架日期</label>
+                    <input type="date" name="productstoretime">--%>
+					  <label class="label_name">&nbsp;&nbsp;&nbsp;&nbsp;商品状态：</label>
+						  <span class="cont_style">
+							 <label><input name="productA" value="1" type="radio" class="ace"><span class="lbl">启用</span></label>&nbsp;&nbsp;
+							 <label><input name="productA" value="0" type="radio" class="ace"><span class="lbl">禁用</span></label>&nbsp;
+                           </span>
+						  <div class="prompt r_f"></div>
                 </div>
 
 			</div>

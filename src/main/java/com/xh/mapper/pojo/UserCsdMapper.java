@@ -1,8 +1,9 @@
 package com.xh.mapper.pojo;
 
+import com.xh.po.Systemset;
 import com.xh.po.User;
 import com.xh.po.vo.StringAndString;
-import com.xh.po.vo.SystemSitings;
+import com.xh.po.vo.TotalMessage;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -21,8 +22,20 @@ public interface UserCsdMapper {
     public User selectByPrimaryKeyByname(String username);
     //查询所有用户
     List<User> qullyAllUser();
+
+    //统计出所有用户的信息
+    public TotalMessage totalUserInfor();
+
     //对用户的模糊查询
     public List<User> QueryUserConfuse(StringAndString stringAndString);
-    //
-    public void insertSystem(SystemSitings systemSitings);
+    /*
+    * 系统设置的Mapper
+    *
+    * */
+
+    //系统设置的查询
+    public Systemset SelectSystemsQuerry();
+
+    //更新系统设置
+    public void updateSystemset(Systemset systemset);
 }

@@ -120,4 +120,9 @@
     FROM pay WHERE PayId LIKE '%${sqlString}%' OR PayName LIKE '%${sqlString}%'
   </select>
 
+  <!--统计出所有的支付方式的种类-->
+  <select id="totalpay" resultType="com.xh.po.vo.TotalMessage">
+      SELECT COUNT(PayId) as totalpay FROM pay
+  </select>
+
 </mapper>

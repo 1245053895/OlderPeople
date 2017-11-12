@@ -89,7 +89,7 @@
            </td>
 
        </span>
-                <span class="r_f">共：<b>2345</b>条</span>
+                <span class="r_f">共：<b>${totalMessage.totaluserinfor}</b>条</span>
             </div>
             <!---->
             <form action="${pageContext.request.contextPath}/DelectUserArray.action" id="arrayDelectForm" method="post">
@@ -146,8 +146,8 @@
                                     <tr>
                                         <td><label><input name="ids" value="${userlist.userid}" type="checkbox" class="ace"><span class="lbl"></span></label></td>
                                         <td>${userlist.userid}</td>
-                                        <td><u style="cursor:pointer" class="text-primary"
-                                               onclick="member_show('chh','member-show.jsp','10001','500','400')">${userlist.username}</u>
+                                        <td><%--<u style="cursor:pointer" class="text-primary"
+                                               onclick="member_show('chh','member-show.jsp','10001','500','400')--%>${userlist.username}<%--</u>--%>
                                         </td>
                                         <td>${userlist.userpwd}</td>
                                         <td>${userlist.usersex}</td>
@@ -175,21 +175,12 @@
                                             <a onClick="member_stop(this,'${userlist.userid}')" href="javascript:void(0);" title="停用"
                                                class="btn btn-xs btn-success"><i class="icon-ok bigger-120"></i></a>
                                         </c:if>
-
-
-
-
-
-                                            <a
-                                               onclick="return confirm('确定删除？')"
-                                               title="删除"
-                                               href="${pageContext.request.contextPath}/DelectUserById.action?Userid=${userlist.userid}"
-                                               class="btn btn-xs btn-warning"><i class="icon-trash  bigger-120"></i></a>
+                                            <a title="删除" href="javascript:void(0);"
+                                               onclick="user_del(this,'${userlist.userid}')" class="btn btn-xs btn-warning" ><i class="icon-trash  bigger-120"></i>
+                                            </a>
                                         </td>
                                     </tr>
                                 </c:forEach>
-
-
                         </tbody>
                     </table>
                 </div>
@@ -213,7 +204,8 @@
                                                                                      class="text_add"/></span>
                 <div class="prompt r_f"></div>
             </li>
-            <li><label class="label_name">性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别：</label><span class="add_name">
+            <li><label class="label_name">性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别：
+            </label><span class="add_name">
          <label><input name="usersex" value="1" type="radio" checked="checked" class="ace"><span class="lbl">男</span></label>&nbsp;&nbsp;&nbsp;
          <label><input name="usersex" value="2" type="radio" class="ace"><span class="lbl">女</span></label>&nbsp;&nbsp;&nbsp;
          <label><input name="usersex" value="3" type="radio" class="ace"><span class="lbl">保密</span></label>
@@ -240,18 +232,11 @@
                 </span>
                     <div class="prompt r_f"></div>
             </li>
-            <%--<div class="status">
-                <label><input name="userA" type="radio" value="0" class="ace"><span class="lbl">停用</span></label>&nbsp;&nbsp;
-                <label><input name="userA" type="radio" value="1" class="ace"><span class="lbl">启用</span></label>
-            </div>--%>
+
             <li class="adderss"><label class="label_name">邮编：</label><span class="add_name"><input
                     name="userzip" type="text" class="text_add" style=" width:350px"/></span>
                 <div class="prompt r_f"></div>
             </li>
-            <%--<li class="adderss"><label class="label_name">注册时间：</label><span class="add_name"><input
-                  name="userinputdate" type="text" class="text_add" style=" width:350px"/></span>
-                <div class="prompt r_f"></div>
-            </li>--%>
         </ul>
     </form>
 </div>
@@ -404,10 +389,11 @@
     }
 
     /*用户-删除*/
-    function member_del(obj, id) {
-        layer.confirm('确认要删除吗？', function (index) {
-
-            layer.msg('已删除!', {icon: 1, time: 1000});
+    function user_del(obj,id){
+        layer.confirm('确认要删除吗？',{icon:0,},function(index){
+            $(obj).parents("tr").remove();
+            layer.msg('已删除!',{icon:1,time:1000});
+            window.location.href="${pageContext.request.contextPath}/DelectUserById.action?Userid="+id;
         });
     }
 

@@ -176,9 +176,8 @@
 </div>
 </div>
 <!--发货-->
-<div id="Delivery_stop" style=" display:none">
-    <div class="">
-        <div class="content_style">
+<div id="Delivery_stop" style=" display:none;">
+        <div class="content_style" style="top: 10px">
             <form id="updateOrderShipping" action="${pageContext.request.contextPath}/updateOrderShipping.action" method="post">
                 <input id="orderId" type="hidden" name="orderid">
                 <div class="form-group"><label class="col-sm-2 control-label no-padding-right" for="form-field-1">快递公司 </label>
@@ -193,7 +192,6 @@
                 </div>
             </form>
         </div>
-    </div>
 </div>
 </div>
 </body>
@@ -305,13 +303,6 @@
 
                     }else{
                         $("#updateOrderShipping").submit();
-                        /*layer.confirm('提交成功！',function(index){
-                         /!*$(obj).parents("tr").find(".td-manage").prepend('<a style=" display:none" class="btn btn-xs btn-success" onClick="member_stop(this,id)" href="javascript:;" title="已发货"><i class="fa fa-cubes bigger-120"></i></a>');
-                         $(obj).parents("tr").find(".td-status").html('<span class="label label-success radius">已发货</span>');
-                         $(obj).remove();
-                         layer.msg('已发货!',{icon: 6,time:1000});*!/
-                         //window.location.href="${pageContext.request.contextPath}/UpdateStatusStart.action?userid="+id;
-                         });*/
                         layer.close(index);
                     }
 

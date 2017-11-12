@@ -37,7 +37,13 @@
     <select id="selectCommentGood" resultType="messageReview" parameterType="comment">
           SELECT UserName,Comment,GoodComment,CommentTime,CommentReview FROM `user`,`comment`
          WHERE `comment`.UserId=`user`.UserId AND Comment LIKE '%${comment}%' AND GoodComment
-         LIKE '%${goodcomment}%' AND `Comment`.ProductId=#{productid}
+         LIKE '%${goodcomment}%'AND `Comment`.ProductId=#{productid}
+    </select>
+
+    <!--pl页面针对某个商品统计出所有评论的用户有多少人-->
+    <select id="queryTotalUserById" parameterType="Integer" resultType="totalMessage">
+        SELECT  COUNT(UserName) as totaluser  FROM `user`,`comment` WHERE `comment`.UserId=`user`.UserId
+                   AND ProductId=#{productid}
     </select>
 
 </mapper>

@@ -3,6 +3,7 @@ package com.xh.controller;
 import com.xh.mapper.pojo.UserCsdMapper;
 import com.xh.po.User;
 import com.xh.po.vo.StringAndString;
+import com.xh.po.vo.TotalMessage;
 import com.xh.service.UserMessageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -31,6 +32,8 @@ public class UserMessageController {
     @RequestMapping(value = "/UserMessageController.action")
     public String UseMessage(Model model){
         List<User> userList=userMessageService.qullyAllUser();
+       TotalMessage totalMessage= userMessageService.totalUserInfor();
+       model.addAttribute("totalMessage",totalMessage);
         model.addAttribute("userList",userList);
         return "jsp/admin/user_list.jsp";
     }
@@ -54,6 +57,7 @@ public class UserMessageController {
         model.addAttribute("userList",userList);
         return "/jsp/admin/user_list.jsp";
     }
+
     /*
     * 添加用户
     * */

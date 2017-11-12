@@ -6,6 +6,7 @@ import com.xh.po.PayExample;
 import java.util.List;
 
 import com.xh.po.vo.StringAndString;
+import com.xh.po.vo.TotalMessage;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;
 
@@ -26,4 +27,7 @@ public interface PayforMapper {
     List<Pay> QuerryAllPay();
     //实现模糊查询
     public List<Pay> QuerryConfuse(StringAndString stringAndString);
+
+    //统计出所有的支付种类
+  public TotalMessage totalpay();
 }

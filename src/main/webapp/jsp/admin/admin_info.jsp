@@ -40,7 +40,7 @@
             <div style="margin-top: 50px;margin-left: 200px; float: left;">
                 <form action="${pageContext.request.contextPath}/uploadUser.action?adminid=${admin.adminid}" method="post" enctype="multipart/form-data">
                     <div id="headimg">
-                    <img src="${admin.adminpic}" style="width: 190px;height: 210px;">
+                    <img src="${adminRole.adminpic}" style="width: 190px;height: 210px;">
                     </div>
                    <%-- <button onclick="" class="btn btn-success" type="submit">上传图片</button>--%>
                     <div style="margin-top: 10px">

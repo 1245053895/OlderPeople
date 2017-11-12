@@ -34,64 +34,65 @@
 </head>
 
 <body>
+<form action="${pageContext.request.contextPath}/moHuSelectByNameOrRate.action" method="post">
 <div class="margin clearfix">
     <div class="Guestbook_style">
         <div class="search_style">
             <div class="title_names">搜索查询</div>
             <ul class="search_content clearfix">
-                <li><label class="l_f">商品</label><input name="" type="text" class="text_add" placeholder="输入商品名" style=" width:250px"></li>
-                <%--<li><label class="l_f">好评度</label><input class="inline laydate-icon" id="start" style=" margin-left:10px;" type="输入用户好评度"></li>--%>
+                <li><label class="l_f">商品</label><input name="productname"  type="text" class="text_add" placeholder="输入商品名" style=" width:250px"></li>
                 <li><label class="l_f">平均好评度</label>
-                    <select style="margin-left: 10px">
-                        <option value ="1">1</option>
-                        <option value ="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
+                    <select name="goodrate" style="margin-left: 10px">
+                        <option  value =""></option>
+                        <option  value ="1">1</option>
+                        <option  value ="2">2</option>
+                        <option  value="3" >3</option>
+                        <option  value="4" >4</option>
+                        <option  value="5" >5</option>
                     </select>
                 </li>
 
-                <li style="width:90px;"><button type="button" class="btn_search"><i class="icon-search"></i>查询</button></li>
+                <li style="width:90px;"><button type="submit" class="btn_search"><i class="icon-search"></i>查询</button></li>
             </ul>
         </div>
-        <div class="border clearfix">
-       <span class="l_f">
-        <a href="javascript:ovid()" class="btn btn-danger"><i class="fa fa-trash"></i>&nbsp;批量删除</a>
+     <%--   <div class="border clearfix">--%>
+      <%-- <span class="l_f">--%>
+       <%-- <a href="javascript:ovid()" class="btn btn-danger"><i class="fa fa-trash"></i>&nbsp;批量删除</a>--%>
         <%--<a href="javascript:ovid()" class="btn btn-sm btn-primary"><i class="fa fa-check"></i>&nbsp;已浏览</a>
         <a href="javascript:ovid()" class="btn btn-yellow"><i class="fa fa-times"></i>&nbsp;未浏览</a>--%>
-       </span>
-            <span class="r_f">共：<b>2334</b>条</span>
-        </div>
+       <%--</span>--%>
+            <span class="r_f">共：<b>${totalMessage.total}</b>条</span>
+       <%-- </div>--%>
         <!--留言列表-->
         <div class="Guestbook_list">
             <table class="table table-striped table-bordered table-hover" id="sample-table">
                 <thead>
                 <tr>
                     <th width="25"><label><input type="checkbox" class="ace"><span class="lbl"></span></label></th>
-                    <th width="97px">评论编号</th>
+                    <th width="97px">商品编号</th>
                     <th width="100px">商品名</th>
                     <%--<th width="100px">用户名</th>--%>
                     <%--<th>评论内容</th>--%>
                     <th width="97">平均好评度</th>
                     <%--<th width="170">评论时间</th>--%>
                     <%--<th width="70">状态</th>                --%>
-                    <th width="120">操作</th>
+                <%--    <th width="120">操作</th>--%>
                 </tr>
                 </thead>
                 <tbody>
                 <c:forEach items="${commentRates}" var="commentRate">
                 <tr>
                     <td><label><input type="checkbox" class="ace"><span class="lbl"></span></label></td>
-                    <td>${commentRate.commentid}</td>
-                    <td><a href="pl.jsp">${commentRate.productname}</a></td>
+                    <td>${commentRate.productid}</td>
+                    <td><a href="${pageContext.request.contextPath}/selectCommentUserById.action?productid=${commentRate.productid}">${commentRate.productname}</a></td>
                     <%--<td><a href="member-show.jsp">张小泉</a></td>--%>
                     <%--<td class="text-l">--%>
                         <%--<a href="javascript:;" onclick="Guestbook_iew('12')">值此京东“618品质狂欢节”之际，中国特产无锡馆限量上线618份8只装精品水蜜桃</a>--%>
                     <td>${commentRate.goodrate}</td>
                     <%--<td>2017.10.12</td>--%>
-                    <td class="td-manage">
-                        <a href="javascript:;"  onclick="member_del(this,'1')" title="删除" class="btn btn-xs btn-warning" ><i class="fa fa-trash  bigger-120"></i></a>
-                    </td>
+                   <%-- <td class="td-manage">
+                        <a href="javascript:void (0);"  onclick="member_del(this,${commentRate.productid})" title="删除" class="btn btn-xs btn-warning" ><i class="fa fa-trash  bigger-120"></i></a>
+                    </td>--%>
                 </tr>
                 </c:forEach>
                 </tbody>
@@ -99,26 +100,7 @@
         </div>
     </div>
 </div>
-<!--留言详细-->
-<div id="Guestbook" style="display:none">
-    <div class="content_style">
-        <div class="form-group"><label class="col-sm-2 control-label no-padding-right">评论用户 </label>
-            <div class="col-sm-9">胡海天堂</div>
-        </div>
-        <div class="form-group"><label class="col-sm-2 control-label no-padding-right"> 评论内容 </label>
-            <div class="col-sm-9">三年同窗，一起沐浴了一片金色的阳光，一起度过了一千个日夜，我们共同谱写了多少友谊的篇章?愿逝去的那些闪亮的日子，都化作美好的记忆，永远留在心房。认识您，不论是生命中的一段插曲，还是永久的知已，我都会珍惜，当我疲倦或老去，不再拥有青春的时候，这段旋律会滋润我生命的每一刻。在此我只想说：有您真好!无论你身在何方，我的祝福永远在您身边!</div>
-        </div>
-        <div class="form-group"><label class="col-sm-2 control-label no-padding-right">是否回复 </label>
-            <div class="col-sm-9">
-                <label><input name="checkbox" type="checkbox" class="ace" id="checkbox"><span class="lbl"> 回复</span></label>
-                <div class="Reply_style" >
-                    <textarea name="权限描述" class="form-control" id="form_textarea" placeholder="" onkeyup="checkLength(this);"></textarea>
-                    <span class="wordage">剩余字数：<span id="sy" style="color:Red;">200</span>字</span>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+</form>
 </body>
 </html>
 <script type="text/javascript">
@@ -129,6 +111,7 @@
     /*留言-删除*/
     function member_del(obj,id){
         layer.confirm('确认要删除吗？',function(index){
+            windows.location.href="${pageContext}/";
             $(obj).parents("tr").remove();
             layer.msg('已删除!',{icon:1,time:1000});
         });

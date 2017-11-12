@@ -81,7 +81,7 @@
                 <td><label><input name="Transpostids" value="${transportslist.transportid}" type="checkbox" class="ace"><span class="lbl"></span></label></td>
                 <td>${transportslist.transportid}</td>
                 <td width="200px;">${transportslist.transportname}</td>
-                <td><span class="ad_img"><img src="/jsp/admin/images/${transportslist.transportimg}"  width="100%" height="100%"/></span></td>
+                <td><span class="ad_img"><img src="${transportslist.transportimg}"  width="100%" height="100%"/></span></td>
                 <td><fmd:formatDate value="${transportslist.transportA}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
 
                 <c:if test="${transportslist.transportB==null}">

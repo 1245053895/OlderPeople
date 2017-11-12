@@ -4,11 +4,40 @@
 
     <!--查询出评价的id，商品的名称和平均好评度-->
     <select id="selectCommentRate" resultType="com.xh.po.vo.CommentRate">
-            SELECT c.CommentId,p.ProductName, sum(c.GoodComment)/count(c.GoodComment)
+            SELECT c.ProductId,p.ProductName, sum(c.GoodComment)/count(c.GoodComment) As goodrate
             FROM product p JOIN comment c
             ON (p.ProductId=c.ProductId)
             GROUP BY ProductName
     </select>
 
+    <!--根据商品的名称和好评率进行模糊查询-->
+    <select id="moHuSelectByNameOrRate" parameterType="commentRate" resultType="commentRate">
+            SELECT c.ProductId,p.ProductName, ROUND(sum(c.GoodComment)/count(c.GoodComment)) AS goodrate
+            FROM product p JOIN comment c
+            ON (p.ProductId=c.ProductId)
+            GROUP BY ProductName
+            HAVING goodrate LIKE '%${goodrate}%' AND  ProductName LIKE '%${productname}%'
+    </select>
+
+<!--查询出共有多少条数据-->
+    <select id="selectTotalDate" resultType="totalMessage" >
+        SELECT COUNT(*) as total FROM (SELECT COUNT(*) FROM product p
+       JOIN comment c ON p.ProductId=c.ProductId
+        GROUP BY ProductName) as total
+    </select>
+
+
+    <!--根据商品的id查询出对它进行评价的用户名，时间，评论内容等-->
+    <select id="selectCommentUserById" parameterType="Integer" resultType="messageReview">
+        SELECT UserName,Comment,GoodComment,CommentTime,CommentReview FROM `user`,`comment`
+         WHERE `comment`.UserId=`user`.UserId AND ProductId=#{productid}
+    </select>
+
+    <!--  根据评论的内容和好评度来进行模糊查询-->
+    <select id="selectCommentGood" resultType="messageReview" parameterType="comment">
+          SELECT UserName,Comment,GoodComment,CommentTime,CommentReview FROM `user`,`comment`
+         WHERE `comment`.UserId=`user`.UserId AND Comment LIKE '%${comment}%' AND GoodComment
+         LIKE '%${goodcomment}%' AND `Comment`.ProductId=#{productid}
+    </select>
 
 </mapper>

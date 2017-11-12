@@ -13,9 +13,9 @@ public class Comment {
 
     private Integer goodcomment;
 
-    private Date commenttime;
+    private Date CommentTime;
 
-    private String commentreview;
+    private String CommentReview;
 
     private String commentC;
 
@@ -59,20 +59,20 @@ public class Comment {
         this.goodcomment = goodcomment;
     }
 
-    public Date getCommenttime() {
-        return commenttime;
+    public Date getCommentTime() {
+        return CommentTime;
     }
 
-    public void setCommenttime(Date commenttime) {
-        this.commenttime = commenttime;
+    public void setCommentTime(Date commentTime) {
+        CommentTime = commentTime;
     }
 
-    public String getCommentreview() {
-        return commentreview;
+    public String getCommentReview() {
+        return CommentReview;
     }
 
-    public void setCommentreview(String commentreview) {
-        this.commentreview = commentreview == null ? null : commentreview.trim();
+    public void setCommentReview(String commentReview) {
+        CommentReview = commentReview;
     }
 
     public String getCommentC() {

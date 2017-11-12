@@ -274,8 +274,8 @@
 
 
   <!--根据缓存的用户名在后台进行个人资料的显示-->
-  <select id="selectMyselfInformation" parameterType="Integer" resultType="adminRole">
-    SELECT AdminName,AdminUser,AdminSex,AdminDepart,AdminPhone,AdminGroupName FROM admin
+  <select id="selectMyselfInformation" parameterType="Integer" resultType="AdminRole">
+    SELECT AdminPic,AdminName,AdminUser,AdminSex,AdminDepart,AdminPhone,AdminGroupName FROM admin
     JOIN admingroup ON admin.AdminGroupId=admingroup.AdminGroupId AND AdminId=#{adminid}
   </select>
 

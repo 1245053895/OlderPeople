@@ -15,7 +15,7 @@ public class OrderDetailCustom extends Order {
     int gaincode;
     String gainmobile;
     int shoppingcount;
-    String orderproductA;
+    String payprice;
     int stock;
 
     public String getProductpicture() {
@@ -98,12 +98,12 @@ public class OrderDetailCustom extends Order {
         this.shoppingcount = shoppingcount;
     }
 
-    public String getOrderproductA() {
-        return orderproductA;
+    public String getPayprice() {
+        return payprice;
     }
 
-    public void setOrderproductA(String orderproductA) {
-        this.orderproductA = orderproductA;
+    public void setPayprice(String payprice) {
+        this.payprice = payprice;
     }
 
     public int getStock() {

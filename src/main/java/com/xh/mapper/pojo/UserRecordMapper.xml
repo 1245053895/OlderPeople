@@ -60,4 +60,5 @@
      WHERE user.username LIKE '%${_parameter}%'
     GROUP BY user.UserId
   </select>
+
 </mapper>

@@ -25,4 +25,5 @@ public interface UserRecordMapper {
 
     //用户记录中根据用户的名称进行模糊查询
     public List<UserAndUserLog> moHuSelectByUserId(String username);
+
 }

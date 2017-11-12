@@ -54,7 +54,7 @@
             <div class="border clearfix">
        <span class="l_f">
         <a href="javascript:void(0)" onclick="openThis()" id="administrator_add" class="btn btn-warning"><i class="fa fa-plus"></i> 添加管理员</a>
-        <a href="javascript:test()" class="btn btn-danger"><i class="fa fa-trash"></i> 批量删除</a>
+        <a href="javascript:deleteBatch()" class="btn btn-danger"><i class="fa fa-trash"></i> 批量删除</a>
        </span>
                 <span class="r_f">共：<b>${kindOfAdmin2.adminCount2}</b>人</span>
             </div>
@@ -102,7 +102,7 @@
 
                                 <c:forEach items="${adminList }" var="user">
                                     <tr>
-                                        <form id="form_${user.adminid}" action="${pageContext.request.contextPath}/updateByPrimaryKey.action?id=${user.adminid}" method="post">
+                                        <form id="form_${user.adminid}" action="${pageContext.request.contextPath}/admin/updateByPrimaryKey.action" method="post">
                                         <td><label><input type="checkbox" name="postIds" value="${user.adminid}" class="ace"><span class="lbl"></span></label></td>
                                         <td><input type="text" value="${user.adminid}" name="adminid" class="input_style text_info" style="background-color: transparent;border-color: transparent;" readonly="true"/></td>
                                         <td><input type="text" value="${user.adminname}" name="adminname" class="input_style text_info${user.adminid}" readonly="true"/></td>
@@ -111,7 +111,7 @@
                                         <td><input type="text" value="${user.adminsex}" name="adminsex" class="input_style text_info${user.adminid}" readonly="true"/></td>
                                         <td><input type="text" value="${user.admindepart}" name="admindepart" class="input_style text_info${user.adminid}" readonly="true"/></td>
                                         <td><input type="text" value="${user.adminphone}" name="adminphone" class="input_style text_info${user.adminid}" readonly="true"/></td>
-                                        <td class="td-manage">
+                                        <td class="td-manage" width="200px">
                                             <a title="编辑" onclick="modify(${user.adminid})" href="javascript:void(0);"  class="btn btn-xs btn-info radius" ><i id="edit${user.adminid}" class="fa bigger-120">编辑</i></a>
                                             <a title="删除" href="/admin/deleteByPrimaryKey.action?id=${user.adminid}" class="btn btn-xs btn-warning" ><i class="fa fa-trash  bigger-120"></i></a>
                                         </td>
@@ -278,12 +278,31 @@
                 var close =document.getElementById("closeThis");
                 close.style.display="block";
             }
-            function test() {
-                /*document.getElementById("postIds").submit();*/
-                //$("#postIds").attr("action",${pageContext.request.contextPath}+"/admin/deleteBatch.action");
-                $("#my").submit();
-                console.log("dfsfdsfs");
 
+            function deleteBatch() {
+                // 判断是否至少选择一项
+                var checkedNum = $("input[name='postIds']:checked").length;
+                if (checkedNum == 0) {
+                    alert("请选择至少一项！");
+                    return;
+                }
+                // 批量选择
+                if (confirm("确定要删除所选项目？")) {
+                    var checkedList = new Array();
+                    $("input[name='postIds']:checked").each(function () {
+                        checkedList.push($(this).val());
+                    });
+                    checkedList;
+                    $.ajax({
+                        type: "POST",
+                        url: "/admin/deleteBatch.action",
+                        data: {'postIds': checkedList.toString()},
+                        success: function (result) {
+                            //$("[name ='RoleIds']:checkbox").attr("checked", false);
+                            window.location.reload();
+                        }
+                    });
+                }
             }
         </script>
 
@@ -396,9 +415,9 @@
                     $('#edit'+v).text("提交");
                     flag=true;
                 }else{
-                    $("#form_"+v).submit();
                     $('#edit'+v).text("编辑");
                     flag=false;
+                    $("#form_"+v).submit();
                 }
             }
 

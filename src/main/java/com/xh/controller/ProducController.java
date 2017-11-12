@@ -12,6 +12,7 @@ import com.xh.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
@@ -59,9 +60,9 @@ public class ProducController {
     @RequestMapping("/DeleteBatchProduct.action")
     public String deleteBatchProduct(String[] productid) throws Exception{
 
-        productService.deleteBatch(productid);
-//        重定向
-        return "redirect:/ProducList.action";
+        productService.deleteBatch(null);
+        //重定向
+        return "forward :/ProducList.action";
     }
     //添加
   @RequestMapping("/AddProduct.action")
@@ -155,13 +156,29 @@ public class ProducController {
         return "redirect:/ProducList.action";
     }
 
-//根据商品的id更新商品的信息
+    //根据商品的id更新商品的信息
     @RequestMapping("/updateById.action")
     public String updateById(ProductAndTypeVo productAndTypeVo){
         productService.updateById(productAndTypeVo);
         return "redirect:/ProducList.action";
     }
 
+    @RequestMapping("/updateProductState.action")
+    public String updateProductState(@RequestBody Product product){
+        product.setProductA("d");
+        productService.updateProductState(product);
+        return "redirect:/ProducList.action";
+    }
 
+    /**
+     * 根据商品的id更新商品的信息
+     * @param product
+     * @return
+     */
+    @RequestMapping(value = "/updateProductById.action",method = {RequestMethod.GET,RequestMethod.POST})
+    public String updateProductById(Product product){
+        productService.updateProductById(product);
+        return "redirect:/ProducList.action";
+    }
 
 }

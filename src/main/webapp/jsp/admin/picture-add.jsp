@@ -87,7 +87,7 @@
 					<label><input name="producthotsale" value="0" type="radio" class="ace"><span class="lbl">否</span></label>
 				</div>
 				<div class="Add_p_s">
-					<label style="margin-left: 15px;margin-right: 8px;">是否可用积分兑换： </label>
+					<label style="margin-left: 15px;margin-right: 8px;">是否失效下架： </label>
 					<label><input name="productdisabled" value="1" type="radio" class="ace"><span class="lbl">是</span></label>&nbsp;&nbsp;
 					<label><input name="productdisabled" value="0" type="radio" class="ace"><span class="lbl">否</span></label>
 				</div>
@@ -114,21 +114,24 @@
 		</div>
 
 		<div class="clearfix cl">
-		<%--	<label class="form-label col-2">商品图片上传：</label>--%>
-			<%--<div id="xmTanDiv" class="col-sm-1">
-				<input width="200px" height="200px"type="file" id="xdaTanFileImg" onchange="xmTanUploadImg(this)"   name="product_pic" style="display: none" />
-				<img src="" id="xmTanImg" width="1000px" height="100px" style="margin-bottom: 10px"/>
-				<button onclick="$('#xdaTanFileImg').click();" class="btn btn-success" type="button">上传图片</button>
-			</div>--%>
 			<label class="form-label col-2">商品图片上传：</label>
 			<div class="formControls col-10">
 				<div class="uploader-list-container">
 					<div class="queueList">
-					<div id="dndArea" class="placeholder">
+						<div id="dndArea" class="placeholder">
 							<div id="filePicker-2"></div>
-                            <input type="file" id="xdaTanFileImg" onchange="xmTanUploadImg(this)"  name="product_pic"/>
-                            <%--<button onclick="$('#xdaTanFileImg').click();" class="btn btn-success" type="button">上传图片</button>--%>
+							<p>或将照片拖到这里，单次最多可选300张</p>
+
+                            <input type="file"  name="product_pic"/>
+                        </div>
 					</div>
+					<div class="statusBar" style="display:none;">
+						<div class="progress"> <span class="text">0%</span> <span class="percentage"></span> </div>
+						<div class="info"></div>
+						<div class="btns">
+							<div id="filePicker2"></div>
+							<div class="uploadBtn">开始上传</div>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -945,6 +948,4 @@ $(function(){
 
 })( jQuery );
 </script>
-<%--</div>--%>
-</body>
-</html>
+<%--</div>--%></body></html>

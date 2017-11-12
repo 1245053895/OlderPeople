@@ -88,11 +88,13 @@
                     <%--<td>秋裤</td>--%>
                     <td id="username${status.index}">${messageReview.username}</td>
                     <td class="text-l">
-                        <a href="javascript:;" onclick="Guestbook_iew(this,${status.index})">${messageReview.comment}</a>
+                        <a href="javascript:;" onclick="Guestbook_iew(this,${status.index},${messageReview.commentid})">${messageReview.comment}</a>
                     <td>${messageReview.goodcomment}</td>
                     <td><fmt:formatDate value="${messageReview.commenttime}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
                     <td class="td-manage">
-                        <span id="text_${status.index}"></span>
+                        <span id="text_${status.index}">
+                                ${messageReview.commentreview}
+                        </span>
                     </td>
                 </tr>
                 </c:forEach>
@@ -131,7 +133,7 @@
         layer_show(title,url+'#?='+id,w,h);
     }
     /*留言查看*/
-    function Guestbook_iew(obj,id){
+    function Guestbook_iew(obj,id,commentid){
         var name=$("#username"+id).text();
         var ff=$(obj).parents("td").eq(1).text();
         var comment=$(obj).text();
@@ -162,7 +164,28 @@
                             btn:['确定','取消'],
                             yes: function(index){
                                 layer.closeAll();
-                                hf(id);
+                                var commentreview=$("#form_textarea").val();
+                                console.log(commentreview);
+                                $.ajax({
+                                    url: '/replyMessage.action?id='+commentid,
+                                    type: 'GET',
+                                    data:{"commentreview":commentreview},
+                                    timeout: 10000,
+                                    cache: false,
+                                    beforeSend: LoadFunction, //加载执行方法
+                                    error: erryFunction,  //错误执行方法
+                                    success: succFunction //成功执行方法
+                                })
+                                function LoadFunction() {
+
+                                    $("#credits").html('回复中...');
+                                }
+                                function erryFunction() {
+                                    hf(id);
+                                }
+                                function succFunction(tt) {
+                                    hf(id);
+                                }
                             }
                         });
                     }

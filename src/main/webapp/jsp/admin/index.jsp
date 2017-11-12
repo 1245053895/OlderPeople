@@ -177,7 +177,7 @@
                         icon:2,
                     },
                     function(){
-                        location.href="login.jsp";
+                        location.href="/jsp/admin/login.jsp";
 
                     });
             });
@@ -193,7 +193,7 @@
 		<div class="navbar-header pull-left">
 			<a href="#" class="navbar-brand">
 				<small>
-					<img src="images/logo.png">
+					<img src="jsp/admin/images/logo.png">
 				</small>
 			</a><!-- /.brand -->
 		</div><!-- /.navbar-header -->
@@ -205,9 +205,9 @@
 						<i class="icon-caret-down"></i>
 					</a>
 					<ul class="user-menu pull-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
-						<li class="home"><a href="javascript:void(0)" name="admin_info.jsp" title="个人资料"  class="iframeurl"><i class="icon-double-angle-right"></i>个人资料</a></li>
+						<li class="home"><a href="javascript:void(0)" name="/ShowInformation.action?adminid=${admin.adminid}" title="个人资料"  class="iframeurl"><i class="icon-double-angle-right"></i>个人资料</a></li>
 						<li class="divider"></li>
-						<li><a href="javascript:ovid(0)" id="Exit_system"><i class="icon-off"></i>退出</a></li>
+						<li><a href="#" id="Exit_system"><i class="icon-off"></i>退出</a></li>
 					</ul>
 				</li>
 			</ul>
@@ -242,7 +242,7 @@
 
 			<ul class="nav nav-list" id="nav_list">
 
-				<li class="home"><a href="javascript:void(0)" name="home.jsp" class="iframeurl" title=""><i class="icon-dashboard"></i><span class="menu-text"> 系统首页 </span></a></li>
+				<li class="home"><a href="javascript:void(0)" name="/jsp/admin/home.jsp" class="iframeurl" title=""><i class="icon-dashboard"></i><span class="menu-text"> 系统首页 </span></a></li>
 
 				<li><a href="#" class="dropdown-toggle"><i class="icon-desktop"></i><span class="menu-text"> 管理员管理 </span><b class="arrow icon-angle-down"></b></a>
 					<ul class="submenu">
@@ -261,35 +261,30 @@
 
 				<li><a href="#" class="dropdown-toggle"><i class="icon-desktop"></i><span class="menu-text"> 消息管理 </span><b class="arrow icon-angle-down"></b></a>
 					<ul class="submenu">
-						<li class="home"><a  href="javascript:void(0)" name="Guestbook.jsp"  title="评论回复" class="iframeurl"><i class="icon-double-angle-right"></i>评论回复</a></li>
-						<li class="home"><a  href="javascript:void(0)" name="Brand_Manage.html" title="消息回复"  class="iframeurl"><i class="icon-double-angle-right"></i>消息回复</a></li>
+						<li class="home"><a  href="javascript:void(0)" name="/LoginServlet"  title="用户消息" class="iframeurl"><i class="icon-double-angle-right"></i>用户消息</a></li>
+						<li class="home"><a  href="javascript:void(0)" name="/selectCommentRate.action" title="用户评论"  class="iframeurl"><i class="icon-double-angle-right"></i>用户评论</a></li>
 					</ul>
 				</li>
 
 				<li><a href="#" class="dropdown-toggle"><i class="icon-desktop"></i><span class="menu-text"> 商品管理 </span><b class="arrow icon-angle-down"></b></a>
 					<ul class="submenu">
-						<li class="home"><a href="javascript:void(0)" name="Product_Manage.jsp" title="商品分类"  class="iframeurl"><i class="icon-double-angle-right"></i>商品分类</a></li>
+						<li class="home"><a href="javascript:void(0)" name="/ProductType.action" title="商品分类"  class="iframeurl"><i class="icon-double-angle-right"></i>商品分类</a></li>
 						<li class="home"><a  href="javascript:void(0)" name="/ProducList.action"  title="商品列表" class="iframeurl"><i class="icon-double-angle-right"></i>商品列表</a></li>
-						<li class="home"><a href="javascript:void(0)" name="Category_Manage.html" title="分类管理"  class="iframeurl"><i class="icon-double-angle-right"></i>商品查询</a></li>
-						<li class="home"><a  href="javascript:void(0)" name="Brand_Manage.html" title="品牌管理"  class="iframeurl"><i class="icon-double-angle-right"></i>商品添加</a></li>
-						<li class="home"><a href="javascript:void(0)" name="Category_Manage.html" title="分类管理"  class="iframeurl"><i class="icon-double-angle-right"></i>商品删除</a></li>
 					</ul>
 				</li>
 
 				<li><a href="#" class="dropdown-toggle"><i class="icon-desktop"></i><span class="menu-text"> 订单管理 </span><b class="arrow icon-angle-down"></b></a>
 					<ul class="submenu">
-						<li class="home"><a href="javascript:void(0)" name="Category_Manage.html" title="分类管理"  class="iframeurl"><i class="icon-double-angle-right"></i>用户订单</a></li>
-						<li class="home"><a  href="javascript:void(0)" name="Products_List.html"  title="产品类表" class="iframeurl"><i class="icon-double-angle-right"></i>订单详情</a></li>
-						<li class="home"><a  href="javascript:void(0)" name="Products_List.html"  title="产品类表" class="iframeurl"><i class="icon-double-angle-right"></i>退货订单</a></li>
-						<li class="home"><a  href="javascript:void(0)" name="Products_List.html"  title="产品类表" class="iframeurl"><i class="icon-double-angle-right"></i>订单详情</a></li>
+						<li class="home"><a href="javascript:void(0)" name="/getAllOrder.action" title="订单列表"  class="iframeurl"><i class="icon-double-angle-right"></i>用户订单</a></li>
+						<li class="home"><a  href="javascript:void(0)" name="/getOrderByStatusOfSix.action"  title="退货订单" class="iframeurl"><i class="icon-double-angle-right"></i>退货订单</a></li>
 					</ul>
 				</li>
 
 				<li><a href="#" class="dropdown-toggle"><i class="icon-desktop"></i><span class="menu-text"> 系统设置 </span><b class="arrow icon-angle-down"></b></a>
 					<ul class="submenu">
-						<li class="home"><a href="javascript:void(0)" name="Category_Manage.html" title="分类管理"  class="iframeurl"><i class="icon-double-angle-right"></i>物流方式</a></li>
-						<li class="home"><a  href="javascript:void(0)" name="Products_List.html"  title="产品类表" class="iframeurl"><i class="icon-double-angle-right"></i>支付方式</a></li>
-						<li class="home"><a href="javascript:void(0)" name="Category_Manage.html" title="分类管理"  class="iframeurl"><i class="icon-double-angle-right"></i>日志查看</a></li>
+						<li class="home"><a href="javascript:void(0)" name="/jsp/admin/Systems.jsp" title="系统设置"  class="iframeurl"><i class="icon-double-angle-right"></i>系统设置</a></li>
+						<li class="home"><a href="javascript:void(0)" name="/Advertising.action" title="物流管理"  class="iframeurl"><i class="icon-double-angle-right"></i>物流管理</a></li>
+						<li class="home"><a  href="javascript:void(0)" name="/QuerryAllPay.action"  title="支付管理" class="iframeurl"><i class="icon-double-angle-right"></i>支付管理</a></li>
 					</ul>
 				</li>
 
@@ -319,7 +314,7 @@
 				</ul>
 			</div>
 
-			<iframe id="iframe" style="border:0; width:100%; background-color:#FFF;"name="iframe" frameborder="0" src="home.jsp">  </iframe>
+			<iframe id="iframe" style="border:0; width:100%; background-color:#FFF;"name="iframe" frameborder="0" src="/jsp/admin/home.jsp">  </iframe>
 
 
 			<!-- /.page-content -->

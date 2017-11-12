@@ -39,4 +39,8 @@ public interface ProductAndTypeMapper {
 
     //根据商品的id对商品进行更新
     public void updateById(ProductAndTypeVo productAndTypeVo);
+
+    public void updateProductState(Product product);
+
+    public void updateProductById(Product product);
 }

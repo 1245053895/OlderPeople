@@ -90,7 +90,7 @@
                     <td class="text-l">
                         <a href="javascript:;" onclick="Guestbook_iew(this,${status.index})">${messageReview.comment}</a>
                     <td>${messageReview.goodcomment}</td>
-                    <td><fmt:formatDate value="${messageReview.commentTime}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
+                    <td><fmt:formatDate value="${messageReview.commenttime}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
                     <td class="td-manage">
                         <span id="text_${status.index}"></span>
                     </td>

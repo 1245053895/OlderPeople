@@ -9,7 +9,7 @@
 <script type="text/javascript"  src="jquery-1.4.4.min.js"></script>
 <script type="text/javascript">
 	var  ws;
-	var url="ws://localhost:8080/chatSocket?username=${sessionScope.username}";
+	var url="ws://localhost:80/chatSocket?username=${sessionScope.username}";
 	
 	function connect(){
 		 if ('WebSocket' in window) {

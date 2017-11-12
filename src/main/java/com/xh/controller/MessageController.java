@@ -9,11 +9,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.jws.WebParam;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -63,4 +65,22 @@ public class MessageController {
            model.addAttribute("messageReviews",messageReviews);
             return "/jsp/admin/pl.jsp";
     }
+
+    /**
+     * 用户消息
+     * @param model
+     * @param adminname
+     * @return
+     */
+    @RequestMapping(value="message.action",method={RequestMethod.POST,RequestMethod.GET})
+    public String longin(Model model,String adminname,HttpServletRequest request, HttpServletResponse response) throws IOException {
+        //model.addAttribute("username",adminname);
+        request.getSession().setAttribute("username", adminname);
+
+        //response.sendRedirect("/jsp/admin/chat/chat.jsp");
+        return "/jsp/admin/chat/chat.jsp";
+
+    }
+
+
 }

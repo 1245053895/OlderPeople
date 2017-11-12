@@ -9,7 +9,7 @@
 <script type="text/javascript"  src="jquery-1.4.4.min.js"></script>
 <script type="text/javascript">
 	var  ws;
-	var url="ws://localhost:80/chatSocket?username=${sessionScope.username}";
+	var url="ws://localhost:8080/chatSocket?username=${sessionScope.username}";
 	
 	function connect(){
 		 if ('WebSocket' in window) {
@@ -76,27 +76,36 @@
         ws.send(obj);   
         $("#sendMsg").val("");  
     }  
-</script>  
+</script>
+
+    <style type="text/css">
+        #content{
+            overflow: scroll;
+        }
+        #users{
+            overflow: scroll;
+        }
+    </style>
+
 </head>  
   
-<body onload="connect();">  
-    
+<body onload="connect();">
 
 <div>
-    <div id="msg" style="width: 400px;height: 450px; border: solid 1px;">  
-    <div>  <h3>欢迎 ${sessionScope.username } 使用本系统！！</h3></div>
-        <p id="content">  
-        </p>  
-    </div>  
-    <div id="users"  
-        style="width: 150px;height: 530px;border: solid 1px; position:absolute;left: 412px;top:8px;">       
-        <ul id="userList">  
-        </ul>  
-    </div>  
-    <div id="send" style="width: 400px;height:80px;border: solid 1px;"  
-        align="right">  
-        <textarea style="width: 400px;height: 50px;" id="sendMsg"></textarea>  
-        <input type="button" value="发送消息" onclick="send();">  
+    <div id="msg" >
+        <div>  <h3>欢迎 ${sessionScope.username } 使用本系统！！</h3></div>
+        <p id="content" style="width: 400px;height: 380px; border: solid 1px;">
+        </p>
+    </div>
+    <div id="users"
+         style="width: 150px;height: 530px;border: solid 1px; position:absolute;left: 412px;top:8px;">
+        <ul id="userList">
+        </ul>
+    </div>
+    <div id="send" style="width: 400px;height:80px;border: solid 1px;"
+         align="right">
+        <textarea style="width: 400px;height: 50px;" id="sendMsg"></textarea>
+        <input type="button" value="发送消息" onclick="send();">
     </div>  </div>
 </body>
 </html>

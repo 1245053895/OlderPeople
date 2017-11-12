@@ -72,15 +72,16 @@ public class MessageController {
      * @param adminname
      * @return
      */
-    @RequestMapping(value="message.action",method={RequestMethod.POST,RequestMethod.GET})
-    public String longin(Model model,String adminname,HttpServletRequest request, HttpServletResponse response) throws IOException {
-        //model.addAttribute("username",adminname);
-        request.getSession().setAttribute("username", adminname);
-
-        //response.sendRedirect("/jsp/admin/chat/chat.jsp");
-        return "/jsp/admin/chat/chat.jsp";
-
-    }
+//    @RequestMapping(value="message.action",method={RequestMethod.POST,RequestMethod.GET})
+//    public String longin(Model model,String adminname,HttpServletRequest request, HttpServletResponse response) throws IOException {
+//        //model.addAttribute("username",adminname);
+//        String   username= (String) request.getSession().getAttribute("username");
+//        request.getSession().setAttribute("username",username);
+//
+//        //response.sendRedirect("/jsp/admin/chat/chat.jsp");
+//        return "/jsp/admin/chat/chat.jsp";
+//
+//    }
 
 
 }

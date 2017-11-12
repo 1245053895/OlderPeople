@@ -24,6 +24,13 @@ public class LoginServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("utf-8");
+//		String   username= (String) request.getSession().getAttribute("username");
+		String username= request.getParameter("username");
+
+		request.getSession().setAttribute("username", username);
+
+		response.sendRedirect("/jsp/admin/chat/chat.jsp");
 		// TODO Auto-generated method stub
 	}
 
@@ -33,6 +40,7 @@ public class LoginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("utf-8");
+//		String   username= (String) request.getSession().getAttribute("username");
 		String username= request.getParameter("username");
 		
 		request.getSession().setAttribute("username", username);

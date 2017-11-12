@@ -30,4 +30,10 @@ public interface MessageMapper {
 
     //pl页面针对某个商品统计出所有评论的用户有多少人
     public  TotalMessage queryTotalUserById(Integer productid);
+
+    /**
+     * 通过评论表id 回复对应评论
+     * @param comment
+     */
+    public void updataComment(Comment comment);
 }

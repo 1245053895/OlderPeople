@@ -42,8 +42,8 @@
 <%--</c:if>--%>
 
 
-<div class="clearfix" id="add_picture">
-<div class="page_right_style" style="width: 100%">
+<%--<div class="clearfix" id="add_picture">--%>
+<div class="page_right_style" style="margin: 0px auto">
    <div class="type_title">添加商品</div>
 
 
@@ -948,4 +948,4 @@ $(function(){
 
 })( jQuery );
 </script>
-			</div></body></html>
+<%--</div>--%></body></html>

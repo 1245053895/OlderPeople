@@ -60,7 +60,7 @@
             <div class="border clearfix">
            <span class="l_f">
             <a href="${basePath}AddToProductType.action" title="添加商品" class="btn btn-warning Order_form"><i class="icon-plus"></i>添加商品</a>
-            <a href="javascript:deleteBatch('<%=basePath%>');" class="btn btn-danger"><i class="icon-trash"></i>批量删除</a>
+            <a href="javascript:void(0)" onclick="deleteBatch()" class="btn btn-danger"><i class="icon-trash"></i>批量删除</a>
            </span>
                 <span class="r_f">共：<b>${allproduct.productcount}</b>件商品</span>
             </div>
@@ -71,15 +71,15 @@
                     <th width="25px"><label><input type="checkbox" class="ace"><span class="lbl"></span></label></th>
                     <th width="80px">编号</th>
                     <th width="250px">商品名称</th>
-                    <th width="250px">商品类型</th>
-                    <th width="100px">上架时间</th>
                     <th width="100px">价格</th>
                     <th width="100px">商品描述</th>
-                    <th width="180px">商品图片</th>
                     <th width="80px">商品积分</th>
+                    <th width="180px">商品图片</th>
+                    <th width="250px">商品类型</th>
+                    <th width="100px">上架时间</th>
                     <th width="80px">是否新品</th>
                     <th width="80px">是否热销</th>
-                    <th width="80px">是否下架</th>
+                    <th width="80px">是否可用积分兑换</th>
                     <th width="70px">状态</th>
                     <th width="200px">操作</th>
                 </tr>
@@ -87,10 +87,11 @@
                 <tbody>
                 <c:forEach items="${productAndTypeVos}" var="productAndTypeVos" varStatus="status">
                         <tr>
-                            <form id="form_${productAndTypeVos.productid}" action="${pageContext.request.contextPath}/updateById.action?id=${productAndTypeVos.productid}" method="post">
+                            <form id="form_${productAndTypeVos.productid}" action="${pageContext.request.contextPath}/updateProductById.action" method="post">
+                            <input type="hidden" class="ace" name="productid" value="${productAndTypeVos.productid}" />
                             <td width="25px">
                                 <label>
-                                    <input type="checkbox" class="ace" name="productid" value="${productAndTypeVos.productid}" >
+                                    <input type="checkbox" name="pid" class="ace" value="${productAndTypeVos.productid}" />
                                     <span class="lbl"></span>
                                 </label>
                             </td>
@@ -102,28 +103,15 @@
                                                              value="${productAndTypeVos.productname}" name="productname"
                                                              class="input_style text_info${productAndTypeVos.productid}" readonly="true"/>
                             </td>
-                            <td width="150px">
-                                <input style="border-width: 0px;background-color: transparent;" type="text"
-                                                             value="${productAndTypeVos.producttypename}" name="producttypename"
-                                                             class="input_style text_info${productAndTypeVos.productid}" readonly="true"/>
-                            </td>
-                            <td width="250px">
-                                <input style="border-width: 0px;background-color: transparent;" type="text"
-                                                             value="<fmt:formatDate value="${productAndTypeVos.productstoretime}" pattern="yyyy-MM-dd HH:mm:ss"/>"
-                                                             name="productstoretime" class="input_style text_info${productAndTypeVos.productid}" readonly="true"/>
-                            </td>
                             <td width="100px">
                                 <input style="border-width: 0px;background-color: transparent;" type="text"
-                                                             value="${productAndTypeVos.productprice}" name="productprice"
-                                                             class="input_style text_info${productAndTypeVos.productid}" readonly="true"/>
+                                       value="${productAndTypeVos.productprice}" name="productprice"
+                                       class="input_style text_info${productAndTypeVos.productid}" readonly="true"/>
                             </td>
                             <td width="250px">
                                 <input style="border-width: 0px;background-color: transparent;" type="text"
                                                                     value="${productAndTypeVos.productdescribe}" name="productdescribe"
                                                                     class="input_style text_info${productAndTypeVos.productid}" readonly="true"/>
-                            </td>
-                            <td width="100px">
-                                <img src="${productAndTypeVos.productpicture}" width="80px" height="110px">
                             </td>
 
                             <td width="100px">
@@ -131,22 +119,42 @@
                                                      value="${productAndTypeVos.productcredits}" name="productcredits"
                                                      class="input_style text_info${productAndTypeVos.productid}" readonly="true"/>
                             </td>
+                            <td width="100px">
+                                <img src="${productAndTypeVos.productpicture}" width="80px" height="110px">
+                            </td>
+
+                            <td width="150px">
+                                <input style="border-width: 0px;background-color: transparent;" type="text"
+                                       value="${productAndTypeVos.producttypename}"
+                                       class="input_style text_info" readonly="true"/>
+                            </td>
+                            <td width="250px">
+                                <input style="border-width: 0px;background-color: transparent;" type="text"
+                                       value="<fmt:formatDate value="${productAndTypeVos.productstoretime}" pattern="yyyy-MM-dd HH:mm:ss"/>"
+                                       name="" class="input_style text_info" readonly="true"/>
+                            </td>
+
 
                             <td width="100px">
-                                <input style="border-width: 0px;background-color: transparent;" type="text"
-                                                             value="<c:if test="${productAndTypeVos.productnew==1}">√</c:if><c:if test="${productAndTypeVos.productnew==0}">×</c:if>"
-                                                             name="productnew" class="input_style text_info${productAndTypeVos.productid}" readonly="true"/>
+                                <img src="/jsp/admin/images/<c:if test="${productAndTypeVos.productnew==1}">yes</c:if><c:if test="${productAndTypeVos.productnew==0}">no</c:if>.png" onclick="changeImgProductnew(this,${productAndTypeVos.productid},${productAndTypeVos.productnew})" alt="是" style="cursor:pointer;width:30px;height: 30px;"/>
+                                <%--<input style="border-width: 0px;background-color: transparent;" type="text"
+                                                             value="<c:if test="${productAndTypeVos.productnew==1}">1</c:if><c:if test="${productAndTypeVos.productnew==0}">0</c:if>"
+                                                             name="" class="input_style text_info" readonly="true"/>--%>
                             </td>
                             <td width="100px">
-                                <input style="border-width: 0px;background-color: transparent;" type="text"
-                                                             value=" <c:if test="${productAndTypeVos.producthotsale==1}">√</c:if><c:if test="${productAndTypeVos.producthotsale==0}">×</c:if>"
-                                                             name="producthotsale" class="input_style text_info${productAndTypeVos.productid}" readonly="true"/>
+                                <img src="/jsp/admin/images/<c:if test="${productAndTypeVos.producthotsale==1}">yes</c:if><c:if test="${productAndTypeVos.producthotsale==0}">no</c:if>.png" onclick="changeImgProducthotsale(this,${productAndTypeVos.productid},${productAndTypeVos.producthotsale})" alt="是" style="cursor:pointer;width:30px;height: 30px;"/>
+                                <%--<input style="border-width: 0px;background-color: transparent;" type="text"
+                                                             value=" <c:if test="${productAndTypeVos.producthotsale==1}">1</c:if><c:if test="${productAndTypeVos.producthotsale==0}">0</c:if>"
+                                                             name="" class="input_style text_info" readonly="true"/>--%>
                             </td>
                             <td width="100px">
-                                <input style="border-width: 0px;background-color: transparent;" type="text"
-                                       value="<c:choose><c:when test="${productAndTypeVos.productdisabled==1}">√</c:when><c:otherwise>×</c:otherwise></c:choose>"
-                                       name="productdisabled" class="input_style text_info${productAndTypeVos.productid}" readonly="true"/>
+                                <img src="/jsp/admin/images/<c:if test="${productAndTypeVos.productdisabled==1}">yes</c:if><c:if test="${productAndTypeVos.productdisabled==0}">no</c:if>.png" onclick="changeImgProductdisabled(this,${productAndTypeVos.productid},${productAndTypeVos.productdisabled})" alt="是" style="cursor:pointer;width:30px;height: 30px;"/>
+                                <%--<input style="border-width: 0px;background-color: transparent;" type="text"
+                                       value="<c:choose><c:when test="${productAndTypeVos.productdisabled==1}">1</c:when><c:otherwise>0</c:otherwise></c:choose>"
+                                       name="" class="input_style text_info" readonly="true"/>--%>
                             </td>
+
+
                             <c:if test="${productAndTypeVos.productA==1}">
                                 <td class="td-status"><span class="label label-success radius">已启用</span></td>
                             </c:if>
@@ -248,12 +256,172 @@
 
 
 <script>
+    function changeImgProductnew(obj,id,value) {
+        if(value==0){
+            value=1;
+        }else{
+            value=0
+        }
+        var attribute="user."+attribute;
+        //var user={"user.username":username,"user.password":password};
+        var product={"productid":id,"productnew":value};
+        console.log(product);
+          $.ajax({
+              url: '/updateProductById.action',
+              type: 'post',
+              data:product,
+              timeout: 10000,
+              cache: false,
+              beforeSend: LoadFunction, //加载执行方法
+              error: erryFunction,  //错误执行方法
+              success: succFunction //成功执行方法
+        });
+        function LoadFunction() {
+
+            $("#credits").html('回复中...');
+        }
+        function erryFunction() {
+            alert("失败")
+        }
+        function succFunction(data) {
+            console.log(value);
+            if(value==0){
+                $(obj).attr('onclick','changeImgProductnew(this,'+id+',0)');
+                $(obj).attr('src','/jsp/admin/images/no.png?time='+new Date());
+
+            }else{
+                $(obj).attr('onclick','changeImgProductnew(this,'+id+',1)');
+                $(obj).attr('src','/jsp/admin/images/yes.png?time='+new Date());
+
+            }
+
+        }
+    }
+
+    function changeImgProducthotsale(obj,id,value) {
+        if(value==0){
+            value=1;
+        }else{
+            value=0
+        }
+        var attribute="user."+attribute;
+        //var user={"user.username":username,"user.password":password};
+        var product={"productid":id,"producthotsale":value};
+        console.log(product);
+        $.ajax({
+            url: '/updateProductById.action',
+            type: 'post',
+            data:product,
+            timeout: 10000,
+            cache: false,
+            beforeSend: LoadFunction, //加载执行方法
+            error: erryFunction,  //错误执行方法
+            success: succFunction //成功执行方法
+        });
+        function LoadFunction() {
+
+            $("#credits").html('回复中...');
+        }
+        function erryFunction() {
+            alert("失败")
+        }
+        function succFunction(data) {
+            console.log(value);
+            if(value==0){
+                $(obj).attr('onclick','changeImgProducthotsale(this,'+id+',0)');
+                $(obj).attr('src','/jsp/admin/images/no.png?time='+new Date());
+
+            }else{
+                $(obj).attr('onclick','changeImgProducthotsale(this,'+id+',1)');
+                $(obj).attr('src','/jsp/admin/images/yes.png?time='+new Date());
+
+            }
+
+        }
+    }
+
+    function changeImgProductdisabled(obj,id,value) {
+        if(value==0){
+            value=1;
+        }else{
+            value=0
+        }
+        var attribute="user."+attribute;
+        //var user={"user.username":username,"user.password":password};
+        var product={"productid":id,"productdisabled":value};
+        console.log(product);
+        $.ajax({
+            url: '/updateProductById.action',
+            type: 'post',
+            data:product,
+            timeout: 10000,
+            cache: false,
+            beforeSend: LoadFunction, //加载执行方法
+            error: erryFunction,  //错误执行方法
+            success: succFunction //成功执行方法
+        });
+        function LoadFunction() {
+
+            $("#credits").html('回复中...');
+        }
+        function erryFunction() {
+            alert("失败")
+        }
+        function succFunction(data) {
+            console.log(value);
+            if(value==0){
+                $(obj).attr('onclick','changeImgProductdisabled(this,'+id+',0)');
+                $(obj).attr('src','/jsp/admin/images/no.png?time='+new Date());
+
+            }else{
+                $(obj).attr('onclick','changeImgProductdisabled(this,'+id+',1)');
+                $(obj).attr('src','/jsp/admin/images/yes.png?time='+new Date());
+
+            }
+
+        }
+    }
+
     //下面1个函数需要优化
 
-    function deleteBatch(basePath) {
-        alert('您确定要删除吗？');
+    function deleteBatch() {
+        var productid = new Array();
+        $("input:checkbox[name=pid]:checked").each(function(){
+            productid.push($(this).val());
+        });
+        console.log(productid);
+        if(productid==null){
+            alert("请至少选择一个!")
+        }else {
+            layer.confirm('确认要删除吗？',function(index){
+                $.ajax({
+                    url: '/DeleteBatchProduct.action',
+                    type: 'post',
+                    data:{'productid':productid},
+                    traditional: true,
+                    timeout: 10000,
+                    cache: false,
+                    beforeSend: LoadFunction, //加载执行方法
+                    error: erryFunction,  //错误执行方法
+                    success: succFunction //成功执行方法
+                });
+                function LoadFunction() {
+
+                    $("#credits").html('删除中...');
+                }
+                function erryFunction() {
+                    alert("失败");
+                }
+                function succFunction(data) {
+                    //window.location.href="/ProducList.action";
+                }
+            });
+        }
+
+
+        /*alert('您确定要删除吗？');
         $("#mainForm").attr("action",basePath + "DeleteBatchProduct.action");
-        $("#mainForm").submit();
+        $("#mainForm").submit();*/
     }
 
     function confirmAct(){
@@ -371,13 +539,13 @@
     function modify(v) {
         if(flag) {
             $('.text_info' + v).attr("readonly", false);
-            //$('.text_info' + v).parents("td").css("box-shadow","0px 0px 20px #888888 inset");
+            $('.text_info' + v).parents("td").css("box-shadow","0px 0px 10px #DDDDDD inset");
             $('#edit'+v).text("提交");
             flag = false;
         }else{
             $("#form_"+v).submit();
             $('.text_info' + v).attr("readonly", true);
-            //$('.text_info' + v).parents("td").css("box-shadow","0px 0px 0px #888888 inset");
+            $('.text_info' + v).parents("td").css("box-shadow","0px 0px px #DDDDDD inset");
             $('#edit'+v).text("编辑");
             flag=true;
         }

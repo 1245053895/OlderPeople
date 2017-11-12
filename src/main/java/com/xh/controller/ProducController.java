@@ -59,9 +59,9 @@ public class ProducController {
     @RequestMapping("/DeleteBatchProduct.action")
     public String deleteBatchProduct(String[] productid) throws Exception{
 
-        productService.deleteBatch(productid);
-//        重定向
-        return "redirect:/ProducList.action";
+        productService.deleteBatch(null);
+        //重定向
+        return "forward :/ProducList.action";
     }
     //添加
     @RequestMapping("/AddProduct.action")
@@ -187,6 +187,17 @@ public class ProducController {
     public String updateProductState(@RequestBody Product product){
         product.setProductA("d");
         productService.updateProductState(product);
+        return "redirect:/ProducList.action";
+    }
+
+    /**
+     * 根据商品的id更新商品的信息
+     * @param product
+     * @return
+     */
+    @RequestMapping(value = "/updateProductById.action",method = {RequestMethod.GET,RequestMethod.POST})
+    public String updateProductById(Product product){
+        productService.updateProductById(product);
         return "redirect:/ProducList.action";
     }
 

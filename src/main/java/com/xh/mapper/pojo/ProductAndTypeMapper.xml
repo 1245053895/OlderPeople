@@ -358,6 +358,64 @@
     </set>
     WHERE ProductId=#{productid}
   </update>
+  
+  <update id="updateProductById" parameterType="product">
+    UPDATE product p
+    <set>
+      <if test="producttypeid != null">
+        ProductTypeId = #{producttypeid,jdbcType=INTEGER},
+      </if>
+      <if test="productname != null">
+        ProductName = #{productname,jdbcType=VARCHAR},
+      </if>
+      <if test="productprice != null">
+        ProductPrice = #{productprice,jdbcType=DOUBLE},
+      </if>
+      <if test="picturesizes != null">
+        PictureSizes = #{picturesizes,jdbcType=VARCHAR},
+      </if>
+      <if test="picturecolors != null">
+        PictureColors = #{picturecolors,jdbcType=VARCHAR},
+      </if>
+      <if test="productlookcount != null">
+        ProductLookCount = #{productlookcount,jdbcType=INTEGER},
+      </if>
+      <if test="productdescribe != null">
+        ProductDescribe = #{productdescribe,jdbcType=VARCHAR},
+      </if>
+      <if test="productstoretime != null">
+        ProductStoreTime = #{productstoretime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="productpicture != null">
+        ProductPicture = #{productpicture,jdbcType=VARCHAR},
+      </if>
+      <if test="productnew != null">
+        ProductNew = #{productnew,jdbcType=INTEGER},
+      </if>
+      <if test="producthotsale != null">
+        ProducthotSale = #{producthotsale,jdbcType=CHAR},
+      </if>
+      <if test="productdisabled != null">
+        ProductDisabled = #{productdisabled,jdbcType=CHAR},
+      </if>
+      <if test="productcredits != null">
+        ProductCredits = #{productcredits,jdbcType=CHAR},
+      </if>
+      <if test="productcreatetime != null">
+        ProductCreateTime = #{productcreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="productA != null">
+        Product_A = #{productA,jdbcType=VARCHAR},
+      </if>
+      <if test="productB != null">
+        Product_B = #{productB,jdbcType=VARCHAR},
+      </if>
+      <if test="productC != null">
+        Product_C = #{productC,jdbcType=VARCHAR},
+      </if>
+    </set>
+    WHERE ProductId = #{productid,jdbcType=INTEGER}
+  </update>
 
 
 

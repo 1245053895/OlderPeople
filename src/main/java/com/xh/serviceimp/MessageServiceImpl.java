@@ -54,4 +54,9 @@ public class MessageServiceImpl implements MessageService {
      TotalMessage totalMessage= messageMapper.queryTotalUserById(productid);
         return totalMessage;
     }
+
+    @Override
+    public void updataComment(Comment comment) {
+        messageMapper.updataComment(comment);
+    }
 }

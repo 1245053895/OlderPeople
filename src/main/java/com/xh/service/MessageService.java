@@ -29,4 +29,7 @@ public interface MessageService {
 
     //pl页面针对某个商品统计出所有评论的用户有多少人
     public  TotalMessage queryTotalUserById(Integer productid);
+
+    //通过
+    public void updataComment(Comment comment);
 }

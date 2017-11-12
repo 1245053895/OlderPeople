@@ -65,7 +65,7 @@
             });
             //初始化宽度、高度
             $("#main-container").height($(window).height()-76);
-            $("#iframe").height($(window).height()-220);
+            $("#iframe").height($(window).height()-140);
 
             $(".sidebar").height($(window).height()-99);
             var thisHeight = $("#nav_list").height($(window).outerHeight()-173);
@@ -184,7 +184,7 @@
         })
 	</script>
 </head>
-<body style="overflow-y: hidden">
+<body>
 <div class="navbar navbar-default" id="navbar">
 	<script type="text/javascript">
         try{ace.settings.check('navbar' , 'fixed')}catch(e){}
@@ -261,7 +261,7 @@
 
 				<li><a href="#" class="dropdown-toggle"><i class="icon-desktop"></i><span class="menu-text"> 消息管理 </span><b class="arrow icon-angle-down"></b></a>
 					<ul class="submenu">
-						<li class="home"><a  href="javascript:void(0)" name="/message.action?adminname=${admin.adminname}"  title="用户消息" class="iframeurl"><i class="icon-double-angle-right"></i>用户消息</a></li>
+						<li class="home"><a  href="javascript:void(0)" name="/LoginServlet"  title="用户消息" class="iframeurl"><i class="icon-double-angle-right"></i>用户消息</a></li>
 						<li class="home"><a  href="javascript:void(0)" name="/selectCommentRate.action" title="用户评论"  class="iframeurl"><i class="icon-double-angle-right"></i>用户评论</a></li>
 					</ul>
 				</li>
@@ -282,7 +282,7 @@
 
 				<li><a href="#" class="dropdown-toggle"><i class="icon-desktop"></i><span class="menu-text"> 系统设置 </span><b class="arrow icon-angle-down"></b></a>
 					<ul class="submenu">
-						<li class="home"><a href="javascript:void(0)" name="/SelectSystems.action" title="系统设置"  class="iframeurl"><i class="icon-double-angle-right"></i>系统设置</a></li>
+						<li class="home"><a href="javascript:void(0)" name="/jsp/admin/Systems.jsp" title="系统设置"  class="iframeurl"><i class="icon-double-angle-right"></i>系统设置</a></li>
 						<li class="home"><a href="javascript:void(0)" name="/Advertising.action" title="物流管理"  class="iframeurl"><i class="icon-double-angle-right"></i>物流管理</a></li>
 						<li class="home"><a  href="javascript:void(0)" name="/QuerryAllPay.action"  title="支付管理" class="iframeurl"><i class="icon-double-angle-right"></i>支付管理</a></li>
 					</ul>
@@ -314,7 +314,7 @@
 				</ul>
 			</div>
 
-			<iframe id="iframe" style="border:0; width:100%;height: 75%; background-color:#FFF;"name="iframe" frameborder="0" src="/jsp/admin/home.jsp">  </iframe>
+			<iframe id="iframe" style="border:0; width:100%; background-color:#FFF;"name="iframe" frameborder="0" src="/jsp/admin/home.jsp">  </iframe>
 
 
 			<!-- /.page-content -->

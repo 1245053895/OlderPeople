@@ -41,4 +41,6 @@ public interface ProductAndTypeMapper {
     public void updateById(ProductAndTypeVo productAndTypeVo);
 
     public void updateProductState(Product product);
+
+    public void updateProductById(Product product);
 }

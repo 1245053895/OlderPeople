@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 /**
@@ -64,6 +65,18 @@ public class MessageController {
           List<MessageReview> messageReviews= messageService.selectCommentGood(comment);
            model.addAttribute("messageReviews",messageReviews);
             return "/jsp/admin/pl.jsp";
+    }
+
+    /**
+     * 回复客户评论
+     */
+    @RequestMapping("/replyMessage.action")
+    public void replyMessage(int id,String commentreview) throws UnsupportedEncodingException {
+        commentreview=new String(commentreview.getBytes("iso8859-1"), "utf-8");
+        Comment comment=new Comment();
+        comment.setCommentid(id);
+        comment.setCommentreview(commentreview);
+        messageService.updataComment(comment);
     }
 
     /**

@@ -13,6 +13,8 @@ public class Secondview {
 
     private String secondviewC;
 
+    private String sencondurl;
+
     public Integer getSecondviewid() {
         return secondviewid;
     }
@@ -59,5 +61,13 @@ public class Secondview {
 
     public void setSecondviewC(String secondviewC) {
         this.secondviewC = secondviewC == null ? null : secondviewC.trim();
+    }
+
+    public String getSencondurl() {
+        return sencondurl;
+    }
+
+    public void setSencondurl(String sencondurl) {
+        this.sencondurl = sencondurl == null ? null : sencondurl.trim();
     }
 }

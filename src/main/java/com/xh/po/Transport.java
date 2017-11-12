@@ -44,7 +44,7 @@ public class Transport {
     }
 
     public void setTransportA(Date transportA) {
-        this.transportA = transportA == null ? null : transportA;
+        this.transportA = transportA;
     }
 
     public String getTransportB() {

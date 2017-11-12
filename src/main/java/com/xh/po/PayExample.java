@@ -1,6 +1,7 @@
 package com.xh.po;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class PayExample {
@@ -314,62 +315,52 @@ public class PayExample {
             return (Criteria) this;
         }
 
-        public Criteria andPayAEqualTo(String value) {
+        public Criteria andPayAEqualTo(Date value) {
             addCriterion("Pay_A =", value, "payA");
             return (Criteria) this;
         }
 
-        public Criteria andPayANotEqualTo(String value) {
+        public Criteria andPayANotEqualTo(Date value) {
             addCriterion("Pay_A <>", value, "payA");
             return (Criteria) this;
         }
 
-        public Criteria andPayAGreaterThan(String value) {
+        public Criteria andPayAGreaterThan(Date value) {
             addCriterion("Pay_A >", value, "payA");
             return (Criteria) this;
         }
 
-        public Criteria andPayAGreaterThanOrEqualTo(String value) {
+        public Criteria andPayAGreaterThanOrEqualTo(Date value) {
             addCriterion("Pay_A >=", value, "payA");
             return (Criteria) this;
         }
 
-        public Criteria andPayALessThan(String value) {
+        public Criteria andPayALessThan(Date value) {
             addCriterion("Pay_A <", value, "payA");
             return (Criteria) this;
         }
 
-        public Criteria andPayALessThanOrEqualTo(String value) {
+        public Criteria andPayALessThanOrEqualTo(Date value) {
             addCriterion("Pay_A <=", value, "payA");
             return (Criteria) this;
         }
 
-        public Criteria andPayALike(String value) {
-            addCriterion("Pay_A like", value, "payA");
-            return (Criteria) this;
-        }
-
-        public Criteria andPayANotLike(String value) {
-            addCriterion("Pay_A not like", value, "payA");
-            return (Criteria) this;
-        }
-
-        public Criteria andPayAIn(List<String> values) {
+        public Criteria andPayAIn(List<Date> values) {
             addCriterion("Pay_A in", values, "payA");
             return (Criteria) this;
         }
 
-        public Criteria andPayANotIn(List<String> values) {
+        public Criteria andPayANotIn(List<Date> values) {
             addCriterion("Pay_A not in", values, "payA");
             return (Criteria) this;
         }
 
-        public Criteria andPayABetween(String value1, String value2) {
+        public Criteria andPayABetween(Date value1, Date value2) {
             addCriterion("Pay_A between", value1, value2, "payA");
             return (Criteria) this;
         }
 
-        public Criteria andPayANotBetween(String value1, String value2) {
+        public Criteria andPayANotBetween(Date value1, Date value2) {
             addCriterion("Pay_A not between", value1, value2, "payA");
             return (Criteria) this;
         }

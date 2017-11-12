@@ -43,4 +43,6 @@ public interface ProductService {
 
     List<ProductAndTypeVo> typeProductType(String producttypeid);
 
+    public void updateProductState(Product product);
+
 }

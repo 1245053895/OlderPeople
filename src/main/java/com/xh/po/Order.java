@@ -45,6 +45,10 @@ public class Order {
 
     private String orderC;
 
+    private Integer gainid;
+
+    private Integer gainmethod;
+
     public Integer getOrderid() {
         return orderid;
     }
@@ -211,5 +215,21 @@ public class Order {
 
     public void setOrderC(String orderC) {
         this.orderC = orderC == null ? null : orderC.trim();
+    }
+
+    public Integer getGainid() {
+        return gainid;
+    }
+
+    public void setGainid(Integer gainid) {
+        this.gainid = gainid;
+    }
+
+    public Integer getGainmethod() {
+        return gainmethod;
+    }
+
+    public void setGainmethod(Integer gainmethod) {
+        this.gainmethod = gainmethod;
     }
 }

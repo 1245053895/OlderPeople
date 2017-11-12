@@ -36,4 +36,5 @@ public class UserRecordServiceimpl implements UserRecordService {
         List<UserAndUserLog> userAndUserLogs= userRecordMapper.moHuSelectByUserId(username);
         return userAndUserLogs;
     }
+
 }

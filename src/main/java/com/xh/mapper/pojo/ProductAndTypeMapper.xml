@@ -340,6 +340,24 @@
     where ProductId = #{productid,jdbcType=INTEGER} AND product.ProductTypeId=producttype.ProductId
   </update>
 
+  <update id="updateProductState" parameterType="product">
+    UPDATE product
+    <set>
+      <if test="productnew!=null">
+        ProductNew=#{productnew}
+      </if>
+      <if test="producthotsale!=null">
+        ProducthotSale=#{producthotsale}
+      </if>
+      <if test="productdisabled!=null">
+        ProductDisabled=#{productdisabled}
+      </if>
+      <if test="productcredits!=null">
+        ProductCredits=#{productcredits}
+      </if>
+    </set>
+    WHERE ProductId=#{productid}
+  </update>
 
 
 

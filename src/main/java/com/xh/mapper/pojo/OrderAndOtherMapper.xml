@@ -110,6 +110,7 @@
         UserName username,
         RealPay realpay,
         TotalCredit totalcredit,
+        GainMethod gainmethod,
         ShippingName shippingname,
         ShippingCode shippingcode,
         BuyerRequest buyerrequest,
@@ -141,6 +142,7 @@
         UserName username,
         RealPay realpay,
         TotalCredit totalcredit,
+        GainMethod gainmethod,
         ShippingName shippingname,
         ShippingCode shippingcode,
         BuyerRequest buyerrequest,
@@ -196,7 +198,7 @@
            g.GainCode gaincode,
            g.GainMobile gainmobile,
            op.ShoppingCount shoppingcount,
-           op.OrderProduct_A orderproductA, /*购买时的商品价格*/
+           op.PayPrice payprice, /*购买时的商品价格*/
            p.ProductId productid,
            p.ProductDescribe productdescribe,
            p.ProductPrice productprice,   /*商品实时价格*/
@@ -206,7 +208,7 @@
         FROM `order` o
         INNER JOIN orderproduct op ON (o.OrderId=op.OrderId)
         INNER JOIN product p ON (p.ProductId=op.ProductId)
-        INNER JOIN gainaddres g ON (o.Order_A=g.GainId)
+        INNER JOIN gainaddres g ON (o.gainid=g.GainId)
         INNER JOIN stock s ON (s.ProductId=p.ProductId)
         WHERE o.OrderId=${_parameter};
     </select>

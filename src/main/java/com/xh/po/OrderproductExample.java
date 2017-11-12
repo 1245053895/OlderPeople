@@ -613,6 +613,66 @@ public class OrderproductExample {
             addCriterion("OrderProduct_C not between", value1, value2, "orderproductC");
             return (Criteria) this;
         }
+
+        public Criteria andPaypriceIsNull() {
+            addCriterion("PayPrice is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPaypriceIsNotNull() {
+            addCriterion("PayPrice is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPaypriceEqualTo(Double value) {
+            addCriterion("PayPrice =", value, "payprice");
+            return (Criteria) this;
+        }
+
+        public Criteria andPaypriceNotEqualTo(Double value) {
+            addCriterion("PayPrice <>", value, "payprice");
+            return (Criteria) this;
+        }
+
+        public Criteria andPaypriceGreaterThan(Double value) {
+            addCriterion("PayPrice >", value, "payprice");
+            return (Criteria) this;
+        }
+
+        public Criteria andPaypriceGreaterThanOrEqualTo(Double value) {
+            addCriterion("PayPrice >=", value, "payprice");
+            return (Criteria) this;
+        }
+
+        public Criteria andPaypriceLessThan(Double value) {
+            addCriterion("PayPrice <", value, "payprice");
+            return (Criteria) this;
+        }
+
+        public Criteria andPaypriceLessThanOrEqualTo(Double value) {
+            addCriterion("PayPrice <=", value, "payprice");
+            return (Criteria) this;
+        }
+
+        public Criteria andPaypriceIn(List<Double> values) {
+            addCriterion("PayPrice in", values, "payprice");
+            return (Criteria) this;
+        }
+
+        public Criteria andPaypriceNotIn(List<Double> values) {
+            addCriterion("PayPrice not in", values, "payprice");
+            return (Criteria) this;
+        }
+
+        public Criteria andPaypriceBetween(Double value1, Double value2) {
+            addCriterion("PayPrice between", value1, value2, "payprice");
+            return (Criteria) this;
+        }
+
+        public Criteria andPaypriceNotBetween(Double value1, Double value2) {
+            addCriterion("PayPrice not between", value1, value2, "payprice");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

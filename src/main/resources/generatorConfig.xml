@@ -13,7 +13,7 @@
 		<!--数据库连接的信息：驱动类、连接地址、用户名、密码 -->
 		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
 			connectionURL="jdbc:mysql://localhost:3306/ssm" userId="root"
-			password="123456">
+			password="206211">
 		</jdbcConnection>
 		<!-- <jdbcConnection driverClass="oracle.jdbc.OracleDriver"
 			connectionURL="jdbc:oracle:thin:@127.0.0.1:1521:yycg" 
@@ -76,6 +76,7 @@
 
 		<table tableName="user"></table>
 		<table tableName="userlog"></table>
+		<table tableName="systemset"></table>
 		<!-- <table schema="" tableName="sys_user"></table>
 		<table schema="" tableName="sys_role"></table>
 		<table schema="" tableName="sys_permission"></table>

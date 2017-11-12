@@ -513,6 +513,76 @@ public class SecondviewExample {
             addCriterion("SecondView_C not between", value1, value2, "secondviewC");
             return (Criteria) this;
         }
+
+        public Criteria andSencondurlIsNull() {
+            addCriterion("SencondUrl is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSencondurlIsNotNull() {
+            addCriterion("SencondUrl is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSencondurlEqualTo(String value) {
+            addCriterion("SencondUrl =", value, "sencondurl");
+            return (Criteria) this;
+        }
+
+        public Criteria andSencondurlNotEqualTo(String value) {
+            addCriterion("SencondUrl <>", value, "sencondurl");
+            return (Criteria) this;
+        }
+
+        public Criteria andSencondurlGreaterThan(String value) {
+            addCriterion("SencondUrl >", value, "sencondurl");
+            return (Criteria) this;
+        }
+
+        public Criteria andSencondurlGreaterThanOrEqualTo(String value) {
+            addCriterion("SencondUrl >=", value, "sencondurl");
+            return (Criteria) this;
+        }
+
+        public Criteria andSencondurlLessThan(String value) {
+            addCriterion("SencondUrl <", value, "sencondurl");
+            return (Criteria) this;
+        }
+
+        public Criteria andSencondurlLessThanOrEqualTo(String value) {
+            addCriterion("SencondUrl <=", value, "sencondurl");
+            return (Criteria) this;
+        }
+
+        public Criteria andSencondurlLike(String value) {
+            addCriterion("SencondUrl like", value, "sencondurl");
+            return (Criteria) this;
+        }
+
+        public Criteria andSencondurlNotLike(String value) {
+            addCriterion("SencondUrl not like", value, "sencondurl");
+            return (Criteria) this;
+        }
+
+        public Criteria andSencondurlIn(List<String> values) {
+            addCriterion("SencondUrl in", values, "sencondurl");
+            return (Criteria) this;
+        }
+
+        public Criteria andSencondurlNotIn(List<String> values) {
+            addCriterion("SencondUrl not in", values, "sencondurl");
+            return (Criteria) this;
+        }
+
+        public Criteria andSencondurlBetween(String value1, String value2) {
+            addCriterion("SencondUrl between", value1, value2, "sencondurl");
+            return (Criteria) this;
+        }
+
+        public Criteria andSencondurlNotBetween(String value1, String value2) {
+            addCriterion("SencondUrl not between", value1, value2, "sencondurl");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

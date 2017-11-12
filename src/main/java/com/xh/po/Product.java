@@ -25,11 +25,11 @@ public class Product {
 
     private Integer productnew;
 
-    private String producthotsale;
+    private Integer producthotsale;
 
-    private String productdisabled;
+    private Integer productdisabled;
 
-    private String productcredits;
+    private Integer productcredits;
 
     private Date productcreatetime;
 
@@ -127,28 +127,28 @@ public class Product {
         this.productnew = productnew;
     }
 
-    public String getProducthotsale() {
+    public Integer getProducthotsale() {
         return producthotsale;
     }
 
-    public void setProducthotsale(String producthotsale) {
-        this.producthotsale = producthotsale == null ? null : producthotsale.trim();
+    public void setProducthotsale(Integer producthotsale) {
+        this.producthotsale = producthotsale;
     }
 
-    public String getProductdisabled() {
+    public Integer getProductdisabled() {
         return productdisabled;
     }
 
-    public void setProductdisabled(String productdisabled) {
-        this.productdisabled = productdisabled == null ? null : productdisabled.trim();
+    public void setProductdisabled(Integer productdisabled) {
+        this.productdisabled = productdisabled;
     }
 
-    public String getProductcredits() {
+    public Integer getProductcredits() {
         return productcredits;
     }
 
-    public void setProductcredits(String productcredits) {
-        this.productcredits = productcredits == null ? null : productcredits.trim();
+    public void setProductcredits(Integer productcredits) {
+        this.productcredits = productcredits;
     }
 
     public Date getProductcreatetime() {

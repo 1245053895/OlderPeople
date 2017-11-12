@@ -75,12 +75,12 @@
             </td>
             <td>${order.totalcredit}</td>
             <td>
-                <c:if test="${order.shippingname==''&&order.shippingcode==''}">
+                <c:if test="${order.gainmethod==1}">
                         <span class="label label-success radius">
-                            自提
+                            上门自取
                         </span>
                 </c:if>
-                <c:if test="${order.shippingname!=null&&order.shippingcode!=null}">
+                <c:if test="${order.gainmethod==0}">
                     ${order.shippingname}<br/>
                     <a href="http://www.kuaidi100.com" target="view_window">${order.shippingcode}</a>
                 </c:if>
@@ -150,7 +150,7 @@
                 <c:if test="${order.status==1}">
                     <a onClick="shipping(this,${order.orderid})"  href="javascript:void(0);" title="发货"  class="btn btn-xs btn-success">发货</a>
                 </c:if>
-                <c:if test="${order.status!=0&&order.status!=1}">
+                <c:if test="${order.gainmethod==0&&order.status!=0&&order.status!=1}">
                     <a onClick="Delivery_stop(this,'10001')"  href="javascript:void(0);" title="物流详情"  class="btn btn-xs btn-success">物流详情</a>
                 </c:if>
                 <c:if test="${order.status==5}">

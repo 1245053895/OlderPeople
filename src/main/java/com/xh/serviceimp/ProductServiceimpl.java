@@ -89,6 +89,11 @@ public class ProductServiceimpl implements ProductService {
     }
 
     @Override
+    public void updateProductState(Product product) {
+        productAndTypeMapper.updateProductState(product);
+    }
+
+    @Override
     public void updateById(ProductAndTypeVo productAndTypeVo) {
         productAndTypeMapper.updateById(productAndTypeVo);
     }

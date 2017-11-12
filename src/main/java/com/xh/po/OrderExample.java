@@ -1424,6 +1424,126 @@ public class OrderExample {
             addCriterion("Order_C not between", value1, value2, "orderC");
             return (Criteria) this;
         }
+
+        public Criteria andGainidIsNull() {
+            addCriterion("GainId is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andGainidIsNotNull() {
+            addCriterion("GainId is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andGainidEqualTo(Integer value) {
+            addCriterion("GainId =", value, "gainid");
+            return (Criteria) this;
+        }
+
+        public Criteria andGainidNotEqualTo(Integer value) {
+            addCriterion("GainId <>", value, "gainid");
+            return (Criteria) this;
+        }
+
+        public Criteria andGainidGreaterThan(Integer value) {
+            addCriterion("GainId >", value, "gainid");
+            return (Criteria) this;
+        }
+
+        public Criteria andGainidGreaterThanOrEqualTo(Integer value) {
+            addCriterion("GainId >=", value, "gainid");
+            return (Criteria) this;
+        }
+
+        public Criteria andGainidLessThan(Integer value) {
+            addCriterion("GainId <", value, "gainid");
+            return (Criteria) this;
+        }
+
+        public Criteria andGainidLessThanOrEqualTo(Integer value) {
+            addCriterion("GainId <=", value, "gainid");
+            return (Criteria) this;
+        }
+
+        public Criteria andGainidIn(List<Integer> values) {
+            addCriterion("GainId in", values, "gainid");
+            return (Criteria) this;
+        }
+
+        public Criteria andGainidNotIn(List<Integer> values) {
+            addCriterion("GainId not in", values, "gainid");
+            return (Criteria) this;
+        }
+
+        public Criteria andGainidBetween(Integer value1, Integer value2) {
+            addCriterion("GainId between", value1, value2, "gainid");
+            return (Criteria) this;
+        }
+
+        public Criteria andGainidNotBetween(Integer value1, Integer value2) {
+            addCriterion("GainId not between", value1, value2, "gainid");
+            return (Criteria) this;
+        }
+
+        public Criteria andGainmethodIsNull() {
+            addCriterion("GainMethod is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andGainmethodIsNotNull() {
+            addCriterion("GainMethod is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andGainmethodEqualTo(Integer value) {
+            addCriterion("GainMethod =", value, "gainmethod");
+            return (Criteria) this;
+        }
+
+        public Criteria andGainmethodNotEqualTo(Integer value) {
+            addCriterion("GainMethod <>", value, "gainmethod");
+            return (Criteria) this;
+        }
+
+        public Criteria andGainmethodGreaterThan(Integer value) {
+            addCriterion("GainMethod >", value, "gainmethod");
+            return (Criteria) this;
+        }
+
+        public Criteria andGainmethodGreaterThanOrEqualTo(Integer value) {
+            addCriterion("GainMethod >=", value, "gainmethod");
+            return (Criteria) this;
+        }
+
+        public Criteria andGainmethodLessThan(Integer value) {
+            addCriterion("GainMethod <", value, "gainmethod");
+            return (Criteria) this;
+        }
+
+        public Criteria andGainmethodLessThanOrEqualTo(Integer value) {
+            addCriterion("GainMethod <=", value, "gainmethod");
+            return (Criteria) this;
+        }
+
+        public Criteria andGainmethodIn(List<Integer> values) {
+            addCriterion("GainMethod in", values, "gainmethod");
+            return (Criteria) this;
+        }
+
+        public Criteria andGainmethodNotIn(List<Integer> values) {
+            addCriterion("GainMethod not in", values, "gainmethod");
+            return (Criteria) this;
+        }
+
+        public Criteria andGainmethodBetween(Integer value1, Integer value2) {
+            addCriterion("GainMethod between", value1, value2, "gainmethod");
+            return (Criteria) this;
+        }
+
+        public Criteria andGainmethodNotBetween(Integer value1, Integer value2) {
+            addCriterion("GainMethod not between", value1, value2, "gainmethod");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

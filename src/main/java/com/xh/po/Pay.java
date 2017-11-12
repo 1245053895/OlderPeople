@@ -44,7 +44,7 @@ public class Pay {
     }
 
     public void setPayA(Date payA) {
-        this.payA = payA == null ? null : payA;
+        this.payA = payA;
     }
 
     public String getPayB() {

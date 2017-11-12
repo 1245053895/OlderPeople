@@ -29,13 +29,13 @@
     <script src="/jsp/admin/assets/js/jquery.dataTables.min.js"></script>
     <script src="/jsp/admin/assets/js/jquery.dataTables.bootstrap.js"></script>
 
-    <title>个人信息管理</title>
+    <title>系统设置</title>
 </head>
 
 <body>
 <div class="admin_info_style">
     <div class="admin_modify_style" id="Personal">
-        <div class="type_title">管理员信息 </div>
+        <div class="type_title">系统设置 </div>
         <div class="xinxi">
 
             <div class="info">
@@ -62,13 +62,13 @@
                             <div class="form-group"><label class="col-sm-1 control-label no-padding-right"><i>*</i>屏蔽词： </label>
                                 <div class="col-sm-9"><input type="text" placeholder="8汉字以内,用英文,隔开" name="blockwords"  value="${systemset.blockwords}"  class="col-xs-7 text_info" disabled="disabled"></div>
                             </div>
-                            <div class="form-group"><label class="col-sm-1 control-label no-padding-right"><i>*</i>文件路径配置： </label>
+                            <div class="form-group"><label class="col-sm-1 control-label no-padding-right"><i>*</i>路径配置： </label>
                                 <div class="col-sm-9"><input type="text" placeholder="默认为空，为相对路径" name="webfilepatn" value="${systemset.webfilepatn}" class="col-xs-7 text_info" disabled="disabled"></div>
                             </div>
                             <div class="form-group"><label class="col-sm-1 control-label no-padding-right"><i>*</i>描述： </label>
                                 <div class="col-sm-9"><input type="text" placeholder="空制在80个汉字，160个字符以内" name="webdescribe" value="${systemset.webdescribe}" class="col-xs-7 text_info" disabled="disabled"></div>
                             </div>
-                            <div class="form-group"><label class="col-sm-1 control-label no-padding-right"><i>*</i>底部版权信息： </label>
+                            <div class="form-group"><label class="col-sm-1 control-label no-padding-right"><i>*</i>版权信息： </label>
                                 <div class="col-sm-9"><input type="text" placeholder=""  name="bottomcopyright" value="${systemset.bottomcopyright}" class="col-xs-7 text_info" disabled="disabled"></div>
                             </div>
                             <div class="form-group"><label class="col-sm-1 control-label no-padding-right"><i>*</i>备案号： </label>

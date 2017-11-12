@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
@@ -63,45 +64,24 @@ public class ProducController {
         return "redirect:/ProducList.action";
     }
     //添加
-    @RequestMapping("/AddProduct.action")
-    public String addProduct(Product product, Model model,HttpServletRequest request,MultipartFile product_pic) throws ParseException {
-//       springmvc 没有办法去处理日期格式的字符串1990-01-01   1990/01/01     01/01 1990   Date
-        //图片原始名称
-        String originalFilename = product_pic.getOriginalFilename();
-        //上传图片
-        if(product_pic!=null && originalFilename!=null && originalFilename.length()>0){
-           //存储图片的物理路径
-            String pic_path = "E:\\IntelliJ IDEA\\images\\";
-            //新的图片名称
-            String newFileName = UUID.randomUUID() + originalFilename.substring(originalFilename.lastIndexOf("."));
-            //新图片
-            File newFile = new File(pic_path+newFileName);
-
-            //将内存中的数据写入磁盘
-            try {
-                product_pic.transferTo(newFile);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-            //将新图片名称写到itemsCustom中
-            product.setProductpicture(newFileName);
-
-        }
-
-
-        // 调用service添加商品信息
-        productService.insertSelective(product);
-
-        // 重定向到商品查询列表
-        // return "redirect:queryItems.action";
-        // 页面请求转发，可带参数到转发的controller方法中（ProducList.action方法中能用本方法中的形参值）
-        // return "forward:queryItems.action";
-
-        return "redirect:/ProducList.action";
-    }
-
-
+  @RequestMapping("/AddProduct.action")
+    public String addProduct(Product product, Model model, HttpSession session, MultipartFile product_pic)throws IllegalStateException, IOException {
+      String sqlPath = null;
+      if (product_pic != null && product_pic.getOriginalFilename() != null) {
+          String path = session.getServletContext().getRealPath("/jsp/admin/images/upload");
+          String realName = product_pic.getOriginalFilename();
+          String realFilePath = path + File.separator + realName;
+          File file = new File(realFilePath);
+          product_pic.transferTo(file);
+          product.setProductpicture(realFilePath);
+          sqlPath = "jsp/admin/images/upload/" + realName;
+          product.setProductpicture(sqlPath);
+          product.setProductstoretime(new Date());
+          productService.insertSelective(product);
+          return "redirect:/ProducList.action";
+      }
+       return null;
+  }
     //点击添加商品 得到商品类型列表  返回添加页面     Producttype producttype,Model model
     @RequestMapping("/AddToProductType.action")
     public String addToProductType(Model model){

@@ -11,14 +11,14 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public LoginServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public LoginServlet() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -42,9 +42,9 @@ public class LoginServlet extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 //		String   username= (String) request.getSession().getAttribute("username");
 		String username= request.getParameter("username");
-		
+
 		request.getSession().setAttribute("username", username);
-		
+
 		response.sendRedirect("/jsp/admin/chat/chat.jsp");
 	}
 

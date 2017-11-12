@@ -164,10 +164,6 @@
         if(num>0){  return false;}
         else{
             $("#submitform").submit();
-            layer.alert('修改成功！',{
-                title: '提示框',
-                icon:1,
-            });
             $('#Personal').find('.xinxi').removeClass("hover");
             $('#Personal').find('.text_info').removeClass("add").attr("disabled", true);
             $('#Personal').find('.btn-success').css({'display':'none'});

@@ -29,7 +29,7 @@
 
     <!--根据商品的id查询出对它进行评价的用户名，时间，评论内容等-->
     <select id="selectCommentUserById" parameterType="Integer" resultType="messageReview">
-        SELECT UserName,Comment,GoodComment,CommentTime,CommentReview FROM `user`,`comment`
+        SELECT  CommentId,UserName,Comment,GoodComment,CommentTime,CommentReview FROM `user`,`comment`
          WHERE `comment`.UserId=`user`.UserId AND ProductId=#{productid}
     </select>
 

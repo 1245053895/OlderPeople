@@ -48,4 +48,10 @@ public class MessageServiceImpl implements MessageService {
        List<MessageReview> messageReviews= messageMapper.selectCommentGood(comment);
         return messageReviews;
     }
+
+    @Override
+    public TotalMessage queryTotalUserById(Integer productid) {
+     TotalMessage totalMessage= messageMapper.queryTotalUserById(productid);
+        return totalMessage;
+    }
 }

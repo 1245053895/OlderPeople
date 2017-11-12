@@ -101,6 +101,7 @@
     </set>
     where TransportId = #{transportid,jdbcType=INTEGER}
   </update>
+
   <update id="updateByPrimaryKey" parameterType="com.xh.po.Transport">
     update transport
     set TransportName = #{transportname,jdbcType=VARCHAR},
@@ -120,4 +121,10 @@
     SELECT *
     FROM transport WHERE TransportId LIKE '%${sqlString}%' OR TransportName LIKE '%${sqlString}%'
   </select>
+
+  <!--统计出所有物流的条数-->
+  <select id="totalTransport" resultType="totalMessage">
+     SELECT COUNT(TransportId) as totaltransport FROM transport
+  </select>
+
 </mapper>

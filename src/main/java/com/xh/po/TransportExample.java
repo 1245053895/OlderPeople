@@ -1,6 +1,7 @@
 package com.xh.po;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class TransportExample {
@@ -314,62 +315,52 @@ public class TransportExample {
             return (Criteria) this;
         }
 
-        public Criteria andTransportAEqualTo(String value) {
+        public Criteria andTransportAEqualTo(Date value) {
             addCriterion("Transport_A =", value, "transportA");
             return (Criteria) this;
         }
 
-        public Criteria andTransportANotEqualTo(String value) {
+        public Criteria andTransportANotEqualTo(Date value) {
             addCriterion("Transport_A <>", value, "transportA");
             return (Criteria) this;
         }
 
-        public Criteria andTransportAGreaterThan(String value) {
+        public Criteria andTransportAGreaterThan(Date value) {
             addCriterion("Transport_A >", value, "transportA");
             return (Criteria) this;
         }
 
-        public Criteria andTransportAGreaterThanOrEqualTo(String value) {
+        public Criteria andTransportAGreaterThanOrEqualTo(Date value) {
             addCriterion("Transport_A >=", value, "transportA");
             return (Criteria) this;
         }
 
-        public Criteria andTransportALessThan(String value) {
+        public Criteria andTransportALessThan(Date value) {
             addCriterion("Transport_A <", value, "transportA");
             return (Criteria) this;
         }
 
-        public Criteria andTransportALessThanOrEqualTo(String value) {
+        public Criteria andTransportALessThanOrEqualTo(Date value) {
             addCriterion("Transport_A <=", value, "transportA");
             return (Criteria) this;
         }
 
-        public Criteria andTransportALike(String value) {
-            addCriterion("Transport_A like", value, "transportA");
-            return (Criteria) this;
-        }
-
-        public Criteria andTransportANotLike(String value) {
-            addCriterion("Transport_A not like", value, "transportA");
-            return (Criteria) this;
-        }
-
-        public Criteria andTransportAIn(List<String> values) {
+        public Criteria andTransportAIn(List<Date> values) {
             addCriterion("Transport_A in", values, "transportA");
             return (Criteria) this;
         }
 
-        public Criteria andTransportANotIn(List<String> values) {
+        public Criteria andTransportANotIn(List<Date> values) {
             addCriterion("Transport_A not in", values, "transportA");
             return (Criteria) this;
         }
 
-        public Criteria andTransportABetween(String value1, String value2) {
+        public Criteria andTransportABetween(Date value1, Date value2) {
             addCriterion("Transport_A between", value1, value2, "transportA");
             return (Criteria) this;
         }
 
-        public Criteria andTransportANotBetween(String value1, String value2) {
+        public Criteria andTransportANotBetween(Date value1, Date value2) {
             addCriterion("Transport_A not between", value1, value2, "transportA");
             return (Criteria) this;
         }

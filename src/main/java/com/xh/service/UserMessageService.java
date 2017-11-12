@@ -2,6 +2,7 @@ package com.xh.service;
 
 import com.xh.po.User;
 import com.xh.po.vo.StringAndString;
+import com.xh.po.vo.TotalMessage;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,6 +21,10 @@ public interface UserMessageService {
     public User selectByPrimaryKeyByname(String username);
     //查找所有用户
     public List<User> qullyAllUser();
+
+    //统计出所有用户的信息
+    public TotalMessage totalUserInfor();
+
     //对用户模糊查询
     public List<User> QueryUserConfuse(StringAndString stringAndString);
 }

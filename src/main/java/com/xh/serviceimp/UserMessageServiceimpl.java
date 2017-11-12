@@ -3,6 +3,7 @@ package com.xh.serviceimp;
 import com.xh.mapper.pojo.UserCsdMapper;
 import com.xh.po.User;
 import com.xh.po.vo.StringAndString;
+import com.xh.po.vo.TotalMessage;
 import com.xh.service.UserMessageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,6 +31,12 @@ public class UserMessageServiceimpl implements UserMessageService {
     }
 
     public List<User> qullyAllUser() { List<User> users=userCsdMapper.qullyAllUser();return users; }
+
+    @Override
+    public TotalMessage totalUserInfor() {
+     TotalMessage totalMessage= userCsdMapper.totalUserInfor();
+        return totalMessage;
+    }
 
     public List<User> QueryUserConfuse(StringAndString stringAndString) {
         List<User> users=userCsdMapper.QueryUserConfuse(stringAndString);

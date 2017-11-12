@@ -64,45 +64,43 @@
     <div class="tab-content">
 		<div id="home" class="tab-pane active">
          <div class="form-group"><label class="col-sm-1 control-label no-padding-right"><i>*</i>网站名称： </label>
-          <div class="col-sm-9"><input type="text" placeholder="控制在25个字、50个字节以内" name="webname" value="${systemSitings.webname}" class="col-xs-10 "></div>
+          <div class="col-sm-9"><input type="text" placeholder="控制在25个字、50个字节以内" name="webname" value="${systemset.webname}" class="col-xs-10 "></div>
           </div>
            <div class="form-group"><label class="col-sm-1 control-label no-padding-right"><i>*</i>网站icon图标： </label>
                <div class="form-group">
-                   <p  class="col-sm-1 control-label no-padding-right">
-
-                       <input   type="button" value="隐藏图片" onclick="document.getElementById('xmTanImg').style.display = 'none';"/>
-                       <input type="button" value="显示图片" onclick="document.getElementById('xmTanImg').style.display = 'block';"/>
-                       <input type="file" value="/images/${systemSitings.webicon}" id="xdaTanFileImg" onchange="xmTanUploadImg(this)" accept="image/*"   name="Iocn_pic" />
-                   </p>
-                   <img  class="col-sm-1 control-label no-padding-right" name="paypicture" id="xmTanImg" width="1000px" height="100px"/>
-                   <div id="xmTanDiv"></div>
+                   <input width="200px" height="200px"type="file" id="xdaTanFileImg" onchange="xmTanUploadImg(this)"   name="webicons" style="display: none" />
+                   <div id="xmTanDiv" class="col-sm-1">
+                       <img src="${systemset.webicon}" id="xmTanImg" width="1000px" height="100px" style="width: 100px;height: 100px;margin-bottom: 10px"/>
+                       <button onclick="$('#xdaTanFileImg').click();" class="btn btn-success" type="button">上传图片</button>
+                   </div>
                </div>
           </div>
           <div class="form-group"><label class="col-sm-1 control-label no-padding-right"><i>*</i>关键词： </label>
-          <div class="col-sm-9"><input type="text" placeholder="${systemSitings.keywords}" name="keywords" value="${systemSitings.keywords}" class="col-xs-10 "></div>
+          <div class="col-sm-9"><input type="text" placeholder="${systemset.keywords}" name="keywords" value="${systemset.keywords}" class="col-xs-10 "></div>
           </div>
           <div class="form-group"><label class="col-sm-1 control-label no-padding-right"><i>*</i>屏蔽词： </label>
-          <div class="col-sm-9"><input type="text" placeholder="8汉字以内,用英文,隔开" name="blockwords"  value="${systemSitings.blockwords}" class="col-xs-10 "></div>
+          <div class="col-sm-9"><input type="text" placeholder="8汉字以内,用英文,隔开" name="blockwords"  value="${systemset.blockwords}" class="col-xs-10 "></div>
           </div>
 	      <div class="form-group"><label class="col-sm-1 control-label no-padding-right"><i>*</i>文件路径配置： </label>
-          <div class="col-sm-9"><input type="text" placeholder="默认为空，为相对路径" name="webfilepath" value="${systemSitings.webfilepath}" class="col-xs-10"></div>
+          <div class="col-sm-9"><input type="text" placeholder="默认为空，为相对路径" name="webfilepatn" value="${systemset.webfilepatn}" class="col-xs-10"></div>
           </div>
           <div class="form-group"><label class="col-sm-1 control-label no-padding-right"><i>*</i>描述： </label>
-          <div class="col-sm-9"><input type="text" placeholder="空制在80个汉字，160个字符以内" name="webdescrible" value="${systemSitings.webdescrible}" class="col-xs-10"></div>
+          <div class="col-sm-9"><input type="text" placeholder="空制在80个汉字，160个字符以内" name="webdescribe" value="${systemset.webdescribe}" class="col-xs-10"></div>
           </div>
           <div class="form-group"><label class="col-sm-1 control-label no-padding-right"><i>*</i>底部版权信息： </label>
-          <div class="col-sm-9"><input type="text" placeholder=""  name="bottomcopyright" value="${systemSitings.bottomcopyright}" class="col-xs-10 "></div>
+          <div class="col-sm-9"><input type="text" placeholder=""  name="bottomcopyright" value="${systemset.bottomcopyright}" class="col-xs-10 "></div>
           </div>
           <div class="form-group"><label class="col-sm-1 control-label no-padding-right"><i>*</i>备案号： </label>
-          <div class="col-sm-9"><input type="text" placeholder=""  name="recordnumber" value="${systemSitings.recordnumber}" class="col-xs-10 "></div>
+          <div class="col-sm-9"><input type="text" placeholder=""  name="recordnumber" value="${systemset.recordnumber}" class="col-xs-10 "></div>
           </div>
           <%-- <div class="form-group"><label class="col-sm-1 control-label no-padding-right"><i>*</i>统计代码： </label>
           <div class="col-sm-9"><textarea class="textarea"></textarea></div>
           </div>--%>
-          <div class="Button_operation"> 
+          <div class="Button_operation">
+              <button onclick="" class="btn btn-primary radius" type="button"><i class="fa fa-save "></i>&nbsp;编辑</button>
 				<button onclick="article_save_submit();" class="btn btn-primary radius" type="submit"><i class="fa fa-save "></i>&nbsp;保存</button>
 				
-				<button onclick="layer_close();" class="btn btn-default radius" type="button">&nbsp;&nbsp;取消&nbsp;&nbsp;</button>
+				<%--<button onclick="layer_close();" class="btn btn-default radius" type="button">&nbsp;&nbsp;取消&nbsp;&nbsp;</button>--%>
                
 			</div>
         </div>

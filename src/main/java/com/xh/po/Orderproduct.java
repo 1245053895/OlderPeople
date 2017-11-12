@@ -17,6 +17,8 @@ public class Orderproduct {
 
     private String orderproductC;
 
+    private Double payprice;
+
     public Integer getOrderproductid() {
         return orderproductid;
     }
@@ -79,5 +81,13 @@ public class Orderproduct {
 
     public void setOrderproductC(String orderproductC) {
         this.orderproductC = orderproductC == null ? null : orderproductC.trim();
+    }
+
+    public Double getPayprice() {
+        return payprice;
+    }
+
+    public void setPayprice(Double payprice) {
+        this.payprice = payprice;
     }
 }

@@ -79,7 +79,7 @@
                          <td width="100px">${productAndTypeVos.productprice}</td>
                          <td width="100px">${productAndTypeVos.productdescribe}</td>
 
-                         <td width="100px">  <img src="/images/${productAndTypeVos.productpicture}" width="80px" height="110px">  </td>
+                         <td width="100px">  <img src="${productAndTypeVos.productpicture}" width="80px" height="110px">  </td>
 
                          <td width="100px">${productAndTypeVos.productnew}</td>
                          <td width="100px">${productAndTypeVos.producthotsale}</td>

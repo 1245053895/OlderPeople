@@ -123,7 +123,7 @@
                                                                     class="input_style text_info${productAndTypeVos.productid}" readonly="true"/>
                             </td>
                             <td width="100px">
-                                <img src="/jsp/admin/images/upload/${productAndTypeVos.productpicture}" width="80px" height="110px">
+                                <img src="${productAndTypeVos.productpicture}" width="80px" height="110px">
                             </td>
 
                             <td width="100px">

@@ -44,10 +44,10 @@
       </ul>
     </div>
     <div class="border clearfix">
-       <span class="l_f">
+      <%-- <span class="l_f">
         <a href="javascript:void(0)" class="btn btn-danger"><i class="fa fa-trash"></i>&nbsp;批量删除</a>
-       </span>
-       <span class="r_f">共：<b>2345</b>条</span>
+       </span>--%>
+       <span class="r_f">共：<b>${totalMessage.totaluserrecord}</b>条</span>
      </div>
      <div class="list_style">
      <table class="table table-striped table-bordered table-hover" id="sample-table">
@@ -60,7 +60,7 @@
                 <th width="120">最近登录时间</th>
 				<th width="120">浏览(条)</th>
                 <th width="120">购物(比)</th>
-				<th width="250">操作</th>
+				<%--<th width="250">操作</th>--%>
 			</tr>
 		</thead>
 	<tbody>
@@ -74,7 +74,11 @@
                 <td><a href="javascript:void(0)" onclick="Browse_history('${log.userid}')"><fmt:formatDate value="${log.userlogintime}" pattern="yyyy-MM-dd HH:mm:ss"/></a></td>
                 <td><a href="javascript:void(0)" onclick="Browse_history('${log.userid}')">${log.browseCount}</a></td>
                 <td><a href="javascript:void(0)" onclick="integration_history('${log.userid}')">${log.ratio}</a></td>
-                <td> <a title="删除" href="javascript:;"  onclick="member_del(this,'${log.userid}')" class="btn btn-xs btn-warning" ><i class="fa fa-trash  bigger-120"></i></a></td>
+               <%-- <td>
+                    <a title="删除" href="javascript:;"  onclick="member_del(this,'${log.userid}')"
+                       class="btn btn-xs btn-warning" ><i class="fa fa-trash  bigger-120"></i>
+                    </a>
+                </td>--%>
             </tr>
         </c:forEach>
     </tbody>
@@ -185,7 +189,10 @@ function integration_history(id){
                 var username = json[index].username;
                 var amountpay = json[index].amountpay;
                 var totalcredit = json[index].totalcredit;
-                var createtime = json[index].createtime;
+
+                var da = new Date(json[index].createtime);
+                var createtime = da.getFullYear()+'-'+da.getMonth()+'-'+da.getDate()+' '+da.getHours()+":"+da.getMinutes()+":"+da.getSeconds();
+
                 var products = json[index].products;
                 str=str+"<tr><td style='display:none'>"+ orderid + "</td>"
                     +"<td>"+ username + "</td>"
@@ -243,8 +250,13 @@ function Browse_history(id){
             $.each(json, function (index, item) {
                 //循环获取数据
                 var username = json[index].username;
-                var startlogintime = json[index].startlogintime;
-                var endlogintime = json[index].endlogintime;
+
+                var startdate = new Date(json[index].startlogintime);
+                var startlogintime = startdate.getFullYear()+'-'+startdate.getMonth()+'-'+startdate.getDate()+' '+startdate.getHours()+":"+startdate.getMinutes()+":"+startdate.getSeconds();
+
+                var enddate = new Date(json[index].endlogintime);
+                var endlogintime = enddate.getFullYear()+'-'+enddate.getMonth()+'-'+enddate.getDate()+' '+enddate.getHours()+":"+enddate.getMinutes()+":"+enddate.getSeconds();
+
                 var userip = json[index].userip;
                 str=str+"<tr><td>"+ username + "</td>"
                     +"<td>"+ startlogintime + "</td>"

@@ -122,10 +122,16 @@
     </set>
     where UserId = #{userid,jdbcType=INTEGER}
   </update>
-<!--查询所有信息-->
+  <!--查询所有信息-->
   <select id="qullyAllUser" parameterType="list" resultType="com.xh.po.User" >
     SELECT UserId, UserName, UserPwd, UserSex, UserRealName, UserPhone, UserBirthday, UserAddress,
   UserEmail, UserZip,UserInputDate ,User_A AS UserA FROM user;
+  </select>
+
+
+  <!--统计出所有用户信息的条数-->
+  <select id="totalUserInfor" resultType="com.xh.po.vo.TotalMessage">
+    SELECT COUNT(UserId) as totaluserinfor  FROM user
   </select>
 
   <!--实现模糊查询-->
@@ -136,17 +142,41 @@
   </select>
 
 
-<!--系统设置的Sql-->
-  <!--插入-->
-  <insert id="insertSystem" parameterType="com.xh.po.vo.SystemSitings">
-    INSERT INTO systemset(WebName,WebIcon,KeyWords,BlockWords,WebfilePatn,
-    WebDescribe,BottomCopyright,RecordNumber)VALUES (
-    #{webname},#{webicon},#{keywords},#{blockwords},#{webfilepath},#{webdescrible},#{bottomcopyright},#{recordnumber}
-    )
-  </insert>
+
   <!--查询系统设置-->
-  <select id="SelectSystemsQuerry" parameterType="list" resultType="com.xh.po.vo.SystemSitings" >
+  <select id="SelectSystemsQuerry" resultType="systemset" >
     SELECT * FROM systemset;
   </select>
+
+  <!--更新系统设置-->
+  <update id="updateSystemset" parameterType="systemset">
+    UPDATE systemset
+    <set>
+    <if test="webname != null">
+      WebName = #{webname},
+    </if>
+      <if test="webicon != null">
+        WebIcon = #{webicon},
+      </if>
+      <if test="keywords != null">
+        KeyWords = #{keywords},
+      </if>
+      <if test="blockwords != null">
+        BlockWords = #{blockwords},
+      </if>
+      <if test="webfilepatn != null">
+        WebfilePatn = #{webfilepatn},
+      </if>
+      <if test="webdescribe != null">
+        WebDescribe = #{webdescribe},
+      </if>
+      <if test="bottomcopyright != null">
+        BottomCopyright = #{bottomcopyright},
+      </if>
+      <if test="recordnumber != null">
+        RecordNumber = #{recordnumber},
+      </if>
+    </set>
+  </update>
 
 </mapper>

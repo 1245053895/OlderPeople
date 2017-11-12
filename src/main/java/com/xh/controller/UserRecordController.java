@@ -1,6 +1,7 @@
 package com.xh.controller;
 
 import com.xh.po.vo.OrderDetails;
+import com.xh.po.vo.TotalMessage;
 import com.xh.po.vo.UserAndUserLog;
 import com.xh.po.vo.UserLogCustom;
 import com.xh.service.UserRecordService;
@@ -25,9 +26,12 @@ public class UserRecordController {
     @RequestMapping("/getUserRecord")
     public String getUserRecord(Model model){
         List<UserAndUserLog> userAndUserLog=userRecordService.queryUserLog();
+       TotalMessage totalMessage= userRecordService.queryTotalRecord();
         model.addAttribute("userAndUserLog",userAndUserLog);
+        model.addAttribute("totalMessage",totalMessage);
         return "/jsp/admin/integration.jsp";
     }
+
 
     /**
      * 通过id查询订单详情

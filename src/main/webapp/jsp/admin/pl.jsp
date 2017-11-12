@@ -35,7 +35,7 @@
 </head>
 
 <body>
-<form action="${pageContext.request.contextPath}/selectCommentGood.action?productid=${commentRate.productid}" method="post">
+<form action="${pageContext.request.contextPath}/selectCommentGood.action?productid=${productid}" method="post">
 <div class="margin clearfix">
     <div class="Guestbook_style">
         <div class="search_style">
@@ -62,7 +62,7 @@
         <%--<a href="javascript:ovid()" class="btn btn-sm btn-primary"><i class="fa fa-check"></i>&nbsp;已浏览</a>
         <a href="javascript:ovid()" class="btn btn-yellow"><i class="fa fa-times"></i>&nbsp;未浏览</a>--%>
        </span>
-            <span class="r_f">共：<b>2334</b>条</span>
+            <span class="r_f">共：<b>${totalMessage.totaluser}</b>条</span>
         </div>
         <!--留言列表-->
         <div class="Guestbook_list">

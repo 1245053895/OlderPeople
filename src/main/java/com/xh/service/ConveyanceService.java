@@ -2,6 +2,7 @@ package com.xh.service;
 
 import com.xh.po.Transport;
 import com.xh.po.vo.StringAndString;
+import com.xh.po.vo.TotalMessage;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -21,4 +22,7 @@ public interface ConveyanceService {
     List<Transport> QuerryAllTranSport();
     //实现模糊查询
     public List<Transport> QueryTransportConfuse(StringAndString stringAndString);
+
+    //统计出所有物流的条数
+    public TotalMessage totalTransport();
 }

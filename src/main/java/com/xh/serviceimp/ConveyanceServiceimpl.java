@@ -3,6 +3,7 @@ package com.xh.serviceimp;
 import com.xh.mapper.pojo.ConveyanceMapper;
 import com.xh.po.Transport;
 import com.xh.po.vo.StringAndString;
+import com.xh.po.vo.TotalMessage;
 import com.xh.service.ConveyanceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -52,6 +53,12 @@ public class ConveyanceServiceimpl implements ConveyanceService{
     public List<Transport> QueryTransportConfuse(StringAndString stringAndString) {
       List<Transport> transports=conveyanceMapper.QueryTransportConfuse(stringAndString);
         return transports;
+    }
+
+    @Override
+    public TotalMessage totalTransport() {
+       TotalMessage totalMessage= conveyanceMapper.totalTransport();
+        return totalMessage;
     }
 
 

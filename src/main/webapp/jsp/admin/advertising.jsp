@@ -34,6 +34,12 @@
         <script type="text/javascript" src="/jsp/admin/Widget/swfupload/swfupload.speed.js"></script>
         <script type="text/javascript" src="/jsp/admin/Widget/swfupload/handlers.js"></script>
 <title>物流管理</title>
+    <style>
+        body{
+            width: 100%;
+            height: 100%;
+        }
+    </style>
 </head>
 
 <body style="margin: 15px;">
@@ -59,7 +65,7 @@
 
 
        </span>
-       <span class="r_f">共：<b>45</b>条</span>
+       <span class="r_f">共：<b>${totalMessage.totaltransport}</b>条</span>
     </div>
     <form action="${pageContext.request.contextPath}/DelectTransportQuerry.action" id="arrayDelectForm" method="post">
     <div class="Guestbook_list">
@@ -81,7 +87,7 @@
                 <td><label><input name="Transpostids" value="${transportslist.transportid}" type="checkbox" class="ace"><span class="lbl"></span></label></td>
                 <td>${transportslist.transportid}</td>
                 <td width="200px;">${transportslist.transportname}</td>
-                <td><span class="ad_img"><img src="/images/${transportslist.transportimg}"  width="200px" height="100px"/></span></td>
+                <td><span class="ad_img"><img src="${transportslist.transportimg}"  width="200px" height="100px"/></span></td>
                 <td><fmd:formatDate value="${transportslist.transportA}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
 
                 <c:if test="${transportslist.transportB==null}">
@@ -108,15 +114,9 @@
                         <a onClick="member_stop(this,'${transportslist.transportid}')" href="javascript:void(0);" title="启用"
                            class="btn btn-xs btn-success"><i class="fa fa-check  bigger-120"></i></a>
                     </c:if>
-
-
-
-                    <a
-                            onclick="return confirm('确定删除？')"
-                            title="删除"
-                            href="${pageContext.request.contextPath}/TransportDelect.action?transportId=${transportslist.transportid}"
-                            class="btn btn-xs btn-warning"><i class="fa fa-trash  bigger-120"></i></a>
-
+                    <a title="删除" href="javascript:void(0);"
+                       onclick="one_del(this,'${transportslist.transportid}')" class="btn btn-xs btn-warning" ><i class="fa fa-trash  bigger-120"></i>
+                    </a>
                 </td>
 
             </tr>
@@ -133,18 +133,23 @@
               <li><label class="label_name">物流名称</label>
                   <span class="cont_style"><input name="transportname" type="text" placeholder="请输入物流名称" class="col-xs-10 col-sm-5"></span>
               </li>
-             <li><label class="label_name">加入时间</label>
-                 <span class="cont_style"><input name="transportA" type="text" placeholder="请输加入物流名称" class="col-xs-10 col-sm-5"></span>
+             <%--<li><label class="label_name"></label>
+                 <span class="cont_style"><input name="transportA" type="text" placeholder="请输加入该物流名称的时间" class="col-xs-10 col-sm-5"></span>
+             </li>--%>
+             <li><label class="label_name">状&nbsp;&nbsp;&nbsp;&nbsp;态：</label>
+                 <span class="cont_style">
+                     <label><input name="transportB" value="1" type="radio" class="ace"><span class="lbl">启用</span></label>&nbsp;&nbsp;&nbsp;
+                     <label><input name="transportB" value="0" type="radio" class="ace"><span class="lbl">禁用</span></label>&nbsp;&nbsp;&nbsp;
+                    </span>
+                 <div class="prompt r_f"></div>
              </li>
 
               <li><label class="label_name">物流图片</label><span class="cont_style">
-                        <p>
-                                图片上传前预览：<input width="100px" height="100px"type="file" id="xdaTanFileImg" onchange="xmTanUploadImg(this)" accept="image/*"   name="Transport_pic" />
-                                <input width="100px" height="100px"  type="button" value="隐藏图片" onclick="document.getElementById('xmTanImg').style.display = 'none';"/>
-                                <input width="100px" height="100px" type="button" value="显示图片" onclick="document.getElementById('xmTanImg').style.display = 'block';"/>
-                        </p>
-                             <img name="paypicture" id="xmTanImg" width="100px" height="100px"/>
-                             <div id="xmTanDiv"></div>
+                  <input width="100px" height="100px"type="file" id="xdaTanFileImg" onchange="xmTanUploadImg(this)" accept="image/*"   name="Transport_pic" style="display: none" />
+                  <img name="Transport_pic" id="xmTanImg" width="100px" height="100px" style="margin-left: 10px"/>
+                  <div id="xmTanDiv" style="margin-top: 10px">
+                        <button onclick="$('#xdaTanFileImg').click();" class="btn btn-success" type="button">上传图片</button>
+                  </div>
                </span>
               </li>
          </ul>
@@ -196,14 +201,16 @@ function member_start(obj,id){
 	});
 }
 /*广告图片-删除*/
-function member_del(obj,id){
-	layer.confirm('确认要删除吗？',{icon:0,},function(index){
-
-	    $(obj).parents("tr").remove();
-		layer.msg('已删除!',{icon:1,time:1000});
+function one_del(obj,id){
+    layer.confirm('确认要删除吗？',{icon:0,},function(index){
+        $(obj).parents("tr").remove();
+        layer.msg('已删除!',{icon:1,time:1000});
         window.location.href="${pageContext.request.contextPath}/TransportDelect.action?transportId="+id;
-	});
+    });
 }
+
+
+
 /*******添加广告*********/
  $('#ads_add').on('click', function(){
 	  layer.open({
@@ -211,7 +218,7 @@ function member_del(obj,id){
         title: '添加物流方式',
 		maxmin: true, 
 		shadeClose: false, //点击遮罩关闭层
-        area : ['800px' , ''],
+        area : ['800px' , 'auto'],
         content:$('#add_ads_style'),
 		btn:['提交','取消'],
 		yes:function(index,layero){	

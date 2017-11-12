@@ -27,4 +27,7 @@ public interface MessageMapper {
 
     //根据评论的内容和好评度来进行模糊查询
     public List<MessageReview> selectCommentGood(Comment comment);
+
+    //pl页面针对某个商品统计出所有评论的用户有多少人
+    public  TotalMessage queryTotalUserById(Integer productid);
 }

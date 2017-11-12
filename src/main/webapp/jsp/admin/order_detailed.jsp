@@ -37,8 +37,10 @@
 
 <body>
 <div class="margin clearfix">
+    <c:if test="${orderDetailCustoms.size()!=0}">
     <div class="Order_Details_style">
-        <div class="Numbering">订单编号:<b>${orderDetailCustoms.get(0).orderid}</b></div></div>
+        <div class="Numbering">订单编号:
+            <b>${orderDetailCustoms.get(0).orderid}</b></div></div>
     <div class="detailed_style">
         <!--收件人信息-->
         <div class="Receiver_style">
@@ -68,7 +70,7 @@
             <div class="Info_style clearfix">
                 <c:forEach items="${orderDetailCustoms}" var="orderDetailCustom">
                     <div class="product_info clearfix">
-                        <a href="#" class="img_link"><img src="${pageContext.request.contextPath}/jsp/admin/images/${orderDetailCustom.productpicture}"  width="200" height="200"/></a>
+                        <a href="#" class="img_link"><img src="${orderDetailCustom.productpicture}"  width="200" height="200"/></a>
                         <span>
                   <a href="#" class="name_link">${orderDetailCustom.productname}</a><br/>
                   <b>${orderDetailCustom.productdescribe}</b>
@@ -165,6 +167,10 @@
             <%--<button onclick="layer_close();" class="btn btn-default radius" type="button">&nbsp;&nbsp;取消&nbsp;&nbsp;</button>--%>
         </div>
     </div>
+    </c:if>
+    <c:if test="${orderDetailCustoms.size()==0}">
+        对不起！该用户未购买任何商品！
+    </c:if>
 </div>
 </body>
 </html>

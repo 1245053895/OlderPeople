@@ -1,6 +1,7 @@
 package com.xh.po;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class CommentExample {
@@ -414,143 +415,133 @@ public class CommentExample {
             return (Criteria) this;
         }
 
-        public Criteria andCommentAIsNull() {
-            addCriterion("Comment_A is null");
+        public Criteria andCommenttimeIsNull() {
+            addCriterion("CommentTime is null");
             return (Criteria) this;
         }
 
-        public Criteria andCommentAIsNotNull() {
-            addCriterion("Comment_A is not null");
+        public Criteria andCommenttimeIsNotNull() {
+            addCriterion("CommentTime is not null");
             return (Criteria) this;
         }
 
-        public Criteria andCommentAEqualTo(String value) {
-            addCriterion("Comment_A =", value, "commentA");
+        public Criteria andCommenttimeEqualTo(Date value) {
+            addCriterion("CommentTime =", value, "commenttime");
             return (Criteria) this;
         }
 
-        public Criteria andCommentANotEqualTo(String value) {
-            addCriterion("Comment_A <>", value, "commentA");
+        public Criteria andCommenttimeNotEqualTo(Date value) {
+            addCriterion("CommentTime <>", value, "commenttime");
             return (Criteria) this;
         }
 
-        public Criteria andCommentAGreaterThan(String value) {
-            addCriterion("Comment_A >", value, "commentA");
+        public Criteria andCommenttimeGreaterThan(Date value) {
+            addCriterion("CommentTime >", value, "commenttime");
             return (Criteria) this;
         }
 
-        public Criteria andCommentAGreaterThanOrEqualTo(String value) {
-            addCriterion("Comment_A >=", value, "commentA");
+        public Criteria andCommenttimeGreaterThanOrEqualTo(Date value) {
+            addCriterion("CommentTime >=", value, "commenttime");
             return (Criteria) this;
         }
 
-        public Criteria andCommentALessThan(String value) {
-            addCriterion("Comment_A <", value, "commentA");
+        public Criteria andCommenttimeLessThan(Date value) {
+            addCriterion("CommentTime <", value, "commenttime");
             return (Criteria) this;
         }
 
-        public Criteria andCommentALessThanOrEqualTo(String value) {
-            addCriterion("Comment_A <=", value, "commentA");
+        public Criteria andCommenttimeLessThanOrEqualTo(Date value) {
+            addCriterion("CommentTime <=", value, "commenttime");
             return (Criteria) this;
         }
 
-        public Criteria andCommentALike(String value) {
-            addCriterion("Comment_A like", value, "commentA");
+        public Criteria andCommenttimeIn(List<Date> values) {
+            addCriterion("CommentTime in", values, "commenttime");
             return (Criteria) this;
         }
 
-        public Criteria andCommentANotLike(String value) {
-            addCriterion("Comment_A not like", value, "commentA");
+        public Criteria andCommenttimeNotIn(List<Date> values) {
+            addCriterion("CommentTime not in", values, "commenttime");
             return (Criteria) this;
         }
 
-        public Criteria andCommentAIn(List<String> values) {
-            addCriterion("Comment_A in", values, "commentA");
+        public Criteria andCommenttimeBetween(Date value1, Date value2) {
+            addCriterion("CommentTime between", value1, value2, "commenttime");
             return (Criteria) this;
         }
 
-        public Criteria andCommentANotIn(List<String> values) {
-            addCriterion("Comment_A not in", values, "commentA");
+        public Criteria andCommenttimeNotBetween(Date value1, Date value2) {
+            addCriterion("CommentTime not between", value1, value2, "commenttime");
             return (Criteria) this;
         }
 
-        public Criteria andCommentABetween(String value1, String value2) {
-            addCriterion("Comment_A between", value1, value2, "commentA");
+        public Criteria andCommentreviewIsNull() {
+            addCriterion("CommentReview is null");
             return (Criteria) this;
         }
 
-        public Criteria andCommentANotBetween(String value1, String value2) {
-            addCriterion("Comment_A not between", value1, value2, "commentA");
+        public Criteria andCommentreviewIsNotNull() {
+            addCriterion("CommentReview is not null");
             return (Criteria) this;
         }
 
-        public Criteria andCommentBIsNull() {
-            addCriterion("Comment_B is null");
+        public Criteria andCommentreviewEqualTo(String value) {
+            addCriterion("CommentReview =", value, "commentreview");
             return (Criteria) this;
         }
 
-        public Criteria andCommentBIsNotNull() {
-            addCriterion("Comment_B is not null");
+        public Criteria andCommentreviewNotEqualTo(String value) {
+            addCriterion("CommentReview <>", value, "commentreview");
             return (Criteria) this;
         }
 
-        public Criteria andCommentBEqualTo(String value) {
-            addCriterion("Comment_B =", value, "commentB");
+        public Criteria andCommentreviewGreaterThan(String value) {
+            addCriterion("CommentReview >", value, "commentreview");
             return (Criteria) this;
         }
 
-        public Criteria andCommentBNotEqualTo(String value) {
-            addCriterion("Comment_B <>", value, "commentB");
+        public Criteria andCommentreviewGreaterThanOrEqualTo(String value) {
+            addCriterion("CommentReview >=", value, "commentreview");
             return (Criteria) this;
         }
 
-        public Criteria andCommentBGreaterThan(String value) {
-            addCriterion("Comment_B >", value, "commentB");
+        public Criteria andCommentreviewLessThan(String value) {
+            addCriterion("CommentReview <", value, "commentreview");
             return (Criteria) this;
         }
 
-        public Criteria andCommentBGreaterThanOrEqualTo(String value) {
-            addCriterion("Comment_B >=", value, "commentB");
+        public Criteria andCommentreviewLessThanOrEqualTo(String value) {
+            addCriterion("CommentReview <=", value, "commentreview");
             return (Criteria) this;
         }
 
-        public Criteria andCommentBLessThan(String value) {
-            addCriterion("Comment_B <", value, "commentB");
+        public Criteria andCommentreviewLike(String value) {
+            addCriterion("CommentReview like", value, "commentreview");
             return (Criteria) this;
         }
 
-        public Criteria andCommentBLessThanOrEqualTo(String value) {
-            addCriterion("Comment_B <=", value, "commentB");
+        public Criteria andCommentreviewNotLike(String value) {
+            addCriterion("CommentReview not like", value, "commentreview");
             return (Criteria) this;
         }
 
-        public Criteria andCommentBLike(String value) {
-            addCriterion("Comment_B like", value, "commentB");
+        public Criteria andCommentreviewIn(List<String> values) {
+            addCriterion("CommentReview in", values, "commentreview");
             return (Criteria) this;
         }
 
-        public Criteria andCommentBNotLike(String value) {
-            addCriterion("Comment_B not like", value, "commentB");
+        public Criteria andCommentreviewNotIn(List<String> values) {
+            addCriterion("CommentReview not in", values, "commentreview");
             return (Criteria) this;
         }
 
-        public Criteria andCommentBIn(List<String> values) {
-            addCriterion("Comment_B in", values, "commentB");
+        public Criteria andCommentreviewBetween(String value1, String value2) {
+            addCriterion("CommentReview between", value1, value2, "commentreview");
             return (Criteria) this;
         }
 
-        public Criteria andCommentBNotIn(List<String> values) {
-            addCriterion("Comment_B not in", values, "commentB");
-            return (Criteria) this;
-        }
-
-        public Criteria andCommentBBetween(String value1, String value2) {
-            addCriterion("Comment_B between", value1, value2, "commentB");
-            return (Criteria) this;
-        }
-
-        public Criteria andCommentBNotBetween(String value1, String value2) {
-            addCriterion("Comment_B not between", value1, value2, "commentB");
+        public Criteria andCommentreviewNotBetween(String value1, String value2) {
+            addCriterion("CommentReview not between", value1, value2, "commentreview");
             return (Criteria) this;
         }
 

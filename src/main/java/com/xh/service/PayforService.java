@@ -2,6 +2,7 @@ package com.xh.service;
 
 import com.xh.po.Pay;
 import com.xh.po.vo.StringAndString;
+import com.xh.po.vo.TotalMessage;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -23,4 +24,6 @@ public interface PayforService {
      List<Pay> QuerryAllPay();
     //实现模糊查询
     public List<Pay> QuerryConfuse(StringAndString stringAndString);
+    //统计出所有的支付种类
+    public TotalMessage totalpay();
 }

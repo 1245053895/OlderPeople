@@ -1,6 +1,7 @@
 package com.xh.controller;
 
 import com.xh.po.Pay;
+import com.xh.po.vo.TotalMessage;
 import com.xh.service.PayforService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
 import java.util.Date;
@@ -23,7 +25,9 @@ public class PayforController {
     @RequestMapping(value = "/QuerryAllPay.action",method = {RequestMethod.GET,RequestMethod.POST})
     public String QuerryAllPay(Model model){
         List<Pay> payList=payforService.QuerryAllPay();
+        TotalMessage totalMessage= payforService.totalpay();
         model.addAttribute("payList",payList);
+        model.addAttribute("totalMessage",totalMessage);
         return "/jsp/admin/Cover_management.jsp";
     }
 
@@ -44,47 +48,29 @@ public class PayforController {
         }else
         return "redirect:/QuerryAllPay.action";
     }
-    //添加物流方式
+    //添加支付方式
     @RequestMapping(value = "/AddPay.action" ,method = {RequestMethod.GET,RequestMethod.POST})
-    public String AddPay(Pay pay, Model model, MultipartFile Pay_pic){
-        pay.setPayA(new Date());
-        payforService.insert(pay);
-
-        //图片原始名称
-        String originalFilename = Pay_pic.getOriginalFilename();
-        //上传图片
-        if(Pay_pic!=null && originalFilename!=null && originalFilename.length()>0){
-
-            //存储图片的物理路径D:\ideaspace\i
-            String pic_path = "D:\\ideaspace\\i\\";
-            //新的图片名称
-            String newFileName = UUID.randomUUID() + originalFilename.substring(originalFilename.lastIndexOf("."));
-            //新图片
-            File newFile = new File(pic_path+newFileName);
-
-            //将内存中的数据写入磁盘
-            try {
-                Pay_pic.transferTo(newFile);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-            //将新图片名称写到itemsCustom中
-            pay.setPaypicture(newFileName);
-
+    public String AddPay(Pay pay, Model model, MultipartFile Pay_pic,HttpSession session)throws IllegalStateException, IOException {
+        String sqlPath = null;
+        if (Pay_pic != null && Pay_pic.getOriginalFilename() != null) {
+            String path = session.getServletContext().getRealPath("/jsp/admin/images/upload");
+            String realName = Pay_pic.getOriginalFilename();
+            String realFilePath = path + File.separator + realName;
+            File file = new File(realFilePath);
+            Pay_pic.transferTo(file);
+            pay.setPaypicture(realFilePath);
+            sqlPath = "jsp/admin/images/upload/" + realName;
+            pay.setPayA(new Date());
+            pay.setPaypicture(sqlPath);
+            pay.setPaypicture(pay.getPaypicture());
+            pay.setPayB(pay.getPayB());
+            payforService.insert(pay);
+            return "redirect:/QuerryAllPay.action";
         }
-
-
-        // 调用service添加商品信息
-        payforService.insert(pay);
-
-        // 重定向到商品查询列表
-        // return "redirect:queryItems.action";
-        // 页面请求转发，可带参数到转发的controller方法中（ProducList.action方法中能用本方法中的形参值）
-        // return "forward:queryItems.action";
-        return "redirect:/QuerryAllPay.action";
+        return null;
     }
-    //启用物流
+
+    //启用支付
     @RequestMapping(value = "/PayStatusStart.action",method = {RequestMethod.GET,RequestMethod.POST})
     public String PayStatusStart(Integer payId){
         Pay pay=new Pay();
@@ -94,7 +80,7 @@ public class PayforController {
         payforService.updateByPrimaryKeySelective(pay);
         return "redirect:/QuerryAllPay.action";
     }
-    //禁用物流
+    //禁用支付
     @RequestMapping(value = "/PayStatusStop.action",method = {RequestMethod.GET,RequestMethod.POST})
     public String PayStatusStop(Integer payId){
         Pay pay=new Pay();

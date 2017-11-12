@@ -13,6 +13,14 @@
     GROUP BY user.UserId;
   </select>
 
+    <!--实现对用户记录条数进行统计-->
+    <select id="queryTotalRecord" resultType="totalMessage">
+        SELECT COUNT(*) AS totaluserrecord FROM  (SELECT COUNT(*)
+           FROM user,productslog WHERE user.UserId=productslog.UserId
+              GROUP BY user.UserId) userrecord
+    </select>
+
+
 
   <select id="getOrderDetailsByUserId" parameterType="integer" resultType="orderDetails">
     SELECT

@@ -59,7 +59,7 @@ public class ProducController {
     @RequestMapping("/DeleteBatchProduct.action")
     public String deleteBatchProduct(String[] productid) throws Exception{
 
-        productService.deleteBatch(null);
+        productService.deleteBatch(productid);
         //重定向
         return "forward :/ProducList.action";
     }

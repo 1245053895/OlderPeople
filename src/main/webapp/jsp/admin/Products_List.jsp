@@ -408,7 +408,7 @@
         });
         console.log(productid);
         if(productid==null){
-            alert("请至少选择一个!")
+            alert("请至少选择一个!");
         }else {
             if(confirm('确认要删除吗？')){
                 $.ajax({

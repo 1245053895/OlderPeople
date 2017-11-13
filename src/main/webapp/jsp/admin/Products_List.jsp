@@ -410,7 +410,7 @@
         if(productid==null){
             alert("请至少选择一个!")
         }else {
-            layer.confirm('确认要删除吗？',function(index){
+            if(confirm('确认要删除吗？')){
                 $.ajax({
                     url: '/DeleteBatchProduct.action',
                     type: 'post',
@@ -422,17 +422,17 @@
                     error: erryFunction,  //错误执行方法
                     success: succFunction //成功执行方法
                 });
-                function LoadFunction() {
+            }
+        }
+        function LoadFunction() {
 
-                    $("#credits").html('删除中...');
-                }
-                function erryFunction() {
-                    alert("失败");
-                }
-                function succFunction(data) {
-                    //window.location.href="/ProducList.action";
-                }
-            });
+            $("#credits").html('删除中...');
+        }
+        function erryFunction() {
+            window.location.href="/ProducList.action";
+        }
+        function succFunction(data) {
+            window.location.href="/ProducList.action";
         }
 
 

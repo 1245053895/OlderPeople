@@ -46,7 +46,7 @@
 	<div id="role">
 		<div class="type_title" style="margin-bottom: 50px;margin-top:-50px;width:1142px;float: left;margin-left: -321px;">添加权限</div>
 
-		 <form  name="itemsForm" action="${pageContext.request.contextPath }/addRloeAndView.action" method="post">
+		 <form  name="itemsForm" action="${pageContext.request.contextPath }/addRloeAndView.action" method="post" onsubmit="return xz()">
 			 <div class="Competence_add">
 				 <div class="form-group">
 					 <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> 角色名称 </label>
@@ -79,6 +79,22 @@
 	</div>
 </body>
 </html>
+
+<script>
+	function xz() {
+	    var qx = document.getElementById("form-field-1").value;
+		var ms = document.getElementById("form_textarea").value;
+
+	    if (qx!=="" && ms !== ""){
+	        return true;
+		}
+		else {
+	        alert("不能有空项！");
+	        return false;
+        }
+    }
+</script>
+
 <script type="text/javascript">
 //初始化宽度、高度  
  $(".left_Competence_add,.Competence_add_style").height($(window).height()).val();; 

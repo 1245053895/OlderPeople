@@ -155,11 +155,11 @@
     };
     //初始化宽度、高度
     $(".admin_modify_style").height($(window).height());
-    $(".recording_style").width($(window).width()-400);
+    $(".recording_style").width($(window).width()-200);
     //当文档窗口发生改变时 触发
     $(window).resize(function(){
         $(".admin_modify_style").height($(window).height());
-        $(".recording_style").width($(window).width()-400);
+        $(".recording_style").width($(window).width()-200);
     });
     //修改密码
     function change_Password(){

@@ -172,8 +172,9 @@ td, th {
 /*banner  end*/
 
 .center{
-    width:1200px;
-    margin:0 auto;
+    width:100%;
+    margin-top: 15px;
+    margin-bottom: 45px;
     position:relative;
 }
 .pullDownList li:link{ background-color: #A63130;}
@@ -2534,7 +2535,7 @@ li.suc{
 }
 
 .input{
-    height: 30px;
+    height: 32px;
     width: 60px;
     margin-top: 34px;
     border: 1px solid #dddddd;

@@ -16,12 +16,12 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE">
 	<meta name="renderer" content="webkit">
 	<title>确认订单-购物商城</title>
-	<link rel="shortcut icon" type="image/x-icon" href="img/icon/favicon.ico">
-	<link rel="stylesheet" type="text/css" href="css/base.css">
-	<link rel="stylesheet" type="text/css" href="css/home.css">
-	<link rel="stylesheet" type="text/css" href="css/car/base.css">
-	<link rel="stylesheet" type="text/css" href="css/car/home.css">
-	<link rel="stylesheet" href="css/jquery-labelauty.css">
+	<link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/jsp/users/img/icon/favicon.ico">
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/jsp/users/css/base.css">
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/jsp/users/css/home.css">
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/jsp/users/css/car/base.css">
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/jsp/users/css/car/home.css">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/jsp/users/css/jquery-labelauty.css">
 
 	<script src="js/jquery-1.8.3.min.js"></script>
 	<script src="js/jquery-labelauty.js"></script>

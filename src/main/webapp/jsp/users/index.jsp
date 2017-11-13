@@ -16,15 +16,15 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE">
 	<meta name="renderer" content="webkit">
 	<title>孝和集团购物商城-为老年人设计的商城</title>
-	<link rel="shortcut icon" type="image/x-icon" href="img/icon/favicon.ico">
-	<link rel="stylesheet" type="text/css" href="css/base.css">
-	<link rel="stylesheet" type="text/css" href="css/home.css">
-	<link rel="stylesheet" type="text/css" href="css/base.css">
-	<link rel="stylesheet" type="text/css" href="css/style.css">
-	<link rel="stylesheet" type="text/css" href="css/media_index.css">
-	<link rel="stylesheet" type="text/css" href="css/mod.css">
-	<script type="text/javascript" src="js/jquery.js"></script>
-	<script type="text/javascript" src="js/index.js"></script>
+	<link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/jsp/users/img/icon/favicon.ico">
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/jsp/users/css/base.css">
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/jsp/users/css/home.css">
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/jsp/users/css/base.css">
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/jsp/users/css/style.css">
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/jsp/users/css/media_index.css">
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/jsp/users/css/mod.css">
+	<script type="text/javascript" src="${pageContext.request.contextPath}/jsp/users/js/jquery.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/jsp/users/js/index.js"></script>
 	<script type="text/javascript">
 
         var intDiff = parseInt(90000);//倒计时总秒数量

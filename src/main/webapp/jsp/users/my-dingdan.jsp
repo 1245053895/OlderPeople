@@ -16,14 +16,14 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE">
 	<meta name="renderer" content="webkit">
 	<title>购物商城-我的订单</title>
-	<link rel="shortcut icon" type="image/x-icon" href="img/icon/favicon.ico">
-	<link rel="stylesheet" type="text/css" href="css/base.css">
-	<link rel="stylesheet" type="text/css" href="css/home.css">
-	<link rel="stylesheet" type="text/css" href="css/member.css">
-	<script type="text/javascript" src="js/jquery.js"></script>
-	<script type="text/javascript" src="js/index.js"></script>
-	<script type="text/javascript" src="js/modernizr-custom-v2.7.1.min.js"></script>
-	<script type="text/javascript" src="js/jquery.SuperSlide.js"></script>
+	<link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/jsp/users/img/icon/favicon.ico">
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/jsp/users/css/base.css">
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/jsp/users/css/home.css">
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/jsp/users/css/member.css">
+	<script type="text/javascript" src="${pageContext.request.contextPath}/jsp/users/js/jquery.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/jsp/users/js/index.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/jsp/users/js/modernizr-custom-v2.7.1.min.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/jsp/users/js/jquery.SuperSlide.js"></script>
 	<script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
 
 	<script>
@@ -148,44 +148,6 @@
 <body>
 
 <header id="pc-header">
-<!--
-	<div class="pc-header-nav">
-		<div class="pc-header-con">
-			<div class="fl pc-header-link" >您好！，欢迎来云购物 <a href="login.html" target="_blank">请登录</a> <a href="register.html" target="_blank"> 免费注册</a></div>
-			<div class="fr pc-header-list top-nav">
-				<ul>
-					<li>
-						<div class="nav"><i class="pc-top-icon"></i><a href="#">我的订单</a></div>
-						<div class="con">
-							<dl>
-								<dt><a href="">批发进货</a></dt>
-								<dd><a href="">已买到货品</a></dd>
-								<dd><a href="">优惠券</a></dd>
-								<dd><a href="">店铺动态</a></dd>
-							</dl>
-						</div>
-					</li>
-					<li>
-						<div class="nav"><i class="pc-top-icon"></i><a href="#">我的商城</a></div>
-						<div class="con">
-							<dl>
-								<dt><a href="">批发进货</a></dt>
-								<dd><a href="">已买到货品</a></dd>
-								<dd><a href="">优惠券</a></dd>
-								<dd><a href="">店铺动态</a></dd>
-							</dl>
-						</div>
-					</li>
-					<li><a href="#">我的云购</a></li>
-					<li><a href="#">我的收藏</a></li>
-					<li><a href="#">会员中心</a></li>
-					<li><a href="#">客户服务</a></li>
-					<li><a href="#">帮助中心</a></li>
-				</ul>
-			</div>
-		</div>
-	</div>
--->
 	<div class="pc-header-nav">
 		<div class="pc-header-con">
 			<div class="fl pc-header-link" >您好！，欢迎来孝和集团电子商城 
@@ -194,7 +156,8 @@
 			</div>
 			<div class="fr pc-header-list top-nav">
 				<ul>
-					<li><a href="#">我的收藏</a></li>
+					<li><a href="#">收藏夹</a></li>
+					<li><a href="my-dingdan.jsp">我的订单</a></li>
 					<li>
 						<div class="nav"><i class="pc-top-icon"></i><a href="#">个人中心</a></div>
 						<div class="con">
@@ -203,7 +166,6 @@
 								<dd><a href="">收货地址</a></dd>
 								<dd><a href="">修改登录密码</a></dd>
 								<dd><a href="">我的积分</a></dd>
-								<dd><a href="">已购买的宝贝</a></dd>
 							</dl>
 						</div>
 					</li>
@@ -288,14 +250,13 @@
 				<dl  onclick = "change(this);">
 					<dt>我的商城</dt>
 					<dd><a href="#">我的订单</a></dd>
+					<dd><a href="#">我的购物车</a></dd>
 					<dd><a href="#">我的收藏</a></dd>
-					<dd><a href="#">账户安全</a></dd>
 					<dd><a href="#">我的评价</a></dd>
-					<dd><a href="#">地址管理</a></dd>
 				</dl>
 				<dl  onclick = "change(this);">
 					<dt>客户服务</dt>
-					<dd><a href="#">退货申请</a></dd>
+					<dd><a href="#">退货订单</a></dd>
 					<dd><a href="#">退货/退款记录</a></dd>
 				</dl>
 			</div>
@@ -555,9 +516,6 @@
 		</div>
 	</div>
 </section>
-
-
-<div style="height:100px"></div>
 
 <footer>
 	<div class="pc-footer-top">

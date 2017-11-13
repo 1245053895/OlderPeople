@@ -16,55 +16,42 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE">
 	<meta name="renderer" content="webkit">
 	<title>我的购物车-购物商城</title>
-	<link rel="shortcut icon" type="image/x-icon" href="img/icon/favicon.ico">
-	<link rel="stylesheet" type="text/css" href="css/base.css">
-	<link rel="stylesheet" type="text/css" href="css/home.css">
-	<script type="text/javascript" src="js/jquery.js"></script>
-	<script type="text/javascript" src="js/index.js"></script>
-	<script type="text/javascript" src="js/modernizr-custom-v2.7.1.min.js"></script>
-	<script type="text/javascript" src="js/jquery.SuperSlide.js"></script>
+	<link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/jsp/users/img/icon/favicon.ico">
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/jsp/users/css/base.css">
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/jsp/users/css/home.css">
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/jsp/users/css/member.css">
+	<script type="text/javascript" src="${pageContext.request.contextPath}/jsp/users/js/jquery.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/jsp/users/js/index.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/jsp/users/js/modernizr-custom-v2.7.1.min.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/jsp/users/js/jquery.SuperSlide.js"></script>
+	<script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
+	<script>
+        $(function(){
+            $("#dingdan ul li").click(function(){
+                $("#dingdan ul li a").removeClass("dingdans");
+                $(this).find("a").addClass("dingdans");
+            });
+        });
+        function change(i){
+
+        }
+	</script>
+	<script>
+        $(function(){
+            $("#leftinfo dl dd").click(function(){
+                $("#leftinfo dl dd a").removeClass("leftinfos");
+                $(this).find("a").addClass("leftinfos");
+            });
+        });
+        function change(i){
+
+        }
+	</script>
 </head>
 <body>
 
 <header id="pc-header">
-<!--
-	<div class="pc-header-nav">
-		<div class="pc-header-con">
-			<div class="fl pc-header-link" >您好！，欢迎来云购物 <a href="login.html" target="_blank">请登录</a> <a href="register.html" target="_blank"> 免费注册</a></div>
-			<div class="fr pc-header-list top-nav">
-				<ul>
-					<li>
-						<div class="nav"><i class="pc-top-icon"></i><a href="#">我的订单</a></div>
-						<div class="con">
-							<dl>
-								<dt><a href="">批发进货</a></dt>
-								<dd><a href="">已买到货品</a></dd>
-								<dd><a href="">优惠券</a></dd>
-								<dd><a href="">店铺动态</a></dd>
-							</dl>
-						</div>
-					</li>
-					<li>
-						<div class="nav"><i class="pc-top-icon"></i><a href="#">我的商城</a></div>
-						<div class="con">
-							<dl>
-								<dt><a href="">批发进货</a></dt>
-								<dd><a href="">已买到货品</a></dd>
-								<dd><a href="">优惠券</a></dd>
-								<dd><a href="">店铺动态</a></dd>
-							</dl>
-						</div>
-					</li>
-					<li><a href="#">我的云购</a></li>
-					<li><a href="#">我的收藏</a></li>
-					<li><a href="#">会员中心</a></li>
-					<li><a href="#">客户服务</a></li>
-					<li><a href="#">帮助中心</a></li>
-				</ul>
-			</div>
-		</div>
-	</div>
--->
+
 	<div class="pc-header-nav">
 		<div class="pc-header-con">
 			<div class="fl pc-header-link" >您好！，欢迎来孝和集团电子商城 
@@ -73,7 +60,8 @@
 			</div>
 			<div class="fr pc-header-list top-nav">
 				<ul>
-					<li><a href="#">我的收藏</a></li>
+					<li><a href="#">收藏夹</a></li>
+					<li><a href="my-dingdan.jsp">我的订单</a></li>
 					<li>
 						<div class="nav"><i class="pc-top-icon"></i><a href="#">个人中心</a></div>
 						<div class="con">
@@ -82,7 +70,6 @@
 								<dd><a href="">收货地址</a></dd>
 								<dd><a href="">修改登录密码</a></dd>
 								<dd><a href="">我的积分</a></dd>
-								<dd><a href="">已购买的宝贝</a></dd>
 							</dl>
 						</div>
 					</li>
@@ -123,10 +110,11 @@
 				<a href="#">足浴盆</a>
 			</div>
 		</div>
-		<div class="fr pc-head-car">
+		<%--<div class="fr pc-head-car">
 			<i class="icon-car"></i>
 			<a href="#">我的购物车</a>
-		</div>
+			<em>10</em>
+		</div>--%>
 	</div>
 	<!--  顶部    start-->
 	<div class="yHeader">
@@ -145,13 +133,39 @@
 	</div>
 
 </header>
-
+<div class="member-center clearfix">
+<div class="member-left fl">
+	<div class="member-apart clearfix">
+		<div class="fl"><a href="#"><img src="img/mem.png"></a></div>
+		<div class="fl">
+			<p>用户名：</p>
+			<p><a href="#">亚里士多德</a></p>
+			<p>账号：</p>
+			<p>389323080</p>
+		</div>
+	</div>
+	<div class="member-lists" id="leftinfo">
+		<dl  onclick = "change(this);">
+			<dt>我的商城</dt>
+			<dd><a href="#">我的订单</a></dd>
+			<dd><a href="#">我的购物车</a></dd>
+			<dd><a href="#">我的收藏</a></dd>
+			<dd><a href="#">我的评价</a></dd>
+		</dl>
+		<dl  onclick = "change(this);">
+			<dt>客户服务</dt>
+			<dd><a href="#">退货订单</a></dd>
+			<dd><a href="#">退货/退款记录</a></dd>
+		</dl>
+	</div>
+</div>
+<div class="member-right fr">
 <section id="pc-jie">
-	<div class="center ">
+	<div class="center " id="dingdan">
 		<ul class="pc-shopping-title clearfix">
 			<li><a href="#">全部商品(10)</a></li>
 			<li><a href="#">限时优惠(7)</a></li>
-			<li><a href="#">库存紧张(0)</a></li>
+			<li><a href="#">已下架(0)</a></li>
 		</ul>
 	</div>
 	<div class="pc-shopping-cart center">
@@ -159,7 +173,10 @@
 			<table>
 				<thead>
 					<tr class="tab-0">
-						<th class="tab-1"><input type="checkbox" name="s_all" class="s_all tr_checkmr" id="s_all_h"><label> 全选</label></th>
+						<th class="tab-1">
+							<input type="checkbox" name="s_all" class="s_all tr_checkmr" id="s_all_h">
+							<label style="margin-left: 20px;"> 全选</label>
+						</th>
 						<th class="tab-2">商品</th>
 						<th class="tab-3">商品信息</th>
 						<th class="tab-4">金额</th>
@@ -169,19 +186,8 @@
 					</tr>
 				</thead>
 				<tbody>
-					<!--<tr>
-						<td colspan="7" style="padding-left:10px; background:#eee">
-							<input type="checkbox" checked >
-							<label>云购物自营</label>
-							<a href="#" style="position:relative;padding-left:50px"><i class="icon-kefu"></i>联系客服</a>
-							<ul class="clearfix fr" style="padding-right:20px">
-								<li><i class="pc-shop-car-yun"></i>满109元减10</li>
-								<li><i class="pc-shop-car-yun"></i>领取3种优惠券, 最高省30元</li>
-							</ul>
-						</td>
-					</tr>-->
 					<tr>
-						<th><input type="checkbox"  style="margin-left:10px; float:left"></th>
+						<th><input type="checkbox"  style="margin-left:15px; float:left"></th>
 						<th class="tab-th-1">
 							<a href="#"><img src="images/shangpinxiangqing/X1.png" width="100%" alt=""></a>
 							<a href="#" class="tab-title">赛亿（shinee)取暖器家用/取暖电器/电暖器/电暖气台式摇头暖风机HN2118PT </a>
@@ -211,7 +217,7 @@
 							<p><a href="#">移入收藏夹</a></p>
 						</th>
 					</tr>
-					<tr>
+<%--					<tr>
 						<th><input type="checkbox"  style="margin-left:10px; float:left"></th>
 						<th class="tab-th-1">
 							<a href="#"><img src="images/shangpinxiangqing/X-1.png" width="100%" alt=""></a>
@@ -241,7 +247,7 @@
 							<br/>
 							<p><a href="#">移入收藏夹</a></p>
 						</th>
-					</tr>
+					</tr>--%>
 				</tbody>
 			</table>
 
@@ -251,8 +257,8 @@
 	<div class="center">
 		<div class="clearfix pc-shop-go">
 			<div class="fl pc-shop-fl">
-				<input type="checkbox" placeholder="">
-				<label>全选</label>
+				<input type="checkbox" placeholder="" style="margin-left:5px">
+				<label style="margin-left: 15px;">全选</label>
 				<a href="#">删除</a>
 				<a href="#">清除失效商品</a>
 			</div>
@@ -264,7 +270,8 @@
 		</div>
 	</div>
 </section>
-
+</div>
+</div>
 
 
 <div style="height:100px"></div>

@@ -66,13 +66,14 @@
 					 <div class="col-sm-9">
 						 <c:forEach items="${firstviewList}" var="firstview" varStatus="status">
 							 <%--<label class="middle"><input class="flag_${status.index}" name="firstViewAction[${status.index}]" readonly="readonly" type="checkbox"  value="${firstview.firstviewaction}"></label>--%>
-							 <label class="middle" style=" padding:7px;"><input type="checkbox" name="firstViewAction[${status.index}]" value="${firstview.firstviewaction}" class="ace"><span class="lbl">${firstview.firstviewdescription}</span></label>
+							 <label class="middle" style=" padding:7px;"><input id="f3" type="checkbox" name="firstViewAction[${status.index}]" value="${firstview.firstviewaction}" class="ace"><span class="lbl">${firstview.firstviewdescription}</span></label>
 						 </c:forEach>
 					 </div>
 				 </div>
 		<!--按钮操作-->
 				 <div class="Button_operation">
-					 <input class="btn btn-primary radius submitadmin" type="submit" value="保存并提交" />
+					 <input onclick="xz()" class="btn btn-primary radius submitadmin" type="submit" value="保存并提交" />
+					 <%--<input onclick="xz()" class="btn btn-primary radius submitadmin" type="button" value="保存并提交" />--%>
 				 </div>
 			 </div>
 		 </form>
@@ -126,4 +127,19 @@ function checkLength(which) {
 	}
 };
 
+</script>
+
+<script>
+    function xz() {
+        var qx = document.getElementById("form-field-1").value;
+        var ms = document.getElementById("form_textarea").value;
+
+        if (qx!=="" && ms !== ""){
+            return true;
+        }
+        else {
+            alert("不能有空项！");
+            return false;
+        }
+    }
 </script>

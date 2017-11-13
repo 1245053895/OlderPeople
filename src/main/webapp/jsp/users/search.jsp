@@ -16,13 +16,13 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE">
 	<meta name="renderer" content="webkit">
 	<title>购物商城-搜索无结果</title>
-	<link rel="shortcut icon" type="image/x-icon" href="img/icon/favicon.ico">
-	<link rel="stylesheet" type="text/css" href="css/base.css">
-	<link rel="stylesheet" type="text/css" href="css/home.css">
-	<script type="text/javascript" src="js/jquery.js"></script>
-	<script type="text/javascript" src="js/index.js"></script>
-	<script type="text/javascript" src="js/modernizr-custom-v2.7.1.min.js"></script>
-	<script type="text/javascript" src="js/jquery.SuperSlide.js"></script>
+	<link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/jsp/users/img/icon/favicon.ico">
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/jsp/users/css/base.css">
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/jsp/users/css/home.css">
+	<script type="text/javascript" src="${pageContext.request.contextPath}/jsp/users/js/jquery.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/jsp/users/js/index.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/jsp/users/js/modernizr-custom-v2.7.1.min.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/jsp/users/js/jquery.SuperSlide.js"></script>
 	<script type="text/javascript">
 
         var intDiff = parseInt(90000);//倒计时总秒数量

@@ -360,33 +360,33 @@ a{
 
 .pc-shopping-cart{
 	background:#fff;
-}
+	font-size: 10px;
 
+}
+.pc-shopping-tab{
+}
 .pc-shopping-title{
-	padding:30px 0;
+	border-bottom:2px #e0e0e0  double;
 }
 
 .pc-shopping-title li{
 	float:left;
 	display:inline-block;
-	width:100px;
+	width:130px;
+	text-align: center;
 }
 .pc-shopping-title li a{
 	padding:5px 5px;
-	margin-left:5px;
 	display:inline-block;
-	border-radius:3px;
-
+	width: 110px;
 }
-.pc-shopping-title li a:hover{
+/*.pc-shopping-title li a:hover{
 	color: white;
 	font-size: 13px;
-}
+}*/
 .pc-shopping-title li:hover{
-	background:#ea4949;
-	padding: 3px 3px;
-	display:inline-block;
-	width: 90px;
+	border-bottom: 1px #EE4644 solid;
+	width: 120px;
 }
 
 .pc-shop-car-yun{
@@ -401,9 +401,9 @@ a{
 }
 
 .tab-0{
-
-	border-bottom:1px solid #ddd;
+	font-size: 14px;
 	width:100%;
+	background-color: #e0e0e0;
 }
 
 .pc-shopping-tab table th,td{
@@ -414,23 +414,24 @@ a{
 
 .tab-1{
 	padding-left: 10px!important;
+	width: 100px;
 }
 
 .tab-2{
-	width:348px;
+	width:400px;
 }
 
 .tab-3{
-	width:160px;
+	width:105px;
 }
 .tab-4{
 	width:160px;
 }
 .tab-5{
-	width:160px;
+	width:205px;
 }
 .tab-6{
-	width:160px;
+	width:118px;
 }
 
 .tab-7{
@@ -444,6 +445,7 @@ a{
 
 .pc-shopping-tab table tr{
 	border-bottom:1px solid #ddd;
+	font-size: 12px;
 }
 
 .tab-th-1{
@@ -455,14 +457,17 @@ a{
 	height:100px;
 	border:1px solid #ddd;
 	float:left;
+	margin-left: -30px;
 
 }
 
 .tab-th-1 .tab-title{
-	width:222px;
+	width:220px;
 	text-align:left;
 	border:none;
-	padding-left:20px;
+	padding-left:35px;
+	line-height: 25px;
+	margin-top: 30px;
 }
 
 .shul{
@@ -509,7 +514,7 @@ a{
 	color: #fff;
 	display:block;
 	text-align:center;
-	margin-right: -10px;
+	margin-right: 10px;
 }
 
 .pc-shop-fl{

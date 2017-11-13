@@ -178,7 +178,12 @@
                                        class="btn btn-xs btn-success"><i class="icon-ok bigger-120"></i></a>
                                 </c:if>
                                 <a title="编辑" onclick="modify(${productAndTypeVos.productid})" href="javascript:void(0);"  class="btn btn-xs btn-info radius" ><i id="edit${productAndTypeVos.productid}" class="fa bigger-120">编辑</i></a>
-                                <a title="删除" href="${basePath}DeleteOneProduct.action?productid=${productAndTypeVos.productid}"  onclick="return confirmAct();" class="btn btn-xs btn-warning" ><i class="icon-trash  bigger-120"></i></a>
+                                <%--<a title="删除" href="${basePath}DeleteOneProduct.action?productid=${productAndTypeVos.productid}"  onclick="return confirmAct();" class="btn btn-xs btn-warning" ><i class="icon-trash  bigger-120"></i></a>--%>
+
+                                <a title="删除" href="javascript:void(0);"
+                                   onclick="product_del(this,'${productAndTypeVos.productid}')" class="btn btn-xs btn-warning" ><i class="icon-trash  bigger-120"></i>
+                                </a>
+
                             </td>
                             </form>
                         </tr>
@@ -256,6 +261,18 @@
 
 
 <script>
+
+    function product_del(obj,id){
+        layer.confirm('确认要删除吗？',{icon:0,},function(index){
+            $(obj).parents("tr").remove();
+            layer.msg('已删除!',{icon:1,time:1000});
+            window.location.href="${pageContext.request.contextPath}/DeleteOneProduct.action?productid="+id;
+        });
+    }
+
+
+
+
     function changeImgProductnew(obj,id,value) {
         if(value==0){
             value=1;

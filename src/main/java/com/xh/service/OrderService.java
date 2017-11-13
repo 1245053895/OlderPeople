@@ -6,7 +6,6 @@ import com.xh.po.vo.OrderAndOther;
 import com.xh.po.vo.OrderAndString;
 import com.xh.po.vo.OrderCustom;
 import com.xh.po.vo.OrderDetailCustom;
-import org.omg.CORBA.PUBLIC_MEMBER;
 
 import java.util.List;
 
@@ -66,4 +65,18 @@ public interface OrderService {
      * @return
      */
     public List<OrderCustom> getOrderByStatusOfSix(OrderCustom orderCustom);
+
+    /**
+     * 通过id获得退货详情
+     * @param orderId
+     * @return
+     */
+    public OrderCustom getReturnDetail(int orderId);
+
+
+    /**
+     * 改变订单状态
+     * @param orderCustom
+     */
+    public void updateOrderStatus(OrderCustom orderCustom);
 }

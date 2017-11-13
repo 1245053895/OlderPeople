@@ -212,4 +212,23 @@
         INNER JOIN stock s ON (s.ProductId=p.ProductId)
         WHERE o.OrderId=${_parameter};
     </select>
+
+    <select id="getReturnDetail" resultType="orderCustom" parameterType="int">
+        SELECT
+            o.OrderId orderid,
+            o.UserId userid,
+            u.UserName username,
+            o.EndTime endtime,
+            o.Order_A orderA
+        FROM `order` o
+        INNER JOIN `user` u
+        ON o.UserId=u.UserId
+        WHERE OrderId=#{_parameter}
+    </select>
+
+    <update id="updateOrderStatus" parameterType="orderCustom">
+        UPDATE `order`
+        SET Status=#{status}
+        WHERE `order`.OrderId=#{orderid}
+    </update>
 </mapper>

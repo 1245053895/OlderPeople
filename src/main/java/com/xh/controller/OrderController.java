@@ -12,6 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -20,6 +23,12 @@ public class OrderController {
     @Autowired
     OrderService orderService;
 
+    /**
+     * 得到所有订单
+     * @param model
+     * @param orderCustom
+     * @return
+     */
     @RequestMapping(value = "/getAllOrder",method={RequestMethod.POST,RequestMethod.GET})
     public String getAllOrder(Model model,OrderCustom orderCustom){
         List<OrderCustom> orderCustoms=orderService.queryByAny(orderCustom);
@@ -27,6 +36,12 @@ public class OrderController {
         return "/jsp/admin/Orderform.jsp";
     }
 
+    /**
+     * 得到订单状态为6 的订单
+     * @param model
+     * @param orderCustom
+     * @return
+     */
     @RequestMapping(value = "/getOrderByStatusOfSix",method={RequestMethod.POST,RequestMethod.GET})
     public String getOrderByStatusOfSix(Model model,OrderCustom orderCustom){
         orderCustom.setConditions("6");
@@ -35,6 +50,10 @@ public class OrderController {
         return "/jsp/admin/Orderform.jsp";
     }
 
+    /**
+     * 得到所有物流方式
+     * @return
+     */
     @RequestMapping(value = "/getTransport",method = {RequestMethod.POST,RequestMethod.GET})
     public @ResponseBody List<Transport> getTransport(){
         List<Transport> transports= orderService.getTransport();
@@ -78,6 +97,57 @@ public class OrderController {
         List<OrderDetailCustom> orderDetailCustoms=orderService.getOrderDetailByOrderId(id);
         model.addAttribute("orderDetailCustoms",orderDetailCustoms);
         return "/jsp/admin/order_detailed.jsp";
+    }
+
+    /**
+     * 获取退货详情
+     * @param orderId
+     * @return
+     */
+    @RequestMapping(value = "/getReturnDetail",method = {RequestMethod.POST,RequestMethod.GET})
+    public @ResponseBody OrderCustom getReturnDetail(int orderId){
+        OrderCustom orderCustom= orderService.getReturnDetail(orderId);
+        try {
+            orderCustom.setBuyTime(daysBetween(orderCustom.getEndtime(),new Date()));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return orderCustom;
+    }
+
+    /**
+     * 计算两个日期之间的
+     * @param smdate
+     * @param bdate
+     * @return
+     * @throws ParseException
+     */
+    public static int daysBetween(Date smdate,Date bdate) throws ParseException
+    {
+        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+        smdate=sdf.parse(sdf.format(smdate));
+        bdate=sdf.parse(sdf.format(bdate));
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(smdate);
+        long time1 = cal.getTimeInMillis();
+        cal.setTime(bdate);
+        long time2 = cal.getTimeInMillis();
+        long between_days=(time2-time1)/(1000*3600*24);
+
+        return Integer.parseInt(String.valueOf(between_days));
+    }
+
+    /**
+     *
+     * @param model
+     * @param orderCustom
+     * @return
+     */
+    @RequestMapping(value = "/updateOrderStatus",method={RequestMethod.POST,RequestMethod.GET})
+    public String updateOrderStatus(Model model,OrderCustom orderCustom){
+        int statuss=orderCustom.getStatus();
+        orderService.updateOrderStatus(orderCustom);
+        return "forward:/getAllOrder.action";
     }
 
 

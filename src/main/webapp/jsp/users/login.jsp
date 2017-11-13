@@ -16,9 +16,9 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE">
 	<meta name="renderer" content="webkit">
 	<title>登录.购物商城</title>
-	<link rel="shortcut icon" type="image/x-icon" href="img/icon/favicon.ico">
-	<link rel="stylesheet" type="text/css" href="css/base.css">
-	<link rel="stylesheet" type="text/css" href="css/home.css">
+	<link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/jsp/users/img/icon/favicon.ico">
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/jsp/users/css/base.css">
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/jsp/users/css/home.css">
 </head>
 <body>
 
@@ -36,21 +36,21 @@
 		<div class="center clearfix">
 			<div class="fl"></div>
 			<div class="fr pc-login-box">
-				<div class="pc-login-title"><h2>用户登录</h2></div>
-				<form action="">
+				<div class="pc-login-title"><h2>用户登录&nbsp;&nbsp;&nbsp;${error}</h2></div>
+				<form action="${pageContext.request.contextPath}/CustomerLogin.action" method="post">
 					<div class="pc-sign">
-						<input type="text" placeholder="用户名/邮箱/手机号">
+						<input type="text" name="username" placeholder="用户名/邮箱/手机号">
 					</div>
 					<div class="pc-sign">
-						<input type="password" placeholder="请输入您的密码">
+						<input type="password" name="password" placeholder="请输入您的密码">
 					</div>
 					<div class="pc-submit-ss">
 						<input type="submit" value="登录" placeholder="">
 					</div>
 					<div class="pc-item-san clearfix">
-						<a href="#"><img src="img/icon/weixin.png" alt="">微信登录</a>
-						<a href="#"><img src="img/icon/weibo.png" alt="">微博登录</a>
-						<a href="#" style="margin-right:0"><img src="img/icon/tengxun.png" alt="">QQ登录</a>
+						<a href="#"><img src="${pageContext.request.contextPath}/jsp/users/img/icon/weixin.png" alt="">微信登录</a>
+						<a href="#"><img src="${pageContext.request.contextPath}/jsp/users/img/icon/weibo.png" alt="">微博登录</a>
+						<a href="#" style="margin-right:0"><img src="${pageContext.request.contextPath}/jsp/users/img/icon/tengxun.png" alt="">QQ登录</a>
 					</div>
 					<div class="pc-reg">
 						<a href="#">忘记密码</a>

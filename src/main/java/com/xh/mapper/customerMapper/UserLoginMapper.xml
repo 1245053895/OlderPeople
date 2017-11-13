@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xh.mapper.customerMapper.UserLoginMapper">
+    <!--根据登录用户的用户名查询出该登录用户的用户名和密码-->
+    <select id="selectAllNameAndPwd" resultType="user" parameterType="String">
+       SELECT UserName,UserPwd FROM `user` WHERE UserName=#{username}
+    </select>
+
+</mapper>

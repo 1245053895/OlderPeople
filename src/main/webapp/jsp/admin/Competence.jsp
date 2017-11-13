@@ -80,6 +80,22 @@
 	</div>
 </body>
 </html>
+
+<script>
+	function xz() {
+	    var qx = document.getElementById("form-field-1").value;
+		var ms = document.getElementById("form_textarea").value;
+
+	    if (qx!=="" && ms !== ""){
+	        return true;
+		}
+		else {
+	        alert("不能有空项！");
+	        return false;
+        }
+    }
+</script>
+
 <script type="text/javascript">
 //初始化宽度、高度  
  $(".left_Competence_add,.Competence_add_style").height($(window).height()).val();; 

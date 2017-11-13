@@ -90,7 +90,7 @@
                                         <input type="checkbox" class="ace">
                                         <span class="lbl">保存密码</span>
                                     </label>
-                                    <a href="javascript:;" class="width-35 pull-right btn btn-sm btn-primary"
+                                    <a href="javascript:void(0);" class="width-35 pull-right btn btn-sm btn-primary"
                                        id="loginsubmit">
                                         <i class="icon-key"></i>
                                         登陆

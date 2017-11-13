@@ -4,11 +4,13 @@ package com.xh.serviceimp;
 
 import com.xh.mapper.AdminMapper;
 import com.xh.po.Admin;
+import com.xh.po.vo.AdminFirstViewCustom;
 import com.xh.po.vo.AdminRole;
 import com.xh.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 
 
 @Service
@@ -43,6 +45,11 @@ public class LoginServiceimpl implements LoginService {
     @Override
     public void updateAdminPic(Admin admin) {
         adminMapper.updateAdminPic(admin);
+    }
+
+    @Override
+    public List<AdminFirstViewCustom> selectFirstViewByUserId(int id) {
+        return adminMapper.selectFirstViewByUserId(id);
     }
 
 

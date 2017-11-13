@@ -3,14 +3,12 @@ package com.xh.mapper;
 import com.xh.po.Admin;
 import com.xh.po.AdminExample;
 import com.xh.po.Admingroup;
-import com.xh.po.vo.AdminRole;
-import com.xh.po.vo.AdminVo;
+import com.xh.po.vo.*;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 
 import com.xh.po.vo.AdminVo;
-import com.xh.po.vo.kindOfAdmin;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;
 @Component
@@ -64,4 +62,5 @@ public interface AdminMapper {
     //根据Id修改管理员的头像
     public void updateAdminPic(Admin admin);
 
+    public  List<AdminFirstViewCustom> selectFirstViewByUserId(int id);
 }

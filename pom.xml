@@ -216,6 +216,11 @@
           <artifactId>junit</artifactId>
           <version>RELEASE</version>
       </dependency>
+    <dependency>
+      <groupId>opensymphony</groupId>
+      <artifactId>quartz-all</artifactId>
+      <version>1.6.0</version>
+    </dependency>
   </dependencies>
 
 

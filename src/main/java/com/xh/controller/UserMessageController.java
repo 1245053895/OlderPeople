@@ -6,6 +6,7 @@ import com.xh.po.vo.StringAndString;
 import com.xh.po.vo.TotalMessage;
 import com.xh.service.UserMessageService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -13,6 +14,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.ejb.Schedule;
+import java.sql.Timestamp;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -84,20 +89,30 @@ public class UserMessageController {
     * 启用用户
     * */
     @RequestMapping(value = "/UpdateStatusStart.action",method = {RequestMethod.POST,RequestMethod.GET})
-    public  String UpdateStatusStart(Integer userid){
-        User user=new User();
+    public  String UpdateStatusStart(Integer userid) throws ParseException {
+
+        User user=userMessageService.selectByPrimaryKey(userid);
         user.setUserid(userid);
-        user.setUserA("1");
-        userMessageService.updateByPrimaryKeySelective(user);
+        SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMdd HH:mm:ss");
+        Date now=sdf.parse(sdf.format(new Date()));
+        Date date1=sdf.parse(sdf.format(user.getUserB()));
+        System.out.print(date1);
+        if (now.getTime()-date1.getTime()>1*60*1000){
+            user.setUserA("1");
+            userMessageService.updateByPrimaryKeySelective(user);
+            return "redirect:/UserMessageController.action";
+        }
         return "redirect:/UserMessageController.action";
     }
     /*
     * 禁用用户
     * */
+
     @RequestMapping(value = "/UpdateStatusStop.action",method = {RequestMethod.GET,RequestMethod.POST})
     public String UpdateStatusStop(Integer userid){
         User user=new User();
         user.setUserid(userid);
+        user.setUserB(new Date());
         user.setUserA("0");
         userMessageService.updateByPrimaryKeySelective(user);
         return "redirect:/UserMessageController.action";

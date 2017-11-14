@@ -3,7 +3,9 @@
 <mapper namespace="com.xh.mapper.customerMapper.UserLoginMapper">
     <!--根据登录用户的用户名查询出该登录用户的用户名和密码-->
     <select id="selectAllNameAndPwd" resultType="user" parameterType="String">
-       SELECT UserName,UserPwd FROM `user` WHERE UserName=#{username}
+    SELECT UserId, UserName, UserPwd, UserSex, UserRealName, UserPhone, UserBirthday, UserAddress,
+    UserEmail, CreditsCore, UserInputDate, UserZip, UserLoginCount, UserLoginTime, User_A,
+    User_B, User_C FROM `user` WHERE UserName=#{username}
     </select>
 
 </mapper>

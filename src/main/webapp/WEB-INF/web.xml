@@ -12,10 +12,9 @@
   </context-param>
   <listener>
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-
   </listener>
   <listener>
-    <listener-class>com.xh.TimerTask.ContextListener</listener-class>
+    <listener-class>com.xh.Timer.ContextListener</listener-class>
   </listener>
 
   <!--  解决post乱码问题-->

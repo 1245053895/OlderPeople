@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Administrator
@@ -6,6 +7,9 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%--<%HttpSession Session = request.getSession();
+	String user = (String) Session.getAttribute("user");
+%>--%>
 <html>
 <head>	
 	<meta charset="UTF-8">
@@ -191,10 +195,18 @@
 <header id="pc-header">
 	<div class="pc-header-nav">
 		<div class="pc-header-con">
-			<div class="fl pc-header-link" >您好！欢迎来孝和集团电子商城
-				<a href="/LoginPage.action" target="_blank">请登录</a>
-				<a href="register.jsp" target="_blank"> 免费注册</a>
-			</div>
+			<c:if test="${empty user.userid}">
+					<div class="fl pc-header-link" >您好！欢迎来孝和集团电子商城
+						<a href="/LoginPage.action" target="_blank">请登录</a>
+						<a href="register.jsp" target="_blank"> 免费注册</a>
+					</div>
+		   </c:if>
+			<c:if test="${not empty user.userid}">
+				<div class="fl pc-header-link" >${user.username}您好！欢迎来孝和集团电子商城
+					<a target="_self" href="${pageContext.request.contextPath}/ExitLogin.action" target="_blank"> 退出登录</a>
+				</div>
+			</c:if>
+
 			<div class="fr pc-header-list top-nav">
 				<ul>
 					<li><a href="#">收藏夹</a></li>
@@ -210,7 +222,6 @@
 							</dl>
 						</div>
 					</li>
-										
 					<li>
 						<div class="nav"><i class="pc-top-icon"></i><a href="#">帮助中心</a></div>
 						<div class="con">
@@ -220,9 +231,10 @@
 							</dl>
 						</div>
 					</li>
-					
 				</ul>
 			</div>
+
+
 		</div>
 	</div>
 	

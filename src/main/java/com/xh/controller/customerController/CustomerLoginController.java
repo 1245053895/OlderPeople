@@ -57,4 +57,13 @@ private UserLoginService userLoginService;
         return "/jsp/users/login.jsp";
 
     }
+
+    //清空session中的值，使退出登录的用户能够调转到当前商城首页而没有用户名
+   @RequestMapping("/ExitLogin.action")
+    public String ExitLogin(HttpServletRequest request,HttpServletResponse response){
+        HttpSession session=request.getSession();
+        session.removeAttribute("user");
+        return "redirect:/ShopFrontPage.action";
+}
+
 }

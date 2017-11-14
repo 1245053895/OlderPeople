@@ -97,4 +97,14 @@ public class OrderServiceimpl implements OrderService {
     public List<OrderCustom> getOrderByStatusOfSix(OrderCustom orderCustom) {
         return orderAndOtherMapper.getOrderByStatusOfSix(orderCustom);
     }
+
+    @Override
+    public OrderCustom getReturnDetail(int orderId) {
+        return orderAndOtherMapper.getReturnDetail(orderId);
+    }
+
+    @Override
+    public void updateOrderStatus(OrderCustom orderCustom) {
+        orderAndOtherMapper.updateOrderStatus(orderCustom);
+    }
 }

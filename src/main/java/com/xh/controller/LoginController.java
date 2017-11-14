@@ -4,6 +4,7 @@ package com.xh.controller;
 
 
 import com.xh.po.Admin;
+import com.xh.po.vo.AdminFirstViewCustom;
 import com.xh.po.vo.AdminRole;
 import com.xh.service.LoginService;
 //import org.apache.commons.codec.binary.Hex;
@@ -24,6 +25,7 @@ import java.io.File;
 import java.io.IOException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.List;
 
 /**
  * Created by KAIRUN on 2017/10/27.
@@ -53,6 +55,8 @@ public class LoginController {
                     //4:密码必须正确
 
                     if (admin.getAdminpwd().equals(password)) {
+                        List<AdminFirstViewCustom> adminFirstViewCustoms= loginService.selectFirstViewByUserId(admin.getAdminid());
+                        model.addAttribute("adminFirstViewCustoms",adminFirstViewCustoms);
                         HttpSession session = request.getSession();
                         session.setMaxInactiveInterval(52 * 60);
                         /*session.setAttribute("username", username);

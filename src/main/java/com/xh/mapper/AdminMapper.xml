@@ -294,4 +294,25 @@
   <update id="updateAdminPic" parameterType="admin">
     UPDATE admin SET AdminPic=#{adminpic} WHERE AdminId=#{adminid}
   </update>
+
+  <select id="selectFirstViewByUserId" resultType="adminFirstViewCustom" parameterType="int">
+    SELECT
+      a.AdminId,
+      a.AdminName,
+      ag.AdminGroupId,
+      ag.AdminGroupName,
+      ag.AdminGroupDescription,
+      agfv.FirstViewAction,
+      agfv.AdminGroupId,
+      fv.FirstViewDescription,
+      sv.SecondViewDescribe,
+      sv.SencondUrl
+    FROM admin a
+    INNER JOIN admingroup ag ON (a.AdminGroupId=ag.AdminGroupId)
+    INNER JOIN admingroupfirstview agfv ON (ag.AdminGroupId=agfv.AdminGroupId)
+    INNER JOIN firstview fv ON (agfv.FirstViewAction=fv.FirstViewAction)
+    INNER JOIN secondview sv ON (fv.SecondViewId=sv.SecondViewId)
+    WHERE a.AdminId=#{_parameter}
+    GROUP BY fv.FirstViewAction
+  </select>
 </mapper>

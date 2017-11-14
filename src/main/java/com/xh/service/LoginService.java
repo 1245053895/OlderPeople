@@ -1,8 +1,11 @@
 package com.xh.service;
 
 import com.xh.po.Admin;
+import com.xh.po.vo.AdminFirstViewCustom;
 import com.xh.po.vo.AdminRole;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public interface LoginService {
@@ -20,4 +23,10 @@ public interface LoginService {
 
     //根据Id修改管理员的头像
     public void updateAdminPic(Admin admin);
+
+    /**
+     * 通过用户id查询其所拥有的一级菜单
+     * @param id
+     */
+    public List<AdminFirstViewCustom> selectFirstViewByUserId(int id);
 }

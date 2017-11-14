@@ -4,8 +4,10 @@ import com.xh.po.Order;
 import com.xh.po.User;
 
 public class OrderCustom extends Order{
+    int buyTime;
     String username;
     String conditions;
+
 
     public String getUsername() {
         return username;
@@ -13,6 +15,14 @@ public class OrderCustom extends Order{
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public int getBuyTime() {
+        return buyTime;
+    }
+
+    public void setBuyTime(int buyTime) {
+        this.buyTime = buyTime;
     }
 
     public String getConditions() {

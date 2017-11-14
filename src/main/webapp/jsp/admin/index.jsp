@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Administrator
@@ -244,49 +245,58 @@
 
 				<li class="home"><a href="javascript:void(0)" name="/jsp/admin/home.jsp" class="iframeurl" title=""><i class="icon-dashboard"></i><span class="menu-text"> 系统首页 </span></a></li>
 
-				<li><a href="#" class="dropdown-toggle"><i class="icon-desktop"></i><span class="menu-text"> 管理员管理 </span><b class="arrow icon-angle-down"></b></a>
-					<ul class="submenu">
-						<li class="home"><a  href="javascript:void(0)" name="/admin/adminList.action"  title="管理员列表" class="iframeurl"><i class="icon-double-angle-right"></i>管理员列表</a></li>
-						<li class="home"><a href="javascript:void(0)" name="/RloeController.action" title="角色管理"  class="iframeurl"><i class="icon-double-angle-right"></i>角色管理</a></li>
-						<li class="home"><a href="javascript:void(0)" name="/queryAllRole.action" title="角色修改"  class="iframeurl"><i class="icon-double-angle-right"></i>角色修改</a></li>
-					</ul>
-				</li>
-
-				<li><a href="#" class="dropdown-toggle"><i class="icon-desktop"></i><span class="menu-text"> 用户管理 </span><b class="arrow icon-angle-down"></b></a>
-					<ul class="submenu">
-						<li class="home"><a  href="javascript:void(0)" name="/UserMessageController.action"  title="用户信息" class="iframeurl"><i class="icon-double-angle-right"></i>用户信息</a></li>
-						<li class="home"><a  href="javascript:void(0)" name="/getUserRecord.action"  title="用户记录" class="iframeurl"><i class="icon-double-angle-right"></i>用户记录</a></li>
-					</ul>
-				</li>
-
-				<li><a href="#" class="dropdown-toggle"><i class="icon-desktop"></i><span class="menu-text"> 消息管理 </span><b class="arrow icon-angle-down"></b></a>
-					<ul class="submenu">
-						<li class="home"><a  href="javascript:void(0)" name="/LoginServlet?username=${admin.adminname}"  title="用户消息" class="iframeurl"><i class="icon-double-angle-right"></i>用户消息</a></li>
-						<li class="home"><a  href="javascript:void(0)" name="/selectCommentRate.action" title="用户评论"  class="iframeurl"><i class="icon-double-angle-right"></i>用户评论</a></li>
-					</ul>
-				</li>
-
-				<li><a href="#" class="dropdown-toggle"><i class="icon-desktop"></i><span class="menu-text"> 商品管理 </span><b class="arrow icon-angle-down"></b></a>
-					<ul class="submenu">
-						<li class="home"><a href="javascript:void(0)" name="/ProductType.action" title="商品分类"  class="iframeurl"><i class="icon-double-angle-right"></i>商品分类</a></li>
-						<li class="home"><a  href="javascript:void(0)" name="/ProducList.action"  title="商品列表" class="iframeurl"><i class="icon-double-angle-right"></i>商品列表</a></li>
-					</ul>
-				</li>
-
-				<li><a href="#" class="dropdown-toggle"><i class="icon-desktop"></i><span class="menu-text"> 订单管理 </span><b class="arrow icon-angle-down"></b></a>
-					<ul class="submenu">
-						<li class="home"><a href="javascript:void(0)" name="/getAllOrder.action" title="订单列表"  class="iframeurl"><i class="icon-double-angle-right"></i>用户订单</a></li>
-						<li class="home"><a  href="javascript:void(0)" name="/getOrderByStatusOfSix.action"  title="退货订单" class="iframeurl"><i class="icon-double-angle-right"></i>退货订单</a></li>
-					</ul>
-				</li>
-
-				<li><a href="#" class="dropdown-toggle"><i class="icon-desktop"></i><span class="menu-text"> 系统设置 </span><b class="arrow icon-angle-down"></b></a>
-					<ul class="submenu">
-						<li class="home"><a href="javascript:void(0)" name="/SelectSystems.action" title="系统设置"  class="iframeurl"><i class="icon-double-angle-right"></i>系统设置</a></li>
-						<li class="home"><a href="javascript:void(0)" name="/Advertising.action" title="物流管理"  class="iframeurl"><i class="icon-double-angle-right"></i>物流管理</a></li>
-						<li class="home"><a  href="javascript:void(0)" name="/QuerryAllPay.action"  title="支付管理" class="iframeurl"><i class="icon-double-angle-right"></i>支付管理</a></li>
-					</ul>
-				</li>
+				<c:forEach items="${adminFirstViewCustoms}" var="adminFirstViewCustom">
+					<c:if test="${adminFirstViewCustom.firstviewaction.equals('1A')}">
+						<li><a href="#" class="dropdown-toggle"><i class="icon-desktop"></i><span class="menu-text"> ${adminFirstViewCustom.firstviewdescription} </span><b class="arrow icon-angle-down"></b></a>
+							<ul class="submenu">
+								<li class="home"><a  href="javascript:void(0)" name="/admin/adminList.action"  title="管理员列表" class="iframeurl"><i class="icon-double-angle-right"></i>管理员列表</a></li>
+								<li class="home"><a href="javascript:void(0)" name="/RloeController.action" title="角色管理"  class="iframeurl"><i class="icon-double-angle-right"></i>角色管理</a></li>
+								<li class="home"><a href="javascript:void(0)" name="/queryAllRole.action" title="角色修改"  class="iframeurl"><i class="icon-double-angle-right"></i>角色修改</a></li>
+							</ul>
+						</li>
+					</c:if>
+					<c:if test="${adminFirstViewCustom.firstviewaction.equals('1B')}">
+						<li><a href="#" class="dropdown-toggle"><i class="icon-desktop"></i><span class="menu-text"> 用户管理 </span><b class="arrow icon-angle-down"></b></a>
+							<ul class="submenu">
+								<li class="home"><a  href="javascript:void(0)" name="/UserMessageController.action"  title="用户信息" class="iframeurl"><i class="icon-double-angle-right"></i>用户信息</a></li>
+								<li class="home"><a  href="javascript:void(0)" name="/getUserRecord.action"  title="用户记录" class="iframeurl"><i class="icon-double-angle-right"></i>用户记录</a></li>
+							</ul>
+						</li>
+					</c:if>
+					<c:if test="${adminFirstViewCustom.firstviewaction.equals('1C')}">
+						<li><a href="#" class="dropdown-toggle"><i class="icon-desktop"></i><span class="menu-text"> 消息管理 </span><b class="arrow icon-angle-down"></b></a>
+							<ul class="submenu">
+								<li class="home"><a  href="javascript:void(0)" name="/LoginServlet"  title="用户消息" class="iframeurl"><i class="icon-double-angle-right"></i>用户消息</a></li>
+								<li class="home"><a  href="javascript:void(0)" name="/selectCommentRate.action" title="用户评论"  class="iframeurl"><i class="icon-double-angle-right"></i>用户评论</a></li>
+							</ul>
+						</li>
+					</c:if>
+					<c:if test="${adminFirstViewCustom.firstviewaction.equals('1D')}">
+						<li><a href="#" class="dropdown-toggle"><i class="icon-desktop"></i><span class="menu-text"> 商品管理 </span><b class="arrow icon-angle-down"></b></a>
+							<ul class="submenu">
+								<li class="home"><a href="javascript:void(0)" name="/ProductType.action" title="商品分类"  class="iframeurl"><i class="icon-double-angle-right"></i>商品分类</a></li>
+								<li class="home"><a  href="javascript:void(0)" name="/ProducList.action"  title="商品列表" class="iframeurl"><i class="icon-double-angle-right"></i>商品列表</a></li>
+							</ul>
+						</li>
+					</c:if>
+					<c:if test="${adminFirstViewCustom.firstviewaction.equals('1E')}">
+						<li><a href="#" class="dropdown-toggle"><i class="icon-desktop"></i><span class="menu-text"> 订单管理 </span><b class="arrow icon-angle-down"></b></a>
+							<ul class="submenu">
+								<li class="home"><a href="javascript:void(0)" name="/getAllOrder.action" title="订单列表"  class="iframeurl"><i class="icon-double-angle-right"></i>用户订单</a></li>
+								<li class="home"><a  href="javascript:void(0)" name="/getOrderByStatusOfSix.action"  title="退货订单" class="iframeurl"><i class="icon-double-angle-right"></i>退货订单</a></li>
+							</ul>
+						</li>
+					</c:if>
+					<c:if test="${adminFirstViewCustom.firstviewaction.equals('1F')}">
+						<li><a href="#" class="dropdown-toggle"><i class="icon-desktop"></i><span class="menu-text"> 系统设置 </span><b class="arrow icon-angle-down"></b></a>
+							<ul class="submenu">
+								<li class="home"><a href="javascript:void(0)" name="/jsp/admin/Systems.jsp" title="系统设置"  class="iframeurl"><i class="icon-double-angle-right"></i>系统设置</a></li>
+								<li class="home"><a href="javascript:void(0)" name="/Advertising.action" title="物流管理"  class="iframeurl"><i class="icon-double-angle-right"></i>物流管理</a></li>
+								<li class="home"><a  href="javascript:void(0)" name="/QuerryAllPay.action"  title="支付管理" class="iframeurl"><i class="icon-double-angle-right"></i>支付管理</a></li>
+							</ul>
+						</li>
+					</c:if>
+				</c:forEach>
 
 			</ul>
 

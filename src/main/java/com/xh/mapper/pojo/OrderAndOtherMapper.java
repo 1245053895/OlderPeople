@@ -63,4 +63,12 @@ public interface OrderAndOtherMapper {
 
 
     public List<OrderCustom> getOrderByStatusOfSix(OrderCustom orderCustom);
+
+    /**
+     * 获取退货详情
+     * @param orderId
+     */
+    public OrderCustom getReturnDetail(int orderId);
+
+    public void updateOrderStatus(OrderCustom orderCustom);
 }

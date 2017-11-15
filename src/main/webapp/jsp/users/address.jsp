@@ -132,8 +132,8 @@
 
 	<div class="pc-header-nav">
 		<div class="pc-header-con">
-			<div class="fl pc-header-link" >您好！，欢迎来孝和集团电子商城 
-				<a href="login.html" target="_blank">请登录</a> 
+			<div class="fl pc-header-link" >您好！，欢迎来孝和集团电子商城
+				<a href="login.html" target="_blank">请登录</a>
 				<a href="register.html" target="_blank"> 免费注册</a>
 			</div>
 			<div class="fr pc-header-list top-nav">
@@ -151,7 +151,7 @@
 							</dl>
 						</div>
 					</li>
-										
+
 					<li>
 						<div class="nav"><i class="pc-top-icon"></i><a href="#">帮助中心</a></div>
 						<div class="con">
@@ -161,7 +161,7 @@
 							</dl>
 						</div>
 					</li>
-					
+
 				</ul>
 			</div>
 		</div>

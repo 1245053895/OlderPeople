@@ -15,7 +15,7 @@
 	<meta name="Description" content="">
 	<meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE">
 	<meta name="renderer" content="webkit">
-	<title>购物商城-退货申请</title>
+	<title>购物商城-退货/退款记录</title>
 	<link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/jsp/users/img/icon/favicon.ico">
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/jsp/users/css/base.css">
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/jsp/users/css/home.css">
@@ -263,12 +263,12 @@
 			<div class="member-border">
 				<div class="member-return H-over">
 					<div class="member-cancel clearfix" style="margin-top: -20px;">
-						<span class="be1" style="width: 335px">商品信息</span>
-						<span class="be2" style="width: 95px">商品金额</span>
+						<span class="be1" style="width: 355px">商品信息</span>
+						<span class="be2" style="width: 100px">商品金额</span>
+						<span class="be2" style="width: 100px">退款金额</span>
 						<span class="be2" style="width: 100px">购买时间</span>
-						<span class="be2" style="width:95px">商品状态</span>
-						<span class="be3" style="width: 237px">退货理由</span>
-						<span class="be2" style="width: 106px">退货操作</span>
+						<span class="be2" style="width:95px">订单状态</span>
+						<span class="be2" style="width:218px">退货订单物流单号</span>
 					</div>
 					<div class="member-sheet clearfix">
 						<ul>
@@ -286,11 +286,10 @@
 										</div>
 									</div>
 									<div class="ci"><p class="red">￥<span>69.00</span></p></div>
+									<div class="ci"><p class="red">￥<span>69.00</span></p></div>
 									<div class="ci"><p>2015-09-22</p></div>
 									<div class="ci"><p>已到货</p></div>
-									<div class="cii"><input type="text" name="tuihuoliyou"></div>
-									<div class="ap3 fl"><a href="#">申请退款</a> </div>
-									<div></div>
+									<div class="cii"><a href="#" style="color: #ee4644; text-decoration: solid;">12345667890</a></div>
 								</div>
 							</li>
 						</ul>

@@ -119,58 +119,42 @@
 
         })
 	</script>
+	<script>
+        $(function(){
+            $("#dingdan ul li").click(function(){
+                $("#dingdan ul li a").removeClass("dingdans");
+                $(this).find("a").addClass("dingdans");
+            });
+        });
+        function change(i){
 
+        }
+	</script>
+	<script>
+        $(function(){
+            $("#leftinfo dl dd").click(function(){
+                $("#leftinfo dl dd a").removeClass("leftinfos");
+                $(this).find("a").addClass("leftinfos");
+            });
+        });
+        function change(i){
+
+        }
+	</script>
 </head>
 <body>
 
 <header id="pc-header">
-<!--
 	<div class="pc-header-nav">
 		<div class="pc-header-con">
-			<div class="fl pc-header-link" >您好！，欢迎来云购物 <a href="login.html" target="_blank">请登录</a> <a href="register.html" target="_blank"> 免费注册</a></div>
-			<div class="fr pc-header-list top-nav">
-				<ul>
-					<li>
-						<div class="nav"><i class="pc-top-icon"></i><a href="#">我的订单</a></div>
-						<div class="con">
-							<dl>
-								<dt><a href="">批发进货</a></dt>
-								<dd><a href="">已买到货品</a></dd>
-								<dd><a href="">优惠券</a></dd>
-								<dd><a href="">店铺动态</a></dd>
-							</dl>
-						</div>
-					</li>
-					<li>
-						<div class="nav"><i class="pc-top-icon"></i><a href="#">我的商城</a></div>
-						<div class="con">
-							<dl>
-								<dt><a href="">批发进货</a></dt>
-								<dd><a href="">已买到货品</a></dd>
-								<dd><a href="">优惠券</a></dd>
-								<dd><a href="">店铺动态</a></dd>
-							</dl>
-						</div>
-					</li>
-					<li><a href="#">我的云购</a></li>
-					<li><a href="#">我的收藏</a></li>
-					<li><a href="#">会员中心</a></li>
-					<li><a href="#">客户服务</a></li>
-					<li><a href="#">帮助中心</a></li>
-				</ul>
-			</div>
-		</div>
-	</div>
--->
-	<div class="pc-header-nav">
-		<div class="pc-header-con">
-			<div class="fl pc-header-link" >您好！，欢迎来孝和集团电子商城 
-				<a href="login.html" target="_blank">请登录</a> 
+			<div class="fl pc-header-link" >您好！，欢迎来孝和集团电子商城
+				<a href="login.html" target="_blank">请登录</a>
 				<a href="register.html" target="_blank"> 免费注册</a>
 			</div>
 			<div class="fr pc-header-list top-nav">
 				<ul>
-					<li><a href="#">我的收藏</a></li>
+					<li><a href="#">收藏夹</a></li>
+					<li><a href="my-dingdan.jsp">我的订单</a></li>
 					<li>
 						<div class="nav"><i class="pc-top-icon"></i><a href="#">个人中心</a></div>
 						<div class="con">
@@ -179,11 +163,10 @@
 								<dd><a href="">收货地址</a></dd>
 								<dd><a href="">修改登录密码</a></dd>
 								<dd><a href="">我的积分</a></dd>
-								<dd><a href="">已购买的宝贝</a></dd>
 							</dl>
 						</div>
 					</li>
-										
+
 					<li>
 						<div class="nav"><i class="pc-top-icon"></i><a href="#">帮助中心</a></div>
 						<div class="con">
@@ -193,20 +176,21 @@
 							</dl>
 						</div>
 					</li>
-					
+
 				</ul>
 			</div>
 		</div>
 	</div>
+
 	<div class="pc-header-logo clearfix">
 		<div class="pc-fl-logo fl">
 			<h1>
-				<a href="index.html"></a>
+				<a href="index.jsp"></a>
 			</h1>
 		</div>
 		<div class="head-form fl">
 			<form class="clearfix">
-				<input class="search-text" accesskey="" id="key" autocomplete="off" placeholder="请输入关键词" type="text">
+				<input class="search-text" accesskey="" id="key" autocomplete="off" placeholder="洗衣机" type="text">
 				<button class="button" onclick="search('key');return false;">搜索</button>
 			</form>
 			<div class="words-text clearfix">
@@ -229,14 +213,13 @@
 	<div class="yHeader">
 		<!-- 导航   start  -->
 		<div class="yNavIndex">
-			<ul class="yMenuIndex" style="margin-left:0">
-				<li style="background:#d1201e"><a href="" target="_blank">首页</a></li>
-<!--				<li><a href="" target="_blank">首页</a></li>-->
-				<li><a href="" target="_blank">品牌专区 </a></li>
-				<li><a href="" target="_blank">询价专区</a></li>
-				<li><a href="" target="_blank">新闻资讯</a></li>
-				<li><a href="" target="_blank">合伙人</a></li>
-				<li><a href="" target="_blank">关于我们</a></li>
+			<ul class="yMenuIndex">
+				<li><a href="" target="_blank" title="首页">首页</a></li>
+				<li><a href="" target="_blank" title="热销专区">热销专区</a></li>
+				<li><a href="" target="_blank" title="新品专区">新品专区</a></li>
+				<li><a href="" target="_blank" title="积分商城">积分商城</a></li>
+				<li><a href="" target="_blank" title="合伙人">合伙人</a></li>
+				<li><a href="" target="_blank" title="关于我们">关于我们</a></li>
 			</ul>
 		</div>
 		<!-- 导航   end  -->
@@ -244,7 +227,6 @@
 
 </header>
 
-<div class="containers center"><div class="pc-nav-item"><a href="#">首页</a> &gt; <a href="#">会员中心 </a> &gt; <a href="#">账户安全</a></div></div>
 <section id="member">
 	<div class="member-center clearfix">
 		<div class="member-left fl">
@@ -257,31 +239,24 @@
 					<p>389323080</p>
 				</div>
 			</div>
-			<div class="member-lists">
-				<dl>
-					<dt>我的商城</dt>
-					<dd><a href="user.html">我的资料</a></dd>
-					<dd><a href="#">我的订单</a></dd>
-					<dd><a href="#">我的收藏</a></dd>
-					<dd class="cur"><a href="#">账户安全</a></dd>
-					<dd><a href="#">我的评价</a></dd>
-					<dd><a href="address.html">地址管理</a></dd>
+			<div class="member-lists" id="leftinfo">
+				<dl  onclick = "change(this);">
+					<dt>个人中心</dt>
+					<dd><a href="#">个人资料</a></dd>
+					<dd><a href="#">收货地址</a></dd>
+					<dd><a href="#">修改登录密码</a></dd>
+					<dd><a href="#">我的积分</a></dd>
 				</dl>
-				<dl>
+				<%--<dl  onclick = "change(this);">
 					<dt>客户服务</dt>
-					<dd><a href="#">退货申请</a></dd>
+					<dd><a href="#">退货订单</a></dd>
 					<dd><a href="#">退货/退款记录</a></dd>
-				</dl>
-				<dl>
-					<dt>我的消息</dt>
-					<dd><a href="my-new.html">商城快讯</a></dd>
-					<dd><a href="#">帮助中心</a></dd>
-				</dl>
+				</dl>--%>
 			</div>
 		</div>
 		<div class="member-right fr">
 			<div class="member-head">
-				<div class="member-heels fl"><h2>账户安全</h2></div>
+				<div class="member-heels fl"><h2>修改登录密码</h2></div>
 			</div>
 			<div class="member-border">
 <!--
@@ -311,8 +286,16 @@
 							<div class="warn1"></div>
 							<div class="warn2">登录密码</div>
 							<div class="warn3">互联网账号存在被盗风险，建议您定期更改密码以保护账户安全。</div>
-							<div class="warn4"><a href="#">修改</a> </div>
+							<div class="warn4"><a href="#" onclick="mmyz()">修改</a> </div>
 						</li>
+						<script>
+							function mmyz() {
+								var yz = prompt("请输入原始密码验证身份")
+                            }
+                            function sjyz() {
+                                var yz = prompt("请输入登录密码验证身份")
+                            }
+						</script>
 <!--
 						<li class="clearfix">
 							<div class="warn1"></div>
@@ -323,10 +306,10 @@
 -->
 						<li class="clearfix">
 							<div class="warn1"></div>
-							<div class="warn2">手机验证</div>
+							<div class="warn2">绑定手机号</div>
 							
 							<div class="warn3">134*****693  </div>
-							<span style="margin-left: -450px; height:33px; line-height:33px; float:left; color: #A8A8A8">若已丢失或停用，请立即更换，避免账户被盗</span>
+							<span style="margin-left: -400px; height:33px; line-height:33px; float:left; color: #A8A8A8;font-size: 12px">若已丢失或停用，请立即更换，避免账户被盗</span>
 <!--
 							<div class="warn3">您验证的手机：  
 								<i class="reds">134*****693</i>
@@ -335,7 +318,7 @@
 							</div>
 -->
 <!--							<div class="warn5"><p>解绑请咨询搜小悦官方客服 <i>souyue@zhongsou.com  </i></p></div>-->
-							<div class="warn4"><a href="#">更换</a> </div>
+							<div class="warn4"><a href="#" onclick="sjyz()">更换</a> </div>
 						</li>
 <!--
 						<li class="clearfix">

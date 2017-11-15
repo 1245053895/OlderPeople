@@ -328,7 +328,7 @@ input.labelauty + label { font: 12px "Microsoft Yahei";}
 							<div class="warn2">性别</div>
 							<span class="warn3">
 
-								<ul style="width: 100;height: 40px;margin-top: -30px;margin-left: -25px">
+								<ul style="width: 100px;height: 40px;margin-top: -30px;margin-left: -25px">
 									<li style="border-bottom: 0px"><input type="radio" name="radio" data-labelauty="男" value="1"></li>
 									<li style="border-bottom: 0px"><input type="radio" name="radio" data-labelauty="女" value="0"></li>
 								</ul>

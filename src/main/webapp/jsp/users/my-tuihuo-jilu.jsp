@@ -15,22 +15,38 @@
 	<meta name="Description" content="">
 	<meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE">
 	<meta name="renderer" content="webkit">
-	<title>购物商城-会员中心</title>
+	<title>购物商城-退货/退款记录</title>
 	<link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/jsp/users/img/icon/favicon.ico">
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/jsp/users/css/base.css">
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/jsp/users/css/home.css">
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/jsp/users/css/member.css">
-	
-	<link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/jsp/users/img/icon/favicon.ico">
-	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/jsp/users/css/car/base.css">
-	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/jsp/users/css/car/home.css">
-	
 	<script type="text/javascript" src="${pageContext.request.contextPath}/jsp/users/js/jquery.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/jsp/users/js/index.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/jsp/users/js/modernizr-custom-v2.7.1.min.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/jsp/users/js/jquery.SuperSlide.js"></script>
-	<script type="text/javascript">
+	<script>
+        $(function(){
+            $("#dingdan ul li").click(function(){
+                $("#dingdan ul li a").removeClass("dingdans");
+                $(this).find("a").addClass("dingdans");
+            });
+        });
+        function change(i){
 
+        }
+	</script>
+	<script>
+        $(function(){
+            $("#leftinfo dl dd").click(function(){
+                $("#leftinfo dl dd a").removeClass("leftinfos");
+                $(this).find("a").addClass("leftinfos");
+            });
+        });
+        function change(i){
+
+        }
+	</script>
+	<script type="text/javascript">
         var intDiff = parseInt(90000);//倒计时总秒数量
 
         function timer(intDiff){
@@ -129,7 +145,6 @@
 <body>
 
 <header id="pc-header">
-
 	<div class="pc-header-nav">
 		<div class="pc-header-con">
 			<div class="fl pc-header-link" >您好！，欢迎来孝和集团电子商城
@@ -138,7 +153,8 @@
 			</div>
 			<div class="fr pc-header-list top-nav">
 				<ul>
-					<li><a href="#">我的收藏</a></li>
+					<li><a href="#">收藏夹</a></li>
+					<li><a href="my-dingdan.jsp">我的订单</a></li>
 					<li>
 						<div class="nav"><i class="pc-top-icon"></i><a href="#">个人中心</a></div>
 						<div class="con">
@@ -147,7 +163,6 @@
 								<dd><a href="">收货地址</a></dd>
 								<dd><a href="">修改登录密码</a></dd>
 								<dd><a href="">我的积分</a></dd>
-								<dd><a href="">已购买的宝贝</a></dd>
 							</dl>
 						</div>
 					</li>
@@ -166,15 +181,16 @@
 			</div>
 		</div>
 	</div>
+
 	<div class="pc-header-logo clearfix">
 		<div class="pc-fl-logo fl">
 			<h1>
-				<a href="index.html"></a>
+				<a href="index.jsp"></a>
 			</h1>
 		</div>
 		<div class="head-form fl">
 			<form class="clearfix">
-				<input class="search-text" accesskey="" id="key" autocomplete="off" placeholder="请输入关键词" type="text">
+				<input class="search-text" accesskey="" id="key" autocomplete="off" placeholder="洗衣机" type="text">
 				<button class="button" onclick="search('key');return false;">搜索</button>
 			</form>
 			<div class="words-text clearfix">
@@ -197,14 +213,13 @@
 	<div class="yHeader">
 		<!-- 导航   start  -->
 		<div class="yNavIndex">
-			<ul class="yMenuIndex" style="margin-left:0">
-				<li style="background:#d1201e"><a href="" target="_blank">首页</a></li>
-<!--				<li><a href="" target="_blank">首页</a></li>-->
-				<li><a href="" target="_blank">品牌专区 </a></li>
-				<li><a href="" target="_blank">询价专区</a></li>
-				<li><a href="" target="_blank">新闻资讯</a></li>
-				<li><a href="" target="_blank">合伙人</a></li>
-				<li><a href="" target="_blank">关于我们</a></li>
+			<ul class="yMenuIndex">
+				<li><a href="" target="_blank" title="首页">首页</a></li>
+				<li><a href="" target="_blank" title="热销专区">热销专区</a></li>
+				<li><a href="" target="_blank" title="新品专区">新品专区</a></li>
+				<li><a href="" target="_blank" title="积分商城">积分商城</a></li>
+				<li><a href="" target="_blank" title="合伙人">合伙人</a></li>
+				<li><a href="" target="_blank" title="关于我们">关于我们</a></li>
 			</ul>
 		</div>
 		<!-- 导航   end  -->
@@ -212,175 +227,111 @@
 
 </header>
 
-<div class="containers center"><div class="pc-nav-item"><a href="#">首页</a> &gt; <a href="#">会员中心 </a> &gt; <a href="#">地址管理</a></div></div>
 <section id="member">
 	<div class="member-center clearfix">
-		<div class="member-left fl">
-			<div class="member-apart clearfix">
-				<div class="fl"><a href="#"><img src="img/mem.png"></a></div>
-				<div class="fl">
-					<p>用户名：</p>
-					<p><a href="#">亚里士多德</a></p>
-					<p>搜悦号：</p>
-					<p>389323080</p>
+			<div class="member-left fl">
+				<div class="member-apart clearfix">
+					<div class="fl"><a href="#"><img src="img/mem.png"></a></div>
+					<div class="fl">
+						<p>用户名：</p>
+						<p><a href="#">亚里士多德</a></p>
+						<p>账号：</p>
+						<p>389323080</p>
+					</div>
+				</div>
+				<div class="member-lists" id="leftinfo">
+					<dl  onclick = "change(this);">
+						<dt>我的商城</dt>
+						<dd><a href="#">我的订单</a></dd>
+						<dd><a href="#">我的购物车</a></dd>
+						<dd><a href="#">我的收藏</a></dd>
+						<dd><a href="#">我的评价</a></dd>
+					</dl>
+					<dl  onclick = "change(this);">
+						<dt>客户服务</dt>
+						<dd><a href="#">退货订单</a></dd>
+						<dd><a href="#">退货/退款记录</a></dd>
+					</dl>
 				</div>
 			</div>
-			<div class="member-lists">
-				<dl>
-					<dt>我的商城</dt>
-					<dd><a href="user.html">我的资料</a></dd>
-					<dd><a href="#">我的订单</a></dd>
-					<dd><a href="#">我的收藏</a></dd>
-					<dd><a href="my-user.html">账户安全</a></dd>
-					<dd><a href="#">我的评价</a></dd>
-					<dd class="cur"><a href="#">地址管理</a></dd>
-				</dl>
-				<dl>
-					<dt>客户服务</dt>
-					<dd><a href="#">退货申请</a></dd>
-					<dd><a href="#">退货/退款记录</a></dd>
-				</dl>
-				<dl>
-					<dt>我的消息</dt>
-					<dd><a href="my-new.html">商城快讯</a></dd>
-					<dd><a href="#">帮助中心</a></dd>
-				</dl>
-			</div>
-		</div>
 		<div class="member-right fr">
 			<div class="member-head">
-				<div class="member-heels fl"><h2>地址管理</h2></div>
+				<div class="member-heels fl"><h2>退货申请</h2></div>
+				<div class="member-backs member-icons fr"><a href="#">搜索</a></div>
+				<div class="member-about fr"><input placeholder="商品名称/商品编号/订单编号" type="text"></div>
 			</div>
-			
 			<div class="member-border">
-
-				<div class="member-caution clearfix">
-					
-					<!-- 收货地址 -->
-						<div class="xm-box">
-							
-							<div style="height: 36px"></div>
-<!--
-							<div class="box-hd ">
-								<h2 class="title">收货地址</h2>
-							</div>
--->
-							<div class="box-bd">
-								<div class="clearfix xm-address-list" id="checkoutAddrList">
-									<dl class="item" style="margin-left: 40px">
-										<dt>
-											<strong class="itemConsignee">留刘海</strong>
-											<span class="itemTag tag">家</span>
-										</dt>
-										<dd>
-											
-											<p class="itemRegion">北京市 海淀区</p>
-											<p class="itemStreet">北京市海淀区双榆树</p>
-											<p class="tel itemTel">188010666666</p>
-											<span class="edit-btn J_editAddr">编辑</span>
-										</dd>
-										<dd style="display:none">
-											<input type="radio" name="Checkout[address]" class="addressId"  value="10140916720030323">
-										</dd>
-									</dl>
-									<div class="item use-new-addr"  id="J_useNewAddr" data-state="off" style="margin-left: 10px">
-										<span class="iconfont icon-add"><img src="images/add_cart.png" /></span>
-										使用新地址
-									</div>
-								</div>
-								<input type="hidden" name="newAddress[type]" id="newType" value="common">
-								<input type="hidden" name="newAddress[consignee]" id="newConsignee">
-								<input type="hidden" name="newAddress[province]" id="newProvince">
-								<input type="hidden" name="newAddress[city]" id="newCity">
-								<input type="hidden" name="newAddress[district]" id="newCounty">
-								<input type="hidden" name="newAddress[address]" id="newStreet">
-								<input type="hidden" name="newAddress[zipcode]" id="newZipcode">
-								<input type="hidden" name="newAddress[tel]" id="newTel">
-								<input type="hidden" name="newAddress[tag_name]" id="newTag">
-								<!--点击弹出新增/收货地址界面start-->
-								<div class="xm-edit-addr-box" id="J_editAddrBox">
-									<div class="bd">
-										<div class="item">
-											<label>收货人姓名<span>*</span></label>
-											<input type="text" name="userAddress[consignee]" id="Consignee" class="input" placeholder="收货人姓名" maxlength="15" autocomplete='off'>
-											<p class="tip-msg tipMsg"></p>
-										</div>
-										<div class="item">
-											<label>联系电话<span>*</span></label>
-											<input type="text" name="userAddress[tel]" class="input" id="Telephone" placeholder="11位手机号" autocomplete='off'>
-											<p class="tel-modify-tip" id="telModifyTip"></p>
-											<p class="tip-msg tipMsg"></p>
-										</div>
-										<div class="item">
-											<label>地址<span>*</span></label>
-											<select name="userAddress[province]" id="Provinces" class="select-1">
-												<option>省份/自治区</option>
-											</select>
-											<select name="userAddress[city]"  id="Citys" class="select-2" disabled>
-												<option>城市/地区/自治州</option>
-											</select>
-											<select name="userAddress[county]"  id="Countys" class="select-3" disabled>
-												<option>区/县</option>
-											</select>
-											<textarea   name="userAddress[street]" class="input-area" id="Street" placeholder="路名或街道地址，门牌号"></textarea>
-											<p class="tip-msg tipMsg"></p>
-										</div>
-										<div class="item">
-											<label>邮政编码<span>*</span></label>
-											<input type="text" name="userAddress[zipcode]" id="Zipcode" class="input" placeholder="邮政编码"  autocomplete='off'>
-											<p class="zipcode-tip" id="zipcodeTip"></p>
-											<p class="tip-msg tipMsg"></p>
-										</div>
-										<div class="item">
-											<label>地址标签<span>*</span></label>
-											<input type="text" name="userAddress[tag]" id="Tag" class="input" placeholder='地址标签：如"家"、"公司"。限5个字内'  >
-											<p class="tip-msg tipMsg"></p>
-										</div>
-									</div>
-									<div class="ft clearfix">
-										<button  type="button"  class="btn btn-lineDake btn-small " id="J_editAddrCancel">取消</button>
-										<button type="button" class="btn btn-primary  btn-small " id="J_editAddrOk">保存</button>
-									</div>
-								</div>
-								<!--点击弹出新增/收货地址界面end-->
-								<div class="xm-edit-addr-backdrop" id="J_editAddrBackdrop"></div>
-							</div>                </div>
-						<!-- 收货地址 END-->
-					
-					
-<!--
-						<li class="clearfix">
-							<div class="warn1"></div>
-							<div class="warn2">登录密码</div>
-							<div class="warn3">互联网账号存在被盗风险，建议您定期更改密码以保护账户安全。</div>
-							<div class="warn4"><a href="#">修改</a> </div>
-						</li>
--->
-
-<!--
-						<li class="clearfix">
-							<div class="warn1"></div>
-							<div class="warn2">手机验证</div>
-							
-							<div class="warn3">134*****693  </div>
-							<span style="margin-left: -450px; height:33px; line-height:33px; float:left; color: #A8A8A8">若已丢失或停用，请立即更换，避免账户被盗</span>
-
-							<div class="warn4"><a href="#">更换</a> </div>
-						</li>
--->
-
-					</ul>
-<!--
-					<div class="member-prompt">
-						<p>安全提示：</p>
-						<p>您当前IP地址是：<i class="reds">110.106.0.01</i>  北京市          上次登录的TP： 2015-09-16  <i class="reds">110.106.0.02 </i> 天津市</p>
-						<p>1. 注意防范进入钓鱼网站，不要轻信各种即时通讯工具发送的商品或支付链接，谨防网购诈骗。</p>
-						<p>2. 建议您安装杀毒软件，并定期更新操作系统等软件补丁，确保账户及交易安全。      </p>
+				<div class="member-return H-over">
+					<div class="member-cancel clearfix" style="margin-top: -20px;">
+						<span class="be1" style="width: 355px">商品信息</span>
+						<span class="be2" style="width: 100px">商品金额</span>
+						<span class="be2" style="width: 100px">退款金额</span>
+						<span class="be2" style="width: 100px">购买时间</span>
+						<span class="be2" style="width:95px">订单状态</span>
+						<span class="be2" style="width:218px">退货订单物流单号</span>
 					</div>
--->
-					
+					<div class="member-sheet clearfix">
+						<ul>
+							<li>
+								<div class="member-minute clearfix">
+									<span>2015-09-22 18:22:33</span>
+									<span>订单号：<em>98653056821</em></span>
+									<span class="member-custom">客服电话：<em>010-6544-0986</em></span>
+								</div>
+								<div class="member-circle clearfix">
+									<div class="ci1">
+										<div class="ci7 clearfix" style="border-bottom: 1px transparent solid">
+											<span class="gr1"><a href="#"><img src="images/shangpinxiangqing/X-1.png" title="" about="" width="60" height="60"></a></span>
+											<span class="gr2"><a href="#">红米Note2 标准版 白色 移动4G手机 双卡双待</a></span>
+										</div>
+									</div>
+									<div class="ci"><p class="red">￥<span>69.00</span></p></div>
+									<div class="ci"><p class="red">￥<span>69.00</span></p></div>
+									<div class="ci"><p>2015-09-22</p></div>
+									<div class="ci"><p>已到货</p></div>
+									<div class="cii"><a href="#" style="color: #ee4644; text-decoration: solid;">12345667890</a></div>
+								</div>
+							</li>
+						</ul>
+					</div>
 				</div>
 			</div>
+<%--			<div class="member-border" style="margin-top: -50px;">
+				<div class="member-cancel clearfix" >
+					<span class="be1">商品信息</span>
+					<span class="be2">商品金额</span>
+					<span class="be2">购买时间</span>
+					<span class="be2">商品状态</span>
+					<span class="be3">退货理由</span>
+					<span class="be2">订单操作</span>
+				</div>
+				<div class="member-sheet clearfix">
+					<ul>
+						<li>
+							<div class="member-circle clearfix">
+								<div class="member-apply clearfix">
+									<div class="ap1 fl">
+										<span class="gr1"><a href="#"><img about="" title="" src="images/shangpinxiangqing/X-1.png" width="60" height="60"></a></span>
+										<span class="gr2"><a href="#">红米Note2 标准版 白色 移动4G手机 双卡双待</a></span>
+									</div>
+									<div><p class="red">￥<span>69.00</span></p></div>
+									<div><span>2015-09-22 18:22:33</span></div>
+									<div class="ap3 fl"><a href="#">申请退款</a> </div>
+								</div>
+								&lt;%&ndash;<div class="member-apply clearfix">
+									<div class="ap1 fl">
+										<span class="gr1"><a href="#"><img about="" title="" src="images/shangpinxiangqing/X-1.png" width="60" height="60"></a></span>
+										<span class="gr2"><a href="#">红米Note2 标准版 白色 移动4G手机 双卡双待</a></span>
+										<span class="gr3">X1</span>
+									</div>
+									<div class="ap2 fl"><a href="#">查看订单</a> </div>
+									<div class="ap3 fl"><a href="#">申请退款</a> </div>
+								</div>&ndash;%&gt;
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>--%>
 		</div>
 	</div>
 </section>

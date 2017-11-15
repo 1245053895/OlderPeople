@@ -1,0 +1,191 @@
+@charset "utf-8";
+/* CSS Document */
+body {
+	color:#666;
+	font-size:12px;
+	font-family:Arial;
+	width:100%;
+	background-color:white;
+}
+.wrap {
+	width:100%;
+	height:650px;
+}
+.wrap .reg {
+	width:1142px;
+	height:800px;
+	margin:0 auto;
+	background-color:white;
+}
+.wrap .reg .head {
+	display:block;
+}
+.wrap .reg .head a{
+	margin-left: 30px;
+	margin-top: 20px;
+}
+/*.welcomezc{
+	width: 290px;
+	height: 44px;
+	line-height: 44px;
+	font-size: 28px;
+	margin-top: -30px;
+}*/
+.wrap .reg .head .logo {
+	display:inline-block;
+	width:215px;
+	height:60px;
+	margin-right:25px;
+}
+.wrap .reg .head .welcome {
+	display:inline-block;
+	width:336px;
+	height:50px;
+	margin-left:60px;
+}
+.wrap .reg .main {
+	background-color:#fff;
+	padding-top:10px;
+	padding-right: 20px;
+	margin-left: -10px;
+}
+.wrap .reg .main .ad {
+	float: left;
+}
+.wrap .reg .main .form {
+	float:right;
+	width:320px;
+	margin-right:30px;
+}
+.wrap .reg .main .form .list {
+	min-height:68px;
+}
+.wrap .reg .main .form .list .box {
+	position:relative;
+}
+.wrap .reg .main .form .icon {
+	display:inline-block;
+	width:25px;
+	height:25px;
+	position:absolute;
+	background-position: -750px;
+	top:6px;
+	left:5px;
+	margin-top:-2px;
+}
+.wrap .reg .main .form input[type="text"] {
+	width:320px;
+    height:35px;
+	margin-left:0;
+    border: 0;
+	padding-left:35px;
+	border:1px solid #e6e6e6;
+}
+.wrap .reg .main .form input[type="password"] {
+	width:320px;
+    height:35px;
+	margin-left:0;
+    border: 0;
+	padding-left:35px;
+	border:1px solid #e6e6e6;
+}
+.wrap .reg .main .form input[type="button"] {
+    width:320px;
+    height:50px;
+	margin-left:0;
+    border: 0;
+    background:#ee4644;
+    color: white;
+	font-size:1.2em;
+	cursor:pointer;
+}
+.wrap .reg .main .form .agree {
+	padding-top:12px;
+	padding-bottom:20px;
+	color:#999;
+	border-bottom:1px dotted #ccc;
+}
+.wrap .reg .main .form .fastway {
+	float:left;
+	border-top:1px dotted #B7B7B7;
+	margin-top:20px;
+	padding-top:10px;
+	width:320px;
+	height:106px;
+}
+.wrap .reg .main .form input[type="submit"] {
+	float:left;
+	width:100px;
+	height:40px;
+	margin-right:6px;
+	color:white;
+	font-size:1.2em;
+	cursor:pointer;
+}
+.wrap .reg .main .form .moreway {
+	padding-bottom:25px;
+	line-height:26px;
+}
+.wrap .reg .main .form a {
+	color:#ee4644;
+}
+label {
+            display: inline-block;
+            width: 80px;
+            text-align: right;
+        }
+
+        .error {
+            color: #ee4644;
+            border: 1px solid #ee4644;
+            width: 14px;
+            height: 14px;
+            border-radius: 14px;
+            text-align: center;
+            display: none;
+        }
+
+
+        .tops {
+            color: #ee4644;
+        }
+
+        .regTextBox {
+            border: 1px solid lightgrey;
+        }
+
+		.moreregister
+
+.moreregister{
+	padding-top:24px;
+
+}
+.moreregister a{
+	text-decoration: none;
+	margin-right:53px;
+}
+
+.moreregister a img{
+	width:5%;
+	margin-right: 6px;
+	vertical-align: top;
+}
+.foot{
+	margin-top: 15px;
+	margin-bottom: 45px;
+	position:relative;
+	text-align: center;
+}
+.foots{
+	margin-top:50px;
+	padding-top:20px;
+	border-top:2px solid #e22;
+}
+
+.foots p{
+	padding-bottom:5px;
+}
+.foots p a{
+	text-decoration: none;
+	color: #666666;
+}

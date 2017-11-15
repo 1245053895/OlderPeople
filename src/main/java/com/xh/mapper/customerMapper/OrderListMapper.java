@@ -1,0 +1,16 @@
+package com.xh.mapper.customerMapper;
+
+import com.xh.po.Product;
+import com.xh.po.vo.OrderCustom;
+import com.xh.po.vo.ProductCustom;
+import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Component;
+
+import java.util.List;
+
+@Component
+public interface OrderListMapper {
+    public List<OrderCustom> selectOrderList(OrderCustom oc);
+
+    public List<ProductCustom> selectOrderDetails(@Param("orderid")Integer orderid);
+}

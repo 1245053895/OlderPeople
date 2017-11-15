@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt" %>
 <html>
 <head>
 	<meta charset="UTF-8">
@@ -20,7 +21,9 @@
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/jsp/users/css/base.css">
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/jsp/users/css/home.css">
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/jsp/users/css/member.css">
+	<%--<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/jsp/admin/assets/*">--%>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/jsp/users/js/jquery.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/jsp/users/js/jquery-1.8.3.min.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/jsp/users/js/index.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/jsp/users/js/modernizr-custom-v2.7.1.min.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/jsp/users/js/jquery.SuperSlide.js"></script>
@@ -157,7 +160,7 @@
 			<div class="fr pc-header-list top-nav">
 				<ul>
 					<li><a href="#">收藏夹</a></li>
-					<li><a href="my-dingdan.jsp">我的订单</a></li>
+					<li><a href="${pageContext.request.contextPath}/jsp/users/my-dingdan.jsp">我的订单</a></li>
 					<li>
 						<div class="nav"><i class="pc-top-icon"></i><a href="#">个人中心</a></div>
 						<div class="con">
@@ -241,15 +244,15 @@
 				<div class="fl"><a href="#"><img src="img/mem.png"></a></div>
 				<div class="fl">
 					<p>用户名：</p>
-					<p><a href="#">亚里士多德</a></p>
+					<p><a href="#">${user.userrealname}</a></p>
 					<p>账号：</p>
-					<p>389323080</p>
+					<p>${user.username}</p>
 				</div>
 			</div>
 			<div class="member-lists" id="leftinfo">
 				<dl  onclick = "change(this);">
 					<dt>我的商城</dt>
-					<dd><a href="#">我的订单</a></dd>
+					<dd><a href="javascript:queryOrderByUserId(0,10,-1);">我的订单</a></dd>
 					<dd><a href="#">我的购物车</a></dd>
 					<dd><a href="#">我的收藏</a></dd>
 					<dd><a href="#">我的评价</a></dd>
@@ -269,18 +272,17 @@
 			</div>
 			<div class="member-whole clearfix" id="dingdan">
 				<ul id="H-table" class="H-table">
-					<li class="cur"><a href="#">全部订单</a></li>
-					<li><a href="#">待发货</a></li>
-					<li><a href="#">已发货</a></li>
-					<li><a href="#">已签收</a></li>
-					<li><a href="#">确认收货</a></li>
-					<li><a href="#">待付款<em>(44)</em></a></li>
-					<li><a href="#">交易完成</a></li>
+					<li class="cur"><a href="javascript:queryOrderByUserId(0,5,-1);">全部订单</a></li>
+					<li><a href="javascript:queryOrderByUserId(0,5,1);">待发货</a></li>
+					<li><a href="javascript:queryOrderByUserId(0,5,2);">已发货</a></li>
+					<li><a href="javascript:queryOrderByUserId(0,5,3);">已签收</a></li>
+					<li><a href="javascript:queryOrderByUserId(0,5,4);">已完成</a></li>
+					<li><a href="javascript:queryOrderByUserId(0,5,6);">退货订单<em></em></a></li>
 				</ul>
 			</div>
 			<div class="member-border">
 				<div class="member-return H-over">
-					<div class="member-cancel clearfix">
+					<div class="member-cancel clearfix" id="tb_haed">
 						<span class="be1">订单信息</span>
 						<span class="be2">收货人</span>
 						<span class="be2">订单金额</span>
@@ -288,7 +290,12 @@
 						<span class="be2">订单状态</span>
 						<span class="be2">订单操作</span>
 					</div>
-					<div class="member-sheet clearfix">
+					<div class="loading">
+						<div></div>
+						<img src="${pageContext.request.contextPath}/jsp/users/images/loading1.gif"/>
+					</div>
+					<div id="order" class="member-sheet clearfix"><ul></ul></div>
+					<%--<div class="member-sheet clearfix">
 						<ul>
 							<li>
 								<div class="member-minute clearfix">
@@ -296,8 +303,13 @@
 									<span>订单号：<em>98653056821</em></span>
 									<span class="member-custom">客服电话：<em>010-6544-0986</em></span>
 								</div>
-								<div class="member-circle clearfix">
+								<div class="member-circle clearfix" style="height: inherit">
 									<div class="ci1">
+										<div class="ci7 clearfix">
+											<span class="gr1"><a href="#"><img src="images/shangpinxiangqing/X-1.png" title="" about="" width="60" height="60"></a></span>
+											<span class="gr2"><a href="#">红米Note2 标准版 白色 移动4G手机 双卡双待</a></span>
+											<span class="gr3">X1</span>
+										</div>
 										<div class="ci7 clearfix">
 											<span class="gr1"><a href="#"><img src="images/shangpinxiangqing/X-1.png" title="" about="" width="60" height="60"></a></span>
 											<span class="gr2"><a href="#">红米Note2 标准版 白色 移动4G手机 双卡双待</a></span>
@@ -309,7 +321,7 @@
 											<span class="gr3">X9</span>
 										</div>
 									</div>
-									<div class="ci2">张子琪</div>
+									<div class="ci2" style="height: 100%">张子琪</div>
 									<div class="ci3"><p class="red">￥<span>69.00</span></p><p>货到付款</p><p class="iphone">手机订单</p></div>
 									<div class="ci4"><p>2015-09-22</p></div>
 									<div class="ci5"><p>等待付款</p> <p><a href="#">物流跟踪</a></p> <p><a href="#">订单详情</a></p></div>
@@ -392,9 +404,9 @@
 									<div class="ci4"><p>2015-09-22</p></div>
 									<div class="ci5"><p>交易关闭</p> <p><a href="#">订单详情</a></p></div>
 								</div>
-							</li>
+							</li>&ndash;%&gt;
 						</ul>
-					</div>
+					</div>--%>
 				</div>
 				<div class="member-return H-over" style="display:none;">
 					<div class="member-cancel clearfix">
@@ -407,87 +419,7 @@
 					</div>
 					<div class="member-sheet clearfix">
 						<ul>
-							<li>
-								<div class="member-minute clearfix">
-									<span>2015-09-22 18:22:33</span>
-									<span>订单号：<em>98653056821</em></span>
-									<span><a href="#">以纯甲醇旗舰店</a></span>
-									<span class="member-custom">客服电话：<em>010-6544-0986</em></span>
-								</div>
-								<div class="member-circle clearfix">
-									<div class="ci1">
-										<div class="ci7 clearfix">
-											<span class="gr1"><a href="#"><img src="../theme/img/pd/m1.png" title="" about="" width="60" height="60"></a></span>
-											<span class="gr2"><a href="#">红米Note2 标准版 白色 移动4G手机 双卡双待</a></span>
-											<span class="gr3">X1</span>
-										</div>
-										<div class="ci7 clearfix">
-											<span class="gr1"><a href="#"><img src="../theme/img/pd/m2.png" title="" about="" width="60" height="60"></a></span>
-											<span class="gr2"><a href="#">AXON天机mini NBA限量版</a></span>
-											<span class="gr3">X9</span>
-										</div>
-									</div>
-									<div class="ci2">张子琪</div>
-									<div class="ci3"><b>￥120.00</b><p>货到付款</p><p class="iphone">手机订单</p></div>
-									<div class="ci4"><p>2015-09-22</p></div>
-									<div class="ci5"><p>已申请退货</p> <p><a href="#">退货日志</a></p></div>
-									<div class="ci6"><p><a href="#">取消退货</a> </p></div>
-								</div>
-							</li>
-							<li>
-								<div class="member-minute clearfix">
-									<span>2015-09-22 18:22:33</span>
-									<span>订单号：<em>98653056821</em></span>
-									<span><a href="#">以纯甲醇旗舰店</a></span>
-									<span class="member-custom">客服电话：<em>010-6544-0986</em></span>
-								</div>
-								<div class="member-circle clearfix">
-									<div class="ci1">
-										<div class="ci7 clearfix">
-											<span class="gr1"><a href="#"><img src="../theme/img/pd/m1.png" title="" about="" width="60" height="60"></a></span>
-											<span class="gr2"><a href="#">红米Note2 标准版 白色 移动4G手机 双卡双待</a></span>
-											<span class="gr3">X1</span>
-										</div>
-										<div class="ci7 clearfix">
-											<span class="gr1"><a href="#"><img src="../theme/img/pd/m2.png" title="" about="" width="60" height="60"></a></span>
-											<span class="gr2"><a href="#">AXON天机mini NBA限量版</a></span>
-											<span class="gr3">X9</span>
-										</div>
-									</div>
-									<div class="ci2">张子琪</div>
-									<div class="ci3"><b>￥120.00</b><p>货到付款</p><p class="iphone">手机订单</p></div>
-									<div class="ci4"><p>2015-09-22</p></div>
-									<div class="ci5"><p>已完成</p> <p><a href="#">订单详情</a></p></div>
-									<div class="ci6"><p><a href="#">取消退货</a> </p></div>
-								</div>
-							</li>
-							<li>
-								<div class="member-minute clearfix">
-									<span>2015-09-22 18:22:33</span>
-									<span>订单号：<em>98653056821</em></span>
-									<span><a href="#">以纯甲醇旗舰店</a></span>
-									<span class="member-custom">客服电话：<em>010-6544-0986</em></span>
-								</div>
-								<div class="member-circle clearfix">
-									<div class="ci1">
-										<div class="ci7 clearfix">
-											<span class="gr1"><a href="#"><img src="../theme/img/pd/m1.png" title="" about="" width="60" height="60"></a></span>
-											<span class="gr2"><a href="#">红米Note2 标准版 白色 移动4G手机 双卡双待</a></span>
-											<span class="gr3">X1</span>
-										</div>
-										<div class="ci7 clearfix">
-											<span class="gr1"><a href="#"><img src="../theme/img/pd/m2.png" title="" about="" width="60" height="60"></a></span>
-											<span class="gr2"><a href="#">AXON天机mini NBA限量版</a></span>
-											<span class="gr3">X9</span>
-										</div>
-									</div>
-									<div class="ci2">张子琪</div>
-									<div class="ci3"><b>￥120.00</b><p>货到付款</p><p class="iphone">手机订单</p></div>
-									<div class="ci4"><p>2015-09-22</p></div>
-									<div class="ci5"><p>已完成</p> <p><a href="#">订单详情</a></p></div>
-									<div class="ci6"><p><a href="#">取消退货</a> </p></div>
-								</div>
-							</li>
+
 						</ul>
 					</div>
 				</div>
@@ -498,14 +430,14 @@
 
 				<div class="clearfix" style="padding:30px 20px;">
 					<div class="fr pc-search-g pc-search-gs">
-						<a style="display:none" class="fl " href="#">上一页</a>
-						<a href="#" class="current">1</a>
-						<a href="javascript:;">2</a>
-						<a href="javascript:;">3</a>
-						<a href="javascript:;">4</a>
-						<a href="javascript:;">5</a>
-						<a href="javascript:;">6</a>
-						<a href="javascript:;">7</a>
+						<a style="display:none" class="fl " href="javascript:void(0);">上一页</a>
+						<a href="javascript:queryOrderByUserId(0,5);" class="current">1</a>
+						<a href="javascript:queryOrderByUserId(6,5);">2</a>
+						<a href="javascript:queryOrderByUserId(11,5);">3</a>
+						<a href="javascript:queryOrderByUserId(16,5);">4</a>
+						<a href="javascript:queryOrderByUserId(21,5);">5</a>
+						<a href="javascript:queryOrderByUserId(26,5);">6</a>
+						<a href="javascript:queryOrderByUserId(31,5);">7</a>
 						<span class="pc-search-di">…</span>
 						<a href="javascript:;">1088</a>
 						<a title="使用方向键右键也可翻到下一页哦！" class="" href="javascript:;">下一页</a>
@@ -590,7 +522,240 @@
 		</div>
 	</div>
 </footer>
+<style>
+	#tb_haed span{
+		margin-top: 1px;
+	}
+	.loading div{
+		display: none;
+		line-height: 80px;
+		text-align: center;
+		position: relative;
+		width: 200px;
+		height: 80px;
+		top:10px;
+		left: 200px;
+		font-size: 24px;
+		border-radius: 50%;
+		border: 1px #FFFFCC solid;
+	}
+	.loading img{
+		margin-top: -150px;
+		float: left;
+		display: none;
+		width: 968px;
+	}
+</style>
+
 <script type="text/javascript">
+	/*获取URL中的参数的方法*/
+    (function($){
+        $.getUrlParam = function(name) {
+            var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+            var r = window.location.search.substr(1).match(reg);
+            if (r!=null) return unescape(r[2]); return null;
+        }
+    })(jQuery);
+
+    $(document).ready(function(){
+        var flag=$.getUrlParam('flag')
+        console.log(flag);
+        switch(flag){
+			case '0':
+			    $(".cur").find("a").addClass("dingdans"); //使全部订单按钮为选中状态
+                queryOrderByUserId(0,10,-1);
+                break;
+            case '1':
+                queryFavoritesByUserId();
+                break;
+            case '2':
+                queryShopCarByUserId();
+                break;
+            case '3':
+
+                break;
+			default:
+
+                break;
+
+        }
+	});
+    function queryOrderByUserId(start,count,status,conditions) {
+        console.log("这是订单"+${user.userid});
+        var para=new Array();
+        para.push(start);  //从第几条开始
+        para.push(count);	//查询多少条
+        para.push(${user.userid}); //用户id
+        if(!status){
+            para.push("-1");//订单状态 -1表示查询所有状态
+        }else{
+            para.push(status);
+        }
+		if(!conditions){
+		    para.push("-1");	//任意条件
+        }	else{
+            para.push(conditions);
+        }
+		$.ajax({
+			url:"${pageContext.request.contextPath}/selectOrderList.action",
+            async:true,
+            type: 'POST',
+            data:{'para':para},
+            traditional: true,
+            timeout: 2000,
+            cache: false,
+            success: succFunction, //成功执行方法
+            beforeSend: LoadFunction, //加载执行方法
+            error: erryFunction  //错误执行方法
+        });
+        function LoadFunction() {
+            $(".loading").find("img").css("display","block");
+            $(".loading").find("div").css("display","block");
+            //$(".loading").find("div").text("加载中...");
+        }
+        function erryFunction(){
+            $(".loading").find("img").attr("src","${pageContext.request.contextPath}/jsp/users/images/loading.gif");
+            $(".loading").find("div").text("加载失败!");
+        }
+        function succFunction(data){
+			$(".loading").find("img").css("display", "none");
+			$(".loading").find("div").css("display", "none");
+            $("#order").find("ul").find("li").remove();
+            $.each( data, function(index, content) {
+                console.log(content.shoppingcount);
+                var htmlStr1="";
+                var htmlStr2="";
+                var htmlStr3="";
+                var productCount=0;
+
+                htmlStr1="<li>\n" +
+                    "\t\t\t\t\t\t\t\t<div class=\"member-minute clearfix\">\n" +
+                    "\t\t\t\t\t\t\t\t\t<span>"+content.createtime+"</span>\n" +
+                    "\t\t\t\t\t\t\t\t\t<span>订单号：<em>"+content.orderid+"</em></span>\n" +
+                    "\t\t\t\t\t\t\t\t\t<span class=\"member-custom\">客服电话：<em>010-6544-0986</em></span>\n" +
+                    "\t\t\t\t\t\t\t\t</div>\n" +
+                    "\t\t\t\t\t\t\t\t<div class=\"member-circle clearfix\">\n" +
+                    "\t\t\t\t\t\t\t\t\t<div class=\"ci1\">\n";
+
+                console.log(content.productCustoms);
+				$.each(content.productCustoms,function(i, productCustom) {
+                    productCount++;
+                    htmlStr2+="\t\t\t\t\t\t\t\t\t\t<div class=\"ci7 clearfix\">\n" +
+                        "\t\t\t\t\t\t\t\t\t\t\t<span class=\"gr1\"><a href=\"#\"><img src=\"/"+productCustom.productpicture+"\" title=\"\" about=\"\" width=\"60\" height=\"60\"></a></span>\n" +
+                        "\t\t\t\t\t\t\t\t\t\t\t<span class=\"gr2\"><a href=\"#\">"+productCustom.productname+"</a></span>\n" +
+                        "\t\t\t\t\t\t\t\t\t\t\t<span class=\"gr3\">X"+productCustom.shoppingcount+"</span>\n" +
+                        "\t\t\t\t\t\t\t\t\t\t</div>\n";
+                });
+
+				htmlStr3="\t\t\t\t\t\t\t\t\t</div>\n" +
+					"\t\t\t\t\t\t\t\t\t<div class=\"ci2 height"+index+"\">"+content.gainname+"</div>\n" +
+					"\t\t\t\t\t\t\t\t\t<div class=\"ci3 height"+index+"\"><p class=\"red\">￥<span>"+content.amountpay+"</span></p><p>";
+				if(content.paytype==0){
+                    htmlStr3+="在线支付";
+				}else{
+                    htmlStr3+="货到付款"
+				}
+                htmlStr3+="</p></div>\n" +
+					"\t\t\t\t\t\t\t\t\t<div class=\"ci4 height"+index+"\"><p>2015-09-22</p></div>\n" ;
+				switch (content.status){
+					case 0:
+                        htmlStr3+="<div class=\"ci5 height"+index+"\"><p>交易关闭</p>"
+						if(content.shippingcode!=null||content.shippingcode!=""){
+                            htmlStr3+="<p><a href=\"#\">物流跟踪</a></p>"
+						}
+						htmlStr3+="<p><a href=\"#\">订单详情</a></p></div>\n";
+
+                        htmlStr3+= "<div class=\"ci5 ci8 height"+index+"\"><p><a href=\"#\" class=\"member-touch\">重新购买</a> </p></div>\n";
+                        break;
+                    case 1:
+                        htmlStr3+="<div class=\"ci5 height"+index+"\"><p>待发货</p><p><a href=\"#\">订单详情</a></p></div>\n";
+                        htmlStr3+= "<div class=\"ci5 ci8 height"+index+"\"><p><a href=\"#\" class=\"member-touch\">提醒发货</a> </p> <p><a href=\"#\">取消订单</a> </p></div>\n";
+                        break;
+                    case 2:
+                        htmlStr3+="<div class=\"ci5 height"+index+"\"><p>已发货</p><p><a href=\"#\">物流跟踪</a></p> <p><a href=\"#\">订单详情</a></p></div>\n";
+                        htmlStr3+= "<div class=\"ci5 ci8 height"+index+"\"><p><a href=\"#\" class=\"member-touch\">确认收货</a> </p></p></div>\n";
+                        break;
+                    case 3:
+                        htmlStr3+="<div class=\"ci5 height"+index+"\"><p>已签收</p><p><a href=\"#\">物流跟踪</a></p> <p><a href=\"#\">订单详情</a></p></div>\n";
+                        htmlStr3+= "<div class=\"ci5 ci8 height"+index+"\"><p><a href=\"#\" class=\"member-touch\">评价</a></p><p><a href=\"#\" class=\"member-touch\">售后服务</a></p></div>\n";
+                        break;
+                    case 4:
+                        htmlStr3+="<div class=\"ci5 height"+index+"\"><p>已完成</p><p><a href=\"#\">物流跟踪</a></p> <p><a href=\"#\">订单详情</a></p></div>\n";
+                        htmlStr3+= "<div class=\"ci5 ci8 height"+index+"\"><p>剩余15时20分</p><p><a href=\"#\" class=\"member-touch\">再次购买</a></p><p><a href=\"#\" class=\"member-touch\">售后服务</a></p></div>\n";
+                        break;
+                    case 5:
+                        htmlStr3+="<div class=\"ci5 height"+index+"\"><p>拒收</p><p><a href=\"#\">物流跟踪</a></p> <p><a href=\"#\">订单详情</a></p></div>\n";
+                        htmlStr3+= "<div class=\"ci5 ci8 height"+index+"\"><p><a href=\"#\" class=\"member-touch\">拒收理由</a> </p></div>\n";
+                        break;
+                    case 6:
+                        htmlStr3+="<div class=\"ci5 height"+index+"\"><p>申请退货</p><p><a href=\"#\">物流跟踪</a></p> <p><a href=\"#\">订单详情</a></p></div>\n";
+                        htmlStr3+= "<div class=\"ci5 ci8 height"+index+"\"><p><a href=\"#\" class=\"member-touch\">撤销申请</a> </p></div>\n";
+                        break;
+                    case 7:
+                        htmlStr3+="<div class=\"ci5 height"+index+"\"><p>同意退货</p><p><a href=\"#\">物流跟踪</a></p> <p><a href=\"#\">订单详情</a></p></div>\n";
+                        htmlStr3+= "<div class=\"ci5 ci8 height"+index+"\"><p>剩余15时20分</p><p><a href=\"#\" class=\"member-touch\">填写物流</a> </p><p><a href=\"#\" class=\"member-touch\">撤销申请</a> </p></div>\n";
+                        break;
+                        break;
+                    case 8:
+                        htmlStr3+="<div class=\"ci5 height"+index+"\"><p>拒绝退货</p><p><a href=\"#\">物流跟踪</a></p> <p><a href=\"#\">订单详情</a></p></div>\n";
+                        htmlStr3+= "<div class=\"ci5 ci8 height"+index+"\"><p><a href=\"#\" class=\"member-touch\">查看原因</a> </p></div>\n";
+                        break;
+					default:
+                        htmlStr3+="未获取到订单状态";
+                        break;
+
+				}
+                htmlStr3+="</div></li>"
+                $("#order").find("ul").append(htmlStr1+htmlStr2+htmlStr3);
+                $(".height"+index).height(90*productCount-23);
+                //console.log("++++"+htmlStr2);
+            });
+        }
+    }
+    function queryFavoritesByUserId() {
+        console.log("这是收藏夹");
+    }
+    function queryShopCarByUserId() {
+        console.log("这是购物车");
+    }
+
+
+    function sleep(n) { //n表示的毫秒数
+        var start = new Date().getTime();
+        while (true) {
+
+            if (new Date().getTime() - start > n) {
+                break;
+            }
+        }
+    }
+
+    /**
+	 * 转换时间格式
+     * @param mydate
+     * @returns {string}
+     */
+    function gettime(mydate){//将当前时间转换成yyyymmdd格式
+        //var mydate = new Date();
+        var str = "" + mydate.getFullYear();
+        var mm = mydate.getMonth()+1
+        if(mydate.getMonth()>9){
+            str += mm;
+        }
+        else{
+            str += "0" + mm;
+        }
+        if(mydate.getDate()>9){
+            str += mydate.getDate();
+        }
+        else{
+            str += "0" + mydate.getDate();
+        }
+        return str;
+    }
+
+
+
     //hover 触发两个事件，鼠标移上去和移走
     //mousehover 只触发移上去事件
     $(".top-nav ul li").hover(function(){

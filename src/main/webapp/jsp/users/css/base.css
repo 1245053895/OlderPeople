@@ -2543,6 +2543,11 @@ li.suc{
     text-align: center;
     float: left;
 }
+.inputx{
+    border: hidden;
+    background-color:#F5F5F5;
+    font-size: 18px;
+}
 .Xcontent33>img{
     float: left;
     margin-top: 34px;

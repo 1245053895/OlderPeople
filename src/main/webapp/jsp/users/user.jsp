@@ -1,3 +1,5 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmd" uri="http://java.sun.com/jstl/fmt_rt" %>
 <%--
   Created by IntelliJ IDEA.
   User: Administrator
@@ -24,6 +26,8 @@
 	<script type="text/javascript" src="${pageContext.request.contextPath}/jsp/users/js/index.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/jsp/users/js/modernizr-custom-v2.7.1.min.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/jsp/users/js/jquery.SuperSlide.js"></script>
+	<script src="${pageContext.request.contextPath}/jsp/users/js/jquery-1.8.3.min.js"></script>
+	<script src="${pageContext.request.contextPath}/jsp/users/js/jquery-labelauty.js"></script>
 	<script>
         $(function(){
             $("#dingdan ul li").click(function(){
@@ -156,10 +160,17 @@
 <header id="pc-header">
 	<div class="pc-header-nav">
 		<div class="pc-header-con">
-			<div class="fl pc-header-link" >您好！，欢迎来孝和集团电子商城
-				<a href="login.html" target="_blank">请登录</a>
-				<a href="register.html" target="_blank"> 免费注册</a>
-			</div>
+			<c:if test="${empty sessionScope.user.userid}">
+				<div class="fl pc-header-link" >您好！欢迎来孝和集团电子商城
+					<a href="/LoginPage.action" target="_blank">请登录</a>
+					<a href="register.jsp" target="_blank"> 免费注册</a>
+				</div>
+			</c:if>
+			<c:if test="${not empty sessionScope.user.userid}">
+				<div class="fl pc-header-link" >${sessionScope.user.username}您好！欢迎来孝和集团电子商城
+					<a target="_self" href="${pageContext.request.contextPath}/ExitLogin.action" target="_blank"> 退出登录</a>
+				</div>
+			</c:if>
 			<div class="fr pc-header-list top-nav">
 				<ul>
 					<li><a href="#">收藏夹</a></li>
@@ -241,12 +252,12 @@
 	<div class="member-center clearfix">
 		<div class="member-left fl">
 			<div class="member-apart clearfix">
-				<div class="fl"><a href="#"><img src="img/mem.png"></a></div>
+				<div class="fl"><a href="#"><img src="jsp/users/img/mem.png"></a></div>
 				<div class="fl">
 					<p>用户名：</p>
-					<p><a href="#">亚里士多德</a></p>
+					<p><a href="#">${sessionScope.user.username}</a></p>
 					<p>账号：</p>
-					<p>389323080</p>
+					<p>${sessionScope.user.userid}</p>
 				</div>
 			</div>
 			<div class="member-lists" id="leftinfo">
@@ -291,12 +302,13 @@
                                 </div>
                 -->
 				<div class="member-caution clearfix">
+					<form>
 					<ul>
 						<li class="clearfix">
 							<div class="warn1"></div>
 							<div class="warn2">用户名</div>
-							<div class="warn3">亚里士多德</div>
-							<div class="warn4"><a href="#">修改</a> </div>
+							<div class="warn3"><input class="inputx" type="text" name="${sessionScope.user.username}" value="${sessionScope.user.username}"></div>
+							<div class="warn4"><a  href="/CustomerUpdate.action">修改</a> </div>
 						</li>
 						<li class="clearfix">
 							<div class="warn1"></div>
@@ -305,16 +317,11 @@
 							<span class="warn3">
 
 								<ul style="height: 0px;margin-top: -10px;margin-left: -25px">
-									<li style="border-bottom: 0px;"><input type="radio" name="radio" data-labelauty="男" value="1"></li>
-									<li style="border-bottom: 0px;"><input type="radio" name="radio" data-labelauty="女" value="0"></li>
+									<li style="border-bottom: 0px;"><input type="radio" name="${sessionScope.user.usersex}" data-labelauty="男" value="1" <c:if test="${sessionScope.user.usersex==1}">checked></c:if></li>
+									<li style="border-bottom: 0px;"><input type="radio" name="${sessionScope.user.usersex}" data-labelauty="女" value="0" <c:if test="${sessionScope.user.usersex==0}">checked></c:if></li>
 								</ul>
-<script src="${pageContext.request.contextPath}/jsp/users/js/jquery-1.8.3.min.js"></script>
-<script src="${pageContext.request.contextPath}/jsp/users/js/jquery-labelauty.js"></script>
-<script>
-$(function(){
-    $(':input').labelauty();
-});
-</script>
+
+
 
 							</span>
 							<div class="warn4"><a href="#">修改</a></div>
@@ -323,7 +330,7 @@ $(function(){
 						<li class="clearfix">
 							<div class="warn1"></div>
 							<div class="warn2">真实姓名</div>
-							<div class="warn3">旺财  </div>
+							<div class="warn3"><input class="inputx" type="text" name="${sessionScope.user.userrealname}" value="${sessionScope.user.userrealname}">  </div>
 							<div class="warn4"><a href="#">修改</a> </div>
 						</li>
 
@@ -360,11 +367,12 @@ $(function(){
 						<li class="clearfix">
 							<div class="warn6"></div>
 							<div class="warn2">邮箱地址</div>
-							<div class="warn3" id="text">1234567890@qq.com  </div>
+							<div class="warn3" id="text"><input class="inputx" type="text" name="${sessionScope.user.useremail}" value="${sessionScope.user.useremail}"> </div>
 							<!--							<div class="warn5"><a href="#">支付密码管理</a></div>-->
 							<div class="warn4"><a href="#" onClick="Guestbook_iew(12)">修改</a> </div>
 						</li>
 					</ul>
+					</form>
 
 
 					<div class="member-prompt">
@@ -469,6 +477,20 @@ $(function(){
         $(this).removeClass("hover");
         $(this).find(".nav a").removeClass("hover");
     })
+
+    function update(obj,id){
+        layer.confirm('确认要修改吗？',{icon:0,},function(index){
+            $(obj).parents("tr").remove();
+            layer.msg('已修改!',{icon:1,time:1000});
+            window.location.href="${pageContext.request.contextPath}/CustomerUpdate.action?Userid="+id;
+        });
+    }
+
+</script>
+<script>
+    $(function(){
+        $(':input').labelauty();
+    });
 </script>
 </body>
 </html>

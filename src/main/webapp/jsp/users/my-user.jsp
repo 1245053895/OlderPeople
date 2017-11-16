@@ -291,9 +291,12 @@
 						<script>
 							function mmyz() {
 								var yz = prompt("请输入原始密码验证身份")
+                                //yz为用户输入的密码，验证过后弹出新密码框；xmm的值是用户输入的新密码
+								var xmm = prompt("请输入新密码")
                             }
                             function sjyz() {
                                 var yz = prompt("请输入登录密码验证身份")
+                                var xsj = prompt("请输入新手机号")
                             }
 						</script>
 <!--

@@ -2,6 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xh.mapper.customerMapper.OrderListMapper">
 
+    <!--查询订单-->
     <select id="selectOrderList" resultType="orderCustom" parameterType="orderCustom">
         SELECT
           u.UserId,
@@ -14,7 +15,7 @@
           INNER JOIN `order` o ON (u.UserId=o.UserId)
           INNER JOIN gainaddres g ON (o.GainId=g.GainId)
         <where>
-            <if test="orderid!=null">
+            <if test="userid!=null">
                 AND u.UserId=#{userid}
             </if>
             <if test="status!=null">
@@ -37,6 +38,35 @@
         FROM orderproduct op
         INNER JOIN product p ON (p.ProductId=op.ProductId)
         WHERE op.OrderId=#{orderid}
+    </select>
+
+    <!--查询购物车-->
+    <select id="selectShopcarList" parameterType="shopCarCustom" resultType="shopCarCustom">
+        SELECT
+          p.*,
+          p.Product_A productA,
+          sc.*,
+          s.MarketPrice
+        FROM shopcar sc
+          INNER JOIN product p ON (sc.ProductId=p.ProductId)
+          INNER JOIN stock s ON (s.ProductId=p.ProductId)
+        <where>
+            sc.UserId=#{userid}
+            <if test="productA!=null">
+                AND p.product_A=#{productA}
+            </if>
+            <if test="producthotsale!=null">
+                AND p.ProducthotSale=#{producthotsale}
+            </if>
+            <if test="productnew!=null">
+                AND p.ProductNew=#{productnew}
+            </if>
+            <if test="conditions!=null">
+                OR  sc.orderamount LIKE '%${conditions}%'
+                OR  p.ProductName LIKE '%${conditions}%'
+            </if>
+        </where>
+        LIMIT #{start},#{count};
     </select>
 
 </mapper>

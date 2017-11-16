@@ -252,10 +252,14 @@
 			<div class="member-lists" id="leftinfo">
 				<dl  onclick = "change(this);">
 					<dt>我的商城</dt>
-					<dd><a href="javascript:queryOrderByUserId(0,10,-1);">我的订单</a></dd>
-					<dd><a href="#">我的购物车</a></dd>
-					<dd><a href="#">我的收藏</a></dd>
-					<dd><a href="#">我的评价</a></dd>
+					<dd><a href="javascript:check('0');">我的订单</a></dd>
+					<dd><a href="javascript:check('2');">我的购物车</a></dd>
+					<dd><a href="${pageContext.request.contextPath}/jsp/users/my-car.jsp">我的收藏</a></dd>
+					<dd><a href="${pageContext.request.contextPath}/jsp/users/my-pingjia.jsp">我的评价</a></dd>
+					<%--<dd><a href="${pageContext.request.contextPath}/jsp/users/my-dingdan.jsp?flag=0">我的订单</a></dd>
+					<dd><a href="${pageContext.request.contextPath}/jsp/users/my-dingdan.jsp?flag=2">我的购物车</a></dd>
+					<dd><a href="${pageContext.request.contextPath}/jsp/users/my-car.jsp">我的收藏</a></dd>
+					<dd><a href="${pageContext.request.contextPath}/jsp/users/my-pingjia.jsp">我的评价</a></dd>--%>
 				</dl>
 				<dl  onclick = "change(this);">
 					<dt>客户服务</dt>
@@ -266,11 +270,11 @@
 		</div>
 		<div class="member-right fr">
 			<div class="member-head">
-				<div class="member-heels fl"><h2>我的订单</h2></div>
+				<div class="member-heels fl"></div>
 				<div class="member-backs member-icons fr"><a href="#">搜索</a></div>
 				<div class="member-about fr"><input placeholder="商品名称/商品编号/订单编号" type="text"></div>
 			</div>
-			<div class="member-whole clearfix" id="dingdan">
+			<%--<div class="member-whole clearfix" id="dingdan">
 				<ul id="H-table" class="H-table">
 					<li class="cur"><a href="javascript:queryOrderByUserId(0,5,-1);">全部订单</a></li>
 					<li><a href="javascript:queryOrderByUserId(0,5,1);">待发货</a></li>
@@ -295,118 +299,6 @@
 						<img src="${pageContext.request.contextPath}/jsp/users/images/loading1.gif"/>
 					</div>
 					<div id="order" class="member-sheet clearfix"><ul></ul></div>
-					<%--<div class="member-sheet clearfix">
-						<ul>
-							<li>
-								<div class="member-minute clearfix">
-									<span>2015-09-22 18:22:33</span>
-									<span>订单号：<em>98653056821</em></span>
-									<span class="member-custom">客服电话：<em>010-6544-0986</em></span>
-								</div>
-								<div class="member-circle clearfix" style="height: inherit">
-									<div class="ci1">
-										<div class="ci7 clearfix">
-											<span class="gr1"><a href="#"><img src="images/shangpinxiangqing/X-1.png" title="" about="" width="60" height="60"></a></span>
-											<span class="gr2"><a href="#">红米Note2 标准版 白色 移动4G手机 双卡双待</a></span>
-											<span class="gr3">X1</span>
-										</div>
-										<div class="ci7 clearfix">
-											<span class="gr1"><a href="#"><img src="images/shangpinxiangqing/X-1.png" title="" about="" width="60" height="60"></a></span>
-											<span class="gr2"><a href="#">红米Note2 标准版 白色 移动4G手机 双卡双待</a></span>
-											<span class="gr3">X1</span>
-										</div>
-										<div class="ci7 clearfix">
-											<span class="gr1"><a href="#"><img src="images/shangpinxiangqing/X-1.png" title="" about="" width="60" height="60"></a></span>
-											<span class="gr2"><a href="#">AXON天机mini NBA限量版</a></span>
-											<span class="gr3">X9</span>
-										</div>
-									</div>
-									<div class="ci2" style="height: 100%">张子琪</div>
-									<div class="ci3"><p class="red">￥<span>69.00</span></p><p>货到付款</p><p class="iphone">手机订单</p></div>
-									<div class="ci4"><p>2015-09-22</p></div>
-									<div class="ci5"><p>等待付款</p> <p><a href="#">物流跟踪</a></p> <p><a href="#">订单详情</a></p></div>
-									<div class="ci5 ci8"><p>剩余15时20分</p> <p><a href="#" class="member-touch">立即支付</a> </p> <p><a href="#">取消订单</a> </p></div>
-								</div>
-							</li>
-							<li>
-								<div class="member-minute clearfix">
-									<span>2015-09-22 18:22:33</span>
-									<span>订单号：<em>98653056821</em></span>
-									<span class="member-custom">客服电话：<em>010-6544-0986</em></span>
-								</div>
-								<div class="member-circle clearfix">
-									<div class="ci1">
-										<div class="ci7 clearfix">
-											<span class="gr1"><a href="#"><img src="images/shangpinxiangqing/X-1.png" title="" about="" width="60" height="60"></a></span>
-											<span class="gr2"><a href="#">红米Note2 标准版 白色 移动4G手机 双卡双待</a></span>
-											<span class="gr3">X1</span>
-										</div>
-										<div class="ci7 clearfix">
-											<span class="gr1"><a href="#"><img src="images/shangpinxiangqing/X-1.png" title="" about="" width="60" height="60"></a></span>
-											<span class="gr2"><a href="#">AXON天机mini NBA限量版</a></span>
-											<span class="gr3">X9</span>
-										</div>
-									</div>
-									<div class="ci2">张子琪</div>
-									<div class="ci3"><p class="red">￥<span>69.00</span></p><p>货到付款</p><p class="iphone">手机订单</p></div>
-									<div class="ci4"><p>2015-09-22</p></div>
-									<div class="ci5"><p>等待卖家发货 </p> <p><a href="#">订单详情</a></p></div>
-									<div class="ci5 ci8"><p><a href="#" class="member-touch">提醒发货</a> </p> <p><a href="#">取消订单</a> </p><p><a href="#">申请退款</a> </p></div>
-								</div>
-							</li>
-							<li>
-								<div class="member-minute clearfix">
-									<span>2015-09-22 18:22:33</span>
-									<span>订单号：<em>98653056821</em></span>
-									<span class="member-custom">客服电话：<em>010-6544-0986</em></span>
-								</div>
-								<div class="member-circle clearfix">
-									<div class="ci1">
-										<div class="ci7 clearfix">
-											<span class="gr1"><a href="#"><img src="images/shangpinxiangqing/X-1.png" title="" about="" width="60" height="60"></a></span>
-											<span class="gr2"><a href="#">红米Note2 标准版 白色 移动4G手机 双卡双待</a></span>
-											<span class="gr3">X1</span>
-										</div>
-										<div class="ci7 clearfix">
-											<span class="gr1"><a href="#"><img src="images/shangpinxiangqing/X-1.png" title="" about="" width="60" height="60"></a></span>
-											<span class="gr2"><a href="#">AXON天机mini NBA限量版</a></span>
-											<span class="gr3">X9</span>
-										</div>
-									</div>
-									<div class="ci2">张子琪</div>
-									<div class="ci3"><p class="red">￥<span>69.00</span></p><p>货到付款</p><p class="iphone">手机订单</p></div>
-									<div class="ci4"><p>2015-09-22</p></div>
-									<div class="ci5"><p>已完成</p> <p><a href="#">订单详情</a></p></div>
-									<div class="ci5 ci8"><p><a href="#" class="member-touch">确认收货</a></p><p><a href="#" class="member-touch">评论</a></p><p><a href="#">申请退货</a></p> <p></p></div>
-								</div>
-							</li>
-							<li>
-								<div class="member-minute clearfix">
-									<span>2015-09-22 18:22:33</span>
-									<span>订单号：<em>98653056821</em></span>
-									<span class="member-custom">客服电话：<em>010-6544-0986</em></span>
-								</div>
-								<div class="member-circle clearfix">
-									<div class="ci1">
-										<div class="ci7 clearfix">
-											<span class="gr1"><a href="#"><img src="images/shangpinxiangqing/X-1.png" title="" about="" width="60" height="60"></a></span>
-											<span class="gr2"><a href="#">红米Note2 标准版 白色 移动4G手机 双卡双待</a></span>
-											<span class="gr3">X1</span>
-										</div>
-										<div class="ci7 clearfix">
-											<span class="gr1"><a href="#"><img src="images/shangpinxiangqing/X-1.png" title="" about="" width="60" height="60"></a></span>
-											<span class="gr2"><a href="#">AXON天机mini NBA限量版</a></span>
-											<span class="gr3">X9</span>
-										</div>
-									</div>
-									<div class="ci2">张子琪</div>
-									<div class="ci3"><p class="red">￥<span>69.00</span></p><p>货到付款</p><p class="iphone">手机订单</p></div>
-									<div class="ci4"><p>2015-09-22</p></div>
-									<div class="ci5"><p>交易关闭</p> <p><a href="#">订单详情</a></p></div>
-								</div>
-							</li>&ndash;%&gt;
-						</ul>
-					</div>--%>
 				</div>
 				<div class="member-return H-over" style="display:none;">
 					<div class="member-cancel clearfix">
@@ -423,10 +315,6 @@
 						</ul>
 					</div>
 				</div>
-				<div class="H-over member-over" style="display:none;"><h2>待发货</h2></div>
-				<div class="H-over member-over" style="display:none;"><h2>待收货</h2></div>
-				<div class="H-over member-over" style="display:none;"><h2>交易完成</h2></div>
-				<div class="H-over member-over" style="display:none;"><h2>订单信息</h2></div>
 
 				<div class="clearfix" style="padding:30px 20px;">
 					<div class="fr pc-search-g pc-search-gs">
@@ -444,7 +332,7 @@
 					</div>
 				</div>
 
-			</div>
+			</div>--%>
 		</div>
 	</div>
 </section>
@@ -523,6 +411,10 @@
 	</div>
 </footer>
 <style>
+
+	.pc-shopping-tab{
+		margin-top: -44px;
+	}
 	#tb_haed span{
 		margin-top: 1px;
 	}
@@ -540,10 +432,9 @@
 		border: 1px #FFFFCC solid;
 	}
 	.loading img{
-		margin-top: -150px;
-		float: left;
 		display: none;
 		width: 968px;
+		max-width: 1980px;
 	}
 </style>
 
@@ -560,27 +451,95 @@
     $(document).ready(function(){
         var flag=$.getUrlParam('flag')
         console.log(flag);
+        check(flag)
+	});
+    function check(flag) {
         switch(flag){
-			case '0':
-			    $(".cur").find("a").addClass("dingdans"); //使全部订单按钮为选中状态
-                queryOrderByUserId(0,10,-1);
+            case '0':
+                $(".cur").find("a").addClass("dingdans"); //使全部订单按钮为选中状态
+                queryOrderByUserId(0,5);
                 break;
             case '1':
                 queryFavoritesByUserId();
                 break;
             case '2':
-                queryShopCarByUserId();
+                queryShopCarByUserId(0,5);
                 break;
             case '3':
 
                 break;
-			default:
+            default:
 
                 break;
-
         }
-	});
+    }
     function queryOrderByUserId(start,count,status,conditions) {
+        var order="<div class=\"member-whole clearfix\" id=\"dingdan\">\n" +
+            "\t\t\t\t<ul id=\"H-table\" class=\"H-table\">\n" +
+            "\t\t\t\t\t<li class=\"cur\"><a href=\"javascript:queryOrderByUserId(0,5,-1);\">全部订单</a></li>\n" +
+            "\t\t\t\t\t<li><a href=\"javascript:queryOrderByUserId(0,5,1);\">待发货</a></li>\n" +
+            "\t\t\t\t\t<li><a href=\"javascript:queryOrderByUserId(0,5,2);\">已发货</a></li>\n" +
+            "\t\t\t\t\t<li><a href=\"javascript:queryOrderByUserId(0,5,3);\">已签收</a></li>\n" +
+            "\t\t\t\t\t<li><a href=\"javascript:queryOrderByUserId(0,5,4);\">已完成</a></li>\n" +
+            "\t\t\t\t\t<li><a href=\"javascript:queryOrderByUserId(0,5,6);\">退货订单<em></em></a></li>\n" +
+            "\t\t\t\t</ul>\n" +
+            "\t\t\t</div>\n" +
+            "\t\t\t<div class=\"member-border\">\n" +
+            "\t\t\t\t<div class=\"member-return H-over\">\n" +
+            "\t\t\t\t\t<div class=\"member-cancel clearfix\" id=\"tb_haed\">\n" +
+            "\t\t\t\t\t\t<span class=\"be1\">订单信息</span>\n" +
+            "\t\t\t\t\t\t<span class=\"be2\">收货人</span>\n" +
+            "\t\t\t\t\t\t<span class=\"be2\">订单金额</span>\n" +
+            "\t\t\t\t\t\t<span class=\"be2\">订单时间</span>\n" +
+            "\t\t\t\t\t\t<span class=\"be2\">订单状态</span>\n" +
+            "\t\t\t\t\t\t<span class=\"be2\">订单操作</span>\n" +
+            "\t\t\t\t\t</div>\n" +
+            "\t\t\t\t\t<div class=\"loading\">\n" +
+            "\t\t\t\t\t\t<div></div>\n" +
+            "\t\t\t\t\t\t<img style=\"margin-top: -150px;float: left;\" src=\"${pageContext.request.contextPath}/jsp/users/images/loading1.gif\"/>\n" +
+            "\t\t\t\t\t</div>\n" +
+            "\t\t\t\t\t<div id=\"order\" class=\"member-sheet clearfix\"><ul></ul></div>\n" +
+            "\t\t\t\t</div>\n" +
+            "\t\t\t\t<div class=\"member-return H-over\" style=\"display:none;\">\n" +
+            "\t\t\t\t\t<div class=\"member-cancel clearfix\">\n" +
+            "\t\t\t\t\t\t<span class=\"be1\">订单信息</span>\n" +
+            "\t\t\t\t\t\t<span class=\"be2\">收货人</span>\n" +
+            "\t\t\t\t\t\t<span class=\"be2\">订单金额</span>\n" +
+            "\t\t\t\t\t\t<span class=\"be2\">订单时间</span>\n" +
+            "\t\t\t\t\t\t<span class=\"be2\">订单状态</span>\n" +
+            "\t\t\t\t\t\t<span class=\"be2\">订单操作</span>\n" +
+            "\t\t\t\t\t</div>\n" +
+            "\t\t\t\t\t<div class=\"member-sheet clearfix\">\n" +
+            "\t\t\t\t\t\t<ul>\n" +
+            "\n" +
+            "\t\t\t\t\t\t</ul>\n" +
+            "\t\t\t\t\t</div>\n" +
+            "\t\t\t\t</div>\n" +
+            "\n" +
+            "\t\t\t\t<div class=\"clearfix\" style=\"padding:30px 20px;\">\n" +
+            "\t\t\t\t\t<div class=\"fr pc-search-g pc-search-gs\">\n" +
+            "\t\t\t\t\t\t<a style=\"display:none\" class=\"fl \" href=\"javascript:void(0);\">上一页</a>\n" +
+            "\t\t\t\t\t\t<a href=\"javascript:queryOrderByUserId(0,5);\" class=\"current\">1</a>\n" +
+            "\t\t\t\t\t\t<a href=\"javascript:queryOrderByUserId(6,5);\">2</a>\n" +
+            "\t\t\t\t\t\t<a href=\"javascript:queryOrderByUserId(11,5);\">3</a>\n" +
+            "\t\t\t\t\t\t<a href=\"javascript:queryOrderByUserId(16,5);\">4</a>\n" +
+            "\t\t\t\t\t\t<a href=\"javascript:queryOrderByUserId(21,5);\">5</a>\n" +
+            "\t\t\t\t\t\t<a href=\"javascript:queryOrderByUserId(26,5);\">6</a>\n" +
+            "\t\t\t\t\t\t<a href=\"javascript:queryOrderByUserId(31,5);\">7</a>\n" +
+            "\t\t\t\t\t\t<span class=\"pc-search-di\">…</span>\n" +
+            "\t\t\t\t\t\t<a href=\"javascript:;\">1088</a>\n" +
+            "\t\t\t\t\t\t<a title=\"使用方向键右键也可翻到下一页哦！\" class=\"\" href=\"javascript:;\">下一页</a>\n" +
+            "\t\t\t\t\t</div>\n" +
+            "\t\t\t\t</div>\n" +
+            "\n" +
+            "\t\t\t</div>";
+
+		$(".member-head").nextAll("div").remove();
+        $(".member-heels").text("我的订单");
+        $(".member-right").append(order);
+
+
+        $(".member-heels").text("我的订单");
         console.log("这是订单"+${user.userid});
         var para=new Array();
         para.push(start);  //从第几条开始
@@ -602,7 +561,7 @@
             type: 'POST',
             data:{'para':para},
             traditional: true,
-            timeout: 2000,
+            timeout: 5000,
             cache: false,
             success: succFunction, //成功执行方法
             beforeSend: LoadFunction, //加载执行方法
@@ -715,8 +674,144 @@
     function queryFavoritesByUserId() {
         console.log("这是收藏夹");
     }
-    function queryShopCarByUserId() {
+    function queryShopCarByUserId(start,count,status,conditions) {
+        var car="<div class=\"center \" id=\"dingdan\">\n" +
+            "\t\t\t\t<ul class=\"pc-shopping-title clearfix\">\n" +
+            "\t\t\t\t\t<li><a href=\"javascript:queryShopCarByUserId(0,5,-1);\">全部商品(10)</a></li>\n" +
+            "\t\t\t\t\t<li><a href=\"javascript:queryShopCarByUserId(0,5,2);\">已下架(0)</a></li>\n" +
+            "\t\t\t\t\t<li><a href=\"javascript:queryShopCarByUserId(0,5,0);\">热销商品(0)</a></li>\n" +
+            "\t\t\t\t\t<li><a href=\"javascript:queryShopCarByUserId(0,5,1);\">新品(0)</a></li>\n" +
+            "\t\t\t\t</ul>\n" +
+            "\t\t\t</div>\n" +
+            "\t\t\t<div class=\"pc-shopping-cart center\">\n" +
+            "\t\t\t\t<div class=\"pc-shopping-tab\">\n" +
+            "\t\t\t\t\t<table>\n" +
+            "\t\t\t\t\t\t<thead>\n" +
+			"<thead>\n" +
+            "\t\t\t\t\t\t\t<tr id=\"id_head\" class=\"tab-0\">\n" +
+            "\t\t\t\t\t\t\t\t<th class=\"tab-1\">\n" +
+            "\t\t\t\t\t\t\t\t\t<input type=\"checkbox\" name=\"s_all\" class=\"s_all tr_checkmr\" id=\"s_all_h\">\n" +
+            "\t\t\t\t\t\t\t\t\t<label style=\"margin-left: 20px;\"> 全选</label>\n" +
+            "\t\t\t\t\t\t\t\t</th>\n" +
+            "\t\t\t\t\t\t\t\t<th class=\"tab-2\">商品</th>\n" +
+            "\t\t\t\t\t\t\t\t<th class=\"tab-3\">商品信息</th>\n" +
+            "\t\t\t\t\t\t\t\t<th class=\"tab-4\">金额</th>\n" +
+            "\t\t\t\t\t\t\t\t<th class=\"tab-5\">数量</th>\n" +
+            "\t\t\t\t\t\t\t\t<th class=\"tab-6\">小计</th>\n" +
+            "\t\t\t\t\t\t\t\t<th class=\"tab-7\">操作</th>\n" +
+            "\t\t\t\t\t\t\t</tr>\n" +
+            "\t\t\t\t\t\t</thead>"+
+			"\t\t\t\t\t\t\t<div class=\"loading\">\n" +
+            "\t\t\t\t\t\t\t\t<div></div>\n" +
+            "\t\t\t\t\t\t\t\t<img  style=\"margin-top: -80px;\" src=\"${pageContext.request.contextPath}/jsp/users/images/loading1.gif\"/>\n" +
+            "\t\t\t\t\t\t\t</div>"+
+            "\t\t\t\t\t\t</thead>\n" +
+            "\t\t\t\t\t\t<tbody id='car'>\n" +
+            "\t\t\t\t\t\t</tbody>\n" +
+            "\t\t\t\t\t</table>\n" +
+            "\t\t\t\t</div>\n" +
+            "\t\t\t</div>\n" +
+			"\t\t\t\t<div class=\"clearfix\" style=\"padding:30px 20px;\">\n" +
+            "\t\t\t\t\t<div class=\"fr pc-search-g pc-search-gs\">\n" +
+            "\t\t\t\t\t\t<a style=\"display:none\" class=\"fl \" href=\"javascript:void(0);\">上一页</a>\n" +
+            "\t\t\t\t\t\t<a href=\"javascript:queryOrderByUserId(0,5);\" class=\"current\">1</a>\n" +
+            "\t\t\t\t\t\t<a href=\"javascript:queryOrderByUserId(6,5);\">2</a>\n" +
+            "\t\t\t\t\t\t<a href=\"javascript:queryOrderByUserId(11,5);\">3</a>\n" +
+            "\t\t\t\t\t\t<a href=\"javascript:queryOrderByUserId(16,5);\">4</a>\n" +
+            "\t\t\t\t\t\t<a href=\"javascript:queryOrderByUserId(21,5);\">5</a>\n" +
+            "\t\t\t\t\t\t<a href=\"javascript:queryOrderByUserId(26,5);\">6</a>\n" +
+            "\t\t\t\t\t\t<a href=\"javascript:queryOrderByUserId(31,5);\">7</a>\n" +
+            "\t\t\t\t\t\t<span class=\"pc-search-di\">…</span>\n" +
+            "\t\t\t\t\t\t<a href=\"javascript:;\">1088</a>\n" +
+            "\t\t\t\t\t\t<a title=\"使用方向键右键也可翻到下一页哦！\" class=\"\" href=\"javascript:;\">下一页</a>\n" +
+            "\t\t\t\t\t</div>\n" +
+            "\t\t\t\t</div>";
+
+        $(".member-head").nextAll("div").remove();
+        $(".member-heels").text("我的购物车");
+        $(".member-right").append(car);
+        $(".member-right").css("width","970px");
+
         console.log("这是购物车");
+        var para=new Array();
+        para.push(start);  //从第几条开始
+        para.push(count);	//查询多少条
+        para.push(${user.userid}); //用户id
+        if(!status&&status!=0){
+            para.push("-1");//商品状态 -1表示查询所有状态
+        }else{
+            para.push(status); //商品状态 0表示查询热销商品  1表示查询新品 2表示查询已下架商品
+        }
+        if(!conditions){
+            para.push("-1");	//任意条件
+        }	else{
+            para.push(conditions);
+        }
+
+        $.ajax({
+            url:"${pageContext.request.contextPath}/selectShopcarList.action",
+            async:true,
+            type: 'POST',
+            data:{'para':para},
+            traditional: true,
+            timeout: 5000,
+            cache: false,
+            success: succFunction, //成功执行方法
+            beforeSend: LoadFunction, //加载执行方法
+            error: erryFunction  //错误执行方法
+        });
+        function LoadFunction() {
+            $(".loading").find("img").css("display","block");
+            $(".loading").find("div").css("display","block");
+            $("#id_head").css("visibility","hidden");
+            //$(".loading").find("div").text("加载中...");
+        }
+        function erryFunction(){
+            $(".loading").find("img").attr("src","${pageContext.request.contextPath}/jsp/users/images/loading.gif");
+            $(".loading").find("div").text("加载失败!");
+            $("#id_head").css("visibility","hidden");
+        }
+        function succFunction(data) {
+            $(".loading").find("img").css("display", "none");
+            $(".loading").find("div").css("display", "none");
+            $("#id_head").css("visibility","visible");
+            $.each( data, function(index, content) {
+                console.log(content.shoppingcount);
+                var html="<tr>\n" +
+                    "\t\t\t\t\t\t\t\t<th><input type=\"checkbox\"  style=\"margin-left:15px; float:left\"></th>\n" +
+                    "\t\t\t\t\t\t\t\t<th class=\"tab-th-1\">\n" +
+                    "\t\t\t\t\t\t\t\t\t<a href=\"#\"><img src=\"/"+content.productpicture+"\" width=\"100%\" alt=\"\"></a>\n" +
+                    "\t\t\t\t\t\t\t\t\t<a href=\"#\" class=\"tab-title\">"+content.productname+"</a>\n" +
+                    "\t\t\t\t\t\t\t\t</th>\n" +
+                    "\t\t\t\t\t\t\t\t<th>\n" +
+                    "\t\t\t\t\t\t\t\t\t<p>"+content.productdescribe+"</p>\n" +
+                    "\t\t\t\t\t\t\t\t\t<p></p>\n" +
+                    "\t\t\t\t\t\t\t\t</th>\n" +
+                    "\t\t\t\t\t\t\t\t<th>\n" +
+                    "\t\t\t\t\t\t\t\t\t<p>售价￥<span class=\"red\">"+content.productprice+"</span></p>\n" +
+                    "\t\t\t\t\t\t\t\t\t<p>市场价￥<span style=\"text-decoration: line-through;\">"+content.marketprice+"</span></p>\n" +
+                    "\t\t\t\t\t\t\t\t\t<br/>\n" +
+                    "\t\t\t\t\t\t\t\t</th>\n" +
+                    "\t\t\t\t\t\t\t\t<th class=\"tab-th-2\">\n" +
+                    "\t\t\t\t\t\t\t\t\t<div onclick='minus(this)' class=\"Xcontent32\"><img src=\"images/shangpinxiangqing/X15.png\"></div>\n" +
+                    "\t\t\t\t\t\t\t\t\t<input class=\"input\" value=\""+content.orderamount+"\">" +
+                    "\t\t\t\t\t\t\t\t\t<div onclick='add(this)' class=\"Xcontent33\"><img src=\"images/shangpinxiangqing/16.png\"></div>\n" +
+                    "\t\t\t\t\t\t\t\t</th>\n" +
+                    "\t\t\t\t\t\t\t\t<th class=\"red\">￥<span>"+content.productprice*content.orderamount+"</span></th>\n" +
+                    "\t\t\t\t\t\t\t\t<th>\n" +
+                    "\t\t\t\t\t\t\t\t\t<p><a href=\"#\">删除</a></p>\n" +
+                    "\t\t\t\t\t\t\t\t\t<br/>\n" +
+                    "\t\t\t\t\t\t\t\t\t<p><a href=\"#\">移入收藏夹</a></p>\n" +
+                    "\t\t\t\t\t\t\t\t</th>\n" +
+                    "\t\t\t\t\t\t\t</tr>";
+
+                $("#car").append(html);
+            });
+        }
+
+
+
+
     }
 
 
@@ -768,7 +863,18 @@
         //$(this).find(".nav a").removeClass("hover");
         $(this).removeClass("hover");
         $(this).find(".nav a").removeClass("hover");
-    })
+    });
+    function add(obj){
+        var value=parseInt($(obj).siblings("input").val())+1;
+        $(obj).siblings("input").val(value);
+    };
+
+    function minus(obj){
+        var num = $(obj).siblings("input").val()
+        if(num>0){
+            $(obj).siblings("input").val(num-1);
+        }
+    };
 </script>
 </body>
 </html>

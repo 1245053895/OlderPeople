@@ -2,6 +2,7 @@ package com.xh.controller.customerController;
 
 import com.xh.po.vo.OrderCustom;
 import com.xh.po.vo.ProductCustom;
+import com.xh.po.vo.ShopCarCustom;
 import com.xh.service.customerService.OrderListService;
 import com.xh.service.customerService.UserLoginService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,5 +33,29 @@ public class OrderListController  {
             orderCustom.setProductCustoms(productCustoms);
         }
         return orderCustoms;
+    }
+
+    @RequestMapping(value = "/selectShopcarList", method ={ RequestMethod.GET,RequestMethod.POST})
+    public @ResponseBody List<ShopCarCustom> selectShopcarList(String[] para){
+        ShopCarCustom scc=new ShopCarCustom();
+        scc.setStart(Integer.parseInt(para[0]));
+        scc.setCount(Integer.parseInt(para[1]));
+        scc.setUserid(Integer.parseInt(para[2]));
+        if(Integer.parseInt(para[3])!=-1&&!para[3].equals("")){
+            if(para[3].equals("0")){
+                scc.setProducthotsale(1); //查询热销商品
+            }else if(para[3].equals("1")){
+                scc.setProductnew(1);  //查询新品
+            }else if(para[3].equals("2")){
+                scc.setProductA("0");  //查询下架商品
+            }
+        }
+        if(!para[4].equals("-1")) scc.setConditions(para[4]);  //用于条件查询
+        List<ShopCarCustom> shopCarCustoms= orderListService.selectShopcarList(scc);
+        /*for(ShopCarCustom shopCarCustom:shopCarCustoms) {
+            List<ProductCustom> productCustoms=orderListService.selectOrderDetails(shopCarCustom.getOrderid());
+            orderCustom.setProductCustoms(productCustoms);
+        }*/
+        return shopCarCustoms;
     }
 }

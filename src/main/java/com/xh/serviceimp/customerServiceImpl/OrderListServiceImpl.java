@@ -5,6 +5,7 @@ import com.xh.mapper.customerMapper.UserLoginMapper;
 import com.xh.po.Product;
 import com.xh.po.vo.OrderCustom;
 import com.xh.po.vo.ProductCustom;
+import com.xh.po.vo.ShopCarCustom;
 import com.xh.service.customerService.OrderListService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,5 +25,10 @@ public class OrderListServiceImpl implements OrderListService {
     @Override
     public List<ProductCustom> selectOrderDetails(Integer orderid) {
         return orderListMapper.selectOrderDetails(orderid);
+    }
+
+    @Override
+    public List<ShopCarCustom> selectShopcarList(ShopCarCustom scc) {
+        return orderListMapper.selectShopcarList(scc);
     }
 }

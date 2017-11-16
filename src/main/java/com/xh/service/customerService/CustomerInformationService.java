@@ -10,7 +10,6 @@ import java.util.List;
 
 @Service
 public interface CustomerInformationService{
-
     //根据用户Id查询用户的收货地址
     public List<Gainaddres> SelectUserAddressByid(Integer userid);
 }

@@ -1,5 +1,6 @@
 package com.xh.service.customerService;
 
+import com.xh.po.Gainaddres;
 import com.xh.po.User;
 import com.xh.po.Userlog;
 
@@ -11,6 +12,8 @@ import java.util.List;
 public interface UserLoginService {
     //查询出所有登录用户的用户名和密码
     public User selectAllNameAndPwd(String username);
+    public List<Gainaddres> SelectUserAddressByid(Integer userid);
+
 
     //注册后插入一个新用户的账号，电话和密码
     public void insertNewUser(User user);

@@ -212,10 +212,10 @@
 					<li><a href="#">收藏夹</a></li>
 					<li><a href="my-dingdan.jsp">我的订单</a></li>
 					<li>
-						<div class="nav"><i class="pc-top-icon"></i><a href="#">个人中心</a></div>
+						<div class="nav"><i class="pc-top-icon"></i><a href="/CustomerInformation.action">个人中心</a></div>
 						<div class="con">
 							<dl>
-								<dt><a href="">个人资料</a></dt>
+								<dt><a href="" >个人资料</a></dt>
 								<dd><a href="">收货地址</a></dd>
 								<dd><a href="">修改登录密码</a></dd>
 								<dd><a href="">我的积分</a></dd>
@@ -241,7 +241,7 @@
 	<div class="pc-header-logo clearfix">
 		<div class="pc-fl-logo fl">
 			<h1>
-				<a href="index.jsp"></a>
+				<a href="/jsp/users/index.jsp"></a>
 			</h1>
 		</div>
 		<div class="head-form fl">

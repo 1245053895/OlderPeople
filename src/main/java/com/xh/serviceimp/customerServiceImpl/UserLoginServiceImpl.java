@@ -1,6 +1,7 @@
 package com.xh.serviceimp.customerServiceImpl;
 
 import com.xh.mapper.customerMapper.UserLoginMapper;
+import com.xh.po.Gainaddres;
 import com.xh.po.User;
 import com.xh.service.customerService.UserLoginService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,5 +20,10 @@ public class UserLoginServiceImpl implements UserLoginService {
     public User selectAllNameAndPwd(String username) {
       User user= userLoginMapper.selectAllNameAndPwd(username);
         return user;
+    }
+
+    public List<Gainaddres> SelectUserAddressByid(Integer userid) {
+        List<Gainaddres> gainaddres=userLoginMapper.SelectUserAddressByid(userid);
+        return gainaddres;
     }
 }

@@ -20,11 +20,11 @@
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/jsp/users/css/base.css">
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/jsp/users/css/home.css">
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/jsp/users/css/member.css">
-	
+
 	<link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/jsp/users/img/icon/favicon.ico">
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/jsp/users/css/car/base.css">
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/jsp/users/css/car/home.css">
-	
+
 	<script type="text/javascript" src="${pageContext.request.contextPath}/jsp/users/js/jquery.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/jsp/users/js/index.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/jsp/users/js/modernizr-custom-v2.7.1.min.js"></script>
@@ -60,7 +60,7 @@
         });//倒计时结束
 
         $(function(){
-	        /*======右按钮======*/
+            /*======右按钮======*/
             $(".you").click(function(){
                 nextscroll();
             });
@@ -73,7 +73,7 @@
                     $(this).css("margin-left","0px");
                 });
             };
-	        /*========左按钮=========*/
+            /*========左按钮=========*/
             $(".zuo").click(function(){
                 var vcon = $(".v_cont");
                 var offset = ($(".v_cont li").width()*-1);
@@ -150,7 +150,7 @@
 					<li><a href="#">收藏夹</a></li>
 					<li><a href="my-dingdan.jsp">我的订单</a></li>
 					<li>
-						<div class="nav"><i class="pc-top-icon"></i><a href="#">个人中心</a></div>
+						<div class="nav"><i class="pc-top-icon"></i><a href="/CustomerInformation.action">个人中心</a></div>
 						<div class="con">
 							<dl>
 								<dt><a href="">个人资料</a></dt>
@@ -236,7 +236,7 @@
 			<div class="member-lists" id="leftinfo">
 				<dl  onclick = "change(this);">
 					<dt>个人中心</dt>
-					<dd><a href="#">个人资料</a></dd>
+					<dd><a href="/CustomerInformation.action">个人资料</a></dd>
 					<dd><a href="#">收货地址</a></dd>
 					<dd><a href="#">修改登录密码</a></dd>
 					<dd><a href="#">我的积分</a></dd>
@@ -260,7 +260,6 @@
 					<ul>
 						<li class="clearfix">
 							<div class="warn2" style="margin-left: 10px;border: none">收货人</div>
-							<div class="warn2" style="margin-left: 10px;border: none">所在地区</div>
 							<div class="warn2" style="margin-left: 10px;border: none">详细地址</div>
 							<div class="warn2" style="margin-left: 10px;border: none">邮编</div>
 							<div class="warn2" style="margin-left: 10px;border: none">电话</div>
@@ -285,36 +284,21 @@
 
 							<input class="warn2" style="margin-left: 10px;font-weight: normal;border-color: red">
 							<input class="warn2" style="margin-left: 10px;font-weight: normal;border-color: red">
-							<input class="warn2" style="margin-left: 10px;font-weight: normal">
 							<input class="warn2" style="margin-left: 10px;font-weight: normal;border-color: red">
 							<input type="submit" value="保存" class="warn2" style="margin-left: 10px;font-weight: normal;border-radius: 10px;background-color: black;color: aliceblue;" onClick="bc()">
 						</li>
 
 						<li class="clearfix">
-							<div class="warn2" style="margin-left: 10px;border: none;font-weight: normal">旺财</div>
-							<div class="warn2" style="margin-left: 10px;border: none;font-weight: normal">某山</div>
-							<div class="warn2" style="margin-left: 10px;border: none;font-weight: normal">某村</div>
-							<div class="warn2" style="margin-left: 10px;border: none;font-weight: normal">564700</div>
-							<div class="warn2" style="margin-left: 10px;border: none;font-weight: normal">18723334847</div>
+							<div class="warn2" style="margin-left: 10px;border: none;font-weight: normal">${user.username}</div>
+							<div class="warn2" style="margin-left: 10px;border: none;font-weight: normal">${gainaddres.gainaddress}</div>
+							<div class="warn2" style="margin-left: 10px;border: none;font-weight: normal">${gainaddres.gaincode}</div>
+							<div class="warn2" style="margin-left: 10px;border: none;font-weight: normal">${gainaddres.gainmobile}</div>
 							<div class="warn2" style="margin-left: 10px;border: none;font-weight: normal">
 								<a href="">修改</a>
 								<span style="margin: auto 4px">|</span>
 								<a href="">删除</a>
 							</div>
 							<div style="width: 50px;float: left;margin-left: 10px;border: none;font-weight: 80;text-align:center;margin-top:6px;font-size:15px;color: white;background-color: #838383;border-radius: 5px">默认</div>
-						</li>
-
-						<li class="clearfix">
-							<div class="warn2" style="margin-left: 10px;border: none;font-weight: normal">旺财</div>
-							<div class="warn2" style="margin-left: 10px;border: none;font-weight: normal">某山</div>
-							<div class="warn2" style="margin-left: 10px;border: none;font-weight: normal">某村</div>
-							<div class="warn2" style="margin-left: 10px;border: none;font-weight: normal">564700</div>
-							<div class="warn2" style="margin-left: 10px;border: none;font-weight: normal">18723334847</div>
-							<div class="warn2" style="margin-left: 10px;border: none;font-weight: normal">
-								<a href="">修改</a>
-								<span style="margin: auto 4px">|</span>
-								<a href="">删除</a>
-							</div>
 						</li>
 					</ul>
 

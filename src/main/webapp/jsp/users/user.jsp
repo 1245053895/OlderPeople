@@ -176,7 +176,7 @@
 					<li><a href="#">收藏夹</a></li>
 					<li><a href="my-dingdan.jsp">我的订单</a></li>
 					<li>
-						<div class="nav"><i class="pc-top-icon"></i><a href="#">个人中心</a></div>
+						<div class="nav"><i class="pc-top-icon"></i><a href="/CustomerInformation.action">个人中心</a></div>
 						<div class="con">
 							<dl>
 								<dt><a href="">个人资料</a></dt>
@@ -263,8 +263,8 @@
 			<div class="member-lists" id="leftinfo">
 				<dl  onclick = "change(this);">
 					<dt>个人中心</dt>
-					<dd><a href="#">个人资料</a></dd>
-					<dd><a href="#">收货地址</a></dd>
+					<dd><a href="/CustomerInformation.action">个人资料</a></dd>
+					<dd><a href="/CustomersAddress.action">收货地址</a></dd>
 					<dd><a href="#">修改登录密码</a></dd>
 					<dd><a href="#">我的积分</a></dd>
 				</dl>

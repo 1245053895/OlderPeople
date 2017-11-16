@@ -90,4 +90,19 @@ public class Gainaddres {
     public void setGainC(String gainC) {
         this.gainC = gainC == null ? null : gainC.trim();
     }
+
+    @Override
+    public String toString() {
+        return "Gainaddres{" +
+                "gainid=" + gainid +
+                ", userid=" + userid +
+                ", gainname='" + gainname + '\'' +
+                ", gainmobile='" + gainmobile + '\'' +
+                ", gainaddress='" + gainaddress + '\'' +
+                ", gaincode=" + gaincode +
+                ", gainA='" + gainA + '\'' +
+                ", gainB='" + gainB + '\'' +
+                ", gainC='" + gainC + '\'' +
+                '}';
+    }
 }

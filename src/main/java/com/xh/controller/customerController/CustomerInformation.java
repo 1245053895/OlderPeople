@@ -1,8 +1,10 @@
 package com.xh.controller.customerController;
 
+import com.xh.po.Gainaddres;
 import com.xh.po.User;
 import com.xh.service.UserMessageService;
 import com.xh.service.customerService.CustomerInformationService;
+import com.xh.service.customerService.UserLoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,6 +21,8 @@ import java.util.List;
 public class CustomerInformation {
     @Autowired
     private CustomerInformationService customerInformationService;
+    @Autowired
+    private UserLoginService userLoginService;
     //用户信息
     @RequestMapping(value = "/CustomerInformation.action",method = {RequestMethod.GET,RequestMethod.POST})
     public  String CustomerInformation(HttpSession session,User user, HttpServletRequest request, HttpServletResponse response, Model model){
@@ -35,8 +39,19 @@ public class CustomerInformation {
         User user1= (User) request.getSession().getAttribute("user");
         Integer id=user1.getUserid();
         user1.setUserid(id);
-        customerInformationService.updateByPrimaryKeySelective(user);
+        //customerInformationService.updateByPrimaryKeySelective(user);
         return "/jsp/users/user.jsp";
+    }
 
+
+    //收货地址
+    @RequestMapping(value = "/CustomersAddress.action",method = {RequestMethod.GET,RequestMethod.POST})
+    public String CustomersAddress( HttpServletRequest request, HttpServletResponse response,Model model){
+        User user1= (User) request.getSession().getAttribute("user");
+        Integer id=user1.getUserid();
+
+        List<Gainaddres> gainaddres = userLoginService.SelectUserAddressByid(id);
+        model.addAttribute(gainaddres);
+        return "/jsp/users/address.jsp";
     }
 }

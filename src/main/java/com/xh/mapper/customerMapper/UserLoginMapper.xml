@@ -8,4 +8,9 @@
     User_B, User_C FROM `user` WHERE UserName=#{username}
     </select>
 
+    <select id="SelectUserAddressByid" parameterType="list" resultType="com.xh.po.Gainaddres" >
+        SELECT GainId,GainName,GainMobile,GainAddress,GainCode,
+        Gain_A AS GainA ,Gain_B AS GainB,Gain_C AS GainC FROM
+        gainaddres g, user u WHERE g.UserId=u.UserId;
+</select>
 </mapper>

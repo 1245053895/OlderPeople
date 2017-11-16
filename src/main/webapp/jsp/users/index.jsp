@@ -192,7 +192,7 @@
 	<div class="pc-header-nav">
 		<div class="pc-header-con">
 			<div class="fl pc-header-link" >您好！欢迎来孝和集团电子商城
-				<a href="/LoginPage.action" target="_blank">请登录</a>
+				<a href="login.jsp" target="_blank">请登录</a>
 				<a href="register.jsp" target="_blank"> 免费注册</a>
 			</div>
 			<div class="fr pc-header-list top-nav">
@@ -1457,11 +1457,11 @@
 				<section class="main-right">
 					<div class="slider">
 						<ul class="contain">
-							<li class="item"><a href="#" alt=""><img src="${pageContext.request.contextPath}/jsp/users/images/index_slider_pic1.jpg"></a></li>
-							<li class="item"><a href="#" alt=""><img src="${pageContext.request.contextPath}/jsp/users/images/index_slider_pic2.jpg"></a></li>
-							<li class="item"><a href="#" alt=""><img src="${pageContext.request.contextPath}/jsp/users/images/index_slider_pic3.jpg"></a></li>
-							<li class="item"><a href="#" alt=""><img src="${pageContext.request.contextPath}/jsp/users/images/index_slider_pic4.jpg"></a></li>
-							<li class="item"><a href="#" alt=""><img src="${pageContext.request.contextPath}/jsp/users/images/index_slider_pic5.jpg"></a></li>
+							<li class="item"><a href="#" alt=""><img src="./images/index_slider_pic1.jpg"></a></li>
+							<li class="item"><a href="#" alt=""><img src="./images/index_slider_pic2.jpg"></a></li>
+							<li class="item"><a href="#" alt=""><img src="./images/index_slider_pic3.jpg"></a></li>
+							<li class="item"><a href="#" alt=""><img src="./images/index_slider_pic4.jpg"></a></li>
+							<li class="item"><a href="#" alt=""><img src="./images/index_slider_pic5.jpg"></a></li>
 						</ul>
 					</div>
 				</section>
@@ -1510,7 +1510,7 @@
 							<ul class="m-cols m-col-5">
 								<li class="col sku-item ">
 									<dl class="row">
-										<dt><img src="${pageContext.request.contextPath}/jsp/users/images/single/single1.png"></dt>
+										<dt><img src="./images/single/single1.png"></dt>
 										<dd class="name"><a href="page.jsp">小米电视3S 43英寸</a></dd>
 										<dd class="desc">4GB内存+128GB闪存，陶瓷版</dd>
 										<dd class="price">1499元</dd>
@@ -1518,7 +1518,7 @@
 								</li>
 								<li class="col sku-item ">
 									<dl class="row">
-										<dt><img src="${pageContext.request.contextPath}/jsp/users/images/single/single2.png"></dt>
+										<dt><img src="./images/single/single2.png"></dt>
 										<dd class="name">小米电视3S 43英寸</dd>
 										<dd class="desc">4GB内存+128GB闪存，陶瓷版</dd>
 										<dd class="price">1499元</dd>
@@ -1526,7 +1526,7 @@
 								</li>
 								<li class="col sku-item ">
 									<dl class="row">
-										<dt><img src="${pageContext.request.contextPath}/jsp/users/images/single/single3.png"></dt>
+										<dt><img src="./images/single/single3.png"></dt>
 										<dd class="name">小米电视3S 43英寸</dd>
 										<dd class="desc">4GB内存+128GB闪存，陶瓷版</dd>
 										<dd class="price">1499元</dd>
@@ -1534,7 +1534,7 @@
 								</li>
 								<li class="col sku-item ">
 									<dl class="row">
-										<dt><img src="${pageContext.request.contextPath}/jsp/users/images/single/single4.png"></dt>
+										<dt><img src="./images/single/single4.png"></dt>
 										<dd class="name">小米电视3S 43英寸</dd>
 										<dd class="desc">4GB内存+128GB闪存，陶瓷版</dd>
 										<dd class="price">1499元</dd>
@@ -1542,7 +1542,7 @@
 								</li>
 								<li class="col sku-item ">
 									<dl class="row">
-										<dt><img src="${pageContext.request.contextPath}/jsp/users/images/single/single5.jpg"></dt>
+										<dt><img src="./images/single/single5.jpg"></dt>
 										<dd class="name">小米电视3S 43英寸</dd>
 										<dd class="desc">4GB内存+128GB闪存，陶瓷版</dd>
 										<dd class="price">1499元</dd>
@@ -1554,7 +1554,7 @@
 							<ul class="m-cols m-col-5">
 								<li class="col sku-item ">
 									<dl class="row">
-										<dt><img src="${pageContext.request.contextPath}/jsp/users/images/single/single6.png"></dt>
+										<dt><img src="./images/single/single6.png"></dt>
 										<dd class="name">小米电视3S 43英寸</dd>
 										<dd class="desc">4GB内存+128GB闪存，陶瓷版</dd>
 										<dd class="price">1499元</dd>
@@ -1562,7 +1562,7 @@
 								</li>
 								<li class="col sku-item ">
 									<dl class="row">
-										<dt><img src="${pageContext.request.contextPath}/jsp/users/images/single/single10.png"></dt>
+										<dt><img src="./images/single/single10.png"></dt>
 										<dd class="name">小米电视3S 43英寸</dd>
 										<dd class="desc">4GB内存+128GB闪存，陶瓷版</dd>
 										<dd class="price">1499元</dd>
@@ -1570,7 +1570,7 @@
 								</li>
 								<li class="col sku-item ">
 									<dl class="row">
-										<dt><img src="${pageContext.request.contextPath}/jsp/users/images/single/single7.png"></dt>
+										<dt><img src="./images/single/single7.png"></dt>
 										<dd class="name">小米电视3S 43英寸</dd>
 										<dd class="desc">4GB内存+128GB闪存，陶瓷版</dd>
 										<dd class="price">1499元</dd>
@@ -1578,7 +1578,7 @@
 								</li>
 								<li class="col sku-item ">
 									<dl class="row">
-										<dt><img src="${pageContext.request.contextPath}/jsp/users/images/single/single8.png"></dt>
+										<dt><img src="./images/single/single8.png"></dt>
 										<dd class="name">小米电视3S 43英寸</dd>
 										<dd class="desc">4GB内存+128GB闪存，陶瓷版</dd>
 										<dd class="price">1499元</dd>
@@ -1586,7 +1586,7 @@
 								</li>
 								<li class="col sku-item ">
 									<dl class="row">
-										<dt><img src="${pageContext.request.contextPath}/jsp/users/images/single/single9.jpg"></dt>
+										<dt><img src="./images/single/single9.jpg"></dt>
 										<dd class="name">小米电视3S 43英寸</dd>
 										<dd class="desc">4GB内存+128GB闪存，陶瓷版</dd>
 										<dd class="price">1499元</dd>
@@ -1615,7 +1615,7 @@
 				<section class="m-box line2">
 					<div class="span4">
 						<div class="row main-pic">
-							<img src="${pageContext.request.contextPath}/jsp/users/images/znyj/row2Img.jpg">
+							<img src="./images/znyj/row2Img.jpg">
 						</div>
 					</div>
 					<div class="span16">
@@ -1624,7 +1624,7 @@
 								<div class="row">
 									<span class="tip orange">免邮件</span>
 									<dl>
-										<dt><img src="${pageContext.request.contextPath}/jsp/users/images/znyj/znyj1.jpg"></dt>
+										<dt><img src="./images/znyj/znyj1.jpg"></dt>
 										<dd class="name">小米路由器3</dd>
 										<dd class="desc">四天线设计，更安全更稳定</dd>
 										<dd class="price">149元</dd>
@@ -1633,7 +1633,7 @@
 								<div class="row">
 									<span class="tip blue">有赠品</span>
 									<dl>
-										<dt><img src="${pageContext.request.contextPath}/jsp/users/images/znyj/znyj2.jpg"></dt>
+										<dt><img src="./images/znyj/znyj2.jpg"></dt>
 										<dd class="name">小米路由器3</dd>
 										<dd class="desc">四天线设计，更安全更稳定</dd>
 										<dd class="price">149元</dd>
@@ -1644,7 +1644,7 @@
 								<div class="row">
 									<span class="tip orange">免邮件</span>
 									<dl>
-										<dt><img src="${pageContext.request.contextPath}/jsp/users/images/znyj/znyj3.jpg"></dt>
+										<dt><img src="./images/znyj/znyj3.jpg"></dt>
 										<dd class="name">小米路由器3</dd>
 										<dd class="desc">四天线设计，更安全更稳定</dd>
 										<dd class="price">149元</dd>
@@ -1653,7 +1653,7 @@
 								<div class="row">
 									<span class="tip blue">有赠品</span>
 									<dl>
-										<dt><img src="${pageContext.request.contextPath}/jsp/users/images/znyj/znyj4.jpg"></dt>
+										<dt><img src="./images/znyj/znyj4.jpg"></dt>
 										<dd class="name">小米路由器3</dd>
 										<dd class="desc">四天线设计，更安全更稳定</dd>
 										<dd class="price">149元</dd>
@@ -1947,7 +1947,7 @@
 											<div class="row" content="音质非常好，很震撼！！美美美！" from="来自于米米小aa 的评价">
 												<span class="tip orange">免邮件</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/dp/dp5.jpg"></dt>
+													<dt><img src="./images/dp/dp5.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="price">149元</dd>
 													<dd class="cmt">18.7万人评价</dd>
@@ -1956,7 +1956,7 @@
 											<div class="row" content="音质非常好，很震撼！！美美美！" from="来自于米米小aa 的评价">
 												<span class="tip blue">有赠品</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/dp/dp6.jpg"></dt>
+													<dt><img src="./images/dp/dp6.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="price">149元</dd>
 													<dd class="cmt">18.7万人评价</dd>
@@ -1967,7 +1967,7 @@
 											<div class="row" content="音质非常好，很震撼！！美美美！" from="来自于米米小aa 的评价">
 												<span class="tip orange">免邮件</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/dp/dp7.jpg"></dt>
+													<dt><img src="./images/dp/dp7.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="price">149元</dd>
 													<dd class="cmt">18.7万人评价</dd>
@@ -1976,7 +1976,7 @@
 											<div class="row" content="音质非常好，很震撼！！美美美！" from="来自于米米小aa 的评价">
 												<span class="tip blue">有赠品</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/dp/dp8.jpg"></dt>
+													<dt><img src="./images/dp/dp8.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="price">149元</dd>
 													<dd class="cmt">18.7万人评价</dd>
@@ -1991,7 +1991,7 @@
 											<div class="row" content="音质非常好，很震撼！！美美美！" from="来自于米米小aa 的评价">
 												<span class="tip orange">免邮件</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/dp/dp9.jpg"></dt>
+													<dt><img src="./images/dp/dp9.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="price">149元</dd>
 													<dd class="cmt">18.7万人评价</dd>
@@ -2000,7 +2000,7 @@
 											<div class="row" content="音质非常好，很震撼！！美美美！" from="来自于米米小aa 的评价">
 												<span class="tip blue">有赠品</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/dp/dp10.jpg"></dt>
+													<dt><img src="./images/dp/dp10.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="price">149元</dd>
 													<dd class="cmt">18.7万人评价</dd>
@@ -2011,7 +2011,7 @@
 											<div class="row" content="音质非常好，很震撼！！美美美！" from="来自于米米小aa 的评价">
 												<span class="tip orange">免邮件</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/dp/dp11.jpg"></dt>
+													<dt><img src="./images/dp/dp11.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="price">149元</dd>
 													<dd class="cmt">18.7万人评价</dd>
@@ -2020,7 +2020,7 @@
 											<div class="row" content="音质非常好，很震撼！！美美美！" from="来自于米米小aa 的评价">
 												<span class="tip blue">有赠品</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/dp/dp12.jpg"></dt>
+													<dt><img src="./images/dp/dp12.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="price">149元</dd>
 													<dd class="cmt">18.7万人评价</dd>
@@ -2031,7 +2031,7 @@
 											<div class="row" content="音质非常好，很震撼！！美美美！" from="来自于米米小aa 的评价">
 												<span class="tip orange">免邮件</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/dp/dp13.jpg"></dt>
+													<dt><img src="./images/dp/dp13.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="price">149元</dd>
 													<dd class="cmt">18.7万人评价</dd>
@@ -2040,7 +2040,7 @@
 											<div class="row" content="音质非常好，很震撼！！美美美！" from="来自于米米小aa 的评价">
 												<span class="tip blue">有赠品</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/dp/dp14.jpg"></dt>
+													<dt><img src="./images/dp/dp14.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="price">149元</dd>
 													<dd class="cmt">18.7万人评价</dd>
@@ -2051,7 +2051,7 @@
 											<div class="row" content="音质非常好，很震撼！！美美美！" from="来自于米米小aa 的评价">
 												<span class="tip orange">免邮件</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/dp/dp15.jpg"></dt>
+													<dt><img src="./images/dp/dp15.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="price">149元</dd>
 													<dd class="cmt">18.7万人评价</dd>
@@ -2060,7 +2060,7 @@
 											<div class="row" content="音质非常好，很震撼！！美美美！" from="来自于米米小aa 的评价">
 												<span class="tip blue">有赠品</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/dp/dp16.jpg"></dt>
+													<dt><img src="./images/dp/dp16.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="price">149元</dd>
 													<dd class="cmt">18.7万人评价</dd>
@@ -2096,7 +2096,7 @@
 				<section class="m-box line2">
 					<div class="span4">
 						<div class="main-pic">
-							<img src="${pageContext.request.contextPath}/jsp/users/images/znyj/row2Img.jpg">
+							<img src="./images/znyj/row2Img.jpg">
 						</div>
 					</div>
 					<div class="span16">
@@ -2108,7 +2108,7 @@
 											<div class="row">
 												<span class="tip orange">免邮件</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/pj/pj1.jpg"></dt>
+													<dt><img src="./images/pj/pj1.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="desc">四天线设计，更安全更稳定</dd>
 													<dd class="price">149元</dd>
@@ -2117,7 +2117,7 @@
 											<div class="row">
 												<span class="tip blue">有赠品</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/pj/pj2.jpg"></dt>
+													<dt><img src="./images/pj/pj2.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="desc">四天线设计，更安全更稳定</dd>
 													<dd class="price">149元</dd>
@@ -2128,7 +2128,7 @@
 											<div class="row">
 												<span class="tip orange">免邮件</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/pj/pj3.jpg"></dt>
+													<dt><img src="./images/pj/pj3.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="desc">四天线设计，更安全更稳定</dd>
 													<dd class="price">149元</dd>
@@ -2137,7 +2137,7 @@
 											<div class="row">
 												<span class="tip blue">有赠品</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/pj/pj4.jpg"></dt>
+													<dt><img src="./images/pj/pj4.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="desc">四天线设计，更安全更稳定</dd>
 													<dd class="price">149元</dd>
@@ -2148,7 +2148,7 @@
 											<div class="row">
 												<span class="tip orange">免邮件</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/pj/pj5.jpg"></dt>
+													<dt><img src="./images/pj/pj5.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="desc">四天线设计，更安全更稳定</dd>
 													<dd class="price">149元</dd>
@@ -2157,7 +2157,7 @@
 											<div class="row">
 												<span class="tip blue">有赠品</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/pj/pj6.jpg"></dt>
+													<dt><img src="./images/pj/pj6.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="desc">四天线设计，更安全更稳定</dd>
 													<dd class="price">149元</dd>
@@ -2168,7 +2168,7 @@
 											<div class="row">
 												<span class="tip orange">免邮件</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/pj/pj7.jpg"></dt>
+													<dt><img src="./images/pj/pj7.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="desc">四天线设计，更安全更稳定</dd>
 													<dd class="price">149元</dd>
@@ -2180,7 +2180,7 @@
 													<small>79元</small>
 												</div>
 												<div class="small-introR">
-													<img src="${pageContext.request.contextPath}/jsp/users/images/pj/pj1.jpg">
+													<img src="./images/pj/pj1.jpg">
 												</div>
 											</div>
 											<div class="row row_half scan-more">
@@ -2199,7 +2199,7 @@
 											<div class="row">
 												<span class="tip orange">免邮件</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/pj/pj1.jpg"></dt>
+													<dt><img src="./images/pj/pj1.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="desc">四天线设计，更安全更稳定</dd>
 													<dd class="price">149元</dd>
@@ -2208,7 +2208,7 @@
 											<div class="row">
 												<span class="tip blue">有赠品</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/pj/pj1.jpg"></dt>
+													<dt><img src="./images/pj/pj1.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="desc">四天线设计，更安全更稳定</dd>
 													<dd class="price">149元</dd>
@@ -2219,7 +2219,7 @@
 											<div class="row">
 												<span class="tip orange">免邮件</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/pj/pj1.jpg"></dt>
+													<dt><img src="./images/pj/pj1.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="desc">四天线设计，更安全更稳定</dd>
 													<dd class="price">149元</dd>
@@ -2228,7 +2228,7 @@
 											<div class="row">
 												<span class="tip blue">有赠品</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/pj/pj1.jpg"></dt>
+													<dt><img src="./images/pj/pj1.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="desc">四天线设计，更安全更稳定</dd>
 													<dd class="price">149元</dd>
@@ -2239,7 +2239,7 @@
 											<div class="row">
 												<span class="tip orange">免邮件</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/pj/pj1.jpg"></dt>
+													<dt><img src="./images/pj/pj1.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="desc">四天线设计，更安全更稳定</dd>
 													<dd class="price">149元</dd>
@@ -2248,7 +2248,7 @@
 											<div class="row">
 												<span class="tip blue">有赠品</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/pj/pj1.jpg"></dt>
+													<dt><img src="./images/pj/pj1.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="desc">四天线设计，更安全更稳定</dd>
 													<dd class="price">149元</dd>
@@ -2259,7 +2259,7 @@
 											<div class="row">
 												<span class="tip orange">免邮件</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/pj/pj1.jpg"></dt>
+													<dt><img src="./images/pj/pj1.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="desc">四天线设计，更安全更稳定</dd>
 													<dd class="price">149元</dd>
@@ -2271,7 +2271,7 @@
 													<small>79元</small>
 												</div>
 												<div class="small-introR">
-													<img src="${pageContext.request.contextPath}/jsp/users/images/smallpj/pj1.jpg">
+													<img src="./images/smallpj/pj1.jpg">
 												</div>
 											</div>
 											<div class="row row_half scan-more">
@@ -2290,7 +2290,7 @@
 											<div class="row">
 												<span class="tip orange">免邮件</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/pj/pj1.jpg"></dt>
+													<dt><img src="./images/pj/pj1.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="desc">四天线设计，更安全更稳定</dd>
 													<dd class="price">149元</dd>
@@ -2299,7 +2299,7 @@
 											<div class="row">
 												<span class="tip blue">有赠品</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/pj/pj1.jpg"></dt>
+													<dt><img src="./images/pj/pj1.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="desc">四天线设计，更安全更稳定</dd>
 													<dd class="price">149元</dd>
@@ -2310,7 +2310,7 @@
 											<div class="row">
 												<span class="tip orange">免邮件</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/pj/pj1.jpg"></dt>
+													<dt><img src="./images/pj/pj1.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="desc">四天线设计，更安全更稳定</dd>
 													<dd class="price">149元</dd>
@@ -2319,7 +2319,7 @@
 											<div class="row">
 												<span class="tip blue">有赠品</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/pj/pj1.jpg"></dt>
+													<dt><img src="./images/pj/pj1.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="desc">四天线设计，更安全更稳定</dd>
 													<dd class="price">149元</dd>
@@ -2330,7 +2330,7 @@
 											<div class="row">
 												<span class="tip orange">免邮件</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/pj/pj1.jpg"></dt>
+													<dt><img src="./images/pj/pj1.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="desc">四天线设计，更安全更稳定</dd>
 													<dd class="price">149元</dd>
@@ -2339,7 +2339,7 @@
 											<div class="row">
 												<span class="tip blue">有赠品</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/pj/pj1.jpg"></dt>
+													<dt><img src="./images/pj/pj1.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="desc">四天线设计，更安全更稳定</dd>
 													<dd class="price">149元</dd>
@@ -2350,7 +2350,7 @@
 											<div class="row">
 												<span class="tip orange">免邮件</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/pj/pj1.jpg"></dt>
+													<dt><img src="./images/pj/pj1.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="desc">四天线设计，更安全更稳定</dd>
 													<dd class="price">149元</dd>
@@ -2362,7 +2362,7 @@
 													<small>79元</small>
 												</div>
 												<div class="small-introR">
-													<img src="${pageContext.request.contextPath}/jsp/users/images/smallpj/pj1.jpg">
+													<img src="./images/smallpj/pj1.jpg">
 												</div>
 											</div>
 											<div class="row row_half scan-more">
@@ -2382,7 +2382,7 @@
 											<div class="row">
 												<span class="tip orange">免邮件</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/pj/pj1.jpg"></dt>
+													<dt><img src="./images/pj/pj1.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="desc">四天线设计，更安全更稳定</dd>
 													<dd class="price">149元</dd>
@@ -2391,7 +2391,7 @@
 											<div class="row">
 												<span class="tip blue">有赠品</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/pj/pj1.jpg"></dt>
+													<dt><img src="./images/pj/pj1.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="desc">四天线设计，更安全更稳定</dd>
 													<dd class="price">149元</dd>
@@ -2402,7 +2402,7 @@
 											<div class="row">
 												<span class="tip orange">免邮件</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/pj/pj1.jpg"></dt>
+													<dt><img src="./images/pj/pj1.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="desc">四天线设计，更安全更稳定</dd>
 													<dd class="price">149元</dd>
@@ -2411,7 +2411,7 @@
 											<div class="row">
 												<span class="tip blue">有赠品</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/pj/pj1.jpg"></dt>
+													<dt><img src="./images/pj/pj1.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="desc">四天线设计，更安全更稳定</dd>
 													<dd class="price">149元</dd>
@@ -2422,7 +2422,7 @@
 											<div class="row">
 												<span class="tip orange">免邮件</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/pj/pj1.jpg"></dt>
+													<dt><img src="./images/pj/pj1.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="desc">四天线设计，更安全更稳定</dd>
 													<dd class="price">149元</dd>
@@ -2431,7 +2431,7 @@
 											<div class="row">
 												<span class="tip blue">有赠品</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/pj/pj1.jpg"></dt>
+													<dt><img src="./images/pj/pj1.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="desc">四天线设计，更安全更稳定</dd>
 													<dd class="price">149元</dd>
@@ -2442,7 +2442,7 @@
 											<div class="row">
 												<span class="tip orange">免邮件</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/pj/pj1.jpg"></dt>
+													<dt><img src="./images/pj/pj1.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="desc">四天线设计，更安全更稳定</dd>
 													<dd class="price">149元</dd>
@@ -2454,7 +2454,7 @@
 													<small>79元</small>
 												</div>
 												<div class="small-introR">
-													<img src="${pageContext.request.contextPath}/jsp/users/images/smallpj/pj1.jpg">
+													<img src="./images/smallpj/pj1.jpg">
 												</div>
 											</div>
 											<div class="row row_half scan-more">
@@ -2495,7 +2495,7 @@
 				</header>
 				<section class="m-box line2">
 					<div class="span4">
-						<div class="main-pic"><img src="${pageContext.request.contextPath}/jsp/users/images/znyj/row2Img.jpg"></div>
+						<div class="main-pic"><img src="./images/znyj/row2Img.jpg"></div>
 					</div>
 					<div class="span16">
 						<div class="m-slide">
@@ -2506,7 +2506,7 @@
 											<div class="row">
 												<span class="tip orange">免邮件</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/zb/zb1.jpg"></dt>
+													<dt><img src="./images/zb/zb1.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="desc">四天线设计，更安全更稳定</dd>
 													<dd class="price">149元</dd>
@@ -2515,7 +2515,7 @@
 											<div class="row">
 												<span class="tip blue">有赠品</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/zb/zb2.jpg"></dt>
+													<dt><img src="./images/zb/zb2.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="desc">四天线设计，更安全更稳定</dd>
 													<dd class="price">149元</dd>
@@ -2526,7 +2526,7 @@
 											<div class="row">
 												<span class="tip orange">免邮件</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/zb/zb3.jpg"></dt>
+													<dt><img src="./images/zb/zb3.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="desc">四天线设计，更安全更稳定</dd>
 													<dd class="price">149元</dd>
@@ -2535,7 +2535,7 @@
 											<div class="row">
 												<span class="tip blue">有赠品</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/zb/zb4.jpg"></dt>
+													<dt><img src="./images/zb/zb4.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="desc">四天线设计，更安全更稳定</dd>
 													<dd class="price">149元</dd>
@@ -2546,7 +2546,7 @@
 											<div class="row">
 												<span class="tip orange">免邮件</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/zb/zb5.jpg"></dt>
+													<dt><img src="./images/zb/zb5.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="desc">四天线设计，更安全更稳定</dd>
 													<dd class="price">149元</dd>
@@ -2555,7 +2555,7 @@
 											<div class="row">
 												<span class="tip blue">有赠品</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/zb/zb6.jpg"></dt>
+													<dt><img src="./images/zb/zb6.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="desc">四天线设计，更安全更稳定</dd>
 													<dd class="price">149元</dd>
@@ -2566,7 +2566,7 @@
 											<div class="row">
 												<span class="tip orange">免邮件</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/zb/zb7.jpg"></dt>
+													<dt><img src="./images/zb/zb7.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="desc">四天线设计，更安全更稳定</dd>
 													<dd class="price">149元</dd>
@@ -2578,7 +2578,7 @@
 													<small>79元</small>
 												</div>
 												<div class="small-introR">
-													<img src="${pageContext.request.contextPath}/jsp/users/images/zb/zb0.jpg">
+													<img src="./images/zb/zb0.jpg">
 												</div>
 											</div>
 											<div class="row row_half scan-more">
@@ -2597,7 +2597,7 @@
 											<div class="row">
 												<span class="tip orange">免邮件</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/zb/zb7.jpg"></dt>
+													<dt><img src="./images/zb/zb7.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="desc">四天线设计，更安全更稳定</dd>
 													<dd class="price">149元</dd>
@@ -2606,7 +2606,7 @@
 											<div class="row">
 												<span class="tip blue">有赠品</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/zb/zb6.jpg"></dt>
+													<dt><img src="./images/zb/zb6.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="desc">四天线设计，更安全更稳定</dd>
 													<dd class="price">149元</dd>
@@ -2617,7 +2617,7 @@
 											<div class="row">
 												<span class="tip orange">免邮件</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/zb/zb5.jpg"></dt>
+													<dt><img src="./images/zb/zb5.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="desc">四天线设计，更安全更稳定</dd>
 													<dd class="price">149元</dd>
@@ -2626,7 +2626,7 @@
 											<div class="row">
 												<span class="tip blue">有赠品</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/zb/zb4.jpg"></dt>
+													<dt><img src="./images/zb/zb4.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="desc">四天线设计，更安全更稳定</dd>
 													<dd class="price">149元</dd>
@@ -2637,7 +2637,7 @@
 											<div class="row">
 												<span class="tip orange">免邮件</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/zb/zb3.jpg"></dt>
+													<dt><img src="./images/zb/zb3.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="desc">四天线设计，更安全更稳定</dd>
 													<dd class="price">149元</dd>
@@ -2646,7 +2646,7 @@
 											<div class="row">
 												<span class="tip blue">有赠品</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/zb/zb2.jpg"></dt>
+													<dt><img src="./images/zb/zb2.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="desc">四天线设计，更安全更稳定</dd>
 													<dd class="price">149元</dd>
@@ -2657,7 +2657,7 @@
 											<div class="row">
 												<span class="tip orange">免邮件</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/zb/zb1.jpg"></dt>
+													<dt><img src="./images/zb/zb1.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="desc">四天线设计，更安全更稳定</dd>
 													<dd class="price">149元</dd>
@@ -2669,7 +2669,7 @@
 													<small>79元</small>
 												</div>
 												<div class="small-introR">
-													<img src="${pageContext.request.contextPath}/jsp/users/images/zb/zb0.jpg">
+													<img src="./images/zb/zb0.jpg">
 												</div>
 											</div>
 											<div class="row row_half scan-more">
@@ -2688,7 +2688,7 @@
 											<div class="row">
 												<span class="tip orange">免邮件</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/zb/zb1.jpg"></dt>
+													<dt><img src="./images/zb/zb1.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="desc">四天线设计，更安全更稳定</dd>
 													<dd class="price">149元</dd>
@@ -2697,7 +2697,7 @@
 											<div class="row">
 												<span class="tip blue">有赠品</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/zb/zb2.jpg"></dt>
+													<dt><img src="./images/zb/zb2.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="desc">四天线设计，更安全更稳定</dd>
 													<dd class="price">149元</dd>
@@ -2708,7 +2708,7 @@
 											<div class="row">
 												<span class="tip orange">免邮件</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/zb/zb3.jpg"></dt>
+													<dt><img src="./images/zb/zb3.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="desc">四天线设计，更安全更稳定</dd>
 													<dd class="price">149元</dd>
@@ -2717,7 +2717,7 @@
 											<div class="row">
 												<span class="tip blue">有赠品</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/zb/zb4.jpg"></dt>
+													<dt><img src="./images/zb/zb4.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="desc">四天线设计，更安全更稳定</dd>
 													<dd class="price">149元</dd>
@@ -2728,7 +2728,7 @@
 											<div class="row">
 												<span class="tip orange">免邮件</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/zb/zb5.jpg"></dt>
+													<dt><img src="./images/zb/zb5.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="desc">四天线设计，更安全更稳定</dd>
 													<dd class="price">149元</dd>
@@ -2737,7 +2737,7 @@
 											<div class="row">
 												<span class="tip blue">有赠品</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/zb/zb6.jpg"></dt>
+													<dt><img src="./images/zb/zb6.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="desc">四天线设计，更安全更稳定</dd>
 													<dd class="price">149元</dd>
@@ -2748,7 +2748,7 @@
 											<div class="row">
 												<span class="tip orange">免邮件</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/zb/zb7.jpg"></dt>
+													<dt><img src="./images/zb/zb7.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="desc">四天线设计，更安全更稳定</dd>
 													<dd class="price">149元</dd>
@@ -2760,7 +2760,7 @@
 													<small>79元</small>
 												</div>
 												<div class="small-introR">
-													<img src="${pageContext.request.contextPath}/jsp/users/images/zb/zb0.jpg">
+													<img src="./images/zb/zb0.jpg">
 												</div>
 											</div>
 											<div class="row row_half scan-more">
@@ -2779,7 +2779,7 @@
 											<div class="row">
 												<span class="tip orange">免邮件</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/zb/zb6.jpg"></dt>
+													<dt><img src="./images/zb/zb6.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="desc">四天线设计，更安全更稳定</dd>
 													<dd class="price">149元</dd>
@@ -2788,7 +2788,7 @@
 											<div class="row">
 												<span class="tip blue">有赠品</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/zb/zb7.jpg"></dt>
+													<dt><img src="./images/zb/zb7.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="desc">四天线设计，更安全更稳定</dd>
 													<dd class="price">149元</dd>
@@ -2799,7 +2799,7 @@
 											<div class="row">
 												<span class="tip orange">免邮件</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/zb/zb5.jpg"></dt>
+													<dt><img src="./images/zb/zb5.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="desc">四天线设计，更安全更稳定</dd>
 													<dd class="price">149元</dd>
@@ -2808,7 +2808,7 @@
 											<div class="row">
 												<span class="tip blue">有赠品</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/zb/zb3.jpg"></dt>
+													<dt><img src="./images/zb/zb3.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="desc">四天线设计，更安全更稳定</dd>
 													<dd class="price">149元</dd>
@@ -2819,7 +2819,7 @@
 											<div class="row">
 												<span class="tip orange">免邮件</span>
 												<dl>
-													<dt><img src=${pageContext.request.contextPath}/jsp/users/images/zb/zb4.jpg"></dt>
+													<dt><img src="./images/zb/zb4.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="desc">四天线设计，更安全更稳定</dd>
 													<dd class="price">149元</dd>
@@ -2828,7 +2828,7 @@
 											<div class="row">
 												<span class="tip blue">有赠品</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/zb/zb1.jpg"></dt>
+													<dt><img src="./images/zb/zb1.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="desc">四天线设计，更安全更稳定</dd>
 													<dd class="price">149元</dd>
@@ -2839,7 +2839,7 @@
 											<div class="row">
 												<span class="tip orange">免邮件</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/zb/zb2.jpg"></dt>
+													<dt><img src="./images/zb/zb2.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="desc">四天线设计，更安全更稳定</dd>
 													<dd class="price">149元</dd>
@@ -2851,7 +2851,7 @@
 													<small>79元</small>
 												</div>
 												<div class="small-introR">
-													<img src="${pageContext.request.contextPath}/jsp/users/images/zb/zb0.jpg">
+													<img src="./images/zb/zb0.jpg">
 												</div>
 											</div>
 											<div class="row row_half scan-more">
@@ -2870,7 +2870,7 @@
 											<div class="row">
 												<span class="tip orange">免邮件</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/zb/zb1.jpg"></dt>
+													<dt><img src="./images/zb/zb1.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="desc">四天线设计，更安全更稳定</dd>
 													<dd class="price">149元</dd>
@@ -2879,7 +2879,7 @@
 											<div class="row">
 												<span class="tip blue">有赠品</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/zb/zb2.jpg"></dt>
+													<dt><img src="./images/zb/zb2.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="desc">四天线设计，更安全更稳定</dd>
 													<dd class="price">149元</dd>
@@ -2890,7 +2890,7 @@
 											<div class="row">
 												<span class="tip orange">免邮件</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/zb/zb1.jpg"></dt>
+													<dt><img src="./images/zb/zb1.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="desc">四天线设计，更安全更稳定</dd>
 													<dd class="price">149元</dd>
@@ -2899,7 +2899,7 @@
 											<div class="row">
 												<span class="tip blue">有赠品</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/zb/zb3.jpg"></dt>
+													<dt><img src="./images/zb/zb3.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="desc">四天线设计，更安全更稳定</dd>
 													<dd class="price">149元</dd>
@@ -2910,7 +2910,7 @@
 											<div class="row">
 												<span class="tip orange">免邮件</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/zb/zb5.jpg"></dt>
+													<dt><img src="./images/zb/zb5.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="desc">四天线设计，更安全更稳定</dd>
 													<dd class="price">149元</dd>
@@ -2919,7 +2919,7 @@
 											<div class="row">
 												<span class="tip blue">有赠品</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/zb/zb4.jpg"></dt>
+													<dt><img src="./images/zb/zb4.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="desc">四天线设计，更安全更稳定</dd>
 													<dd class="price">149元</dd>
@@ -2930,7 +2930,7 @@
 											<div class="row">
 												<span class="tip orange">免邮件</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/zb/zb6.jpg"></dt>
+													<dt><img src="./images/zb/zb6.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="desc">四天线设计，更安全更稳定</dd>
 													<dd class="price">149元</dd>
@@ -2942,7 +2942,7 @@
 													<small>79元</small>
 												</div>
 												<div class="small-introR">
-													<img src="${pageContext.request.contextPath}/jsp/users/images/zb/zb0.jpg">
+													<img src="./images/zb/zb0.jpg">
 												</div>
 											</div>
 											<div class="row row_half scan-more">
@@ -2984,7 +2984,7 @@
 									<li class="col">
 										<div class="row">
 											<dl>
-												<dt><img src="${pageContext.request.contextPath}/jsp/users/images/wntj/wntj1.jpg"></dt>
+												<dt><img src="./images/wntj/wntj1.jpg"></dt>
 												<dd class="name">小米路由器3</dd>
 												<dd class="price">149元</dd>
 												<dd class="cmt">9000人好评</dd>
@@ -2994,7 +2994,7 @@
 									<li class="col">
 										<div class="row">
 											<dl>
-												<dt><img src="${pageContext.request.contextPath}/jsp/users/images/wntj/wntj2.jpg"></dt>
+												<dt><img src="./images/wntj/wntj2.jpg"></dt>
 												<dd class="name">小米路由器3</dd>
 												<dd class="price">149元</dd>
 												<dd class="cmt">9000人好评</dd>
@@ -3004,7 +3004,7 @@
 									<li class="col">
 										<div class="row">
 											<dl>
-												<dt><img src="${pageContext.request.contextPath}/jsp/users/images/wntj/wntj3.jpg"></dt>
+												<dt><img src="./images/wntj/wntj3.jpg"></dt>
 												<dd class="name">小米路由器3</dd>
 												<dd class="price">149元</dd>
 												<dd class="cmt">9000人好评</dd>
@@ -3014,7 +3014,7 @@
 									<li class="col">
 										<div class="row">
 											<dl>
-												<dt><img src="${pageContext.request.contextPath}/jsp/users/images/wntj/wntj4.jpg"></dt>
+												<dt><img src="./images/wntj/wntj4.jpg"></dt>
 												<dd class="name">小米路由器3</dd>
 												<dd class="price">149元</dd>
 												<dd class="cmt">9000人好评</dd>
@@ -3024,7 +3024,7 @@
 									<li class="col">
 										<div class="row">
 											<dl>
-												<dt><img src="${pageContext.request.contextPath}/jsp/users/images/wntj/wntj5.jpg"></dt>
+												<dt><img src="./images/wntj/wntj5.jpg"></dt>
 												<dd class="name">小米路由器3</dd>
 												<dd class="price">149元</dd>
 												<dd class="cmt">9000人好评</dd>
@@ -3038,7 +3038,7 @@
 									<li class="col">
 										<div class="row">
 											<dl>
-												<dt><img src="${pageContext.request.contextPath}/jsp/users/images/wntj/wntj6.jpg"></dt>
+												<dt><img src="./images/wntj/wntj6.jpg"></dt>
 												<dd class="name">小米路由器3</dd>
 												<dd class="price">149元</dd>
 												<dd class="cmt">9000人好评</dd>
@@ -3048,7 +3048,7 @@
 									<li class="col">
 										<div class="row">
 											<dl>
-												<dt><img src="${pageContext.request.contextPath}/jsp/users/images/wntj/wntj7.jpg"></dt>
+												<dt><img src="./images/wntj/wntj7.jpg"></dt>
 												<dd class="name">小米路由器3</dd>
 												<dd class="price">149元</dd>
 												<dd class="cmt">9000人好评</dd>
@@ -3058,7 +3058,7 @@
 									<li class="col">
 										<div class="row">
 											<dl>
-												<dt><img src="${pageContext.request.contextPath}/jsp/users/images/wntj/wntj8.jpg"></dt>
+												<dt><img src="./images/wntj/wntj8.jpg"></dt>
 												<dd class="name">小米路由器3</dd>
 												<dd class="price">149元</dd>
 												<dd class="cmt">9000人好评</dd>
@@ -3068,7 +3068,7 @@
 									<li class="col">
 										<div class="row">
 											<dl>
-												<dt><img src="${pageContext.request.contextPath}/jsp/users/images/wntj/wntj9.jpg"></dt>
+												<dt><img src="./images/wntj/wntj9.jpg"></dt>
 												<dd class="name">小米路由器3</dd>
 												<dd class="price">149元</dd>
 												<dd class="cmt">9000人好评</dd>
@@ -3078,7 +3078,7 @@
 									<li class="col">
 										<div class="row">
 											<dl>
-												<dt><img src="${pageContext.request.contextPath}/jsp/users/images/wntj/wntj10.jpg"></dt>
+												<dt><img src="./images/wntj/wntj10.jpg"></dt>
 												<dd class="name">小米路由器3</dd>
 												<dd class="price">149元</dd>
 												<dd class="cmt">9000人好评</dd>
@@ -3106,7 +3106,7 @@
 					<ul class="m-cols m-col-4">
 						<li class="col">
 							<div class="row">
-								<img src="${pageContext.request.contextPath}/jsp/users/images/rpcp/rpcp1.jpg">
+								<img src="./images/rpcp/rpcp1.jpg">
 								<div class="content">
 									<div class="cmt">
 										自拍是一种病！拍起来真要命！蓝牙连接，比起插线的，简直提升了不少逼格～喜欢的蓝色～美哒哒～～
@@ -3119,7 +3119,7 @@
 						</li>
 						<li class="col">
 							<div class="row">
-								<img src="${pageContext.request.contextPath}/jsp/users/images/rpcp/rpcp2.jpg">
+								<img src="./images/rpcp/rpcp2.jpg">
 								<div class="content">
 									<div class="cmt">
 										自拍是一种病！拍起来真要命！蓝牙连接，比起插线的，简直提升了不少逼格～喜欢的蓝色～美哒哒～～
@@ -3132,7 +3132,7 @@
 						</li>
 						<li class="col">
 							<div class="row">
-								<img src="${pageContext.request.contextPath}/jsp/users/images/rpcp/rpcp3.jpg">
+								<img src="./images/rpcp/rpcp3.jpg">
 								<div class="content">
 									<div class="cmt">
 										自拍是一种病！拍起来真要命！蓝牙连接，比起插线的，简直提升了不少逼格～喜欢的蓝色～美哒哒～～
@@ -3145,7 +3145,7 @@
 						</li>
 						<li class="col">
 							<div class="row">
-								<img src="${pageContext.request.contextPath}/jsp/users/images/rpcp/rpcp4.jpg">
+								<img src="./images/rpcp/rpcp4.jpg">
 								<div class="content">
 									<div class="cmt">
 										自拍是一种病！拍起来真要命！蓝牙连接，比起插线的，简直提升了不少逼格～喜欢的蓝色～美哒哒～～
@@ -4144,7 +4144,7 @@
 				<li class="lss">
 					<span>下载手机版</span>
 					<div class="clearfix lss-pa">
-						<div class="fl lss-img"><img src="${pageContext.request.contextPath}/jsp/users/img/icon/code.png" alt=""></div>
+						<div class="fl lss-img"><img src="img/icon/code.png" alt=""></div>
 						<div class="fl" style="padding-left:20px">
 							<h4>扫描下载云购APP</h4>
 							<p>把优惠握在手心</p>

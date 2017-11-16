@@ -129,44 +129,6 @@
 <body>
 
 <header id="pc-header">
-<!--
-	<div class="pc-header-nav">
-		<div class="pc-header-con">
-			<div class="fl pc-header-link" >您好！，欢迎来云购物 <a href="login.html" target="_blank">请登录</a> <a href="register.html" target="_blank"> 免费注册</a></div>
-			<div class="fr pc-header-list top-nav">
-				<ul>
-					<li>
-						<div class="nav"><i class="pc-top-icon"></i><a href="#">我的订单</a></div>
-						<div class="con">
-							<dl>
-								<dt><a href="">批发进货</a></dt>
-								<dd><a href="">已买到货品</a></dd>
-								<dd><a href="">优惠券</a></dd>
-								<dd><a href="">店铺动态</a></dd>
-							</dl>
-						</div>
-					</li>
-					<li>
-						<div class="nav"><i class="pc-top-icon"></i><a href="#">我的商城</a></div>
-						<div class="con">
-							<dl>
-								<dt><a href="">批发进货</a></dt>
-								<dd><a href="">已买到货品</a></dd>
-								<dd><a href="">优惠券</a></dd>
-								<dd><a href="">店铺动态</a></dd>
-							</dl>
-						</div>
-					</li>
-					<li><a href="#">我的云购</a></li>
-					<li><a href="#">我的收藏</a></li>
-					<li><a href="#">会员中心</a></li>
-					<li><a href="#">客户服务</a></li>
-					<li><a href="#">帮助中心</a></li>
-				</ul>
-			</div>
-		</div>
-	</div>
--->
 	<div class="pc-header-nav">
 		<div class="pc-header-con">
 			<div class="fl pc-header-link" >您好！，欢迎来孝和集团电子商城 
@@ -263,18 +225,18 @@
 <div class="Xcontent">
 	<ul class="Xcontent01">
 
-		<div class="Xcontent06"><img src="images/shangpinxiangqing/X1.png"></div>
+		<div class="Xcontent06"><img src="images/shangpinxiangqing/lndbc1.png"></div>
 		<ol class="Xcontent08">
-			<div class="Xcontent07"><img src="images/shangpinxiangqing/X1.png"></div>
-			<div class="Xcontent09"><img src="images/shangpinxiangqing/X7.png"></div>
-			<div class="Xcontent10"><img src="images/shangpinxiangqing/X8.png"></div>
-			<div class="Xcontent11"><img src="images/shangpinxiangqing/X9.png"></div>
-			<div class="Xcontent12"><img src="images/shangpinxiangqing/X10.png"></div>
+			<div class="Xcontent07"><img src="images/shangpinxiangqing/lndbc1.png"></div>
+			<div class="Xcontent09"><img src="images/shangpinxiangqing/lndbc2.png"></div>
+			<div class="Xcontent10"><img src="images/shangpinxiangqing/lndbc3.png"></div>
+			<div class="Xcontent11"><img src="images/shangpinxiangqing/lndbc4.png"></div>
+			<div class="Xcontent12"><img src="images/shangpinxiangqing/lndbc5.png"></div>
 		</ol>
 		<ol class="Xcontent13 clearfix">
-			<div class="Xcontent14 clearfix"><a href="#"><p>好哥HG-W660电动轮椅</p></a></div>
-			<div class="Xcontent15 clearfix red fl" style="margin-top:15px;margin-right: 8px;">新品上架</div>
-			<div class="Xcontent16 clearfix"><p style="margin-top:14px;">你值得拥有！更多惊喜</p></div>
+			<div class="Xcontent14 clearfix"><a href="#"><p>好哥HG-W660老年代步车</p></a></div>
+			<div class="Xcontent15 clearfix red fl" style="margin-top:15px;margin-right: 8px;">热销商品，爆款</div>
+			<div class="Xcontent16 clearfix"><p style="margin-top:14px;">更多惊喜，你值得拥有！</p></div>
 			<div class="Xcontent17">
 				<p class="Xcontent18">售价</p>
 				<p class="Xcontent19">￥<span>69.00</span></p>
@@ -309,11 +271,11 @@
 					</li>
 				</ul>
 			</div>
-			<div class="Xcontent26">
+			<%--<div class="Xcontent26">
 				<p class="Xcontent27">属性</p>
 				<div class="Xcontent28"><img  src="images/shangpinxiangqing/X14.png"></div>
 				<div class="Xcontent29"><img  src="images/shangpinxiangqing/X1.png"></div>
-			</div>
+			</div>--%>
 			<div class="Xcontent30">
 				<p class="Xcontent31">数量</p>
 				<div class="Xcontent32"><img src="images/shangpinxiangqing/X15.png"></div>
@@ -336,38 +298,6 @@
 </div>
 
 <div class="containers center clearfix" style="margin-top:20px; background:#fff;">
-	<!--<div class="fl" style="padding-left:10px; padding-top:20px">
-		<div class="pc-menu-in">
-			<h2>店内搜索</h2>
-			<form>
-				<p>关键词:<input type="text" class="pc-input1"></p>
-				<p>价  格：<input class="pc-input2"> 到 <input class="pc-input2"></p>
-				<p><a href="#">搜索</a> </p>
-			</form>
-		</div>
-		<div class="menu_list" id="firstpane">
-			<h2>店内分类</h2>
-			<h3 class="menu_head current">电玩</h3>
-			<div class="menu_body" style="">
-				<a href="#">耳机耳麦</a>
-				<a href="#">游戏机</a>
-			</div>
-			<h3 class="menu_head">手机</h3>
-			<div class="menu_body" style="display: none;">
-				<a href="#">手机</a>
-				<a href="#">手机</a>
-				<a href="#">手机</a>
-			</div>
-
-			<h3 class="menu_head">耳机耳麦</h3>
-			<div class="menu_body" style="display: none;">
-				<a href="#">耳机耳麦</a>
-				<a href="#">耳机耳麦</a>
-				<a href="#">耳机耳麦</a>
-				<a href="#">耳机耳麦</a>
-			</div>
-		</div>
-	</div>-->
 	<div class="pc-info fr" style="padding-left:10px; padding-top:20px">
 		<div class="pc-overall">
 			<ul id="H-table1" class="brand-tab H-table1 H-table-shop clearfix ">
@@ -414,11 +344,11 @@
 							<p>机身颜色：白色</p>
 						</li>
 					</ul>
-					<div>
-						<div style="text-align:center"><img src="images/shangpinxiangqing/X1.png" width="50%"></div>
-						<div style="text-align:center"><img src="images/shangpinxiangqing/X2.png" width="50%"></div>
-						<div style="text-align:center"><img src="images/shangpinxiangqing/X3.png" width="50%"></div>
-						<div style="text-align:center"><img src="images/shangpinxiangqing/X1.png" width="50%"></div>
+					<div style="margin-left: 360px;">
+						<div style="text-align:center"><img src="images/shangpinxiangqing/lndbc2.png" width="50%"></div>
+						<div style="text-align:center"><img src="images/shangpinxiangqing/lndbc3.png" width="50%"></div>
+						<div style="text-align:center"><img src="images/shangpinxiangqing/lndbc4.png" width="50%"></div>
+						<div style="text-align:center"><img src="images/shangpinxiangqing/lndbc5.png" width="50%"></div>
 					</div>
 				</div>
 				<div class="H-over1" style="display:none">

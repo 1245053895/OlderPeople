@@ -9,7 +9,7 @@
     </select>
 
     <!--根据登录用户的id向用户日志表中插入用户开始登录的时间，用户的登录ip-->
- <insert id="insertStartTimeAndIp" parameterType="com.xh.po.Userlog">
+    <insert id="insertStartTimeAndIp" parameterType="com.xh.po.Userlog">
         INSERT INTO userlog(UserId,StartLoginTime,UserIp) VALUES(#{userid},#{startlogintime},#{userip})
     </insert>
 

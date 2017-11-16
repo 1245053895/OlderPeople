@@ -18,7 +18,7 @@ public class UserLoginServiceImpl implements UserLoginService {
     private UserLoginMapper userLoginMapper;
     @Override
     public User selectAllNameAndPwd(String username) {
-      User user= userLoginMapper.selectAllNameAndPwd(username);
+        User user= userLoginMapper.selectAllNameAndPwd(username);
         return user;
     }
 

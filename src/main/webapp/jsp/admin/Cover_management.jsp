@@ -70,22 +70,22 @@
             </thead>
             <tbody>
             <c:forEach items="${payList}" var="payList">
-            <tr>
+                <tr>
                     <td><label><input name="payid" value="${payList.payid}"  type="checkbox" class="ace"><span class="lbl"></span></label></td>
                     <td>${payList.payid}</td>
                     <td width="200px;">${payList.payname}</td>
                     <td><span class="ad_img"><img src="${payList.paypicture}"  width="150px" height="60px"/></span></td>
                     <td><fmd:formatDate value="${payList.payA}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
 
-                        <c:if test="${payList.payB==null}">
-                            <td class="td-status"><span class="label label-success radius">已启用</span></td>
-                        </c:if>
-                        <c:if test="${payList.payB==1}">
-                            <td class="td-status"><span class="label label-success radius">已启用</span></td>
-                        </c:if>
-                        <c:if test="${payList.payB==0}">
-                            <td class="td-status"><span class="label label-default radius">已停用</span></td>
-                        </c:if>
+                    <c:if test="${payList.payB==null}">
+                        <td class="td-status"><span class="label label-success radius">已启用</span></td>
+                    </c:if>
+                    <c:if test="${payList.payB==1}">
+                        <td class="td-status"><span class="label label-success radius">已启用</span></td>
+                    </c:if>
+                    <c:if test="${payList.payB==0}">
+                        <td class="td-status"><span class="label label-default radius">已停用</span></td>
+                    </c:if>
 
 
 
@@ -103,16 +103,16 @@
                                class="btn btn-xs btn-success"><i class="fa fa-check  bigger-120"></i></a>
                         </c:if>
 
-                <a title="删除" href="javascript:void(0);"
-                   onclick="member_del(this,'${payList.payid}')" class="btn btn-xs btn-warning" ><i class="fa fa-trash  bigger-120"></i>
-                </a>
+                        <a title="删除" href="javascript:void(0);"
+                           onclick="member_del(this,'${payList.payid}')" class="btn btn-xs btn-warning" ><i class="fa fa-trash  bigger-120"></i>
+                        </a>
 
-                      <%--  <a onclick="return confirm('确定删除？')"  title="删除"
-                           href="${pageContext.request.contextPath}/DelectPayById.action?payid=${payList.payid}"
-                           class="btn btn-xs btn-warning"><i class="fa fa-trash  bigger-120"></i>
-                        </a>--%>
+                            <%--  <a onclick="return confirm('确定删除？')"  title="删除"
+                                 href="${pageContext.request.contextPath}/DelectPayById.action?payid=${payList.payid}"
+                                 class="btn btn-xs btn-warning"><i class="fa fa-trash  bigger-120"></i>
+                              </a>--%>
                     </td>
-            </tr>
+                </tr>
             </c:forEach>
             </tbody>
         </table>
@@ -442,6 +442,47 @@
     }
 
 
+
+    //山川图片
+    //判断浏览器是否支持FileReader接口
+    if (typeof FileReader == 'undefined') {
+        document.getElementById("xmTanDiv").InnerHTML = "<h1>当前浏览器不支持FileReader接口</h1>";
+        //使选择控件不可操作
+        document.getElementById("xdaTanFileImg").setAttribute("disabled", "disabled");
+    }
+
+    //选择图片，马上预览
+    function xmTanUploadImg(obj) {
+        var file = obj.files[0];
+
+        console.log(obj);console.log(file);
+        console.log("file.size = " + file.size);  //file.size 单位为byte
+
+        var reader = new FileReader();
+
+        //读取文件过程方法
+        reader.onloadstart = function (e) {
+            console.log("开始读取....");
+        }
+        reader.onprogress = function (e) {
+            console.log("正在读取中....");
+        }
+        reader.onabort = function (e) {
+            console.log("中断读取....");
+        }
+        reader.onerror = function (e) {
+            console.log("读取异常....");
+        }
+        reader.onload = function (e) {
+            console.log("成功读取....");
+
+            var img = document.getElementById("xmTanImg");
+            img.src = e.target.result;
+            //或者 img.src = this.result;  //e.target == this
+        }
+
+        reader.readAsDataURL(file)
+    }
 </script>
 
 

@@ -6,9 +6,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html >
+<html>
 <head>
-    <meta charset="utf-8" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="renderer" content="webkit|ie-comp|ie-stand">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -17,85 +16,101 @@
     <link rel="stylesheet" href="/jsp/admin/css/style.css"/>
     <link href="/jsp/admin/assets/css/codemirror.css" rel="stylesheet">
     <link rel="stylesheet" href="/jsp/admin/assets/css/ace.min.css" />
-    <link rel="stylesheet" href="/jsp/admin/font/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="/jsp/admin/assets/css/font-awesome.min.css" />
+    <!--[if IE 7]>
+    <link rel="stylesheet" href="/jsp/admin/assets/css/font-awesome-ie7.min.css" />
+    <![endif]-->
     <!--[if lte IE 8]>
     <link rel="stylesheet" href="/jsp/admin/assets/css/ace-ie.min.css" />
     <![endif]-->
     <script src="/jsp/admin/js/jquery-1.9.1.min.js"></script>
-    <script src="/jsp/admin/assets/layer/layer.js" type="text/javascript" ></script>
-    <script src="/jsp/admin/assets/laydate/laydate.js" type="text/javascript"></script>
     <script src="/jsp/admin/assets/js/bootstrap.min.js"></script>
     <script src="/jsp/admin/assets/js/typeahead-bs2.min.js"></script>
-    <script src="/jsp/admin/assets/js/jquery.dataTables.min.js"></script>
-    <script src="/jsp/admin/assets/js/jquery.dataTables.bootstrap.js"></script>
-
+    <script src="/jsp/admin/assets/layer/layer.js" type="text/javascript" ></script>
+    <script src="/jsp/admin/assets/js/jquery-ui-1.10.3.custom.min.js"></script>
+    <script src="/jsp/admin/assets/js/jquery.ui.touch-punch.min.js"></script>
+    <script src="/jsp/admin/assets/js/ace-elements.min.js"></script>
+    <script src="/jsp/admin/assets/js/ace.min.js"></script>
     <title>系统设置</title>
+
 </head>
 
 <body>
-<div class="admin_info_style">
-    <div class="admin_modify_style" id="Personal">
-        <div class="type_title">系统设置 </div>
-        <div class="xinxi">
-
-            <div class="info">
-
-                <form id="QueryUserConfuse" action="${pageContext.request.contextPath}/AddSystem.action" enctype="multipart/form-data"  method="post">
-                    <div class="tab-content">
-                        <div id="home" class="tab-pane active">
-                            <div class="form-group"><label class="col-sm-1 control-label no-padding-right"><i>*</i>网站名称： </label>
-                                <div class="col-sm-9" ><input width="500px" type="text" placeholder="控制在25个字、50个字节以内" name="webname" value="${systemset.webname}"   class="col-xs-7 text_info" disabled="disabled" ></div>
-                            </div>
-
-                            <div class="form-group"><label class="col-sm-1 control-label no-padding-right"><i>*</i>网站icon图标： </label>
-                                <div class="form-group">
-                                    <input width="200px" height="200px"type="file" id="xdaTanFileImg" onchange="xmTanUploadImg(this)"   name="webicons" style="display: none" />
-                                    <div id="xmTanDiv" class="col-sm-1">
-                                        <img src="${systemset.webicon}" id="xmTanImg" width="1000px" height="100px" style="width: 100px;height: 100px;margin-bottom: 10px"/>
-                                        <button onclick="$('#xdaTanFileImg').click();" class="btn btn-success" type="button">上传图片</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group"><label class="col-sm-1 control-label no-padding-right"><i>*</i>关键词： </label>
-                                <div class="col-sm-9"><input type="text" placeholder="${systemset.keywords}" name="keywords" value="${systemset.keywords}"  class="col-xs-7 text_info" disabled="disabled"></div>
-                            </div>
-                            <div class="form-group"><label class="col-sm-1 control-label no-padding-right"><i>*</i>屏蔽词： </label>
-                                <div class="col-sm-9"><input type="text" placeholder="8汉字以内,用英文,隔开" name="blockwords"  value="${systemset.blockwords}"  class="col-xs-7 text_info" disabled="disabled"></div>
-                            </div>
-                            <div class="form-group"><label class="col-sm-1 control-label no-padding-right"><i>*</i>路径配置： </label>
-                                <div class="col-sm-9"><input type="text" placeholder="默认为空，为相对路径" name="webfilepatn" value="${systemset.webfilepatn}" class="col-xs-7 text_info" disabled="disabled"></div>
-                            </div>
-                            <div class="form-group"><label class="col-sm-1 control-label no-padding-right"><i>*</i>描述： </label>
-                                <div class="col-sm-9"><input type="text" placeholder="空制在80个汉字，160个字符以内" name="webdescribe" value="${systemset.webdescribe}" class="col-xs-7 text_info" disabled="disabled"></div>
-                            </div>
-                            <div class="form-group"><label class="col-sm-1 control-label no-padding-right"><i>*</i>版权信息： </label>
-                                <div class="col-sm-9"><input type="text" placeholder=""  name="bottomcopyright" value="${systemset.bottomcopyright}" class="col-xs-7 text_info" disabled="disabled"></div>
-                            </div>
-                            <div class="form-group"><label class="col-sm-1 control-label no-padding-right"><i>*</i>备案号： </label>
-                                <div class="col-sm-9"><input type="text" placeholder=""  name="recordnumber" value="${systemset.recordnumber}"  class="col-xs-7 text_info" disabled="disabled"></div>
-                            </div>
-                            <%-- <div class="form-group"><label class="col-sm-1 control-label no-padding-right"><i>*</i>统计代码： </label>
-                            <div class="col-sm-9"><textarea class="textarea"></textarea></div>
-                            </div>--%>
-                            <div class="form-group" style="height: 30px;" >
-                                <%--<label class="col-sm-3 control-label no-padding-right"></label>--%>
-                                <div class="col-sm-9" >
-                                    <button onclick="modify();" class="btn btn-danger" type="button">修改信息</button>
-                                    <button onclick="save_info();" class="btn btn-success" type="button" style="display: none">保存修改</button>
+<div class="margin clearfix">
+    <div class="stystems_style">
+        <div class="tabbable">
+            <ul class="nav nav-tabs" id="myTab">
+                <li class="active">
+                    <a data-toggle="tab" href="#home"><i class="green fa fa-home bigger-110"></i>&nbsp;基本设置</a></li>
+                <%--<li class="">
+                  <a data-toggle="tab" href="#profile">消息通知<span class="badge badge-danger">4</span></a></li>
+                <li class="">
+                  <a data-toggle="tab" data-toggle="dropdown" class="dropdown-toggle" href="#dropdown">底部菜单</a>
+                </li>
+                  <li class="">
+                   private int webid;
+           private String webname;
+           private String webicon;
+           private String keywords;
+           private  String blockwords;
+           private  String webfilepath;
+           private  String webdescrible;
+           private  String bottomcopyright;
+           private  String recordnumber;
+                  <a data-toggle="tab" data-toggle="dropdown" class="dropdown-toggle" href="#other">其他设置</a>
+                </li>--%>
+            </ul>
+            <form id="QueryUserConfuse" action="${pageContext.request.contextPath}/AddSystem.action" enctype="multipart/form-data"  method="post">
+                <div class="tab-content">
+                    <div id="home" class="tab-pane active">
+                        <div class="form-group"><label class="col-sm-1 control-label no-padding-right"><i>*</i>网站名称： </label>
+                            <div class="col-sm-9"><input type="text" placeholder="控制在25个字、50个字节以内" name="webname" value="${systemset.webname}" class="col-xs-10 "></div>
+                        </div>
+                        <div class="form-group"><label class="col-sm-1 control-label no-padding-right"><i>*</i>网站icon图标： </label>
+                            <div class="form-group">
+                                <input width="200px" height="200px"type="file" id="xdaTanFileImg" onchange="xmTanUploadImg(this)"   name="webicons" style="display: none" />
+                                <div id="xmTanDiv" class="col-sm-1">
+                                    <img src="${systemset.webicon}" id="xmTanImg" width="1000px" height="100px" style="width: 100px;height: 100px;margin-bottom: 10px"/>
+                                    <button onclick="$('#xdaTanFileImg').click();" class="btn btn-success" type="button">上传图片</button>
                                 </div>
                             </div>
                         </div>
+                        <div class="form-group"><label class="col-sm-1 control-label no-padding-right"><i>*</i>关键词： </label>
+                            <div class="col-sm-9"><input type="text" placeholder="${systemset.keywords}" name="keywords" value="${systemset.keywords}" class="col-xs-10 "></div>
+                        </div>
+                        <div class="form-group"><label class="col-sm-1 control-label no-padding-right"><i>*</i>屏蔽词： </label>
+                            <div class="col-sm-9"><input type="text" placeholder="8汉字以内,用英文,隔开" name="blockwords"  value="${systemset.blockwords}" class="col-xs-10 "></div>
+                        </div>
+                        <div class="form-group"><label class="col-sm-1 control-label no-padding-right"><i>*</i>文件路径配置： </label>
+                            <div class="col-sm-9"><input type="text" placeholder="默认为空，为相对路径" name="webfilepatn" value="${systemset.webfilepatn}" class="col-xs-10"></div>
+                        </div>
+                        <div class="form-group"><label class="col-sm-1 control-label no-padding-right"><i>*</i>描述： </label>
+                            <div class="col-sm-9"><input type="text" placeholder="空制在80个汉字，160个字符以内" name="webdescribe" value="${systemset.webdescribe}" class="col-xs-10"></div>
+                        </div>
+                        <div class="form-group"><label class="col-sm-1 control-label no-padding-right"><i>*</i>底部版权信息： </label>
+                            <div class="col-sm-9"><input type="text" placeholder=""  name="bottomcopyright" value="${systemset.bottomcopyright}" class="col-xs-10 "></div>
+                        </div>
+                        <div class="form-group"><label class="col-sm-1 control-label no-padding-right"><i>*</i>备案号： </label>
+                            <div class="col-sm-9"><input type="text" placeholder=""  name="recordnumber" value="${systemset.recordnumber}" class="col-xs-10 "></div>
+                        </div>
+                        <%-- <div class="form-group"><label class="col-sm-1 control-label no-padding-right"><i>*</i>统计代码： </label>
+                        <div class="col-sm-9"><textarea class="textarea"></textarea></div>
+                        </div>--%>
+                        <div class="Button_operation">
+                            <button onclick="" class="btn btn-primary radius" type="button"><i class="fa fa-save "></i>&nbsp;编辑</button>
+                            <button onclick="article_save_submit();" class="btn btn-primary radius" type="submit"><i class="fa fa-save "></i>&nbsp;保存</button>
 
+                            <%--<button onclick="layer_close();" class="btn btn-default radius" type="button">&nbsp;&nbsp;取消&nbsp;&nbsp;</button>--%>
+
+                        </div>
                     </div>
-                </form>
 
-
-            </div>
+                </div>
+            </form>
         </div>
     </div>
-</div>
-</div>
 
+</div>
 </body>
 </html>
 <script>
@@ -111,130 +126,43 @@
         //onchange:''
         //
     });
-
-
-
-</script>
-<script>
-
-    //按钮点击事件
-    function modify(){
-        $('.text_info').attr("disabled", false);
-        $('.text_info').addClass("add");
-        $('#Personal').find('.xinxi').addClass("hover");
-        $('#Personal').find('.btn-success').css({'display':'inline-block'});
-    };
-    function save_info(){
-        var num=0;
-        var str="";
-        $(".xinxi input[type$='text']").each(function(n){
-            if($(this).val()=="")
-            {
-
-                layer.alert(str+=""+$(this).attr("name")+"不能为空！\r\n",{
-                    title: '提示框',
-                    icon:0,
-                });
-                num++;
-                return false;
-            }
-        });
-        if(num>0){  return false;}
-        else{
-            $("#QueryUserConfuse").submit();
-            layer.alert('修改成功！',{
-                title: '提示框',
-                icon:1,
-            });
-            $('#Personal').find('.xinxi').removeClass("hover");
-            $('#Personal').find('.text_info').removeClass("add").attr("disabled", true);
-            $('#Personal').find('.btn-success').css({'display':'none'});
-            layer.close(index);
-
-        }
-    };
-    //初始化宽度、高度
-    $(".admin_modify_style").height($(window).height());
-    $(".recording_style").width($(window).width()-400);
-    //当文档窗口发生改变时 触发
-    $(window).resize(function(){
-        $(".admin_modify_style").height($(window).height());
-        $(".recording_style").width($(window).width()-400);
-    });
-    //修改密码
-    function change_Password(){
-        layer.open({
-            type: 1,
-            title:'修改密码',
-            area: ['300px','300px'],
-            shadeClose: true,
-            content: $('#change_Pass'),
-            /* btn:['确认修改'],*/
-            yes:function(index, layero){
-                if ($("#password").val()==""){
-                    layer.alert('原密码不能为空!',{
-                        title: '提示框',
-                        icon:0,
-
-                    });
-                    return false;
-                }
-                if ($("#Nes_pas").val()==""){
-                    layer.alert('新密码不能为空!',{
-                        title: '提示框',
-                        icon:0,
-
-                    });
-                    return false;
-                }
-
-                if ($("#c_mew_pas").val()==""){
-                    layer.alert('确认新密码不能为空!',{
-                        title: '提示框',
-                        icon:0,
-
-                    });
-                    return false;
-                }
-                if(!$("#c_mew_pas").val || $("#c_mew_pas").val() != $("#Nes_pas").val() )
-                {
-                    layer.alert('密码不一致!',{
-                        title: '提示框',
-                        icon:0,
-
-                    });
-                    return false;
-                }
-                else{
-                    layer.alert('修改成功！',{
-                        title: '提示框',
-                        icon:1,
-                    });
-                    layer.close(index);
-                }
-            }
-        });
+    //判断浏览器是否支持FileReader接口
+    if (typeof FileReader == 'undefined') {
+        document.getElementById("xmTanDiv").InnerHTML = "<h1>当前浏览器不支持FileReader接口</h1>";
+        //使选择控件不可操作
+        document.getElementById("xdaTanFileImg").setAttribute("disabled", "disabled");
     }
-</script>
-<script>
-    jQuery(function($) {
-        var oTable1 = $('#sample-table').dataTable( {
-            "aaSorting": [[ 1, "desc" ]],//默认第几个排序
-            "bStateSave": true,//状态保存
-            "aoColumnDefs": [
-                //{"bVisible": false, "aTargets": [ 3 ]} //控制列的隐藏显示
-                {"orderable":false,"aTargets":[0,2,3,4,5,6]}// 制定列不参与排序
-            ] } );
 
+    //选择图片，马上预览
+    function xmTanUploadImg(obj) {
+        var file = obj.files[0];
 
-        $('table th input:checkbox').on('click' , function(){
-            var that = this;
-            $(this).closest('table').find('tr > td:first-child input:checkbox')
-                .each(function(){
-                    this.checked = that.checked;
-                    $(this).closest('tr').toggleClass('selected');
-                });
+        console.log(obj);console.log(file);
+        console.log("file.size = " + file.size);  //file.size 单位为byte
 
-        });
-    });
+        var reader = new FileReader();
+
+        //读取文件过程方法
+        reader.onloadstart = function (e) {
+            console.log("开始读取....");
+        }
+        reader.onprogress = function (e) {
+            console.log("正在读取中....");
+        }
+        reader.onabort = function (e) {
+            console.log("中断读取....");
+        }
+        reader.onerror = function (e) {
+            console.log("读取异常....");
+        }
+        reader.onload = function (e) {
+            console.log("成功读取....");
+
+            var img = document.getElementById("xmTanImg");
+            img.src = e.target.result;
+            //或者 img.src = this.result;  //e.target == this
+        }
+
+        reader.readAsDataURL(file)
+    }
 </script>

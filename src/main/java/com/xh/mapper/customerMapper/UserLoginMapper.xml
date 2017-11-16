@@ -8,4 +8,21 @@
     User_B, User_C FROM `user` WHERE UserName=#{username}
     </select>
 
+    <!--根据登录用户的id向用户日志表中插入用户开始登录的时间，用户的登录ip-->
+ <insert id="insertStartTimeAndIp" parameterType="com.xh.po.Userlog">
+        INSERT INTO userlog(UserId,StartLoginTime,UserIp) VALUES(#{userid},#{startlogintime},#{userip})
+    </insert>
+
+    <!--根据用户id插入用户的结束登录时间-->
+    <insert id="updateEndLoginTime" parameterType="com.xh.po.Userlog">
+        UPDATE userlog SET EndLoginTime=#{endlogintime} WHERE UserId=#{userid}
+    </insert>
+
+    <!--用户注册后向数据库中插入一个新的用户-->
+    <insert id="insertNewUser" parameterType="user">
+        INSERT INTO user(UserName,UserPhone,UserPwd,UserInputDate) VALUES (#{username},#{userphone},#{userpwd},#{userinputdate})
+    </insert>
+
+
+
 </mapper>

@@ -197,8 +197,8 @@
 		<div class="pc-header-con">
 			<c:if test="${empty user.userid}">
 					<div class="fl pc-header-link" >您好！欢迎来孝和集团电子商城
-						<a href="/LoginPage.action" target="_blank">请登录</a>
-						<a href="register.jsp" target="_blank"> 免费注册</a>
+						<a href="${pageContext.request.contextPath}/LoginPage.action" target="_blank">请登录</a>
+						<a href="${pageContext.request.contextPath}/jsp/users/register.jsp" target="_blank"> 免费注册</a>
 					</div>
 		   </c:if>
 			<c:if test="${not empty user.userid}">

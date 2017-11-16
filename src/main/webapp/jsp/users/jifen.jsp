@@ -141,6 +141,18 @@
 
         }
 	</script>
+
+	<style type="text/css">
+		img{
+			float: left;
+			width: 60px;
+			height: 60px;
+			overflow: hidden;
+			text-align: center;
+			margin: 0 10px 0 20px;
+		}
+	</style>
+
 </head>
 <body>
 
@@ -256,7 +268,7 @@
 		</div>
 		<div class="member-right fr">
 			<div class="member-head">
-				<div class="member-heels fl"><h2>修改登录密码</h2></div>
+				<div class="member-heels fl"><h2>我的积分</h2></div>
 			</div>
 			<div class="member-border">
 <!--
@@ -284,21 +296,46 @@
 					<ul>
 						<li class="clearfix">
 							<div class="warn1"></div>
-							<div class="warn2">登录密码</div>
-							<div class="warn3">互联网账号存在被盗风险，建议您定期更改密码以保护账户安全。</div>
-							<div class="warn4"><a href="#" onclick="mmyz()">修改</a> </div>
+							<div class="warn2">可用的积分</div>
+							<div class="warn2" style="color: #ea4949;font-size: 16px;border: none">746</div>
 						</li>
-						<script>
-							function mmyz() {
-								var yz = prompt("请输入原始密码验证身份")
-                                //yz为用户输入的密码，验证过后弹出新密码框；xmm的值是用户输入的新密码
-								var xmm = prompt("请输入新密码")
-                            }
-                            function sjyz() {
-                                var yz = prompt("请输入登录密码验证身份")
-                                var xsj = prompt("请输入新手机号")
-                            }
-						</script>
+						<li class="clearfix">
+							<%--<div class="warn1"></div>--%>
+							<%--<div class="warn2">登录密码</div>--%>
+							<%--<div class="warn3">互联网账号存在被盗风险，建议您定期更改密码以保护账户安全。</div>--%>
+							<%--<div class="warn4"><a href="#">修改</a> </div>--%>
+								<div class="warn2" style="margin-left: 10px;border: none">来源/用途</div>
+								<div class="warn2" style="margin-left: 260px;border: none">积分变化</div>
+								<div class="warn2" style="margin-left: 200px;border: none">日期</div>
+						</li>
+						
+						
+						
+						<li class="clearfix">
+							<div class="warn2" style="margin-left: 10px;border: none;font-weight: normal;width: 380px;height: 60px">
+								<a class="img" href=""><img src="images/shangpinxiangqing/X-1.png" width="60px" height="60px"></a>
+								<a style="width: 290px;height: 40px;overflow: hidden;line-height: 20px;text-align: left;display: block">商品名称巴拉巴拉巴拉巴拉</a>
+								<span style="height: 20px;display: block;line-height: 20px;text-align: left">编号：3215345347457857</span>
+							</div>
+							<div class="warn2" style="margin-left: 15px;border: none;font-weight: normal;height: 60px">
+								<span style="font-size: 24px;font-weight: 700;text-align: center;color: #ea4949;line-height: 60px">+54</span>
+							</div>
+							<div class="warn2" style="float: right;margin-right: -40px;border: none;font-weight: normal;height: 60px;width: 300px;line-height: 60px">2017年11月10日 16:10:22
+							</div>
+						</li>
+
+						<li class="clearfix">
+							<div class="warn2" style="margin-left: 10px;border: none;font-weight: normal;width: 380px;height: 60px">
+								<a class="img" href=""><img src="images/shangpinxiangqing/X-1.png" width="60px" height="60px"></a>
+								<a style="width: 290px;height: 40px;overflow: hidden;line-height: 20px;text-align: left;display: block">商品抵扣~巴拉巴拉巴拉巴拉</a>
+								<span style="height: 20px;display: block;line-height: 20px;text-align: left">编号：65245656378293674</span>
+							</div>
+							<div class="warn2" style="margin-left: 15px;border: none;font-weight: normal;height: 60px">
+								<span style="font-size: 24px;font-weight: 700;text-align: center;color: green;line-height: 60px">-42</span>
+							</div>
+							<div class="warn2" style="float: right;margin-right: -40px;border: none;font-weight: normal;height: 60px;width: 300px;line-height: 60px">2017年11月3日 12:24:21
+							</div>
+						</li>
 <!--
 						<li class="clearfix">
 							<div class="warn1"></div>
@@ -307,22 +344,22 @@
 							<div class="warn4"><a href="#">设置密保</a> </div>
 						</li>
 -->
-						<li class="clearfix">
-							<div class="warn1"></div>
-							<div class="warn2">绑定手机号</div>
-							
-							<div class="warn3">134*****693  </div>
-							<span style="margin-left: -400px; height:33px; line-height:33px; float:left; color: #A8A8A8;font-size: 12px">若已丢失或停用，请立即更换，避免账户被盗</span>
-<!--
-							<div class="warn3">您验证的手机：  
-								<i class="reds">134*****693</i>
-								若已丢失或停用，请立即更换，
-								<i class="reds">避免账户被盗</i>
-							</div>
--->
-<!--							<div class="warn5"><p>解绑请咨询搜小悦官方客服 <i>souyue@zhongsou.com  </i></p></div>-->
-							<div class="warn4"><a href="#" onclick="sjyz()">更换</a> </div>
-						</li>
+						<%--<li class="clearfix">--%>
+							<%--<div class="warn1"></div>--%>
+							<%--<div class="warn2">验证手机</div>--%>
+							<%----%>
+							<%--<div class="warn3">134*****693  </div>--%>
+							<%--<span style="margin-left: -400px; height:33px; line-height:33px; float:left; color: #A8A8A8;font-size: 12px">若已丢失或停用，请立即更换，避免账户被盗</span>--%>
+<%--<!----%>
+							<%--<div class="warn3">您验证的手机：  --%>
+								<%--<i class="reds">134*****693</i>--%>
+								<%--若已丢失或停用，请立即更换，--%>
+								<%--<i class="reds">避免账户被盗</i>--%>
+							<%--</div>--%>
+<%---->--%>
+<%--<!--							<div class="warn5"><p>解绑请咨询搜小悦官方客服 <i>souyue@zhongsou.com  </i></p></div>-->--%>
+							<%--<div class="warn4"><a href="#">更换</a> </div>--%>
+						<%--</li>--%>
 <!--
 						<li class="clearfix">
 							<div class="warn6"></div>
@@ -332,12 +369,12 @@
 						</li>
 -->
 					</ul>
-					<div class="member-prompt">
-						<p>安全提示：</p>
-						<p>您当前IP地址是：<i class="reds">110.106.0.01</i>  北京市          上次登录的TP： 2015-09-16  <i class="reds">110.106.0.02 </i> 天津市</p>
-						<p>1. 注意防范进入钓鱼网站，不要轻信各种即时通讯工具发送的商品或支付链接，谨防网购诈骗。</p>
-						<p>2. 建议您安装杀毒软件，并定期更新操作系统等软件补丁，确保账户及交易安全。      </p>
-					</div>
+					<%--<div class="member-prompt">--%>
+						<%--<p>安全提示：</p>--%>
+						<%--<p>您当前IP地址是：<i class="reds">110.106.0.01</i>  北京市          上次登录的TP： 2015-09-16  <i class="reds">110.106.0.02 </i> 天津市</p>--%>
+						<%--<p>1. 注意防范进入钓鱼网站，不要轻信各种即时通讯工具发送的商品或支付链接，谨防网购诈骗。</p>--%>
+						<%--<p>2. 建议您安装杀毒软件，并定期更新操作系统等软件补丁，确保账户及交易安全。      </p>--%>
+					<%--</div>--%>
 				</div>
 			</div>
 		</div>

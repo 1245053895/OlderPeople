@@ -21,8 +21,7 @@ import java.util.List;
 public class CustomerInformation {
     @Autowired
     private CustomerInformationService customerInformationService;
-    @Autowired
-    private UserLoginService userLoginService;
+
     //用户信息
     @RequestMapping(value = "/CustomerInformation.action",method = {RequestMethod.GET,RequestMethod.POST})
     public  String CustomerInformation(HttpSession session,User user, HttpServletRequest request, HttpServletResponse response, Model model){
@@ -50,7 +49,7 @@ public class CustomerInformation {
         User user1= (User) request.getSession().getAttribute("user");
         Integer id=user1.getUserid();
 
-        List<Gainaddres> gainaddres = userLoginService.SelectUserAddressByid(id);
+        List<Gainaddres> gainaddres = customerInformationService.SelectUserAddressByid(id);
         model.addAttribute(gainaddres);
         return "/jsp/users/address.jsp";
     }

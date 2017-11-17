@@ -31,7 +31,7 @@
   </sql>
          <!--疯狂抢购 :订单中数量最多的商品-->
   <select id="tuiJian01"  resultType="com.xh.po.vo.TuiJian">
-  SELECT a.ProductId AS productid,SUM(ShoppingCount) AS shuliang,ProductName AS productname,ProductPrice AS productprice,ProductPicture AS productpicture
+  SELECT a.ProductId AS productid,SUM(ShoppingCount) AS shuliang,ProductName AS productname,ProductPrice AS productprice,Product_B AS productpicture
   FROM orderproduct a,product b
   WHERE a.ProductId=b.ProductId
   GROUP BY ProductId
@@ -40,7 +40,7 @@
   </select>
         <!--热评商品 :评论最多的商品-->
   <select id="tuiJian02"  resultType="com.xh.po.vo.TuiJian">
-  SELECT a.ProductId AS productid,COUNT(`Comment`) AS shuliang,ProductName AS productname,ProductPrice AS productprice,ProductPicture AS productpicture
+  SELECT a.ProductId AS productid,COUNT(`Comment`) AS shuliang,ProductName AS productname,ProductPrice AS productprice,Product_B AS productpicture
   FROM `comment` a,product b
   WHERE a.ProductId=b.ProductId
   GROUP BY ProductId
@@ -49,21 +49,21 @@
   </select>
   <!--热卖商品 :标注热销的商品-->
   <select id="tuiJian03"  resultType="com.xh.po.vo.TuiJian">
-   SELECT ProductId AS productid,ProductName AS productname,ProductPrice AS productprice,ProductPicture AS productpicture
+   SELECT ProductId AS productid,ProductName AS productname,ProductPrice AS productprice,Product_B AS productpicture
     FROM product
     where ProducthotSale=1
   LIMIT 0,7;
   </select>
   <!--猜您喜欢 :浏览次数最多的商品-->
   <select id="tuiJian04"  resultType="com.xh.po.vo.TuiJian">
-SELECT ProductId AS productid,ProductName AS productname,ProductPrice AS productprice,ProductPicture AS productpicture
+SELECT ProductId AS productid,ProductName AS productname,ProductPrice AS productprice,Product_B AS productpicture
     FROM product
     ORDER BY ProductLookCount DESC
   LIMIT 0,7;
   </select>
   <!--新品上架 :标注新品的商品-->
   <select id="tuiJian05"  resultType="com.xh.po.vo.TuiJian">
-SELECT ProductId AS productid,ProductName AS productname,ProductPrice AS productprice,ProductPicture AS productpicture
+SELECT ProductId AS productid,ProductName AS productname,ProductPrice AS productprice,Product_B AS productpicture
     FROM product
     where ProductNew=1
  LIMIT 0,7;

@@ -94,6 +94,12 @@ public class CustomerLoginController {
     }
 
 
+    //个人中心里跳转到修改密码的页面
+    @RequestMapping("/UpdataPwdPage.action")
+    public  String UpdataPwdPage(){
+        return "/jsp/users/my-user.jsp";
+    }
+
     //个人中心里根据登录用户的id修改登录密码
     @RequestMapping("/updateLoginPassword.action")
     public String updateLoginPassword(HttpServletRequest request,User user){
@@ -128,5 +134,16 @@ public class CustomerLoginController {
        model.addAttribute("totalCreditsById",totalCreditsById);
         return "/jsp/users/jifen.jsp";
     }
+
+    //积分说明
+    @RequestMapping("/CreditsMean.action")
+    public String CreditsMean(){
+        return "jsp/users/jifensm.jsp";
+    }
+
+
+
+    //查询出商品的图片，名称，描述，价格，展示在商城的首页
+
 
 }

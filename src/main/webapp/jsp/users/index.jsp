@@ -8,7 +8,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-<head>	
+<head>
 	<meta charset="UTF-8">
 	<meta name="Generator" content="EditPlus®">
 	<meta name="Author" content="">
@@ -57,7 +57,7 @@
         });//倒计时结束
 
         $(function(){
-	        /*======右按钮======*/
+			/*======右按钮======*/
             $(".you").click(function(){
                 nextscroll();
             });
@@ -70,7 +70,7 @@
                     $(this).css("margin-left","0px");
                 });
             };
-	        /*========左按钮=========*/
+			/*========左按钮=========*/
             $(".zuo").click(function(){
                 var vcon = $(".v_cont");
                 var offset = ($(".v_cont li").width()*-1);
@@ -115,7 +115,7 @@
 						<img src="img/icon/head.jpg" style="border: medium none">
 					</a>
 				</div>
-				
+
 &lt;!&ndash;				客服&ndash;&gt;
 				<div style="width: 35px;height: 45px;font-size: 12px;margin: 20px 0 14px;overflow: visible;position: relative;border: 0;z-index: 1;padding: 0;">
 					<a target="_blank" style="width: 35px;height: 45px;font-size: 12px;display: block;overflow: hidden;position: relative;text-align: center;z-index: 2;color: #4A4A4A;outline: medium none;text-decoration: none;padding: 0;margin: 0" href="" title="在线客服">
@@ -139,7 +139,7 @@
 &ndash;&gt;
 					</a>
 				</div>
-				
+
 &lt;!&ndash;				购物车&ndash;&gt;
 				<div style="height: 135px;width: 35px;font-size: 12px;margin: 20px 0 14px;overflow: visible;position: relative;border: 0;z-index: 1;padding: 0;display: block;cursor:auto;color: #666666">
 					<form method="post" style="padding: 0;margin: 0;border: none;list-style-type: none;display: block;font-size: 12px" action="">
@@ -157,7 +157,7 @@
 					<a style="width: 35px;height: 45px;font-size: 12px;display: block;overflow: hidden;position: relative;text-align: center;z-index: 2;color: #4A4A4A;outline: medium none;padding: 0;margin: 0">
 						<table>
 							<tbody>
-								
+
 							</tbody>
 						</table>
 					</a>
@@ -188,84 +188,13 @@
 		</div>
 	</div>
 </div>-->
-	
-<header id="pc-header">
-	<div class="pc-header-nav">
-		<div class="pc-header-con">
-			<c:if test="${empty user.userid}">
-					<div class="fl pc-header-link" >您好！欢迎来孝和集团电子商城
-						<a href="${pageContext.request.contextPath}/LoginPage.action" target="_blank">请登录</a>
-						<a href="${pageContext.request.contextPath}/jsp/users/register.jsp" target="_blank"> 免费注册</a>
-					</div>
-		   </c:if>
-			<c:if test="${not empty user.userid}">
-				<div class="fl pc-header-link" >${user.username}您好！欢迎来孝和集团电子商城
-					<a target="_self" href="${pageContext.request.contextPath}/ExitLogin.action" target="_blank"> 退出登录</a>
-				</div>
-			</c:if>
 
-			<div class="fr pc-header-list top-nav">
-				<ul>
-					<li><a href="${pageContext.request.contextPath}/jsp/users/my-dingdan.jsp?flag=1">收藏夹</a></li>
-					<li><a href="${pageContext.request.contextPath}/jsp/users/my-dingdan.jsp?flag=2">我的购物车</a></li>
-					<!-- flag=0 表示跳到订单页面; flag=1 表示跳到收藏页面;flag=2 表示跳到购物车页面; ...-->
-					<li><a href="${pageContext.request.contextPath}/jsp/users/my-dingdan.jsp?flag=0">我的订单</a></li>
-					<li>
-						<div class="nav"><i class="pc-top-icon"></i><a href="#">个人中心</a></div>
-						<div class="con">
-							<dl>
-								<dt><a href="">个人资料</a></dt>
-								<dd><a href="">收货地址</a></dd>
-								<dd><a href="">修改登录密码</a></dd>
-								<dd><a href="">我的积分</a></dd>
-							</dl>
-						</div>
-					</li>
-										
-					<li>
-						<div class="nav"><i class="pc-top-icon"></i><a href="#">帮助中心</a></div>
-						<div class="con">
-							<dl>
-								<dt><a href="">积分说明</a></dt>
-								<dd><a href="">联系客服</a></dd>
-							</dl>
-						</div>
-					</li>
-					
-				</ul>
-			</div>
-		</div>
-	</div>
-	
-	<div class="pc-header-logo clearfix">
-		<div class="pc-fl-logo fl">
-			<h1>
-				<a href="index.jsp"></a>
-			</h1>
-		</div>
-		<div class="head-form fl">
-			<form class="clearfix">
-				<input class="search-text" accesskey="" id="key" autocomplete="off" placeholder="请输入关键词" type="text">
-				<button class="button" onclick="search('key');return false;">搜索</button>
-			</form>
-			<div class="words-text clearfix">
-				<a href="#">制氧机</a>
-				<a href="#">代步车</a>
-				<a href="#">电动轮椅</a>
-				<a href="#">血糖仪</a>
-				<a href="#">血压计</a>
-				<a href="#">木制拐杖</a>
-				<a href="#">足浴盆</a>
-			</div>
-		</div>
-		<div class="fr pc-head-car">
-			<i class="icon-car"></i>
-			<a href="my-car.jsp" target="_blank">我的购物车</a>
-			<em>10</em>
-		</div>
-	</div>
+<header id="pc-header">
+
+	<jsp:include page="/jsp/users/head.jsp"></jsp:include>
+
 	<!--  顶部    start-->
-	<div class="yHeader1" style="margin: 0px auto">
+	<div class="yHeader1">
 		<!-- 导航   start  -->
 		<div class="yNavIndex">
 			<div class="pullDown">
@@ -273,38 +202,38 @@
 				<ul class="pullDownList">
 					<li>
 						<div class="tx">
-						<div class="tx1">
-							<a href="#">
-								<i> </i>
-								<a href="#" target="_blank" style="font-size: 14px;">出行代步</a>
-								<span></span>
-							</a>
-						</div>
-						<dl class="one1">
-							<dd>
-								<a href="#">电动轮椅 </a>
-								<a href="#">手动轮椅 </a>
-								<a href="#"> . . .</a>
-							</dd>
-						</dl>
+							<div class="tx1">
+								<a href="#">
+									<i> </i>
+									<a href="#" target="_blank" style="font-size: 14px;">出行代步</a>
+									<span></span>
+								</a>
+							</div>
+							<dl class="one1">
+								<dd>
+									<a>电动轮椅 </a>
+									<a>手动轮椅 </a>
+									<a> . . .</a>
+								</dd>
+							</dl>
 						</div>
 					</li>
 					<li>
 						<div class="tx">
-						<div class="tx2">
-							<a href="#">
-								<i> </i>
-								<a href="#" target="_blank" style="font-size: 14px;">健康监测</a>
-								<span></span>
-							</a>
-						</div>
-						<dl class="one1">
-							<dd>
-								<a href="#">血压血糖 </a>
-								<a href="#">运动监测 </a>
-								<a href="#"> . . .</a>
-							</dd>
-						</dl>
+							<div class="tx2">
+								<a href="#">
+									<i> </i>
+									<a href="#" target="_blank" style="font-size: 14px;">健康监测</a>
+									<span></span>
+								</a>
+							</div>
+							<dl class="one1">
+								<dd>
+									<a>血压血糖 </a>
+									<a>运动监测 </a>
+									<a> . . .</a>
+								</dd>
+							</dl>
 						</div>
 					</li>
 					<li>
@@ -318,9 +247,9 @@
 							</div>
 							<dl class="one1">
 								<dd>
-									<a href="#">康复器材 </a>
-									<a href="#">护理器材 </a>
-									<a href="#"> . . .</a>
+									<a>康复器材 </a>
+									<a>护理器材 </a>
+									<a> . . .</a>
 								</dd>
 							</dl>
 						</div>
@@ -336,9 +265,9 @@
 							</div>
 							<dl class="one1">
 								<dd>
-									<a href="#">卫浴用品 </a>
-									<a href="#">饮食居家 </a>
-									<a href="#"> . . .</a>
+									<a>卫浴用品 </a>
+									<a>饮食居家 </a>
+									<a> . . .</a>
 								</dd>
 							</dl>
 						</div>
@@ -354,9 +283,9 @@
 							</div>
 							<dl class="one1">
 								<dd>
-									<a href="#">文房用具 </a>
-									<a href="#">健身用具 </a>
-									<a href="#"> . . .</a>
+									<a>文房用具 </a>
+									<a>健身用具 </a>
+									<a> . . .</a>
 								</dd>
 							</dl>
 						</div>
@@ -372,9 +301,9 @@
 							</div>
 							<dl class="one1">
 								<dd>
-									<a href="#">药品医疗 </a>
-									<a href="#">医药器材 </a>
-									<a href="#"> . . .</a>
+									<a>药品医疗 </a>
+									<a>医药器材 </a>
+									<a> . . .</a>
 								</dd>
 							</dl>
 						</div>
@@ -388,20 +317,20 @@
 							<h3><a href="" class="yListName1">老年助行</a><a href="" class="yListMore">更多 ></a></h3>
 							<dl>
 								<dl>
-									<dt><a href="" target="_blank" title="电动轮椅">电动轮椅 ></a></dt>
+									<%--<dt><a target="_blank" title="轮椅">轮椅 ></a></dt>--%>
 									<dd>
-										<a href="" target="_blank" title="全躺轮椅">全躺轮椅</a>
-										<a href="" target="_blank" title="半躺轮椅">半躺轮椅</a>
-										<a href="" target="_blank" title="可折叠轮椅">可折叠轮椅</a>
-										<a href="" target="_blank" title="带坐便轮椅">带坐便轮椅</a>
-										<a href="" target="_blank" title="站立式轮椅">站立式轮椅</a>
-										<a href="" target="_blank" title="站立式轮椅">爬楼电动轮椅</a>
+										<a href="" target="_blank" title="轮椅">轮椅</a>
+										<a href="" target="_blank" title="防滑拐杖">防滑拐杖</a>
+										<a href="" target="_blank" title="代步车">代步车</a>
+										<a href="" target="_blank" title="助行架">助行架</a>
+										<a href="" target="_blank" title="老年购物车">老年购物车</a>
+										<a href="" target="_blank" title="爬楼助行器">爬楼助行器 </a>
 									</dd>
 								</dl>
 							</dl>
-							<dl>
+							<%--<dl>
 								<dl>
-									<dt><a href="" target="_blank" title="手动轮椅">手动轮椅 ></a></dt>
+									&lt;%&ndash;<dt><a href="" target="_blank" title="手动轮椅">手动轮椅 ></a></dt>&ndash;%&gt;
 									<dd>
 										<a href="" target="_blank" title="全躺轮椅">全躺轮椅</a>
 										<a href="" target="_blank" title="半躺轮椅">半躺轮椅</a>
@@ -411,7 +340,7 @@
 										<a href="" target="_blank" title="站立式轮椅">爬楼电动轮椅</a>
 									</dd>
 								</dl>
-							</dl>
+							</dl>--%>
 						</div>
 					</div>
 
@@ -420,27 +349,14 @@
 							<h3><a href="" class="yListName2">老年健康</a><a href="" class="yListMore">更多 ></a></h3>
 							<dl>
 								<dl>
-									<dt><a href="" target="_blank" title="电动轮椅">电动轮椅 ></a></dt>
+									<%--<dt><a href="" target="_blank" title="健康检查">保健器械 ></a></dt>--%>
 									<dd>
-										<a href="" target="_blank" title="全躺轮椅">全躺轮椅</a>
-										<a href="" target="_blank" title="半躺轮椅">半躺轮椅</a>
-										<a href="" target="_blank" title="可折叠轮椅">可折叠轮椅</a>
-										<a href="" target="_blank" title="带坐便轮椅">带坐便轮椅</a>
-										<a href="" target="_blank" title="站立式轮椅">站立式轮椅</a>
-										<a href="" target="_blank" title="站立式轮椅">爬楼电动轮椅</a>
-									</dd>
-								</dl>
-							</dl>
-							<dl>
-								<dl>
-									<dt><a href="" target="_blank" title="手动轮椅">手动轮椅 ></a></dt>
-									<dd>
-										<a href="" target="_blank" title="全躺轮椅">全躺轮椅</a>
-										<a href="" target="_blank" title="半躺轮椅">半躺轮椅</a>
-										<a href="" target="_blank" title="可折叠轮椅">可折叠轮椅</a>
-										<a href="" target="_blank" title="带坐便轮椅">带坐便轮椅</a>
-										<a href="" target="_blank" title="站立式轮椅">站立式轮椅</a>
-										<a href="" target="_blank" title="站立式轮椅">爬楼电动轮椅</a>
+										<a href="" target="_blank" title="血压计">血压计</a>
+										<a href="" target="_blank" title="血糖仪">血糖仪</a>
+										<a href="" target="_blank" title="助听器">助听器</a>
+										<a href="" target="_blank" title="制氧机">制氧机</a>
+										<a href="" target="_blank" title="呼吸机">呼吸机</a>
+										<a href="" target="_blank" title="雾化机">雾化机</a>
 									</dd>
 								</dl>
 							</dl>
@@ -451,18 +367,18 @@
 							<h3><a href="" class="yListName3">老年护理</a><a href="" class="yListMore">更多 ></a></h3>
 							<dl>
 								<dl>
-									<dt><a href="" target="_blank" title="电动轮椅">电动轮椅 ></a></dt>
+									<%--<dt><a href="" target="_blank" title="电动轮椅">电动轮椅 ></a></dt>--%>
 									<dd>
-										<a href="" target="_blank" title="全躺轮椅">全躺轮椅</a>
-										<a href="" target="_blank" title="半躺轮椅">半躺轮椅</a>
-										<a href="" target="_blank" title="可折叠轮椅">可折叠轮椅</a>
-										<a href="" target="_blank" title="带坐便轮椅">带坐便轮椅</a>
-										<a href="" target="_blank" title="站立式轮椅">站立式轮椅</a>
-										<a href="" target="_blank" title="站立式轮椅">爬楼电动轮椅</a>
+										<a href="" target="_blank" title="护理床">护理床</a>
+										<a href="" target="_blank" title="理疗仪">理疗仪</a>
+										<a href="" target="_blank" title="护理充气垫">可折叠轮椅</a>
+										<a href="" target="_blank" title="老年尿不湿">老年尿不湿</a>
+										<a href="" target="_blank" title="关节按摩器">关节按摩器</a>
+										<a href="" target="_blank" title="护理坐垫">护理坐垫</a>
 									</dd>
 								</dl>
 							</dl>
-							<dl>
+							<%--<dl>
 								<dl>
 									<dt><a href="" target="_blank" title="手动轮椅">手动轮椅 ></a></dt>
 									<dd>
@@ -474,7 +390,7 @@
 										<a href="" target="_blank" title="站立式轮椅">爬楼电动轮椅</a>
 									</dd>
 								</dl>
-							</dl>
+							</dl>--%>
 						</div>
 					</div>
 					<div class="yMenuListConin">
@@ -482,27 +398,14 @@
 							<h3><a href="" class="yListName4">老年居家</a><a href="" class="yListMore">更多 ></a></h3>
 							<dl>
 								<dl>
-									<dt><a href="" target="_blank" title="电动轮椅">电动轮椅 ></a></dt>
+									<%--<dt><a href="" target="_blank" title="电动轮椅">电动轮椅 ></a></dt>--%>
 									<dd>
-										<a href="" target="_blank" title="全躺轮椅">全躺轮椅</a>
-										<a href="" target="_blank" title="半躺轮椅">半躺轮椅</a>
-										<a href="" target="_blank" title="可折叠轮椅">可折叠轮椅</a>
-										<a href="" target="_blank" title="带坐便轮椅">带坐便轮椅</a>
-										<a href="" target="_blank" title="站立式轮椅">站立式轮椅</a>
-										<a href="" target="_blank" title="站立式轮椅">爬楼电动轮椅</a>
-									</dd>
-								</dl>
-							</dl>
-							<dl>
-								<dl>
-									<dt><a href="" target="_blank" title="手动轮椅">手动轮椅 ></a></dt>
-									<dd>
-										<a href="" target="_blank" title="全躺轮椅">全躺轮椅</a>
-										<a href="" target="_blank" title="半躺轮椅">半躺轮椅</a>
-										<a href="" target="_blank" title="可折叠轮椅">可折叠轮椅</a>
-										<a href="" target="_blank" title="带坐便轮椅">带坐便轮椅</a>
-										<a href="" target="_blank" title="站立式轮椅">站立式轮椅</a>
-										<a href="" target="_blank" title="站立式轮椅">爬楼电动轮椅</a>
+										<a href="" target="_blank" title="扶手坐便器">扶手坐便器</a>
+										<a href="" target="_blank" title="防滑浴室椅">防滑浴室椅</a>
+										<a href="" target="_blank" title="便携坐厕椅">便携坐厕椅</a>
+										<a href="" target="_blank" title="老年益齿盒">老年益齿盒</a>
+										<a href="" target="_blank" title="软毛浴刷">软毛浴刷</a>
+										<a href="" target="_blank" title="老年保健球">老年保健球</a>
 									</dd>
 								</dl>
 							</dl>
@@ -513,27 +416,14 @@
 							<h3><a href="" class="yListName5">老年娱乐</a><a href="" class="yListMore">更多 ></a></h3>
 							<dl>
 								<dl>
-									<dt><a href="" target="_blank" title="电动轮椅">电动轮椅 ></a></dt>
+									<%--<dt><a href="" target="_blank" title="电动轮椅">电动轮椅 ></a></dt>--%>
 									<dd>
-										<a href="" target="_blank" title="全躺轮椅">全躺轮椅</a>
-										<a href="" target="_blank" title="半躺轮椅">半躺轮椅</a>
-										<a href="" target="_blank" title="可折叠轮椅">可折叠轮椅</a>
-										<a href="" target="_blank" title="带坐便轮椅">带坐便轮椅</a>
-										<a href="" target="_blank" title="站立式轮椅">站立式轮椅</a>
-										<a href="" target="_blank" title="站立式轮椅">爬楼电动轮椅</a>
-									</dd>
-								</dl>
-							</dl>
-							<dl>
-								<dl>
-									<dt><a href="" target="_blank" title="手动轮椅">手动轮椅 ></a></dt>
-									<dd>
-										<a href="" target="_blank" title="全躺轮椅">全躺轮椅</a>
-										<a href="" target="_blank" title="半躺轮椅">半躺轮椅</a>
-										<a href="" target="_blank" title="可折叠轮椅">可折叠轮椅</a>
-										<a href="" target="_blank" title="带坐便轮椅">带坐便轮椅</a>
-										<a href="" target="_blank" title="站立式轮椅">站立式轮椅</a>
-										<a href="" target="_blank" title="站立式轮椅">爬楼电动轮椅</a>
+										<a href="" target="_blank" title="文房四宝">文房四宝</a>
+										<a href="" target="_blank" title="全自动麻将桌">全自动麻将桌</a>
+										<a href="" target="_blank" title="中国象棋">中国象棋</a>
+										<a href="" target="_blank" title="太空漫步机">太空漫步机</a>
+										<a href="" target="_blank" title="转腰器">转腰器</a>
+										<a href="" target="_blank" title="纸牌">纸牌</a>
 									</dd>
 								</dl>
 							</dl>
@@ -544,368 +434,19 @@
 							<h3><a href="" class="yListName6">老年保健</a><a href="" class="yListMore">更多 ></a></h3>
 							<dl>
 								<dl>
-									<dt><a href="" target="_blank" title="电动轮椅">电动轮椅 ></a></dt>
+									<%--<dt><a href="" target="_blank" title="电动轮椅">电动轮椅 ></a></dt>--%>
 									<dd>
-										<a href="" target="_blank" title="全躺轮椅">全躺轮椅</a>
-										<a href="" target="_blank" title="半躺轮椅">半躺轮椅</a>
-										<a href="" target="_blank" title="可折叠轮椅">可折叠轮椅</a>
-										<a href="" target="_blank" title="带坐便轮椅">带坐便轮椅</a>
-										<a href="" target="_blank" title="站立式轮椅">站立式轮椅</a>
-										<a href="" target="_blank" title="站立式轮椅">爬楼电动轮椅</a>
-									</dd>
-								</dl>
-							</dl>
-							<dl>
-								<dl>
-									<dt><a href="" target="_blank" title="手动轮椅">手动轮椅 ></a></dt>
-									<dd>
-										<a href="" target="_blank" title="全躺轮椅">全躺轮椅</a>
-										<a href="" target="_blank" title="半躺轮椅">半躺轮椅</a>
-										<a href="" target="_blank" title="可折叠轮椅">可折叠轮椅</a>
-										<a href="" target="_blank" title="带坐便轮椅">带坐便轮椅</a>
-										<a href="" target="_blank" title="站立式轮椅">站立式轮椅</a>
-										<a href="" target="_blank" title="站立式轮椅">爬楼电动轮椅</a>
+										<a href="" target="_blank" title="老年奶粉">老年奶粉</a>
+										<a href="" target="_blank" title="老年钙片">老年钙片</a>
+										<a href="" target="_blank" title="燕窝">燕窝</a>
+										<a href="" target="_blank" title="人参">人参</a>
+										<a href="" target="_blank" title="助睡眠药品">助睡眠药品</a>
+										<a href="" target="_blank" title="降三高药品">降三高药品</a>
 									</dd>
 								</dl>
 							</dl>
 						</div>
 					</div>
-
-<!--					<div class="yMenuListConin">
-						<div class="yMenuLCinList">
-							<h3><a href="" class="yListName">精品男装</a><a href="" class="yListMore">更多 ></a></h3>
-							<p>
-								<a href="" class="ecolor610">大牌上新</a>
-								<a href="">商场同款</a>
-								<a href="">男装集结</a>
-								<a href="">羽绒服</a>
-								<a href="">加厚羽绒 </a>
-								<a href="">高帮鞋</a>
-								<a href="">商场同款</a>
-								<a href="">男装集结</a>
-								<a href="">羽绒服</a>
-								<a href="">加厚羽绒 </a>
-								<a href="">高帮鞋</a>
-								<a href="">商场同款</a>
-								<a href="">男装集结</a>
-								<a href="">羽绒服</a>
-								<a href="">加厚羽绒 </a>
-								<a href="">高帮鞋</a>
-							</p>
-						</div>
-					</div>
-
-					<div class="yMenuListConin">
-						<div class="yMenuLCinList">
-							<h3><a href="" class="yListName">精品男装</a><a href="" class="yListMore">更多 ></a></h3>
-							<p>
-								<a href="" class="ecolor610">大牌上新</a>
-								<a href="">商场同款</a>
-								<a href="">男装集结</a>
-								<a href="">羽绒服</a>
-								<a href="">加厚羽绒 </a>
-								<a href="">高帮鞋</a>
-								<a href="">商场同款</a>
-								<a href="">男装集结</a>
-								<a href="">羽绒服</a>
-								<a href="">加厚羽绒 </a>
-								<a href="">高帮鞋</a>
-								<a href="">商场同款</a>
-								<a href="">男装集结</a>
-								<a href="">羽绒服</a>
-								<a href="">加厚羽绒 </a>
-								<a href="">高帮鞋</a>
-							</p>
-						</div>
-					</div>
-
-					<div class="yMenuListConin">
-						<div class="yMenuLCinList">
-							<h3><a href="" class="yListName">精品男装</a><a href="" class="yListMore">更多 ></a></h3>
-							<p>
-								<a href="" class="ecolor610">大牌上新</a>
-								<a href="">商场同款</a>
-								<a href="">男装集结</a>
-								<a href="">羽绒服</a>
-								<a href="">加厚羽绒 </a>
-								<a href="">高帮鞋</a>
-								<a href="">商场同款</a>
-								<a href="">男装集结</a>
-								<a href="">羽绒服</a>
-								<a href="">加厚羽绒 </a>
-								<a href="">高帮鞋</a>
-								<a href="">商场同款</a>
-								<a href="">男装集结</a>
-								<a href="">羽绒服</a>
-								<a href="">加厚羽绒 </a>
-								<a href="">高帮鞋</a>
-							</p>
-						</div>
-					</div>
-
-					<div class="yMenuListConin">
-						<div class="yMenuLCinList">
-							<h3><a href="" class="yListName">精品男装</a><a href="" class="yListMore">更多 ></a></h3>
-							<p>
-								<a href="" class="ecolor610">大牌上新</a>
-								<a href="">商场同款</a>
-								<a href="">男装集结</a>
-								<a href="">羽绒服</a>
-								<a href="">加厚羽绒 </a>
-								<a href="">高帮鞋</a>
-								<a href="">商场同款</a>
-								<a href="">男装集结</a>
-								<a href="">羽绒服</a>
-								<a href="">加厚羽绒 </a>
-								<a href="">高帮鞋</a>
-								<a href="">商场同款</a>
-								<a href="">男装集结</a>
-								<a href="">羽绒服</a>
-								<a href="">加厚羽绒 </a>
-								<a href="">高帮鞋</a>
-							</p>
-						</div>
-					</div>
-
-					<div class="yMenuListConin">
-						<div class="yMenuLCinList">
-							<h3><a href="" class="yListName">精品男装</a><a href="" class="yListMore">更多 ></a></h3>
-							<p>
-								<a href="" class="ecolor610">大牌上新</a>
-								<a href="">商场同款</a>
-								<a href="">男装集结</a>
-								<a href="">羽绒服</a>
-								<a href="">加厚羽绒 </a>
-								<a href="">高帮鞋</a>
-								<a href="">商场同款</a>
-								<a href="">男装集结</a>
-								<a href="">羽绒服</a>
-								<a href="">加厚羽绒 </a>
-								<a href="">高帮鞋</a>
-								<a href="">商场同款</a>
-								<a href="">男装集结</a>
-								<a href="">羽绒服</a>
-								<a href="">加厚羽绒 </a>
-								<a href="">高帮鞋</a>
-							</p>
-						</div>
-					</div>
-
-					<div class="yMenuListConin">
-						<div class="yMenuLCinList">
-							<h3><a href="" class="yListName">精品男装</a><a href="" class="yListMore">更多 ></a></h3>
-							<p>
-								<a href="" class="ecolor610">大牌上新</a>
-								<a href="">商场同款</a>
-								<a href="">男装集结</a>
-								<a href="">羽绒服</a>
-								<a href="">加厚羽绒 </a>
-								<a href="">高帮鞋</a>
-								<a href="">商场同款</a>
-								<a href="">男装集结</a>
-								<a href="">羽绒服</a>
-								<a href="">加厚羽绒 </a>
-								<a href="">高帮鞋</a>
-								<a href="">商场同款</a>
-								<a href="">男装集结</a>
-								<a href="">羽绒服</a>
-								<a href="">加厚羽绒 </a>
-								<a href="">高帮鞋</a>
-							</p>
-						</div>
-					</div>
-
-					<div class="yMenuListConin">
-						<div class="yMenuLCinList">
-							<h3><a href="" class="yListName">精品男装</a><a href="" class="yListMore">更多 ></a></h3>
-							<p>
-								<a href="" class="ecolor610">大牌上新</a>
-								<a href="">商场同款</a>
-								<a href="">男装集结</a>
-								<a href="">羽绒服</a>
-								<a href="">加厚羽绒 </a>
-								<a href="">高帮鞋</a>
-								<a href="">商场同款</a>
-								<a href="">男装集结</a>
-								<a href="">羽绒服</a>
-								<a href="">加厚羽绒 </a>
-								<a href="">高帮鞋</a>
-								<a href="">商场同款</a>
-								<a href="">男装集结</a>
-								<a href="">羽绒服</a>
-								<a href="">加厚羽绒 </a>
-								<a href="">高帮鞋</a>
-							</p>
-						</div>
-					</div>
-
-					<div class="yMenuListConin">
-						<div class="yMenuLCinList">
-							<h3><a href="" class="yListName">精品男装</a><a href="" class="yListMore">更多 ></a></h3>
-							<p>
-								<a href="" class="ecolor610">大牌上新</a>
-								<a href="">商场同款</a>
-								<a href="">男装集结</a>
-								<a href="">羽绒服</a>
-								<a href="">加厚羽绒 </a>
-								<a href="">高帮鞋</a>
-								<a href="">商场同款</a>
-								<a href="">男装集结</a>
-								<a href="">羽绒服</a>
-								<a href="">加厚羽绒 </a>
-								<a href="">高帮鞋</a>
-								<a href="">商场同款</a>
-								<a href="">男装集结</a>
-								<a href="">羽绒服</a>
-								<a href="">加厚羽绒 </a>
-								<a href="">高帮鞋</a>
-							</p>
-						</div>
-					</div>
-
-					<div class="yMenuListConin">
-						<div class="yMenuLCinList">
-							<h3><a href="" class="yListName">精品男装</a><a href="" class="yListMore">更多 ></a></h3>
-							<p>
-								<a href="" class="ecolor610">大牌上新</a>
-								<a href="">商场同款</a>
-								<a href="">男装集结</a>
-								<a href="">羽绒服</a>
-								<a href="">加厚羽绒 </a>
-								<a href="">高帮鞋</a>
-								<a href="">商场同款</a>
-								<a href="">男装集结</a>
-								<a href="">羽绒服</a>
-								<a href="">加厚羽绒 </a>
-								<a href="">高帮鞋</a>
-								<a href="">商场同款</a>
-								<a href="">男装集结</a>
-								<a href="">羽绒服</a>
-								<a href="">加厚羽绒 </a>
-								<a href="">高帮鞋</a>
-							</p>
-						</div>
-					</div>
-
-					<div class="yMenuListConin">
-						<div class="yMenuLCinList">
-							<h3><a href="" class="yListName">精品男装</a><a href="" class="yListMore">更多 ></a></h3>
-							<p>
-								<a href="" class="ecolor610">大牌上新</a>
-								<a href="">商场同款</a>
-								<a href="">男装集结</a>
-								<a href="">羽绒服</a>
-								<a href="">加厚羽绒 </a>
-								<a href="">高帮鞋</a>
-								<a href="">商场同款</a>
-								<a href="">男装集结</a>
-								<a href="">羽绒服</a>
-								<a href="">加厚羽绒 </a>
-								<a href="">高帮鞋</a>
-								<a href="">商场同款</a>
-								<a href="">男装集结</a>
-								<a href="">羽绒服</a>
-								<a href="">加厚羽绒 </a>
-								<a href="">高帮鞋</a>
-							</p>
-						</div>
-					</div>
-
-					<div class="yMenuListConin">
-						<div class="yMenuLCinList">
-							<h3><a href="" class="yListName">精品男装</a><a href="" class="yListMore">更多 ></a></h3>
-							<p>
-								<a href="" class="ecolor610">大牌上新</a>
-								<a href="">商场同款</a>
-								<a href="">男装集结</a>
-								<a href="">羽绒服</a>
-								<a href="">加厚羽绒 </a>
-								<a href="">高帮鞋</a>
-								<a href="">商场同款</a>
-								<a href="">男装集结</a>
-								<a href="">羽绒服</a>
-								<a href="">加厚羽绒 </a>
-								<a href="">高帮鞋</a>
-								<a href="">商场同款</a>
-								<a href="">男装集结</a>
-								<a href="">羽绒服</a>
-								<a href="">加厚羽绒 </a>
-								<a href="">高帮鞋</a>
-							</p>
-						</div>
-					</div>
-
-					<div class="yMenuListConin">
-						<div class="yMenuLCinList">
-							<h3><a href="" class="yListName">精品男装</a><a href="" class="yListMore">更多 ></a></h3>
-							<p>
-								<a href="" class="ecolor610">大牌上新</a>
-								<a href="">商场同款</a>
-								<a href="">男装集结</a>
-								<a href="">羽绒服</a>
-								<a href="">加厚羽绒 </a>
-								<a href="">高帮鞋</a>
-								<a href="">商场同款</a>
-								<a href="">男装集结</a>
-								<a href="">羽绒服</a>
-								<a href="">加厚羽绒 </a>
-								<a href="">高帮鞋</a>
-								<a href="">商场同款</a>
-								<a href="">男装集结</a>
-								<a href="">羽绒服</a>
-								<a href="">加厚羽绒 </a>
-								<a href="">高帮鞋</a>
-							</p>
-						</div>
-					</div>
-
-					<div class="yMenuListConin">
-						<div class="yMenuLCinList">
-							<h3><a href="" class="yListName">精品男装</a><a href="" class="yListMore">更多 ></a></h3>
-							<p>
-								<a href="" class="ecolor610">大牌上新</a>
-								<a href="">商场同款</a>
-								<a href="">男装集结</a>
-								<a href="">羽绒服</a>
-								<a href="">加厚羽绒 </a>
-								<a href="">高帮鞋</a>
-								<a href="">商场同款</a>
-								<a href="">男装集结</a>
-								<a href="">羽绒服</a>
-								<a href="">加厚羽绒 </a>
-								<a href="">高帮鞋</a>
-								<a href="">商场同款</a>
-								<a href="">男装集结</a>
-								<a href="">羽绒服</a>
-								<a href="">加厚羽绒 </a>
-								<a href="">高帮鞋</a>
-							</p>
-						</div>
-					</div>
-
-					<div class="yMenuListConin">
-						<div class="yMenuLCinList">
-							<h3><a href="" class="yListName">精品男装</a><a href="" class="yListMore">更多 ></a></h3>
-							<p>
-								<a href="" class="ecolor610">大牌上新</a>
-								<a href="">商场同款</a>
-								<a href="">男装集结</a>
-								<a href="">羽绒服</a>
-								<a href="">加厚羽绒 </a>
-								<a href="">高帮鞋</a>
-								<a href="">商场同款</a>
-								<a href="">男装集结</a>
-								<a href="">羽绒服</a>
-								<a href="">加厚羽绒 </a>
-								<a href="">高帮鞋</a>
-								<a href="">商场同款</a>
-								<a href="">男装集结</a>
-								<a href="">羽绒服</a>
-								<a href="">加厚羽绒 </a>
-								<a href="">高帮鞋</a>
-							</p>
-						</div>
-					</div>-->
 
 				</div>
 
@@ -921,549 +462,10 @@
 		</div>
 		<!-- 导航   end  -->
 	</div>
-	<!--  顶部    end-->
-	<section>
-		<!--顶部菜单开始-->
-		<!--	<nav id="nav" class="site-topbar">
-                <div class="wraper">
-                    <ul class="nav-left">
-                        <li><a href="#">小米商城</a></li>
-                        <li><a href="#">MUI</a></li>
-                        <li><a href="#">米聊</a></li>
-                        <li><a href="#">游戏</a></li>
-                        <li><a href="#">多看阅读</a></li>
-                        <li><a href="#">云服务</a></li>
-                        <li><a href="#">小米移动版</a></li>
-                        <li><a href="#">问题反馈</a></li>
-                        <li><a href="#">Select Region</a></li>
-                    </ul>
-                    <ul class="nav-right">
-                        <li><a href="#">登录</a></li>
-                        <li><a href="登录">注册</a></li>
-                        <li class="buyCar">
-                            <a class="i_car" href="登录">购物车（0）</a>
-                            <div class="content"></div>
-                        </li>
-                    </ul>
-                </div>
-            </nav>-->
-		<!--顶部菜单结束-->
-		<!--头部开始-->
-		<!--	<header id="header" class="site-header">
-                <div class="wraper">
-                    <hgroup class="header-left">
-                        <h1>小米</h1>
-                        <h2></h2>
-                    </hgroup>
-                    <ul class="header-middle header-menu">
-                        <li>
-                            <a href="#">小米手机</a>
-                            <div class="content">
-                                <ul class="goods-list">
-                                    <li class="item">
-                                        <div class="prod-img">
-                                            <img src="./images/index_drop_prod1.jpg">
-                                        </div>
-                                        <p class="name">小米Max</p>
-                                        <span class="price">1299元起</span>
-                                    </li>
-                                    <li class="item">
-                                        <div class="prod-img">
-                                            <img src="./images/index_drop_prod1.jpg">
-                                        </div>
-                                        <p class="name">小米Max</p>
-                                        <span class="price">1299元起</span>
-                                    </li>
-                                    <li class="item">
-                                        <div class="prod-img">
-                                            <img src="./images/index_drop_prod1.jpg">
-                                        </div>
-                                        <p class="name">小米Max</p>
-                                        <span class="price">1299元起</span>
-                                    </li>
-                                    <li class="item">
-                                        <div class="prod-img">
-                                            <img src="./images/index_drop_prod1.jpg">
-                                        </div>
-                                        <p class="name">小米Max</p>
-                                        <span class="price">1299元起</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li>
-                            <a href="#">红米</a>
-                            <div class="content">
-                                <ul class="goods-list">
-                                    <li class="item">
-                                        <div class="prod-img">
-                                            <img src="./images/index_drop_red1.jpg">
-                                        </div>
-                                        <p class="name">红米Note 3</p>
-                                        <span class="price">899元起</span>
-                                    </li>
-                                    <li class="item">
-                                        <div class="prod-img">
-                                            <img src="./images/index_drop_red1.jpg">
-                                        </div>
-                                        <p class="name">红米Note 3</p>
-                                        <span class="price">899元起</span>
-                                    </li>
-                                    <li class="item">
-                                        <div class="prod-img">
-                                            <img src="./images/index_drop_red1.jpg">
-                                        </div>
-                                        <p class="name">红米Note 3</p>
-                                        <span class="price">899元起</span>
-                                    </li>
-                                    <li class="item">
-                                        <div class="prod-img">
-                                            <img src="./images/index_drop_red1.jpg">
-                                        </div>
-                                        <p class="name">红米Note 3</p>
-                                        <span class="price">899元起</span>
-                                    </li>
-                                    <li class="item">
-                                        <div class="prod-img">
-                                            <img src="./images/index_drop_red1.jpg">
-                                        </div>
-                                        <p class="name">红米Note 3</p>
-                                        <span class="price">899元起</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li>
-                            <a href="#">平板 笔记本</a>
-                            <div class="content">
-                                <ul class="goods-list">
-                                    <li class="item">
-                                        <div class="prod-img">
-                                            <img src="./images/index_drop_pad1.jpg">
-                                        </div>
-                                        <p class="name">小米平板2 64GB</p>
-                                        <span class="price">1299元</span>
-                                    </li>
-                                    <li class="item">
-                                        <div class="prod-img">
-                                            <img src="./images/index_drop_pad1.jpg">
-                                        </div>
-                                        <p class="name">小米平板2 64GB</p>
-                                        <span class="price">1299元</span>
-                                    </li>
-                                    <li class="item">
-                                        <div class="prod-img">
-                                            <img src="./images/index_drop_pad1.jpg">
-                                        </div>
-                                        <p class="name">小米平板2 64GB</p>
-                                        <span class="price">1299元</span>
-                                    </li>
-                                    <li class="item">
-                                        <div class="prod-img">
-                                            <img src="./images/index_drop_pad1.jpg">
-                                        </div>
-                                        <p class="name">小米平板2 64GB</p>
-                                        <span class="price">1299元</span>
-                                    </li>
-                                    <li class="item">
-                                        <div class="prod-img">
-                                            <img src="./images/index_drop_pad1.jpg">
-                                        </div>
-                                        <p class="name">小米平板2 64GB</p>
-                                        <span class="price">1299元</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li>
-                            <a href="#">电视</a>
-                            <div class="content">
-                                <ul class="goods-list">
-                                    <li class="item">
-                                        <div class="prod-img">
-                                            <img src="./images/index_drop_tv1.jpg">
-                                        </div>
-                                        <p class="name">小米电视3S 48英寸</p>
-                                        <span class="price">1999元</span>
-                                    </li>
-                                    <li class="item">
-                                        <div class="prod-img">
-                                            <img src="./images/index_drop_tv1.jpg">
-                                        </div>
-                                        <p class="name">小米电视3S 48英寸</p>
-                                        <span class="price">1999元</span>
-                                    </li>
-                                    <li class="item">
-                                        <div class="prod-img">
-                                            <img src="./images/index_drop_tv1.jpg">
-                                        </div>
-                                        <p class="name">小米电视3S 48英寸</p>
-                                        <span class="price">1999元</span>
-                                    </li>
-                                    <li class="item">
-                                        <div class="prod-img">
-                                            <img src="./images/index_drop_tv1.jpg">
-                                        </div>
-                                        <p class="name">小米电视3S 48英寸</p>
-                                        <span class="price">1999元</span>
-                                    </li>
-                                    <li class="item">
-                                        <div class="prod-img">
-                                            <img src="./images/index_drop_tv1.jpg">
-                                        </div>
-                                        <p class="name">小米电视3S 48英寸</p>
-                                        <span class="price">1999元</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li>
-                            <a href="#">盒子 影音</a>
-                            <div class="content">
-                                <ul class="goods-list">
-                                    <li class="item">
-                                        <div class="prod-img">
-                                            <img src="./images/index_drop_box1.jpg">
-                                        </div>
-                                        <p class="name">小米盒子3</p>
-                                        <span class="price">249元</span>
-                                    </li>
-                                    <li class="item">
-                                        <div class="prod-img">
-                                            <img src="./images/index_drop_box1.jpg">
-                                        </div>
-                                        <p class="name">小米盒子3</p>
-                                        <span class="price">249元</span>
-                                    </li>
-                                    <li class="item">
-                                        <div class="prod-img">
-                                            <img src="./images/index_drop_box1.jpg">
-                                        </div>
-                                        <p class="name">小米盒子3</p>
-                                        <span class="price">249元</span>
-                                    </li>
-                                    <li class="item">
-                                        <div class="prod-img">
-                                            <img src="./images/index_drop_box1.jpg">
-                                        </div>
-                                        <p class="name">小米盒子3</p>
-                                        <span class="price">249元</span>
-                                    </li>
-                                    <li class="item">
-                                        <div class="prod-img">
-                                            <img src="./images/index_drop_box1.jpg">
-                                        </div>
-                                        <p class="name">小米盒子3</p>
-                                        <span class="price">249元</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li>
-                            <a href="#">路由器</a>
-                            <div class="content">
-                                <ul class="goods-list">
-                                    <li class="item">
-                                        <div class="prod-img">
-                                            <img src="./images/index_drop_router1.jpg">
-                                        </div>
-                                        <p class="name">小米路由器 3</p>
-                                        <span class="price">149元</span>
-                                    </li>
-                                    <li class="item">
-                                        <div class="prod-img">
-                                            <img src="./images/index_drop_router1.jpg">
-                                        </div>
-                                        <p class="name">小米路由器 3</p>
-                                        <span class="price">149元</span>
-                                    </li>
-                                    <li class="item">
-                                        <div class="prod-img">
-                                            <img src="./images/index_drop_router1.jpg">
-                                        </div>
-                                        <p class="name">小米路由器 3</p>
-                                        <span class="price">149元</span>
-                                    </li>
-                                    <li class="item">
-                                        <div class="prod-img">
-                                            <img src="./images/index_drop_router1.jpg">
-                                        </div>
-                                        <p class="name">小米路由器 3</p>
-                                        <span class="price">149元</span>
-                                    </li>
-                                    <li class="item">
-                                        <div class="prod-img">
-                                            <img src="./images/index_drop_router1.jpg">
-                                        </div>
-                                        <p class="name">小米路由器 3</p>
-                                        <span class="price">149元</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li>
-                            <a href="#">智能硬件</a>
-                            <div class="content">
-                                <ul class="goods-list">
-                                    <li class="item">
-                                        <div class="prod-img">
-                                            <img src="./images/index_drop_hard1.jpg">
-                                        </div>
-                                        <p class="name">小米净水器</p>
-                                        <span class="price">1299元起</span>
-                                    </li>
-                                    <li class="item">
-                                        <div class="prod-img">
-                                            <img src="./images/index_drop_hard1.jpg">
-                                        </div>
-                                        <p class="name">小米净水器</p>
-                                        <span class="price">1299元起</span>
-                                    </li>
-                                    <li class="item">
-                                        <div class="prod-img">
-                                            <img src="./images/index_drop_hard1.jpg">
-                                        </div>
-                                        <p class="name">小米净水器</p>
-                                        <span class="price">1299元起</span>
-                                    </li>
-                                    <li class="item">
-                                        <div class="prod-img">
-                                            <img src="./images/index_drop_hard1.jpg">
-                                        </div>
-                                        <p class="name">小米净水器</p>
-                                        <span class="price">1299元起</span>
-                                    </li>
-                                    <li class="item">
-                                        <div class="prod-img">
-                                            <img src="./images/index_drop_hard1.jpg">
-                                        </div>
-                                        <p class="name">小米净水器</p>
-                                        <span class="price">1299元起</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li>
-                            <a href="#">服务</a>
-                            <div class="content">
-                                <ul class="good-list">
-                                    <li class="item">
-                                        <div class="prod-img">
-                                            &lt;!&ndash;<img src="">&ndash;&gt;
-                                        </div>
-                                        <p class="name"></p>
-                                        <span class="price"></span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li>
-                            <a href="#">社区</a>
-                            <div class="content">
-                                <ul class="good-list">
-                                    <li class="item">
-                                        <div class="prod-img">
-                                            &lt;!&ndash;<img src="">&ndash;&gt;
-                                        </div>
-                                        <p class="name"></p>
-                                        <span class="price"></span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-                     </ul>
-                     <div class="header-right">
-                         <input type="text" class="search" list="search-record" name="search">
-                         <button class="btn">搜索</button>
-                         <ul>
-                             <li>小米手机5<span>约有11件</span></li>
-                             <li>小米手机5<span>约有11件</span></li>
-                             <li>小米手机5<span>约有11件</span></li>
-                             <li>小米手机5<span>约有11件</span></li>
-                             <li>小米手机5<span>约有11件</span></li>
-                             <li>小米手机5<span>约有11件</span></li>
-                             <li>小米手机5<span>约有11件</span></li>
-                         </ul>
-                     </div>
-                </div>
-            </header>-->
-		<!--头部结束-->
 
-		<!--中部区域开始-->
+	<section>
 		<div class="wraper">
 			<section id="main" class="site-main clear_bottom">
-				<!--			<aside class="main-left">
-                                <ul class="category-list">
-                                    <li>
-                                        <a href="#"><span>手机</span><span> 平板</span><span>电话卡</span> </a>
-                                        <div class="content">
-                                            <ul class="good-list">
-                                                <li><img src="./images/index_sidenav_img1.jpg">小米手机5<a href="#" class="btn">选购</a></li>
-                                                <li><img src="./images/index_sidenav_img1.jpg">小米手机5<a href="#" class="btn">选购</a></li>
-                                                <li><img src="./images/index_sidenav_img1.jpg">小米手机5<a href="#" class="btn">选购</a></li>
-                                                <li><img src="./images/index_sidenav_img1.jpg">小米手机5</li>
-                                                <li><img src="./images/index_sidenav_img1.jpg">小米手机5<a href="#" class="btn">选购</a></li>
-                                                <li><img src="./images/index_sidenav_img1.jpg">小米手机5<a href="#" class="btn">选购</a></li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <a href="#"><span>笔记本<span></a>
-                                        <div class="content">
-                                            <ul class="good-list">
-                                                <li><img src="./images/index_sidenav_notebook1.jpg">小米笔记本</li>
-                                                <li><img src="./images/index_sidenav_notebook1.jpg">小米笔记本</li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <a href="#"><span>电视</span> <span>盒子</span></a>
-
-                                        <div class="content">
-                                            <ul class="good-list">
-                                                <li><img src="./images/index_sidenav_tv1.jpg">小米电视盒子</li>
-                                                <li><img src="./images/index_sidenav_tv1.jpg">小米电视盒子</li>
-                                                <li><img src="./images/index_sidenav_tv1.jpg">小米电视盒子</li>
-                                                <li><img src="./images/index_sidenav_tv1.jpg">小米电视盒子</li>
-                                                <li><img src="./images/index_sidenav_tv1.jpg">小米电视盒子</li>
-                                                <li><img src="./images/index_sidenav_tv1.jpg">小米电视盒子</li>
-                                            </ul>
-                                            <ul class="good-list">
-                                                <li><img src="./images/index_sidenav_tv1.jpg">小米电视盒子</li>
-                                                <li><img src="./images/index_sidenav_tv1.jpg">小米电视盒子</li>
-                                                <li><img src="./images/index_sidenav_tv1.jpg">小米电视盒子</li>
-                                                <li><img src="./images/index_sidenav_tv1.jpg">小米电视盒子</li>
-                                                <li><img src="./images/index_sidenav_tv1.jpg">小米电视盒子</li>
-                                                <li><img src="./images/index_sidenav_tv1.jpg">小米电视盒子</li>
-                                            </ul>
-                                            <ul class="good-list">
-                                                <li><img src="./images/index_sidenav_tv1.jpg">小米电视盒子</li>
-                                                <li><img src="./images/index_sidenav_tv1.jpg">小米电视盒子</li>
-                                                <li><img src="./images/index_sidenav_tv1.jpg">小米电视盒子</li>
-                                                <li><img src="./images/index_sidenav_tv1.jpg">小米电视盒子</li>
-                                                <li><img src="./images/index_sidenav_tv1.jpg">小米电视盒子</li>
-                                                <li><img src="./images/index_sidenav_tv1.jpg">小米电视盒子</li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <a href="#"><span>路由器</span> <span>智能硬件</span></a>
-                                        <div class="content">
-                                            <ul class="good-list">
-                                                <li><img src="./images/index_sidenav_vr1.jpg">小米vr眼镜玩具版</li>
-                                                <li><img src="./images/index_sidenav_vr1.jpg">小米vr眼镜玩具版</li>
-                                                <li><img src="./images/index_sidenav_vr1.jpg">小米vr眼镜玩具版</li>
-                                                <li><img src="./images/index_sidenav_vr1.jpg">小米vr眼镜玩具版</li>
-                                                <li><img src="./images/index_sidenav_vr1.jpg">小米vr眼镜玩具版</li>
-                                                <li><img src="./images/index_sidenav_vr1.jpg">小米vr眼镜玩具版</li>
-                                            </ul>
-                                            <ul class="good-list">
-                                                <li><img src="./images/index_sidenav_vr1.jpg">小米vr眼镜玩具版</li>
-                                                <li><img src="./images/index_sidenav_vr1.jpg">小米vr眼镜玩具版</li>
-                                                <li><img src="./images/index_sidenav_vr1.jpg">小米vr眼镜玩具版</li>
-                                                <li><img src="./images/index_sidenav_vr1.jpg">小米vr眼镜玩具版</li>
-                                                <li><img src="./images/index_sidenav_vr1.jpg">小米vr眼镜玩具版</li>
-                                                <li><img src="./images/index_sidenav_vr1.jpg">小米vr眼镜玩具版</li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <a href="#"><span>移动电源</span> <span>电池</span></a>
-                                        <div class="content">
-                                            <ul class="good-list">
-                                                <li><img src="./images/index_sidenav_power1.jpg">小米移动电源</li>
-                                                <li><img src="./images/index_sidenav_power1.jpg">小米移动电源</li>
-                                                <li><img src="./images/index_sidenav_power1.jpg">小米移动电源</li>
-                                                <li><img src="./images/index_sidenav_power1.jpg">小米移动电源</li>
-                                                <li><img src="./images/index_sidenav_power1.jpg">小米移动电源</li>
-                                            </ul>
-                                            <ul class="good-list">
-                                                <li><img src="./images/index_sidenav_power1.jpg">小米移动电源</li>
-                                                <li><img src="./images/index_sidenav_power1.jpg">小米移动电源</li>
-                                                <li><img src="./images/index_sidenav_power1.jpg">小米移动电源</li>
-                                                <li><img src="./images/index_sidenav_power1.jpg">小米移动电源</li>
-                                                <li><img src="./images/index_sidenav_power1.jpg">小米移动电源</li>
-                                            </ul>
-                                            <ul class="good-list">
-                                                <li><img src="./images/index_sidenav_power1.jpg">小米移动电源</li>
-                                                <li><img src="./images/index_sidenav_power1.jpg">小米移动电源</li>
-                                                <li><img src="./images/index_sidenav_power1.jpg">小米移动电源</li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <a href="#"><span>耳机</span> <span>音箱</span></a>
-                                        <div class="content">
-                                            <ul class="good-list">
-                                                <li><img src="./images/index_sidenav_earphone1.jpg">小米头戴式耳机</li>
-                                                <li><img src="./images/index_sidenav_earphone1.jpg">小米头戴式耳机</li>
-                                                <li><img src="./images/index_sidenav_earphone1.jpg">小米头戴式耳机</li>
-                                                <li><img src="./images/index_sidenav_earphone1.jpg">小米头戴式耳机</li>
-                                                <li><img src="./images/index_sidenav_earphone1.jpg">小米头戴式耳机</li>
-                                                <li><img src="./images/index_sidenav_earphone1.jpg">小米头戴式耳机</li>
-                                            </ul>
-                                            <ul class="good-list">
-                                                <li><img src="./images/index_sidenav_earphone1.jpg">小米头戴式耳机</li>
-                                                <li><img src="./images/index_sidenav_earphone1.jpg">小米头戴式耳机</li>
-                                                <li><img src="./images/index_sidenav_earphone1.jpg">小米头戴式耳机</li>
-                                                <li><img src="./images/index_sidenav_earphone1.jpg">小米头戴式耳机</li>
-                                                <li><img src="./images/index_sidenav_earphone1.jpg">小米头戴式耳机</li>
-                                                <li><img src="./images/index_sidenav_earphone1.jpg">小米头戴式耳机</li>
-                                            </ul>
-                                            <ul class="good-list">
-                                                <li><img src="./images/index_sidenav_earphone1.jpg">小米头戴式耳机</li>
-                                                <li><img src="./images/index_sidenav_earphone1.jpg">小米头戴式耳机</li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <a href="#"><span>保护套</span> <span>后盖</span></a>
-                                        <div class="content">
-                                            <ul class="good-list">
-                                                <li><img src="./images/index_sidenav_protect1.jpg">保护套 保护壳</li>
-                                                <li><img src="./images/index_sidenav_protect1.jpg">保护套 保护壳</li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <a href="#"><span>贴膜</span> <span>其他配件</span></a>
-                                        <div class="content">
-                                            <ul class="good-list">
-                                                <li><img src="./images/index_sidenav_pole1.jpg">自拍杆</li>
-                                                <li><img src="./images/index_sidenav_pole1.jpg">自拍杆</li>
-                                                <li><img src="./images/index_sidenav_pole1.jpg">自拍杆</li>
-                                                <li><img src="./images/index_sidenav_pole1.jpg">自拍杆</li>
-                                                <li><img src="./images/index_sidenav_pole1.jpg">自拍杆</li>
-                                                <li><img src="./images/index_sidenav_pole1.jpg">自拍杆</li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <a href="#"><span>米兔</span> <span>服装</a>
-                                        <div class="content">
-                                            <ul class="good-list">
-                                                <li><img src="./images/index_sidenav_rubit1.jpg">米兔</li>
-                                                <li><img src="./images/index_sidenav_rubit1.jpg">米兔</li>
-                                                <li><img src="./images/index_sidenav_rubit1.jpg">米兔</li>
-                                                <li><img src="./images/index_sidenav_rubit1.jpg">米兔</li>
-                                            </ul>
-                                        </div>
-
-                                    </li>
-                                    <li>
-                                        <a href="#"><span>箱包</span> <span>其他周边</span></a>
-                                        <div class="content">
-                                            <ul class="good-list">
-                                                <li><img src="./images/index_sidenav_bag1.jpg">箱包</li>
-                                                <li><img src="./images/index_sidenav_bag1.jpg">箱包</li>
-                                                <li><img src="./images/index_sidenav_bag1.jpg">箱包</li>
-                                                <li><img src="./images/index_sidenav_bag1.jpg">箱包</li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </aside>-->
-				<!--<div id="test">123</div>-->
 				<section class="main-right">
 					<div class="slider">
 						<ul class="contain">
@@ -1520,51 +522,20 @@
 							<ul class="m-cols m-col-5">
 								<li class="col sku-item ">
 									<dl class="row">
-										<dt><img src="${pageContext.request.contextPath}/jsp/users/images/single/single1.png"></dt>
-										<dd class="name"><a href="page.jsp">小米电视3S 43英寸</a></dd>
+										<dt><img src="jsp/admin/images/upload/food.png"></dt>
+										<dd class="name"><a href="/xiangqing.action">零食特产</a></dd>
 										<dd class="desc">4GB内存+128GB闪存，陶瓷版</dd>
 										<dd class="price">1499元</dd>
 									</dl>
 								</li>
-								<li class="col sku-item ">
-									<dl class="row">
-										<dt><img src="${pageContext.request.contextPath}/jsp/users/images/single/single2.png"></dt>
-										<dd class="name">小米电视3S 43英寸</dd>
-										<dd class="desc">4GB内存+128GB闪存，陶瓷版</dd>
-										<dd class="price">1499元</dd>
-									</dl>
-								</li>
-								<li class="col sku-item ">
-									<dl class="row">
-										<dt><img src="${pageContext.request.contextPath}/jsp/users/images/single/single3.png"></dt>
-										<dd class="name">小米电视3S 43英寸</dd>
-										<dd class="desc">4GB内存+128GB闪存，陶瓷版</dd>
-										<dd class="price">1499元</dd>
-									</dl>
-								</li>
-								<li class="col sku-item ">
-									<dl class="row">
-										<dt><img src="${pageContext.request.contextPath}/jsp/users/images/single/single4.png"></dt>
-										<dd class="name">小米电视3S 43英寸</dd>
-										<dd class="desc">4GB内存+128GB闪存，陶瓷版</dd>
-										<dd class="price">1499元</dd>
-									</dl>
-								</li>
-								<li class="col sku-item ">
-									<dl class="row">
-										<dt><img src="${pageContext.request.contextPath}/jsp/users/images/single/single5.jpg"></dt>
-										<dd class="name">小米电视3S 43英寸</dd>
-										<dd class="desc">4GB内存+128GB闪存，陶瓷版</dd>
-										<dd class="price">1499元</dd>
-									</dl>
-								</li>
+
 							</ul>
 						</div>
 						<div class="m-slide-item">
 							<ul class="m-cols m-col-5">
 								<li class="col sku-item ">
 									<dl class="row">
-										<dt><img src="${pageContext.request.contextPath}/jsp/users/images/single/single6.png"></dt>
+										<dt><img src="./images/single/single6.png"></dt>
 										<dd class="name">小米电视3S 43英寸</dd>
 										<dd class="desc">4GB内存+128GB闪存，陶瓷版</dd>
 										<dd class="price">1499元</dd>
@@ -1572,7 +543,7 @@
 								</li>
 								<li class="col sku-item ">
 									<dl class="row">
-										<dt><img src="${pageContext.request.contextPath}/jsp/users/images/single/single10.png"></dt>
+										<dt><img src="./images/single/single10.png"></dt>
 										<dd class="name">小米电视3S 43英寸</dd>
 										<dd class="desc">4GB内存+128GB闪存，陶瓷版</dd>
 										<dd class="price">1499元</dd>
@@ -1580,7 +551,7 @@
 								</li>
 								<li class="col sku-item ">
 									<dl class="row">
-										<dt><img src="${pageContext.request.contextPath}/jsp/users/images/single/single7.png"></dt>
+										<dt><img src="./images/single/single7.png"></dt>
 										<dd class="name">小米电视3S 43英寸</dd>
 										<dd class="desc">4GB内存+128GB闪存，陶瓷版</dd>
 										<dd class="price">1499元</dd>
@@ -1588,7 +559,7 @@
 								</li>
 								<li class="col sku-item ">
 									<dl class="row">
-										<dt><img src="${pageContext.request.contextPath}/jsp/users/images/single/single8.png"></dt>
+										<dt><img src="./images/single/single8.png"></dt>
 										<dd class="name">小米电视3S 43英寸</dd>
 										<dd class="desc">4GB内存+128GB闪存，陶瓷版</dd>
 										<dd class="price">1499元</dd>
@@ -1596,7 +567,7 @@
 								</li>
 								<li class="col sku-item ">
 									<dl class="row">
-										<dt><img src="${pageContext.request.contextPath}/jsp/users/images/single/single9.jpg"></dt>
+										<dt><img src="./images/single/single9.jpg"></dt>
 										<dd class="name">小米电视3S 43英寸</dd>
 										<dd class="desc">4GB内存+128GB闪存，陶瓷版</dd>
 										<dd class="price">1499元</dd>
@@ -1625,25 +596,27 @@
 				<section class="m-box line2">
 					<div class="span4">
 						<div class="row main-pic">
-							<img src="${pageContext.request.contextPath}/jsp/users/images/znyj/row2Img.jpg">
+							<img src="./images/rxsp/row2Img.jpg">
 						</div>
 					</div>
 					<div class="span16">
 						<ul class="m-cols m-col-4">
 							<li class="col">
 								<div class="row">
-									<span class="tip orange">免邮件</span>
-									<dl>
-										<dt><img src="${pageContext.request.contextPath}/jsp/users/images/znyj/znyj1.jpg"></dt>
-										<dd class="name">小米路由器3</dd>
-										<dd class="desc">四天线设计，更安全更稳定</dd>
-										<dd class="price">149元</dd>
-									</dl>
+									<a href="page.jsp">
+										<span class="tip orange">月销1000</span>
+										<dl>
+											<dt><img src="./images/rxsp/lndbc1.png"></dt>
+											<dd class="name">老年代步车</dd>
+											<dd class="desc">老年人手推轻便购物代步车</dd>
+											<dd class="price">1149元</dd>
+										</dl>
+									</a>
 								</div>
 								<div class="row">
 									<span class="tip blue">有赠品</span>
 									<dl>
-										<dt><img src="${pageContext.request.contextPath}/jsp/users/images/znyj/znyj2.jpg"></dt>
+										<dt><img src="./images/rxsp/rxsp2.jpg"></dt>
 										<dd class="name">小米路由器3</dd>
 										<dd class="desc">四天线设计，更安全更稳定</dd>
 										<dd class="price">149元</dd>
@@ -1654,7 +627,7 @@
 								<div class="row">
 									<span class="tip orange">免邮件</span>
 									<dl>
-										<dt><img src="${pageContext.request.contextPath}/jsp/users/images/znyj/znyj3.jpg"></dt>
+										<dt><img src="./images/rxsp/rxsp3.jpg"></dt>
 										<dd class="name">小米路由器3</dd>
 										<dd class="desc">四天线设计，更安全更稳定</dd>
 										<dd class="price">149元</dd>
@@ -1663,7 +636,7 @@
 								<div class="row">
 									<span class="tip blue">有赠品</span>
 									<dl>
-										<dt><img src="${pageContext.request.contextPath}/jsp/users/images/znyj/znyj4.jpg"></dt>
+										<dt><img src="./images/rxsp/rxsp4.jpg"></dt>
 										<dd class="name">小米路由器3</dd>
 										<dd class="desc">四天线设计，更安全更稳定</dd>
 										<dd class="price">149元</dd>
@@ -1674,7 +647,7 @@
 								<div class="row">
 									<span class="tip orange">免邮件</span>
 									<dl>
-										<dt><img src="${pageContext.request.contextPath}/jsp/users/images/znyj/znyj5.jpg"></dt>
+										<dt><img src="./images/rxsp/rxsp5.jpg"></dt>
 										<dd class="name">小米路由器3</dd>
 										<dd class="desc">四天线设计，更安全更稳定</dd>
 										<dd class="price">149元</dd>
@@ -1683,7 +656,7 @@
 								<div class="row">
 									<span class="tip blue">有赠品</span>
 									<dl>
-										<dt><img src="${pageContext.request.contextPath}/jsp/users/images/znyj/znyj6.jpg"></dt>
+										<dt><img src="./images/rxsp/rxsp6.jpg"></dt>
 										<dd class="name">小米路由器3</dd>
 										<dd class="desc">四天线设计，更安全更稳定</dd>
 										<dd class="price">149元</dd>
@@ -1694,7 +667,7 @@
 								<div class="row">
 									<span class="tip orange">免邮件</span>
 									<dl>
-										<dt><img src="${pageContext.request.contextPath}/jsp/users/images/znyj/znyj7.jpg"></dt>
+										<dt><img src="./images/rxsp/rxsp7.jpg"></dt>
 										<dd class="name">小米路由器3</dd>
 										<dd class="desc">四天线设计，更安全更稳定</dd>
 										<dd class="price">149元</dd>
@@ -1703,7 +676,7 @@
 								<div class="row">
 									<span class="tip blue">有赠品</span>
 									<dl>
-										<dt><img src="${pageContext.request.contextPath}/jsp/users/images/znyj/znyj8.png"></dt>
+										<dt><img src="./images/rxsp/rxsp8.png"></dt>
 										<dd class="name">小米路由器3</dd>
 										<dd class="desc">四天线设计，更安全更稳定</dd>
 										<dd class="price">149元</dd>
@@ -1736,7 +709,7 @@
 				<section class="m-box line2  clear_top  clear_bottom">
 					<div class="span4">
 						<div class="row main-pic">
-							<img src="${pageContext.request.contextPath}/jsp/users/images/znyj/row2Img.jpg">
+							<img src="./images/rxsp/row2Img.jpg">
 						</div>
 					</div>
 					<div class="span16">
@@ -1749,7 +722,7 @@
 											<div class="row" content="音质非常好，很震撼！！美美美！" from="来自于米米小aa 的评价">
 												<span class="tip orange">免邮件</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/dp/dp1.jpg"></dt>
+													<dt><img src="./images/dp/dp1.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="price">149元</dd>
 													<dd class="cmt">18.7万人评价</dd>
@@ -1758,7 +731,7 @@
 											<div class="row" content="音质非常好，很震撼！！美美美！" from="来自于米米小aa 的评价">
 												<span class="tip blue">有赠品</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/dp/dp2.jpg"></dt>
+													<dt><img src="./images/dp/dp2.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="price">149元</dd>
 													<dd class="cmt">18.7万人评价</dd>
@@ -1769,7 +742,7 @@
 											<div class="row" content="音质非常好，很震撼！！美美美！" from="来自于米米小aa 的评价">
 												<span class="tip orange">免邮件</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/dp/dp3.jpg"></dt>
+													<dt><img src="./images/dp/dp3.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="price">149元</dd>
 													<dd class="cmt">18.7万人评价</dd>
@@ -1778,7 +751,7 @@
 											<div class="row" content="音质非常好，很震撼！！美美美！" from="来自于米米小aa 的评价">
 												<span class="tip blue">有赠品</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/dp/dp4.jpg"></dt>
+													<dt><img src="./images/dp/dp4.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="price">149元</dd>
 													<dd class="cmt">18.7万人评价</dd>
@@ -1789,7 +762,7 @@
 											<div class="row" content="音质非常好，很震撼！！美美美！" from="来自于米米小aa 的评价">
 												<span class="tip orange">免邮件</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/dp/dp5.jpg"></dt>
+													<dt><img src="./images/dp/dp5.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="price">149元</dd>
 													<dd class="cmt">18.7万人评价</dd>
@@ -1798,7 +771,7 @@
 											<div class="row" content="音质非常好，很震撼！！美美美！" from="来自于米米小aa 的评价">
 												<span class="tip blue">有赠品</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/dp/dp6.jpg"></dt>
+													<dt><img src="./images/dp/dp6.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="price">149元</dd>
 													<dd class="cmt">18.7万人评价</dd>
@@ -1809,7 +782,7 @@
 											<div class="row" content="音质非常好，很震撼！！美美美！" from="来自于米米小aa 的评价">
 												<span class="tip orange">免邮件</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/dp/dp7.jpg"></dt>
+													<dt><img src="./images/dp/dp7.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="price">149元</dd>
 													<dd class="cmt">18.7万人评价</dd>
@@ -1818,91 +791,7 @@
 											<div class="row" content="音质非常好，很震撼！！美美美！" from="来自于米米小aa 的评价">
 												<span class="tip blue">有赠品</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/dp/dp8.jpg"></dt>
-													<dd class="name">小米路由器3</dd>
-													<dd class="price">149元</dd>
-													<dd class="cmt">18.7万人评价</dd>
-												</dl>
-											</div>
-										</li>
-									</ul>
-								</div>
-								<div class="m-slide-item">
-									<ul class="m-cols m-col-4">
-										<li class="col">
-											<div class="row" content="音质非常好，很震撼！！美美美！" from="来自于米米小aa 的评价">
-												<span class="tip orange">免邮件</span>
-												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/dp/dp9.jpg"></dt>
-													<dd class="name">小米路由器3</dd>
-													<dd class="price">149元</dd>
-													<dd class="cmt">18.7万人评价</dd>
-												</dl>
-											</div>
-											<div class="row" content="音质非常好，很震撼！！美美美！" from="来自于米米小aa 的评价">
-												<span class="tip blue">有赠品</span>
-												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/dp/dp10.jpg"></dt>
-													<dd class="name">小米路由器3</dd>
-													<dd class="price">149元</dd>
-													<dd class="cmt">18.7万人评价</dd>
-												</dl>
-											</div>
-										</li>
-										<li class="col">
-											<div class="row" content="音质非常好，很震撼！！美美美！" from="来自于米米小aa 的评价">
-												<span class="tip orange">免邮件</span>
-												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/dp/dp11.jpg"></dt>
-													<dd class="name">小米路由器3</dd>
-													<dd class="price">149元</dd>
-													<dd class="cmt">18.7万人评价</dd>
-												</dl>
-											</div>
-											<div class="row" content="音质非常好，很震撼！！美美美！" from="来自于米米小aa 的评价">
-												<span class="tip blue">有赠品</span>
-												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/dp/dp12.jpg"></dt>
-													<dd class="name">小米路由器3</dd>
-													<dd class="price">149元</dd>
-													<dd class="cmt">18.7万人评价</dd>
-												</dl>
-											</div>
-										</li>
-										<li class="col">
-											<div class="row" content="音质非常好，很震撼！！美美美！" from="来自于米米小aa 的评价">
-												<span class="tip orange">免邮件</span>
-												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/dp/dp13.jpg"></dt>
-													<dd class="name">小米路由器3</dd>
-													<dd class="price">149元</dd>
-													<dd class="cmt">18.7万人评价</dd>
-												</dl>
-											</div>
-											<div class="row" content="音质非常好，很震撼！！美美美！" from="来自于米米小aa 的评价">
-												<span class="tip blue">有赠品</span>
-												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/dp/dp14.jpg"></dt>
-													<dd class="name">小米路由器3</dd>
-													<dd class="price">149元</dd>
-													<dd class="cmt">18.7万人评价</dd>
-												</dl>
-											</div>
-										</li>
-										<li class="col">
-											<div class="row" content="音质非常好，很震撼！！美美美！" from="来自于米米小aa 的评价">
-												<span class="tip orange">免邮件</span>
-												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/dp/dp15.jpg"></dt>
-													<dd class="name">小米路由器3</dd>
-													<dd class="price">149元</dd>
-													<dd class="cmt">18.7万人评价</dd>
-												</dl>
-											</div>
-											<div class="row" content="音质非常好，很震撼！！美美美！" from="来自于米米小aa 的评价">
-												<span class="tip blue">有赠品</span>
-												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/dp/dp16.jpg"></dt>
+													<dt><img src="./images/dp/dp8.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="price">149元</dd>
 													<dd class="cmt">18.7万人评价</dd>
@@ -1917,7 +806,7 @@
 											<div class="row" content="音质非常好，很震撼！！美美美！" from="来自于米米小aa 的评价">
 												<span class="tip orange">免邮件</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/dp/dp1.jpg"></dt>
+													<dt><img src="./images/dp/dp9.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="price">149元</dd>
 													<dd class="cmt">18.7万人评价</dd>
@@ -1926,7 +815,7 @@
 											<div class="row" content="音质非常好，很震撼！！美美美！" from="来自于米米小aa 的评价">
 												<span class="tip blue">有赠品</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/dp/dp2.jpg"></dt>
+													<dt><img src="./images/dp/dp10.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="price">149元</dd>
 													<dd class="cmt">18.7万人评价</dd>
@@ -1937,7 +826,7 @@
 											<div class="row" content="音质非常好，很震撼！！美美美！" from="来自于米米小aa 的评价">
 												<span class="tip orange">免邮件</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/dp/dp3.jpg"></dt>
+													<dt><img src="./images/dp/dp11.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="price">149元</dd>
 													<dd class="cmt">18.7万人评价</dd>
@@ -1946,7 +835,7 @@
 											<div class="row" content="音质非常好，很震撼！！美美美！" from="来自于米米小aa 的评价">
 												<span class="tip blue">有赠品</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/dp/dp4.jpg"></dt>
+													<dt><img src="./images/dp/dp12.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="price">149元</dd>
 													<dd class="cmt">18.7万人评价</dd>
@@ -1957,7 +846,7 @@
 											<div class="row" content="音质非常好，很震撼！！美美美！" from="来自于米米小aa 的评价">
 												<span class="tip orange">免邮件</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/dp/dp5.jpg"></dt>
+													<dt><img src="./images/dp/dp13.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="price">149元</dd>
 													<dd class="cmt">18.7万人评价</dd>
@@ -1966,7 +855,7 @@
 											<div class="row" content="音质非常好，很震撼！！美美美！" from="来自于米米小aa 的评价">
 												<span class="tip blue">有赠品</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/dp/dp6.jpg"></dt>
+													<dt><img src="./images/dp/dp14.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="price">149元</dd>
 													<dd class="cmt">18.7万人评价</dd>
@@ -1977,7 +866,7 @@
 											<div class="row" content="音质非常好，很震撼！！美美美！" from="来自于米米小aa 的评价">
 												<span class="tip orange">免邮件</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/dp/dp7.jpg"></dt>
+													<dt><img src="./images/dp/dp15.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="price">149元</dd>
 													<dd class="cmt">18.7万人评价</dd>
@@ -1986,7 +875,7 @@
 											<div class="row" content="音质非常好，很震撼！！美美美！" from="来自于米米小aa 的评价">
 												<span class="tip blue">有赠品</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/dp/dp8.jpg"></dt>
+													<dt><img src="./images/dp/dp16.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="price">149元</dd>
 													<dd class="cmt">18.7万人评价</dd>
@@ -2001,7 +890,7 @@
 											<div class="row" content="音质非常好，很震撼！！美美美！" from="来自于米米小aa 的评价">
 												<span class="tip orange">免邮件</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/dp/dp9.jpg"></dt>
+													<dt><img src="./images/dp/dp1.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="price">149元</dd>
 													<dd class="cmt">18.7万人评价</dd>
@@ -2010,7 +899,7 @@
 											<div class="row" content="音质非常好，很震撼！！美美美！" from="来自于米米小aa 的评价">
 												<span class="tip blue">有赠品</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/dp/dp10.jpg"></dt>
+													<dt><img src="./images/dp/dp2.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="price">149元</dd>
 													<dd class="cmt">18.7万人评价</dd>
@@ -2021,7 +910,7 @@
 											<div class="row" content="音质非常好，很震撼！！美美美！" from="来自于米米小aa 的评价">
 												<span class="tip orange">免邮件</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/dp/dp11.jpg"></dt>
+													<dt><img src="./images/dp/dp3.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="price">149元</dd>
 													<dd class="cmt">18.7万人评价</dd>
@@ -2030,7 +919,7 @@
 											<div class="row" content="音质非常好，很震撼！！美美美！" from="来自于米米小aa 的评价">
 												<span class="tip blue">有赠品</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/dp/dp12.jpg"></dt>
+													<dt><img src="./images/dp/dp4.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="price">149元</dd>
 													<dd class="cmt">18.7万人评价</dd>
@@ -2041,7 +930,7 @@
 											<div class="row" content="音质非常好，很震撼！！美美美！" from="来自于米米小aa 的评价">
 												<span class="tip orange">免邮件</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/dp/dp13.jpg"></dt>
+													<dt><img src="./images/dp/dp5.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="price">149元</dd>
 													<dd class="cmt">18.7万人评价</dd>
@@ -2050,7 +939,7 @@
 											<div class="row" content="音质非常好，很震撼！！美美美！" from="来自于米米小aa 的评价">
 												<span class="tip blue">有赠品</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/dp/dp14.jpg"></dt>
+													<dt><img src="./images/dp/dp6.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="price">149元</dd>
 													<dd class="cmt">18.7万人评价</dd>
@@ -2061,7 +950,7 @@
 											<div class="row" content="音质非常好，很震撼！！美美美！" from="来自于米米小aa 的评价">
 												<span class="tip orange">免邮件</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/dp/dp15.jpg"></dt>
+													<dt><img src="./images/dp/dp7.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="price">149元</dd>
 													<dd class="cmt">18.7万人评价</dd>
@@ -2070,7 +959,91 @@
 											<div class="row" content="音质非常好，很震撼！！美美美！" from="来自于米米小aa 的评价">
 												<span class="tip blue">有赠品</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/dp/dp16.jpg"></dt>
+													<dt><img src="./images/dp/dp8.jpg"></dt>
+													<dd class="name">小米路由器3</dd>
+													<dd class="price">149元</dd>
+													<dd class="cmt">18.7万人评价</dd>
+												</dl>
+											</div>
+										</li>
+									</ul>
+								</div>
+								<div class="m-slide-item">
+									<ul class="m-cols m-col-4">
+										<li class="col">
+											<div class="row" content="音质非常好，很震撼！！美美美！" from="来自于米米小aa 的评价">
+												<span class="tip orange">免邮件</span>
+												<dl>
+													<dt><img src="./images/dp/dp9.jpg"></dt>
+													<dd class="name">小米路由器3</dd>
+													<dd class="price">149元</dd>
+													<dd class="cmt">18.7万人评价</dd>
+												</dl>
+											</div>
+											<div class="row" content="音质非常好，很震撼！！美美美！" from="来自于米米小aa 的评价">
+												<span class="tip blue">有赠品</span>
+												<dl>
+													<dt><img src="./images/dp/dp10.jpg"></dt>
+													<dd class="name">小米路由器3</dd>
+													<dd class="price">149元</dd>
+													<dd class="cmt">18.7万人评价</dd>
+												</dl>
+											</div>
+										</li>
+										<li class="col">
+											<div class="row" content="音质非常好，很震撼！！美美美！" from="来自于米米小aa 的评价">
+												<span class="tip orange">免邮件</span>
+												<dl>
+													<dt><img src="./images/dp/dp11.jpg"></dt>
+													<dd class="name">小米路由器3</dd>
+													<dd class="price">149元</dd>
+													<dd class="cmt">18.7万人评价</dd>
+												</dl>
+											</div>
+											<div class="row" content="音质非常好，很震撼！！美美美！" from="来自于米米小aa 的评价">
+												<span class="tip blue">有赠品</span>
+												<dl>
+													<dt><img src="./images/dp/dp12.jpg"></dt>
+													<dd class="name">小米路由器3</dd>
+													<dd class="price">149元</dd>
+													<dd class="cmt">18.7万人评价</dd>
+												</dl>
+											</div>
+										</li>
+										<li class="col">
+											<div class="row" content="音质非常好，很震撼！！美美美！" from="来自于米米小aa 的评价">
+												<span class="tip orange">免邮件</span>
+												<dl>
+													<dt><img src="./images/dp/dp13.jpg"></dt>
+													<dd class="name">小米路由器3</dd>
+													<dd class="price">149元</dd>
+													<dd class="cmt">18.7万人评价</dd>
+												</dl>
+											</div>
+											<div class="row" content="音质非常好，很震撼！！美美美！" from="来自于米米小aa 的评价">
+												<span class="tip blue">有赠品</span>
+												<dl>
+													<dt><img src="./images/dp/dp14.jpg"></dt>
+													<dd class="name">小米路由器3</dd>
+													<dd class="price">149元</dd>
+													<dd class="cmt">18.7万人评价</dd>
+												</dl>
+											</div>
+										</li>
+										<li class="col">
+											<div class="row" content="音质非常好，很震撼！！美美美！" from="来自于米米小aa 的评价">
+												<span class="tip orange">免邮件</span>
+												<dl>
+													<dt><img src="./images/dp/dp15.jpg"></dt>
+													<dd class="name">小米路由器3</dd>
+													<dd class="price">149元</dd>
+													<dd class="cmt">18.7万人评价</dd>
+												</dl>
+											</div>
+											<div class="row" content="音质非常好，很震撼！！美美美！" from="来自于米米小aa 的评价">
+												<span class="tip blue">有赠品</span>
+												<dl>
+													<dt><img src="./images/dp/dp16.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="price">149元</dd>
 													<dd class="cmt">18.7万人评价</dd>
@@ -2106,7 +1079,7 @@
 				<section class="m-box line2">
 					<div class="span4">
 						<div class="main-pic">
-							<img src="${pageContext.request.contextPath}/jsp/users/images/znyj/row2Img.jpg">
+							<img src="./images/rxsp/row2Img.jpg">
 						</div>
 					</div>
 					<div class="span16">
@@ -2118,7 +1091,7 @@
 											<div class="row">
 												<span class="tip orange">免邮件</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/pj/pj1.jpg"></dt>
+													<dt><img src="./images/pj/pj1.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="desc">四天线设计，更安全更稳定</dd>
 													<dd class="price">149元</dd>
@@ -2127,7 +1100,7 @@
 											<div class="row">
 												<span class="tip blue">有赠品</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/pj/pj2.jpg"></dt>
+													<dt><img src="./images/pj/pj2.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="desc">四天线设计，更安全更稳定</dd>
 													<dd class="price">149元</dd>
@@ -2138,7 +1111,7 @@
 											<div class="row">
 												<span class="tip orange">免邮件</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/pj/pj3.jpg"></dt>
+													<dt><img src="./images/pj/pj3.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="desc">四天线设计，更安全更稳定</dd>
 													<dd class="price">149元</dd>
@@ -2147,7 +1120,7 @@
 											<div class="row">
 												<span class="tip blue">有赠品</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/pj/pj4.jpg"></dt>
+													<dt><img src="./images/pj/pj4.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="desc">四天线设计，更安全更稳定</dd>
 													<dd class="price">149元</dd>
@@ -2158,7 +1131,7 @@
 											<div class="row">
 												<span class="tip orange">免邮件</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/pj/pj5.jpg"></dt>
+													<dt><img src="./images/pj/pj5.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="desc">四天线设计，更安全更稳定</dd>
 													<dd class="price">149元</dd>
@@ -2167,7 +1140,7 @@
 											<div class="row">
 												<span class="tip blue">有赠品</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/pj/pj6.jpg"></dt>
+													<dt><img src="./images/pj/pj6.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="desc">四天线设计，更安全更稳定</dd>
 													<dd class="price">149元</dd>
@@ -2178,7 +1151,7 @@
 											<div class="row">
 												<span class="tip orange">免邮件</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/pj/pj7.jpg"></dt>
+													<dt><img src="./images/pj/pj7.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="desc">四天线设计，更安全更稳定</dd>
 													<dd class="price">149元</dd>
@@ -2190,7 +1163,7 @@
 													<small>79元</small>
 												</div>
 												<div class="small-introR">
-													<img src="${pageContext.request.contextPath}/jsp/users/images/pj/pj1.jpg">
+													<img src="./images/pj/pj1.jpg">
 												</div>
 											</div>
 											<div class="row row_half scan-more">
@@ -2209,7 +1182,7 @@
 											<div class="row">
 												<span class="tip orange">免邮件</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/pj/pj1.jpg"></dt>
+													<dt><img src="./images/pj/pj1.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="desc">四天线设计，更安全更稳定</dd>
 													<dd class="price">149元</dd>
@@ -2218,7 +1191,7 @@
 											<div class="row">
 												<span class="tip blue">有赠品</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/pj/pj1.jpg"></dt>
+													<dt><img src="./images/pj/pj1.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="desc">四天线设计，更安全更稳定</dd>
 													<dd class="price">149元</dd>
@@ -2229,7 +1202,7 @@
 											<div class="row">
 												<span class="tip orange">免邮件</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/pj/pj1.jpg"></dt>
+													<dt><img src="./images/pj/pj1.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="desc">四天线设计，更安全更稳定</dd>
 													<dd class="price">149元</dd>
@@ -2238,7 +1211,7 @@
 											<div class="row">
 												<span class="tip blue">有赠品</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/pj/pj1.jpg"></dt>
+													<dt><img src="./images/pj/pj1.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="desc">四天线设计，更安全更稳定</dd>
 													<dd class="price">149元</dd>
@@ -2249,7 +1222,7 @@
 											<div class="row">
 												<span class="tip orange">免邮件</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/pj/pj1.jpg"></dt>
+													<dt><img src="./images/pj/pj1.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="desc">四天线设计，更安全更稳定</dd>
 													<dd class="price">149元</dd>
@@ -2258,7 +1231,7 @@
 											<div class="row">
 												<span class="tip blue">有赠品</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/pj/pj1.jpg"></dt>
+													<dt><img src="./images/pj/pj1.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="desc">四天线设计，更安全更稳定</dd>
 													<dd class="price">149元</dd>
@@ -2269,7 +1242,7 @@
 											<div class="row">
 												<span class="tip orange">免邮件</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/pj/pj1.jpg"></dt>
+													<dt><img src="./images/pj/pj1.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="desc">四天线设计，更安全更稳定</dd>
 													<dd class="price">149元</dd>
@@ -2281,7 +1254,7 @@
 													<small>79元</small>
 												</div>
 												<div class="small-introR">
-													<img src="${pageContext.request.contextPath}/jsp/users/images/smallpj/pj1.jpg">
+													<img src="./images/smallpj/pj1.jpg">
 												</div>
 											</div>
 											<div class="row row_half scan-more">
@@ -2300,7 +1273,7 @@
 											<div class="row">
 												<span class="tip orange">免邮件</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/pj/pj1.jpg"></dt>
+													<dt><img src="./images/pj/pj1.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="desc">四天线设计，更安全更稳定</dd>
 													<dd class="price">149元</dd>
@@ -2309,7 +1282,7 @@
 											<div class="row">
 												<span class="tip blue">有赠品</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/pj/pj1.jpg"></dt>
+													<dt><img src="./images/pj/pj1.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="desc">四天线设计，更安全更稳定</dd>
 													<dd class="price">149元</dd>
@@ -2320,7 +1293,7 @@
 											<div class="row">
 												<span class="tip orange">免邮件</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/pj/pj1.jpg"></dt>
+													<dt><img src="./images/pj/pj1.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="desc">四天线设计，更安全更稳定</dd>
 													<dd class="price">149元</dd>
@@ -2329,7 +1302,7 @@
 											<div class="row">
 												<span class="tip blue">有赠品</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/pj/pj1.jpg"></dt>
+													<dt><img src="./images/pj/pj1.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="desc">四天线设计，更安全更稳定</dd>
 													<dd class="price">149元</dd>
@@ -2340,7 +1313,7 @@
 											<div class="row">
 												<span class="tip orange">免邮件</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/pj/pj1.jpg"></dt>
+													<dt><img src="./images/pj/pj1.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="desc">四天线设计，更安全更稳定</dd>
 													<dd class="price">149元</dd>
@@ -2349,7 +1322,7 @@
 											<div class="row">
 												<span class="tip blue">有赠品</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/pj/pj1.jpg"></dt>
+													<dt><img src="./images/pj/pj1.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="desc">四天线设计，更安全更稳定</dd>
 													<dd class="price">149元</dd>
@@ -2360,7 +1333,7 @@
 											<div class="row">
 												<span class="tip orange">免邮件</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/pj/pj1.jpg"></dt>
+													<dt><img src="./images/pj/pj1.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="desc">四天线设计，更安全更稳定</dd>
 													<dd class="price">149元</dd>
@@ -2372,7 +1345,7 @@
 													<small>79元</small>
 												</div>
 												<div class="small-introR">
-													<img src="${pageContext.request.contextPath}/jsp/users/images/smallpj/pj1.jpg">
+													<img src="./images/smallpj/pj1.jpg">
 												</div>
 											</div>
 											<div class="row row_half scan-more">
@@ -2392,7 +1365,7 @@
 											<div class="row">
 												<span class="tip orange">免邮件</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/pj/pj1.jpg"></dt>
+													<dt><img src="./images/pj/pj1.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="desc">四天线设计，更安全更稳定</dd>
 													<dd class="price">149元</dd>
@@ -2401,7 +1374,7 @@
 											<div class="row">
 												<span class="tip blue">有赠品</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/pj/pj1.jpg"></dt>
+													<dt><img src="./images/pj/pj1.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="desc">四天线设计，更安全更稳定</dd>
 													<dd class="price">149元</dd>
@@ -2412,7 +1385,7 @@
 											<div class="row">
 												<span class="tip orange">免邮件</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/pj/pj1.jpg"></dt>
+													<dt><img src="./images/pj/pj1.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="desc">四天线设计，更安全更稳定</dd>
 													<dd class="price">149元</dd>
@@ -2421,7 +1394,7 @@
 											<div class="row">
 												<span class="tip blue">有赠品</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/pj/pj1.jpg"></dt>
+													<dt><img src="./images/pj/pj1.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="desc">四天线设计，更安全更稳定</dd>
 													<dd class="price">149元</dd>
@@ -2432,7 +1405,7 @@
 											<div class="row">
 												<span class="tip orange">免邮件</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/pj/pj1.jpg"></dt>
+													<dt><img src="./images/pj/pj1.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="desc">四天线设计，更安全更稳定</dd>
 													<dd class="price">149元</dd>
@@ -2441,7 +1414,7 @@
 											<div class="row">
 												<span class="tip blue">有赠品</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/pj/pj1.jpg"></dt>
+													<dt><img src="./images/pj/pj1.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="desc">四天线设计，更安全更稳定</dd>
 													<dd class="price">149元</dd>
@@ -2452,7 +1425,7 @@
 											<div class="row">
 												<span class="tip orange">免邮件</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/pj/pj1.jpg"></dt>
+													<dt><img src="./images/pj/pj1.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="desc">四天线设计，更安全更稳定</dd>
 													<dd class="price">149元</dd>
@@ -2464,7 +1437,7 @@
 													<small>79元</small>
 												</div>
 												<div class="small-introR">
-													<img src="${pageContext.request.contextPath}/jsp/users/images/smallpj/pj1.jpg">
+													<img src="./images/smallpj/pj1.jpg">
 												</div>
 											</div>
 											<div class="row row_half scan-more">
@@ -2505,7 +1478,7 @@
 				</header>
 				<section class="m-box line2">
 					<div class="span4">
-						<div class="main-pic"><img src="${pageContext.request.contextPath}/jsp/users/images/znyj/row2Img.jpg"></div>
+						<div class="main-pic"><img src="./images/rxsp/row2Img.jpg"></div>
 					</div>
 					<div class="span16">
 						<div class="m-slide">
@@ -2516,7 +1489,7 @@
 											<div class="row">
 												<span class="tip orange">免邮件</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/zb/zb1.jpg"></dt>
+													<dt><img src="./images/zb/zb1.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="desc">四天线设计，更安全更稳定</dd>
 													<dd class="price">149元</dd>
@@ -2525,7 +1498,7 @@
 											<div class="row">
 												<span class="tip blue">有赠品</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/zb/zb2.jpg"></dt>
+													<dt><img src="./images/zb/zb2.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="desc">四天线设计，更安全更稳定</dd>
 													<dd class="price">149元</dd>
@@ -2536,7 +1509,7 @@
 											<div class="row">
 												<span class="tip orange">免邮件</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/zb/zb3.jpg"></dt>
+													<dt><img src="./images/zb/zb3.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="desc">四天线设计，更安全更稳定</dd>
 													<dd class="price">149元</dd>
@@ -2545,7 +1518,7 @@
 											<div class="row">
 												<span class="tip blue">有赠品</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/zb/zb4.jpg"></dt>
+													<dt><img src="./images/zb/zb4.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="desc">四天线设计，更安全更稳定</dd>
 													<dd class="price">149元</dd>
@@ -2556,7 +1529,7 @@
 											<div class="row">
 												<span class="tip orange">免邮件</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/zb/zb5.jpg"></dt>
+													<dt><img src="./images/zb/zb5.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="desc">四天线设计，更安全更稳定</dd>
 													<dd class="price">149元</dd>
@@ -2565,7 +1538,7 @@
 											<div class="row">
 												<span class="tip blue">有赠品</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/zb/zb6.jpg"></dt>
+													<dt><img src="./images/zb/zb6.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="desc">四天线设计，更安全更稳定</dd>
 													<dd class="price">149元</dd>
@@ -2576,7 +1549,7 @@
 											<div class="row">
 												<span class="tip orange">免邮件</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/zb/zb7.jpg"></dt>
+													<dt><img src="./images/zb/zb7.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="desc">四天线设计，更安全更稳定</dd>
 													<dd class="price">149元</dd>
@@ -2588,7 +1561,7 @@
 													<small>79元</small>
 												</div>
 												<div class="small-introR">
-													<img src="${pageContext.request.contextPath}/jsp/users/images/zb/zb0.jpg">
+													<img src="./images/zb/zb0.jpg">
 												</div>
 											</div>
 											<div class="row row_half scan-more">
@@ -2607,7 +1580,7 @@
 											<div class="row">
 												<span class="tip orange">免邮件</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/zb/zb7.jpg"></dt>
+													<dt><img src="./images/zb/zb7.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="desc">四天线设计，更安全更稳定</dd>
 													<dd class="price">149元</dd>
@@ -2616,7 +1589,7 @@
 											<div class="row">
 												<span class="tip blue">有赠品</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/zb/zb6.jpg"></dt>
+													<dt><img src="./images/zb/zb6.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="desc">四天线设计，更安全更稳定</dd>
 													<dd class="price">149元</dd>
@@ -2627,7 +1600,7 @@
 											<div class="row">
 												<span class="tip orange">免邮件</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/zb/zb5.jpg"></dt>
+													<dt><img src="./images/zb/zb5.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="desc">四天线设计，更安全更稳定</dd>
 													<dd class="price">149元</dd>
@@ -2636,7 +1609,7 @@
 											<div class="row">
 												<span class="tip blue">有赠品</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/zb/zb4.jpg"></dt>
+													<dt><img src="./images/zb/zb4.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="desc">四天线设计，更安全更稳定</dd>
 													<dd class="price">149元</dd>
@@ -2647,7 +1620,7 @@
 											<div class="row">
 												<span class="tip orange">免邮件</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/zb/zb3.jpg"></dt>
+													<dt><img src="./images/zb/zb3.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="desc">四天线设计，更安全更稳定</dd>
 													<dd class="price">149元</dd>
@@ -2656,7 +1629,7 @@
 											<div class="row">
 												<span class="tip blue">有赠品</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/zb/zb2.jpg"></dt>
+													<dt><img src="./images/zb/zb2.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="desc">四天线设计，更安全更稳定</dd>
 													<dd class="price">149元</dd>
@@ -2667,7 +1640,7 @@
 											<div class="row">
 												<span class="tip orange">免邮件</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/zb/zb1.jpg"></dt>
+													<dt><img src="./images/zb/zb1.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="desc">四天线设计，更安全更稳定</dd>
 													<dd class="price">149元</dd>
@@ -2679,7 +1652,7 @@
 													<small>79元</small>
 												</div>
 												<div class="small-introR">
-													<img src="${pageContext.request.contextPath}/jsp/users/images/zb/zb0.jpg">
+													<img src="./images/zb/zb0.jpg">
 												</div>
 											</div>
 											<div class="row row_half scan-more">
@@ -2698,7 +1671,7 @@
 											<div class="row">
 												<span class="tip orange">免邮件</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/zb/zb1.jpg"></dt>
+													<dt><img src="./images/zb/zb1.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="desc">四天线设计，更安全更稳定</dd>
 													<dd class="price">149元</dd>
@@ -2707,7 +1680,7 @@
 											<div class="row">
 												<span class="tip blue">有赠品</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/zb/zb2.jpg"></dt>
+													<dt><img src="./images/zb/zb2.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="desc">四天线设计，更安全更稳定</dd>
 													<dd class="price">149元</dd>
@@ -2718,7 +1691,7 @@
 											<div class="row">
 												<span class="tip orange">免邮件</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/zb/zb3.jpg"></dt>
+													<dt><img src="./images/zb/zb3.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="desc">四天线设计，更安全更稳定</dd>
 													<dd class="price">149元</dd>
@@ -2727,7 +1700,7 @@
 											<div class="row">
 												<span class="tip blue">有赠品</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/zb/zb4.jpg"></dt>
+													<dt><img src="./images/zb/zb4.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="desc">四天线设计，更安全更稳定</dd>
 													<dd class="price">149元</dd>
@@ -2738,7 +1711,7 @@
 											<div class="row">
 												<span class="tip orange">免邮件</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/zb/zb5.jpg"></dt>
+													<dt><img src="./images/zb/zb5.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="desc">四天线设计，更安全更稳定</dd>
 													<dd class="price">149元</dd>
@@ -2747,7 +1720,7 @@
 											<div class="row">
 												<span class="tip blue">有赠品</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/zb/zb6.jpg"></dt>
+													<dt><img src="./images/zb/zb6.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="desc">四天线设计，更安全更稳定</dd>
 													<dd class="price">149元</dd>
@@ -2758,7 +1731,7 @@
 											<div class="row">
 												<span class="tip orange">免邮件</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/zb/zb7.jpg"></dt>
+													<dt><img src="./images/zb/zb7.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="desc">四天线设计，更安全更稳定</dd>
 													<dd class="price">149元</dd>
@@ -2770,7 +1743,7 @@
 													<small>79元</small>
 												</div>
 												<div class="small-introR">
-													<img src="${pageContext.request.contextPath}/jsp/users/images/zb/zb0.jpg">
+													<img src="./images/zb/zb0.jpg">
 												</div>
 											</div>
 											<div class="row row_half scan-more">
@@ -2789,7 +1762,7 @@
 											<div class="row">
 												<span class="tip orange">免邮件</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/zb/zb6.jpg"></dt>
+													<dt><img src="./images/zb/zb6.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="desc">四天线设计，更安全更稳定</dd>
 													<dd class="price">149元</dd>
@@ -2798,7 +1771,7 @@
 											<div class="row">
 												<span class="tip blue">有赠品</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/zb/zb7.jpg"></dt>
+													<dt><img src="./images/zb/zb7.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="desc">四天线设计，更安全更稳定</dd>
 													<dd class="price">149元</dd>
@@ -2809,7 +1782,7 @@
 											<div class="row">
 												<span class="tip orange">免邮件</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/zb/zb5.jpg"></dt>
+													<dt><img src="./images/zb/zb5.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="desc">四天线设计，更安全更稳定</dd>
 													<dd class="price">149元</dd>
@@ -2818,7 +1791,7 @@
 											<div class="row">
 												<span class="tip blue">有赠品</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/zb/zb3.jpg"></dt>
+													<dt><img src="./images/zb/zb3.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="desc">四天线设计，更安全更稳定</dd>
 													<dd class="price">149元</dd>
@@ -2829,7 +1802,7 @@
 											<div class="row">
 												<span class="tip orange">免邮件</span>
 												<dl>
-													<dt><img src=${pageContext.request.contextPath}/jsp/users/images/zb/zb4.jpg"></dt>
+													<dt><img src="./images/zb/zb4.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="desc">四天线设计，更安全更稳定</dd>
 													<dd class="price">149元</dd>
@@ -2838,7 +1811,7 @@
 											<div class="row">
 												<span class="tip blue">有赠品</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/zb/zb1.jpg"></dt>
+													<dt><img src="./images/zb/zb1.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="desc">四天线设计，更安全更稳定</dd>
 													<dd class="price">149元</dd>
@@ -2849,7 +1822,7 @@
 											<div class="row">
 												<span class="tip orange">免邮件</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/zb/zb2.jpg"></dt>
+													<dt><img src="./images/zb/zb2.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="desc">四天线设计，更安全更稳定</dd>
 													<dd class="price">149元</dd>
@@ -2861,7 +1834,7 @@
 													<small>79元</small>
 												</div>
 												<div class="small-introR">
-													<img src="${pageContext.request.contextPath}/jsp/users/images/zb/zb0.jpg">
+													<img src="./images/zb/zb0.jpg">
 												</div>
 											</div>
 											<div class="row row_half scan-more">
@@ -2880,7 +1853,7 @@
 											<div class="row">
 												<span class="tip orange">免邮件</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/zb/zb1.jpg"></dt>
+													<dt><img src="./images/zb/zb1.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="desc">四天线设计，更安全更稳定</dd>
 													<dd class="price">149元</dd>
@@ -2889,7 +1862,7 @@
 											<div class="row">
 												<span class="tip blue">有赠品</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/zb/zb2.jpg"></dt>
+													<dt><img src="./images/zb/zb2.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="desc">四天线设计，更安全更稳定</dd>
 													<dd class="price">149元</dd>
@@ -2900,7 +1873,7 @@
 											<div class="row">
 												<span class="tip orange">免邮件</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/zb/zb1.jpg"></dt>
+													<dt><img src="./images/zb/zb1.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="desc">四天线设计，更安全更稳定</dd>
 													<dd class="price">149元</dd>
@@ -2909,7 +1882,7 @@
 											<div class="row">
 												<span class="tip blue">有赠品</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/zb/zb3.jpg"></dt>
+													<dt><img src="./images/zb/zb3.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="desc">四天线设计，更安全更稳定</dd>
 													<dd class="price">149元</dd>
@@ -2920,7 +1893,7 @@
 											<div class="row">
 												<span class="tip orange">免邮件</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/zb/zb5.jpg"></dt>
+													<dt><img src="./images/zb/zb5.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="desc">四天线设计，更安全更稳定</dd>
 													<dd class="price">149元</dd>
@@ -2929,7 +1902,7 @@
 											<div class="row">
 												<span class="tip blue">有赠品</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/zb/zb4.jpg"></dt>
+													<dt><img src="./images/zb/zb4.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="desc">四天线设计，更安全更稳定</dd>
 													<dd class="price">149元</dd>
@@ -2940,7 +1913,7 @@
 											<div class="row">
 												<span class="tip orange">免邮件</span>
 												<dl>
-													<dt><img src="${pageContext.request.contextPath}/jsp/users/images/zb/zb6.jpg"></dt>
+													<dt><img src="./images/zb/zb6.jpg"></dt>
 													<dd class="name">小米路由器3</dd>
 													<dd class="desc">四天线设计，更安全更稳定</dd>
 													<dd class="price">149元</dd>
@@ -2952,7 +1925,7 @@
 													<small>79元</small>
 												</div>
 												<div class="small-introR">
-													<img src="${pageContext.request.contextPath}/jsp/users/images/zb/zb0.jpg">
+													<img src="./images/zb/zb0.jpg">
 												</div>
 											</div>
 											<div class="row row_half scan-more">
@@ -2994,7 +1967,7 @@
 									<li class="col">
 										<div class="row">
 											<dl>
-												<dt><img src="${pageContext.request.contextPath}/jsp/users/images/wntj/wntj1.jpg"></dt>
+												<dt><img src="./images/wntj/wntj1.jpg"></dt>
 												<dd class="name">小米路由器3</dd>
 												<dd class="price">149元</dd>
 												<dd class="cmt">9000人好评</dd>
@@ -3004,7 +1977,7 @@
 									<li class="col">
 										<div class="row">
 											<dl>
-												<dt><img src="${pageContext.request.contextPath}/jsp/users/images/wntj/wntj2.jpg"></dt>
+												<dt><img src="./images/wntj/wntj2.jpg"></dt>
 												<dd class="name">小米路由器3</dd>
 												<dd class="price">149元</dd>
 												<dd class="cmt">9000人好评</dd>
@@ -3014,7 +1987,7 @@
 									<li class="col">
 										<div class="row">
 											<dl>
-												<dt><img src="${pageContext.request.contextPath}/jsp/users/images/wntj/wntj3.jpg"></dt>
+												<dt><img src="./images/wntj/wntj3.jpg"></dt>
 												<dd class="name">小米路由器3</dd>
 												<dd class="price">149元</dd>
 												<dd class="cmt">9000人好评</dd>
@@ -3024,7 +1997,7 @@
 									<li class="col">
 										<div class="row">
 											<dl>
-												<dt><img src="${pageContext.request.contextPath}/jsp/users/images/wntj/wntj4.jpg"></dt>
+												<dt><img src="./images/wntj/wntj4.jpg"></dt>
 												<dd class="name">小米路由器3</dd>
 												<dd class="price">149元</dd>
 												<dd class="cmt">9000人好评</dd>
@@ -3034,7 +2007,7 @@
 									<li class="col">
 										<div class="row">
 											<dl>
-												<dt><img src="${pageContext.request.contextPath}/jsp/users/images/wntj/wntj5.jpg"></dt>
+												<dt><img src="./images/wntj/wntj5.jpg"></dt>
 												<dd class="name">小米路由器3</dd>
 												<dd class="price">149元</dd>
 												<dd class="cmt">9000人好评</dd>
@@ -3048,7 +2021,7 @@
 									<li class="col">
 										<div class="row">
 											<dl>
-												<dt><img src="${pageContext.request.contextPath}/jsp/users/images/wntj/wntj6.jpg"></dt>
+												<dt><img src="./images/wntj/wntj6.jpg"></dt>
 												<dd class="name">小米路由器3</dd>
 												<dd class="price">149元</dd>
 												<dd class="cmt">9000人好评</dd>
@@ -3058,7 +2031,7 @@
 									<li class="col">
 										<div class="row">
 											<dl>
-												<dt><img src="${pageContext.request.contextPath}/jsp/users/images/wntj/wntj7.jpg"></dt>
+												<dt><img src="./images/wntj/wntj7.jpg"></dt>
 												<dd class="name">小米路由器3</dd>
 												<dd class="price">149元</dd>
 												<dd class="cmt">9000人好评</dd>
@@ -3068,7 +2041,7 @@
 									<li class="col">
 										<div class="row">
 											<dl>
-												<dt><img src="${pageContext.request.contextPath}/jsp/users/images/wntj/wntj8.jpg"></dt>
+												<dt><img src="./images/wntj/wntj8.jpg"></dt>
 												<dd class="name">小米路由器3</dd>
 												<dd class="price">149元</dd>
 												<dd class="cmt">9000人好评</dd>
@@ -3078,7 +2051,7 @@
 									<li class="col">
 										<div class="row">
 											<dl>
-												<dt><img src="${pageContext.request.contextPath}/jsp/users/images/wntj/wntj9.jpg"></dt>
+												<dt><img src="./images/wntj/wntj9.jpg"></dt>
 												<dd class="name">小米路由器3</dd>
 												<dd class="price">149元</dd>
 												<dd class="cmt">9000人好评</dd>
@@ -3088,7 +2061,7 @@
 									<li class="col">
 										<div class="row">
 											<dl>
-												<dt><img src="${pageContext.request.contextPath}/jsp/users/images/wntj/wntj10.jpg"></dt>
+												<dt><img src="./images/wntj/wntj10.jpg"></dt>
 												<dd class="name">小米路由器3</dd>
 												<dd class="price">149元</dd>
 												<dd class="cmt">9000人好评</dd>
@@ -3116,7 +2089,7 @@
 					<ul class="m-cols m-col-4">
 						<li class="col">
 							<div class="row">
-								<img src="${pageContext.request.contextPath}/jsp/users/images/rpcp/rpcp1.jpg">
+								<img src="./images/rpcp/rpcp1.jpg">
 								<div class="content">
 									<div class="cmt">
 										自拍是一种病！拍起来真要命！蓝牙连接，比起插线的，简直提升了不少逼格～喜欢的蓝色～美哒哒～～
@@ -3129,7 +2102,7 @@
 						</li>
 						<li class="col">
 							<div class="row">
-								<img src="${pageContext.request.contextPath}/jsp/users/images/rpcp/rpcp2.jpg">
+								<img src="./images/rpcp/rpcp2.jpg">
 								<div class="content">
 									<div class="cmt">
 										自拍是一种病！拍起来真要命！蓝牙连接，比起插线的，简直提升了不少逼格～喜欢的蓝色～美哒哒～～
@@ -3142,7 +2115,7 @@
 						</li>
 						<li class="col">
 							<div class="row">
-								<img src="${pageContext.request.contextPath}/jsp/users/images/rpcp/rpcp3.jpg">
+								<img src="./images/rpcp/rpcp3.jpg">
 								<div class="content">
 									<div class="cmt">
 										自拍是一种病！拍起来真要命！蓝牙连接，比起插线的，简直提升了不少逼格～喜欢的蓝色～美哒哒～～
@@ -3155,7 +2128,7 @@
 						</li>
 						<li class="col">
 							<div class="row">
-								<img src="${pageContext.request.contextPath}/jsp/users/images/rpcp/rpcp4.jpg">
+								<img src="./images/rpcp/rpcp4.jpg">
 								<div class="content">
 									<div class="cmt">
 										自拍是一种病！拍起来真要命！蓝牙连接，比起插线的，简直提升了不少逼格～喜欢的蓝色～美哒哒～～
@@ -3443,766 +2416,766 @@
                 </div>
             </div>
         </div>-->
-<!--	<div class="slideShow">
-		&lt;!&ndash;图片布局开始&ndash;&gt;
-		<ul>
-			<li><a href="#"><img src="img/1.jpg" /></a></li>
-			<li><a href="#"><img src="img/2.jpg" /></a></li>
-			<li><a href="#"><img src="img/3.jpg" /></a></li>
-			<li><a href="#"><img src="img/4.jpg" /></a></li>
-		</ul>
-		&lt;!&ndash;图片布局结束&ndash;&gt;
+	<!--	<div class="slideShow">
+            &lt;!&ndash;图片布局开始&ndash;&gt;
+            <ul>
+                <li><a href="#"><img src="img/1.jpg" /></a></li>
+                <li><a href="#"><img src="img/2.jpg" /></a></li>
+                <li><a href="#"><img src="img/3.jpg" /></a></li>
+                <li><a href="#"><img src="img/4.jpg" /></a></li>
+            </ul>
+            &lt;!&ndash;图片布局结束&ndash;&gt;
 
-		&lt;!&ndash;按钮布局开始&ndash;&gt;
-		<div class="showNav">
-			<span class="active">1</span>
-			<span>2</span>
-			<span>3</span>
-			<span>4</span>
-		</div>
-		<script src="js/jquery-1.11.3.js"></script>
-		<script src="js/layout.js"></script>
-	</div>
+            &lt;!&ndash;按钮布局开始&ndash;&gt;
+            <div class="showNav">
+                <span class="active">1</span>
+                <span>2</span>
+                <span>3</span>
+                <span>4</span>
+            </div>
+            <script src="js/jquery-1.11.3.js"></script>
+            <script src="js/layout.js"></script>
+        </div>
 
 
-	<div style="text-align:center;clear:both;">
-		<script src="/gg_bd_ad_720x90.js" type="text/javascript"></script>
-		<script src="/follow.js" type="text/javascript"></script>
-	</div>
-	&lt;!&ndash; banner  &ndash;&gt;
-	<div class="yBanner">
-		<div class="yBannerList">
-			<div class="yBannerListIn">
-				&lt;!&ndash;<a href=""><img class="ymainBanner" src="images/banner1.jpg"  width="100%"></a>&ndash;&gt;
-				<div class="yBannerListInRight">
-					<a href=""><img src="images/BR2.png" width="100%"/></a>
-					<a href=""><img src="images/BR3.png" width="100%" /></a>
-				</div>
-			</div>
-		</div>
+        <div style="text-align:center;clear:both;">
+            <script src="/gg_bd_ad_720x90.js" type="text/javascript"></script>
+            <script src="/follow.js" type="text/javascript"></script>
+        </div>
+        &lt;!&ndash; banner  &ndash;&gt;
+        <div class="yBanner">
+            <div class="yBannerList">
+                <div class="yBannerListIn">
+                    &lt;!&ndash;<a href=""><img class="ymainBanner" src="images/banner1.jpg"  width="100%"></a>&ndash;&gt;
+                    <div class="yBannerListInRight">
+                        <a href=""><img src="images/BR2.png" width="100%"/></a>
+                        <a href=""><img src="images/BR3.png" width="100%" /></a>
+                    </div>
+                </div>
+            </div>
 
-		<div class="yBannerList ybannerHide">
-			<div class="yBannerListIn">
-			&lt;!&ndash;	<a href=""><img class="ymainBanner" src="images/banner1.jpg" width="100%"></a>&ndash;&gt;
-				<div class="yBannerListInRight">
-					<a href=""><img src="images/BR6.png" width="100%"/></a>
-					<a href=""><img src="images/BR4.png" width="100%" /></a>
-				</div>
-			</div>
-		</div>
+            <div class="yBannerList ybannerHide">
+                <div class="yBannerListIn">
+                &lt;!&ndash;	<a href=""><img class="ymainBanner" src="images/banner1.jpg" width="100%"></a>&ndash;&gt;
+                    <div class="yBannerListInRight">
+                        <a href=""><img src="images/BR6.png" width="100%"/></a>
+                        <a href=""><img src="images/BR4.png" width="100%" /></a>
+                    </div>
+                </div>
+            </div>
 
-		<div class="yBannerList ybannerHide">
-			<div class="yBannerListIn">
-			&lt;!&ndash;	<a href=""><img class="ymainBanner" src="images/banner1.jpg" width="100%"></a>&ndash;&gt;
-				<div class="yBannerListInRight">
-					<a href=""><img src="images/BR7.png" width="100%"/></a>
-					<a href=""><img src="images/BR5.png" width="100%" /></a>
-				</div>
-			</div>
-		</div>
-	</div>
-	&lt;!&ndash; banner end &ndash;&gt;
-</header>
-<section id="">
-	<div class="center pc-ad-img clearfix">
-		<div class="pc-center-img"><img src="img/ad/ad1.jpg"></div>
-		<div class="pc-center-img"><img src="img/ad/ad2.jpg"></div>
-		<div class="pc-center-img"><img src="img/ad/ad3.jpg"></div>
-		<div class="pc-center-img"><img src="img/ad/ad4.jpg"></div>
-		<div class="pc-center-img"><img src="img/ad/ad5.jpg"></div>
-	</div>
-</section>
-<section id="s">
-	<div class="center">
-		<div class="pc-center-he">
-			<div class="pc-box-he clearfix">
-				<div class="fl"><i class="pc-time-icon"></i></div>
-				<div class="time-item fr">
-					<span id="day_show">0天</span>
-					<strong id="hour_show">0时</strong>
-					<strong id="minute_show">00分</strong>
-					<strong id="second_show">00秒</strong>
-					<em style="color:#fff">后结束抢购</em>
-				</div>
-			</div>
-			<div class="pc-list-goods">
-				<div class="flashSale_wrap">
-					<div class="flashSale area">
-						<div class="tab-content">
-							<div class="tab-pane active">
-								<div class="flashSaleDeals">
-									<div class="v_cont" style="width:9648px;overflow: hidden">
-										<ul class="flder">
-											<li index="0">
-												<div class="xsq_deal_wrapper">
-													<a class="saleDeal" href="page.html" target="_blank">
-														<div class="dealCon">
-															<img class="dealImg" src="images/xlqg1.jpg" alt="">
-															<div class="zt2Qrcode overlay">
-																<div class="xsqMask"></div>
-																<p class="word1">15:00开抢</p>
-																<p class="word2">限100件，抢完恢复25.8元</p>
-																<p class="word3">查看商品&gt;&gt;</p>
-															</div>
-															&lt;!&ndash;<span class="soldOut xsqIcon"></span>&ndash;&gt;
-														</div>
-														<div class="title_new">
-															<p class="word" title="YDA-826E 除湿机家用抽湿机除湿器（除湿、干衣力荐）">YDA-826E 除湿机家用抽湿机除湿器（除湿、干衣力荐）</p>
-														</div>
-														<div class="dealInfo">
-															<span class="price">¥<em>299</em></span>
+            <div class="yBannerList ybannerHide">
+                <div class="yBannerListIn">
+                &lt;!&ndash;	<a href=""><img class="ymainBanner" src="images/banner1.jpg" width="100%"></a>&ndash;&gt;
+                    <div class="yBannerListInRight">
+                        <a href=""><img src="images/BR7.png" width="100%"/></a>
+                        <a href=""><img src="images/BR5.png" width="100%" /></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        &lt;!&ndash; banner end &ndash;&gt;
+    </header>
+    <section id="">
+        <div class="center pc-ad-img clearfix">
+            <div class="pc-center-img"><img src="img/ad/ad1.jpg"></div>
+            <div class="pc-center-img"><img src="img/ad/ad2.jpg"></div>
+            <div class="pc-center-img"><img src="img/ad/ad3.jpg"></div>
+            <div class="pc-center-img"><img src="img/ad/ad4.jpg"></div>
+            <div class="pc-center-img"><img src="img/ad/ad5.jpg"></div>
+        </div>
+    </section>
+    <section id="s">
+        <div class="center">
+            <div class="pc-center-he">
+                <div class="pc-box-he clearfix">
+                    <div class="fl"><i class="pc-time-icon"></i></div>
+                    <div class="time-item fr">
+                        <span id="day_show">0天</span>
+                        <strong id="hour_show">0时</strong>
+                        <strong id="minute_show">00分</strong>
+                        <strong id="second_show">00秒</strong>
+                        <em style="color:#fff">后结束抢购</em>
+                    </div>
+                </div>
+                <div class="pc-list-goods">
+                    <div class="flashSale_wrap">
+                        <div class="flashSale area">
+                            <div class="tab-content">
+                                <div class="tab-pane active">
+                                    <div class="flashSaleDeals">
+                                        <div class="v_cont" style="width:9648px;overflow: hidden">
+                                            <ul class="flder">
+                                                <li index="0">
+                                                    <div class="xsq_deal_wrapper">
+                                                        <a class="saleDeal" href="page.html" target="_blank">
+                                                            <div class="dealCon">
+                                                                <img class="dealImg" src="images/xlqg1.jpg" alt="">
+                                                                <div class="zt2Qrcode overlay">
+                                                                    <div class="xsqMask"></div>
+                                                                    <p class="word1">15:00开抢</p>
+                                                                    <p class="word2">限100件，抢完恢复25.8元</p>
+                                                                    <p class="word3">查看商品&gt;&gt;</p>
+                                                                </div>
+                                                                &lt;!&ndash;<span class="soldOut xsqIcon"></span>&ndash;&gt;
+                                                            </div>
+                                                            <div class="title_new">
+                                                                <p class="word" title="YDA-826E 除湿机家用抽湿机除湿器（除湿、干衣力荐）">YDA-826E 除湿机家用抽湿机除湿器（除湿、干衣力荐）</p>
+                                                            </div>
+                                                            <div class="dealInfo">
+                                                                <span class="price">¥<em>299</em></span>
 
-															<span class="shop_preferential">满2件8.8折</span>
-														</div>
-													</a>
-												</div>
-												<div class="xsq_deal_wrapper">
-													<a class="saleDeal" href="" target="_blank">
-														<div class="dealCon">
-															<img class="dealImg" src="images/xlqg2.jpg" alt="">
-															<div class="zt2Qrcode overlay">
-																<div class="xsqMask"></div>
-																<p class="word1">15:00开抢</p>
-																<p class="word2">限100件，抢完恢复25.8元</p>
-																<p class="word3">查看商品&gt;&gt;</p>
-															</div>
-															<div class="stock">
-																<div class="xsqMask"></div>
-																<span class="stockWord"><i class="stocknumber">还剩73件</i> 抢完恢复原价16.8元</span>
-															</div>
-														</div>
-														<div class="title_new">
-															<p class="word" title="升级版原汁机低速榨汁机HUZK24WNM "><span class="baoyouText">[包邮]</span>升级版原汁机低速榨汁机HUZK24WNM </p>
-														</div>
-														<div class="dealInfo">
-															<span class="price">¥<em>1980</em></span>
+                                                                <span class="shop_preferential">满2件8.8折</span>
+                                                            </div>
+                                                        </a>
+                                                    </div>
+                                                    <div class="xsq_deal_wrapper">
+                                                        <a class="saleDeal" href="" target="_blank">
+                                                            <div class="dealCon">
+                                                                <img class="dealImg" src="images/xlqg2.jpg" alt="">
+                                                                <div class="zt2Qrcode overlay">
+                                                                    <div class="xsqMask"></div>
+                                                                    <p class="word1">15:00开抢</p>
+                                                                    <p class="word2">限100件，抢完恢复25.8元</p>
+                                                                    <p class="word3">查看商品&gt;&gt;</p>
+                                                                </div>
+                                                                <div class="stock">
+                                                                    <div class="xsqMask"></div>
+                                                                    <span class="stockWord"><i class="stocknumber">还剩73件</i> 抢完恢复原价16.8元</span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="title_new">
+                                                                <p class="word" title="升级版原汁机低速榨汁机HUZK24WNM "><span class="baoyouText">[包邮]</span>升级版原汁机低速榨汁机HUZK24WNM </p>
+                                                            </div>
+                                                            <div class="dealInfo">
+                                                                <span class="price">¥<em>1980</em></span>
 
-															<span class="shop_preferential">满2件8.8折</span>
-														</div>
-													</a>
-												</div>
-												<div class="xsq_deal_wrapper">
-													<a class="saleDeal" href="" target="_blank">
-														<div class="dealCon">
-															<img class="dealImg" src="images/xlqg3.jpg" alt="">
-															<div class="finish overlay">
-																<div class="xsqMask"></div>
-																<p class="word1">15:00开抢</p>
-																<p class="word2">限100件，抢完恢复25.8元</p>
-																<p class="word3">查看商品&gt;&gt;</p>
-															</div>
-															<span class="finishIcon xsqIcon"></span>
-														</div>
-														<div class="title_new">
-															<p class="word" title="飞利浦PHILIPS刷头HX6013标准3支装 "><span class="baoyouText">[包邮]</span>飞利浦PHILIPS刷头HX6013标准3支装 </p>
-														</div>
-														<div class="dealInfo">
-															<span class="price">¥<em>149</em></span>
+                                                                <span class="shop_preferential">满2件8.8折</span>
+                                                            </div>
+                                                        </a>
+                                                    </div>
+                                                    <div class="xsq_deal_wrapper">
+                                                        <a class="saleDeal" href="" target="_blank">
+                                                            <div class="dealCon">
+                                                                <img class="dealImg" src="images/xlqg3.jpg" alt="">
+                                                                <div class="finish overlay">
+                                                                    <div class="xsqMask"></div>
+                                                                    <p class="word1">15:00开抢</p>
+                                                                    <p class="word2">限100件，抢完恢复25.8元</p>
+                                                                    <p class="word3">查看商品&gt;&gt;</p>
+                                                                </div>
+                                                                <span class="finishIcon xsqIcon"></span>
+                                                            </div>
+                                                            <div class="title_new">
+                                                                <p class="word" title="飞利浦PHILIPS刷头HX6013标准3支装 "><span class="baoyouText">[包邮]</span>飞利浦PHILIPS刷头HX6013标准3支装 </p>
+                                                            </div>
+                                                            <div class="dealInfo">
+                                                                <span class="price">¥<em>149</em></span>
 
-															<span class="shop_preferential">满2件8.8折</span>
-														</div>
-													</a>
-												</div>
-												<div class="xsq_deal_wrapper">
-													<a class="saleDeal" href="" target="_blank">
-														<div class="dealCon">
-															<img class="dealImg" src="images/xlqg4.jpg" alt="">
-															<div class="zt2Qrcode overlay">
-																<div class="xsqMask"></div>
-																<p class="word1">15:00开抢</p>
-																<p class="word2">限100件，抢完恢复25.8元</p>
-																<p class="word3">查看商品&gt;&gt;</p>
-															</div>
-															<div class="stock">
-																<div class="xsqMask"></div>
-																<span class="stockWord"><i class="stocknumber">还剩73件</i> 抢完恢复原价16.8元</span>
-															</div>
-														</div>
-														<div class="title_new">
-															<p class="word" title="贝拉米 Bellamy’s 婴幼儿有机奶粉3段"><span class="baoyouText">[包邮]</span>贝拉米 Bellamy’s 婴幼儿有机奶粉3段</p>
-														</div>
-														<div class="dealInfo">
-															<span class="price">¥<em>199</em></span>
+                                                                <span class="shop_preferential">满2件8.8折</span>
+                                                            </div>
+                                                        </a>
+                                                    </div>
+                                                    <div class="xsq_deal_wrapper">
+                                                        <a class="saleDeal" href="" target="_blank">
+                                                            <div class="dealCon">
+                                                                <img class="dealImg" src="images/xlqg4.jpg" alt="">
+                                                                <div class="zt2Qrcode overlay">
+                                                                    <div class="xsqMask"></div>
+                                                                    <p class="word1">15:00开抢</p>
+                                                                    <p class="word2">限100件，抢完恢复25.8元</p>
+                                                                    <p class="word3">查看商品&gt;&gt;</p>
+                                                                </div>
+                                                                <div class="stock">
+                                                                    <div class="xsqMask"></div>
+                                                                    <span class="stockWord"><i class="stocknumber">还剩73件</i> 抢完恢复原价16.8元</span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="title_new">
+                                                                <p class="word" title="贝拉米 Bellamy’s 婴幼儿有机奶粉3段"><span class="baoyouText">[包邮]</span>贝拉米 Bellamy’s 婴幼儿有机奶粉3段</p>
+                                                            </div>
+                                                            <div class="dealInfo">
+                                                                <span class="price">¥<em>199</em></span>
 
-															<span class="shop_preferential">满2件8.8折</span>
-														</div>
-													</a>
-												</div>
-												<div class="xsq_deal_wrapper">
-													<a class="saleDeal" href="" target="_blank">
-														<div class="dealCon">
-															<img class="dealImg" src="images/xlqg5.jpg" alt="">
-															<div class="zt2Qrcode overlay">
-																<div class="xsqMask"></div>
-																<p class="word1">15:00开抢</p>
-																<p class="word2">限100件，抢完恢复25.8元</p>
-																<p class="word3">查看商品&gt;&gt;</p>
-															</div>
-															<div class="stock">
-																<div class="xsqMask"></div>
-																<span class="stockWord"><i class="stocknumber">还剩73件</i> 抢完恢复原价16.8元</span>
-															</div>
-														</div>
-														<div class="title_new">
-															<p class="word" title="925银流苏珍珠耳坠耳钉"><span class="baoyouText">[包邮]</span>925银流苏珍珠耳坠耳钉</p>
-														</div>
-														<div class="dealInfo">
-															<span class="price">¥<em>1</em></span>
+                                                                <span class="shop_preferential">满2件8.8折</span>
+                                                            </div>
+                                                        </a>
+                                                    </div>
+                                                    <div class="xsq_deal_wrapper">
+                                                        <a class="saleDeal" href="" target="_blank">
+                                                            <div class="dealCon">
+                                                                <img class="dealImg" src="images/xlqg5.jpg" alt="">
+                                                                <div class="zt2Qrcode overlay">
+                                                                    <div class="xsqMask"></div>
+                                                                    <p class="word1">15:00开抢</p>
+                                                                    <p class="word2">限100件，抢完恢复25.8元</p>
+                                                                    <p class="word3">查看商品&gt;&gt;</p>
+                                                                </div>
+                                                                <div class="stock">
+                                                                    <div class="xsqMask"></div>
+                                                                    <span class="stockWord"><i class="stocknumber">还剩73件</i> 抢完恢复原价16.8元</span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="title_new">
+                                                                <p class="word" title="925银流苏珍珠耳坠耳钉"><span class="baoyouText">[包邮]</span>925银流苏珍珠耳坠耳钉</p>
+                                                            </div>
+                                                            <div class="dealInfo">
+                                                                <span class="price">¥<em>1</em></span>
 
-															<span class="shop_preferential">满2件8.8折</span>
-														</div>
-													</a>
-												</div>
-												<div class="xsq_deal_wrapper">
-													<a class="saleDeal" href="" target="_blank">
-														<div class="dealCon">
-															<img class="dealImg" src="images/xlqg6.jpg" alt="">
-															<div class="zt2Qrcode overlay">
-																<div class="xsqMask"></div>
-																<p class="word1">15:00开抢</p>
-																<p class="word2">限100件，抢完恢复25.8元</p>
-																<p class="word3">查看商品&gt;&gt;</p>
-															</div>
-															<div class="stock">
-																<div class="xsqMask"></div>
-																<span class="stockWord"><i class="stocknumber">还剩73件</i> 抢完恢复原价16.8元</span>
-															</div>
-														</div>
-														<div class="title_new">
-															<p class="word" title="925银流苏珍珠耳坠耳钉"><span class="baoyouText">[包邮]</span>925银流苏珍珠耳坠耳钉</p>
-														</div>
-														<div class="dealInfo">
-															<span class="price">¥<em>1</em></span>
+                                                                <span class="shop_preferential">满2件8.8折</span>
+                                                            </div>
+                                                        </a>
+                                                    </div>
+                                                    <div class="xsq_deal_wrapper">
+                                                        <a class="saleDeal" href="" target="_blank">
+                                                            <div class="dealCon">
+                                                                <img class="dealImg" src="images/xlqg6.jpg" alt="">
+                                                                <div class="zt2Qrcode overlay">
+                                                                    <div class="xsqMask"></div>
+                                                                    <p class="word1">15:00开抢</p>
+                                                                    <p class="word2">限100件，抢完恢复25.8元</p>
+                                                                    <p class="word3">查看商品&gt;&gt;</p>
+                                                                </div>
+                                                                <div class="stock">
+                                                                    <div class="xsqMask"></div>
+                                                                    <span class="stockWord"><i class="stocknumber">还剩73件</i> 抢完恢复原价16.8元</span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="title_new">
+                                                                <p class="word" title="925银流苏珍珠耳坠耳钉"><span class="baoyouText">[包邮]</span>925银流苏珍珠耳坠耳钉</p>
+                                                            </div>
+                                                            <div class="dealInfo">
+                                                                <span class="price">¥<em>1</em></span>
 
-															<span class="shop_preferential">满2件8.8折</span>
-														</div>
-													</a>
-												</div>
-											</li>
-											<li index="1">
-												<div class="xsq_deal_wrapper">
-													<a class="saleDeal" href="" target="_blank">
-														<div class="dealCon">
-															<img class="dealImg" src="images/xlqg7.jpg" alt="">
-															<div class="zt2Qrcode overlay">
-																<div class="xsqMask"></div>
-																<p class="word1">15:00开抢</p>
-																<p class="word2">限100件，抢完恢复25.8元</p>
-																<p class="word3">查看商品&gt;&gt;</p>
-															</div>
-														</div>
-														<div class="title_new">
-															<p class="word" title="925银流苏珍珠耳坠耳钉"><span class="baoyouText">[包邮]</span>925银流苏珍珠耳坠耳钉</p>
-														</div>
-														<div class="dealInfo">
-															<span class="price">¥<em>2</em></span>
+                                                                <span class="shop_preferential">满2件8.8折</span>
+                                                            </div>
+                                                        </a>
+                                                    </div>
+                                                </li>
+                                                <li index="1">
+                                                    <div class="xsq_deal_wrapper">
+                                                        <a class="saleDeal" href="" target="_blank">
+                                                            <div class="dealCon">
+                                                                <img class="dealImg" src="images/xlqg7.jpg" alt="">
+                                                                <div class="zt2Qrcode overlay">
+                                                                    <div class="xsqMask"></div>
+                                                                    <p class="word1">15:00开抢</p>
+                                                                    <p class="word2">限100件，抢完恢复25.8元</p>
+                                                                    <p class="word3">查看商品&gt;&gt;</p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="title_new">
+                                                                <p class="word" title="925银流苏珍珠耳坠耳钉"><span class="baoyouText">[包邮]</span>925银流苏珍珠耳坠耳钉</p>
+                                                            </div>
+                                                            <div class="dealInfo">
+                                                                <span class="price">¥<em>2</em></span>
 
-															<span class="shop_preferential">满2件8.8折</span>
-														</div>
-													</a>
-												</div>
-												<div class="xsq_deal_wrapper">
-													<a class="saleDeal" href="" target="_blank">
-														<div class="dealCon">
-															<img class="dealImg" src="images/xlqg8.jpg" alt="">
-															<div class="zt2Qrcode overlay">
-																<div class="xsqMask"></div>
-																<p class="word1">15:00开抢</p>
-																<p class="word2">限100件，抢完恢复25.8元</p>
-																<p class="word3">查看商品&gt;&gt;</p>
-															</div>
-															<div class="stock">
-																<div class="xsqMask"></div>
-																<span class="stockWord"><i class="stocknumber">还剩73件</i> 抢完恢复原价16.8元</span>
-															</div>
-														</div>
-														<div class="title_new">
-															<p class="word" title="925银流苏珍珠耳坠耳钉"><span class="baoyouText">[包邮]</span>925银流苏珍珠耳坠耳钉</p>
-														</div>
-														<div class="dealInfo">
-															<span class="price">¥<em>2</em></span>
+                                                                <span class="shop_preferential">满2件8.8折</span>
+                                                            </div>
+                                                        </a>
+                                                    </div>
+                                                    <div class="xsq_deal_wrapper">
+                                                        <a class="saleDeal" href="" target="_blank">
+                                                            <div class="dealCon">
+                                                                <img class="dealImg" src="images/xlqg8.jpg" alt="">
+                                                                <div class="zt2Qrcode overlay">
+                                                                    <div class="xsqMask"></div>
+                                                                    <p class="word1">15:00开抢</p>
+                                                                    <p class="word2">限100件，抢完恢复25.8元</p>
+                                                                    <p class="word3">查看商品&gt;&gt;</p>
+                                                                </div>
+                                                                <div class="stock">
+                                                                    <div class="xsqMask"></div>
+                                                                    <span class="stockWord"><i class="stocknumber">还剩73件</i> 抢完恢复原价16.8元</span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="title_new">
+                                                                <p class="word" title="925银流苏珍珠耳坠耳钉"><span class="baoyouText">[包邮]</span>925银流苏珍珠耳坠耳钉</p>
+                                                            </div>
+                                                            <div class="dealInfo">
+                                                                <span class="price">¥<em>2</em></span>
 
-															<span class="shop_preferential">满2件8.8折</span>
-														</div>
-													</a>
-												</div>
-												<div class="xsq_deal_wrapper">
-													<a class="saleDeal" href="" target="_blank">
-														<div class="dealCon">
-															<img class="dealImg" src="images/xlqg9.jpg" alt="">
-															<div class="finish overlay">
-																<div class="xsqMask"></div>
-																<p class="word1">15:00开抢</p>
-																<p class="word2">限100件，抢完恢复25.8元</p>
-																<p class="word3">查看商品&gt;&gt;</p>
-															</div>
-															<span class="finishIcon xsqIcon"></span>
-														</div>
-														<div class="title_new">
-															<p class="word" title="925银流苏珍珠耳坠耳钉"><span class="baoyouText">[包邮]</span>925银流苏珍珠耳坠耳钉</p>
-														</div>
-														<div class="dealInfo">
-															<span class="price">¥<em>2</em></span>
+                                                                <span class="shop_preferential">满2件8.8折</span>
+                                                            </div>
+                                                        </a>
+                                                    </div>
+                                                    <div class="xsq_deal_wrapper">
+                                                        <a class="saleDeal" href="" target="_blank">
+                                                            <div class="dealCon">
+                                                                <img class="dealImg" src="images/xlqg9.jpg" alt="">
+                                                                <div class="finish overlay">
+                                                                    <div class="xsqMask"></div>
+                                                                    <p class="word1">15:00开抢</p>
+                                                                    <p class="word2">限100件，抢完恢复25.8元</p>
+                                                                    <p class="word3">查看商品&gt;&gt;</p>
+                                                                </div>
+                                                                <span class="finishIcon xsqIcon"></span>
+                                                            </div>
+                                                            <div class="title_new">
+                                                                <p class="word" title="925银流苏珍珠耳坠耳钉"><span class="baoyouText">[包邮]</span>925银流苏珍珠耳坠耳钉</p>
+                                                            </div>
+                                                            <div class="dealInfo">
+                                                                <span class="price">¥<em>2</em></span>
 
-															<span class="shop_preferential">满2件8.8折</span>
-														</div>
-													</a>
-												</div>
-												<div class="xsq_deal_wrapper">
-													<a class="saleDeal" href="" target="_blank">
-														<div class="dealCon">
-															<img class="dealImg" src="images/xlqg10.jpg" alt="">
-															<div class="zt2Qrcode overlay">
-																<div class="xsqMask"></div>
-																<p class="word1">15:00开抢</p>
-																<p class="word2">限100件，抢完恢复25.8元</p>
-																<p class="word3">查看商品&gt;&gt;</p>
-															</div>
-															<div class="stock">
-																<div class="xsqMask"></div>
-																<span class="stockWord"><i class="stocknumber">还剩73件</i> 抢完恢复原价16.8元</span>
-															</div>
-														</div>
-														<div class="title_new">
-															<p class="word" title="925银流苏珍珠耳坠耳钉"><span class="baoyouText">[包邮]</span>925银流苏珍珠耳坠耳钉</p>
-														</div>
-														<div class="dealInfo">
-															<span class="price">¥<em>2</em></span>
+                                                                <span class="shop_preferential">满2件8.8折</span>
+                                                            </div>
+                                                        </a>
+                                                    </div>
+                                                    <div class="xsq_deal_wrapper">
+                                                        <a class="saleDeal" href="" target="_blank">
+                                                            <div class="dealCon">
+                                                                <img class="dealImg" src="images/xlqg10.jpg" alt="">
+                                                                <div class="zt2Qrcode overlay">
+                                                                    <div class="xsqMask"></div>
+                                                                    <p class="word1">15:00开抢</p>
+                                                                    <p class="word2">限100件，抢完恢复25.8元</p>
+                                                                    <p class="word3">查看商品&gt;&gt;</p>
+                                                                </div>
+                                                                <div class="stock">
+                                                                    <div class="xsqMask"></div>
+                                                                    <span class="stockWord"><i class="stocknumber">还剩73件</i> 抢完恢复原价16.8元</span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="title_new">
+                                                                <p class="word" title="925银流苏珍珠耳坠耳钉"><span class="baoyouText">[包邮]</span>925银流苏珍珠耳坠耳钉</p>
+                                                            </div>
+                                                            <div class="dealInfo">
+                                                                <span class="price">¥<em>2</em></span>
 
-															<span class="shop_preferential">满2件8.8折</span>
-														</div>
-													</a>
-												</div>
-												<div class="xsq_deal_wrapper">
-													<a class="saleDeal" href="" target="_blank">
-														<div class="dealCon">
-															<img class="dealImg" src="images/xlqg11.jpg" alt="">
-															<div class="zt2Qrcode overlay">
-																<div class="xsqMask"></div>
-																<p class="word1">15:00开抢</p>
-																<p class="word2">限100件，抢完恢复25.8元</p>
-																<p class="word3">查看商品&gt;&gt;</p>
-															</div>
-															<div class="stock">
-																<div class="xsqMask"></div>
-																<span class="stockWord"><i class="stocknumber">还剩73件</i> 抢完恢复原价16.8元</span>
-															</div>
-														</div>
-														<div class="title_new">
-															<p class="word" title="925银流苏珍珠耳坠耳钉"><span class="baoyouText">[包邮]</span>925银流苏珍珠耳坠耳钉</p>
-														</div>
-														<div class="dealInfo">
-															<span class="price">¥<em>2</em></span>
+                                                                <span class="shop_preferential">满2件8.8折</span>
+                                                            </div>
+                                                        </a>
+                                                    </div>
+                                                    <div class="xsq_deal_wrapper">
+                                                        <a class="saleDeal" href="" target="_blank">
+                                                            <div class="dealCon">
+                                                                <img class="dealImg" src="images/xlqg11.jpg" alt="">
+                                                                <div class="zt2Qrcode overlay">
+                                                                    <div class="xsqMask"></div>
+                                                                    <p class="word1">15:00开抢</p>
+                                                                    <p class="word2">限100件，抢完恢复25.8元</p>
+                                                                    <p class="word3">查看商品&gt;&gt;</p>
+                                                                </div>
+                                                                <div class="stock">
+                                                                    <div class="xsqMask"></div>
+                                                                    <span class="stockWord"><i class="stocknumber">还剩73件</i> 抢完恢复原价16.8元</span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="title_new">
+                                                                <p class="word" title="925银流苏珍珠耳坠耳钉"><span class="baoyouText">[包邮]</span>925银流苏珍珠耳坠耳钉</p>
+                                                            </div>
+                                                            <div class="dealInfo">
+                                                                <span class="price">¥<em>2</em></span>
 
-															<span class="shop_preferential">满2件8.8折</span>
-														</div>
-													</a>
-												</div>
-												<div class="xsq_deal_wrapper">
-													<a class="saleDeal" href="" target="_blank">
-														<div class="dealCon">
-															<img class="dealImg" src="images/xlqg12.jpg" alt="">
-															<div class="zt2Qrcode overlay">
-																<div class="xsqMask"></div>
-																<p class="word1">15:00开抢</p>
-																<p class="word2">限100件，抢完恢复25.8元</p>
-																<p class="word3">查看商品&gt;&gt;</p>
-															</div>
-															<div class="stock">
-																<div class="xsqMask"></div>
-																<span class="stockWord"><i class="stocknumber">还剩73件</i> 抢完恢复原价16.8元</span>
-															</div>
-														</div>
-														<div class="title_new">
-															<p class="word" title="925银流苏珍珠耳坠耳钉"><span class="baoyouText">[包邮]</span>925银流苏珍珠耳坠耳钉</p>
-														</div>
-														<div class="dealInfo">
-															<span class="price">¥<em>2</em></span>
+                                                                <span class="shop_preferential">满2件8.8折</span>
+                                                            </div>
+                                                        </a>
+                                                    </div>
+                                                    <div class="xsq_deal_wrapper">
+                                                        <a class="saleDeal" href="" target="_blank">
+                                                            <div class="dealCon">
+                                                                <img class="dealImg" src="images/xlqg12.jpg" alt="">
+                                                                <div class="zt2Qrcode overlay">
+                                                                    <div class="xsqMask"></div>
+                                                                    <p class="word1">15:00开抢</p>
+                                                                    <p class="word2">限100件，抢完恢复25.8元</p>
+                                                                    <p class="word3">查看商品&gt;&gt;</p>
+                                                                </div>
+                                                                <div class="stock">
+                                                                    <div class="xsqMask"></div>
+                                                                    <span class="stockWord"><i class="stocknumber">还剩73件</i> 抢完恢复原价16.8元</span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="title_new">
+                                                                <p class="word" title="925银流苏珍珠耳坠耳钉"><span class="baoyouText">[包邮]</span>925银流苏珍珠耳坠耳钉</p>
+                                                            </div>
+                                                            <div class="dealInfo">
+                                                                <span class="price">¥<em>2</em></span>
 
-															<span class="shop_preferential">满2件8.8折</span>
-														</div>
-													</a>
-												</div>
-											</li>
-										</ul>
-										<a href="javascript:;" class="zuo trigger"></a>
-										<a href="javascript:;" class="you trigger"></a>
-									</div>
-								</div>
+                                                                <span class="shop_preferential">满2件8.8折</span>
+                                                            </div>
+                                                        </a>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                            <a href="javascript:;" class="zuo trigger"></a>
+                                            <a href="javascript:;" class="you trigger"></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="center pc-top-20">
+            <div class="pc-center-he">
+                <div class="pc-box-he pc-box-blue clearfix">
+                    <div class="fl"><i class="pc-time-icon"></i></div>
+                    <div class="fr pc-box-blue-link">
+                        <a href="#">上衣</a>
+                        <a href="#">短裙</a>
+                        <a href="#">牛仔裤</a>
+                        <a href="#">短袖</a>
+                        <a href="#">帽子</a>
+                    </div>
+                </div>
+                <div class="pc-list-goods">
+                    <div class="xsq_deal_wrapper pc-deal-list clearfix">
+                        <a class="saleDeal" href="" target="_blank">
+                            <div class="dealCon"><img class="dealImg" src="images/xlqg13.jpg" alt=""></div>
+                            <div class="title_new"><p class="word" title="【京东超市】福临门 葵花籽原香食用调和油5L 中粮出品"><span class="baoyouText">[包邮]</span>【京东超市】福临门 葵花籽原香食用调和油5L 中粮出品</p></div>
+                            <div class="dealInfo"><span class="price">¥<em>39.9</em></span></div>
+                        </a>
+                        <a class="saleDeal" href="" target="_blank">
+                            <div class="dealCon"><img class="dealImg" src="images/xlqg14.jpg" alt=""></div>
+                            <div class="title_new"><p class="word" title="神火（supfire）C8T6 强光手电筒 远射LED充电式防身灯 配18650电池"><span class="baoyouText">[包邮]</span>神火（supfire）C8T6 强光手电筒 远射LED充电式防身灯 配18650电池</p></div>
+                            <div class="dealInfo"><span class="price">¥<em>99.0</em></span></div>
+                        </a>
+                        <a class="saleDeal" href="" target="_blank">
+                            <div class="dealCon"><img class="dealImg" src="images/xlqg15.jpg" alt=""></div>
+                            <div class="title_new"><p class="word" title="【京东超市】福临门 葵花籽原香食用调和油5L 中粮出品"><span class="baoyouText">[包邮]</span>【京东超市】福临门 葵花籽原香食用调和油5L 中粮出品</p></div>
+                            <div class="dealInfo"><span class="price">¥<em>99.9</em></span></div>
+                        </a>
+                        <a class="saleDeal" href="" target="_blank">
+                            <div class="dealCon"><img class="dealImg" src="images/xlqg16.jpg" alt=""></div>
+                            <div class="title_new"><p class="word" title="暖风机家用取暖器婴儿电暖气暖手宝浴室防水N"><span class="baoyouText">[包邮]</span>暖风机家用取暖器婴儿电暖气暖手宝浴室防水N</p></div>
+                            <div class="dealInfo"><span class="price">¥<em>199.9</em></span></div>
+                        </a>
+                        <a class="saleDeal" href="" target="_blank">
+                            <div class="dealCon"><img class="dealImg" src="images/xlqg17.jpg" alt=""></div>
+                            <div class="title_new"><p class="word" title="CIKOO 洗澡玩具 戏水玩具 水枪玩具 高压水枪玩具"><span class="baoyouText">[包邮]</span>CIKOO 洗澡玩具 戏水玩具 水枪玩具 高压水枪玩具</p></div>
+                            <div class="dealInfo"><span class="price">¥<em>29.0</em></span></div>
+                        </a>
+                        <a class="saleDeal" href="" target="_blank">
+                            <div class="dealCon"><img class="dealImg" src="images/xlqg18.jpg" alt=""></div>
+                            <div class="title_new"><p class="word" title="联想（ThinkPad）轻薄系列E470c（20H3A004CD）14英寸笔记本电脑（i5-6200U 8G 500G 2G独显 Win10）黑色 "><span class="baoyouText">[包邮]</span>联想（ThinkPad）轻薄系列E470c（20H3A004CD）14英寸笔记本电脑（i5-6200U 8G 500G 2G独显 Win10）黑色 </p></div>
+                            <div class="dealInfo"><span class="price">¥<em>4499.9</em></span></div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="center pc-top-20">
+            <div class="pc-center-he">
+                <div class="pc-box-he pc-box-ge clearfix">
+                    <div class="fl"><i class="pc-time-icon"></i></div>
+                    <div class="fr pc-box-blue-link">
+                        <a href="#">上衣</a>
+                        <a href="#">短裙</a>
+                        <a href="#">牛仔裤</a>
+                        <a href="#">短袖</a>
+                        <a href="#">帽子</a>
+                    </div>
+                </div>
+                <div class="pc-list-goods">
+                    <div class="xsq_deal_wrapper pc-deal-list clearfix">
+                        <a class="saleDeal" href="" target="_blank">
+                            <div class="dealCon"><img class="dealImg" src="images/xlqg13.jpg" alt=""></div>
+                            <div class="title_new"><p class="word" title="【京东超市】福临门 葵花籽原香食用调和油5L 中粮出品"><span class="baoyouText">[包邮]</span>【京东超市】福临门 葵花籽原香食用调和油5L 中粮出品</p></div>
+                            <div class="dealInfo"><span class="price">¥<em>39.9</em></span></div>
+                        </a>
+                        <a class="saleDeal" href="" target="_blank">
+                            <div class="dealCon"><img class="dealImg" src="images/xlqg14.jpg" alt=""></div>
+                            <div class="title_new"><p class="word" title="神火（supfire）C8T6 强光手电筒 远射LED充电式防身灯 配18650电池"><span class="baoyouText">[包邮]</span>神火（supfire）C8T6 强光手电筒 远射LED充电式防身灯 配18650电池</p></div>
+                            <div class="dealInfo"><span class="price">¥<em>99.0</em></span></div>
+                        </a>
+                        <a class="saleDeal" href="" target="_blank">
+                            <div class="dealCon"><img class="dealImg" src="images/xlqg15.jpg" alt=""></div>
+                            <div class="title_new"><p class="word" title="【京东超市】福临门 葵花籽原香食用调和油5L 中粮出品"><span class="baoyouText">[包邮]</span>【京东超市】福临门 葵花籽原香食用调和油5L 中粮出品</p></div>
+                            <div class="dealInfo"><span class="price">¥<em>99.9</em></span></div>
+                        </a>
+                        <a class="saleDeal" href="" target="_blank">
+                            <div class="dealCon"><img class="dealImg" src="images/xlqg16.jpg" alt=""></div>
+                            <div class="title_new"><p class="word" title="暖风机家用取暖器婴儿电暖气暖手宝浴室防水N"><span class="baoyouText">[包邮]</span>暖风机家用取暖器婴儿电暖气暖手宝浴室防水N</p></div>
+                            <div class="dealInfo"><span class="price">¥<em>199.9</em></span></div>
+                        </a>
+                        <a class="saleDeal" href="" target="_blank">
+                            <div class="dealCon"><img class="dealImg" src="images/xlqg17.jpg" alt=""></div>
+                            <div class="title_new"><p class="word" title="CIKOO 洗澡玩具 戏水玩具 水枪玩具 高压水枪玩具"><span class="baoyouText">[包邮]</span>CIKOO 洗澡玩具 戏水玩具 水枪玩具 高压水枪玩具</p></div>
+                            <div class="dealInfo"><span class="price">¥<em>29.0</em></span></div>
+                        </a>
+                        <a class="saleDeal" href="" target="_blank">
+                            <div class="dealCon"><img class="dealImg" src="images/xlqg18.jpg" alt=""></div>
+                            <div class="title_new"><p class="word" title="联想（ThinkPad）轻薄系列E470c（20H3A004CD）14英寸笔记本电脑（i5-6200U 8G 500G 2G独显 Win10）黑色 "><span class="baoyouText">[包邮]</span>联想（ThinkPad）轻薄系列E470c（20H3A004CD）14英寸笔记本电脑（i5-6200U 8G 500G 2G独显 Win10）黑色 </p></div>
+                            <div class="dealInfo"><span class="price">¥<em>4499.9</em></span></div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="center pc-top-20">
+            <div class="pc-center-he">
+                <div class="pc-box-he pc-box-re clearfix">
+                    <div class="fl"><i class="pc-time-icon"></i></div>
+                    <div class="fr pc-box-blue-link">
+                        <a href="#">上衣</a>
+                        <a href="#">短裙</a>
+                        <a href="#">牛仔裤</a>
+                        <a href="#">短袖</a>
+                        <a href="#">帽子</a>
+                    </div>
+                </div>
+                <div class="pc-list-goods">
+                    <div class="xsq_deal_wrapper pc-deal-list clearfix">
+                        <a class="saleDeal" href="" target="_blank">
+                            <div class="dealCon"><img class="dealImg" src="images/xlqg13.jpg" alt=""></div>
+                            <div class="title_new"><p class="word" title="【京东超市】福临门 葵花籽原香食用调和油5L 中粮出品"><span class="baoyouText">[包邮]</span>【京东超市】福临门 葵花籽原香食用调和油5L 中粮出品</p></div>
+                            <div class="dealInfo"><span class="price">¥<em>39.9</em></span></div>
+                        </a>
+                        <a class="saleDeal" href="" target="_blank">
+                            <div class="dealCon"><img class="dealImg" src="images/xlqg14.jpg" alt=""></div>
+                            <div class="title_new"><p class="word" title="神火（supfire）C8T6 强光手电筒 远射LED充电式防身灯 配18650电池"><span class="baoyouText">[包邮]</span>神火（supfire）C8T6 强光手电筒 远射LED充电式防身灯 配18650电池</p></div>
+                            <div class="dealInfo"><span class="price">¥<em>99.0</em></span></div>
+                        </a>
+                        <a class="saleDeal" href="" target="_blank">
+                            <div class="dealCon"><img class="dealImg" src="images/xlqg15.jpg" alt=""></div>
+                            <div class="title_new"><p class="word" title="【京东超市】福临门 葵花籽原香食用调和油5L 中粮出品"><span class="baoyouText">[包邮]</span>【京东超市】福临门 葵花籽原香食用调和油5L 中粮出品</p></div>
+                            <div class="dealInfo"><span class="price">¥<em>99.9</em></span></div>
+                        </a>
+                        <a class="saleDeal" href="" target="_blank">
+                            <div class="dealCon"><img class="dealImg" src="images/xlqg16.jpg" alt=""></div>
+                            <div class="title_new"><p class="word" title="暖风机家用取暖器婴儿电暖气暖手宝浴室防水N"><span class="baoyouText">[包邮]</span>暖风机家用取暖器婴儿电暖气暖手宝浴室防水N</p></div>
+                            <div class="dealInfo"><span class="price">¥<em>199.9</em></span></div>
+                        </a>
+                        <a class="saleDeal" href="" target="_blank">
+                            <div class="dealCon"><img class="dealImg" src="images/xlqg17.jpg" alt=""></div>
+                            <div class="title_new"><p class="word" title="CIKOO 洗澡玩具 戏水玩具 水枪玩具 高压水枪玩具"><span class="baoyouText">[包邮]</span>CIKOO 洗澡玩具 戏水玩具 水枪玩具 高压水枪玩具</p></div>
+                            <div class="dealInfo"><span class="price">¥<em>29.0</em></span></div>
+                        </a>
+                        <a class="saleDeal" href="" target="_blank">
+                            <div class="dealCon"><img class="dealImg" src="images/xlqg18.jpg" alt=""></div>
+                            <div class="title_new"><p class="word" title="联想（ThinkPad）轻薄系列E470c（20H3A004CD）14英寸笔记本电脑（i5-6200U 8G 500G 2G独显 Win10）黑色 "><span class="baoyouText">[包邮]</span>联想（ThinkPad）轻薄系列E470c（20H3A004CD）14英寸笔记本电脑（i5-6200U 8G 500G 2G独显 Win10）黑色 </p></div>
+                            <div class="dealInfo"><span class="price">¥<em>4499.9</em></span></div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="center pc-top-20">
+            <div class="pc-center-he">
+                <div class="pc-box-he pc-box-qr clearfix">
+                    <div class="fl"><i class="pc-time-icon"></i></div>
+                    <div class="fr pc-box-blue-link">
+                        <a href="#">上衣</a>
+                        <a href="#">短裙</a>
+                        <a href="#">牛仔裤</a>
+                        <a href="#">短袖</a>
+                        <a href="#">帽子</a>
+                    </div>
+                </div>
+                <div class="pc-list-goods">
+                    <div class="xsq_deal_wrapper pc-deal-list clearfix">
+                        <a class="saleDeal" href="" target="_blank">
+                            <div class="dealCon"><img class="dealImg" src="images/xlqg13.jpg" alt=""></div>
+                            <div class="title_new"><p class="word" title="【京东超市】福临门 葵花籽原香食用调和油5L 中粮出品"><span class="baoyouText">[包邮]</span>【京东超市】福临门 葵花籽原香食用调和油5L 中粮出品</p></div>
+                            <div class="dealInfo"><span class="price">¥<em>39.9</em></span></div>
+                        </a>
+                        <a class="saleDeal" href="" target="_blank">
+                            <div class="dealCon"><img class="dealImg" src="images/xlqg14.jpg" alt=""></div>
+                            <div class="title_new"><p class="word" title="神火（supfire）C8T6 强光手电筒 远射LED充电式防身灯 配18650电池"><span class="baoyouText">[包邮]</span>神火（supfire）C8T6 强光手电筒 远射LED充电式防身灯 配18650电池</p></div>
+                            <div class="dealInfo"><span class="price">¥<em>99.0</em></span></div>
+                        </a>
+                        <a class="saleDeal" href="" target="_blank">
+                            <div class="dealCon"><img class="dealImg" src="images/xlqg15.jpg" alt=""></div>
+                            <div class="title_new"><p class="word" title="【京东超市】福临门 葵花籽原香食用调和油5L 中粮出品"><span class="baoyouText">[包邮]</span>【京东超市】福临门 葵花籽原香食用调和油5L 中粮出品</p></div>
+                            <div class="dealInfo"><span class="price">¥<em>99.9</em></span></div>
+                        </a>
+                        <a class="saleDeal" href="" target="_blank">
+                            <div class="dealCon"><img class="dealImg" src="images/xlqg16.jpg" alt=""></div>
+                            <div class="title_new"><p class="word" title="暖风机家用取暖器婴儿电暖气暖手宝浴室防水N"><span class="baoyouText">[包邮]</span>暖风机家用取暖器婴儿电暖气暖手宝浴室防水N</p></div>
+                            <div class="dealInfo"><span class="price">¥<em>199.9</em></span></div>
+                        </a>
+                        <a class="saleDeal" href="" target="_blank">
+                            <div class="dealCon"><img class="dealImg" src="images/xlqg17.jpg" alt=""></div>
+                            <div class="title_new"><p class="word" title="CIKOO 洗澡玩具 戏水玩具 水枪玩具 高压水枪玩具"><span class="baoyouText">[包邮]</span>CIKOO 洗澡玩具 戏水玩具 水枪玩具 高压水枪玩具</p></div>
+                            <div class="dealInfo"><span class="price">¥<em>29.0</em></span></div>
+                        </a>
+                        <a class="saleDeal" href="" target="_blank">
+                            <div class="dealCon"><img class="dealImg" src="images/xlqg18.jpg" alt=""></div>
+                            <div class="title_new"><p class="word" title="联想（ThinkPad）轻薄系列E470c（20H3A004CD）14英寸笔记本电脑（i5-6200U 8G 500G 2G独显 Win10）黑色 "><span class="baoyouText">[包邮]</span>联想（ThinkPad）轻薄系列E470c（20H3A004CD）14英寸笔记本电脑（i5-6200U 8G 500G 2G独显 Win10）黑色 </p></div>
+                            <div class="dealInfo"><span class="price">¥<em>4499.9</em></span></div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="center pc-top-20">
+            <div class="pc-center-he">
+                <div class="pc-box-he pc-box-ue clearfix">
+                    <div class="fl"><i class="pc-time-icon"></i></div>
+                    <div class="fr pc-box-blue-link">
+                        <a href="#">上衣</a>
+                        <a href="#">短裙</a>
+                        <a href="#">牛仔裤</a>
+                        <a href="#">短袖</a>
+                        <a href="#">帽子</a>
+                    </div>
+                </div>
+                <div class="pc-list-goods" style="height:auto">
+                    <div class="xsq_deal_wrapper pc-deal-list clearfix">
+                        <a class="saleDeal" href="" target="_blank">
+                            <div class="dealCon"><img class="dealImg" src="images/xlqg19.jpg" alt=""></div>
+                            <div class="title_new"><p class="word" title="【京东超市】福临门 葵花籽原香食用调和油5L 中粮出品"><span class="baoyouText">[包邮]</span>【京东超市】福临门 葵花籽原香食用调和油5L 中粮出品</p></div>
+                            <div class="dealInfo"><span class="price">¥<em>39.9</em></span></div>
+                        </a>
+                        <a class="saleDeal" href="" target="_blank">
+                            <div class="dealCon"><img class="dealImg" src="images/xlqg14.jpg" alt=""></div>
+                            <div class="title_new"><p class="word" title="神火（supfire）C8T6 强光手电筒 远射LED充电式防身灯 配18650电池"><span class="baoyouText">[包邮]</span>神火（supfire）C8T6 强光手电筒 远射LED充电式防身灯 配18650电池</p></div>
+                            <div class="dealInfo"><span class="price">¥<em>99.0</em></span></div>
+                        </a>
+                        <a class="saleDeal" href="" target="_blank">
+                            <div class="dealCon"><img class="dealImg" src="images/xlqg15.jpg" alt=""></div>
+                            <div class="title_new"><p class="word" title="【京东超市】福临门 葵花籽原香食用调和油5L 中粮出品"><span class="baoyouText">[包邮]</span>【京东超市】福临门 葵花籽原香食用调和油5L 中粮出品</p></div>
+                            <div class="dealInfo"><span class="price">¥<em>99.9</em></span></div>
+                        </a>
+                        <a class="saleDeal" href="" target="_blank">
+                            <div class="dealCon"><img class="dealImg" src="images/xlqg16.jpg" alt=""></div>
+                            <div class="title_new"><p class="word" title="暖风机家用取暖器婴儿电暖气暖手宝浴室防水N"><span class="baoyouText">[包邮]</span>暖风机家用取暖器婴儿电暖气暖手宝浴室防水N</p></div>
+                            <div class="dealInfo"><span class="price">¥<em>199.9</em></span></div>
+                        </a>
+                        <a class="saleDeal" href="" target="_blank">
+                            <div class="dealCon"><img class="dealImg" src="images/xlqg17.jpg" alt=""></div>
+                            <div class="title_new"><p class="word" title="CIKOO 洗澡玩具 戏水玩具 水枪玩具 高压水枪玩具"><span class="baoyouText">[包邮]</span>CIKOO 洗澡玩具 戏水玩具 水枪玩具 高压水枪玩具</p></div>
+                            <div class="dealInfo"><span class="price">¥<em>29.0</em></span></div>
+                        </a>
+                        <a class="saleDeal" href="" target="_blank">
+                            <div class="dealCon"><img class="dealImg" src="images/xlqg18.jpg" alt=""></div>
+                            <div class="title_new"><p class="word" title="联想（ThinkPad）轻薄系列E470c（20H3A004CD）14英寸笔记本电脑（i5-6200U 8G 500G 2G独显 Win10）黑色 "><span class="baoyouText">[包邮]</span>联想（ThinkPad）轻薄系列E470c（20H3A004CD）14英寸笔记本电脑（i5-6200U 8G 500G 2G独显 Win10）黑色 </p></div>
+                            <div class="dealInfo"><span class="price">¥<em>4499.9</em></span></div>
+                        </a>
+                    </div>
+                    <div class="xsq_deal_wrapper pc-deal-list clearfix" >
+                        <a class="saleDeal" href="" target="_blank">
+                            <div class="dealCon"><img class="dealImg" src="images/xlqg13.jpg" alt=""></div>
+                            <div class="title_new"><p class="word" title="【京东超市】福临门 葵花籽原香食用调和油5L 中粮出品"><span class="baoyouText">[包邮]</span>【京东超市】福临门 葵花籽原香食用调和油5L 中粮出品</p></div>
+                            <div class="dealInfo"><span class="price">¥<em>39.9</em></span></div>
+                        </a>
+                        <a class="saleDeal" href="" target="_blank">
+                            <div class="dealCon"><img class="dealImg" src="images/xlqg14.jpg" alt=""></div>
+                            <div class="title_new"><p class="word" title="神火（supfire）C8T6 强光手电筒 远射LED充电式防身灯 配18650电池"><span class="baoyouText">[包邮]</span>神火（supfire）C8T6 强光手电筒 远射LED充电式防身灯 配18650电池</p></div>
+                            <div class="dealInfo"><span class="price">¥<em>99.0</em></span></div>
+                        </a>
+                        <a class="saleDeal" href="" target="_blank">
+                            <div class="dealCon"><img class="dealImg" src="images/xlqg15.jpg" alt=""></div>
+                            <div class="title_new"><p class="word" title="【京东超市】福临门 葵花籽原香食用调和油5L 中粮出品"><span class="baoyouText">[包邮]</span>【京东超市】福临门 葵花籽原香食用调和油5L 中粮出品</p></div>
+                            <div class="dealInfo"><span class="price">¥<em>99.9</em></span></div>
+                        </a>
+                        <a class="saleDeal" href="" target="_blank">
+                            <div class="dealCon"><img class="dealImg" src="images/xlqg16.jpg" alt=""></div>
+                            <div class="title_new"><p class="word" title="暖风机家用取暖器婴儿电暖气暖手宝浴室防水N"><span class="baoyouText">[包邮]</span>暖风机家用取暖器婴儿电暖气暖手宝浴室防水N</p></div>
+                            <div class="dealInfo"><span class="price">¥<em>199.9</em></span></div>
+                        </a>
+                        <a class="saleDeal" href="" target="_blank">
+                            <div class="dealCon"><img class="dealImg" src="images/xlqg17.jpg" alt=""></div>
+                            <div class="title_new"><p class="word" title="CIKOO 洗澡玩具 戏水玩具 水枪玩具 高压水枪玩具"><span class="baoyouText">[包邮]</span>CIKOO 洗澡玩具 戏水玩具 水枪玩具 高压水枪玩具</p></div>
+                            <div class="dealInfo"><span class="price">¥<em>29.0</em></span></div>
+                        </a>
+                        <a class="saleDeal" href="" target="_blank">
+                            <div class="dealCon"><img class="dealImg" src="images/xlqg18.jpg" alt=""></div>
+                            <div class="title_new"><p class="word" title="联想（ThinkPad）轻薄系列E470c（20H3A004CD）14英寸笔记本电脑（i5-6200U 8G 500G 2G独显 Win10）黑色 "><span class="baoyouText">[包邮]</span>联想（ThinkPad）轻薄系列E470c（20H3A004CD）14英寸笔记本电脑（i5-6200U 8G 500G 2G独显 Win10）黑色 </p></div>
+                            <div class="dealInfo"><span class="price">¥<em>4499.9</em></span></div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    -->
+
+
+
+	<div style="height:100px"></div>
+
+	<footer>
+		<div class="pc-footer-top">
+			<div class="center">
+				<ul class="clearfix">
+					<li>
+						<span>关于我们</span>
+						<a href="#">关于我们</a>
+						<a href="#">诚聘英才</a>
+						<a href="#">用户服务协议</a>
+						<a href="#">网站服务条款</a>
+						<a href="#">联系我们</a>
+					</li>
+					<li class="lw">
+						<span>购物指南</span>
+						<a href="#">新手上路</a>
+						<a href="#">订单查询</a>
+						<a href="#">会员介绍</a>
+						<a href="#">网站服务条款</a>
+						<a href="#">帮助中心</a>
+					</li>
+					<li class="lw">
+						<span>消费者保障</span>
+						<a href="#">人工验货</a>
+						<a href="#">退货退款政策</a>
+						<a href="#">运费补贴卡</a>
+						<a href="#">无忧售后</a>
+						<a href="#">先行赔付</a>
+					</li>
+					<li class="lw">
+						<span>商务合作</span>
+						<a href="#">人工验货</a>
+						<a href="#">退货退款政策</a>
+						<a href="#">运费补贴卡</a>
+						<a href="#">无忧售后</a>
+						<a href="#">先行赔付</a>
+					</li>
+					<li class="lss">
+						<span>下载手机版</span>
+						<div class="clearfix lss-pa">
+							<div class="fl lss-img"><img src="img/icon/code.png" alt=""></div>
+							<div class="fl" style="padding-left:20px">
+								<h4>扫描下载云购APP</h4>
+								<p>把优惠握在手心</p>
+								<P>把潮流带在身边</P>
+								<P></P>
 							</div>
 						</div>
-					</div>
+					</li>
+				</ul>
+			</div>
+			<div class="pc-footer-lin">
+				<div class="center">
+					<p>友情链接：
+						卡宝宝信用卡
+						梦芭莎网上购物
+						手游交易平台
+						法律咨询
+						深圳地图
+						P2P网贷导航
+						名鞋库
+						万表网
+						叮当音乐网
+						114票务网
+						儿歌视频大全
+					</p>
+					<p>
+						京ICP证1900075号  京ICP备20051110号-5  京公网安备110104734773474323  统一社会信用代码 91113443434371298269B  食品流通许可证SP1101435445645645640352397
+					</p>
+					<p style="padding-bottom:30px">版物经营许可证 新出发京零字第朝160018号  Copyright©2011-2015 版权所有 ZHE800.COM </p>
 				</div>
 			</div>
 		</div>
-	</div>
-	<div class="center pc-top-20">
-		<div class="pc-center-he">
-			<div class="pc-box-he pc-box-blue clearfix">
-				<div class="fl"><i class="pc-time-icon"></i></div>
-				<div class="fr pc-box-blue-link">
-					<a href="#">上衣</a>
-					<a href="#">短裙</a>
-					<a href="#">牛仔裤</a>
-					<a href="#">短袖</a>
-					<a href="#">帽子</a>
-				</div>
-			</div>
-			<div class="pc-list-goods">
-				<div class="xsq_deal_wrapper pc-deal-list clearfix">
-					<a class="saleDeal" href="" target="_blank">
-						<div class="dealCon"><img class="dealImg" src="images/xlqg13.jpg" alt=""></div>
-						<div class="title_new"><p class="word" title="【京东超市】福临门 葵花籽原香食用调和油5L 中粮出品"><span class="baoyouText">[包邮]</span>【京东超市】福临门 葵花籽原香食用调和油5L 中粮出品</p></div>
-						<div class="dealInfo"><span class="price">¥<em>39.9</em></span></div>
-					</a>
-					<a class="saleDeal" href="" target="_blank">
-						<div class="dealCon"><img class="dealImg" src="images/xlqg14.jpg" alt=""></div>
-						<div class="title_new"><p class="word" title="神火（supfire）C8T6 强光手电筒 远射LED充电式防身灯 配18650电池"><span class="baoyouText">[包邮]</span>神火（supfire）C8T6 强光手电筒 远射LED充电式防身灯 配18650电池</p></div>
-						<div class="dealInfo"><span class="price">¥<em>99.0</em></span></div>
-					</a>
-					<a class="saleDeal" href="" target="_blank">
-						<div class="dealCon"><img class="dealImg" src="images/xlqg15.jpg" alt=""></div>
-						<div class="title_new"><p class="word" title="【京东超市】福临门 葵花籽原香食用调和油5L 中粮出品"><span class="baoyouText">[包邮]</span>【京东超市】福临门 葵花籽原香食用调和油5L 中粮出品</p></div>
-						<div class="dealInfo"><span class="price">¥<em>99.9</em></span></div>
-					</a>
-					<a class="saleDeal" href="" target="_blank">
-						<div class="dealCon"><img class="dealImg" src="images/xlqg16.jpg" alt=""></div>
-						<div class="title_new"><p class="word" title="暖风机家用取暖器婴儿电暖气暖手宝浴室防水N"><span class="baoyouText">[包邮]</span>暖风机家用取暖器婴儿电暖气暖手宝浴室防水N</p></div>
-						<div class="dealInfo"><span class="price">¥<em>199.9</em></span></div>
-					</a>
-					<a class="saleDeal" href="" target="_blank">
-						<div class="dealCon"><img class="dealImg" src="images/xlqg17.jpg" alt=""></div>
-						<div class="title_new"><p class="word" title="CIKOO 洗澡玩具 戏水玩具 水枪玩具 高压水枪玩具"><span class="baoyouText">[包邮]</span>CIKOO 洗澡玩具 戏水玩具 水枪玩具 高压水枪玩具</p></div>
-						<div class="dealInfo"><span class="price">¥<em>29.0</em></span></div>
-					</a>
-					<a class="saleDeal" href="" target="_blank">
-						<div class="dealCon"><img class="dealImg" src="images/xlqg18.jpg" alt=""></div>
-						<div class="title_new"><p class="word" title="联想（ThinkPad）轻薄系列E470c（20H3A004CD）14英寸笔记本电脑（i5-6200U 8G 500G 2G独显 Win10）黑色 "><span class="baoyouText">[包邮]</span>联想（ThinkPad）轻薄系列E470c（20H3A004CD）14英寸笔记本电脑（i5-6200U 8G 500G 2G独显 Win10）黑色 </p></div>
-						<div class="dealInfo"><span class="price">¥<em>4499.9</em></span></div>
-					</a>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="center pc-top-20">
-		<div class="pc-center-he">
-			<div class="pc-box-he pc-box-ge clearfix">
-				<div class="fl"><i class="pc-time-icon"></i></div>
-				<div class="fr pc-box-blue-link">
-					<a href="#">上衣</a>
-					<a href="#">短裙</a>
-					<a href="#">牛仔裤</a>
-					<a href="#">短袖</a>
-					<a href="#">帽子</a>
-				</div>
-			</div>
-			<div class="pc-list-goods">
-				<div class="xsq_deal_wrapper pc-deal-list clearfix">
-					<a class="saleDeal" href="" target="_blank">
-						<div class="dealCon"><img class="dealImg" src="images/xlqg13.jpg" alt=""></div>
-						<div class="title_new"><p class="word" title="【京东超市】福临门 葵花籽原香食用调和油5L 中粮出品"><span class="baoyouText">[包邮]</span>【京东超市】福临门 葵花籽原香食用调和油5L 中粮出品</p></div>
-						<div class="dealInfo"><span class="price">¥<em>39.9</em></span></div>
-					</a>
-					<a class="saleDeal" href="" target="_blank">
-						<div class="dealCon"><img class="dealImg" src="images/xlqg14.jpg" alt=""></div>
-						<div class="title_new"><p class="word" title="神火（supfire）C8T6 强光手电筒 远射LED充电式防身灯 配18650电池"><span class="baoyouText">[包邮]</span>神火（supfire）C8T6 强光手电筒 远射LED充电式防身灯 配18650电池</p></div>
-						<div class="dealInfo"><span class="price">¥<em>99.0</em></span></div>
-					</a>
-					<a class="saleDeal" href="" target="_blank">
-						<div class="dealCon"><img class="dealImg" src="images/xlqg15.jpg" alt=""></div>
-						<div class="title_new"><p class="word" title="【京东超市】福临门 葵花籽原香食用调和油5L 中粮出品"><span class="baoyouText">[包邮]</span>【京东超市】福临门 葵花籽原香食用调和油5L 中粮出品</p></div>
-						<div class="dealInfo"><span class="price">¥<em>99.9</em></span></div>
-					</a>
-					<a class="saleDeal" href="" target="_blank">
-						<div class="dealCon"><img class="dealImg" src="images/xlqg16.jpg" alt=""></div>
-						<div class="title_new"><p class="word" title="暖风机家用取暖器婴儿电暖气暖手宝浴室防水N"><span class="baoyouText">[包邮]</span>暖风机家用取暖器婴儿电暖气暖手宝浴室防水N</p></div>
-						<div class="dealInfo"><span class="price">¥<em>199.9</em></span></div>
-					</a>
-					<a class="saleDeal" href="" target="_blank">
-						<div class="dealCon"><img class="dealImg" src="images/xlqg17.jpg" alt=""></div>
-						<div class="title_new"><p class="word" title="CIKOO 洗澡玩具 戏水玩具 水枪玩具 高压水枪玩具"><span class="baoyouText">[包邮]</span>CIKOO 洗澡玩具 戏水玩具 水枪玩具 高压水枪玩具</p></div>
-						<div class="dealInfo"><span class="price">¥<em>29.0</em></span></div>
-					</a>
-					<a class="saleDeal" href="" target="_blank">
-						<div class="dealCon"><img class="dealImg" src="images/xlqg18.jpg" alt=""></div>
-						<div class="title_new"><p class="word" title="联想（ThinkPad）轻薄系列E470c（20H3A004CD）14英寸笔记本电脑（i5-6200U 8G 500G 2G独显 Win10）黑色 "><span class="baoyouText">[包邮]</span>联想（ThinkPad）轻薄系列E470c（20H3A004CD）14英寸笔记本电脑（i5-6200U 8G 500G 2G独显 Win10）黑色 </p></div>
-						<div class="dealInfo"><span class="price">¥<em>4499.9</em></span></div>
-					</a>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="center pc-top-20">
-		<div class="pc-center-he">
-			<div class="pc-box-he pc-box-re clearfix">
-				<div class="fl"><i class="pc-time-icon"></i></div>
-				<div class="fr pc-box-blue-link">
-					<a href="#">上衣</a>
-					<a href="#">短裙</a>
-					<a href="#">牛仔裤</a>
-					<a href="#">短袖</a>
-					<a href="#">帽子</a>
-				</div>
-			</div>
-			<div class="pc-list-goods">
-				<div class="xsq_deal_wrapper pc-deal-list clearfix">
-					<a class="saleDeal" href="" target="_blank">
-						<div class="dealCon"><img class="dealImg" src="images/xlqg13.jpg" alt=""></div>
-						<div class="title_new"><p class="word" title="【京东超市】福临门 葵花籽原香食用调和油5L 中粮出品"><span class="baoyouText">[包邮]</span>【京东超市】福临门 葵花籽原香食用调和油5L 中粮出品</p></div>
-						<div class="dealInfo"><span class="price">¥<em>39.9</em></span></div>
-					</a>
-					<a class="saleDeal" href="" target="_blank">
-						<div class="dealCon"><img class="dealImg" src="images/xlqg14.jpg" alt=""></div>
-						<div class="title_new"><p class="word" title="神火（supfire）C8T6 强光手电筒 远射LED充电式防身灯 配18650电池"><span class="baoyouText">[包邮]</span>神火（supfire）C8T6 强光手电筒 远射LED充电式防身灯 配18650电池</p></div>
-						<div class="dealInfo"><span class="price">¥<em>99.0</em></span></div>
-					</a>
-					<a class="saleDeal" href="" target="_blank">
-						<div class="dealCon"><img class="dealImg" src="images/xlqg15.jpg" alt=""></div>
-						<div class="title_new"><p class="word" title="【京东超市】福临门 葵花籽原香食用调和油5L 中粮出品"><span class="baoyouText">[包邮]</span>【京东超市】福临门 葵花籽原香食用调和油5L 中粮出品</p></div>
-						<div class="dealInfo"><span class="price">¥<em>99.9</em></span></div>
-					</a>
-					<a class="saleDeal" href="" target="_blank">
-						<div class="dealCon"><img class="dealImg" src="images/xlqg16.jpg" alt=""></div>
-						<div class="title_new"><p class="word" title="暖风机家用取暖器婴儿电暖气暖手宝浴室防水N"><span class="baoyouText">[包邮]</span>暖风机家用取暖器婴儿电暖气暖手宝浴室防水N</p></div>
-						<div class="dealInfo"><span class="price">¥<em>199.9</em></span></div>
-					</a>
-					<a class="saleDeal" href="" target="_blank">
-						<div class="dealCon"><img class="dealImg" src="images/xlqg17.jpg" alt=""></div>
-						<div class="title_new"><p class="word" title="CIKOO 洗澡玩具 戏水玩具 水枪玩具 高压水枪玩具"><span class="baoyouText">[包邮]</span>CIKOO 洗澡玩具 戏水玩具 水枪玩具 高压水枪玩具</p></div>
-						<div class="dealInfo"><span class="price">¥<em>29.0</em></span></div>
-					</a>
-					<a class="saleDeal" href="" target="_blank">
-						<div class="dealCon"><img class="dealImg" src="images/xlqg18.jpg" alt=""></div>
-						<div class="title_new"><p class="word" title="联想（ThinkPad）轻薄系列E470c（20H3A004CD）14英寸笔记本电脑（i5-6200U 8G 500G 2G独显 Win10）黑色 "><span class="baoyouText">[包邮]</span>联想（ThinkPad）轻薄系列E470c（20H3A004CD）14英寸笔记本电脑（i5-6200U 8G 500G 2G独显 Win10）黑色 </p></div>
-						<div class="dealInfo"><span class="price">¥<em>4499.9</em></span></div>
-					</a>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="center pc-top-20">
-		<div class="pc-center-he">
-			<div class="pc-box-he pc-box-qr clearfix">
-				<div class="fl"><i class="pc-time-icon"></i></div>
-				<div class="fr pc-box-blue-link">
-					<a href="#">上衣</a>
-					<a href="#">短裙</a>
-					<a href="#">牛仔裤</a>
-					<a href="#">短袖</a>
-					<a href="#">帽子</a>
-				</div>
-			</div>
-			<div class="pc-list-goods">
-				<div class="xsq_deal_wrapper pc-deal-list clearfix">
-					<a class="saleDeal" href="" target="_blank">
-						<div class="dealCon"><img class="dealImg" src="images/xlqg13.jpg" alt=""></div>
-						<div class="title_new"><p class="word" title="【京东超市】福临门 葵花籽原香食用调和油5L 中粮出品"><span class="baoyouText">[包邮]</span>【京东超市】福临门 葵花籽原香食用调和油5L 中粮出品</p></div>
-						<div class="dealInfo"><span class="price">¥<em>39.9</em></span></div>
-					</a>
-					<a class="saleDeal" href="" target="_blank">
-						<div class="dealCon"><img class="dealImg" src="images/xlqg14.jpg" alt=""></div>
-						<div class="title_new"><p class="word" title="神火（supfire）C8T6 强光手电筒 远射LED充电式防身灯 配18650电池"><span class="baoyouText">[包邮]</span>神火（supfire）C8T6 强光手电筒 远射LED充电式防身灯 配18650电池</p></div>
-						<div class="dealInfo"><span class="price">¥<em>99.0</em></span></div>
-					</a>
-					<a class="saleDeal" href="" target="_blank">
-						<div class="dealCon"><img class="dealImg" src="images/xlqg15.jpg" alt=""></div>
-						<div class="title_new"><p class="word" title="【京东超市】福临门 葵花籽原香食用调和油5L 中粮出品"><span class="baoyouText">[包邮]</span>【京东超市】福临门 葵花籽原香食用调和油5L 中粮出品</p></div>
-						<div class="dealInfo"><span class="price">¥<em>99.9</em></span></div>
-					</a>
-					<a class="saleDeal" href="" target="_blank">
-						<div class="dealCon"><img class="dealImg" src="images/xlqg16.jpg" alt=""></div>
-						<div class="title_new"><p class="word" title="暖风机家用取暖器婴儿电暖气暖手宝浴室防水N"><span class="baoyouText">[包邮]</span>暖风机家用取暖器婴儿电暖气暖手宝浴室防水N</p></div>
-						<div class="dealInfo"><span class="price">¥<em>199.9</em></span></div>
-					</a>
-					<a class="saleDeal" href="" target="_blank">
-						<div class="dealCon"><img class="dealImg" src="images/xlqg17.jpg" alt=""></div>
-						<div class="title_new"><p class="word" title="CIKOO 洗澡玩具 戏水玩具 水枪玩具 高压水枪玩具"><span class="baoyouText">[包邮]</span>CIKOO 洗澡玩具 戏水玩具 水枪玩具 高压水枪玩具</p></div>
-						<div class="dealInfo"><span class="price">¥<em>29.0</em></span></div>
-					</a>
-					<a class="saleDeal" href="" target="_blank">
-						<div class="dealCon"><img class="dealImg" src="images/xlqg18.jpg" alt=""></div>
-						<div class="title_new"><p class="word" title="联想（ThinkPad）轻薄系列E470c（20H3A004CD）14英寸笔记本电脑（i5-6200U 8G 500G 2G独显 Win10）黑色 "><span class="baoyouText">[包邮]</span>联想（ThinkPad）轻薄系列E470c（20H3A004CD）14英寸笔记本电脑（i5-6200U 8G 500G 2G独显 Win10）黑色 </p></div>
-						<div class="dealInfo"><span class="price">¥<em>4499.9</em></span></div>
-					</a>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="center pc-top-20">
-		<div class="pc-center-he">
-			<div class="pc-box-he pc-box-ue clearfix">
-				<div class="fl"><i class="pc-time-icon"></i></div>
-				<div class="fr pc-box-blue-link">
-					<a href="#">上衣</a>
-					<a href="#">短裙</a>
-					<a href="#">牛仔裤</a>
-					<a href="#">短袖</a>
-					<a href="#">帽子</a>
-				</div>
-			</div>
-			<div class="pc-list-goods" style="height:auto">
-				<div class="xsq_deal_wrapper pc-deal-list clearfix">
-					<a class="saleDeal" href="" target="_blank">
-						<div class="dealCon"><img class="dealImg" src="images/xlqg19.jpg" alt=""></div>
-						<div class="title_new"><p class="word" title="【京东超市】福临门 葵花籽原香食用调和油5L 中粮出品"><span class="baoyouText">[包邮]</span>【京东超市】福临门 葵花籽原香食用调和油5L 中粮出品</p></div>
-						<div class="dealInfo"><span class="price">¥<em>39.9</em></span></div>
-					</a>
-					<a class="saleDeal" href="" target="_blank">
-						<div class="dealCon"><img class="dealImg" src="images/xlqg14.jpg" alt=""></div>
-						<div class="title_new"><p class="word" title="神火（supfire）C8T6 强光手电筒 远射LED充电式防身灯 配18650电池"><span class="baoyouText">[包邮]</span>神火（supfire）C8T6 强光手电筒 远射LED充电式防身灯 配18650电池</p></div>
-						<div class="dealInfo"><span class="price">¥<em>99.0</em></span></div>
-					</a>
-					<a class="saleDeal" href="" target="_blank">
-						<div class="dealCon"><img class="dealImg" src="images/xlqg15.jpg" alt=""></div>
-						<div class="title_new"><p class="word" title="【京东超市】福临门 葵花籽原香食用调和油5L 中粮出品"><span class="baoyouText">[包邮]</span>【京东超市】福临门 葵花籽原香食用调和油5L 中粮出品</p></div>
-						<div class="dealInfo"><span class="price">¥<em>99.9</em></span></div>
-					</a>
-					<a class="saleDeal" href="" target="_blank">
-						<div class="dealCon"><img class="dealImg" src="images/xlqg16.jpg" alt=""></div>
-						<div class="title_new"><p class="word" title="暖风机家用取暖器婴儿电暖气暖手宝浴室防水N"><span class="baoyouText">[包邮]</span>暖风机家用取暖器婴儿电暖气暖手宝浴室防水N</p></div>
-						<div class="dealInfo"><span class="price">¥<em>199.9</em></span></div>
-					</a>
-					<a class="saleDeal" href="" target="_blank">
-						<div class="dealCon"><img class="dealImg" src="images/xlqg17.jpg" alt=""></div>
-						<div class="title_new"><p class="word" title="CIKOO 洗澡玩具 戏水玩具 水枪玩具 高压水枪玩具"><span class="baoyouText">[包邮]</span>CIKOO 洗澡玩具 戏水玩具 水枪玩具 高压水枪玩具</p></div>
-						<div class="dealInfo"><span class="price">¥<em>29.0</em></span></div>
-					</a>
-					<a class="saleDeal" href="" target="_blank">
-						<div class="dealCon"><img class="dealImg" src="images/xlqg18.jpg" alt=""></div>
-						<div class="title_new"><p class="word" title="联想（ThinkPad）轻薄系列E470c（20H3A004CD）14英寸笔记本电脑（i5-6200U 8G 500G 2G独显 Win10）黑色 "><span class="baoyouText">[包邮]</span>联想（ThinkPad）轻薄系列E470c（20H3A004CD）14英寸笔记本电脑（i5-6200U 8G 500G 2G独显 Win10）黑色 </p></div>
-						<div class="dealInfo"><span class="price">¥<em>4499.9</em></span></div>
-					</a>
-				</div>
-				<div class="xsq_deal_wrapper pc-deal-list clearfix" >
-					<a class="saleDeal" href="" target="_blank">
-						<div class="dealCon"><img class="dealImg" src="images/xlqg13.jpg" alt=""></div>
-						<div class="title_new"><p class="word" title="【京东超市】福临门 葵花籽原香食用调和油5L 中粮出品"><span class="baoyouText">[包邮]</span>【京东超市】福临门 葵花籽原香食用调和油5L 中粮出品</p></div>
-						<div class="dealInfo"><span class="price">¥<em>39.9</em></span></div>
-					</a>
-					<a class="saleDeal" href="" target="_blank">
-						<div class="dealCon"><img class="dealImg" src="images/xlqg14.jpg" alt=""></div>
-						<div class="title_new"><p class="word" title="神火（supfire）C8T6 强光手电筒 远射LED充电式防身灯 配18650电池"><span class="baoyouText">[包邮]</span>神火（supfire）C8T6 强光手电筒 远射LED充电式防身灯 配18650电池</p></div>
-						<div class="dealInfo"><span class="price">¥<em>99.0</em></span></div>
-					</a>
-					<a class="saleDeal" href="" target="_blank">
-						<div class="dealCon"><img class="dealImg" src="images/xlqg15.jpg" alt=""></div>
-						<div class="title_new"><p class="word" title="【京东超市】福临门 葵花籽原香食用调和油5L 中粮出品"><span class="baoyouText">[包邮]</span>【京东超市】福临门 葵花籽原香食用调和油5L 中粮出品</p></div>
-						<div class="dealInfo"><span class="price">¥<em>99.9</em></span></div>
-					</a>
-					<a class="saleDeal" href="" target="_blank">
-						<div class="dealCon"><img class="dealImg" src="images/xlqg16.jpg" alt=""></div>
-						<div class="title_new"><p class="word" title="暖风机家用取暖器婴儿电暖气暖手宝浴室防水N"><span class="baoyouText">[包邮]</span>暖风机家用取暖器婴儿电暖气暖手宝浴室防水N</p></div>
-						<div class="dealInfo"><span class="price">¥<em>199.9</em></span></div>
-					</a>
-					<a class="saleDeal" href="" target="_blank">
-						<div class="dealCon"><img class="dealImg" src="images/xlqg17.jpg" alt=""></div>
-						<div class="title_new"><p class="word" title="CIKOO 洗澡玩具 戏水玩具 水枪玩具 高压水枪玩具"><span class="baoyouText">[包邮]</span>CIKOO 洗澡玩具 戏水玩具 水枪玩具 高压水枪玩具</p></div>
-						<div class="dealInfo"><span class="price">¥<em>29.0</em></span></div>
-					</a>
-					<a class="saleDeal" href="" target="_blank">
-						<div class="dealCon"><img class="dealImg" src="images/xlqg18.jpg" alt=""></div>
-						<div class="title_new"><p class="word" title="联想（ThinkPad）轻薄系列E470c（20H3A004CD）14英寸笔记本电脑（i5-6200U 8G 500G 2G独显 Win10）黑色 "><span class="baoyouText">[包邮]</span>联想（ThinkPad）轻薄系列E470c（20H3A004CD）14英寸笔记本电脑（i5-6200U 8G 500G 2G独显 Win10）黑色 </p></div>
-						<div class="dealInfo"><span class="price">¥<em>4499.9</em></span></div>
-					</a>
-				</div>
-			</div>
-		</div>
-	</div>
-</section>
--->
-
-
-
-<div style="height:100px"></div>
-
-<footer>
-	<div class="pc-footer-top">
-		<div class="center">
-			<ul class="clearfix">
-				<li>
-					<span>关于我们</span>
-					<a href="#">关于我们</a>
-					<a href="#">诚聘英才</a>
-					<a href="#">用户服务协议</a>
-					<a href="#">网站服务条款</a>
-					<a href="#">联系我们</a>
-				</li>
-				<li class="lw">
-					<span>购物指南</span>
-					<a href="#">新手上路</a>
-					<a href="#">订单查询</a>
-					<a href="#">会员介绍</a>
-					<a href="#">网站服务条款</a>
-					<a href="#">帮助中心</a>
-				</li>
-				<li class="lw">
-					<span>消费者保障</span>
-					<a href="#">人工验货</a>
-					<a href="#">退货退款政策</a>
-					<a href="#">运费补贴卡</a>
-					<a href="#">无忧售后</a>
-					<a href="#">先行赔付</a>
-				</li>
-				<li class="lw">
-					<span>商务合作</span>
-					<a href="#">人工验货</a>
-					<a href="#">退货退款政策</a>
-					<a href="#">运费补贴卡</a>
-					<a href="#">无忧售后</a>
-					<a href="#">先行赔付</a>
-				</li>
-				<li class="lss">
-					<span>下载手机版</span>
-					<div class="clearfix lss-pa">
-						<div class="fl lss-img"><img src="${pageContext.request.contextPath}/jsp/users/img/icon/code.png" alt=""></div>
-						<div class="fl" style="padding-left:20px">
-							<h4>扫描下载云购APP</h4>
-							<p>把优惠握在手心</p>
-							<P>把潮流带在身边</P>
-							<P></P>
-						</div>
-					</div>
-				</li>
-			</ul>
-		</div>
-		<div class="pc-footer-lin">
-			<div class="center">
-				<p>友情链接：
-					卡宝宝信用卡
-					梦芭莎网上购物
-					手游交易平台
-					法律咨询
-					深圳地图
-					P2P网贷导航
-					名鞋库
-					万表网
-					叮当音乐网
-					114票务网
-					儿歌视频大全
-				</p>
-				<p>
-					京ICP证1900075号  京ICP备20051110号-5  京公网安备110104734773474323  统一社会信用代码 91113443434371298269B  食品流通许可证SP1101435445645645640352397
-				</p>
-				<p style="padding-bottom:30px">版物经营许可证 新出发京零字第朝160018号  Copyright©2011-2015 版权所有 ZHE800.COM </p>
-			</div>
-		</div>
-	</div>
-</footer>
-<script type="text/javascript">
-    //hover 触发两个事件，鼠标移上去和移走
-    //mousehover 只触发移上去事件
-    $(".top-nav ul li").hover(function(){
-        $(this).addClass("hover").siblings().removeClass("hover");
-        $(this).find("li .nav a").addClass("hover");
-        $(this).find(".con").show();
-    },function(){
-        //$(this).css("background-color","#f5f5f5");
-        $(this).find(".con").hide();
-        //$(this).find(".nav a").removeClass("hover");
-        $(this).removeClass("hover");
-        $(this).find(".nav a").removeClass("hover");
-    })
-</script>
+	</footer>
+	<script type="text/javascript">
+        //hover 触发两个事件，鼠标移上去和移走
+        //mousehover 只触发移上去事件
+        $(".top-nav ul li").hover(function(){
+            $(this).addClass("hover").siblings().removeClass("hover");
+            $(this).find("li .nav a").addClass("hover");
+            $(this).find(".con").show();
+        },function(){
+            //$(this).css("background-color","#f5f5f5");
+            $(this).find(".con").hide();
+            //$(this).find(".nav a").removeClass("hover");
+            $(this).removeClass("hover");
+            $(this).find(".nav a").removeClass("hover");
+        })
+	</script>
 </header>
 </body>
 </html>

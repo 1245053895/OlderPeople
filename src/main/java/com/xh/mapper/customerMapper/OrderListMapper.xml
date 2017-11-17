@@ -78,7 +78,7 @@
           s.MarketPrice
         FROM product p
         INNER JOIN favorites f ON (p.ProductId=f.ProductId)
-        INNER JOIN stock s ON (f.ProductId=f.ProductId)
+        INNER JOIN stock s ON (s.ProductId=f.ProductId)
         <where>
             f.UserId=#{userid}
             <if test="productA!=null">

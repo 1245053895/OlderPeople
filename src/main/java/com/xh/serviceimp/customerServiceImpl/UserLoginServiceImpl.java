@@ -22,8 +22,4 @@ public class UserLoginServiceImpl implements UserLoginService {
         return user;
     }
 
-    public List<Gainaddres> SelectUserAddressByid(Integer userid) {
-        List<Gainaddres> gainaddres=userLoginMapper.SelectUserAddressByid(userid);
-        return gainaddres;
-    }
 }

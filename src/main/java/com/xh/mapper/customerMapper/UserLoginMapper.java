@@ -14,7 +14,4 @@ public interface UserLoginMapper {
 
     //查询出所有登录用户的用户名和密码
     public User selectAllNameAndPwd(String username);
-
-    //通过用户Id查询用户的收货地址
-    public List<Gainaddres> SelectUserAddressByid(Integer userid);
 }

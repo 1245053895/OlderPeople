@@ -183,11 +183,7 @@
 					<dd><a href="/UpdataPwdPage.action">修改登录密码</a></dd>
 					<dd><a href="/MyCredits.action">我的积分</a></dd>
 				</dl>
-				<%--<dl  onclick = "change(this);">
-					<dt>客户服务</dt>
-					<dd><a href="#">退货订单</a></dd>
-					<dd><a href="#">退货/退款记录</a></dd>
-				</dl>--%>
+
 			</div>
 		</div>
 		<div class="member-right fr">

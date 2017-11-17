@@ -23,6 +23,11 @@
 	<script type="text/javascript" src="${pageContext.request.contextPath}/jsp/users/js/index.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/jsp/users/js/modernizr-custom-v2.7.1.min.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/jsp/users/js/jquery.SuperSlide.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/jsp/users/css/style.css">
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/jsp/users/css/media_index.css">
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/jsp/users/css/mod.css">
+
 	<script type="text/javascript">
 
         var intDiff = parseInt(90000);//倒计时总秒数量
@@ -122,53 +127,16 @@
 <body>
 
 <header id="pc-header">
-<!--
 	<div class="pc-header-nav">
 		<div class="pc-header-con">
-			<div class="fl pc-header-link" >您好！，欢迎来云购物 <a href="login.html" target="_blank">请登录</a> <a href="register.html" target="_blank"> 免费注册</a></div>
-			<div class="fr pc-header-list top-nav">
-				<ul>
-					<li>
-						<div class="nav"><i class="pc-top-icon"></i><a href="#">我的订单</a></div>
-						<div class="con">
-							<dl>
-								<dt><a href="">批发进货</a></dt>
-								<dd><a href="">已买到货品</a></dd>
-								<dd><a href="">优惠券</a></dd>
-								<dd><a href="">店铺动态</a></dd>
-							</dl>
-						</div>
-					</li>
-					<li>
-						<div class="nav"><i class="pc-top-icon"></i><a href="#">我的商城</a></div>
-						<div class="con">
-							<dl>
-								<dt><a href="">批发进货</a></dt>
-								<dd><a href="">已买到货品</a></dd>
-								<dd><a href="">优惠券</a></dd>
-								<dd><a href="">店铺动态</a></dd>
-							</dl>
-						</div>
-					</li>
-					<li><a href="#">我的云购</a></li>
-					<li><a href="#">我的收藏</a></li>
-					<li><a href="#">会员中心</a></li>
-					<li><a href="#">客户服务</a></li>
-					<li><a href="#">帮助中心</a></li>
-				</ul>
-			</div>
-		</div>
-	</div>
--->
-	<div class="pc-header-nav">
-		<div class="pc-header-con">
-			<div class="fl pc-header-link" >您好！，欢迎来孝和集团电子商城 
-				<a href="login.html" target="_blank">请登录</a> 
+			<div class="fl pc-header-link" >您好！，欢迎来孝和集团电子商城
+				<a href="login.html" target="_blank">请登录</a>
 				<a href="register.html" target="_blank"> 免费注册</a>
 			</div>
 			<div class="fr pc-header-list top-nav">
 				<ul>
-					<li><a href="#">我的收藏</a></li>
+					<li><a href="#">收藏夹</a></li>
+					<li><a href="my-dingdan.jsp">我的订单</a></li>
 					<li>
 						<div class="nav"><i class="pc-top-icon"></i><a href="#">个人中心</a></div>
 						<div class="con">
@@ -177,11 +145,10 @@
 								<dd><a href="">收货地址</a></dd>
 								<dd><a href="">修改登录密码</a></dd>
 								<dd><a href="">我的积分</a></dd>
-								<dd><a href="">已购买的宝贝</a></dd>
 							</dl>
 						</div>
 					</li>
-										
+
 					<li>
 						<div class="nav"><i class="pc-top-icon"></i><a href="#">帮助中心</a></div>
 						<div class="con">
@@ -191,20 +158,21 @@
 							</dl>
 						</div>
 					</li>
-					
+
 				</ul>
 			</div>
 		</div>
 	</div>
+
 	<div class="pc-header-logo clearfix">
 		<div class="pc-fl-logo fl">
 			<h1>
-				<a href="index.html"></a>
+				<a href="index.jsp"></a>
 			</h1>
 		</div>
 		<div class="head-form fl">
 			<form class="clearfix">
-				<input class="search-text" accesskey="" id="key" autocomplete="off" placeholder="请输入关键词" type="text">
+				<input class="search-text" accesskey="" id="key" autocomplete="off" placeholder="洗衣机" type="text">
 				<button class="button" onclick="search('key');return false;">搜索</button>
 			</form>
 			<div class="words-text clearfix">
@@ -227,13 +195,13 @@
 	<div class="yHeader">
 		<!-- 导航   start  -->
 		<div class="yNavIndex">
-			<ul class="yMenuIndex" style="margin-left:0">
-				<li style="background:#d1201e"><a href="" target="_blank">首页</a></li>
-				<li><a href="" target="_blank">品牌专区 </a></li>
-				<li><a href="" target="_blank">询价专区</a></li>
-				<li><a href="" target="_blank">新闻资讯</a></li>
-				<li><a href="" target="_blank">合伙人</a></li>
-				<li><a href="" target="_blank">关于我们</a></li>
+			<ul class="yMenuIndex">
+				<li><a href="" target="_blank" title="首页">首页</a></li>
+				<li><a href="" target="_blank" title="热销专区">热销专区</a></li>
+				<li><a href="" target="_blank" title="新品专区">新品专区</a></li>
+				<li><a href="" target="_blank" title="积分商城">积分商城</a></li>
+				<li><a href="" target="_blank" title="合伙人">合伙人</a></li>
+				<li><a href="" target="_blank" title="关于我们">关于我们</a></li>
 			</ul>
 		</div>
 		<!-- 导航   end  -->
@@ -250,16 +218,27 @@
 				<div class="time-list time-list-w fl" style="width:1156px">
 					<div class="time-title time-clear"><h2>热卖区</h2><div class="pc-font fl"></div><a href="javascript:;" class="pc-spin fr">换一换</a> </div>
 					<div class="time-border">
+
+
 						<div class="yScrollList">
 							<div class="yScrollListIn">
 								<div class="yScrollListInList yScrollListInList1" style="display:block;">
 									<ul style="width: 1464px;">
 										<li>
-											<a href="">
-												<img src="images/shangpinxiangqing/X-1.png">
-												<p class="head-name pc-pa10">TP-LINK TL-WN725N 微型150M无线USB网卡</p>
-												<p class="label-default">3.45折</p>
-											</a>
+											<%--<a href="">--%>
+												<%--<img src="images/shangpinxiangqing/X-1.png">--%>
+												<%--<p class="head-name pc-pa10">TP-LINK TL-WN725N 微型150M无线USB网卡</p>--%>
+												<%--<p class="label-default">3.45折</p>--%>
+											<%--</a>--%>
+												<div class="row">
+													<span class="tip orange">免邮件</span>
+													<dl>
+														<dt><img src="${pageContext.request.contextPath}/jsp/users/images/znyj/znyj1.jpg"></dt>
+														<dd class="name">小米路由器3</dd>
+														<dd class="desc">四天线设计，更安全更稳定</dd>
+														<dd class="price">149元</dd>
+													</dl>
+												</div>
 										</li>
 										<li>
 											<a href="">

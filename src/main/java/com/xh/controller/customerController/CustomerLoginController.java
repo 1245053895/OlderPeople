@@ -145,6 +145,7 @@ public class CustomerLoginController {
 
 
     //查询出上市新品的商品的图片，名称，描述，价格，展示在商城的首页
+    @RequestMapping("/selectproduct.action")
     public String selectproduct(Model model){
        List<Product> products= userLoginService.selectproduct();
        model.addAttribute("products",products);

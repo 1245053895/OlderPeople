@@ -190,7 +190,9 @@
 </div>-->
 
 <header id="pc-header">
-
+	<c:if test="${empty products}">
+		<jsp:forward page="${pageContext.request.contextPath}/selectproduct.action"></jsp:forward>
+	</c:if>
 	<jsp:include page="/jsp/users/head.jsp"></jsp:include>
 
 	<!--  顶部    start-->
@@ -501,15 +503,17 @@
 					<div class="m-slide-contain m-s2">
 						<div class="m-slide-item">
 							<ul class="m-cols m-col-5">
+								<c:forEach items="${products}" var="product">
 								<li class="col sku-item ">
 									<dl class="row">
-										<dt><img src="${pageContext.request.contextPath}/jsp/users/images/single/single1.png"></dt>
-										<dd class="name"><a href="page.jsp">小米电视3S 43英寸</a></dd>
-										<dd class="desc">4GB内存+128GB闪存，陶瓷版</dd>
-										<dd class="price">1499元</dd>
+										<dt><img src="${product.productpicture}"></dt>
+										<dd class="name"><a href="${pageContext.request.contextPath}/xiangqing.action?productid=${product.productid}">${product.productname}</a></dd>
+										<dd class="desc">${product.productdescribe}</dd>
+										<dd class="price">${product.productprice}</dd>
 									</dl>
 								</li>
-								<li class="col sku-item ">
+								</c:forEach>
+								<%--<li class="col sku-item ">
 									<dl class="row">
 										<dt><img src="${pageContext.request.contextPath}/jsp/users/images/single/single2.png"></dt>
 										<dd class="name">小米电视3S 43英寸</dd>
@@ -540,7 +544,7 @@
 										<dd class="desc">4GB内存+128GB闪存，陶瓷版</dd>
 										<dd class="price">1499元</dd>
 									</dl>
-								</li>
+								</li>--%>
 							</ul>
 						</div>
 						<div class="m-slide-item">

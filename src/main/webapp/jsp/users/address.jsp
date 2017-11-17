@@ -190,7 +190,7 @@
 							<div class="warn2" style="margin-left: 10px;border: none">邮编</div>
 							<div class="warn2" style="margin-left: 10px;border: none">电话</div>
 							<div class="warn2" style="margin-left: 10px;border: none">操作</div>
-							<input type="button" class="warn2" style="width: 50px;float: left;margin-left: 10px;border: 1px;font-weight: 80px;text-align:center;margin-top:6px;font-size:15px;color: #FF9100;background-color: none;border-radius: 5px" id="xz" onClick="xdz()" value="新地址">
+							<input type="button" class="warn2" style="width: 50px;float: left;margin-left: 10px;border: 1px;font-weight: 800;text-align:center;margin-top:6px;font-size:15px;color: #FF9100;border-radius: 5px" id="xz" onClick="xdz()" value="新地址">
 
 						</li>
 

@@ -1,3 +1,5 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="f" uri="http://java.sun.com/jstl/fmt_rt" %>
 <%--
   Created by IntelliJ IDEA.
   User: Administrator
@@ -124,49 +126,15 @@
 		.li-ul-ss l{
 			width:200px;
 		}
+
+		#column10086{
+			overflow: scroll;
+		}
 	</style>
 </head>
 <body>
 
 <header id="pc-header">
-<!--
-	<div class="pc-header-nav">
-		<div class="pc-header-con">
-			<div class="fl pc-header-link" >您好！，欢迎来云购物 <a href="login.html" target="_blank">请登录</a> <a href="register.html" target="_blank"> 免费注册</a></div>
-			<div class="fr pc-header-list top-nav">
-				<ul>
-					<li>
-						<div class="nav"><i class="pc-top-icon"></i><a href="#">我的订单</a></div>
-						<div class="con">
-							<dl>
-								<dt><a href="">批发进货</a></dt>
-								<dd><a href="">已买到货品</a></dd>
-								<dd><a href="">优惠券</a></dd>
-								<dd><a href="">店铺动态</a></dd>
-							</dl>
-						</div>
-					</li>
-					<li>
-						<div class="nav"><i class="pc-top-icon"></i><a href="#">我的商城</a></div>
-						<div class="con">
-							<dl>
-								<dt><a href="">批发进货</a></dt>
-								<dd><a href="">已买到货品</a></dd>
-								<dd><a href="">优惠券</a></dd>
-								<dd><a href="">店铺动态</a></dd>
-							</dl>
-						</div>
-					</li>
-					<li><a href="#">我的云购</a></li>
-					<li><a href="#">我的收藏</a></li>
-					<li><a href="#">会员中心</a></li>
-					<li><a href="#">客户服务</a></li>
-					<li><a href="#">帮助中心</a></li>
-				</ul>
-			</div>
-		</div>
-	</div>
--->
 	<div class="pc-header-nav">
 		<div class="pc-header-con">
 			<div class="fl pc-header-link" >您好！，欢迎来孝和集团电子商城 
@@ -262,24 +230,22 @@
 
 <div class="Xcontent">
 	<ul class="Xcontent01">
-
-		<div class="Xcontent06"><img src="images/shangpinxiangqing/X1.png"></div>
+<%--${myProduct.images[0]}--%>
+		<div class="Xcontent06"><img src="${pageContext.request.contextPath}/${myProduct.images[0]}"></div>
 		<ol class="Xcontent08">
-			<div class="Xcontent07"><img src="images/shangpinxiangqing/X1.png"></div>
-			<div class="Xcontent09"><img src="images/shangpinxiangqing/X7.png"></div>
-			<div class="Xcontent10"><img src="images/shangpinxiangqing/X8.png"></div>
-			<div class="Xcontent11"><img src="images/shangpinxiangqing/X9.png"></div>
-			<div class="Xcontent12"><img src="images/shangpinxiangqing/X10.png"></div>
+			<c:forEach items="${myProduct.images}" var="it" varStatus="status">
+			<div class="Xcontent07"><img  src="${pageContext.request.contextPath}/${it}"></div>
+			</c:forEach>
 		</ol>
 		<ol class="Xcontent13 clearfix">
-			<div class="Xcontent14 clearfix"><a href="#"><p>好哥HG-W660电动轮椅</p></a></div>
-			<div class="Xcontent15 clearfix red fl" style="margin-top:15px;margin-right: 8px;">新品上架</div>
-			<div class="Xcontent16 clearfix"><p style="margin-top:14px;">你值得拥有！更多惊喜</p></div>
+			<div class="Xcontent14 clearfix"><a href="#"><p>${myProduct.productname}</p></a></div>
+			<div class="Xcontent15 clearfix red fl" style="margin-top:15px;margin-right: 8px;">${myProduct.productdescribe}</div>
+			<div class="Xcontent16 clearfix"><p style="margin-top:14px;">更多惊喜，你值得拥有！</p></div>
 			<div class="Xcontent17">
 				<p class="Xcontent18">售价</p>
-				<p class="Xcontent19">￥<span>69.00</span></p>
+				<p class="Xcontent19">￥<span></span></p>
 				<p class="Xcontent18">原价</p>
-				<p class="Xcontent181">￥<span>89.00</span></p>
+				<p class="Xcontent181">￥<span></span></p>
 				<!--<div class="Xcontent20">
 					<p class="Xcontent21">促销</p>
 					<img src="images/shangpinxiangqing/X12.png">
@@ -298,37 +264,38 @@
 						<p style="color: #666a6e">
                             累计评论&nbsp;&nbsp;&nbsp;&nbsp;
 							<span>
-								<a href="#">16人评论</a>
+								<a href="#"> <span  class="sd444">${pingJiaShu.goodcommentcount}</span>人评论</a>
                                 <span  class="sd"></span>
 							</span>
                             赠送积分&nbsp;&nbsp;&nbsp;&nbsp;
                             <span>
-                                <a href="#">69</a>
+                                <a href="#">${myProduct.productcredits}</a>
                             </span>
 						</p>
 					</li>
 				</ul>
 			</div>
-			<div class="Xcontent26">
+			<%--<div class="Xcontent26">
 				<p class="Xcontent27">属性</p>
 				<div class="Xcontent28"><img  src="images/shangpinxiangqing/X14.png"></div>
 				<div class="Xcontent29"><img  src="images/shangpinxiangqing/X1.png"></div>
-			</div>
+			</div>--%>
 			<div class="Xcontent30">
 				<p class="Xcontent31">数量</p>
-				<div class="Xcontent32"><img src="images/shangpinxiangqing/X15.png"></div>
+				<div class="Xcontent32"><img src="${pageContext.request.contextPath}/jsp/users/images/shangpinxiangqing/X15.png"></div>
 				<form>
+					<%--max为库存量--%>
 					<input class="input" value="1"></form>
-				<div class="Xcontent33"><img src="images/shangpinxiangqing/16.png"></div>
+				<div class="Xcontent33"><img src="${pageContext.request.contextPath}/jsp/users/images/shangpinxiangqing/16.png"></div>
 			</div>
 			<div class="Xcontent34"><a href="#">立即购买</a></div>
 			<div class="Xcontent35"><a href="#">加入购物车</a></div>
             <div class="Xcontent36">
-                <a href="#"><img src="images/shoucang.png" height="15px" width="15px"></a>
+                <a href="#"><img src="${pageContext.request.contextPath}/jsp/users/images/shoucang.png" height="15px" width="15px"></a>
                 <a href="#">收藏宝贝</a>
             </div>
             <div class="Xcontent36">
-                <a href="#"><img src="images/kefu.png" height="15px" width="15px"></a>
+                <a href="#"><img src="${pageContext.request.contextPath}/jsp/users/images/kefu.png" height="15px" width="15px"></a>
                 <a href="#">联系客服</a>
             </div>
 		</ol>
@@ -336,44 +303,12 @@
 </div>
 
 <div class="containers center clearfix" style="margin-top:20px; background:#fff;">
-	<!--<div class="fl" style="padding-left:10px; padding-top:20px">
-		<div class="pc-menu-in">
-			<h2>店内搜索</h2>
-			<form>
-				<p>关键词:<input type="text" class="pc-input1"></p>
-				<p>价  格：<input class="pc-input2"> 到 <input class="pc-input2"></p>
-				<p><a href="#">搜索</a> </p>
-			</form>
-		</div>
-		<div class="menu_list" id="firstpane">
-			<h2>店内分类</h2>
-			<h3 class="menu_head current">电玩</h3>
-			<div class="menu_body" style="">
-				<a href="#">耳机耳麦</a>
-				<a href="#">游戏机</a>
-			</div>
-			<h3 class="menu_head">手机</h3>
-			<div class="menu_body" style="display: none;">
-				<a href="#">手机</a>
-				<a href="#">手机</a>
-				<a href="#">手机</a>
-			</div>
-
-			<h3 class="menu_head">耳机耳麦</h3>
-			<div class="menu_body" style="display: none;">
-				<a href="#">耳机耳麦</a>
-				<a href="#">耳机耳麦</a>
-				<a href="#">耳机耳麦</a>
-				<a href="#">耳机耳麦</a>
-			</div>
-		</div>
-	</div>-->
 	<div class="pc-info fr" style="padding-left:10px; padding-top:20px">
 		<div class="pc-overall">
 			<ul id="H-table1" class="brand-tab H-table1 H-table-shop clearfix ">
 				<li class="cur"><a href="javascript:void(0);">商品介绍</a></li>
-				<li><a href="javascript:void(0);">商品评价<em class="reds">(91)</em></a></li>
-				<li><a href="javascript:void(0);">售后保障</a></li>
+				<%--<li><a href="javascript:void(0);">商品评价<em class="reds">(91)</em></a></li>--%>
+				<%--<li><a href="javascript:void(0);">售后保障</a></li>--%>
 			</ul>
 			<div class="pc-term clearfix">
 				<div class="H-over1 pc-text-word clearfix">
@@ -414,11 +349,10 @@
 							<p>机身颜色：白色</p>
 						</li>
 					</ul>
-					<div>
-						<div style="text-align:center"><img src="images/shangpinxiangqing/X1.png" width="50%"></div>
-						<div style="text-align:center"><img src="images/shangpinxiangqing/X2.png" width="50%"></div>
-						<div style="text-align:center"><img src="images/shangpinxiangqing/X3.png" width="50%"></div>
-						<div style="text-align:center"><img src="images/shangpinxiangqing/X1.png" width="50%"></div>
+					<div style="margin-left: 30px;margin-right:30px ">
+						<c:forEach items="${myProduct.images}" var="it" varStatus="status">
+							<div style="text-align:center"><img src="${pageContext.request.contextPath}/${it}"width="95%";height="100px"></div>
+						</c:forEach>
 					</div>
 				</div>
 				<div class="H-over1" style="display:none">
@@ -448,298 +382,67 @@
 		</div>
 		<div class="pc-overall">
 			<ul class="brand-tab H-table H-table-shop clearfix " id="H-table" style="margin-left:0;">
-				<li class="cur"><a href="javascript:void(0);">全部评价（199）</a></li>
-				<li><a href="javascript:void(0);">好评<em class="reds">（33）</em></a></li>
-				<li><a href="javascript:void(0);">中评<em class="reds">（02）</em></a></li>
-				<li><a href="javascript:void(0);">差评<em class="reds">（01）</em></a></li>
+				<li class="cur"><a href="javascript:void(0);">全部评价（<span>${pingJiaShu.goodcommentcount}</span>）</a></li>
+				<li><a href="javascript:void(0);">好评<em class="reds">（<span>${pingJiaShu003}</span>）</em></a></li>
+				<li><a href="javascript:void(0);">中评<em class="reds">（<span>${pingJiaShu002}</span>）</em></a></li>
+				<li><a href="javascript:void(0);">差评<em class="reds">（<span>${pingJiaShu001}</span>）</em></a></li>
 			</ul>
 			<div class="pc-term clearfix">
 				<div class="pc-column">
-					<span class="column1">评价心得</span>
-					<span class="column2">顾客满意度</span>
-					<span class="column3">购买信息</span>
-					<span class="column4">评论者</span>
+					<div class="column1" style="float: left">评价心得</div>
+					<div class="column2" style="float: right;margin-right: 120px">顾客满意度</div>
+
 				</div>
-				<div class="H-over  pc-comments clearfix">
+				<div class="H-over  pc-comments clearfix" id="column10086" style="height: 530px;">
 					<ul class="clearfix">
+						<c:forEach items="${pingJiaList}" var="itss" varStatus="status">
 						<li class="clearfix">
-							<div class="column1">
-								<p class="clearfix"><a href="#">回复<em>（90）</em></a> <a href="#">赞<em>（90）</em></a> </p>
-								<p>一次用三星，不是很顺手，但咨询客服后终于上手了，感觉性价比相当不错，值得购买。但最想说的是京东客服更好，产品信得过，正品行货，买的放心。</p>
-								<p class="column5">2014-11-25 14:32</p>
+							<div class="column1" >
+								<%--<p class="clearfix"><a href="#">回复<em>（90）</em></a> <a href="#">赞<em>（90）</em></a> </p>--%>
+								<p style="float: right;margin-left: 50px">${itss.ccomment}</p>
+									<p class="column5" style="float: right;margin-left: 130px"><span style="float: right;margin-left: 30px">评论用户：${itss.username}</span><span>日期时间：<f:formatDate value="${itss.commenttime}" pattern="yyyy-MM-dd HH:mm:ss"/></span></p>
 							</div>
-							<div class="column2"><img src="img/icon/star.png"></div>
-							<div class="column3">颜色：云石白</div>
-							<div class="column4">
-								<p><img src="img/icon/user.png"></p>
-								<p>2014-11-23 22:37 购买</p>
-							</div>
+
+							<c:if test="${itss.goodcomment==0}">
+							<div class="column2" style="float: right;margin-right: 90px"><img src="${pageContext.request.contextPath}/jsp/users/img/icon/star0.png"></div>
+							</c:if>
+							<c:if test="${itss.goodcomment==1}">
+								<div class="column2" style="float: right;margin-right: 90px"><img src="${pageContext.request.contextPath}/jsp/users/img/icon/star1.png"></div>
+							</c:if>
+							<c:if test="${itss.goodcomment==2}">
+								<div class="column2" style="float: right;margin-right: 90px"><img src="${pageContext.request.contextPath}/jsp/users/img/icon/star2.png"></div>
+							</c:if>
+							<c:if test="${itss.goodcomment==3}">
+								<div class="column2" style="float: right;margin-right: 90px"><img src="${pageContext.request.contextPath}/jsp/users/img/icon/star3.png"></div>
+							</c:if>
+							<c:if test="${itss.goodcomment==4}">
+								<div class="column2" style="float: right;margin-right: 90px"><img src="${pageContext.request.contextPath}/jsp/users/img/icon/star4.png"></div>
+							</c:if>
+							<c:if test="${itss.goodcomment==5}">
+								<div class="column2" style="float: right;margin-right: 90px"><img src="${pageContext.request.contextPath}/jsp/users/img/icon/star5.png"></div>
+							</c:if>
 						</li>
-						<li class="clearfix">
-							<div class="column1">
-								<p class="clearfix"><a href="#">回复<em>（90）</em></a> <a href="#">赞<em>（90）</em></a> </p>
-								<p>一次用三星，不是很顺手，但咨询客服后终于上手了，感觉性价比相当不错，值得购买。但最想说的是京东客服更好，产品信得过，正品行货，买的放心。</p>
-								<p class="column5">2014-11-25 14:32</p>
-							</div>
-							<div class="column2"><img src="img/icon/star.png"></div>
-							<div class="column3">颜色：云石白</div>
-							<div class="column4">
-								<p><img src="img/icon/user.png"></p>
-								<p>2014-11-23 22:37 购买</p>
-							</div>
-						</li>
-						<li class="clearfix">
-							<div class="column1">
-								<p class="clearfix"><a href="#">回复<em>（90）</em></a> <a href="#">赞<em>（90）</em></a> </p>
-								<p>一次用三星，不是很顺手，但咨询客服后终于上手了，感觉性价比相当不错，值得购买。但最想说的是京东客服更好，产品信得过，正品行货，买的放心。</p>
-								<p class="column5">2014-11-25 14:32</p>
-							</div>
-							<div class="column2"><img src="img/icon/star.png"></div>
-							<div class="column3">颜色：云石白</div>
-							<div class="column4">
-								<p><img src="img/icon/user.png"></p>
-								<p>2014-11-23 22:37 购买</p>
-							</div>
-						</li>
-						<li class="clearfix">
-							<div class="column1">
-								<p class="clearfix"><a href="#">回复<em>（90）</em></a> <a href="#">赞<em>（90）</em></a> </p>
-								<p>一次用三星，不是很顺手，但咨询客服后终于上手了，感觉性价比相当不错，值得购买。但最想说的是京东客服更好，产品信得过，正品行货，买的放心。</p>
-								<p class="column5">2014-11-25 14:32</p>
-							</div>
-							<div class="column2"><img src="img/icon/star.png"></div>
-							<div class="column3">颜色：云石白</div>
-							<div class="column4">
-								<p><img src="img/icon/user.png"></p>
-								<p>2014-11-23 22:37 购买</p>
-							</div>
-						</li>
-						<li class="clearfix">
-							<div class="column1">
-								<p class="clearfix"><a href="#">回复<em>（90）</em></a> <a href="#">赞<em>（90）</em></a> </p>
-								<p>一次用三星，不是很顺手，但咨询客服后终于上手了，感觉性价比相当不错，值得购买。但最想说的是京东客服更好，产品信得过，正品行货，买的放心。</p>
-								<p class="column5">2014-11-25 14:32</p>
-							</div>
-							<div class="column2"><img src="img/icon/star.png"></div>
-							<div class="column3">颜色：云石白</div>
-							<div class="column4">
-								<p><img src="img/icon/user.png"></p>
-								<p>2014-11-23 22:37 购买</p>
-							</div>
-						</li>
-						<li class="clearfix">
-							<div class="column1">
-								<p class="clearfix"><a href="#">回复<em>（90）</em></a> <a href="#">赞<em>（90）</em></a> </p>
-								<p>一次用三星，不是很顺手，但咨询客服后终于上手了，感觉性价比相当不错，值得购买。但最想说的是京东客服更好，产品信得过，正品行货，买的放心。</p>
-								<p class="column5">2014-11-25 14:32</p>
-							</div>
-							<div class="column2"><img src="img/icon/star.png"></div>
-							<div class="column3">颜色：云石白</div>
-							<div class="column4">
-								<p><img src="img/icon/user.png"></p>
-								<p>2014-11-23 22:37 购买</p>
-							</div>
-						</li>
+						</c:forEach>
 					</ul>
 				</div>
-				<div style="display:none" class="H-over pc-comments">
-					<ul class="clearfix">
-						<li class="clearfix">
-							<div class="column1">
-								<p class="clearfix"><a href="#">回复<em>（90）</em></a> <a href="#">赞<em>（90）</em></a> </p>
-								<p>一次用三星，不是很顺手，但咨询客服后终于上手了，感觉性价比相当不错，值得购买。但最想说的是京东客服更好，产品信得过，正品行货，买的放心。</p>
-								<p class="column5">2014-11-25 14:32</p>
-							</div>
-							<div class="column2"><img src="img/icon/star.png"></div>
-							<div class="column3">颜色：云石白</div>
-							<div class="column4">
-								<p><img src="img/icon/user.png"></p>
-								<p>2014-11-23 22:37 购买</p>
-							</div>
-						</li>
-						<li class="clearfix">
-							<div class="column1">
-								<p class="clearfix"><a href="#">回复<em>（90）</em></a> <a href="#">赞<em>（90）</em></a> </p>
-								<p>一次用三星，不是很顺手，但咨询客服后终于上手了，感觉性价比相当不错，值得购买。但最想说的是京东客服更好，产品信得过，正品行货，买的放心。</p>
-								<p class="column5">2014-11-25 14:32</p>
-							</div>
-							<div class="column2"><img src="img/icon/star.png"></div>
-							<div class="column3">颜色：云石白</div>
-							<div class="column4">
-								<p><img src="img/icon/user.png"></p>
-								<p>2014-11-23 22:37 购买</p>
-							</div>
-						</li>
-						<li class="clearfix">
-							<div class="column1">
-								<p class="clearfix"><a href="#">回复<em>（90）</em></a> <a href="#">赞<em>（90）</em></a> </p>
-								<p>一次用三星，不是很顺手，但咨询客服后终于上手了，感觉性价比相当不错，值得购买。但最想说的是京东客服更好，产品信得过，正品行货，买的放心。</p>
-								<p class="column5">2014-11-25 14:32</p>
-							</div>
-							<div class="column2"><img src="img/icon/star.png"></div>
-							<div class="column3">颜色：云石白</div>
-							<div class="column4">
-								<p><img src="img/icon/user.png"></p>
-								<p>2014-11-23 22:37 购买</p>
-							</div>
-						</li>
-						<li class="clearfix">
-							<div class="column1">
-								<p class="clearfix"><a href="#">回复<em>（90）</em></a> <a href="#">赞<em>（90）</em></a> </p>
-								<p>一次用三星，不是很顺手，但咨询客服后终于上手了，感觉性价比相当不错，值得购买。但最想说的是京东客服更好，产品信得过，正品行货，买的放心。</p>
-								<p class="column5">2014-11-25 14:32</p>
-							</div>
-							<div class="column2"><img src="img/icon/star.png"></div>
-							<div class="column3">颜色：云石白</div>
-							<div class="column4">
-								<p><img src="img/icon/user.png"></p>
-								<p>2014-11-23 22:37 购买</p>
-							</div>
-						</li>
-						<li class="clearfix">
-							<div class="column1">
-								<p class="clearfix"><a href="#">回复<em>（90）</em></a> <a href="#">赞<em>（90）</em></a> </p>
-								<p>一次用三星，不是很顺手，但咨询客服后终于上手了，感觉性价比相当不错，值得购买。但最想说的是京东客服更好，产品信得过，正品行货，买的放心。</p>
-								<p class="column5">2014-11-25 14:32</p>
-							</div>
-							<div class="column2"><img src="img/icon/star.png"></div>
-							<div class="column3">颜色：云石白</div>
-							<div class="column4">
-								<p><img src="img/icon/user.png"></p>
-								<p>2014-11-23 22:37 购买</p>
-							</div>
-						</li>
-						<li class="clearfix">
-							<div class="column1">
-								<p class="clearfix"><a href="#">回复<em>（90）</em></a> <a href="#">赞<em>（90）</em></a> </p>
-								<p>一次用三星，不是很顺手，但咨询客服后终于上手了，感觉性价比相当不错，值得购买。但最想说的是京东客服更好，产品信得过，正品行货，买的放心。</p>
-								<p class="column5">2014-11-25 14:32</p>
-							</div>
-							<div class="column2"><img src="img/icon/star.png"></div>
-							<div class="column3">颜色：云石白</div>
-							<div class="column4">
-								<p><img src="img/icon/user.png"></p>
-								<p>2014-11-23 22:37 购买</p>
-							</div>
-						</li>
-					</ul>
-				</div>
-				<div style="display:none" class="H-over pc-comments">
-					<ul class="clearfix">
-						<li class="clearfix">
-							<div class="column1">
-								<p class="clearfix"><a href="#">回复<em>（90）</em></a> <a href="#">赞<em>（90）</em></a> </p>
-								<p>一次用三星，不是很顺手，但咨询客服后终于上手了，感觉性价比相当不错，值得购买。但最想说的是京东客服更好，产品信得过，正品行货，买的放心。</p>
-								<p class="column5">2014-11-25 14:32</p>
-							</div>
-							<div class="column2"><img src="img/icon/star.png"></div>
-							<div class="column3">颜色：云石白</div>
-							<div class="column4">
-								<p><img src="img/icon/user.png"></p>
-								<p>2014-11-23 22:37 购买</p>
-							</div>
-						</li>
-						<li class="clearfix">
-							<div class="column1">
-								<p class="clearfix"><a href="#">回复<em>（90）</em></a> <a href="#">赞<em>（90）</em></a> </p>
-								<p>一次用三星，不是很顺手，但咨询客服后终于上手了，感觉性价比相当不错，值得购买。但最想说的是京东客服更好，产品信得过，正品行货，买的放心。</p>
-								<p class="column5">2014-11-25 14:32</p>
-							</div>
-							<div class="column2"><img src="img/icon/star.png"></div>
-							<div class="column3">颜色：云石白</div>
-							<div class="column4">
-								<p><img src="img/icon/user.png"></p>
-								<p>2014-11-23 22:37 购买</p>
-							</div>
-						</li>
-						<li class="clearfix">
-							<div class="column1">
-								<p class="clearfix"><a href="#">回复<em>（90）</em></a> <a href="#">赞<em>（90）</em></a> </p>
-								<p>一次用三星，不是很顺手，但咨询客服后终于上手了，感觉性价比相当不错，值得购买。但最想说的是京东客服更好，产品信得过，正品行货，买的放心。</p>
-								<p class="column5">2014-11-25 14:32</p>
-							</div>
-							<div class="column2"><img src="img/icon/star.png"></div>
-							<div class="column3">颜色：云石白</div>
-							<div class="column4">
-								<p><img src="img/icon/user.png"></p>
-								<p>2014-11-23 22:37 购买</p>
-							</div>
-						</li>
-						<li class="clearfix">
-							<div class="column1">
-								<p class="clearfix"><a href="#">回复<em>（90）</em></a> <a href="#">赞<em>（90）</em></a> </p>
-								<p>一次用三星，不是很顺手，但咨询客服后终于上手了，感觉性价比相当不错，值得购买。但最想说的是京东客服更好，产品信得过，正品行货，买的放心。</p>
-								<p class="column5">2014-11-25 14:32</p>
-							</div>
-							<div class="column2"><img src="img/icon/star.png"></div>
-							<div class="column3">颜色：云石白</div>
-							<div class="column4">
-								<p><img src="img/icon/user.png"></p>
-								<p>2014-11-23 22:37 购买</p>
-							</div>
-						</li>
-						<li class="clearfix">
-							<div class="column1">
-								<p class="clearfix"><a href="#">回复<em>（90）</em></a> <a href="#">赞<em>（90）</em></a> </p>
-								<p>一次用三星，不是很顺手，但咨询客服后终于上手了，感觉性价比相当不错，值得购买。但最想说的是京东客服更好，产品信得过，正品行货，买的放心。</p>
-								<p class="column5">2014-11-25 14:32</p>
-							</div>
-							<div class="column2"><img src="img/icon/star.png"></div>
-							<div class="column3">颜色：云石白</div>
-							<div class="column4">
-								<p><img src="img/icon/user.png"></p>
-								<p>2014-11-23 22:37 购买</p>
-							</div>
-						</li>
-						<li class="clearfix">
-							<div class="column1">
-								<p class="clearfix"><a href="#">回复<em>（90）</em></a> <a href="#">赞<em>（90）</em></a> </p>
-								<p>一次用三星，不是很顺手，但咨询客服后终于上手了，感觉性价比相当不错，值得购买。但最想说的是京东客服更好，产品信得过，正品行货，买的放心。</p>
-								<p class="column5">2014-11-25 14:32</p>
-							</div>
-							<div class="column2"><img src="img/icon/star.png"></div>
-							<div class="column3">颜色：云石白</div>
-							<div class="column4">
-								<p><img src="img/icon/user.png"></p>
-								<p>2014-11-23 22:37 购买</p>
-							</div>
-						</li>
-					</ul>
-				</div>
-				<div style="display:none" class="H-over pc-comments">
-					<ul class="clearfix">
-						<li class="clearfix">
-							<div class="column1">
-								<p class="clearfix"><a href="#">回复<em>（90）</em></a> <a href="#">赞<em>（90）</em></a> </p>
-								<p>一次用三星，不是很顺手，但咨询客服后终于上手了，感觉性价比相当不错，值得购买。但最想说的是京东客服更好，产品信得过，正品行货，买的放心。</p>
-								<p class="column5">2014-11-25 14:32</p>
-							</div>
-							<div class="column2"><img src="img/icon/star.png"></div>
-							<div class="column3">颜色：云石白</div>
-							<div class="column4">
-								<p><img src="img/icon/user.png"></p>
-								<p>2014-11-23 22:37 购买</p>
-							</div>
-						</li>
-					</ul>
-				</div>
+
 			</div>
 		</div>
-		<div class="clearfix">
-			<div class="fr pc-search-g pc-search-gs">
-				<a href="#" class="fl " style="display:none">上一页</a>
-				<a class="current" href="#">1</a>
-				<a href="javascript:;">2</a>
-				<a href="javascript:;">3</a>
-				<a href="javascript:;">4</a>
-				<a href="javascript:;">5</a>
-				<a href="javascript:;">6</a>
-				<a href="javascript:;">7</a>
-				<span class="pc-search-di">…</span>
-				<a href="javascript:;">1088</a>
-				<a href="javascript:;" class="" title="使用方向键右键也可翻到下一页哦！">下一页</a>
-			</div>
-		</div>
+		<%--<div class="clearfix">--%>
+			<%--<div class="fr pc-search-g pc-search-gs">--%>
+				<%--<a href="#" class="fl " style="display:none">上一页</a>--%>
+				<%--<a class="current" href="#">1</a>--%>
+				<%--<a href="javascript:;">2</a>--%>
+				<%--<a href="javascript:;">3</a>--%>
+				<%--<a href="javascript:;">4</a>--%>
+				<%--<a href="javascript:;">5</a>--%>
+				<%--<a href="javascript:;">6</a>--%>
+				<%--<a href="javascript:;">7</a>--%>
+				<%--<span class="pc-search-di">…</span>--%>
+				<%--<a href="javascript:;">1088</a>--%>
+				<%--<a href="javascript:;" class="" title="使用方向键右键也可翻到下一页哦！">下一页</a>--%>
+			<%--</div>--%>
+		<%--</div>--%>
 	</div>
 </div>
 <div style="height:100px"></div>
@@ -748,292 +451,97 @@
         <div class="hd">
             <ul class="li-ul-ss">
                 <li class=" " style="width:238px">疯狂抢购</li>
-                <li class=" ">猜您喜欢</li>
-                <li class=" ">热卖商品</li>
                 <li class=" ">热评商品</li>
+                <li class=" ">热卖商品</li>
+                <li class=" ">猜您喜欢</li>
                 <li class="">新品上架</li></ul>
         </div>
         <div class="bd">
             <ul class="lh" style="display: none;">
+				<c:forEach items="${tuiJianList01}" var="it1" varStatus="status">
+					<%--<div class="Xcontent07"><img  src="${pageContext.request.contextPath}/${it}"></div>--%>
+
                 <li>
+					<input type="hidden" class="ace" name="productid" value="${it1.productid}" />
                     <div class="p-img ld">
-                        <a href="">
-                            <img src="images/shangpinxiangqing/X-1.png"></a>
+                        <a href="${pageContext.request.contextPath}/xiangqing.action?productid=${it1.productid}">
+                            <img src="${pageContext.request.contextPath}/${it1.images[0]}"></a>
                     </div>
-                    <div class="p-name">
-                        <a href="#">艾家纺全棉加厚磨毛四件套</a></div>
-                    <div class="p-price">京东价：
-                        <strong>￥399.00</strong></div>
+                    <div class="p-name" style="text-align: center;margin-top: 5px">
+                        <a href="${pageContext.request.contextPath}/xiangqing.action?productid=${it1.productid}" >${it1.productname}</a></div>
+                    <div class="p-price"  style="text-align: center;">京东价：
+                        <strong>￥${it1.productprice}</strong></div>
                 </li>
-                <li>
-                    <div class="p-img ld">
-                        <a href="#">
-                            <img src="images/shangpinxiangqing/X-1.png"></a>
-                    </div>
-                    <div class="p-name">
-                        <a href="#">优曼真丝提花奢华四件套</a></div>
-                    <div class="p-price">京东价：
-                        <strong>￥1299.00</strong></div>
-                </li>
-                <li>
-                    <div class="p-img ld">
-                        <a href="#">
-                            <img src="images/shangpinxiangqing/X1.png"></a>
-                    </div>
-                    <div class="p-name">
-                        <a href="#">3999！大金1.5匹变频空调更安静！</a></div>
-                    <div class="p-price">京东价：
-                        <strong>￥3999.00</strong></div>
-                </li>
-                <li>
-                    <div class="p-img ld">
-                        <a href="#">
-                            <img src="images/shangpinxiangqing/X2.png"></a>
-                    </div>
-                    <div class="p-name">
-                        <a href="#">爸爸爱喜禾（犬子在，不远游！感动无数读者的电子书</a></div>
-                    <div class="p-price">京东价：
-                        <strong>￥1.00</strong></div>
-                </li>
-                <li>
-                    <div class="p-img ld">
-                        <a href="#">
-                            <img src="images/shangpinxiangqing/X3.png"></a>
-                    </div>
-                    <div class="p-name">
-                        <a href="#">【超值】飞利浦21.5英寸LED背光宽屏液晶显示</a></div>
-                    <div class="p-price">京东价：
-                        <strong>￥809.00</strong></div>
-                </li>
-                <li>
-                    <div class="p-img ld">
-                        <a href="#">
-                            <img src="images/shangpinxiangqing/X4.png"></a>
-                    </div>
-                    <div class="p-name">
-                        <a href="#">爸爸爱喜禾（犬子在，不远游！感动无数读者的电子书</a></div>
-                    <div class="p-price">京东价：
-                        <strong>￥1.00</strong></div>
-                </li>
-                <li>
-                    <div class="p-img ld">
-                        <a href="#">
-                            <img src="images/shangpinxiangqing/X5.png"></a>
-                    </div>
-                    <div class="p-name">
-                        <a href="#">【超值】飞利浦21.5英寸LED背光宽屏液晶显示</a></div>
-                    <div class="p-price">京东价：
-                        <strong>￥809.00</strong></div>
-                </li>
+				</c:forEach>
             </ul>
-            <ul class="lh" style="display: none;">
-                <li>
-                    <div class="p-img ld">
-                        <a href="#">
-                            <img src="images/shangpinxiangqing/X-1.png"></a>
-                    </div>
-                    <div class="p-name">
-                        <a href="#">安钛克（Antec）VP 550P 额定550W 120mm静音风扇 主动PFC 黑化外型设计电源</a></div>
-                    <div class="p-price">京东价：
-                        <strong>￥399.00</strong></div>
-                </li>
-                <li>
-                    <div class="p-img ld">
-                        <a href="#">
-                            <img src="images/2.2.jpg"></a>
-                    </div>
-                    <div class="p-name">
-                        <a href="#">G.SKILL（芝奇）RipjawsX DDR3 1600 8G(4G×2条)台式机内存(F3-12800CL9D-8GBXL )</a></div>
-                    <div class="p-price">京东价：
-                        <strong>￥235.00</strong></div>
-                </li>
-                <li>
-                    <div class="p-img ld">
-                        <a href="#">
-                            <img src="images/2.3.jpg"></a>
-                    </div>
-                    <div class="p-name">
-                        <a href="#">希捷（Seagate）1TB ST1000DM003 7200转64M SATA 6Gb/秒 台式机硬盘 建达蓝德 盒装正品</a></div>
-                    <div class="p-price">京东价：
-                        <strong>￥438.00</strong></div>
-                </li>
-                <li>
-                    <div class="p-img ld">
-                        <a href="#">
-                            <img src="images/2.4.jpg"></a>
-                    </div>
-                    <div class="p-name">
-                        <a href="#">华硕(ASUS)P8Z77-V LK主板(Intel Z77/LGA 1155)</a></div>
-                    <div class="p-price">京东价：
-                        <strong>￥899.00</strong></div>
-                </li>
-                <li>
-                    <div class="p-img ld">
-                        <a href="#">
-                            <img src="images/2.5.jpg"></a>
-                    </div>
-                    <div class="p-name">
-                        <a href="#">大水牛（BUBALUS）电脑机箱 经典-A1008 灰黑色（不含电源）</a></div>
-                    <div class="p-price">京东价：
-                        <strong>￥112.00</strong></div>
-                </li>
-            </ul>
-            <ul class="lh" style="display: none;">
-                <li>
-                    <div class="p-img ld">
-                        <a href="#">
-                            <img src="images/3.1.jpg"></a>
-                    </div>
-                    <div class="p-name">
-                        <a href="#">冬季健身TOP1！瑞亚特仰卧板加送俯卧撑架</a></div>
-                    <div class="p-price">京东价：
-                        <strong>￥187.00</strong></div>
-                </li>
-                <li>
-                    <div class="p-img ld">
-                        <a href="#">
-                            <img src="images/3.2.jpg"></a>
-                    </div>
-                    <div class="p-name">
-                        <a href="#">HTC Z715e!双核！魔音耳机！</a></div>
-                    <div class="p-price">京东价：
-                        <strong>￥2399.00</strong></div>
-                </li>
-                <li>
-                    <div class="p-img ld">
-                        <a href="#">
-                            <img src="images/3.3.jpg"></a>
-                    </div>
-                    <div class="p-name">
-                        <a href="#">下单返现150元！格力9片电油汀</a></div>
-                    <div class="p-price">京东价：
-                        <strong>￥449.00</strong></div>
-                </li>
-                <li>
-                    <div class="p-img ld">
-                        <a href="#">
-                            <img src="images/3.4.jpg"></a>
-                    </div>
-                    <div class="p-name">
-                        <a href="#">绿之源净味宝2居室除味超值套装 4000克</a></div>
-                    <div class="p-price">京东价：
-                        <strong>￥449.00</strong></div>
-                </li>
-                <li>
-                    <div class="p-img ld">
-                        <a href="#">
-                            <img src="images/3.5.jpg"></a>
-                    </div>
-                    <div class="p-name">
-                        <a href="#">宏碁i5 4G GT630M 1G独显 月销量破</a></div>
-                    <div class="p-price">京东价：
-                        <strong>￥3599.00</strong></div>
-                </li>
-            </ul>
-            <ul class="lh" style="display: none;">
-                <li>
-                    <div class="p-img ld">
-                        <a href="#">
-                            <img src="images/2.3.jpg"></a>
-                    </div>
-                    <div class="p-name">
-                        <a href="#">希捷（Seagate）1TB ST1000DM003 7200转64M SATA 6Gb/秒 台式机硬盘 建达蓝德 盒装正品</a></div>
-                    <div class="p-price">京东价：
-                        <strong>￥438.00</strong></div>
-                </li>
-                <li>
-                    <div class="p-img ld">
-                        <a href="#">
-                            <img src="images/2.3.jpg"></a>
-                    </div>
-                    <div class="p-name">
-                        <a href="#">希捷（Seagate）1TB ST1000DM003 7200转64M SATA 6Gb/秒 台式机硬盘 建达蓝德 盒装正品</a></div>
-                    <div class="p-price">京东价：
-                        <strong>￥438.00</strong></div>
-                </li>
-                <li>
-                    <div class="p-img ld">
-                        <a href="#">
-                            <img src="images/2.3.jpg"></a>
-                    </div>
-                    <div class="p-name">
-                        <a href="#">希捷（Seagate）1TB ST1000DM003 7200转64M SATA 6Gb/秒 台式机硬盘 建达蓝德 盒装正品</a></div>
-                    <div class="p-price">京东价：
-                        <strong>￥438.00</strong></div>
-                </li>
-                <li>
-                    <div class="p-img ld">
-                        <a href="#">
-                            <img src="images/2.3.jpg"></a>
-                    </div>
-                    <div class="p-name">
-                        <a href="#">希捷（Seagate）1TB ST1000DM003 7200转64M SATA 6Gb/秒 台式机硬盘 建达蓝德 盒装正品</a></div>
-                    <div class="p-price">京东价：
-                        <strong>￥438.00</strong></div>
-                </li>
-                <li>
-                    <div class="p-img ld">
-                        <a href="#">
-                            <img src="images/2.3.jpg"></a>
-                    </div>
-                    <div class="p-name">
-                        <a href="#">希捷（Seagate）1TB ST1000DM003 7200转64M SATA 6Gb/秒 台式机硬盘 建达蓝德 盒装正品</a></div>
-                    <div class="p-price">京东价：
-                        <strong>￥438.00</strong></div>
-                </li>
-            </ul>
-            <ul class="lh" style="display: block;">
-                <li>
-                    <div class="p-img ld">
-                        <a href="#">
-                            <img src="images/2.5.jpg"></a>
-                    </div>
-                    <div class="p-name">
-                        <a href="#">大水牛（BUBALUS）电脑机箱 经典-A1008 灰黑色（不含电源）</a></div>
-                    <div class="p-price">京东价：
-                        <strong>￥112.00</strong></div>
-                </li>
-                <li>
-                    <div class="p-img ld">
-                        <a href="#">
-                            <img src="images/2.5.jpg"></a>
-                    </div>
-                    <div class="p-name">
-                        <a href="#">大水牛（BUBALUS）电脑机箱 经典-A1008 灰黑色（不含电源）</a></div>
-                    <div class="p-price">京东价：
-                        <strong>￥112.00</strong></div>
-                </li>
-                <li>
-                    <div class="p-img ld">
-                        <a href="#">
-                            <img src="images/2.5.jpg"></a>
-                    </div>
-                    <div class="p-name">
-                        <a href="#">大水牛（BUBALUS）电脑机箱 经典-A1008 灰黑色（不含电源）</a></div>
-                    <div class="p-price">京东价：
-                        <strong>￥112.00</strong></div>
-                </li>
-                <li>
-                    <div class="p-img ld">
-                        <a href="#">
-                            <img src="images/2.5.jpg"></a>
-                    </div>
-                    <div class="p-name">
-                        <a href="#">大水牛（BUBALUS）电脑机箱 经典-A1008 灰黑色（不含电源）</a></div>
-                    <div class="p-price">京东价：
-                        <strong>￥112.00</strong></div>
-                </li>
-                <li>
-                    <div class="p-img ld">
-                        <a href="#">
-                            <img src="images/2.5.jpg"></a>
-                    </div>
-                    <div class="p-name">
-                        <a href="#">大水牛（BUBALUS）电脑机箱 经典-A1008 灰黑色（不含电源）</a></div>
-                    <div class="p-price">京东价：
-                        <strong>￥112.00</strong></div>
-                </li>
-            </ul>
+			<ul class="lh" style="display: none;">
+				<c:forEach items="${tuiJianList02}" var="it2" varStatus="status">
+					<%--<div class="Xcontent07"><img  src="${pageContext.request.contextPath}/${it}"></div>--%>
+
+					<li>
+						<input type="hidden" class="ace" name="productid" value="${it2.productid}" />
+						<div class="p-img ld">
+							<a href="${pageContext.request.contextPath}/xiangqing.action?productid=${it2.productid}">
+								<img src="${pageContext.request.contextPath}/${it2.images[0]}"></a>
+						</div>
+						<div class="p-name" style="text-align: center;margin-top: 5px">
+							<a href="${pageContext.request.contextPath}/xiangqing.action?productid=${it2.productid}" >${it2.productname}</a></div>
+						<div class="p-price"  style="text-align: center;">京东价：
+							<strong>￥${it2.productprice}</strong></div>
+					</li>
+				</c:forEach>
+			</ul>
+			<ul class="lh" style="display: none;">
+				<c:forEach items="${tuiJianList03}" var="it3" varStatus="status">
+					<%--<div class="Xcontent07"><img  src="${pageContext.request.contextPath}/${it}"></div>--%>
+
+					<li>
+						<input type="hidden" class="ace" name="productid" value="${it3.productid}" />
+						<div class="p-img ld">
+							<a href="${pageContext.request.contextPath}/xiangqing.action?productid=${it3.productid}">
+								<img src="${pageContext.request.contextPath}/${it3.images[0]}"></a>
+						</div>
+						<div class="p-name" style="text-align: center;margin-top: 5px">
+							<a href="${pageContext.request.contextPath}/xiangqing.action?productid=${it3.productid}" >${it3.productname}</a></div>
+						<div class="p-price"  style="text-align: center;">京东价：
+							<strong>￥${it3.productprice}</strong></div>
+					</li>
+				</c:forEach>
+			</ul>
+			<ul class="lh" style="display: none;">
+				<c:forEach items="${tuiJianList04}" var="it4" varStatus="status">
+					<%--<div class="Xcontent07"><img  src="${pageContext.request.contextPath}/${it}"></div>--%>
+
+					<li>
+						<input type="hidden" class="ace" name="productid" value="${it4.productid}" />
+						<div class="p-img ld">
+							<a href="${pageContext.request.contextPath}/xiangqing.action?productid=${it4.productid}">
+								<img src="${pageContext.request.contextPath}/${it4.images[0]}"></a>
+						</div>
+						<div class="p-name" style="text-align: center;margin-top: 5px">
+							<a href="${pageContext.request.contextPath}/xiangqing.action?productid=${it4.productid}" >${it4.productname}</a></div>
+						<div class="p-price"  style="text-align: center;">京东价：
+							<strong>￥${it4.productprice}</strong></div>
+					</li>
+				</c:forEach>
+			</ul>
+			<ul class="lh" style="display: none;">
+				<c:forEach items="${tuiJianList05}" var="it5" varStatus="status">
+					<%--<div class="Xcontent07"><img  src="${pageContext.request.contextPath}/${it}"></div>--%>
+
+					<li>
+						<input type="hidden" class="ace" name="productid" value="${it5.productid}" />
+						<div class="p-img ld">
+							<a href="${pageContext.request.contextPath}/xiangqing.action?productid=${it5.productid}">
+								<img src="${pageContext.request.contextPath}/${it5.images[0]}"></a>
+						</div>
+						<div class="p-name" style="text-align: center;margin-top: 5px">
+							<a href="${pageContext.request.contextPath}/xiangqing.action?productid=${it5.productid}" >${it5.productname}</a></div>
+						<div class="p-price"  style="text-align: center;">京东价：
+							<strong>￥${it5.productprice}</strong></div>
+					</li>
+				</c:forEach>
+			</ul>
         </div>
     </div>
     <script type="text/javascript">
@@ -1081,7 +589,7 @@
 				<li class="lss">
 					<span>下载手机版</span>
 					<div class="clearfix lss-pa">
-						<div class="fl lss-img"><img src="img/icon/code.png" alt=""></div>
+						<div class="fl lss-img"><img src="${pageContext.request.contextPath}/jsp/users/img/icon/code.png" alt=""></div>
 						<div class="fl" style="padding-left:20px">
 							<h4>扫描下载云购APP</h4>
 							<p>把优惠握在手心</p>
@@ -1129,6 +637,27 @@
         $(this).removeClass("hover");
         $(this).find(".nav a").removeClass("hover");
     })
+</script>
+
+<script type="text/javascript">
+
+	function myfun() {
+		//alert("自动加载") 01  23 45
+        <%--alert("自动加载");--%>
+        <%--alert( ${pingJiaShuList[0].goodcomment});--%>
+        <%--alert( ${pingJiaShuList[0].goodcommentcount});--%>
+
+
+        $(".Xcontent19 span").text(${myProduct.productprice});
+        //alert($(".Xcontent19 span").text());
+
+		var a = $(".Xcontent19 span").text() * 1.2 +"";
+		//alert(a.split(".")[0]+".0")
+
+		$(".Xcontent181 span").text(a.split(".")[0]+".0");
+
+    }
+window.onload=myfun;
 </script>
 </body>
 </html>

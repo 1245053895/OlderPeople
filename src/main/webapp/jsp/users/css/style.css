@@ -223,7 +223,7 @@ body{width: 100%;overflow-x:hidden;}
 .mi-match .row:hover::before{transition:all .3s linear;top:70%;}
 .mi-match .row:hover::after{transition:all .3s linear;top:90%;}
 .mi-match dt{padding-bottom:24px;}
-.mi-match .price{color:#ee4644;margin-left: 95px;}
+.mi-match .price{color:#ee4644;margin-left: 100px;}
 .mi-match .cmt{font-size:10px;color:#B0B0B0;padding-top:18px;}
 /*配件样式*/
 .mi-parts{text-align:center;}
@@ -318,11 +318,11 @@ body{width: 100%;overflow-x:hidden;}
 .mi-hotCmtProd .row{min-height:416px;background: #fff; }
 .mi-hotCmtProd .col img{height:auto;display: block;width: 100%;background: #ccc;}
 .mi-hotCmtProd .content{padding:30px 28px;}
-.mi-hotCmtProd .from{margin-top:30px;}
+.mi-hotCmtProd .from{margin-top:-20px;}
 .mi-hotCmtProd a{float: left;padding:0 10px;margin:10px 0;}
-.mi-hotCmtProd .from{color: #b0b0b0;}
-.mi-hotCmtProd .name{border-left: none;padding-left: 0px;}
-.mi-hotCmtProd .price{color:#ee4644;border-left:solid #ccc 1px;line-height: 12px;margin-top:14px;margin-left: 95px;}
+.mi-hotCmtProd .from{color: #a63130;}
+.mi-hotCmtProd .name{border-left: none;padding-left: 40px;}
+.mi-hotCmtProd .price{color:#ee4644;border-left:solid #ccc 1px;line-height: 12px;margin-top:-24px;margin-left: 125px;}
 
 /*------------------------------------------------------------------------------*/
 /*内容样式设定*/

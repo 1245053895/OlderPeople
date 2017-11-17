@@ -15,14 +15,58 @@
 	<meta name="Description" content="">
 	<meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE">
 	<meta name="renderer" content="webkit">
-	<title>登录.购物商城</title>
+	<title>注册.购物商城</title>
 	<link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/jsp/users/img/icon/favicon.ico">
-	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/jsp/users/css/base.css">
-	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/jsp/users/css/home.css">
+<%--	<link rel="stylesheet" type="text/css" href="css/base.css">
+	<link rel="stylesheet" type="text/css" href="css/home.css">--%>
+	<link href="${pageContext.request.contextPath}/jsp/users/css/zhuce.css" rel="stylesheet" type="text/css" />
+	<script src="${pageContext.request.contextPath}/jsp/users/js/jquery-1.11.3.min.js"></script>
+
+	<script type="text/javascript">
+        function len6to16(self) {
+            var allNext = $(self).nextAll();
+            if (self.value.length < 6 || self.value.length > 18) {
+                $(allNext[0]).show();
+                $(allNext[2]).text('输入内容在6-16位之间');
+            }else{
+                $(allNext[0]).show();
+                $(allNext[2]).hide();
+            }
+
+        }
+        function passwordEQ() {
+            var passwordSet = $(':password');
+            var allNext = $(passwordSet[1]).nextAll();
+            if (passwordSet[0].value != passwordSet[1].value) {
+                $(allNext[0]).show();
+                $(allNext[2]).text('两次密码不一致');
+            }else{
+                $(allNext[0]).show();
+                $(allNext[2]).hide();
+            }
+        }
+        $(function () {
+            $(':button').click(function () {
+                var textBoxSet = $('.regTextBox');
+                var errorSet = $('.error');
+                var tipsSet = $('.tops');
+
+                for (var i = 0; i < textBoxSet.length; i++) {
+                    if (textBoxSet[i].value == undefined || textBoxSet[i].value == '') {
+                        $(errorSet[i]).show();
+                        $(tipsSet[i]).text('请输入内容');
+                    }else{
+                        $(allNext[0]).show();
+                        $(allNext[2]).hide();
+                    }
+                }
+            });
+        });
+	</script>
 </head>
 <body>
 
-<header id="pc-header">
+<%--<header id="pc-header">
 	<div class="center">
 		<div class="pc-fl-logo">
 			<h1>
@@ -30,8 +74,8 @@
 			</h1>
 		</div>
 	</div>
-</header>
-<section>
+</header>--%>
+<%--<section>
 	<div class="pc-login-bj">
 		<div class="center clearfix">
 			<div class="fl"></div>
@@ -66,10 +110,74 @@
 			</div>
 		</div>
 	</div>
-</section>
+</section>--%>
+<div class="wrap">
+	<div class="reg">
+		<div class="head">
+			<a href="index.jsp" class="logo">
+				<img src="img/icon/logo2.png" height="90px" width="200px" style="margin-top: -12px;" />
+			</a>
+		</div>
+		<div class="main">
+			<div class="ad"><img src="${pageContext.request.contextPath}/jsp/users/images/zhuce/zhucebg.jpg" width="730" height="500"/></div>
+			<div class="form">
+				<form method="post" onsubmit="return false" action>
+					<h3>注册孝和商城</h3>
+					<span style="float: right;margin-top:-32px;">已有账号！<a href="login.jsp" style=" text-decoration: none">登录</a></span>
+					<div class="list">
+						<div class="box">
+							<input type="text" class="regTextBox" placeholder="用户名" />
+							<span class="icon"><img src="${pageContext.request.contextPath}/jsp/users/images/zhuce/username.png" /></span>
+							<b class="error">×</b>
+							<span class="tops"></span>
+						</div>
+					</div>
+					<div class="list">
+						<div class="box">
+
+							<input type="text" class="regTextBox" onblur="len6to16(this)" placeholder="手机号" />
+							<span class="icon"><img src="${pageContext.request.contextPath}/jsp/users/images/zhuce/telephone.png" /></span>
+							<b class="error">×</b>
+							<span class="tops"></span>
+						</div>
+					</div>
+					<div class="list">
+						<div class="box">
+							<input type="password" class="regTextBox" onblur="len6to16(this)" placeholder="密码"  />
+							<span class="icon"><img src="${pageContext.request.contextPath}/jsp/users/images/zhuce/key.png" /></span>
+							<span class="error">×</span>
+							<span class="tops"></span>
+						</div>
+					</div>
+					<div class="list">
+						<div class="box">
+							<input type="password" class="regTextBox" onblur="passwordEQ()" placeholder="确认密码" />
+							<span class="icon"><img src="${pageContext.request.contextPath}/jsp/users/images/zhuce/key.png" /></span>
+							<b class="error">×</b>
+							<span class="tops"></span>
+						</div>
+					</div>
+					<div>
+						<a href="#"><input type="button" value="立即注册" /></a>
+					</div>
+					<input type="checkbox" checked="checked" style="margin-top:10px;" />同意
+					<a href="#" style="margin-top:10px;margin-left:-3px; text-decoration:none;">《孝和商城注册条款》</a>
+					<div class="fastway">
+						<h3>无需注册，即可登录</h3>
+					<div class="moreregister clearfix">
+						<a href="#"><img src="${pageContext.request.contextPath}/jsp/users/img/icon/weixin.png" alt="">微信登录</a>
+						<a href="#"><img src="${pageContext.request.contextPath}/jsp/users/img/icon/weibo.png" alt="">微博登录</a>
+						<a href="#" style="margin-right:0"><img src="${pageContext.request.contextPath}/jsp/users/img/icon/tengxun.png" alt="">QQ登录</a>
+					</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
 <footer>
-	<div class="center">
-		<div class="pc-footer-login">
+	<div class="foot">
+		<div class="foots">
 			<p>
 				<!--关于我们 招聘信息 联系我们 商家入驻 商家后台 商家社区 ©2017 Yungouwu.com 北京云购物网络有限公司-->
 				<a href="">关于我们</a><span  style="color:#999"> | </span>

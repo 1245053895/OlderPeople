@@ -114,8 +114,10 @@
 			</div>
 			<div class="fr pc-header-list top-nav">
 				<ul>
-					<li><a href="#">收藏夹</a></li>
-					<li><a href="my-dingdan.jsp">我的订单</a></li>
+					<li><a href="${pageContext.request.contextPath}/jsp/users/my-dingdan.jsp?flag=1">收藏夹</a></li>
+					<li><a href="${pageContext.request.contextPath}/jsp/users/my-dingdan.jsp?flag=2">我的订单</a></li>
+					<!-- flag=0 表示跳到订单页面; flag=1 表示跳到收藏页面;flag=2 表示跳到购物车页面; ...-->
+					<li><a href="${pageContext.request.contextPath}/jsp/users/my-dingdan.jsp?flag=0">我的订单</a></li>
 					<li>
 						<div class="nav"><i class="pc-top-icon"></i><a href="#">个人中心</a></div>
 						<div class="con">
@@ -170,7 +172,7 @@
 		</div>
 	</div>
 	<!--  顶部    start-->
-	<div class="yHeader1">
+	<div class="yHeader1" style="margin: 0px auto">
 		<!-- 导航   start  -->
 		<div class="yNavIndex">
 			<div class="pullDown">
@@ -431,11 +433,11 @@
 				<section class="main-right">
 					<div class="slider">
 						<ul class="contain">
-							<li class="item"><a href="#" alt=""><img src="./images/index_slider_pic1.jpg"></a></li>
-							<li class="item"><a href="#" alt=""><img src="./images/index_slider_pic2.jpg"></a></li>
-							<li class="item"><a href="#" alt=""><img src="./images/index_slider_pic3.jpg"></a></li>
-							<li class="item"><a href="#" alt=""><img src="./images/index_slider_pic4.jpg"></a></li>
-							<li class="item"><a href="#" alt=""><img src="./images/index_slider_pic5.jpg"></a></li>
+							<li class="item"><a href="#" alt=""><img src="${pageContext.request.contextPath}/jsp/users/images/index_slider_pic1.jpg"></a></li>
+							<li class="item"><a href="#" alt=""><img src="${pageContext.request.contextPath}/jsp/users/images/index_slider_pic2.jpg"></a></li>
+							<li class="item"><a href="#" alt=""><img src="${pageContext.request.contextPath}/jsp/users/images/index_slider_pic3.jpg"></a></li>
+							<li class="item"><a href="#" alt=""><img src="${pageContext.request.contextPath}/jsp/users/images/index_slider_pic4.jpg"></a></li>
+							<li class="item"><a href="#" alt=""><img src="${pageContext.request.contextPath}/jsp/users/images/index_slider_pic5.jpg"></a></li>
 						</ul>
 					</div>
 				</section>
@@ -479,7 +481,7 @@
 							<ul class="m-cols m-col-5">
 								<li class="col sku-item ">
 									<dl class="row">
-										<dt><img src="./images/single/single1.png"></dt>
+										<dt><img src="${pageContext.request.contextPath}/jsp/users/images/single/single1.png"></dt>
 										<dd class="name"><a href="page.jsp">小米电视3S 43英寸</a></dd>
 										<dd class="desc">4GB内存+128GB闪存，陶瓷版</dd>
 										<dd class="price">1499元</dd>
@@ -487,7 +489,7 @@
 								</li>
 								<li class="col sku-item ">
 									<dl class="row">
-										<dt><img src="./images/single/single2.png"></dt>
+										<dt><img src="${pageContext.request.contextPath}/jsp/users/images/single/single2.png"></dt>
 										<dd class="name">小米电视3S 43英寸</dd>
 										<dd class="desc">4GB内存+128GB闪存，陶瓷版</dd>
 										<dd class="price">1499元</dd>
@@ -495,7 +497,7 @@
 								</li>
 								<li class="col sku-item ">
 									<dl class="row">
-										<dt><img src="./images/single/single3.png"></dt>
+										<dt><img src="${pageContext.request.contextPath}/jsp/users/images/single/single3.png"></dt>
 										<dd class="name">小米电视3S 43英寸</dd>
 										<dd class="desc">4GB内存+128GB闪存，陶瓷版</dd>
 										<dd class="price">1499元</dd>
@@ -503,7 +505,7 @@
 								</li>
 								<li class="col sku-item ">
 									<dl class="row">
-										<dt><img src="./images/single/single4.png"></dt>
+										<dt><img src="${pageContext.request.contextPath}/jsp/users/images/single/single4.png"></dt>
 										<dd class="name">小米电视3S 43英寸</dd>
 										<dd class="desc">4GB内存+128GB闪存，陶瓷版</dd>
 										<dd class="price">1499元</dd>
@@ -511,7 +513,7 @@
 								</li>
 								<li class="col sku-item ">
 									<dl class="row">
-										<dt><img src="./images/single/single5.jpg"></dt>
+										<dt><img src="${pageContext.request.contextPath}/jsp/users/images/single/single5.jpg"></dt>
 										<dd class="name">小米电视3S 43英寸</dd>
 										<dd class="desc">4GB内存+128GB闪存，陶瓷版</dd>
 										<dd class="price">1499元</dd>
@@ -523,7 +525,7 @@
 							<ul class="m-cols m-col-5">
 								<li class="col sku-item ">
 									<dl class="row">
-										<dt><img src="./images/single/single6.png"></dt>
+										<dt><img src="${pageContext.request.contextPath}/jsp/users/images/single/single6.png"></dt>
 										<dd class="name">小米电视3S 43英寸</dd>
 										<dd class="desc">4GB内存+128GB闪存，陶瓷版</dd>
 										<dd class="price">1499元</dd>
@@ -531,7 +533,7 @@
 								</li>
 								<li class="col sku-item ">
 									<dl class="row">
-										<dt><img src="./images/single/single10.png"></dt>
+										<dt><img src="${pageContext.request.contextPath}/jsp/users/images/single/single10.png"></dt>
 										<dd class="name">小米电视3S 43英寸</dd>
 										<dd class="desc">4GB内存+128GB闪存，陶瓷版</dd>
 										<dd class="price">1499元</dd>
@@ -539,7 +541,7 @@
 								</li>
 								<li class="col sku-item ">
 									<dl class="row">
-										<dt><img src="./images/single/single7.png"></dt>
+										<dt><img src="${pageContext.request.contextPath}/jsp/users/images/single/single7.png"></dt>
 										<dd class="name">小米电视3S 43英寸</dd>
 										<dd class="desc">4GB内存+128GB闪存，陶瓷版</dd>
 										<dd class="price">1499元</dd>
@@ -547,7 +549,7 @@
 								</li>
 								<li class="col sku-item ">
 									<dl class="row">
-										<dt><img src="./images/single/single8.png"></dt>
+										<dt><img src="${pageContext.request.contextPath}/jsp/users/images/single/single8.png"></dt>
 										<dd class="name">小米电视3S 43英寸</dd>
 										<dd class="desc">4GB内存+128GB闪存，陶瓷版</dd>
 										<dd class="price">1499元</dd>
@@ -555,7 +557,7 @@
 								</li>
 								<li class="col sku-item ">
 									<dl class="row">
-										<dt><img src="./images/single/single9.jpg"></dt>
+										<dt><img src="${pageContext.request.contextPath}/jsp/users/images/single/single9.jpg"></dt>
 										<dd class="name">小米电视3S 43英寸</dd>
 										<dd class="desc">4GB内存+128GB闪存，陶瓷版</dd>
 										<dd class="price">1499元</dd>

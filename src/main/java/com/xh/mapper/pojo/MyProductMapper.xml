@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xh.mapper.pojo.MyProductMapper">
+  <resultMap id="BaseResultMap" type="com.xh.po.vo.MyProduct">
+    <id column="ProductId" jdbcType="INTEGER" property="productid" />
+    <result column="ProductTypeId" jdbcType="INTEGER" property="producttypeid" />
+    <result column="ProductName" jdbcType="VARCHAR" property="productname" />
+    <result column="ProductPrice" jdbcType="DOUBLE" property="productprice" />
+    <result column="PictureSizes" jdbcType="VARCHAR" property="picturesizes" />
+    <result column="PictureColors" jdbcType="VARCHAR" property="picturecolors" />
+    <result column="ProductLookCount" jdbcType="INTEGER" property="productlookcount" />
+    <result column="ProductDescribe" jdbcType="VARCHAR" property="productdescribe" />
+    <result column="ProductStoreTime" jdbcType="TIMESTAMP" property="productstoretime" />
+    <result column="ProductPicture" jdbcType="VARCHAR" property="productpicture" />
+    <result column="ProductNew" jdbcType="INTEGER" property="productnew" />
+    <result column="ProducthotSale" jdbcType="CHAR" property="producthotsale" />
+    <result column="ProductDisabled" jdbcType="CHAR" property="productdisabled" />
+    <result column="ProductCredits" jdbcType="CHAR" property="productcredits" />
+    <result column="ProductCreateTime" jdbcType="TIMESTAMP" property="productcreatetime" />
+    <result column="Product_A" jdbcType="VARCHAR" property="productA" />
+    <result column="Product_B" jdbcType="VARCHAR" property="productB" />
+    <result column="Product_C" jdbcType="VARCHAR" property="productC" />
+  </resultMap>
+
+
+  <sql id="Base_Column_List">
+    ProductId, ProductTypeId, ProductName, ProductPrice, PictureSizes, PictureColors, 
+    ProductLookCount, ProductDescribe, ProductStoreTime, ProductPicture, ProductNew, 
+    ProducthotSale, ProductDisabled, ProductCredits, ProductCreateTime, Product_A, Product_B, 
+    Product_C
+  </sql>
+         <!--疯狂抢购 :订单中数量最多的商品-->
+  <select id="tuiJian01"  resultType="com.xh.po.vo.TuiJian">
+  SELECT a.ProductId AS productid,SUM(ShoppingCount) AS shuliang,ProductName AS productname,ProductPrice AS productprice,ProductPicture AS productpicture
+  FROM orderproduct a,product b
+  WHERE a.ProductId=b.ProductId
+  GROUP BY ProductId
+  ORDER BY SUM(ShoppingCount) DESC
+  LIMIT 0,7;
+  </select>
+        <!--热评商品 :评论最多的商品-->
+  <select id="tuiJian02"  resultType="com.xh.po.vo.TuiJian">
+  SELECT a.ProductId AS productid,COUNT(`Comment`) AS shuliang,ProductName AS productname,ProductPrice AS productprice,ProductPicture AS productpicture
+  FROM `comment` a,product b
+  WHERE a.ProductId=b.ProductId
+  GROUP BY ProductId
+  ORDER BY COUNT(`Comment`) DESC
+  LIMIT 0,7;
+  </select>
+  <!--热卖商品 :标注热销的商品-->
+  <select id="tuiJian03"  resultType="com.xh.po.vo.TuiJian">
+   SELECT ProductId AS productid,ProductName AS productname,ProductPrice AS productprice,ProductPicture AS productpicture
+    FROM product
+    where ProducthotSale=1
+  LIMIT 0,7;
+  </select>
+  <!--猜您喜欢 :浏览次数最多的商品-->
+  <select id="tuiJian04"  resultType="com.xh.po.vo.TuiJian">
+SELECT ProductId AS productid,ProductName AS productname,ProductPrice AS productprice,ProductPicture AS productpicture
+    FROM product
+    ORDER BY ProductLookCount DESC
+  LIMIT 0,7;
+  </select>
+  <!--新品上架 :标注新品的商品-->
+  <select id="tuiJian05"  resultType="com.xh.po.vo.TuiJian">
+SELECT ProductId AS productid,ProductName AS productname,ProductPrice AS productprice,ProductPicture AS productpicture
+    FROM product
+    where ProductNew=1
+ LIMIT 0,7;
+  </select>
+
+
+
+
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultType="com.xh.po.vo.MyProduct">
+    select 
+    <include refid="Base_Column_List" />
+    from product
+    where ProductId = #{productid,jdbcType=INTEGER}
+  </select>
+
+  <select id="pingJiaShu1" parameterType="java.lang.Integer" resultType="com.xh.po.vo.PingJiaShu">
+  SELECT COUNT(*) AS goodcommentcount
+  FROM `comment`
+  WHERE ProductId = #{productid,jdbcType=INTEGER}
+  </select>
+
+  <select id="pingJia001" parameterType="java.lang.Integer"  resultType="com.xh.po.vo.PingJiaShu">
+  SELECT COUNT(*) AS goodcommentcount
+FROM `comment`
+WHERE ProductId = #{productid,jdbcType=INTEGER} AND GoodComment IN (0,1)
+</select>
+  <select id="pingJia002" parameterType="java.lang.Integer"  resultType="com.xh.po.vo.PingJiaShu">
+   SELECT COUNT(*) AS goodcommentcount
+FROM `comment`
+WHERE ProductId = #{productid,jdbcType=INTEGER} AND GoodComment IN (2,3)
+  </select>
+  <select id="pingJia003" parameterType="java.lang.Integer"  resultType="com.xh.po.vo.PingJiaShu">
+    SELECT COUNT(*) AS goodcommentcount
+FROM `comment`
+WHERE ProductId = #{productid,jdbcType=INTEGER} AND GoodComment IN (4,5)
+  </select>
+
+  <!--好评中评差评-->
+  <select id="pingJiaShu" parameterType="java.lang.Integer" resultType="com.xh.po.vo.PingJiaShu">
+   SELECT GoodComment AS goodcomment,COUNT(*)AS goodcommentcount
+FROM `comment`
+WHERE ProductId = #{productid,jdbcType=INTEGER}
+GROUP BY GoodComment
+  </select>
+
+<!--关于展示商品详情评价的-->
+  <select id="pingJia" parameterType="java.lang.Integer" resultType="com.xh.po.vo.PingJia">
+    SELECT b.UserName AS username,a.`Comment` AS ccomment,a.GoodComment AS goodcomment,a.CommentTime AS commenttime,a.CommentReview AS commentreview
+FROM `comment` a,`user` b
+WHERE a.UserId=b.UserId AND a.ProductId= #{productid,jdbcType=INTEGER}
+  </select>
+
+</mapper>

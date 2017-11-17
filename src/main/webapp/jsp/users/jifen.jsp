@@ -1,5 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmd" uri="http://java.sun.com/jstl/fmt_rt" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%--
   Created by IntelliJ IDEA.
   User: Administrator
@@ -26,30 +26,6 @@
 	<script type="text/javascript" src="${pageContext.request.contextPath}/jsp/users/js/index.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/jsp/users/js/modernizr-custom-v2.7.1.min.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/jsp/users/js/jquery.SuperSlide.js"></script>
-	<script src="${pageContext.request.contextPath}/jsp/users/js/jquery-1.8.3.min.js"></script>
-	<script src="${pageContext.request.contextPath}/jsp/users/js/jquery-labelauty.js"></script>
-	<script>
-        $(function(){
-            $("#dingdan ul li").click(function(){
-                $("#dingdan ul li a").removeClass("dingdans");
-                $(this).find("a").addClass("dingdans");
-            });
-        });
-        function change(i){
-
-        }
-	</script>
-	<script>
-        $(function(){
-            $("#leftinfo dl dd").click(function(){
-                $("#leftinfo dl dd a").removeClass("leftinfos");
-                $(this).find("a").addClass("leftinfos");
-            });
-        });
-        function change(i){
-
-        }
-	</script>
 	<script type="text/javascript">
 
         var intDiff = parseInt(90000);//倒计时总秒数量
@@ -81,7 +57,7 @@
         });//倒计时结束
 
         $(function(){
-            /*======右按钮======*/
+			/*======右按钮======*/
             $(".you").click(function(){
                 nextscroll();
             });
@@ -94,7 +70,7 @@
                     $(this).css("margin-left","0px");
                 });
             };
-            /*========左按钮=========*/
+			/*========左按钮=========*/
             $(".zuo").click(function(){
                 var vcon = $(".v_cont");
                 var offset = ($(".v_cont li").width()*-1);
@@ -145,13 +121,38 @@
 
         })
 	</script>
+	<script>
+        $(function(){
+            $("#dingdan ul li").click(function(){
+                $("#dingdan ul li a").removeClass("dingdans");
+                $(this).find("a").addClass("dingdans");
+            });
+        });
+        function change(i){
 
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/jsp/users/css/jquery-labelauty.css">
-	<style>
-		/*ul { list-style-type: none;}*/
-		li { display: inline-block;}
-		li { margin: 0px 0;}
-		input.labelauty + label { font: 12px "Microsoft Yahei";}
+        }
+	</script>
+	<script>
+        $(function(){
+            $("#leftinfo dl dd").click(function(){
+                $("#leftinfo dl dd a").removeClass("leftinfos");
+                $(this).find("a").addClass("leftinfos");
+            });
+        });
+        function change(i){
+
+        }
+	</script>
+
+	<style type="text/css">
+		img{
+			float: left;
+			width: 60px;
+			height: 60px;
+			overflow: hidden;
+			text-align: center;
+			margin: 0 10px 0 20px;
+		}
 	</style>
 
 </head>
@@ -160,23 +161,16 @@
 <header id="pc-header">
 	<div class="pc-header-nav">
 		<div class="pc-header-con">
-			<c:if test="${empty sessionScope.user.userid}">
-				<div class="fl pc-header-link" >您好！欢迎来孝和集团电子商城
-					<a href="/LoginPage.action" target="_blank">请登录</a>
-					<a href="register.jsp" target="_blank"> 免费注册</a>
-				</div>
-			</c:if>
-			<c:if test="${not empty sessionScope.user.userid}">
-				<div class="fl pc-header-link" >${sessionScope.user.username}您好！欢迎来孝和集团电子商城
-					<a target="_self" href="${pageContext.request.contextPath}/ExitLogin.action" target="_blank"> 退出登录</a>
-				</div>
-			</c:if>
+			<div class="fl pc-header-link" >您好！，欢迎来孝和集团电子商城
+				<a href="login.html" target="_blank">请登录</a>
+				<a href="register.html" target="_blank"> 免费注册</a>
+			</div>
 			<div class="fr pc-header-list top-nav">
 				<ul>
 					<li><a href="#">收藏夹</a></li>
 					<li><a href="my-dingdan.jsp">我的订单</a></li>
 					<li>
-						<div class="nav"><i class="pc-top-icon"></i><a href="/CustomerInformation.action">个人中心</a></div>
+						<div class="nav"><i class="pc-top-icon"></i><a href="#">个人中心</a></div>
 						<div class="con">
 							<dl>
 								<dt><a href="">个人资料</a></dt>
@@ -247,12 +241,11 @@
 
 </header>
 
-
 <section id="member">
 	<div class="member-center clearfix">
 		<div class="member-left fl">
 			<div class="member-apart clearfix">
-				<div class="fl"><a href="#"><img src="jsp/users/img/mem.png"></a></div>
+				<div class="fl"><a href="#"><img src="${pageContext.request.contextPath}/jsp/users/img/mem.png"></a></div>
 				<div class="fl">
 					<p>用户名：</p>
 					<p><a href="#">${sessionScope.user.username}</a></p>
@@ -265,8 +258,8 @@
 					<dt>个人中心</dt>
 					<dd><a href="/CustomerInformation.action">个人资料</a></dd>
 					<dd><a href="/CustomersAddress.action">收货地址</a></dd>
-					<dd><a href="#">修改登录密码</a></dd>
-					<dd><a href="#">我的积分</a></dd>
+					<dd><a href="/updateLoginPassword.action">修改登录密码</a></dd>
+					<dd><a href="/MyCredits.action">我的积分</a></dd>
 				</dl>
 				<%--<dl  onclick = "change(this);">
 					<dt>客户服务</dt>
@@ -277,7 +270,7 @@
 		</div>
 		<div class="member-right fr">
 			<div class="member-head">
-				<div class="member-heels fl"><h2>我的资料</h2></div>
+				<div class="member-heels fl"><h2>我的积分</h2></div>
 			</div>
 			<div class="member-border">
 				<!--
@@ -302,85 +295,76 @@
                                 </div>
                 -->
 				<div class="member-caution clearfix">
-					<form>
 					<ul>
 						<li class="clearfix">
 							<div class="warn1"></div>
-							<div class="warn2">用户名</div>
-							<div class="warn3"><input class="inputx" type="text" name="${sessionScope.user.username}" value="${sessionScope.user.username}"></div>
-							<div class="warn4"><a  href="/CustomerUpdate.action">修改</a> </div>
+							<div class="warn2">可用的积分</div>
+							<div class="warn2" style="color: #ea4949;font-size: 16px;border: none">${totalCreditsById.totalCredits}</div>
 						</li>
 						<li class="clearfix">
-							<div class="warn1"></div>
-
-							<div class="warn2">性别</div>
-							<span class="warn3">
-
-								<ul style="height: 0px;margin-top: -10px;margin-left: -25px">
-									<li style="border-bottom: 0px;"><input type="radio" name="${sessionScope.user.usersex}" data-labelauty="男" value="1" <c:if test="${sessionScope.user.usersex==1}">checked></c:if></li>
-									<li style="border-bottom: 0px;"><input type="radio" name="${sessionScope.user.usersex}" data-labelauty="女" value="0" <c:if test="${sessionScope.user.usersex==0}">checked></c:if></li>
-								</ul>
-
-
-
-							</span>
-							<div class="warn4"><a href="#">修改</a></div>
+							<%--<div class="warn1"></div>--%>
+							<%--<div class="warn2">登录密码</div>--%>
+							<%--<div class="warn3">互联网账号存在被盗风险，建议您定期更改密码以保护账户安全。</div>--%>
+							<%--<div class="warn4"><a href="#">修改</a> </div>--%>
+							<div class="warn2" style="margin-left: 10px;border: none">商品名称</div>
+							<div class="warn2" style="margin-left: 260px;border: none">积分变化</div>
+							<div class="warn2" style="margin-left: 200px;border: none">日期</div>
 						</li>
 
+						<c:forEach items="${totalCreditsByIds}" var="totalCreditsById">
 						<li class="clearfix">
-							<div class="warn1"></div>
-							<div class="warn2">真实姓名</div>
-							<div class="warn3"><input class="inputx" type="text" name="${sessionScope.user.userrealname}" value="${sessionScope.user.userrealname}">  </div>
-							<div class="warn4"><a href="#">修改</a> </div>
-						</li>
-
-						<li class="clearfix">
-							<div class="warn1"></div>
-							<div class="warn2">出生年月</div>
-							<!--
-                                                        <div class="warn3">您验证的手机： <i class="reds">134*****693</i>   若已丢失或停用，请立即更换，<i class="reds">避免账户被盗</i></div>
-                                                        <div class="warn5"><p>解绑请咨询搜小悦官方客服 <i>souyue@zhongsou.com  </i></p></div>
-                            -->
-							<div class="warn3">
-								<select style="width: 80px">
-									<option>2017</option>
-									<option>2016</option>
-									<option>2015</option>
-									<option>2014</option>
-								</select> 年
-								<select style="margin-left: 20px;width: 60px">
-									<option>1</option>
-									<option>2</option>
-									<option>3</option>
-									<option>4</option>
-								</select> 月
-								<select style="margin-left: 20px;width: 60px">
-									<option>1</option>
-									<option>2</option>
-									<option>3</option>
-									<option>4</option>
-								</select> 日
+							<div class="warn2" style="margin-left: 10px;border: none;font-weight: normal;width: 380px;height: 60px">
+								<a class="img" href=""><img src="${totalCreditsById.productpicture}" width="60px" height="60px"></a>
+								<a style="width: 290px;height: 40px;overflow: hidden;line-height: 20px;text-align: left;display: block">${totalCreditsById.productname}</a>
+								<span style="height: 20px;display: block;line-height: 20px;text-align: left">编号：${totalCreditsById.productid}</span>
 							</div>
-							<div class="warn4"><a href="#">修改</a></div>
+							<div class="warn2" style="margin-left: 15px;border: none;font-weight: normal;height: 60px">
+								<span style="font-size: 24px;font-weight: 700;text-align: center;color: #ea4949;line-height: 60px">+${totalCreditsById.productcredits}</span>
+							</div>
+							<div class="warn2" style="float: right;margin-right: -40px;border: none;font-weight: normal;height: 60px;width: 300px;line-height: 60px"><fmt:formatDate value="${totalCreditsById.endtime}" pattern="yyyy-MM-dd HH:mm:ss"/>
+							</div>
 						</li>
+						</c:forEach>
 
-						<li class="clearfix">
-							<div class="warn6"></div>
-							<div class="warn2">邮箱地址</div>
-							<div class="warn3" id="text"><input class="inputx" type="text" name="${sessionScope.user.useremail}" value="${sessionScope.user.useremail}"> </div>
-							<!--							<div class="warn5"><a href="#">支付密码管理</a></div>-->
-							<div class="warn4"><a href="#" onClick="Guestbook_iew(12)">修改</a> </div>
-						</li>
+						<!--
+                                                <li class="clearfix">
+                                                    <div class="warn1"></div>
+                                                    <div class="warn2">密保问题</div>
+                                                    <div class="warn3">建议您设置密保问题。  </div>
+                                                    <div class="warn4"><a href="#">设置密保</a> </div>
+                                                </li>
+                        -->
+						<%--<li class="clearfix">--%>
+						<%--<div class="warn1"></div>--%>
+						<%--<div class="warn2">验证手机</div>--%>
+						<%----%>
+						<%--<div class="warn3">134*****693  </div>--%>
+						<%--<span style="margin-left: -400px; height:33px; line-height:33px; float:left; color: #A8A8A8;font-size: 12px">若已丢失或停用，请立即更换，避免账户被盗</span>--%>
+						<%--<!----%>
+						<%--<div class="warn3">您验证的手机：  --%>
+						<%--<i class="reds">134*****693</i>--%>
+						<%--若已丢失或停用，请立即更换，--%>
+						<%--<i class="reds">避免账户被盗</i>--%>
+						<%--</div>--%>
+						<%---->--%>
+						<%--<!--							<div class="warn5"><p>解绑请咨询搜小悦官方客服 <i>souyue@zhongsou.com  </i></p></div>-->--%>
+						<%--<div class="warn4"><a href="#">更换</a> </div>--%>
+						<%--</li>--%>
+						<!--
+                                                <li class="clearfix">
+                                                    <div class="warn6"></div>
+                                                    <div class="warn2">支付密码</div>
+                                                    <div class="warn3">安全程度：  建议您设置更高强度的密码。</div>
+                                                    <div class="warn5"><a href="#">支付密码管理</a></div>
+                                                </li>
+                        -->
 					</ul>
-					</form>
-
-
-					<div class="member-prompt">
-						<p>安全提示：</p>
-						<p>您当前IP地址是：<i class="reds">110.106.0.01</i>  北京市          上次登录的TP： 2015-09-16  <i class="reds">110.106.0.02 </i> 天津市</p>
-						<p>1. 注意防范进入钓鱼网站，不要轻信各种即时通讯工具发送的商品或支付链接，谨防网购诈骗。</p>
-						<p>2. 建议您安装杀毒软件，并定期更新操作系统等软件补丁，确保账户及交易安全。      </p>
-					</div>
+					<%--<div class="member-prompt">--%>
+					<%--<p>安全提示：</p>--%>
+					<%--<p>您当前IP地址是：<i class="reds">110.106.0.01</i>  北京市          上次登录的TP： 2015-09-16  <i class="reds">110.106.0.02 </i> 天津市</p>--%>
+					<%--<p>1. 注意防范进入钓鱼网站，不要轻信各种即时通讯工具发送的商品或支付链接，谨防网购诈骗。</p>--%>
+					<%--<p>2. 建议您安装杀毒软件，并定期更新操作系统等软件补丁，确保账户及交易安全。      </p>--%>
+					<%--</div>--%>
 				</div>
 			</div>
 		</div>
@@ -477,20 +461,6 @@
         $(this).removeClass("hover");
         $(this).find(".nav a").removeClass("hover");
     })
-
-    function update(obj,id){
-        layer.confirm('确认要修改吗？',{icon:0,},function(index){
-            $(obj).parents("tr").remove();
-            layer.msg('已修改!',{icon:1,time:1000});
-            window.location.href="${pageContext.request.contextPath}/CustomerUpdate.action?Userid="+id;
-        });
-    }
-
-</script>
-<script>
-    $(function(){
-        $(':input').labelauty();
-    });
 </script>
 </body>
 </html>

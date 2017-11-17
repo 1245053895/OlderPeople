@@ -16,7 +16,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE">
 	<meta name="renderer" content="webkit">
 	<title>注册.购物商城</title>
-	<link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/jsp/users/img/icon/favicon.ico">
+	<link rel="shortcut icon" type="${pageContext.request.contextPath}/image/x-icon" href="${pageContext.request.contextPath}/jsp/users/img/icon/favicon.ico">
 <%--	<link rel="stylesheet" type="text/css" href="css/base.css">
 	<link rel="stylesheet" type="text/css" href="css/home.css">--%>
 	<link href="${pageContext.request.contextPath}/jsp/users/css/zhuce.css" rel="stylesheet" type="text/css" />
@@ -56,8 +56,9 @@
                         $(errorSet[i]).show();
                         $(tipsSet[i]).text('请输入内容');
                     }else{
-                        $(allNext[0]).show();
-                        $(allNext[2]).hide();
+                        /*$(allNext[0]).show();
+                        $(allNext[2]).hide();*/
+                        $("#form_submit").submit();
                     }
                 }
             });
@@ -115,18 +116,19 @@
 	<div class="reg">
 		<div class="head">
 			<a href="index.jsp" class="logo">
-				<img src="img/icon/logo2.png" height="90px" width="200px" style="margin-top: -12px;" />
+				<img src="${pageContext.request.contextPath}/jsp/users/img/icon/logo2.png" height="90px" width="200px" style="margin-top: -12px;" />
 			</a>
 		</div>
 		<div class="main">
 			<div class="ad"><img src="${pageContext.request.contextPath}/jsp/users/images/zhuce/zhucebg.jpg" width="730" height="500"/></div>
 			<div class="form">
-				<form method="post" onsubmit="return false" action>
+				<%--<form method="post" onsubmit="return false" action>--%>
 					<h3>注册孝和商城</h3>
-					<span style="float: right;margin-top:-32px;">已有账号！<a href="login.jsp" style=" text-decoration: none">登录</a></span>
+					<span style="float: right;margin-top:-32px;">已有账号！<a href="${pageContext.request.contextPath}/LoginPage.action" style=" text-decoration: none">登录</a></span>
+					<form id="form_submit" action="${pageContext.request.contextPath}/CustomerReginster.action" method="post">
 					<div class="list">
 						<div class="box">
-							<input type="text" class="regTextBox" placeholder="用户名" />
+							<input type="text" name="username" class="regTextBox" placeholder="用户名" />
 							<span class="icon"><img src="${pageContext.request.contextPath}/jsp/users/images/zhuce/username.png" /></span>
 							<b class="error">×</b>
 							<span class="tops"></span>
@@ -135,7 +137,7 @@
 					<div class="list">
 						<div class="box">
 
-							<input type="text" class="regTextBox" onblur="len6to16(this)" placeholder="手机号" />
+							<input type="text" name="userphone" class="regTextBox" onblur="len6to16(this)" placeholder="手机号" />
 							<span class="icon"><img src="${pageContext.request.contextPath}/jsp/users/images/zhuce/telephone.png" /></span>
 							<b class="error">×</b>
 							<span class="tops"></span>
@@ -143,7 +145,7 @@
 					</div>
 					<div class="list">
 						<div class="box">
-							<input type="password" class="regTextBox" onblur="len6to16(this)" placeholder="密码"  />
+							<input type="password" id="password" name="userpwd" class="regTextBox" onblur="len6to16(this)" placeholder="密码"  />
 							<span class="icon"><img src="${pageContext.request.contextPath}/jsp/users/images/zhuce/key.png" /></span>
 							<span class="error">×</span>
 							<span class="tops"></span>
@@ -151,15 +153,19 @@
 					</div>
 					<div class="list">
 						<div class="box">
-							<input type="password" class="regTextBox" onblur="passwordEQ()" placeholder="确认密码" />
+							<input type="password" id="confirmpwd" name="againpwd" class="regTextBox" onblur="passwordEQ()" placeholder="确认密码" />
 							<span class="icon"><img src="${pageContext.request.contextPath}/jsp/users/images/zhuce/key.png" /></span>
 							<b class="error">×</b>
 							<span class="tops"></span>
 						</div>
 					</div>
 					<div>
-						<a href="#"><input type="button" value="立即注册" /></a>
+						<%--<a href="javascript: $('#form_submit').submit;"><input type="button" value="立即注册" /></a>--%>
+						<a href="javascript:void(0)"><input type="button" value="立即注册" /></a>
 					</div>
+					</form>
+
+
 					<input type="checkbox" checked="checked" style="margin-top:10px;" />同意
 					<a href="#" style="margin-top:10px;margin-left:-3px; text-decoration:none;">《孝和商城注册条款》</a>
 					<div class="fastway">
@@ -170,7 +176,7 @@
 						<a href="#" style="margin-right:0"><img src="${pageContext.request.contextPath}/jsp/users/img/icon/tengxun.png" alt="">QQ登录</a>
 					</div>
 					</div>
-				</form>
+				<%--</form>--%>
 			</div>
 		</div>
 	</div>

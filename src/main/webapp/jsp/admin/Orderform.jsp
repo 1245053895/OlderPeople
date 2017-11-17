@@ -214,7 +214,7 @@
             <label class="titleStyle">订单号 :&nbsp;</label><span id="order_id" class="textColor">1235244</span>
         </div>
         <div style="clear: both">
-            <label class="titleStyle">购买时间 : 距离现在&nbsp;</label><span id="day" class="textColor">7</span><label class="titleStyle">&nbsp;天</label><label id="prompting"></label>
+            <label class="titleStyle">购买时间 : 距离现在&nbsp;</label><span id="day" class="textColor">7</span><label class="titleStyle">&nbsp;天</label><label id="<%--prompting--%>"></label>
         </div>
         <div style="clear: both">
             <label class="titleStyle">退货理由 :&nbsp;</label><span id="cause" class="textColor">我不想要了我不想要了我不想要了我不想要了我不想要了我不想要了我不想要了我不想要了我不想要了我不想要了我不想要了我不想要了我不想要了我不想要了我不想要了</span>
@@ -267,9 +267,7 @@
     .content_style div{
         width: auto;
         height: 30px;
-
     }
-
     #payDetail{
         position: absolute;
         display: none;
@@ -292,7 +290,6 @@
         $(obj).children().css({"display":"block"});
     }
     function LoadFunction() {
-
     }
     function erryFunction() {
         alert("error");
@@ -338,9 +335,7 @@
                 },
             });
         }
-
     }
-
     function ReviewReturn(id) {
         $.ajax({
             type: 'POST',
@@ -392,9 +387,7 @@
                 }
             });
         }
-
     }
-
     //时间选择
     laydate({
         elem: '#start',
@@ -423,7 +416,6 @@
                 $(obj).parents("tr").find(".td-status").html('<span class="label label-default radius">已关闭</span>');
                 layer.msg('已关闭!',{icon:1,time:3000});
             }
-
         });
     }
     /**发货**/
@@ -466,12 +458,10 @@
                             title: '提示框',
                             icon:0,
                         })
-
                     }else{
                         $("#updateOrderShipping").submit();
                         layer.close(index);
                     }
-
                 }
             });
         }
@@ -490,9 +480,7 @@
         parent.$('.Current_page').attr({"name":herf,"href":"javascript:void(0)"}).css({"color":"#4c8fbd","cursor":"pointer"});
         //parent.$('.Current_page').html("<a href='javascript:void(0)' name="+herf+" class='iframeurl'>" + cnames + "</a>");
         parent.layer.close(index);
-
     });
-
     //初始化宽度、高度
     $(".hide_style").height($(".hide_style").height());
     var heights=$(".hide_style").outerHeight(true)+90;
@@ -518,7 +506,6 @@
             size:103
         }).css('color', $(this).data('color'));
     });
-
     $('[data-rel=tooltip]').tooltip();
     $('[data-rel=popover]').popover({html:true});
 </script>
@@ -532,8 +519,6 @@
                 //{"bVisible": false, "aTargets": [ 3 ]} //控制列的隐藏显示
                 {"orderable":false,"aTargets":[0,1,2,3,4,5,6,7,8,9]}// 制定列不参与排序
             ] } );
-
-
         $('table th input:checkbox').on('click' , function(){
             var that = this;
             $(this).closest('table').find('tr > td:first-child input:checkbox')
@@ -541,27 +526,19 @@
                     this.checked = that.checked;
                     $(this).closest('tr').toggleClass('selected');
                 });
-
         });
-
-
         $('[data-rel="tooltip"]').tooltip({placement: tooltip_placement});
         function tooltip_placement(context, source) {
             var $source = $(source);
             var $parent = $source.closest('table')
             var off1 = $parent.offset();
             var w1 = $parent.width();
-
             var off2 = $source.offset();
             var w2 = $source.width();
-
             if( parseInt(off2.left) < parseInt(off1.left) + parseInt(w1 / 2) ) return 'right';
             return 'left';
         }
     });
-
     function getExpress() {
-
     }
-
 </script>

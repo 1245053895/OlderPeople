@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xh.mapper.customerMapper.CustomerInformationMapper">
+    <!--根据登录用户的用户名查询出该登录用户的用户名和密码-->
+    <select id="selectAllNameAndPwd" resultType="user" parameterType="String">
+    SELECT UserId, UserName, UserPwd, UserSex, UserRealName, UserPhone, UserBirthday, UserAddress,
+    UserEmail, CreditsCore, UserInputDate, UserZip, UserLoginCount, UserLoginTime, User_A,
+    User_B, User_C FROM `user` WHERE UserName=#{username}
+    </select>
+
+    <select id="SelectUserAddressByid" resultType="com.xh.po.Gainaddres" parameterType="String">
+        SELECT GainId,GainName,GainMobile,GainAddress,GainCode,
+        Gain_A AS GainA ,Gain_B AS GainB,Gain_C AS GainC FROM
+        gainaddres g, user u WHERE g.UserId=u.UserId;
+    </select>
+</mapper>

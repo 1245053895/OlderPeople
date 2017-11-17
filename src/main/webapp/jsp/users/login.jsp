@@ -19,6 +19,7 @@
 	<link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/jsp/users/img/icon/favicon.ico">
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/jsp/users/css/base.css">
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/jsp/users/css/home.css">
+	<script type="text/javascript" src="${pageContext.request.contextPath}/jsp/users/js/jquery-1.8.3.min.js"></script>
 </head>
 <body>
 
@@ -37,15 +38,55 @@
 			<div class="fl"></div>
 			<div class="fr pc-login-box">
 				<div class="pc-login-title"><h2>用户登录&nbsp;&nbsp;&nbsp;${error}</h2></div>
-				<form action="${pageContext.request.contextPath}/CustomerLogin.action" method="post">
+				<form id="code_input" action="${pageContext.request.contextPath}/CustomerLogin.action" method="post">
 					<div class="pc-sign">
 						<input type="text" name="username" placeholder="用户名/邮箱/手机号">
 					</div>
 					<div class="pc-sign">
 						<input type="password" name="password" placeholder="请输入您的密码">
 					</div>
+					<div class="pc-sign">
+						<input id="authCode" oninput="check()" name="authCode" type="text" placeholder="请输入验证码"/>
+						<!--这里img标签的src属性的值为后台实现图片验证码方法的请求地址-->
+						<br><label><img type="image" src="/authCode.action" id="codeImage" onclick="chageCode()" title="图片看不清？点击重新得到验证码" style="cursor:pointer;"/></label>
+					    <label><a onclick="chageCode()">换一张</a></label>
+					</div>
+
+					<script>
+                        function chageCode() {
+                            $('#codeImage').attr('src', 'authCode.action?abc=' + Math.random());//链接后添加Math.random，确保每次产生新的验证码，避免缓存问题。
+							/*表单提交通过ajax验证用户的输入是否正确*/
+						}
+						function check() {
+                            if($("#authCode").val()!=null){
+                                $.post(
+                                    "/validate.action",
+                                    {"value": $("#authCode").val()},
+                                    function (res) {
+                                        if (res.res) {
+                                            console.log("ok");
+                                            $("#but").removeAttr("disabled");
+                                            $("#but").css("background","#e22");
+                                        } else {
+                                            console.log("no");
+                                            $("#but").attr("disabled","disabled");
+                                            $("#but").css("background","#a11");
+                                            //刷新验证码图片
+                                            //$("#codeImage").trigger("click");
+                                        }
+                                    },
+                                    "JSON"
+                                );
+							}
+                        }
+					</script>
+
+
+
+
+
 					<div class="pc-submit-ss">
-						<input type="submit" value="登录" placeholder="">
+						<input id="but" type="submit" disabled="disabled" value="登录" placeholder="" style="background-color: #a11">
 					</div>
 					<div class="pc-item-san clearfix">
 						<a href="#"><img src="${pageContext.request.contextPath}/jsp/users/img/icon/weixin.png" alt="">微信登录</a>
@@ -54,7 +95,7 @@
 					</div>
 					<div class="pc-reg">
 						<a href="#">忘记密码</a>
-						<a href="register.html" class="red">免费注册</a>
+						<a href="/jsp/users/register.jsp" class="red">免费注册</a>
 					</div>
 				</form>
 			</div>

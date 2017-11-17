@@ -213,7 +213,7 @@
 <div class="center" style="background:#fff;">
 	<div style="padding:20px">
 		<div class="containers">
-			<div class="pc-no">抱歉，没有找到与“<em style="color:#ee4644">手机模型</em>”相关的商品</div>
+			<div class="pc-no" style="text-align: center;font-size: 16px;margin-top: 30px">抱歉，没有找到与“<em style="color:#ee4644">手机模型</em>”相关的商品</div>
 			<div class="time-lists clearfix">
 				<div class="time-list time-list-w fl" style="width:1156px">
 					<div class="time-title time-clear"><h2>热卖区</h2><div class="pc-font fl"></div><a href="javascript:;" class="pc-spin fr">换一换</a> </div>
@@ -223,57 +223,74 @@
 						<div class="yScrollList">
 							<div class="yScrollListIn">
 								<div class="yScrollListInList yScrollListInList1" style="display:block;">
-									<ul style="width: 1464px;">
-										<li>
-											<%--<a href="">--%>
-												<%--<img src="images/shangpinxiangqing/X-1.png">--%>
-												<%--<p class="head-name pc-pa10">TP-LINK TL-WN725N 微型150M无线USB网卡</p>--%>
-												<%--<p class="label-default">3.45折</p>--%>
-											<%--</a>--%>
-												<div class="row">
-													<span class="tip orange">免邮件</span>
+									<ul style="width: 1464px;text-align: center">
+										<li style="text-align: center">
+											<div class="row">
+												<a href="page.jsp">
+													<span class="tip orange">月销1000</span>
 													<dl>
-														<dt><img src="${pageContext.request.contextPath}/jsp/users/images/znyj/znyj1.jpg"></dt>
-														<dd class="name">小米路由器3</dd>
-														<dd class="desc">四天线设计，更安全更稳定</dd>
-														<dd class="price">149元</dd>
+														<dt><img src="./images/rxsp/lndbc1.png"></dt>
+														<dd class="name">老年代步车</dd>
+														<dd style="color: #B0B0B0">老年人手推轻便购物代步车</dd>
+														<dd style="color: #ec1611;font: 13px/33px '微软雅黑'">1149元</dd>
 													</dl>
-												</div>
+												</a>
+											</div>
 										</li>
-										<li>
-											<a href="">
-												<img src="images/shangpinxiangqing/X-1.png">
-												<p class="head-name pc-pa10">TP-LINK TL-WN725N 微型150M无线USB网卡</p>
-												<p class="label-default">3.45折</p>
-											</a>
+										<li style="text-align: center">
+											<div class="row">
+												<span class="tip orange">月销1000</span>
+												<dl>
+													<dt><img src="./images/rxsp/fhgz1.1.png"></dt>
+													<dd class="name">防滑拐杖</dd>
+													<dd style="color: #B0B0B0">老年出行更安全</dd>
+													<dd style="color: #ec1611;font: 13px/33px '微软雅黑'">149元</dd>
+												</dl>
+											</div>
 										</li>
-										<li>
-											<a href="">
-												<img src="images/shangpinxiangqing/X-1.png">
-												<p class="head-name pc-pa10">TP-LINK TL-WN725N 微型150M无线USB网卡</p>
-												<p class="label-default">3.45折</p>
-											</a>
+										<li style="text-align: center">
+											<div class="row">
+												<span class="tip orange">月销1000</span>
+												<dl>
+													<dt><img src="./images/rxsp/wfsb5.1.jpg"></dt>
+													<dd class="name">笔墨纸砚</dd>
+													<dd style="color: #B0B0B0">文房四宝，老年娱乐</dd>
+													<dd style="color: #ec1611;font: 13px/33px '微软雅黑'">149元</dd>
+												</dl>
+											</div>
 										</li>
-										<li>
-											<a href="">
-												<img src="images/shangpinxiangqing/X-1.png">
-												<p class="head-name pc-pa10">TP-LINK TL-WN725N 微型150M无线USB网卡</p>
-												<p class="label-default">3.45折</p>
-											</a>
+										<li style="text-align: center">
+											<div class="row">
+												<span class="tip orange">月销1000</span>
+												<dl>
+													<dt><img src="./images/rxsp/whj1.1.gif"></dt>
+													<dd class="name">雾化器</dd>
+													<dd style="color: #B0B0B0">治疗各种呼吸系统疾病</dd>
+													<dd style="color: #ec1611;font: 13px/33px '微软雅黑'">149元</dd>
+												</dl>
+											</div>
 										</li>
-										<li>
-											<a href="">
-												<img src="images/shangpinxiangqing/X-1.png">
-												<p class="head-name pc-pa10">TP-LINK TL-WN725N 微型150M无线USB网卡</p>
-												<p class="label-default">3.45折</p>
-											</a>
+										<li style="text-align: center">
+											<div class="row">
+												<span class="tip orange">月销1000</span>
+												<dl>
+													<dt><img src="./images/rxsp/sdly1.1.gif"></dt>
+													<dd class="name">手动轮椅</dd>
+													<dd style="color: #B0B0B0">残疾人轮椅代步</dd>
+													<dd style="color: #ec1611;font: 13px/33px '微软雅黑'">149元</dd>
+												</dl>
+											</div>
 										</li>
-										<li>
-											<a href="">
-												<img src="images/shangpinxiangqing/X-1.png">
-												<p class="head-name pc-pa10">TP-LINK TL-WN725N 微型150M无线USB网卡</p>
-												<p class="label-default">3.45折</p>
-											</a>
+										<li style="text-align: center">
+											<div class="row">
+												<span class="tip orange">月销1000</span>
+												<dl>
+													<dt><img src="./images/rxsp/tkmbj1.1.png"></dt>
+													<dd class="name">太空漫步机</dd>
+													<dd style="color: #B0B0B0">老年运动，活动关节腿脚</dd>
+													<dd style="color: #ec1611;font: 13px/33px '微软雅黑'">149元</dd>
+												</dl>
+											</div>
 										</li>
 									</ul>
 								</div>

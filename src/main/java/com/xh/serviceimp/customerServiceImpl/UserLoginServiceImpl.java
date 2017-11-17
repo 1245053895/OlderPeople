@@ -1,6 +1,7 @@
 package com.xh.serviceimp.customerServiceImpl;
 
 import com.xh.mapper.customerMapper.UserLoginMapper;
+import com.xh.po.Product;
 import com.xh.po.User;
 import com.xh.po.Userlog;
 import com.xh.po.vo.TotalCreditsById;
@@ -58,5 +59,11 @@ public class UserLoginServiceImpl implements UserLoginService {
     public TotalCreditsById queryTotalCriditsById(Integer userid) {
        TotalCreditsById totalCreditsById= userLoginMapper.queryTotalCriditsById(userid);
         return totalCreditsById;
+    }
+
+    @Override
+    public List<Product> selectproduct() {
+      List<Product>  products= userLoginMapper.selectproduct();
+        return products;
     }
 }

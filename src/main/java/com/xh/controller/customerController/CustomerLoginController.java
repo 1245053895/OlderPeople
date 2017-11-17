@@ -144,6 +144,9 @@ public class CustomerLoginController {
 
 
     //查询出商品的图片，名称，描述，价格，展示在商城的首页
+    public String selectproduct(){
+        return null;
+    }
 
 
 }

@@ -57,7 +57,7 @@ public class ReportForms {
     @RequestMapping(value = "/readindex1",method={RequestMethod.POST,RequestMethod.GET})
     public String getIpAddr111111(HttpServletRequest request, Model model) {
 
-        return "/WEB-INF/222.jsp";
+        return "/222.jsp";
     }
 
 

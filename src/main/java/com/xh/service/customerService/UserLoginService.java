@@ -1,5 +1,6 @@
 package com.xh.service.customerService;
 
+import com.xh.po.Product;
 import com.xh.po.User;
 import com.xh.po.Userlog;
 import com.xh.po.vo.TotalCreditsById;
@@ -34,5 +35,8 @@ public interface UserLoginService {
 
     //每一个用户所购买的所有商品的总积分
     public TotalCreditsById queryTotalCriditsById(Integer userid);
+
+    //查询出商品的图片，名称，描述，价格，展示在商城的首页selectproduct
+    public List<Product> selectproduct();
 
 }

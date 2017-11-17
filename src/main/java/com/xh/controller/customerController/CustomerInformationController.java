@@ -84,7 +84,6 @@ public class CustomerInformationController {
             Integer id=user1.getUserid();
             List<Gainaddres> gainaddres = customerInformationService.SelectUserAddressByid(id);
             model.addAttribute("gainaddres",gainaddres);
-            return "/jsp/users/address.jsp";
         }
         return "/jsp/users/address.jsp";
     }

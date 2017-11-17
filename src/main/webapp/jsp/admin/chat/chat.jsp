@@ -5,7 +5,7 @@
 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>聊天界面</title>
+<title>联系客服</title>
 <script type="text/javascript"  src="jquery-1.4.4.min.js"></script>
 <script type="text/javascript">
 	var  ws;

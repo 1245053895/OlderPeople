@@ -1,4 +1,3 @@
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmd" uri="http://java.sun.com/jstl/fmt_rt" %>
 <%--
@@ -63,7 +62,7 @@
         });//倒计时结束
 
         $(function(){
-            /*======右按钮======*/
+			/*======右按钮======*/
             $(".you").click(function(){
                 nextscroll();
             });
@@ -76,7 +75,7 @@
                     $(this).css("margin-left","0px");
                 });
             };
-            /*========左按钮=========*/
+			/*========左按钮=========*/
             $(".zuo").click(function(){
                 var vcon = $(".v_cont");
                 var offset = ($(".v_cont li").width()*-1);
@@ -142,94 +141,10 @@
 <body>
 
 <header id="pc-header">
-	<div class="pc-header-nav">
-		<div class="pc-header-con">
-			<c:if test="${empty sessionScope.user.userid}">
-				<div class="fl pc-header-link" >您好！欢迎来孝和集团电子商城
-					<a href="/LoginPage.action" target="_blank">请登录</a>
-					<a href="register.jsp" target="_blank"> 免费注册</a>
-				</div>
-			</c:if>
-			<c:if test="${not empty sessionScope.user.userid}">
-				<div class="fl pc-header-link" >${sessionScope.user.username}您好！欢迎来孝和集团电子商城
-					<a target="_self" href="${pageContext.request.contextPath}/ExitLogin.action" target="_blank"> 退出登录</a>
-				</div>
-			</c:if>
-			<div class="fr pc-header-list top-nav">
-				<ul>
-					<li><a href="#">收藏夹</a></li>
-					<li><a href="my-dingdan.jsp">我的订单</a></li>
-					<li>
-						<div class="nav"><i class="pc-top-icon"></i><a href="/CustomerInformation.action">个人中心</a></div>
-						<div class="con">
-							<dl>
-								<dt><a href="">个人资料</a></dt>
-								<dd><a href="">收货地址</a></dd>
-								<dd><a href="">修改登录密码</a></dd>
-								<dd><a href="">我的积分</a></dd>
-							</dl>
-						</div>
-					</li>
 
-					<li>
-						<div class="nav"><i class="pc-top-icon"></i><a href="#">帮助中心</a></div>
-						<div class="con">
-							<dl>
-								<dt><a href="">积分说明</a></dt>
-								<dd><a href="">联系客服</a></dd>
-							</dl>
-						</div>
-					</li>
-
-				</ul>
-			</div>
-		</div>
-	</div>
-
-	<div class="pc-header-logo clearfix">
-		<div class="pc-fl-logo fl">
-			<h1>
-				<a href="index.jsp"></a>
-			</h1>
-		</div>
-		<div class="head-form fl">
-			<form class="clearfix">
-				<input class="search-text" accesskey="" id="key" autocomplete="off" placeholder="洗衣机" type="text">
-				<button class="button" onclick="search('key');return false;">搜索</button>
-			</form>
-			<div class="words-text clearfix">
-				<a href="#">制氧机</a>
-				<a href="#">代步车</a>
-				<a href="#">电动轮椅</a>
-				<a href="#">血糖仪</a>
-				<a href="#">血压计</a>
-				<a href="#">木制拐杖</a>
-				<a href="#">足浴盆</a>
-			</div>
-		</div>
-		<div class="fr pc-head-car">
-			<i class="icon-car"></i>
-			<a href="#">我的购物车</a>
-			<em>10</em>
-		</div>
-	</div>
-	<!--  顶部    start-->
-	<div class="yHeader">
-		<!-- 导航   start  -->
-		<div class="yNavIndex">
-			<ul class="yMenuIndex">
-				<li><a href="" target="_blank" title="首页">首页</a></li>
-				<li><a href="" target="_blank" title="热销专区">热销专区</a></li>
-				<li><a href="" target="_blank" title="新品专区">新品专区</a></li>
-				<li><a href="" target="_blank" title="积分商城">积分商城</a></li>
-				<li><a href="" target="_blank" title="合伙人">合伙人</a></li>
-				<li><a href="" target="_blank" title="关于我们">关于我们</a></li>
-			</ul>
-		</div>
-		<!-- 导航   end  -->
-	</div>
-
+	<jsp:include page="/jsp/users/head.jsp"></jsp:include>
 </header>
+
 
 <section id="member">
 	<div class="member-center clearfix">
@@ -238,18 +153,18 @@
 				<div class="fl"><a href="#"><img src="jsp/users/img/mem.png"></a></div>
 				<div class="fl">
 					<p>用户名：</p>
-					<p><a href="#">${user.username}</a></p>
-					<p>搜悦号：</p>
-					<p>${user.userid}</p>
+					<p><a href="#">${sessionScope.user.username}</a></p>
+					<p>账号：</p>
+					<p>${sessionScope.user.userid}</p>
 				</div>
 			</div>
 			<div class="member-lists" id="leftinfo">
 				<dl  onclick = "change(this);">
 					<dt>个人中心</dt>
 					<dd><a href="/CustomerInformation.action">个人资料</a></dd>
-					<dd><a href="#">收货地址</a></dd>
-					<dd><a href="#">修改登录密码</a></dd>
-					<dd><a href="#">我的积分</a></dd>
+					<dd><a href="/CustomersAddress.action">收货地址</a></dd>
+					<dd><a href="/UpdataPwdPage.action">修改登录密码</a></dd>
+					<dd><a href="/MyCredits.action">我的积分</a></dd>
 				</dl>
 				<%--<dl  onclick = "change(this);">
 					<dt>客户服务</dt>
@@ -275,7 +190,7 @@
 							<div class="warn2" style="margin-left: 10px;border: none">邮编</div>
 							<div class="warn2" style="margin-left: 10px;border: none">电话</div>
 							<div class="warn2" style="margin-left: 10px;border: none">操作</div>
-							<input type="button" class="warn2" style="width: 50px;float: left;margin-left: 10px;border: 1px;font-weight: 80px;text-align:center;margin-top:6px;font-size:15px;color: #FF9100;background-color: none;border-radius: 5px" id="xz" onClick="xdz()" value="新地址">
+							<input type="button" class="warn2" style="width: 50px;float: left;margin-left: 10px;border: 1px;font-weight: 800;text-align:center;margin-top:6px;font-size:15px;color: #FF9100;border-radius: 5px" id="xz" onClick="xdz()" value="新地址">
 
 						</li>
 
@@ -302,33 +217,33 @@
 						</form>
 
 
-							<c:forEach items="${gainaddres}" var="gainaddres1">
-						<form id="form${gainaddres1.gainid}" action="${pageContext.request.contextPath}/UpdateGainAdress.action" method="post">
-							<li class="clearfix">
-								<div class="warn2" style="margin-left: 10px;border: none;font-weight: normal">
-									<input  class="inputx  aa${gainaddres1.gainid}" name="gainid" value="${gainaddres1.gainid}" readonly="true">
-								</div>
-								<div class="warn2" style="margin-left: 10px;border: none;font-weight: normal">
-									<input  class="inputx  aa${gainaddres1.gainid}" name="gainname" value="${gainaddres1.gainname}" readonly="true">
-								</div>
-								<div class="warn2" style="margin-left: 10px;border: none;font-weight: normal">
-									<input  class="inputx  aa${gainaddres1.gainid}" name="gainaddress" value="${gainaddres1.gainaddress}"  readonly="true">
-								</div>
-								<div class="warn2" style="margin-left: 10px;border: none;font-weight: normal">
-									<input  class="inputx aa${gainaddres1.gainid}" name="gaincode" value="${gainaddres1.gaincode}" readonly="true">
-								</div>
-								<div class="warn2" style="margin-left: 10px;border: none;font-weight: normal">
-									<input class="inputx  aa${gainaddres1.gainid}" name="gainmobile" value="${gainaddres1.gainmobile}" readonly="true">
-								</div>
-								<div class="warn2" style="margin-left: 10px;border: none;font-weight: normal">
-									<a href="javascript:void(0);" onclick="status(this,'${gainaddres1.gainid}')">修改</a>
-									<span style="margin: auto 4px">|</span>
-									<a title="删除" href="javascript:void(0);" onclick="user_del(this,'${gainaddres1.gainid}')">删除</a>
-								</div>
+						<c:forEach items="${gainaddres}" var="gainaddres1">
+							<form id="form${gainaddres1.gainid}" action="${pageContext.request.contextPath}/UpdateGainAdress.action" method="post">
+								<li class="clearfix">
+									<div class="warn2" style="margin-left: 10px;border: none;font-weight: normal">
+										<input  class="inputx  aa${gainaddres1.gainid}" name="gainid" value="${gainaddres1.gainid}" readonly="true">
+									</div>
+									<div class="warn2" style="margin-left: 10px;border: none;font-weight: normal">
+										<input  class="inputx  aa${gainaddres1.gainid}" name="gainname" value="${gainaddres1.gainname}" readonly="true">
+									</div>
+									<div class="warn2" style="margin-left: 10px;border: none;font-weight: normal">
+										<input  class="inputx  aa${gainaddres1.gainid}" name="gainaddress" value="${gainaddres1.gainaddress}"  readonly="true">
+									</div>
+									<div class="warn2" style="margin-left: 10px;border: none;font-weight: normal">
+										<input  class="inputx aa${gainaddres1.gainid}" name="gaincode" value="${gainaddres1.gaincode}" readonly="true">
+									</div>
+									<div class="warn2" style="margin-left: 10px;border: none;font-weight: normal">
+										<input class="inputx  aa${gainaddres1.gainid}" name="gainmobile" value="${gainaddres1.gainmobile}" readonly="true">
+									</div>
+									<div class="warn2" style="margin-left: 10px;border: none;font-weight: normal">
+										<a href="javascript:void(0);" onclick="status(this,'${gainaddres1.gainid}')">修改</a>
+										<span style="margin: auto 4px">|</span>
+										<a title="删除" href="javascript:void(0);" onclick="user_del(this,'${gainaddres1.gainid}')">删除</a>
+									</div>
 
-								<a title="默认" href="javascript:void(0);" <c:if test="${gainaddres1.gainA.equals('1')}">style="background-color: #f4dae5"</c:if> onclick="moren(this,'${gainaddres1.gainid}')">默认</a>
-							</li>
-						</form>
+									<a title="默认" href="javascript:void(0);" <c:if test="${gainaddres1.gainA.equals('1')}">style="background-color: #f4dae5"</c:if> onclick="moren(this,'${gainaddres1.gainid}')">默认</a>
+								</li>
+							</form>
 						</c:forEach>
 
 					</ul>
@@ -554,16 +469,16 @@
         $(this).removeClass("hover");
         $(this).find(".nav a").removeClass("hover");
     })
-    /*用户-删除*/
+	/*用户-删除*/
     function user_del(obj,id){
         var flag=confirm('确认要删除吗？')
-		if(flag){
+        if(flag){
             $(obj).parents("li").remove();
             window.location.href="${pageContext.request.contextPath}/DelectGainaddress.action?gainid="+id;
-		}
+        }
     }
 
-    /*收货地址默认*/
+	/*收货地址默认*/
     function moren(obj,id){
         var flag=confirm('确认要选择修改吗？')
         if(flag){
@@ -577,9 +492,9 @@
             $(".aa"+id).css("border","1px #E6E6FA solid");
             $(obj).text("提交");
             flag=false;
-		}else {
+        }else {
             $("#form"+id).submit();
-		}
+        }
 
     }
 </script>

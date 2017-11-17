@@ -55,7 +55,7 @@
 .member-newly b     { padding:0 20px; font-size:14px; font-weight:400;}
 
 .pc-search-g a { border: 1px solid #ccc; float: left; font-size: 12px; height: 20px; line-height: 20px; margin-left: 2px; overflow: hidden; padding: 3px 10px; border-radius:3px;}
-.pc-search-g .current {color:#f60; font-weight:800; border: none}
+.pc-search-g .current {color:#EE4644; font-weight:800; border: none}
 .pc-search-di   { float:left; padding:0 10px; font-size:16px;}
 .pc-search-y    { float:left;}
 .pc-search-y em { float:left; line-height:28px; height:28px; font-style:normal; padding:0 10px;}
@@ -137,7 +137,7 @@
 .member-whole ul .cur a {display:block;padding:10px 35px; float:left;  }
 .dingdans{
     border-bottom: 2px #EE4644 solid;
-    width: 70px;
+    width: 85px;
     height:17px;
     color: #EE4644;
     font-size: 16px;
@@ -232,15 +232,16 @@
 .member-star a img { border:1px solid #e0e0e0; width:60px; height:60px;}
 .member-setup { border-bottom:1px solid #e0e0e0; padding-bottom:30px;}
 .member-troll {border-bottom:1px solid #e0e0e0; padding:15px 10px;}
-.member-check a { width:108px; height:30px; line-height:30px; float:left; display:block; text-align:center; background:#e1373a; color:#ffffff; border-radius:3px; margin-right:20px;}
-.member-check a:hover { width:108px; height:30px; line-height:30px; float:left; display:block; text-align:center; background:#d42b2e; color:#ffffff; border-radius:3px; margin-right:20px;}
+.member-check a { width:108px; height:32px; line-height:32px; float:left; display:block; text-align:center; background:#e1373a; color:#ffffff; border-radius:3px; margin-right:20px;}
+.member-check a:hover { width:108px; height:34px; line-height:34px; float:left; display:block; text-align:center; background:#d42b2e; color:#ffffff; border-radius:3px; margin-right:20px;}
 
-.member-all { width:100px;  height:30px; line-height:30px;  font-size:14px;}
+.member-all { width:150px;  height:30px; line-height:30px;  font-size:14px;}
+.member-all p:hover{color: #EE4644}
 .member-all b { width:18px;height:18px;display:block; float:left; padding-right:10px; padding-top:12px;}
 .member-all .on { width:18px;height:18px;display:block; float:left; padding-right:10px; padding-top:12px;}
 .member-all1 b { width:18px;height:18px; display:block; float:left; padding-right:10px; padding-top:12px;}
 .member-all1 .on { width:18px;height:18px; display:block; float:left; padding-right:10px; padding-top:12px;}
-.member-check .member-delete { background:#d0d0d0; color:#333;}
+.member-check .member-delete { background:#d0d0d0; color:white;height: 34px;line-height: 34px;}
 
 .time-border-list {padding:40px 0;}
 .time-border-list  .label-default {color:#fff; font-size:20px; height:36px; line-height:36px; text-align:left; padding:0; padding-left:4px; margin-top:5px; width:108px;}
@@ -257,22 +258,25 @@
 .pc-search-list .price {font-size:16px;}
 
 .member-vessel ul li { border-bottom:1px solid #e0e0e0;}
-.member-tenant { width:225px; height:220px; padding-top:25px; padding-right:30px; text-align:center; border-right:1px solid #e0e0e0; }
+.member-tenant { width:225px; height:220px; padding-top:25px; margin-left: -35px; padding-right:45px;text-align:center; border-right:1px solid #e0e0e0; }
+
+.shop-tools{width: 50px;background-color: #f5f5f5;margin-left: 120px;margin-top: -10px;margin-bottom: 25px;}
+.shop-tools .shop-tools-item1{ text-align: center;height: 24px;line-height:24px;cursor: pointer;width: 12px;overflow: hidden;text-indent: -999px;background: url("../images/xtb.png") no-repeat;margin-left: -35px;}
+.shop-tools .shop-tools-item2{ text-align: center;height: 24px;line-height: 24px;cursor: pointer;width: 12px;overflow: hidden;text-indent: -999px;background: url("../images/xtb.png") no-repeat;margin-left: -5px;}
 
 .member-all2 { padding-top:80px; padding-left:5px;}
-.member-shops { width:165px; height:24px; line-height:24px; border:1px solid #e0e0e0; border-radius:2px; display:block; background:#f5f4f4;}
-
-.member-cakes ul li { width:150px; float:left; border-bottom:none; text-align:center;}
+.member-shops { width:140px; height:20px; line-height:20px; border:1px solid transparent ; border-radius:3px; display:block; background:#c5c3c3;margin-top: 30px;margin-top:0px;text-align: center;}
+.member-cakes ul li { width:150px; float:left; border-bottom:none; text-align:center;padding-right: 10px;}
 .member-cakes ul li p { color:#e4393c; font-weight:600;}
-.member-cakes ul li a img {  transition:left 0.3s ease 0s; position:relative; left:0;}
-.member-cakes ul li a img:hover {left:-8px;}
+.member-cakes ul li a img {  transition:left 0.3s ease 0s; position:relative; left:10px;margin-top: -20px;}
+.member-cakes ul li a img:hover {left:-5px;}
 
-.member-cakes { margin-left:50px; margin-top:30px;}
+.member-cakes { margin-top:30px;}
 
 .member-volume {width:711px; position:relative;}
 .member-btn-fl { width:30px; height:23px; line-height:23px; display:block; position:absolute; left:15px; top:80px;}
 .member-btn-fr { width:30px; height:23px; line-height:23px; display:block;position:absolute; right:15px; top:80px;}
-.member-check .member-delete:hover { background:#c5c3c3;}
+.member-check .member-delete:hover { background:#c5c3c3;color: white}
 
 .aui-footer{
 

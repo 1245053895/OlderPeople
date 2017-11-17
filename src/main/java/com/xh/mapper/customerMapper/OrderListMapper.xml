@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xh.mapper.customerMapper.OrderListMapper">
+
+    <!--查询订单-->
+    <select id="selectOrderList" resultType="orderCustom" parameterType="orderCustom">
+        SELECT
+          u.UserId,
+          o.*,
+          g.GainName,
+          g.GainMobile,
+          g.GainCode,
+          g.GainAddress
+        FROM user u
+          INNER JOIN `order` o ON (u.UserId=o.UserId)
+          INNER JOIN gainaddres g ON (o.GainId=g.GainId)
+        <where>
+            <if test="userid!=null">
+                AND u.UserId=#{userid}
+            </if>
+            <if test="status!=null">
+                AND o.Status=#{status}
+            </if>
+            <if test="conditions!=null">
+                OR  o.OrderId LIKE '%${conditions}%'
+            </if>
+        </where>
+        LIMIT #{start},#{count};
+    </select>
+
+    <select id="selectOrderDetails" resultType="productCustom" parameterType="integer">
+        SELECT
+          op.PayPrice,
+          op.TotalMoneyCount,
+          op.ShoppingCount,
+          p.*,
+          p.Product_A productA
+        FROM orderproduct op
+        INNER JOIN product p ON (p.ProductId=op.ProductId)
+        WHERE op.OrderId=#{orderid}
+    </select>
+
+    <!--查询购物车-->
+    <select id="selectShopcarList" parameterType="shopCarCustom" resultType="shopCarCustom">
+        SELECT
+          p.*,
+          p.Product_A productA,
+          sc.*,
+          s.MarketPrice
+        FROM shopcar sc
+          INNER JOIN product p ON (sc.ProductId=p.ProductId)
+          INNER JOIN stock s ON (s.ProductId=p.ProductId)
+        <where>
+            sc.UserId=#{userid}
+            <if test="productA!=null">
+                AND p.product_A=#{productA}
+            </if>
+            <if test="producthotsale!=null">
+                AND p.ProducthotSale=#{producthotsale}
+            </if>
+            <if test="productnew!=null">
+                AND p.ProductNew=#{productnew}
+            </if>
+            <if test="conditions!=null">
+                OR  sc.orderamount LIKE '%${conditions}%'
+                OR  p.ProductName LIKE '%${conditions}%'
+            </if>
+        </where>
+        LIMIT #{start},#{count};
+    </select>
+
+
+    <select id="selectFavoritesList" parameterType="favoritesCustom" resultType="favoritesCustom">
+        SELECT
+          p.*,
+          p.Product_A product_a,
+          f.UserId,
+          s.MarketPrice
+        FROM product p
+        INNER JOIN favorites f ON (p.ProductId=f.ProductId)
+        INNER JOIN stock s ON (f.ProductId=f.ProductId)
+        <where>
+            f.UserId=#{userid}
+            <if test="productA!=null">
+                AND p.product_A=#{productA}
+            </if>
+            <if test="producthotsale!=null">
+                AND p.ProducthotSale=#{producthotsale}
+            </if>
+            <if test="productnew!=null">
+                AND p.ProductNew=#{productnew}
+            </if>
+            <if test="productdisabled!=null">
+                <if test="productdisabled==0">
+                    AND p.ProductDisabled=0
+                </if>
+                <if test="productdisabled!=0">
+                    AND p.ProductDisabled>0
+                </if>
+            </if>
+            <if test="conditions!=null">
+                OR  sc.orderamount LIKE '%${conditions}%'
+                OR  p.ProductName LIKE '%${conditions}%'
+            </if>
+        </where>
+        LIMIT #{start},#{count};
+    </select>
+
+</mapper>

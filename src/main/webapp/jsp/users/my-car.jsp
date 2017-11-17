@@ -134,143 +134,112 @@
 
 </header>
 <div class="member-center clearfix">
-<div class="member-left fl">
-	<div class="member-apart clearfix">
-		<div class="fl"><a href="#"><img src="img/mem.png"></a></div>
-		<div class="fl">
-			<p>用户名：</p>
-			<p><a href="#">亚里士多德</a></p>
-			<p>账号：</p>
-			<p>389323080</p>
+	<div class="member-left fl">
+		<div class="member-apart clearfix">
+			<div class="fl"><a href="#"><img src="img/mem.png"></a></div>
+			<div class="fl">
+				<p>用户名：</p>
+				<p><a href="#">亚里士多德</a></p>
+				<p>账号：</p>
+				<p>389323080</p>
+			</div>
+		</div>
+		<div class="member-lists" id="leftinfo">
+			<dl  onclick = "change(this);">
+				<dt>我的商城</dt>
+				<dd><a href="#">我的订单</a></dd>
+				<dd><a href="#">我的购物车</a></dd>
+				<dd><a href="#">我的收藏</a></dd>
+				<dd><a href="#">我的评价</a></dd>
+			</dl>
+			<dl  onclick = "change(this);">
+				<dt>客户服务</dt>
+				<dd><a href="#">退货订单</a></dd>
+				<dd><a href="#">退货/退款记录</a></dd>
+			</dl>
 		</div>
 	</div>
-	<div class="member-lists" id="leftinfo">
-		<dl  onclick = "change(this);">
-			<dt>我的商城</dt>
-			<dd><a href="#">我的订单</a></dd>
-			<dd><a href="#">我的购物车</a></dd>
-			<dd><a href="#">我的收藏</a></dd>
-			<dd><a href="#">我的评价</a></dd>
-		</dl>
-		<dl  onclick = "change(this);">
-			<dt>客户服务</dt>
-			<dd><a href="#">退货订单</a></dd>
-			<dd><a href="#">退货/退款记录</a></dd>
-		</dl>
-	</div>
-</div>
-<div class="member-right fr">
-<section id="pc-jie">
-	<div class="center " id="dingdan">
-		<ul class="pc-shopping-title clearfix">
-			<li><a href="#">全部商品(10)</a></li>
-			<li><a href="#">限时优惠(7)</a></li>
-			<li><a href="#">已下架(0)</a></li>
-		</ul>
-	</div>
-	<div class="pc-shopping-cart center">
-		<div class="pc-shopping-tab">
-			<table>
-				<thead>
-					<tr class="tab-0">
-						<th class="tab-1">
-							<input type="checkbox" name="s_all" class="s_all tr_checkmr" id="s_all_h">
-							<label style="margin-left: 20px;"> 全选</label>
-						</th>
-						<th class="tab-2">商品</th>
-						<th class="tab-3">商品信息</th>
-						<th class="tab-4">金额</th>
-						<th class="tab-5">数量</th>
-						<th class="tab-6">小计</th>
-						<th class="tab-7">操作</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<th><input type="checkbox"  style="margin-left:15px; float:left"></th>
-						<th class="tab-th-1">
-							<a href="#"><img src="images/shangpinxiangqing/X1.png" width="100%" alt=""></a>
-							<a href="#" class="tab-title">赛亿（shinee)取暖器家用/取暖电器/电暖器/电暖气台式摇头暖风机HN2118PT </a>
-						</th>
-						<th>
-							<p>颜色：黑色</p>
-							<p>规格：落地款</p>
-						</th>
-						<th>
-							<p>售价</p>
-							<p class="red">￥<span>69.00</span></p>
-							<p style="text-decoration: line-through;">￥<span>89.00</span></p>
-                            <br/>
-							<p>邮费</p>
-							<p>￥<span>0</span></p>
-						</th>
-						<th class="tab-th-2">
-							<div class="Xcontent32"><img src="images/shangpinxiangqing/X15.png"></div>
-							<form>
-								<input class="input" value="1"></form>
-							<div class="Xcontent33"><img src="images/shangpinxiangqing/16.png"></div>
-						</th>
-						<th class="red">￥<span>69.00</span></th>
-						<th>
-							<p><a href="#">删除</a></p>
-							<br/>
-							<p><a href="#">移入收藏夹</a></p>
-						</th>
-					</tr>
-<%--					<tr>
-						<th><input type="checkbox"  style="margin-left:10px; float:left"></th>
-						<th class="tab-th-1">
-							<a href="#"><img src="images/shangpinxiangqing/X-1.png" width="100%" alt=""></a>
-							<a href="#" class="tab-title">赛亿（shinee)取暖器家用/取暖电器/电暖器/电暖气台式摇头暖风机HN2118PT </a>
-						</th>
-						<th>
-							<p>颜色：黑色</p>
-							<p>规格：落地款</p>
-						</th>
-						<th>
-							<p>售价</p>
-							<p class="red">￥<span>69.00</span></p>
-							<p style="text-decoration: line-through;">￥<span>89.00</span></p>
-							<br/>
-							<p>邮费</p>
-							<p>￥<span>0</span></p>
-						</th>
-						<th class="tab-th-2">
-							<div class="Xcontent32"><img src="images/shangpinxiangqing/X15.png"></div>
-							<form>
-								<input class="input" value="1"></form>
-							<div class="Xcontent33"><img src="images/shangpinxiangqing/16.png"></div>
-						</th>
-						<th class="red">￥<span>69.00</span></th>
-						<th>
-							<p><a href="#">删除</a></p>
-							<br/>
-							<p><a href="#">移入收藏夹</a></p>
-						</th>
-					</tr>--%>
-				</tbody>
-			</table>
+	<div class="member-right fr">
+		<section id="pc-jie">
+			<div class="center " id="dingdan">
+				<ul class="pc-shopping-title clearfix">
+					<li><a href="#">全部商品(10)</a></li>
+					<li><a href="#">限时优惠(7)</a></li>
+					<li><a href="#">已下架(0)</a></li>
+				</ul>
+			</div>
+			<div class="pc-shopping-cart center">
+				<div class="pc-shopping-tab">
+					<table>
+						<thead>
+							<tr class="tab-0">
+								<th class="tab-1">
+									<input type="checkbox" name="s_all" class="s_all tr_checkmr" id="s_all_h">
+									<label style="margin-left: 20px;"> 全选</label>
+								</th>
+								<th class="tab-2">商品</th>
+								<th class="tab-3">商品信息</th>
+								<th class="tab-4">金额</th>
+								<th class="tab-5">数量</th>
+								<th class="tab-6">小计</th>
+								<th class="tab-7">操作</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<th><input type="checkbox"  style="margin-left:15px; float:left"></th>
+								<th class="tab-th-1">
+									<a href="#"><img src="images/shangpinxiangqing/X1.png" width="100%" alt=""></a>
+									<a href="#" class="tab-title">赛亿（shinee)取暖器家用/取暖电器/电暖器/电暖气台式摇头暖风机HN2118PT </a>
+								</th>
+								<th>
+									<p>颜色：黑色</p>
+									<p>规格：落地款</p>
+								</th>
+								<th>
+									<p>售价</p>
+									<p class="red">￥<span>69.00</span></p>
+									<p style="text-decoration: line-through;">￥<span>89.00</span></p>
+									<br/>
+									<p>邮费</p>
+									<p>￥<span>0</span></p>
+								</th>
+								<th class="tab-th-2">
+									<div class="Xcontent32"><img src="images/shangpinxiangqing/X15.png"></div>
+									<form>
+										<input class="input" value="1"></form>
+									<div class="Xcontent33"><img src="images/shangpinxiangqing/16.png"></div>
+								</th>
+								<th class="red">￥<span>69.00</span></th>
+								<th>
+									<p><a href="#">删除</a></p>
+									<br/>
+									<p><a href="#">移入收藏夹</a></p>
+								</th>
+							</tr>
+						</tbody>
+					</table>
 
-		</div>
-	</div>
-	<div style="height:10px"></div>
-	<div class="center">
-		<div class="clearfix pc-shop-go">
-			<div class="fl pc-shop-fl">
-				<input type="checkbox" placeholder="" style="margin-left:5px">
-				<label style="margin-left: 15px;">全选</label>
-				<a href="#">删除</a>
-				<a href="#">清除失效商品</a>
+				</div>
 			</div>
-			<div class="fr pc-shop-fr">
-				<p>共有 <em class="red pc-shop-shu">2</em> 款商品，总计（含运费）</p>
-				<span>¥ 699.00</span>
-				<a href="#">去付款</a>
+			<div style="height:10px"></div>
+			<div class="center">
+				<div class="clearfix pc-shop-go">
+					<div class="fl pc-shop-fl">
+						<input type="checkbox" placeholder="" style="margin-left:5px">
+						<label style="margin-left: 15px;">全选</label>
+						<a href="#">删除</a>
+						<a href="#">清除失效商品</a>
+					</div>
+					<div class="fr pc-shop-fr">
+						<p>共有 <em class="red pc-shop-shu">2</em> 款商品，总计（含运费）</p>
+						<span>¥ 699.00</span>
+						<a href="#">去付款</a>
+					</div>
+				</div>
 			</div>
-		</div>
+	</section>
 	</div>
-</section>
-</div>
 </div>
 
 

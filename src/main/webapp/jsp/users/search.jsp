@@ -23,11 +23,6 @@
 	<script type="text/javascript" src="${pageContext.request.contextPath}/jsp/users/js/index.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/jsp/users/js/modernizr-custom-v2.7.1.min.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/jsp/users/js/jquery.SuperSlide.js"></script>
-
-	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/jsp/users/css/style.css">
-	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/jsp/users/css/media_index.css">
-	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/jsp/users/css/mod.css">
-
 	<script type="text/javascript">
 
         var intDiff = parseInt(90000);//倒计时总秒数量
@@ -127,84 +122,47 @@
 <body>
 
 <header id="pc-header">
+<!--
 	<div class="pc-header-nav">
 		<div class="pc-header-con">
-			<div class="fl pc-header-link" >您好！，欢迎来孝和集团电子商城
-				<a href="login.html" target="_blank">请登录</a>
-				<a href="register.html" target="_blank"> 免费注册</a>
-			</div>
+			<div class="fl pc-header-link" >您好！，欢迎来云购物 <a href="login.html" target="_blank">请登录</a> <a href="register.html" target="_blank"> 免费注册</a></div>
 			<div class="fr pc-header-list top-nav">
 				<ul>
-					<li><a href="#">收藏夹</a></li>
-					<li><a href="my-dingdan.jsp">我的订单</a></li>
 					<li>
-						<div class="nav"><i class="pc-top-icon"></i><a href="#">个人中心</a></div>
+						<div class="nav"><i class="pc-top-icon"></i><a href="#">我的订单</a></div>
 						<div class="con">
 							<dl>
-								<dt><a href="">个人资料</a></dt>
-								<dd><a href="">收货地址</a></dd>
-								<dd><a href="">修改登录密码</a></dd>
-								<dd><a href="">我的积分</a></dd>
+								<dt><a href="">批发进货</a></dt>
+								<dd><a href="">已买到货品</a></dd>
+								<dd><a href="">优惠券</a></dd>
+								<dd><a href="">店铺动态</a></dd>
 							</dl>
 						</div>
 					</li>
-
 					<li>
-						<div class="nav"><i class="pc-top-icon"></i><a href="#">帮助中心</a></div>
+						<div class="nav"><i class="pc-top-icon"></i><a href="#">我的商城</a></div>
 						<div class="con">
 							<dl>
-								<dt><a href="">积分说明</a></dt>
-								<dd><a href="">联系客服</a></dd>
+								<dt><a href="">批发进货</a></dt>
+								<dd><a href="">已买到货品</a></dd>
+								<dd><a href="">优惠券</a></dd>
+								<dd><a href="">店铺动态</a></dd>
 							</dl>
 						</div>
 					</li>
-
+					<li><a href="#">我的云购</a></li>
+					<li><a href="#">我的收藏</a></li>
+					<li><a href="#">会员中心</a></li>
+					<li><a href="#">客户服务</a></li>
+					<li><a href="#">帮助中心</a></li>
 				</ul>
 			</div>
 		</div>
 	</div>
+-->
+	<div class="pc-header-nav">
+		<jsp:include page="/jsp/users/head.jsp"></jsp:include>
 
-	<div class="pc-header-logo clearfix">
-		<div class="pc-fl-logo fl">
-			<h1>
-				<a href="index.jsp"></a>
-			</h1>
-		</div>
-		<div class="head-form fl">
-			<form class="clearfix">
-				<input class="search-text" accesskey="" id="key" autocomplete="off" placeholder="洗衣机" type="text">
-				<button class="button" onclick="search('key');return false;">搜索</button>
-			</form>
-			<div class="words-text clearfix">
-				<a href="#">制氧机</a>
-				<a href="#">代步车</a>
-				<a href="#">电动轮椅</a>
-				<a href="#">血糖仪</a>
-				<a href="#">血压计</a>
-				<a href="#">木制拐杖</a>
-				<a href="#">足浴盆</a>
-			</div>
-		</div>
-		<div class="fr pc-head-car">
-			<i class="icon-car"></i>
-			<a href="#">我的购物车</a>
-			<em>10</em>
-		</div>
-	</div>
-	<!--  顶部    start-->
-	<div class="yHeader">
-		<!-- 导航   start  -->
-		<div class="yNavIndex">
-			<ul class="yMenuIndex">
-				<li><a href="" target="_blank" title="首页">首页</a></li>
-				<li><a href="" target="_blank" title="热销专区">热销专区</a></li>
-				<li><a href="" target="_blank" title="新品专区">新品专区</a></li>
-				<li><a href="" target="_blank" title="积分商城">积分商城</a></li>
-				<li><a href="" target="_blank" title="合伙人">合伙人</a></li>
-				<li><a href="" target="_blank" title="关于我们">关于我们</a></li>
-			</ul>
-		</div>
-		<!-- 导航   end  -->
 	</div>
 
 </header>
@@ -213,84 +171,56 @@
 <div class="center" style="background:#fff;">
 	<div style="padding:20px">
 		<div class="containers">
-			<div class="pc-no" style="text-align: center;font-size: 16px;margin-top: 30px">抱歉，没有找到与“<em style="color:#ee4644">手机模型</em>”相关的商品</div>
+			<div class="pc-no">抱歉，没有找到与“<em style="color:#ee4644">手机模型</em>”相关的商品</div>
 			<div class="time-lists clearfix">
 				<div class="time-list time-list-w fl" style="width:1156px">
 					<div class="time-title time-clear"><h2>热卖区</h2><div class="pc-font fl"></div><a href="javascript:;" class="pc-spin fr">换一换</a> </div>
 					<div class="time-border">
-
-
 						<div class="yScrollList">
 							<div class="yScrollListIn">
 								<div class="yScrollListInList yScrollListInList1" style="display:block;">
-									<ul style="width: 1464px;text-align: center">
-										<li style="text-align: center">
-											<div class="row">
-												<a href="page.jsp">
-													<span class="tip orange">月销1000</span>
-													<dl>
-														<dt><img src="./images/rxsp/lndbc1.png"></dt>
-														<dd class="name">老年代步车</dd>
-														<dd style="color: #B0B0B0">老年人手推轻便购物代步车</dd>
-														<dd style="color: #ec1611;font: 13px/33px '微软雅黑'">1149元</dd>
-													</dl>
-												</a>
-											</div>
+									<ul style="width: 1464px;">
+										<li>
+											<a href="">
+												<img src="images/shangpinxiangqing/X-1.png">
+												<p class="head-name pc-pa10">TP-LINK TL-WN725N 微型150M无线USB网卡</p>
+												<p class="label-default">3.45折</p>
+											</a>
 										</li>
-										<li style="text-align: center">
-											<div class="row">
-												<span class="tip orange">月销1000</span>
-												<dl>
-													<dt><img src="./images/rxsp/fhgz1.1.png"></dt>
-													<dd class="name">防滑拐杖</dd>
-													<dd style="color: #B0B0B0">老年出行更安全</dd>
-													<dd style="color: #ec1611;font: 13px/33px '微软雅黑'">149元</dd>
-												</dl>
-											</div>
+										<li>
+											<a href="">
+												<img src="images/shangpinxiangqing/X-1.png">
+												<p class="head-name pc-pa10">TP-LINK TL-WN725N 微型150M无线USB网卡</p>
+												<p class="label-default">3.45折</p>
+											</a>
 										</li>
-										<li style="text-align: center">
-											<div class="row">
-												<span class="tip orange">月销1000</span>
-												<dl>
-													<dt><img src="./images/rxsp/wfsb5.1.jpg"></dt>
-													<dd class="name">笔墨纸砚</dd>
-													<dd style="color: #B0B0B0">文房四宝，老年娱乐</dd>
-													<dd style="color: #ec1611;font: 13px/33px '微软雅黑'">149元</dd>
-												</dl>
-											</div>
+										<li>
+											<a href="">
+												<img src="images/shangpinxiangqing/X-1.png">
+												<p class="head-name pc-pa10">TP-LINK TL-WN725N 微型150M无线USB网卡</p>
+												<p class="label-default">3.45折</p>
+											</a>
 										</li>
-										<li style="text-align: center">
-											<div class="row">
-												<span class="tip orange">月销1000</span>
-												<dl>
-													<dt><img src="./images/rxsp/whj1.1.gif"></dt>
-													<dd class="name">雾化器</dd>
-													<dd style="color: #B0B0B0">治疗各种呼吸系统疾病</dd>
-													<dd style="color: #ec1611;font: 13px/33px '微软雅黑'">149元</dd>
-												</dl>
-											</div>
+										<li>
+											<a href="">
+												<img src="images/shangpinxiangqing/X-1.png">
+												<p class="head-name pc-pa10">TP-LINK TL-WN725N 微型150M无线USB网卡</p>
+												<p class="label-default">3.45折</p>
+											</a>
 										</li>
-										<li style="text-align: center">
-											<div class="row">
-												<span class="tip orange">月销1000</span>
-												<dl>
-													<dt><img src="./images/rxsp/sdly1.1.gif"></dt>
-													<dd class="name">手动轮椅</dd>
-													<dd style="color: #B0B0B0">残疾人轮椅代步</dd>
-													<dd style="color: #ec1611;font: 13px/33px '微软雅黑'">149元</dd>
-												</dl>
-											</div>
+										<li>
+											<a href="">
+												<img src="images/shangpinxiangqing/X-1.png">
+												<p class="head-name pc-pa10">TP-LINK TL-WN725N 微型150M无线USB网卡</p>
+												<p class="label-default">3.45折</p>
+											</a>
 										</li>
-										<li style="text-align: center">
-											<div class="row">
-												<span class="tip orange">月销1000</span>
-												<dl>
-													<dt><img src="./images/rxsp/tkmbj1.1.png"></dt>
-													<dd class="name">太空漫步机</dd>
-													<dd style="color: #B0B0B0">老年运动，活动关节腿脚</dd>
-													<dd style="color: #ec1611;font: 13px/33px '微软雅黑'">149元</dd>
-												</dl>
-											</div>
+										<li>
+											<a href="">
+												<img src="images/shangpinxiangqing/X-1.png">
+												<p class="head-name pc-pa10">TP-LINK TL-WN725N 微型150M无线USB网卡</p>
+												<p class="label-default">3.45折</p>
+											</a>
 										</li>
 									</ul>
 								</div>

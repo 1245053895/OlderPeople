@@ -147,70 +147,8 @@
 <body>
 
 <header id="pc-header">
-	<div class="pc-header-nav">
-		<div class="pc-header-con">
-			<div class="fl pc-header-link" >您好！，欢迎来孝和集团电子商城
-				<a href="login.html" target="_blank">请登录</a>
-				<a href="register.html" target="_blank"> 免费注册</a>
-			</div>
-			<div class="fr pc-header-list top-nav">
-				<ul>
-					<li><a href="#">收藏夹</a></li>
-					<li><a href="my-dingdan.jsp">我的订单</a></li>
-					<li>
-						<div class="nav"><i class="pc-top-icon"></i><a href="#">个人中心</a></div>
-						<div class="con">
-							<dl>
-								<dt><a href="">个人资料</a></dt>
-								<dd><a href="">收货地址</a></dd>
-								<dd><a href="">修改登录密码</a></dd>
-								<dd><a href="">我的积分</a></dd>
-							</dl>
-						</div>
-					</li>
 
-					<li>
-						<div class="nav"><i class="pc-top-icon"></i><a href="#">帮助中心</a></div>
-						<div class="con">
-							<dl>
-								<dt><a href="">积分说明</a></dt>
-								<dd><a href="">联系客服</a></dd>
-							</dl>
-						</div>
-					</li>
-
-				</ul>
-			</div>
-		</div>
-	</div>
-
-	<div class="pc-header-logo clearfix">
-		<div class="pc-fl-logo fl">
-			<h1>
-				<a href="index.jsp"></a>
-			</h1>
-		</div>
-		<div class="head-form fl">
-			<form class="clearfix">
-				<input class="search-text" accesskey="" id="key" autocomplete="off" placeholder="洗衣机" type="text">
-				<button class="button" onclick="search('key');return false;">搜索</button>
-			</form>
-			<div class="words-text clearfix">
-				<a href="#">制氧机</a>
-				<a href="#">代步车</a>
-				<a href="#">电动轮椅</a>
-				<a href="#">血糖仪</a>
-				<a href="#">血压计</a>
-				<a href="#">木制拐杖</a>
-				<a href="#">足浴盆</a>
-			</div>
-		</div>
-		<div class="fr pc-head-car">
-			<i class="icon-car"></i>
-			<a href="#">我的购物车</a>
-			<em>10</em>
-		</div>
-	</div>
+	<jsp:include page="/jsp/users/head.jsp"></jsp:include>
 	<!--  顶部    start-->
 	<div class="yHeader">
 		<!-- 导航   start  -->
@@ -263,69 +201,64 @@
 				<div class="member-about fr"><input placeholder="商品名称/商品编号/订单编号" type="text"></div>
 			</div>
 			<div class="member-border">
-
 				<div class="member-return H-over">
 					<div class="member-vessel">
-						<ul>
-								<div class="member-volume fl">
-									<a href="#" class="fl member-btn-fl"></a>
-									<div class="member-whole clearfix" id="dingdan">
-										<ul id="H-table" class="H-table">
-											<li><a href="#">全部商品<em>(44)</em></a></li>
-											<li><a href="#">热销商品<em>(44)</em></a></li>
-											<li><a href="#">已下架<em>(44)</em></a></li>
-											<li><a href="#">积分兑换<em>(44)</em></a></li>
-										</ul>
-										<div class="member-check clearfix fl" style="float: right">
-											<a href="#" class="member-shops">一键加入购物车</a>
-											<a href="#" class="member-delete">一键删除</a>
-										</div>
-									</div>
-									<div class="member-cakes fl">
-										<ul>
-											<li>
-												<ul class="shop-tools clearfix">
-													<li class="shop-tools-item1" style="background-position:-20px -20px;" title="加入购物车">置顶</li>
-													<li class="shop-tools-item2" style="background-position:4px -98px;" title="删除商品">删除</li>
-												</ul>
-												<a href="#"><img src="images/shangpinxiangqing/X-1.png" title="" width="125" height="125"></a>
-												<a href="#">老年代步车</a>
-												<p>￥78.00 <i style="text-decoration: line-through;color: #666a6e;font-size: 11px;">￥178.00</i></p>
-											</li>
-											<li>
-												<ul class="shop-tools clearfix">
-													<li class="shop-tools-item1" style="background-position:-20px -20px;" title="加入购物车">置顶</li>
-													<li class="shop-tools-item2" style="background-position:4px -98px;" title="删除商品">删除</li>
-												</ul>
-												<a href="#"><img src="images/shangpinxiangqing/X-1.png" title="" width="125" height="125"></a>
-												<a href="#">老年代步车</a>
-												<p>￥78.00 <i style="text-decoration: line-through;color: #666a6e;font-size: 11px;">￥178.00</i></p>
-											</li>
-											<li>
-												<ul class="shop-tools clearfix">
-													<li class="shop-tools-item1" style="background-position:-20px -20px;" title="加入购物车">置顶</li>
-													<li class="shop-tools-item2" style="background-position:4px -98px;" title="删除商品">删除</li>
-												</ul>
-												<a href="#"><img src="images/shangpinxiangqing/X-1.png" title="" width="125" height="125"></a>
-												<a href="#">老年代步车</a>
-												<p>￥78.00 <i style="text-decoration: line-through;color: #666a6e;font-size: 11px;">￥178.00</i></p>
-											</li>
-											<li>
-												<ul class="shop-tools clearfix">
-													<li class="shop-tools-item1" style="background-position:-20px -20px;" title="加入购物车">置顶</li>
-													<li class="shop-tools-item2" style="background-position:4px -98px;" title="删除商品">删除</li>
-												</ul>
-												<a href="#"><img src="images/shangpinxiangqing/X-1.png" title="" width="125" height="125"></a>
-												<a href="#">老年代步车</a>
-												<p>￥78.00 <i style="text-decoration: line-through;color: #666a6e;font-size: 11px;">￥178.00</i></p>
-											</li>
-
-										</ul>
-									</div>
-									<a href="#" class="fr member-btn-fr"></a>
+						<div class="member-volume fl">
+							<a href="#" class="fl member-btn-fl"></a>
+							<div class="member-whole clearfix" id="dingdan">
+								<ul id="H-table" class="H-table">
+									<li><a href="#">全部商品<em>(44)</em></a></li>
+									<li><a href="#">热销商品<em>(44)</em></a></li>
+									<li><a href="#">已下架<em>(44)</em></a></li>
+									<li><a href="#">积分兑换<em>(44)</em></a></li>
+								</ul>
+								<div class="member-check clearfix fl" style="float: right">
+									<a href="#" class="member-shops">一键加入购物车</a>
+									<a href="#" class="member-delete">一键删除</a>
 								</div>
-							</li>
-						</ul>
+							</div>
+							<div class="member-cakes fl">
+								<ul>
+									<li>
+										<ul class="shop-tools clearfix">
+											<li class="shop-tools-item1" style="background-position:-20px -20px;" title="加入购物车">置顶</li>
+											<li class="shop-tools-item2" style="background-position:4px -98px;" title="删除商品">删除</li>
+										</ul>
+										<a href="#"><img src="images/shangpinxiangqing/X-1.png" title="" width="125" height="125"></a>
+										<a href="#">老年代步车</a>
+										<p>￥78.00 <i style="text-decoration: line-through;color: #666a6e;font-size: 11px;">￥178.00</i></p>
+									</li>
+									<li>
+										<ul class="shop-tools clearfix">
+											<li class="shop-tools-item1" style="background-position:-20px -20px;" title="加入购物车">置顶</li>
+											<li class="shop-tools-item2" style="background-position:4px -98px;" title="删除商品">删除</li>
+										</ul>
+										<a href="#"><img src="images/shangpinxiangqing/X-1.png" title="" width="125" height="125"></a>
+										<a href="#">老年代步车</a>
+										<p>￥78.00 <i style="text-decoration: line-through;color: #666a6e;font-size: 11px;">￥178.00</i></p>
+									</li>
+									<li>
+										<ul class="shop-tools clearfix">
+											<li class="shop-tools-item1" style="background-position:-20px -20px;" title="加入购物车">置顶</li>
+											<li class="shop-tools-item2" style="background-position:4px -98px;" title="删除商品">删除</li>
+										</ul>
+										<a href="#"><img src="images/shangpinxiangqing/X-1.png" title="" width="125" height="125"></a>
+										<a href="#">老年代步车</a>
+										<p>￥78.00 <i style="text-decoration: line-through;color: #666a6e;font-size: 11px;">￥178.00</i></p>
+									</li>
+									<li>
+										<ul class="shop-tools clearfix">
+											<li class="shop-tools-item1" style="background-position:-20px -20px;" title="加入购物车">置顶</li>
+											<li class="shop-tools-item2" style="background-position:4px -98px;" title="删除商品">删除</li>
+										</ul>
+										<a href="#"><img src="images/shangpinxiangqing/X-1.png" title="" width="125" height="125"></a>
+										<a href="#">老年代步车</a>
+										<p>￥78.00 <i style="text-decoration: line-through;color: #666a6e;font-size: 11px;">￥178.00</i></p>
+									</li>
+
+								</ul>
+							</div>
+						</div>
 					</div>
 				</div>
 

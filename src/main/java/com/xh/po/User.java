@@ -33,7 +33,7 @@ public class User {
 
     private String userA;
 
-    private String userB;
+    private Date userB;
 
     private String userC;
 
@@ -157,12 +157,12 @@ public class User {
         this.userA = userA == null ? null : userA.trim();
     }
 
-    public String getUserB() {
+    public Date getUserB() {
         return userB;
     }
 
-    public void setUserB(String userB) {
-        this.userB = userB == null ? null : userB.trim();
+    public void setUserB(Date userB) {
+        this.userB = userB == null ? null : userB;
     }
 
     public String getUserC() {

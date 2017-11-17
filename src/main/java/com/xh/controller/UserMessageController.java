@@ -6,6 +6,8 @@ import com.xh.po.vo.StringAndString;
 import com.xh.po.vo.TotalMessage;
 import com.xh.service.UserMessageService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -83,6 +85,7 @@ public class UserMessageController {
     /*
     * 启用用户
     * */
+
     @RequestMapping(value = "/UpdateStatusStart.action",method = {RequestMethod.POST,RequestMethod.GET})
     public  String UpdateStatusStart(Integer userid){
         User user=new User();
@@ -98,8 +101,10 @@ public class UserMessageController {
     public String UpdateStatusStop(Integer userid){
         User user=new User();
         user.setUserid(userid);
+        user.setUserB(new Date());
         user.setUserA("0");
         userMessageService.updateByPrimaryKeySelective(user);
         return "redirect:/UserMessageController.action";
     }
+
 }

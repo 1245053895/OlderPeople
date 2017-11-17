@@ -1,3 +1,5 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmd" uri="http://java.sun.com/jstl/fmt_rt" %>
 <%--
   Created by IntelliJ IDEA.
   User: Administrator
@@ -24,6 +26,8 @@
 	<script type="text/javascript" src="${pageContext.request.contextPath}/jsp/users/js/index.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/jsp/users/js/modernizr-custom-v2.7.1.min.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/jsp/users/js/jquery.SuperSlide.js"></script>
+	<script src="${pageContext.request.contextPath}/jsp/users/js/jquery-1.8.3.min.js"></script>
+	<script src="${pageContext.request.contextPath}/jsp/users/js/jquery-labelauty.js"></script>
 	<script>
         $(function(){
             $("#dingdan ul li").click(function(){
@@ -154,86 +158,8 @@
 <body>
 
 <header id="pc-header">
-	<div class="pc-header-nav">
-		<div class="pc-header-con">
-			<div class="fl pc-header-link" >您好！，欢迎来孝和集团电子商城
-				<a href="login.html" target="_blank">请登录</a>
-				<a href="register.html" target="_blank"> 免费注册</a>
-			</div>
-			<div class="fr pc-header-list top-nav">
-				<ul>
-					<li><a href="#">收藏夹</a></li>
-					<li><a href="my-dingdan.jsp">我的订单</a></li>
-					<li>
-						<div class="nav"><i class="pc-top-icon"></i><a href="#">个人中心</a></div>
-						<div class="con">
-							<dl>
-								<dt><a href="">个人资料</a></dt>
-								<dd><a href="">收货地址</a></dd>
-								<dd><a href="">修改登录密码</a></dd>
-								<dd><a href="">我的积分</a></dd>
-							</dl>
-						</div>
-					</li>
 
-					<li>
-						<div class="nav"><i class="pc-top-icon"></i><a href="#">帮助中心</a></div>
-						<div class="con">
-							<dl>
-								<dt><a href="">积分说明</a></dt>
-								<dd><a href="">联系客服</a></dd>
-							</dl>
-						</div>
-					</li>
-
-				</ul>
-			</div>
-		</div>
-	</div>
-
-	<div class="pc-header-logo clearfix">
-		<div class="pc-fl-logo fl">
-			<h1>
-				<a href="index.jsp"></a>
-			</h1>
-		</div>
-		<div class="head-form fl">
-			<form class="clearfix">
-				<input class="search-text" accesskey="" id="key" autocomplete="off" placeholder="洗衣机" type="text">
-				<button class="button" onclick="search('key');return false;">搜索</button>
-			</form>
-			<div class="words-text clearfix">
-				<a href="#">制氧机</a>
-				<a href="#">代步车</a>
-				<a href="#">电动轮椅</a>
-				<a href="#">血糖仪</a>
-				<a href="#">血压计</a>
-				<a href="#">木制拐杖</a>
-				<a href="#">足浴盆</a>
-			</div>
-		</div>
-		<div class="fr pc-head-car">
-			<i class="icon-car"></i>
-			<a href="#">我的购物车</a>
-			<em>10</em>
-		</div>
-	</div>
-	<!--  顶部    start-->
-	<div class="yHeader">
-		<!-- 导航   start  -->
-		<div class="yNavIndex">
-			<ul class="yMenuIndex">
-				<li><a href="" target="_blank" title="首页">首页</a></li>
-				<li><a href="" target="_blank" title="热销专区">热销专区</a></li>
-				<li><a href="" target="_blank" title="新品专区">新品专区</a></li>
-				<li><a href="" target="_blank" title="积分商城">积分商城</a></li>
-				<li><a href="" target="_blank" title="合伙人">合伙人</a></li>
-				<li><a href="" target="_blank" title="关于我们">关于我们</a></li>
-			</ul>
-		</div>
-		<!-- 导航   end  -->
-	</div>
-
+	<jsp:include page="/jsp/users/head.jsp"></jsp:include>
 </header>
 
 
@@ -241,27 +167,23 @@
 	<div class="member-center clearfix">
 		<div class="member-left fl">
 			<div class="member-apart clearfix">
-				<div class="fl"><a href="#"><img src="img/mem.png"></a></div>
+				<div class="fl"><a href="#"><img src="jsp/users/img/mem.png"></a></div>
 				<div class="fl">
 					<p>用户名：</p>
-					<p><a href="#">亚里士多德</a></p>
+					<p><a href="#">${sessionScope.user.username}</a></p>
 					<p>账号：</p>
-					<p>389323080</p>
+					<p>${sessionScope.user.userid}</p>
 				</div>
 			</div>
 			<div class="member-lists" id="leftinfo">
 				<dl  onclick = "change(this);">
 					<dt>个人中心</dt>
-					<dd><a href="#">个人资料</a></dd>
-					<dd><a href="#">收货地址</a></dd>
-					<dd><a href="#">修改登录密码</a></dd>
-					<dd><a href="#">我的积分</a></dd>
+					<dd><a href="/CustomerInformation.action">个人资料</a></dd>
+					<dd><a href="/CustomersAddress.action">收货地址</a></dd>
+					<dd><a href="/UpdataPwdPage.action">修改登录密码</a></dd>
+					<dd><a href="/MyCredits.action">我的积分</a></dd>
 				</dl>
-				<%--<dl  onclick = "change(this);">
-					<dt>客户服务</dt>
-					<dd><a href="#">退货订单</a></dd>
-					<dd><a href="#">退货/退款记录</a></dd>
-				</dl>--%>
+
 			</div>
 		</div>
 		<div class="member-right fr">
@@ -269,102 +191,72 @@
 				<div class="member-heels fl"><h2>我的资料</h2></div>
 			</div>
 			<div class="member-border">
-				<!--
-                                <div class="member-secure clearfix">
-                                    <div class="member-extent fl">
-                                        <h2 class="fl">安全级别</h2>
-                                        <ul class="fl">
-                                            <li class="on"></li>
-                                            <li class="on"></li>
-                                            <li class="on"></li>
-                                            <li class="on"></li>
-                                            <li class="on"></li>
-                                            <li class="on"></li>
-                                            <li class="on"></li>
-                                            <li class="on1"><a href="#"></a></li>
-                                            <li class="on2"><a href="#"></a></li>
-                                            <li class="on3"><a href="#"></a></li>
-                                        </ul>
-                                        <span class="fl">较高</span>
-                                    </div>
-                                    <div class="fr reds"><p> * 建议您开启全部安全设置，以保障您的账户及资金安全</p></div>
-                                </div>
-                -->
+
 				<div class="member-caution clearfix">
-					<ul>
+					<form id="form1" action="${pageContext.request.contextPath}/CustomerUpdate.action" method="post">
+						<ul>
 						<li class="clearfix">
 							<div class="warn1"></div>
 							<div class="warn2">用户名</div>
-							<div class="warn3">亚里士多德</div>
-							<div class="warn4"><a href="#">修改</a> </div>
+							<div class="warn3"><input  class="inputx " type="text" name="username" value="${userAndBrithday.username}" readonly="readonly"></div>
+
 						</li>
 						<li class="clearfix">
 							<div class="warn1"></div>
-
 							<div class="warn2">性别</div>
 							<span class="warn3">
-
 								<ul style="height: 0px;margin-top: -10px;margin-left: -25px">
-									<li style="border-bottom: 0px;"><input type="radio" name="radio" data-labelauty="男" value="1"></li>
-									<li style="border-bottom: 0px;"><input type="radio" name="radio" data-labelauty="女" value="0"></li>
+									<li style="border-bottom: 0px;"><input type="radio" name="usersex" data-labelauty="男" value="1" <c:if test="${sessionScope.user.usersex==1}">checked></c:if></li>
+									<li style="border-bottom: 0px;"><input type="radio" name="usersex" data-labelauty="女" value="0" <c:if test="${sessionScope.user.usersex==0}">checked></c:if></li>
 								</ul>
-<script src="${pageContext.request.contextPath}/jsp/users/js/jquery-1.8.3.min.js"></script>
-<script src="${pageContext.request.contextPath}/jsp/users/js/jquery-labelauty.js"></script>
-<script>
-$(function(){
-    $(':input').labelauty();
-});
-</script>
-
 							</span>
-							<div class="warn4"><a href="#">修改</a></div>
+
 						</li>
 
 						<li class="clearfix">
 							<div class="warn1"></div>
 							<div class="warn2">真实姓名</div>
-							<div class="warn3">旺财  </div>
-							<div class="warn4"><a href="#">修改</a> </div>
+							<div class="warn3"><input  class="inputx" type="text" name="userrealname" value="${userAndBrithday.userrealname}" readonly="readonly">  </div>
+
 						</li>
 
 						<li class="clearfix">
 							<div class="warn1"></div>
 							<div class="warn2">出生年月</div>
-							<!--
-                                                        <div class="warn3">您验证的手机： <i class="reds">134*****693</i>   若已丢失或停用，请立即更换，<i class="reds">避免账户被盗</i></div>
-                                                        <div class="warn5"><p>解绑请咨询搜小悦官方客服 <i>souyue@zhongsou.com  </i></p></div>
-                            -->
 							<div class="warn3">
-								<select style="width: 80px">
-									<option>2017</option>
-									<option>2016</option>
-									<option>2015</option>
-									<option>2014</option>
+								<select style="width: 80px" name = "Year">
+									<option value = "1" selected = "selected">${temp[0]}</option>
+									<option value = "2017">2017</option>
+									<option value = "2016">2016</option>
+									<option value = "2015">2015</option>
+									<option value = "2014">2014</option>
 								</select> 年
-								<select style="margin-left: 20px;width: 60px">
-									<option>1</option>
-									<option>2</option>
-									<option>3</option>
-									<option>4</option>
+								<select style="margin-left: 20px;width: 60px" name = "Month">
+									<option>${temp[1]}</option>
+									<option value = "02">2</option>
+									<option value = "03">3</option>
+									<option value = "04">4</option>
 								</select> 月
-								<select style="margin-left: 20px;width: 60px">
-									<option>1</option>
-									<option>2</option>
-									<option>3</option>
-									<option>4</option>
+								<select style="margin-left: 20px;width: 60px" name = "Day">
+									<option>${temp[2]}</option>
+									<option value = "02">2</option>
+									<option value = "02">3</option>
+									<option value = "03">4</option>
 								</select> 日
 							</div>
-							<div class="warn4"><a href="#">修改</a></div>
+
 						</li>
 
 						<li class="clearfix">
 							<div class="warn6"></div>
 							<div class="warn2">邮箱地址</div>
-							<div class="warn3" id="text">1234567890@qq.com  </div>
-							<!--							<div class="warn5"><a href="#">支付密码管理</a></div>-->
-							<div class="warn4"><a href="#" onClick="Guestbook_iew(12)">修改</a> </div>
+							<div class="warn3" id="text"><input  class="inputx " type="text" name="useremail" value="${userAndBrithday.useremail}" readonly="readonly"> </div>
 						</li>
+							<li class="clearfix">
+								<a style="font-size: 23px" class="warn4" href="javascript:void(0);" onclick="status(this)">修改</a>
+							</li>
 					</ul>
+					</form>
 
 
 					<div class="member-prompt">
@@ -469,6 +361,33 @@ $(function(){
         $(this).removeClass("hover");
         $(this).find(".nav a").removeClass("hover");
     })
+
+    var flag=true;
+    function status(obj,id) {
+        if(flag){
+            $(".inputx").removeAttr("readonly");
+            $(".inputx").css("border","1px #E6E6FA solid ")
+            $(obj).text("提交");
+            flag=false;
+        }else {
+            $("#form1").submit();
+        }
+
+    }
+
+    function update(obj,id){
+        layer.confirm('确认要修改吗？',{icon:0,},function(index){
+            $(obj).parents("tr").remove();
+            layer.msg('已修改!',{icon:1,time:1000});
+
+        });
+    }
+
+</script>
+<script>
+    $(function(){
+        $(':input').labelauty();
+    });
 </script>
 </body>
 </html>

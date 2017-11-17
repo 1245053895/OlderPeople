@@ -32,13 +32,14 @@ public class CustomerInformationController {
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         User userInfo = new User();
         userInfo = (User)request.getSession().getAttribute("user");
-        Integer id=userInfo.getUserid();
-        userInfo.setUserid(id);
-        UserAndBrithday userAndBrithday=customerInformationService.SelectCustomerInformation(id);
-        model.addAttribute(userAndBrithday);
+
       /*  customerInformationService.selectCustomerInformatin(id);*/
 
         if(userInfo!=null) {
+            Integer id=userInfo.getUserid();
+            userInfo.setUserid(id);
+            UserAndBrithday userAndBrithday=customerInformationService.SelectCustomerInformation(id);
+            model.addAttribute(userAndBrithday);
             String userBirthday = df.format(userAndBrithday.getUserbirthday());
             String temp[] = userBirthday.split(" ")[0].split("-");
             String year = temp[0];
@@ -84,7 +85,6 @@ public class CustomerInformationController {
             Integer id=user1.getUserid();
             List<Gainaddres> gainaddres = customerInformationService.SelectUserAddressByid(id);
             model.addAttribute("gainaddres",gainaddres);
-            return "/jsp/users/address.jsp";
         }
         return "/jsp/users/address.jsp";
     }

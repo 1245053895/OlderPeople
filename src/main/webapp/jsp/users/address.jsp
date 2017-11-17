@@ -22,34 +22,15 @@
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/jsp/users/css/base.css">
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/jsp/users/css/home.css">
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/jsp/users/css/member.css">
+
+	<link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/jsp/users/img/icon/favicon.ico">
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/jsp/users/css/car/base.css">
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/jsp/users/css/car/home.css">
+
 	<script type="text/javascript" src="${pageContext.request.contextPath}/jsp/users/js/jquery.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/jsp/users/js/index.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/jsp/users/js/modernizr-custom-v2.7.1.min.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/jsp/users/js/jquery.SuperSlide.js"></script>
-	<script src="${pageContext.request.contextPath}/jsp/users/js/jquery-1.8.3.min.js"></script>
-	<script src="${pageContext.request.contextPath}/jsp/users/js/jquery-labelauty.js"></script>
-	<script>
-        $(function(){
-            $("#dingdan ul li").click(function(){
-                $("#dingdan ul li a").removeClass("dingdans");
-                $(this).find("a").addClass("dingdans");
-            });
-        });
-        function change(i){
-
-        }
-	</script>
-	<script>
-        $(function(){
-            $("#leftinfo dl dd").click(function(){
-                $("#leftinfo dl dd a").removeClass("leftinfos");
-                $(this).find("a").addClass("leftinfos");
-            });
-        });
-        function change(i){
-
-        }
-	</script>
 	<script type="text/javascript">
 
         var intDiff = parseInt(90000);//倒计时总秒数量
@@ -145,15 +126,17 @@
 
         })
 	</script>
+	<script>
+        $(function(){
+            $("#dingdan ul li").click(function(){
+                $("#dingdan ul li a").removeClass("dingdans");
+                $(this).find("a").addClass("dingdans");
+            });
+        });
+        function change(i){
 
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/jsp/users/css/jquery-labelauty.css">
-	<style>
-		/*ul { list-style-type: none;}*/
-		li { display: inline-block;}
-		li { margin: 0px 0;}
-		input.labelauty + label { font: 12px "Microsoft Yahei";}
-	</style>
-
+        }
+	</script>
 </head>
 <body>
 
@@ -192,83 +175,204 @@
 		</div>
 		<div class="member-right fr">
 			<div class="member-head">
-				<div class="member-heels fl"><h2>我的资料</h2></div>
+				<div class="member-heels fl"><h2>地址管理</h2></div>
 			</div>
+
 			<div class="member-border">
 
 				<div class="member-caution clearfix">
-					<form id="form1" action="${pageContext.request.contextPath}/CustomerUpdate.action" method="post">
-						<ul>
-							<li class="clearfix">
-								<div class="warn1"></div>
-								<div class="warn2">用户名</div>
-								<div class="warn3"><input  class="inputx " type="text" name="username" value="${userAndBrithday.username}" readonly="readonly"></div>
 
+					<ul>
+						<li class="clearfix">
+							<div class="warn2" style="margin-left: 10px;border: none">地址编号</div>
+							<div class="warn2" style="margin-left: 10px;border: none">收货人</div>
+							<div class="warn2" style="margin-left: 10px;border: none">详细地址</div>
+							<div class="warn2" style="margin-left: 10px;border: none">邮编</div>
+							<div class="warn2" style="margin-left: 10px;border: none">电话</div>
+							<div class="warn2" style="margin-left: 10px;border: none">操作</div>
+							<input type="button" class="warn2" style="width: 50px;float: left;margin-left: 10px;border: 1px;font-weight: 80px;text-align:center;margin-top:6px;font-size:15px;color: #FF9100;background-color: none;border-radius: 5px" id="xz" onClick="xdz()" value="新地址">
+
+						</li>
+
+						<script>
+                            function xdz(){
+                                document.getElementById("dz").style.display = "block";
+                                document.getElementById("xz").style.display = "none";
+                            }
+                            function bc(){
+                                document.getElementById("xz").style.display = "block";
+                                document.getElementById("dz").style.display = "none";
+                            }
+						</script>
+						<form action="${pageContext.request.contextPath}/InsertGainAddress.action" method="post">
+							<li class="clearfix" style="display: none" id="dz">
+								<input name="userid" value="${user.userid}"  readonly="ture" class="warn2" style="margin-left: 10px;font-weight: normal;border-color: red">
+								<input name="gainname" placeholder="收货人姓名" class="warn2" style="margin-left: 10px;font-weight: normal;border-color: red">
+								<input name="gainaddress" placeholder="地址" class="warn2" style="margin-left: 10px;font-weight: normal;border-color: red">
+								<input name="gaincode" placeholder="邮编"  class="warn2" style="margin-left: 10px;font-weight: normal;border-color: red">
+								<input name="gainmobile" placeholder="电话"  class="warn2" style="margin-left: 10px;font-weight: normal;border-color: red">
+								<input  type="submit" value="保存" class="warn2" style="margin-left: 10px;font-weight: normal;border-radius: 10px;background-color: black;color: aliceblue;" onClick="bc()">
+								<input  value="取消" class="warn2" style="margin-left: 10px;font-weight: normal;border-radius: 10px;background-color: black;color: aliceblue;" onClick="bc()">
 							</li>
-							<li class="clearfix">
-								<div class="warn1"></div>
-								<div class="warn2">性别</div>
-								<span class="warn3">
-								<ul style="height: 0px;margin-top: -10px;margin-left: -25px">
-									<li style="border-bottom: 0px;"><input type="radio" name="usersex" data-labelauty="男" value="1" <c:if test="${sessionScope.user.usersex==1}">checked></c:if></li>
-									<li style="border-bottom: 0px;"><input type="radio" name="usersex" data-labelauty="女" value="0" <c:if test="${sessionScope.user.usersex==0}">checked></c:if></li>
-								</ul>
-							</span>
-
-							</li>
-
-							<li class="clearfix">
-								<div class="warn1"></div>
-								<div class="warn2">真实姓名</div>
-								<div class="warn3"><input  class="inputx" type="text" name="userrealname" value="${userAndBrithday.userrealname}" readonly="readonly">  </div>
-
-							</li>
-
-							<li class="clearfix">
-								<div class="warn1"></div>
-								<div class="warn2">出生年月</div>
-								<div class="warn3">
-									<select style="width: 80px" name = "Year">
-										<option value = "1" selected = "selected">${temp[0]}</option>
-										<option value = "2017">2017</option>
-										<option value = "2016">2016</option>
-										<option value = "2015">2015</option>
-										<option value = "2014">2014</option>
-									</select> 年
-									<select style="margin-left: 20px;width: 60px" name = "Month">
-										<option>${temp[1]}</option>
-										<option value = "02">2</option>
-										<option value = "03">3</option>
-										<option value = "04">4</option>
-									</select> 月
-									<select style="margin-left: 20px;width: 60px" name = "Day">
-										<option>${temp[2]}</option>
-										<option value = "02">2</option>
-										<option value = "02">3</option>
-										<option value = "03">4</option>
-									</select> 日
-								</div>
-
-							</li>
-
-							<li class="clearfix">
-								<div class="warn6"></div>
-								<div class="warn2">邮箱地址</div>
-								<div class="warn3" id="text"><input  class="inputx " type="text" name="useremail" value="${userAndBrithday.useremail}" readonly="readonly"> </div>
-							</li>
-							<li class="clearfix">
-								<a style="font-size: 23px" class="warn4" href="javascript:void(0);" onclick="status(this)">修改</a>
-							</li>
-						</ul>
-					</form>
+						</form>
 
 
-					<div class="member-prompt">
-						<p>安全提示：</p>
-						<p>您当前IP地址是：<i class="reds">110.106.0.01</i>  北京市          上次登录的TP： 2015-09-16  <i class="reds">110.106.0.02 </i> 天津市</p>
-						<p>1. 注意防范进入钓鱼网站，不要轻信各种即时通讯工具发送的商品或支付链接，谨防网购诈骗。</p>
-						<p>2. 建议您安装杀毒软件，并定期更新操作系统等软件补丁，确保账户及交易安全。      </p>
-					</div>
+						<c:forEach items="${gainaddres}" var="gainaddres1">
+							<form id="form${gainaddres1.gainid}" action="${pageContext.request.contextPath}/UpdateGainAdress.action" method="post">
+								<li class="clearfix">
+									<div class="warn2" style="margin-left: 10px;border: none;font-weight: normal">
+										<input  class="inputx  aa${gainaddres1.gainid}" name="gainid" value="${gainaddres1.gainid}" readonly="true">
+									</div>
+									<div class="warn2" style="margin-left: 10px;border: none;font-weight: normal">
+										<input  class="inputx  aa${gainaddres1.gainid}" name="gainname" value="${gainaddres1.gainname}" readonly="true">
+									</div>
+									<div class="warn2" style="margin-left: 10px;border: none;font-weight: normal">
+										<input  class="inputx  aa${gainaddres1.gainid}" name="gainaddress" value="${gainaddres1.gainaddress}"  readonly="true">
+									</div>
+									<div class="warn2" style="margin-left: 10px;border: none;font-weight: normal">
+										<input  class="inputx aa${gainaddres1.gainid}" name="gaincode" value="${gainaddres1.gaincode}" readonly="true">
+									</div>
+									<div class="warn2" style="margin-left: 10px;border: none;font-weight: normal">
+										<input class="inputx  aa${gainaddres1.gainid}" name="gainmobile" value="${gainaddres1.gainmobile}" readonly="true">
+									</div>
+									<div class="warn2" style="margin-left: 10px;border: none;font-weight: normal">
+										<a href="javascript:void(0);" onclick="status(this,'${gainaddres1.gainid}')">修改</a>
+										<span style="margin: auto 4px">|</span>
+										<a title="删除" href="javascript:void(0);" onclick="user_del(this,'${gainaddres1.gainid}')">删除</a>
+									</div>
+
+									<a title="默认" href="javascript:void(0);" <c:if test="${gainaddres1.gainA.equals('1')}">style="background-color: #f4dae5"</c:if> onclick="moren(this,'${gainaddres1.gainid}')">默认</a>
+								</li>
+							</form>
+						</c:forEach>
+
+					</ul>
+
+					<!-- 收货地址 -->
+					<!--
+                                            <div class="xm-box">
+
+                                                <div style="height: 36px"></div>
+
+                                                <div class="box-bd">
+                                                    <div class="clearfix xm-address-list" id="checkoutAddrList">
+                                                        <dl class="item" style="margin-left: 40px">
+                                                            <dt>
+                                                                <strong class="itemConsignee">留刘海</strong>
+                                                                <span class="itemTag tag">家</span>
+                                                            </dt>
+                                                            <dd>
+
+                                                                <p class="itemRegion">北京市 海淀区</p>
+                                                                <p class="itemStreet">北京市海淀区双榆树</p>
+                                                                <p class="tel itemTel">188010666666</p>
+                                                                <span class="edit-btn J_editAddr">编辑</span>
+                                                            </dd>
+                                                            <dd style="display:none">
+                                                                <input type="radio" name="Checkout[address]" class="addressId"  value="10140916720030323">
+                                                            </dd>
+                                                        </dl>
+                                                        <div class="item use-new-addr"  id="J_useNewAddr" data-state="off" style="margin-left: 10px">
+                                                            <span class="iconfont icon-add"><img src="images/add_cart.png" /></span>
+                                                            使用新地址
+                                                        </div>
+                                                    </div>
+                                                    <input type="hidden" name="newAddress[type]" id="newType" value="common">
+                                                    <input type="hidden" name="newAddress[consignee]" id="newConsignee">
+                                                    <input type="hidden" name="newAddress[province]" id="newProvince">
+                                                    <input type="hidden" name="newAddress[city]" id="newCity">
+                                                    <input type="hidden" name="newAddress[district]" id="newCounty">
+                                                    <input type="hidden" name="newAddress[address]" id="newStreet">
+                                                    <input type="hidden" name="newAddress[zipcode]" id="newZipcode">
+                                                    <input type="hidden" name="newAddress[tel]" id="newTel">
+                                                    <input type="hidden" name="newAddress[tag_name]" id="newTag">
+                    -->
+					<!--点击弹出新增/收货地址界面start-->
+					<!--
+                                                    <div class="xm-edit-addr-box" id="J_editAddrBox">
+                                                        <div class="bd">
+                                                            <div class="item">
+                                                                <label>收货人姓名<span>*</span></label>
+                                                                <input type="text" name="userAddress[consignee]" id="Consignee" class="input" placeholder="收货人姓名" maxlength="15" autocomplete='off'>
+                                                                <p class="tip-msg tipMsg"></p>
+                                                            </div>
+                                                            <div class="item">
+                                                                <label>联系电话<span>*</span></label>
+                                                                <input type="text" name="userAddress[tel]" class="input" id="Telephone" placeholder="11位手机号" autocomplete='off'>
+                                                                <p class="tel-modify-tip" id="telModifyTip"></p>
+                                                                <p class="tip-msg tipMsg"></p>
+                                                            </div>
+                                                            <div class="item">
+                                                                <label>地址<span>*</span></label>
+                                                                <select name="userAddress[province]" id="Provinces" class="select-1">
+                                                                    <option>省份/自治区</option>
+                                                                </select>
+                                                                <select name="userAddress[city]"  id="Citys" class="select-2" disabled>
+                                                                    <option>城市/地区/自治州</option>
+                                                                </select>
+                                                                <select name="userAddress[county]"  id="Countys" class="select-3" disabled>
+                                                                    <option>区/县</option>
+                                                                </select>
+                                                                <textarea   name="userAddress[street]" class="input-area" id="Street" placeholder="路名或街道地址，门牌号"></textarea>
+                                                                <p class="tip-msg tipMsg"></p>
+                                                            </div>
+                                                            <div class="item">
+                                                                <label>邮政编码<span>*</span></label>
+                                                                <input type="text" name="userAddress[zipcode]" id="Zipcode" class="input" placeholder="邮政编码"  autocomplete='off'>
+                                                                <p class="zipcode-tip" id="zipcodeTip"></p>
+                                                                <p class="tip-msg tipMsg"></p>
+                                                            </div>
+                                                            <div class="item">
+                                                                <label>地址标签<span>*</span></label>
+                                                                <input type="text" name="userAddress[tag]" id="Tag" class="input" placeholder='地址标签：如"家"、"公司"。限5个字内'  >
+                                                                <p class="tip-msg tipMsg"></p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="ft clearfix">
+                                                            <button  type="button"  class="btn btn-lineDake btn-small " id="J_editAddrCancel">取消</button>
+                                                            <button type="button" class="btn btn-primary  btn-small " id="J_editAddrOk">保存</button>
+                                                        </div>
+                                                    </div>
+                    -->
+					<!--点击弹出新增/收货地址界面end-->
+					<!--
+                                                    <div class="xm-edit-addr-backdrop" id="J_editAddrBackdrop"></div>
+                                                </div>                </div>
+                    -->
+					<!-- 收货地址 END-->
+
+
+					<!--
+                                            <li class="clearfix">
+                                                <div class="warn1"></div>
+                                                <div class="warn2">登录密码</div>
+                                                <div class="warn3">互联网账号存在被盗风险，建议您定期更改密码以保护账户安全。</div>
+                                                <div class="warn4"><a href="#">修改</a> </div>
+                                            </li>
+                    -->
+
+					<!--
+                                            <li class="clearfix">
+                                                <div class="warn1"></div>
+                                                <div class="warn2">手机验证</div>
+
+                                                <div class="warn3">134*****693  </div>
+                                                <span style="margin-left: -450px; height:33px; line-height:33px; float:left; color: #A8A8A8">若已丢失或停用，请立即更换，避免账户被盗</span>
+
+                                                <div class="warn4"><a href="#">更换</a> </div>
+                                            </li>
+                    -->
+
+					<!--					</ul>-->
+					<!--
+                                        <div class="member-prompt">
+                                            <p>安全提示：</p>
+                                            <p>您当前IP地址是：<i class="reds">110.106.0.01</i>  北京市          上次登录的TP： 2015-09-16  <i class="reds">110.106.0.02 </i> 天津市</p>
+                                            <p>1. 注意防范进入钓鱼网站，不要轻信各种即时通讯工具发送的商品或支付链接，谨防网购诈骗。</p>
+                                            <p>2. 建议您安装杀毒软件，并定期更新操作系统等软件补丁，确保账户及交易安全。      </p>
+                                        </div>
+                    -->
+
 				</div>
 			</div>
 		</div>
@@ -365,33 +469,34 @@
         $(this).removeClass("hover");
         $(this).find(".nav a").removeClass("hover");
     })
+	/*用户-删除*/
+    function user_del(obj,id){
+        var flag=confirm('确认要删除吗？')
+        if(flag){
+            $(obj).parents("li").remove();
+            window.location.href="${pageContext.request.contextPath}/DelectGainaddress.action?gainid="+id;
+        }
+    }
 
+	/*收货地址默认*/
+    function moren(obj,id){
+        var flag=confirm('确认要选择修改吗？')
+        if(flag){
+            window.location.href="${pageContext.request.contextPath}/UpdateGainAdressStatus.action?gainid="+id;
+        }
+    }
     var flag=true;
     function status(obj,id) {
         if(flag){
-            $(".inputx").removeAttr("readonly");
-            $(".inputx").css("border","1px #E6E6FA solid ")
+            $(".aa"+id).removeAttr("readonly");
+            $(".aa"+id).css("border","1px #E6E6FA solid");
             $(obj).text("提交");
             flag=false;
         }else {
-            $("#form1").submit();
+            $("#form"+id).submit();
         }
 
     }
-
-    function update(obj,id){
-        layer.confirm('确认要修改吗？',{icon:0,},function(index){
-            $(obj).parents("tr").remove();
-            layer.msg('已修改!',{icon:1,time:1000});
-
-        });
-    }
-
-</script>
-<script>
-    $(function(){
-        $(':input').labelauty();
-    });
 </script>
 </body>
 </html>

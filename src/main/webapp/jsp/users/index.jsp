@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Administrator
@@ -206,7 +207,7 @@
 			<div class="fr pc-header-list top-nav">
 				<ul>
 					<li><a href="${pageContext.request.contextPath}/jsp/users/my-dingdan.jsp?flag=1">收藏夹</a></li>
-					<li><a href="${pageContext.request.contextPath}/jsp/users/my-dingdan.jsp?flag=2">我的订单</a></li>
+					<li><a href="${pageContext.request.contextPath}/jsp/users/my-dingdan.jsp?flag=2">我的购物车</a></li>
 					<!-- flag=0 表示跳到订单页面; flag=1 表示跳到收藏页面;flag=2 表示跳到购物车页面; ...-->
 					<li><a href="${pageContext.request.contextPath}/jsp/users/my-dingdan.jsp?flag=0">我的订单</a></li>
 					<li>
@@ -264,7 +265,7 @@
 		</div>
 	</div>
 	<!--  顶部    start-->
-	<div class="yHeader1">
+	<div class="yHeader1" style="margin: 0px auto">
 		<!-- 导航   start  -->
 		<div class="yNavIndex">
 			<div class="pullDown">

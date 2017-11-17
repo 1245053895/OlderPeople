@@ -26,8 +26,8 @@ public class LoginServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 //		String   username= (String) request.getSession().getAttribute("username");
-		String username= request.getParameter("username");
-
+		String username=  new String(request.getParameter("username").getBytes("ISO8859-1"),"utf-8");
+        System.out.println(username);
 		request.getSession().setAttribute("username", username);
 
 		response.sendRedirect("/jsp/admin/chat/chat.jsp");

@@ -2,10 +2,7 @@ package com.xh.mapper.pojo;
 
 import com.xh.po.Order;
 import com.xh.po.Transport;
-import com.xh.po.vo.OrderAndOther;
-import com.xh.po.vo.OrderAndString;
-import com.xh.po.vo.OrderCustom;
-import com.xh.po.vo.OrderDetailCustom;
+import com.xh.po.vo.*;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -16,6 +13,8 @@ public interface OrderAndOtherMapper {
     //   如果 OrderOfString orderOfString=null代表查询全部订单
     List<Order> selectOrderByAll(Order order);
 
+    List<OderAndString2> selectAndName();
+    OrderAndString  selectName5();
     OrderAndString totalAmountOfTransaction();
 
     OrderAndString orderQuantity();

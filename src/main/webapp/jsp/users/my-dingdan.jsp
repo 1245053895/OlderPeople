@@ -254,7 +254,7 @@
 					<dt>我的商城</dt>
 					<dd><a href="javascript:check('0');">我的订单</a></dd>
 					<dd><a href="javascript:check('2');">我的购物车</a></dd>
-					<dd><a href="${pageContext.request.contextPath}/jsp/users/my-car.jsp">我的收藏</a></dd>
+					<dd><a href="javascript:check('1');">我的收藏</a></dd>
 					<dd><a href="${pageContext.request.contextPath}/jsp/users/my-pingjia.jsp">我的评价</a></dd>
 					<%--<dd><a href="${pageContext.request.contextPath}/jsp/users/my-dingdan.jsp?flag=0">我的订单</a></dd>
 					<dd><a href="${pageContext.request.contextPath}/jsp/users/my-dingdan.jsp?flag=2">我的购物车</a></dd>
@@ -274,65 +274,6 @@
 				<div class="member-backs member-icons fr"><a href="#">搜索</a></div>
 				<div class="member-about fr"><input placeholder="商品名称/商品编号/订单编号" type="text"></div>
 			</div>
-			<%--<div class="member-whole clearfix" id="dingdan">
-				<ul id="H-table" class="H-table">
-					<li class="cur"><a href="javascript:queryOrderByUserId(0,5,-1);">全部订单</a></li>
-					<li><a href="javascript:queryOrderByUserId(0,5,1);">待发货</a></li>
-					<li><a href="javascript:queryOrderByUserId(0,5,2);">已发货</a></li>
-					<li><a href="javascript:queryOrderByUserId(0,5,3);">已签收</a></li>
-					<li><a href="javascript:queryOrderByUserId(0,5,4);">已完成</a></li>
-					<li><a href="javascript:queryOrderByUserId(0,5,6);">退货订单<em></em></a></li>
-				</ul>
-			</div>
-			<div class="member-border">
-				<div class="member-return H-over">
-					<div class="member-cancel clearfix" id="tb_haed">
-						<span class="be1">订单信息</span>
-						<span class="be2">收货人</span>
-						<span class="be2">订单金额</span>
-						<span class="be2">订单时间</span>
-						<span class="be2">订单状态</span>
-						<span class="be2">订单操作</span>
-					</div>
-					<div class="loading">
-						<div></div>
-						<img src="${pageContext.request.contextPath}/jsp/users/images/loading1.gif"/>
-					</div>
-					<div id="order" class="member-sheet clearfix"><ul></ul></div>
-				</div>
-				<div class="member-return H-over" style="display:none;">
-					<div class="member-cancel clearfix">
-						<span class="be1">订单信息</span>
-						<span class="be2">收货人</span>
-						<span class="be2">订单金额</span>
-						<span class="be2">订单时间</span>
-						<span class="be2">订单状态</span>
-						<span class="be2">订单操作</span>
-					</div>
-					<div class="member-sheet clearfix">
-						<ul>
-
-						</ul>
-					</div>
-				</div>
-
-				<div class="clearfix" style="padding:30px 20px;">
-					<div class="fr pc-search-g pc-search-gs">
-						<a style="display:none" class="fl " href="javascript:void(0);">上一页</a>
-						<a href="javascript:queryOrderByUserId(0,5);" class="current">1</a>
-						<a href="javascript:queryOrderByUserId(6,5);">2</a>
-						<a href="javascript:queryOrderByUserId(11,5);">3</a>
-						<a href="javascript:queryOrderByUserId(16,5);">4</a>
-						<a href="javascript:queryOrderByUserId(21,5);">5</a>
-						<a href="javascript:queryOrderByUserId(26,5);">6</a>
-						<a href="javascript:queryOrderByUserId(31,5);">7</a>
-						<span class="pc-search-di">…</span>
-						<a href="javascript:;">1088</a>
-						<a title="使用方向键右键也可翻到下一页哦！" class="" href="javascript:;">下一页</a>
-					</div>
-				</div>
-
-			</div>--%>
 		</div>
 	</div>
 </section>
@@ -411,7 +352,12 @@
 	</div>
 </footer>
 <style>
-
+	.module{
+		height: 200px;
+	}
+	.member-cakes{
+		width: 968px;
+	}
 	.pc-shopping-tab{
 		margin-top: -44px;
 	}
@@ -460,7 +406,7 @@
                 queryOrderByUserId(0,5);
                 break;
             case '1':
-                queryFavoritesByUserId();
+                queryFavoritesByUserId(0,5);
                 break;
             case '2':
                 queryShopCarByUserId(0,5);
@@ -474,65 +420,65 @@
         }
     }
     function queryOrderByUserId(start,count,status,conditions) {
-        var order="<div class=\"member-whole clearfix\" id=\"dingdan\">\n" +
-            "\t\t\t\t<ul id=\"H-table\" class=\"H-table\">\n" +
-            "\t\t\t\t\t<li class=\"cur\"><a href=\"javascript:queryOrderByUserId(0,5,-1);\">全部订单</a></li>\n" +
-            "\t\t\t\t\t<li><a href=\"javascript:queryOrderByUserId(0,5,1);\">待发货</a></li>\n" +
-            "\t\t\t\t\t<li><a href=\"javascript:queryOrderByUserId(0,5,2);\">已发货</a></li>\n" +
-            "\t\t\t\t\t<li><a href=\"javascript:queryOrderByUserId(0,5,3);\">已签收</a></li>\n" +
-            "\t\t\t\t\t<li><a href=\"javascript:queryOrderByUserId(0,5,4);\">已完成</a></li>\n" +
-            "\t\t\t\t\t<li><a href=\"javascript:queryOrderByUserId(0,5,6);\">退货订单<em></em></a></li>\n" +
-            "\t\t\t\t</ul>\n" +
-            "\t\t\t</div>\n" +
-            "\t\t\t<div class=\"member-border\">\n" +
-            "\t\t\t\t<div class=\"member-return H-over\">\n" +
-            "\t\t\t\t\t<div class=\"member-cancel clearfix\" id=\"tb_haed\">\n" +
-            "\t\t\t\t\t\t<span class=\"be1\">订单信息</span>\n" +
-            "\t\t\t\t\t\t<span class=\"be2\">收货人</span>\n" +
-            "\t\t\t\t\t\t<span class=\"be2\">订单金额</span>\n" +
-            "\t\t\t\t\t\t<span class=\"be2\">订单时间</span>\n" +
-            "\t\t\t\t\t\t<span class=\"be2\">订单状态</span>\n" +
-            "\t\t\t\t\t\t<span class=\"be2\">订单操作</span>\n" +
-            "\t\t\t\t\t</div>\n" +
-            "\t\t\t\t\t<div class=\"loading\">\n" +
-            "\t\t\t\t\t\t<div></div>\n" +
-            "\t\t\t\t\t\t<img style=\"margin-top: -150px;float: left;\" src=\"${pageContext.request.contextPath}/jsp/users/images/loading1.gif\"/>\n" +
-            "\t\t\t\t\t</div>\n" +
-            "\t\t\t\t\t<div id=\"order\" class=\"member-sheet clearfix\"><ul></ul></div>\n" +
-            "\t\t\t\t</div>\n" +
-            "\t\t\t\t<div class=\"member-return H-over\" style=\"display:none;\">\n" +
-            "\t\t\t\t\t<div class=\"member-cancel clearfix\">\n" +
-            "\t\t\t\t\t\t<span class=\"be1\">订单信息</span>\n" +
-            "\t\t\t\t\t\t<span class=\"be2\">收货人</span>\n" +
-            "\t\t\t\t\t\t<span class=\"be2\">订单金额</span>\n" +
-            "\t\t\t\t\t\t<span class=\"be2\">订单时间</span>\n" +
-            "\t\t\t\t\t\t<span class=\"be2\">订单状态</span>\n" +
-            "\t\t\t\t\t\t<span class=\"be2\">订单操作</span>\n" +
-            "\t\t\t\t\t</div>\n" +
-            "\t\t\t\t\t<div class=\"member-sheet clearfix\">\n" +
-            "\t\t\t\t\t\t<ul>\n" +
+        var order="<div class='member-whole clearfix' id='dingdan'>\n" +
+            "    <ul id='H-table' class='H-table'>\n" +
+            "     <li class='cur'><a href='javascript:queryOrderByUserId(0,5,-1);'>全部订单</a></li>\n" +
+            "     <li><a href='javascript:queryOrderByUserId(0,5,1);'>待发货</a></li>\n" +
+            "     <li><a href='javascript:queryOrderByUserId(0,5,2);'>已发货</a></li>\n" +
+            "     <li><a href='javascript:queryOrderByUserId(0,5,3);'>已签收</a></li>\n" +
+            "     <li><a href='javascript:queryOrderByUserId(0,5,4);'>已完成</a></li>\n" +
+            "     <li><a href='javascript:queryOrderByUserId(0,5,6);'>退货订单<em></em></a></li>\n" +
+            "    </ul>\n" +
+            "   </div>\n" +
+            "   <div class='member-border'>\n" +
+            "    <div class='member-return H-over'>\n" +
+            "     <div class='member-cancel clearfix' id='tb_haed'>\n" +
+            "      <span class='be1'>订单信息</span>\n" +
+            "      <span class='be2'>收货人</span>\n" +
+            "      <span class='be2'>订单金额</span>\n" +
+            "      <span class='be2'>订单时间</span>\n" +
+            "      <span class='be2'>订单状态</span>\n" +
+            "      <span class='be2'>订单操作</span>\n" +
+            "     </div>\n" +
+            "     <div class='loading'>\n" +
+            "      <div></div>\n" +
+            "      <img style='margin-top: -150px;float: left;' src='${pageContext.request.contextPath}/jsp/users/images/loading1.gif'/>\n" +
+            "     </div>\n" +
+            "     <div id='order' class='member-sheet clearfix'><ul></ul></div>\n" +
+            "    </div>\n" +
+            "    <div class='member-return H-over' style='display:none;'>\n" +
+            "     <div class='member-cancel clearfix'>\n" +
+            "      <span class='be1'>订单信息</span>\n" +
+            "      <span class='be2'>收货人</span>\n" +
+            "      <span class='be2'>订单金额</span>\n" +
+            "      <span class='be2'>订单时间</span>\n" +
+            "      <span class='be2'>订单状态</span>\n" +
+            "      <span class='be2'>订单操作</span>\n" +
+            "     </div>\n" +
+            "     <div class='member-sheet clearfix'>\n" +
+            "      <ul>\n" +
             "\n" +
-            "\t\t\t\t\t\t</ul>\n" +
-            "\t\t\t\t\t</div>\n" +
-            "\t\t\t\t</div>\n" +
+            "      </ul>\n" +
+            "     </div>\n" +
+            "    </div>\n" +
             "\n" +
-            "\t\t\t\t<div class=\"clearfix\" style=\"padding:30px 20px;\">\n" +
-            "\t\t\t\t\t<div class=\"fr pc-search-g pc-search-gs\">\n" +
-            "\t\t\t\t\t\t<a style=\"display:none\" class=\"fl \" href=\"javascript:void(0);\">上一页</a>\n" +
-            "\t\t\t\t\t\t<a href=\"javascript:queryOrderByUserId(0,5);\" class=\"current\">1</a>\n" +
-            "\t\t\t\t\t\t<a href=\"javascript:queryOrderByUserId(6,5);\">2</a>\n" +
-            "\t\t\t\t\t\t<a href=\"javascript:queryOrderByUserId(11,5);\">3</a>\n" +
-            "\t\t\t\t\t\t<a href=\"javascript:queryOrderByUserId(16,5);\">4</a>\n" +
-            "\t\t\t\t\t\t<a href=\"javascript:queryOrderByUserId(21,5);\">5</a>\n" +
-            "\t\t\t\t\t\t<a href=\"javascript:queryOrderByUserId(26,5);\">6</a>\n" +
-            "\t\t\t\t\t\t<a href=\"javascript:queryOrderByUserId(31,5);\">7</a>\n" +
-            "\t\t\t\t\t\t<span class=\"pc-search-di\">…</span>\n" +
-            "\t\t\t\t\t\t<a href=\"javascript:;\">1088</a>\n" +
-            "\t\t\t\t\t\t<a title=\"使用方向键右键也可翻到下一页哦！\" class=\"\" href=\"javascript:;\">下一页</a>\n" +
-            "\t\t\t\t\t</div>\n" +
-            "\t\t\t\t</div>\n" +
+            "    <div class='clearfix' style='padding:30px 20px;'>\n" +
+            "     <div class='fr pc-search-g pc-search-gs'>\n" +
+            "      <a style='display:none' class='fl ' href='javascript:void(0);'>上一页</a>\n" +
+            "      <a href='javascript:queryOrderByUserId(0,5);' class='current'>1</a>\n" +
+            "      <a href='javascript:queryOrderByUserId(6,5);'>2</a>\n" +
+            "      <a href='javascript:queryOrderByUserId(11,5);'>3</a>\n" +
+            "      <a href='javascript:queryOrderByUserId(16,5);'>4</a>\n" +
+            "      <a href='javascript:queryOrderByUserId(21,5);'>5</a>\n" +
+            "      <a href='javascript:queryOrderByUserId(26,5);'>6</a>\n" +
+            "      <a href='javascript:queryOrderByUserId(31,5);'>7</a>\n" +
+            "      <span class='pc-search-di'>…</span>\n" +
+            "      <a href='javascript:;'>1088</a>\n" +
+            "      <a title='使用方向键右键也可翻到下一页哦！' class='' href='javascript:;'>下一页</a>\n" +
+            "     </div>\n" +
+            "    </div>\n" +
             "\n" +
-            "\t\t\t</div>";
+            "   </div>";
 
 		$(".member-head").nextAll("div").remove();
         $(".member-heels").text("我的订单");
@@ -588,76 +534,76 @@
                 var productCount=0;
 
                 htmlStr1="<li>\n" +
-                    "\t\t\t\t\t\t\t\t<div class=\"member-minute clearfix\">\n" +
-                    "\t\t\t\t\t\t\t\t\t<span>"+content.createtime+"</span>\n" +
-                    "\t\t\t\t\t\t\t\t\t<span>订单号：<em>"+content.orderid+"</em></span>\n" +
-                    "\t\t\t\t\t\t\t\t\t<span class=\"member-custom\">客服电话：<em>010-6544-0986</em></span>\n" +
-                    "\t\t\t\t\t\t\t\t</div>\n" +
-                    "\t\t\t\t\t\t\t\t<div class=\"member-circle clearfix\">\n" +
-                    "\t\t\t\t\t\t\t\t\t<div class=\"ci1\">\n";
+                    "        <div class='member-minute clearfix'>\n" +
+                    "         <span>"+content.createtime+"</span>\n" +
+                    "         <span>订单号：<em>"+content.orderid+"</em></span>\n" +
+                    "         <span class='member-custom'>客服电话：<em>010-6544-0986</em></span>\n" +
+                    "        </div>\n" +
+                    "        <div class='member-circle clearfix'>\n" +
+                    "         <div class='ci1'>\n";
 
                 console.log(content.productCustoms);
 				$.each(content.productCustoms,function(i, productCustom) {
                     productCount++;
-                    htmlStr2+="\t\t\t\t\t\t\t\t\t\t<div class=\"ci7 clearfix\">\n" +
-                        "\t\t\t\t\t\t\t\t\t\t\t<span class=\"gr1\"><a href=\"#\"><img src=\"/"+productCustom.productpicture+"\" title=\"\" about=\"\" width=\"60\" height=\"60\"></a></span>\n" +
-                        "\t\t\t\t\t\t\t\t\t\t\t<span class=\"gr2\"><a href=\"#\">"+productCustom.productname+"</a></span>\n" +
-                        "\t\t\t\t\t\t\t\t\t\t\t<span class=\"gr3\">X"+productCustom.shoppingcount+"</span>\n" +
-                        "\t\t\t\t\t\t\t\t\t\t</div>\n";
+                    htmlStr2+="    <div class='ci7 clearfix'>\n" +
+                        "           <span class='gr1'><a href='#'><img src='/"+productCustom.productpicture+"' style='height: 80px;width: 80px;max-width:200px;' title='"+productCustom.productname+"' about='' width='60' height='60'></a></span>\n" +
+                        "           <span class='gr2' style='margin-left: 50px;width: 150px;height: 85px'><a href='#'>"+productCustom.productname+"</a></span>\n" +
+                        "           <span class='gr3'>X"+productCustom.shoppingcount+"</span>\n" +
+                        "          </div>\n";
                 });
 
-				htmlStr3="\t\t\t\t\t\t\t\t\t</div>\n" +
-					"\t\t\t\t\t\t\t\t\t<div class=\"ci2 height"+index+"\">"+content.gainname+"</div>\n" +
-					"\t\t\t\t\t\t\t\t\t<div class=\"ci3 height"+index+"\"><p class=\"red\">￥<span>"+content.amountpay+"</span></p><p>";
+				htmlStr3="         </div>\n" +
+					"         <div class='ci2 height"+index+"'>"+content.gainname+"</div>\n" +
+					"         <div class='ci3 height"+index+"'><p class='red'>￥<span>"+content.amountpay+"</span></p><p>";
 				if(content.paytype==0){
                     htmlStr3+="在线支付";
 				}else{
                     htmlStr3+="货到付款"
 				}
                 htmlStr3+="</p></div>\n" +
-					"\t\t\t\t\t\t\t\t\t<div class=\"ci4 height"+index+"\"><p>2015-09-22</p></div>\n" ;
+					"         <div class='ci4 height"+index+"'><p>2015-09-22</p></div>\n" ;
 				switch (content.status){
 					case 0:
-                        htmlStr3+="<div class=\"ci5 height"+index+"\"><p>交易关闭</p>"
+                        htmlStr3+="<div class='ci5 height"+index+"'><p>交易关闭</p>"
 						if(content.shippingcode!=null||content.shippingcode!=""){
-                            htmlStr3+="<p><a href=\"#\">物流跟踪</a></p>"
+                            htmlStr3+="<p><a href='#'>物流跟踪</a></p>"
 						}
-						htmlStr3+="<p><a href=\"#\">订单详情</a></p></div>\n";
+						htmlStr3+="<p><a href='#'>订单详情</a></p></div>\n";
 
-                        htmlStr3+= "<div class=\"ci5 ci8 height"+index+"\"><p><a href=\"#\" class=\"member-touch\">重新购买</a> </p></div>\n";
+                        htmlStr3+= "<div class='ci5 ci8 height"+index+"'><p><a href='#' class='member-touch'>重新购买</a> </p></div>\n";
                         break;
                     case 1:
-                        htmlStr3+="<div class=\"ci5 height"+index+"\"><p>待发货</p><p><a href=\"#\">订单详情</a></p></div>\n";
-                        htmlStr3+= "<div class=\"ci5 ci8 height"+index+"\"><p><a href=\"#\" class=\"member-touch\">提醒发货</a> </p> <p><a href=\"#\">取消订单</a> </p></div>\n";
+                        htmlStr3+="<div class='ci5 height"+index+"'><p>待发货</p><p><a href='#'>订单详情</a></p></div>\n";
+                        htmlStr3+= "<div class='ci5 ci8 height"+index+"'><p><a href='#' class='member-touch'>提醒发货</a> </p> <p><a href='#'>取消订单</a> </p></div>\n";
                         break;
                     case 2:
-                        htmlStr3+="<div class=\"ci5 height"+index+"\"><p>已发货</p><p><a href=\"#\">物流跟踪</a></p> <p><a href=\"#\">订单详情</a></p></div>\n";
-                        htmlStr3+= "<div class=\"ci5 ci8 height"+index+"\"><p><a href=\"#\" class=\"member-touch\">确认收货</a> </p></p></div>\n";
+                        htmlStr3+="<div class='ci5 height"+index+"'><p>已发货</p><p><a href='#'>物流跟踪</a></p> <p><a href='#'>订单详情</a></p></div>\n";
+                        htmlStr3+= "<div class='ci5 ci8 height"+index+"'><p><a href='#' class='member-touch'>确认收货</a> </p></p></div>\n";
                         break;
                     case 3:
-                        htmlStr3+="<div class=\"ci5 height"+index+"\"><p>已签收</p><p><a href=\"#\">物流跟踪</a></p> <p><a href=\"#\">订单详情</a></p></div>\n";
-                        htmlStr3+= "<div class=\"ci5 ci8 height"+index+"\"><p><a href=\"#\" class=\"member-touch\">评价</a></p><p><a href=\"#\" class=\"member-touch\">售后服务</a></p></div>\n";
+                        htmlStr3+="<div class='ci5 height"+index+"'><p>已签收</p><p><a href='#'>物流跟踪</a></p> <p><a href='#'>订单详情</a></p></div>\n";
+                        htmlStr3+= "<div class='ci5 ci8 height"+index+"'><p><a href='#' class='member-touch'>评价</a></p><p><a href='#' class='member-touch'>售后服务</a></p></div>\n";
                         break;
                     case 4:
-                        htmlStr3+="<div class=\"ci5 height"+index+"\"><p>已完成</p><p><a href=\"#\">物流跟踪</a></p> <p><a href=\"#\">订单详情</a></p></div>\n";
-                        htmlStr3+= "<div class=\"ci5 ci8 height"+index+"\"><p>剩余15时20分</p><p><a href=\"#\" class=\"member-touch\">再次购买</a></p><p><a href=\"#\" class=\"member-touch\">售后服务</a></p></div>\n";
+                        htmlStr3+="<div class='ci5 height"+index+"'><p>已完成</p><p><a href='#'>物流跟踪</a></p> <p><a href='#'>订单详情</a></p></div>\n";
+                        htmlStr3+= "<div class='ci5 ci8 height"+index+"'><p>剩余15时20分</p><p><a href='#' class='member-touch'>再次购买</a></p><p><a href='#' class='member-touch'>售后服务</a></p></div>\n";
                         break;
                     case 5:
-                        htmlStr3+="<div class=\"ci5 height"+index+"\"><p>拒收</p><p><a href=\"#\">物流跟踪</a></p> <p><a href=\"#\">订单详情</a></p></div>\n";
-                        htmlStr3+= "<div class=\"ci5 ci8 height"+index+"\"><p><a href=\"#\" class=\"member-touch\">拒收理由</a> </p></div>\n";
+                        htmlStr3+="<div class='ci5 height"+index+"'><p>拒收</p><p><a href='#'>物流跟踪</a></p> <p><a href='#'>订单详情</a></p></div>\n";
+                        htmlStr3+= "<div class='ci5 ci8 height"+index+"'><p><a href='#' class='member-touch'>拒收理由</a> </p></div>\n";
                         break;
                     case 6:
-                        htmlStr3+="<div class=\"ci5 height"+index+"\"><p>申请退货</p><p><a href=\"#\">物流跟踪</a></p> <p><a href=\"#\">订单详情</a></p></div>\n";
-                        htmlStr3+= "<div class=\"ci5 ci8 height"+index+"\"><p><a href=\"#\" class=\"member-touch\">撤销申请</a> </p></div>\n";
+                        htmlStr3+="<div class='ci5 height"+index+"'><p>申请退货</p><p><a href='#'>物流跟踪</a></p> <p><a href='#'>订单详情</a></p></div>\n";
+                        htmlStr3+= "<div class='ci5 ci8 height"+index+"'><p><a href='#' class='member-touch'>撤销申请</a> </p></div>\n";
                         break;
                     case 7:
-                        htmlStr3+="<div class=\"ci5 height"+index+"\"><p>同意退货</p><p><a href=\"#\">物流跟踪</a></p> <p><a href=\"#\">订单详情</a></p></div>\n";
-                        htmlStr3+= "<div class=\"ci5 ci8 height"+index+"\"><p>剩余15时20分</p><p><a href=\"#\" class=\"member-touch\">填写物流</a> </p><p><a href=\"#\" class=\"member-touch\">撤销申请</a> </p></div>\n";
+                        htmlStr3+="<div class='ci5 height"+index+"'><p>同意退货</p><p><a href='#'>物流跟踪</a></p> <p><a href='#'>订单详情</a></p></div>\n";
+                        htmlStr3+= "<div class='ci5 ci8 height"+index+"'><p>剩余15时20分</p><p><a href='#' class='member-touch'>填写物流</a> </p><p><a href='#' class='member-touch'>撤销申请</a> </p></div>\n";
                         break;
                         break;
                     case 8:
-                        htmlStr3+="<div class=\"ci5 height"+index+"\"><p>拒绝退货</p><p><a href=\"#\">物流跟踪</a></p> <p><a href=\"#\">订单详情</a></p></div>\n";
-                        htmlStr3+= "<div class=\"ci5 ci8 height"+index+"\"><p><a href=\"#\" class=\"member-touch\">查看原因</a> </p></div>\n";
+                        htmlStr3+="<div class='ci5 height"+index+"'><p>拒绝退货</p><p><a href='#'>物流跟踪</a></p> <p><a href='#'>订单详情</a></p></div>\n";
+                        htmlStr3+= "<div class='ci5 ci8 height"+index+"'><p><a href='#' class='member-touch'>查看原因</a> </p></div>\n";
                         break;
 					default:
                         htmlStr3+="未获取到订单状态";
@@ -671,61 +617,164 @@
             });
         }
     }
-    function queryFavoritesByUserId() {
+    function queryFavoritesByUserId(start,count,status,conditions) {
         console.log("这是收藏夹");
+        var favorites="<div class='member-border'>\n" +
+            "    <div class='member-return H-over'>\n" +
+            "     <div class='member-vessel'>\n" +
+            "      <div class='member-volume fl'>\n" +
+            "       <a href='#' class='fl member-btn-fl'></a>\n" +
+            "       <div class='member-whole clearfix' id='dingdan'>\n" +
+            "        <ul id='H-table' class='H-table'>\n" +
+            "         <li><a href='javascript:queryFavoritesByUserId(0,5,-1);'>全部商品<em>(44)</em></a></li>\n" +
+            "         <li><a href='javascript:queryFavoritesByUserId(0,5,0);'>热销商品<em>(44)</em></a></li>\n" +
+            "         <li><a href='javascript:queryFavoritesByUserId(0,5,2);'>已下架<em>(44)</em></a></li>\n" +
+            "         <li><a href='javascript:queryFavoritesByUserId(0,5,3);'>积分兑换<em>(44)</em></a></li>\n" +
+            "        </ul>\n" +
+            "        <div class='member-check clearfix fl' style='float: right'>\n" +
+            "         <a href='#' class='member-shops'>一键加入购物车</a>\n" +
+            "         <a href='#' class='member-delete'>一键删除</a>\n" +
+            "        </div>\n" +
+            "       </div>\n" +
+            "       <div class='member-cakes fl'>\n" +
+            "        <ul id='favorites'>\n" +
+            "        </ul>\n" +
+            "       </div>\n" +
+            "      </div>\n" +
+            "     </div>\n" +
+            "    </div>\n" +
+            "    <div class='clearfix' style='padding:30px 20px;'>\n" +
+            "     <div class='fr pc-search-g pc-search-gs' style='margin-top: 50px;'>\n" +
+            "      <a style='display:none' class='fl ' href='#'>上一页</a>\n" +
+            "      <a href='#' class='current'>1</a>\n" +
+            "      <a href='javascript:;'>2</a>\n" +
+            "      <a href='javascript:;'>3</a>\n" +
+            "      <a href='javascript:;'>4</a>\n" +
+            "      <a href='javascript:;'>5</a>\n" +
+            "      <a href='javascript:;'>6</a>\n" +
+            "      <a href='javascript:;'>7</a>\n" +
+            "      <span class='pc-search-di'>…</span>\n" +
+            "      <a href='javascript:;'>1088</a>\n" +
+            "      <a title='使用方向键右键也可翻到下一页哦！' class='' href='javascript:;'>下一页</a>\n" +
+            "     </div>\n" +
+            "    </div>\n" +
+            "   </div>";
+
+        $(".member-head").nextAll("div").remove();
+        $(".member-heels").text("我的收藏夹");
+        $(".member-right").append(favorites);
+        $(".member-right").css("width","970px");
+
+        var para=new Array();
+        para.push(start);  //从第几条开始
+        para.push(count);	//查询多少条
+        para.push(${user.userid}); //用户id
+        if(!status&&status!=0){
+            para.push("-1");//商品状态 -1表示查询所有状态
+        }else{
+            para.push(status); //商品状态 0表示查询热销商品  1表示查询新品 2表示查询已下架商品
+        }
+        if(!conditions){
+            para.push("-1");	//任意条件
+        }else{
+            para.push(conditions);
+        }
+
+        $.ajax({
+            url:"${pageContext.request.contextPath}/selectFavoritesList.action",
+            async:true,
+            type: 'POST',
+            data:{'para':para},
+            traditional: true,
+            timeout: 5000,
+            cache: false,
+            success: succFunction, //成功执行方法
+            beforeSend: LoadFunction, //加载执行方法
+            error: erryFunction  //错误执行方法
+        });
+        function LoadFunction() {
+            $(".loading").find("img").css("display","block");
+            $(".loading").find("div").css("display","block");
+            $("#id_head").css("visibility","hidden");
+            //$(".loading").find("div").text("加载中...");
+        }
+        function erryFunction(){
+            $(".loading").find("img").attr("src","${pageContext.request.contextPath}/jsp/users/images/loading.gif");
+            $(".loading").find("div").text("加载失败!");
+            $("#id_head").css("visibility","hidden");
+        }
+        function succFunction(data) {
+            $(".loading").find("img").css("display", "none");
+            $(".loading").find("div").css("display", "none");
+            $("#id_head").css("visibility", "visible");
+            $.each(data, function (index, content) {
+                console.log(content.shoppingcount);
+                var html="<li class='module'>\n" +
+                    "          <ul class='shop-tools clearfix'>\n" +
+                    "           <li class='shop-tools-item1' style='background-position:-20px -20px;' title='加入购物车'>置顶</li>\n" +
+                    "           <li class='shop-tools-item2' style='background-position:4px -98px;' title='删除商品'>删除</li>\n" +
+                    "          </ul>\n" +
+                    "          <a href='#'><img src='/"+content.productpicture+"' style='overflow:hidden;width:125px;height: 125px' title='"+content.productname+"'></a>\n" +
+                    "          <a href='#'>"+content.productname+"</a>\n" +
+                    "          <p>￥"+content.productprice+" <i style='text-decoration: line-through;color: #666a6e;font-size: 11px;'>￥"+content.marketprice+"</i></p>\n" +
+                    "         </li>";
+
+                $("#favorites").append(html);
+            });
+        }
     }
     function queryShopCarByUserId(start,count,status,conditions) {
-        var car="<div class=\"center \" id=\"dingdan\">\n" +
-            "\t\t\t\t<ul class=\"pc-shopping-title clearfix\">\n" +
-            "\t\t\t\t\t<li><a href=\"javascript:queryShopCarByUserId(0,5,-1);\">全部商品(10)</a></li>\n" +
-            "\t\t\t\t\t<li><a href=\"javascript:queryShopCarByUserId(0,5,2);\">已下架(0)</a></li>\n" +
-            "\t\t\t\t\t<li><a href=\"javascript:queryShopCarByUserId(0,5,0);\">热销商品(0)</a></li>\n" +
-            "\t\t\t\t\t<li><a href=\"javascript:queryShopCarByUserId(0,5,1);\">新品(0)</a></li>\n" +
-            "\t\t\t\t</ul>\n" +
-            "\t\t\t</div>\n" +
-            "\t\t\t<div class=\"pc-shopping-cart center\">\n" +
-            "\t\t\t\t<div class=\"pc-shopping-tab\">\n" +
-            "\t\t\t\t\t<table>\n" +
-            "\t\t\t\t\t\t<thead>\n" +
+        var car="<div class='center ' id='dingdan'>\n" +
+            "    <ul class='pc-shopping-title clearfix'>\n" +
+            "     <li><a href='javascript:queryShopCarByUserId(0,5,-1);'>全部商品(10)</a></li>\n" +
+            "     <li><a href='javascript:queryShopCarByUserId(0,5,2);'>已下架(0)</a></li>\n" +
+            "     <li><a href='javascript:queryShopCarByUserId(0,5,0);'>热销商品(0)</a></li>\n" +
+            "     <li><a href='javascript:queryShopCarByUserId(0,5,1);'>新品(0)</a></li>\n" +
+            "    </ul>\n" +
+            "   </div>\n" +
+            "   <div class='pc-shopping-cart center'>\n" +
+            "    <div class='pc-shopping-tab'>\n" +
+            "     <table>\n" +
+            "      <thead>\n" +
 			"<thead>\n" +
-            "\t\t\t\t\t\t\t<tr id=\"id_head\" class=\"tab-0\">\n" +
-            "\t\t\t\t\t\t\t\t<th class=\"tab-1\">\n" +
-            "\t\t\t\t\t\t\t\t\t<input type=\"checkbox\" name=\"s_all\" class=\"s_all tr_checkmr\" id=\"s_all_h\">\n" +
-            "\t\t\t\t\t\t\t\t\t<label style=\"margin-left: 20px;\"> 全选</label>\n" +
-            "\t\t\t\t\t\t\t\t</th>\n" +
-            "\t\t\t\t\t\t\t\t<th class=\"tab-2\">商品</th>\n" +
-            "\t\t\t\t\t\t\t\t<th class=\"tab-3\">商品信息</th>\n" +
-            "\t\t\t\t\t\t\t\t<th class=\"tab-4\">金额</th>\n" +
-            "\t\t\t\t\t\t\t\t<th class=\"tab-5\">数量</th>\n" +
-            "\t\t\t\t\t\t\t\t<th class=\"tab-6\">小计</th>\n" +
-            "\t\t\t\t\t\t\t\t<th class=\"tab-7\">操作</th>\n" +
-            "\t\t\t\t\t\t\t</tr>\n" +
-            "\t\t\t\t\t\t</thead>"+
-			"\t\t\t\t\t\t\t<div class=\"loading\">\n" +
-            "\t\t\t\t\t\t\t\t<div></div>\n" +
-            "\t\t\t\t\t\t\t\t<img  style=\"margin-top: -80px;\" src=\"${pageContext.request.contextPath}/jsp/users/images/loading1.gif\"/>\n" +
-            "\t\t\t\t\t\t\t</div>"+
-            "\t\t\t\t\t\t</thead>\n" +
-            "\t\t\t\t\t\t<tbody id='car'>\n" +
-            "\t\t\t\t\t\t</tbody>\n" +
-            "\t\t\t\t\t</table>\n" +
-            "\t\t\t\t</div>\n" +
-            "\t\t\t</div>\n" +
-			"\t\t\t\t<div class=\"clearfix\" style=\"padding:30px 20px;\">\n" +
-            "\t\t\t\t\t<div class=\"fr pc-search-g pc-search-gs\">\n" +
-            "\t\t\t\t\t\t<a style=\"display:none\" class=\"fl \" href=\"javascript:void(0);\">上一页</a>\n" +
-            "\t\t\t\t\t\t<a href=\"javascript:queryOrderByUserId(0,5);\" class=\"current\">1</a>\n" +
-            "\t\t\t\t\t\t<a href=\"javascript:queryOrderByUserId(6,5);\">2</a>\n" +
-            "\t\t\t\t\t\t<a href=\"javascript:queryOrderByUserId(11,5);\">3</a>\n" +
-            "\t\t\t\t\t\t<a href=\"javascript:queryOrderByUserId(16,5);\">4</a>\n" +
-            "\t\t\t\t\t\t<a href=\"javascript:queryOrderByUserId(21,5);\">5</a>\n" +
-            "\t\t\t\t\t\t<a href=\"javascript:queryOrderByUserId(26,5);\">6</a>\n" +
-            "\t\t\t\t\t\t<a href=\"javascript:queryOrderByUserId(31,5);\">7</a>\n" +
-            "\t\t\t\t\t\t<span class=\"pc-search-di\">…</span>\n" +
-            "\t\t\t\t\t\t<a href=\"javascript:;\">1088</a>\n" +
-            "\t\t\t\t\t\t<a title=\"使用方向键右键也可翻到下一页哦！\" class=\"\" href=\"javascript:;\">下一页</a>\n" +
-            "\t\t\t\t\t</div>\n" +
-            "\t\t\t\t</div>";
+            "       <tr id='id_head' class='tab-0'>\n" +
+            "        <th class='tab-1'>\n" +
+            "         <input type='checkbox' name='s_all' class='s_all tr_checkmr' id='s_all_h'>\n" +
+            "         <label style='margin-left: 20px;'> 全选</label>\n" +
+            "        </th>\n" +
+            "        <th class='tab-2'>商品</th>\n" +
+            "        <th class='tab-3'>商品信息</th>\n" +
+            "        <th class='tab-4'>金额</th>\n" +
+            "        <th class='tab-5'>数量</th>\n" +
+            "        <th class='tab-6'>小计</th>\n" +
+            "        <th class='tab-7'>操作</th>\n" +
+            "       </tr>\n" +
+            "      </thead>"+
+			"       <div class='loading'>\n" +
+            "        <div></div>\n" +
+            "        <img  style='margin-top: -80px;' src='${pageContext.request.contextPath}/jsp/users/images/loading1.gif'/>\n" +
+            "       </div>"+
+            "      </thead>\n" +
+            "      <tbody id='car'>\n" +
+            "      </tbody>\n" +
+            "     </table>\n" +
+            "    </div>\n" +
+            "   </div>\n" +
+			"    <div class='clearfix' style='padding:30px 20px;'>\n" +
+            "     <div class='fr pc-search-g pc-search-gs'>\n" +
+            "      <a style='display:none' class='fl ' href='javascript:void(0);'>上一页</a>\n" +
+            "      <a href='javascript:queryOrderByUserId(0,5);' class='current'>1</a>\n" +
+            "      <a href='javascript:queryOrderByUserId(6,5);'>2</a>\n" +
+            "      <a href='javascript:queryOrderByUserId(11,5);'>3</a>\n" +
+            "      <a href='javascript:queryOrderByUserId(16,5);'>4</a>\n" +
+            "      <a href='javascript:queryOrderByUserId(21,5);'>5</a>\n" +
+            "      <a href='javascript:queryOrderByUserId(26,5);'>6</a>\n" +
+            "      <a href='javascript:queryOrderByUserId(31,5);'>7</a>\n" +
+            "      <span class='pc-search-di'>…</span>\n" +
+            "      <a href='javascript:;'>1088</a>\n" +
+            "      <a title='使用方向键右键也可翻到下一页哦！' class='' href='javascript:;'>下一页</a>\n" +
+            "     </div>\n" +
+            "    </div>";
 
         $(".member-head").nextAll("div").remove();
         $(".member-heels").text("我的购物车");
@@ -778,32 +827,32 @@
             $.each( data, function(index, content) {
                 console.log(content.shoppingcount);
                 var html="<tr>\n" +
-                    "\t\t\t\t\t\t\t\t<th><input type=\"checkbox\"  style=\"margin-left:15px; float:left\"></th>\n" +
-                    "\t\t\t\t\t\t\t\t<th class=\"tab-th-1\">\n" +
-                    "\t\t\t\t\t\t\t\t\t<a href=\"#\"><img src=\"/"+content.productpicture+"\" width=\"100%\" alt=\"\"></a>\n" +
-                    "\t\t\t\t\t\t\t\t\t<a href=\"#\" class=\"tab-title\">"+content.productname+"</a>\n" +
-                    "\t\t\t\t\t\t\t\t</th>\n" +
-                    "\t\t\t\t\t\t\t\t<th>\n" +
-                    "\t\t\t\t\t\t\t\t\t<p>"+content.productdescribe+"</p>\n" +
-                    "\t\t\t\t\t\t\t\t\t<p></p>\n" +
-                    "\t\t\t\t\t\t\t\t</th>\n" +
-                    "\t\t\t\t\t\t\t\t<th>\n" +
-                    "\t\t\t\t\t\t\t\t\t<p>售价￥<span class=\"red\">"+content.productprice+"</span></p>\n" +
-                    "\t\t\t\t\t\t\t\t\t<p>市场价￥<span style=\"text-decoration: line-through;\">"+content.marketprice+"</span></p>\n" +
-                    "\t\t\t\t\t\t\t\t\t<br/>\n" +
-                    "\t\t\t\t\t\t\t\t</th>\n" +
-                    "\t\t\t\t\t\t\t\t<th class=\"tab-th-2\">\n" +
-                    "\t\t\t\t\t\t\t\t\t<div onclick='minus(this)' class=\"Xcontent32\"><img src=\"images/shangpinxiangqing/X15.png\"></div>\n" +
-                    "\t\t\t\t\t\t\t\t\t<input class=\"input\" value=\""+content.orderamount+"\">" +
-                    "\t\t\t\t\t\t\t\t\t<div onclick='add(this)' class=\"Xcontent33\"><img src=\"images/shangpinxiangqing/16.png\"></div>\n" +
-                    "\t\t\t\t\t\t\t\t</th>\n" +
-                    "\t\t\t\t\t\t\t\t<th class=\"red\">￥<span>"+content.productprice*content.orderamount+"</span></th>\n" +
-                    "\t\t\t\t\t\t\t\t<th>\n" +
-                    "\t\t\t\t\t\t\t\t\t<p><a href=\"#\">删除</a></p>\n" +
-                    "\t\t\t\t\t\t\t\t\t<br/>\n" +
-                    "\t\t\t\t\t\t\t\t\t<p><a href=\"#\">移入收藏夹</a></p>\n" +
-                    "\t\t\t\t\t\t\t\t</th>\n" +
-                    "\t\t\t\t\t\t\t</tr>";
+                    "        <th><input type='checkbox'  style='margin-left:15px; float:left'></th>\n" +
+                    "        <th class='tab-th-1'>\n" +
+                    "         <a href='#' style='border: 0px;'><img src='/"+content.productpicture+"' style='height: 120px;width: 120px;max-width:200px;margin-left: 50px' alt='"+content.productname+"' title='"+content.productname+"'></a>\n" +
+                    "         <a href='#' style='margin-left: 50px;width: 200px' class='tab-title'>"+content.productname+"</a>\n" +
+                    "        </th>\n" +
+                    "        <th>\n" +
+                    "         <p>"+content.productdescribe+"</p>\n" +
+                    "         <p></p>\n" +
+                    "        </th>\n" +
+                    "        <th>\n" +
+                    "         <p>售价￥<span class='red'>"+content.productprice+"</span></p>\n" +
+                    "         <p>市场价￥<span style='text-decoration: line-through;'>"+content.marketprice+"</span></p>\n" +
+                    "         <br/>\n" +
+                    "        </th>\n" +
+                    "        <th class='tab-th-2'>\n" +
+                    "         <div onclick='minus(this)' class='Xcontent32'><img src='images/shangpinxiangqing/X15.png'></div>\n" +
+                    "         <input class='input' value='"+content.orderamount+"'>" +
+                    "         <div onclick='add(this)' class='Xcontent33'><img src='images/shangpinxiangqing/16.png'></div>\n" +
+                    "        </th>\n" +
+                    "        <th class='red'>￥<span>"+content.productprice*content.orderamount+"</span></th>\n" +
+                    "        <th>\n" +
+                    "         <p><a href='#'>删除</a></p>\n" +
+                    "         <br/>\n" +
+                    "         <p><a href='#'>移入收藏夹</a></p>\n" +
+                    "        </th>\n" +
+                    "       </tr>";
 
                 $("#car").append(html);
             });

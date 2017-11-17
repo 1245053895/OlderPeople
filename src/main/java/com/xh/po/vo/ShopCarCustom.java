@@ -5,7 +5,6 @@ import com.xh.po.Product;
 public class ShopCarCustom extends Product {
     private Integer shopcarid;
     private Integer userid;
-    private Integer productid;
     private Integer orderamount;
     private Double price;
 
@@ -32,16 +31,6 @@ public class ShopCarCustom extends Product {
 
     public void setUserid(Integer userid) {
         this.userid = userid;
-    }
-
-    @Override
-    public Integer getProductid() {
-        return productid;
-    }
-
-    @Override
-    public void setProductid(Integer productid) {
-        this.productid = productid;
     }
 
     public Integer getOrderamount() {

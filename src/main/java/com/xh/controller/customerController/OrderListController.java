@@ -1,5 +1,6 @@
 package com.xh.controller.customerController;
 
+import com.xh.po.vo.FavoritesCustom;
 import com.xh.po.vo.OrderCustom;
 import com.xh.po.vo.ProductCustom;
 import com.xh.po.vo.ShopCarCustom;
@@ -52,10 +53,30 @@ public class OrderListController  {
         }
         if(!para[4].equals("-1")) scc.setConditions(para[4]);  //用于条件查询
         List<ShopCarCustom> shopCarCustoms= orderListService.selectShopcarList(scc);
-        /*for(ShopCarCustom shopCarCustom:shopCarCustoms) {
-            List<ProductCustom> productCustoms=orderListService.selectOrderDetails(shopCarCustom.getOrderid());
-            orderCustom.setProductCustoms(productCustoms);
-        }*/
         return shopCarCustoms;
+    }
+
+    @RequestMapping(value = "/selectFavoritesList", method ={ RequestMethod.GET,RequestMethod.POST})
+    public @ResponseBody List<FavoritesCustom> selectFavoritesList(String[] para){
+        FavoritesCustom fc=new FavoritesCustom();
+        fc.setStart(Integer.parseInt(para[0]));
+        fc.setCount(Integer.parseInt(para[1]));
+        fc.setUserid(Integer.parseInt(para[2]));
+        if(Integer.parseInt(para[3])!=-1&&!para[3].equals("")){
+            if(para[3].equals("0")){
+                fc.setProducthotsale(1); //查询热销商品
+            }else if(para[3].equals("1")){
+                fc.setProductnew(1);  //查询新品
+            }else if(para[3].equals("2")){
+                fc.setProductA("0");  //查询下架商品
+            }
+            else if(para[3].equals("3")){
+                fc.setProductdisabled(Integer.parseInt(para[3]));  //查询可用积分兑换的商品
+            }
+        }
+        if(!para[4].equals("-1")) fc.setConditions(para[4]);  //用于条件查询
+        List<FavoritesCustom> favoritesCustoms= orderListService.selectFavoritesList(fc);
+
+        return favoritesCustoms;
     }
 }

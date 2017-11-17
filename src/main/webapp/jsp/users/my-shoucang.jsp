@@ -263,69 +263,64 @@
 				<div class="member-about fr"><input placeholder="商品名称/商品编号/订单编号" type="text"></div>
 			</div>
 			<div class="member-border">
-
 				<div class="member-return H-over">
 					<div class="member-vessel">
-						<ul>
-								<div class="member-volume fl">
-									<a href="#" class="fl member-btn-fl"></a>
-									<div class="member-whole clearfix" id="dingdan">
-										<ul id="H-table" class="H-table">
-											<li><a href="#">全部商品<em>(44)</em></a></li>
-											<li><a href="#">热销商品<em>(44)</em></a></li>
-											<li><a href="#">已下架<em>(44)</em></a></li>
-											<li><a href="#">积分兑换<em>(44)</em></a></li>
-										</ul>
-										<div class="member-check clearfix fl" style="float: right">
-											<a href="#" class="member-shops">一键加入购物车</a>
-											<a href="#" class="member-delete">一键删除</a>
-										</div>
-									</div>
-									<div class="member-cakes fl">
-										<ul>
-											<li>
-												<ul class="shop-tools clearfix">
-													<li class="shop-tools-item1" style="background-position:-20px -20px;" title="加入购物车">置顶</li>
-													<li class="shop-tools-item2" style="background-position:4px -98px;" title="删除商品">删除</li>
-												</ul>
-												<a href="#"><img src="images/shangpinxiangqing/X-1.png" title="" width="125" height="125"></a>
-												<a href="#">老年代步车</a>
-												<p>￥78.00 <i style="text-decoration: line-through;color: #666a6e;font-size: 11px;">￥178.00</i></p>
-											</li>
-											<li>
-												<ul class="shop-tools clearfix">
-													<li class="shop-tools-item1" style="background-position:-20px -20px;" title="加入购物车">置顶</li>
-													<li class="shop-tools-item2" style="background-position:4px -98px;" title="删除商品">删除</li>
-												</ul>
-												<a href="#"><img src="images/shangpinxiangqing/X-1.png" title="" width="125" height="125"></a>
-												<a href="#">老年代步车</a>
-												<p>￥78.00 <i style="text-decoration: line-through;color: #666a6e;font-size: 11px;">￥178.00</i></p>
-											</li>
-											<li>
-												<ul class="shop-tools clearfix">
-													<li class="shop-tools-item1" style="background-position:-20px -20px;" title="加入购物车">置顶</li>
-													<li class="shop-tools-item2" style="background-position:4px -98px;" title="删除商品">删除</li>
-												</ul>
-												<a href="#"><img src="images/shangpinxiangqing/X-1.png" title="" width="125" height="125"></a>
-												<a href="#">老年代步车</a>
-												<p>￥78.00 <i style="text-decoration: line-through;color: #666a6e;font-size: 11px;">￥178.00</i></p>
-											</li>
-											<li>
-												<ul class="shop-tools clearfix">
-													<li class="shop-tools-item1" style="background-position:-20px -20px;" title="加入购物车">置顶</li>
-													<li class="shop-tools-item2" style="background-position:4px -98px;" title="删除商品">删除</li>
-												</ul>
-												<a href="#"><img src="images/shangpinxiangqing/X-1.png" title="" width="125" height="125"></a>
-												<a href="#">老年代步车</a>
-												<p>￥78.00 <i style="text-decoration: line-through;color: #666a6e;font-size: 11px;">￥178.00</i></p>
-											</li>
-
-										</ul>
-									</div>
-									<a href="#" class="fr member-btn-fr"></a>
+						<div class="member-volume fl">
+							<a href="#" class="fl member-btn-fl"></a>
+							<div class="member-whole clearfix" id="dingdan">
+								<ul id="H-table" class="H-table">
+									<li><a href="#">全部商品<em>(44)</em></a></li>
+									<li><a href="#">热销商品<em>(44)</em></a></li>
+									<li><a href="#">已下架<em>(44)</em></a></li>
+									<li><a href="#">积分兑换<em>(44)</em></a></li>
+								</ul>
+								<div class="member-check clearfix fl" style="float: right">
+									<a href="#" class="member-shops">一键加入购物车</a>
+									<a href="#" class="member-delete">一键删除</a>
 								</div>
-							</li>
-						</ul>
+							</div>
+							<div class="member-cakes fl">
+								<ul>
+									<li>
+										<ul class="shop-tools clearfix">
+											<li class="shop-tools-item1" style="background-position:-20px -20px;" title="加入购物车">置顶</li>
+											<li class="shop-tools-item2" style="background-position:4px -98px;" title="删除商品">删除</li>
+										</ul>
+										<a href="#"><img src="images/shangpinxiangqing/X-1.png" title="" width="125" height="125"></a>
+										<a href="#">老年代步车</a>
+										<p>￥78.00 <i style="text-decoration: line-through;color: #666a6e;font-size: 11px;">￥178.00</i></p>
+									</li>
+									<li>
+										<ul class="shop-tools clearfix">
+											<li class="shop-tools-item1" style="background-position:-20px -20px;" title="加入购物车">置顶</li>
+											<li class="shop-tools-item2" style="background-position:4px -98px;" title="删除商品">删除</li>
+										</ul>
+										<a href="#"><img src="images/shangpinxiangqing/X-1.png" title="" width="125" height="125"></a>
+										<a href="#">老年代步车</a>
+										<p>￥78.00 <i style="text-decoration: line-through;color: #666a6e;font-size: 11px;">￥178.00</i></p>
+									</li>
+									<li>
+										<ul class="shop-tools clearfix">
+											<li class="shop-tools-item1" style="background-position:-20px -20px;" title="加入购物车">置顶</li>
+											<li class="shop-tools-item2" style="background-position:4px -98px;" title="删除商品">删除</li>
+										</ul>
+										<a href="#"><img src="images/shangpinxiangqing/X-1.png" title="" width="125" height="125"></a>
+										<a href="#">老年代步车</a>
+										<p>￥78.00 <i style="text-decoration: line-through;color: #666a6e;font-size: 11px;">￥178.00</i></p>
+									</li>
+									<li>
+										<ul class="shop-tools clearfix">
+											<li class="shop-tools-item1" style="background-position:-20px -20px;" title="加入购物车">置顶</li>
+											<li class="shop-tools-item2" style="background-position:4px -98px;" title="删除商品">删除</li>
+										</ul>
+										<a href="#"><img src="images/shangpinxiangqing/X-1.png" title="" width="125" height="125"></a>
+										<a href="#">老年代步车</a>
+										<p>￥78.00 <i style="text-decoration: line-through;color: #666a6e;font-size: 11px;">￥178.00</i></p>
+									</li>
+
+								</ul>
+							</div>
+						</div>
 					</div>
 				</div>
 

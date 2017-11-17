@@ -69,4 +69,41 @@
         LIMIT #{start},#{count};
     </select>
 
+
+    <select id="selectFavoritesList" parameterType="favoritesCustom" resultType="favoritesCustom">
+        SELECT
+          p.*,
+          p.Product_A product_a,
+          f.UserId,
+          s.MarketPrice
+        FROM product p
+        INNER JOIN favorites f ON (p.ProductId=f.ProductId)
+        INNER JOIN stock s ON (f.ProductId=f.ProductId)
+        <where>
+            f.UserId=#{userid}
+            <if test="productA!=null">
+                AND p.product_A=#{productA}
+            </if>
+            <if test="producthotsale!=null">
+                AND p.ProducthotSale=#{producthotsale}
+            </if>
+            <if test="productnew!=null">
+                AND p.ProductNew=#{productnew}
+            </if>
+            <if test="productdisabled!=null">
+                <if test="productdisabled==0">
+                    AND p.ProductDisabled=0
+                </if>
+                <if test="productdisabled!=0">
+                    AND p.ProductDisabled>0
+                </if>
+            </if>
+            <if test="conditions!=null">
+                OR  sc.orderamount LIKE '%${conditions}%'
+                OR  p.ProductName LIKE '%${conditions}%'
+            </if>
+        </where>
+        LIMIT #{start},#{count};
+    </select>
+
 </mapper>

@@ -268,11 +268,7 @@
 					<dd><a href="#">修改登录密码</a></dd>
 					<dd><a href="#">我的积分</a></dd>
 				</dl>
-				<%--<dl  onclick = "change(this);">
-					<dt>客户服务</dt>
-					<dd><a href="#">退货订单</a></dd>
-					<dd><a href="#">退货/退款记录</a></dd>
-				</dl>--%>
+
 			</div>
 		</div>
 		<div class="member-right fr">
@@ -280,97 +276,70 @@
 				<div class="member-heels fl"><h2>我的资料</h2></div>
 			</div>
 			<div class="member-border">
-				<!--
-                                <div class="member-secure clearfix">
-                                    <div class="member-extent fl">
-                                        <h2 class="fl">安全级别</h2>
-                                        <ul class="fl">
-                                            <li class="on"></li>
-                                            <li class="on"></li>
-                                            <li class="on"></li>
-                                            <li class="on"></li>
-                                            <li class="on"></li>
-                                            <li class="on"></li>
-                                            <li class="on"></li>
-                                            <li class="on1"><a href="#"></a></li>
-                                            <li class="on2"><a href="#"></a></li>
-                                            <li class="on3"><a href="#"></a></li>
-                                        </ul>
-                                        <span class="fl">较高</span>
-                                    </div>
-                                    <div class="fr reds"><p> * 建议您开启全部安全设置，以保障您的账户及资金安全</p></div>
-                                </div>
-                -->
+
 				<div class="member-caution clearfix">
-					<form>
-					<ul>
+					<form id="form1" action="${pageContext.request.contextPath}/CustomerUpdate.action" method="post">
+						<ul>
 						<li class="clearfix">
 							<div class="warn1"></div>
 							<div class="warn2">用户名</div>
-							<div class="warn3"><input class="inputx" type="text" name="${sessionScope.user.username}" value="${sessionScope.user.username}"></div>
-							<div class="warn4"><a  href="/CustomerUpdate.action">修改</a> </div>
+							<div class="warn3"><input  class="inputx " type="text" name="username" value="${userAndBrithday.username}" readonly="readonly"></div>
+
 						</li>
 						<li class="clearfix">
 							<div class="warn1"></div>
-
 							<div class="warn2">性别</div>
 							<span class="warn3">
-
 								<ul style="height: 0px;margin-top: -10px;margin-left: -25px">
-									<li style="border-bottom: 0px;"><input type="radio" name="${sessionScope.user.usersex}" data-labelauty="男" value="1" <c:if test="${sessionScope.user.usersex==1}">checked></c:if></li>
-									<li style="border-bottom: 0px;"><input type="radio" name="${sessionScope.user.usersex}" data-labelauty="女" value="0" <c:if test="${sessionScope.user.usersex==0}">checked></c:if></li>
+									<li style="border-bottom: 0px;"><input type="radio" name="usersex" data-labelauty="男" value="1" <c:if test="${sessionScope.user.usersex==1}">checked></c:if></li>
+									<li style="border-bottom: 0px;"><input type="radio" name="usersex" data-labelauty="女" value="0" <c:if test="${sessionScope.user.usersex==0}">checked></c:if></li>
 								</ul>
-
-
-
 							</span>
-							<div class="warn4"><a href="#">修改</a></div>
+
 						</li>
 
 						<li class="clearfix">
 							<div class="warn1"></div>
 							<div class="warn2">真实姓名</div>
-							<div class="warn3"><input class="inputx" type="text" name="${sessionScope.user.userrealname}" value="${sessionScope.user.userrealname}">  </div>
-							<div class="warn4"><a href="#">修改</a> </div>
+							<div class="warn3"><input  class="inputx" type="text" name="userrealname" value="${userAndBrithday.userrealname}" readonly="readonly">  </div>
+
 						</li>
 
 						<li class="clearfix">
 							<div class="warn1"></div>
 							<div class="warn2">出生年月</div>
-							<!--
-                                                        <div class="warn3">您验证的手机： <i class="reds">134*****693</i>   若已丢失或停用，请立即更换，<i class="reds">避免账户被盗</i></div>
-                                                        <div class="warn5"><p>解绑请咨询搜小悦官方客服 <i>souyue@zhongsou.com  </i></p></div>
-                            -->
 							<div class="warn3">
-								<select style="width: 80px">
-									<option>2017</option>
-									<option>2016</option>
-									<option>2015</option>
-									<option>2014</option>
+								<select style="width: 80px" name = "Year">
+									<option value = "1" selected = "selected">${temp[0]}</option>
+									<option value = "2017">2017</option>
+									<option value = "2016">2016</option>
+									<option value = "2015">2015</option>
+									<option value = "2014">2014</option>
 								</select> 年
-								<select style="margin-left: 20px;width: 60px">
-									<option>1</option>
-									<option>2</option>
-									<option>3</option>
-									<option>4</option>
+								<select style="margin-left: 20px;width: 60px" name = "Month">
+									<option>${temp[1]}</option>
+									<option value = "02">2</option>
+									<option value = "03">3</option>
+									<option value = "04">4</option>
 								</select> 月
-								<select style="margin-left: 20px;width: 60px">
-									<option>1</option>
-									<option>2</option>
-									<option>3</option>
-									<option>4</option>
+								<select style="margin-left: 20px;width: 60px" name = "Day">
+									<option>${temp[2]}</option>
+									<option value = "02">2</option>
+									<option value = "02">3</option>
+									<option value = "03">4</option>
 								</select> 日
 							</div>
-							<div class="warn4"><a href="#">修改</a></div>
+
 						</li>
 
 						<li class="clearfix">
 							<div class="warn6"></div>
 							<div class="warn2">邮箱地址</div>
-							<div class="warn3" id="text"><input class="inputx" type="text" name="${sessionScope.user.useremail}" value="${sessionScope.user.useremail}"> </div>
-							<!--							<div class="warn5"><a href="#">支付密码管理</a></div>-->
-							<div class="warn4"><a href="#" onClick="Guestbook_iew(12)">修改</a> </div>
+							<div class="warn3" id="text"><input  class="inputx " type="text" name="useremail" value="${userAndBrithday.useremail}" readonly="readonly"> </div>
 						</li>
+							<li class="clearfix">
+								<a style="font-size: 23px" class="warn4" href="javascript:void(0);" onclick="status(this)">修改</a>
+							</li>
 					</ul>
 					</form>
 
@@ -478,11 +447,24 @@
         $(this).find(".nav a").removeClass("hover");
     })
 
+    var flag=true;
+    function status(obj,id) {
+        if(flag){
+            $(".inputx").removeAttr("readonly");
+            $(".inputx").css("border","1px #E6E6FA solid ")
+            $(obj).text("提交");
+            flag=false;
+        }else {
+            $("#form1").submit();
+        }
+
+    }
+
     function update(obj,id){
         layer.confirm('确认要修改吗？',{icon:0,},function(index){
             $(obj).parents("tr").remove();
             layer.msg('已修改!',{icon:1,time:1000});
-            window.location.href="${pageContext.request.contextPath}/CustomerUpdate.action?Userid="+id;
+
         });
     }
 

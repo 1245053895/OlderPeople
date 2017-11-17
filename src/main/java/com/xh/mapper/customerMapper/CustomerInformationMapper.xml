@@ -7,10 +7,109 @@
     UserEmail, CreditsCore, UserInputDate, UserZip, UserLoginCount, UserLoginTime, User_A,
     User_B, User_C FROM `user` WHERE UserName=#{username}
     </select>
+    <!--private Integer userid;
 
-    <select id="SelectUserAddressByid" resultType="com.xh.po.Gainaddres" parameterType="String">
+    private String username;
+
+    private String userpwd;
+
+    private String usersex;
+
+    private String userrealname;
+
+    private String userphone;
+
+    private Date userbirthday;
+
+    private String useraddress;
+
+    private String useremail;
+
+    private Integer creditscore;
+
+    private Date userinputdate;
+
+    private Integer userzip;
+
+    private Integer userlogincount;
+
+    private Date userlogintime;
+
+    private String userA;
+
+    private Date userB;
+
+    private String userC;-->
+    <!--查询用户信息-->
+    <select id="SelectCustomerInformation" resultType="com.xh.po.vo.UserAndBrithday" >
+         SELECT UserId, UserName, UserPwd, UserSex, UserRealName, UserPhone, UserBirthday, UserAddress,
+        UserEmail, CreditsCore, UserInputDate, UserZip, UserLoginCount, UserLoginTime, User_A,
+        User_B, User_C FROM `user` WHERE UserId=#{userid}
+    </select>
+    <!--修改用户信息-->
+    <update id="UpdateUserByid" parameterType="com.xh.po.vo.UserAndBrithday">
+        UPDATE user
+        SET UserName=#{username},UserSex=#{usersex},UserRealName=#{userrealname},UserBirthday=#{userbirthday,jdbcType = DATE},
+        UserEmail=#{useremail}
+        WHERE UserId=#{userid}
+    </update>
+
+   <!-- private Integer gainid;
+
+    private Integer userid;
+
+    private String gainname;
+
+    private String gainmobile;
+
+    private String gainaddress;
+
+    private Integer gaincode;
+
+    private String gainA;
+
+    private String gainB;
+
+    private String gainC;-->
+   <!--通过useid查询信息-->
+    <select id="SelectUserAddressByid" resultType="com.xh.po.Gainaddres">
         SELECT GainId,GainName,GainMobile,GainAddress,GainCode,
         Gain_A AS GainA ,Gain_B AS GainB,Gain_C AS GainC FROM
-        gainaddres g, user u WHERE g.UserId=u.UserId;
+        gainaddres g, user u WHERE g.UserId=u.UserId AND g.UserId=#{userid};
     </select>
+
+
+    <!--通过userid插入数据-->
+    <insert id="InsertGainAddress" parameterType="com.xh.po.Gainaddres">
+      INSERT INTO gainaddres(GainId,UserId,GainName,GainMobile,GainCode,GainAddress,Gain_A,
+                               Gain_B ,Gain_C )VALUES (
+                               #{gainid},#{userid},#{gainname},#{gainmobile},#{gaincode},#{gainaddress},#{gainA},#{gainB}
+                               ,#{gainC}
+                               )
+    </insert>
+
+    <!--更新用户收货地址-->
+    <update id="UpdateGainAdress" parameterType="com.xh.po.Gainaddres">
+        UPDATE gainaddres
+        SET GainName=#{gainname},GainMobile=#{gainmobile},GainCode=#{gaincode}
+        ,GainAddress=#{gainaddress},Gain_A=#{gainA}
+        WHERE  GainId=#{gainid}
+    </update>
+    <!--删除用户收货地址-->
+    <delete id="DelectGainaddress" parameterType="com.xh.po.Gainaddres">
+        DELETE FROM gainaddres WHERE GainId=#{gainid}
+    </delete>
+    <!--设置物流默认状态-->
+    <update id="UpdateGainAture">
+        UPDATE gainaddres
+        SET Gain_A="1"
+        WHERE GainId=#{gainid}
+    </update>
+    <!--取消物流状态-->
+    <update id="UpdateGainAflase">
+        UPDATE gainaddres
+        SET Gain_A="0"
+        WHERE GainId=#{gainid}
+    </update>
+
 </mapper>

@@ -1,3 +1,5 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%--
   Created by IntelliJ IDEA.
   User: Administrator
@@ -55,7 +57,7 @@
         });//倒计时结束
 
         $(function(){
-	        /*======右按钮======*/
+			/*======右按钮======*/
             $(".you").click(function(){
                 nextscroll();
             });
@@ -68,7 +70,7 @@
                     $(this).css("margin-left","0px");
                 });
             };
-	        /*========左按钮=========*/
+			/*========左按钮=========*/
             $(".zuo").click(function(){
                 var vcon = $(".v_cont");
                 var offset = ($(".v_cont li").width()*-1);
@@ -243,21 +245,21 @@
 	<div class="member-center clearfix">
 		<div class="member-left fl">
 			<div class="member-apart clearfix">
-				<div class="fl"><a href="#"><img src="img/mem.png"></a></div>
+				<div class="fl"><a href="#"><img src="${pageContext.request.contextPath}/jsp/users/img/mem.png"></a></div>
 				<div class="fl">
 					<p>用户名：</p>
-					<p><a href="#">亚里士多德</a></p>
-					<p>搜悦号：</p>
-					<p>389323080</p>
+					<p><a href="#">${sessionScope.user.username}</a></p>
+					<p>账号：</p>
+					<p>${sessionScope.user.userid}</p>
 				</div>
 			</div>
 			<div class="member-lists" id="leftinfo">
 				<dl  onclick = "change(this);">
 					<dt>个人中心</dt>
-					<dd><a href="#">个人资料</a></dd>
-					<dd><a href="#">收货地址</a></dd>
-					<dd><a href="#">修改登录密码</a></dd>
-					<dd><a href="#">我的积分</a></dd>
+					<dd><a href="/CustomerInformation.action">个人资料</a></dd>
+					<dd><a href="/CustomersAddress.action">收货地址</a></dd>
+					<dd><a href="/updateLoginPassword.action">修改登录密码</a></dd>
+					<dd><a href="/MyCredits.action">我的积分</a></dd>
 				</dl>
 				<%--<dl  onclick = "change(this);">
 					<dt>客户服务</dt>
@@ -271,109 +273,97 @@
 				<div class="member-heels fl"><h2>我的积分</h2></div>
 			</div>
 			<div class="member-border">
-<!--
-				<div class="member-secure clearfix">
-					<div class="member-extent fl">
-						<h2 class="fl">安全级别</h2>
-						<ul class="fl">
-							<li class="on"></li>
-							<li class="on"></li>
-							<li class="on"></li>
-							<li class="on"></li>
-							<li class="on"></li>
-							<li class="on"></li>
-							<li class="on"></li>
-							<li class="on1"><a href="#"></a></li>
-							<li class="on2"><a href="#"></a></li>
-							<li class="on3"><a href="#"></a></li>
-						</ul>
-						<span class="fl">较高</span>
-					</div>
-					<div class="fr reds"><p> * 建议您开启全部安全设置，以保障您的账户及资金安全</p></div>
-				</div>
--->
+				<!--
+                                <div class="member-secure clearfix">
+                                    <div class="member-extent fl">
+                                        <h2 class="fl">安全级别</h2>
+                                        <ul class="fl">
+                                            <li class="on"></li>
+                                            <li class="on"></li>
+                                            <li class="on"></li>
+                                            <li class="on"></li>
+                                            <li class="on"></li>
+                                            <li class="on"></li>
+                                            <li class="on"></li>
+                                            <li class="on1"><a href="#"></a></li>
+                                            <li class="on2"><a href="#"></a></li>
+                                            <li class="on3"><a href="#"></a></li>
+                                        </ul>
+                                        <span class="fl">较高</span>
+                                    </div>
+                                    <div class="fr reds"><p> * 建议您开启全部安全设置，以保障您的账户及资金安全</p></div>
+                                </div>
+                -->
 				<div class="member-caution clearfix">
 					<ul>
 						<li class="clearfix">
 							<div class="warn1"></div>
 							<div class="warn2">可用的积分</div>
-							<div class="warn2" style="color: #ea4949;font-size: 16px;border: none">746</div>
+							<div class="warn2" style="color: #ea4949;font-size: 16px;border: none">${totalCreditsById.totalCredits}</div>
 						</li>
 						<li class="clearfix">
 							<%--<div class="warn1"></div>--%>
 							<%--<div class="warn2">登录密码</div>--%>
 							<%--<div class="warn3">互联网账号存在被盗风险，建议您定期更改密码以保护账户安全。</div>--%>
 							<%--<div class="warn4"><a href="#">修改</a> </div>--%>
-								<div class="warn2" style="margin-left: 10px;border: none">来源/用途</div>
-								<div class="warn2" style="margin-left: 260px;border: none">积分变化</div>
-								<div class="warn2" style="margin-left: 200px;border: none">日期</div>
-						</li>
-						
-						
-						
-						<li class="clearfix">
-							<div class="warn2" style="margin-left: 10px;border: none;font-weight: normal;width: 380px;height: 60px">
-								<a class="img" href=""><img src="images/shangpinxiangqing/X-1.png" width="60px" height="60px"></a>
-								<a style="width: 290px;height: 40px;overflow: hidden;line-height: 20px;text-align: left;display: block">商品名称巴拉巴拉巴拉巴拉</a>
-								<span style="height: 20px;display: block;line-height: 20px;text-align: left">编号：3215345347457857</span>
-							</div>
-							<div class="warn2" style="margin-left: 15px;border: none;font-weight: normal;height: 60px">
-								<span style="font-size: 24px;font-weight: 700;text-align: center;color: #ea4949;line-height: 60px">+54</span>
-							</div>
-							<div class="warn2" style="float: right;margin-right: -40px;border: none;font-weight: normal;height: 60px;width: 300px;line-height: 60px">2017年11月10日 16:10:22
-							</div>
+							<div class="warn2" style="margin-left: 10px;border: none">商品名称</div>
+							<div class="warn2" style="margin-left: 260px;border: none">积分变化</div>
+							<div class="warn2" style="margin-left: 200px;border: none">日期</div>
 						</li>
 
+						<c:forEach items="${totalCreditsByIds}" var="totalCreditsById">
 						<li class="clearfix">
 							<div class="warn2" style="margin-left: 10px;border: none;font-weight: normal;width: 380px;height: 60px">
-								<a class="img" href=""><img src="images/shangpinxiangqing/X-1.png" width="60px" height="60px"></a>
-								<a style="width: 290px;height: 40px;overflow: hidden;line-height: 20px;text-align: left;display: block">商品抵扣~巴拉巴拉巴拉巴拉</a>
-								<span style="height: 20px;display: block;line-height: 20px;text-align: left">编号：65245656378293674</span>
+								<a class="img" href=""><img src="${totalCreditsById.productpicture}" width="60px" height="60px"></a>
+								<a style="width: 290px;height: 40px;overflow: hidden;line-height: 20px;text-align: left;display: block">${totalCreditsById.productname}</a>
+								<span style="height: 20px;display: block;line-height: 20px;text-align: left">编号：${totalCreditsById.productid}</span>
 							</div>
 							<div class="warn2" style="margin-left: 15px;border: none;font-weight: normal;height: 60px">
-								<span style="font-size: 24px;font-weight: 700;text-align: center;color: green;line-height: 60px">-42</span>
+								<span style="font-size: 24px;font-weight: 700;text-align: center;color: #ea4949;line-height: 60px">+${totalCreditsById.productcredits}</span>
 							</div>
-							<div class="warn2" style="float: right;margin-right: -40px;border: none;font-weight: normal;height: 60px;width: 300px;line-height: 60px">2017年11月3日 12:24:21
+							<div class="warn2" style="float: right;margin-right: -40px;border: none;font-weight: normal;height: 60px;width: 300px;line-height: 60px"><fmt:formatDate value="${totalCreditsById.endtime}" pattern="yyyy-MM-dd HH:mm:ss"/>
 							</div>
 						</li>
-<!--
-						<li class="clearfix">
-							<div class="warn1"></div>
-							<div class="warn2">密保问题</div>
-							<div class="warn3">建议您设置密保问题。  </div>
-							<div class="warn4"><a href="#">设置密保</a> </div>
-						</li>
--->
+						</c:forEach>
+
+						<!--
+                                                <li class="clearfix">
+                                                    <div class="warn1"></div>
+                                                    <div class="warn2">密保问题</div>
+                                                    <div class="warn3">建议您设置密保问题。  </div>
+                                                    <div class="warn4"><a href="#">设置密保</a> </div>
+                                                </li>
+                        -->
 						<%--<li class="clearfix">--%>
-							<%--<div class="warn1"></div>--%>
-							<%--<div class="warn2">验证手机</div>--%>
-							<%----%>
-							<%--<div class="warn3">134*****693  </div>--%>
-							<%--<span style="margin-left: -400px; height:33px; line-height:33px; float:left; color: #A8A8A8;font-size: 12px">若已丢失或停用，请立即更换，避免账户被盗</span>--%>
-<%--<!----%>
-							<%--<div class="warn3">您验证的手机：  --%>
-								<%--<i class="reds">134*****693</i>--%>
-								<%--若已丢失或停用，请立即更换，--%>
-								<%--<i class="reds">避免账户被盗</i>--%>
-							<%--</div>--%>
-<%---->--%>
-<%--<!--							<div class="warn5"><p>解绑请咨询搜小悦官方客服 <i>souyue@zhongsou.com  </i></p></div>-->--%>
-							<%--<div class="warn4"><a href="#">更换</a> </div>--%>
+						<%--<div class="warn1"></div>--%>
+						<%--<div class="warn2">验证手机</div>--%>
+						<%----%>
+						<%--<div class="warn3">134*****693  </div>--%>
+						<%--<span style="margin-left: -400px; height:33px; line-height:33px; float:left; color: #A8A8A8;font-size: 12px">若已丢失或停用，请立即更换，避免账户被盗</span>--%>
+						<%--<!----%>
+						<%--<div class="warn3">您验证的手机：  --%>
+						<%--<i class="reds">134*****693</i>--%>
+						<%--若已丢失或停用，请立即更换，--%>
+						<%--<i class="reds">避免账户被盗</i>--%>
+						<%--</div>--%>
+						<%---->--%>
+						<%--<!--							<div class="warn5"><p>解绑请咨询搜小悦官方客服 <i>souyue@zhongsou.com  </i></p></div>-->--%>
+						<%--<div class="warn4"><a href="#">更换</a> </div>--%>
 						<%--</li>--%>
-<!--
-						<li class="clearfix">
-							<div class="warn6"></div>
-							<div class="warn2">支付密码</div>
-							<div class="warn3">安全程度：  建议您设置更高强度的密码。</div>
-							<div class="warn5"><a href="#">支付密码管理</a></div>
-						</li>
--->
+						<!--
+                                                <li class="clearfix">
+                                                    <div class="warn6"></div>
+                                                    <div class="warn2">支付密码</div>
+                                                    <div class="warn3">安全程度：  建议您设置更高强度的密码。</div>
+                                                    <div class="warn5"><a href="#">支付密码管理</a></div>
+                                                </li>
+                        -->
 					</ul>
 					<%--<div class="member-prompt">--%>
-						<%--<p>安全提示：</p>--%>
-						<%--<p>您当前IP地址是：<i class="reds">110.106.0.01</i>  北京市          上次登录的TP： 2015-09-16  <i class="reds">110.106.0.02 </i> 天津市</p>--%>
-						<%--<p>1. 注意防范进入钓鱼网站，不要轻信各种即时通讯工具发送的商品或支付链接，谨防网购诈骗。</p>--%>
-						<%--<p>2. 建议您安装杀毒软件，并定期更新操作系统等软件补丁，确保账户及交易安全。      </p>--%>
+					<%--<p>安全提示：</p>--%>
+					<%--<p>您当前IP地址是：<i class="reds">110.106.0.01</i>  北京市          上次登录的TP： 2015-09-16  <i class="reds">110.106.0.02 </i> 天津市</p>--%>
+					<%--<p>1. 注意防范进入钓鱼网站，不要轻信各种即时通讯工具发送的商品或支付链接，谨防网购诈骗。</p>--%>
+					<%--<p>2. 建议您安装杀毒软件，并定期更新操作系统等软件补丁，确保账户及交易安全。      </p>--%>
 					<%--</div>--%>
 				</div>
 			</div>

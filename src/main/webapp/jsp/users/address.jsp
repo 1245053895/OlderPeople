@@ -225,21 +225,21 @@
 	<div class="member-center clearfix">
 		<div class="member-left fl">
 			<div class="member-apart clearfix">
-				<div class="fl"><a href="#"><img src="img/mem.png"></a></div>
+				<div class="fl"><a href="#"><img src="${pageContext.request.contextPath}/jsp/users/img/mem.png"></a></div>
 				<div class="fl">
 					<p>用户名：</p>
-					<p><a href="#">亚里士多德</a></p>
-					<p>搜悦号：</p>
-					<p>389323080</p>
+					<p><a href="#">${sessionScope.user.username}</a></p>
+					<p>账号：</p>
+					<p>${sessionScope.user.userid}</p>
 				</div>
 			</div>
 			<div class="member-lists" id="leftinfo">
 				<dl  onclick = "change(this);">
 					<dt>个人中心</dt>
 					<dd><a href="/CustomerInformation.action">个人资料</a></dd>
-					<dd><a href="#">收货地址</a></dd>
-					<dd><a href="#">修改登录密码</a></dd>
-					<dd><a href="#">我的积分</a></dd>
+					<dd><a href="/CustomersAddress.action">收货地址</a></dd>
+					<dd><a href="/updateLoginPassword.action">修改登录密码</a></dd>
+					<dd><a href="/MyCredits.action">我的积分</a></dd>
 				</dl>
 				<%--<dl  onclick = "change(this);">
 					<dt>客户服务</dt>

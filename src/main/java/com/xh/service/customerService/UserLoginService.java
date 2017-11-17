@@ -2,6 +2,7 @@ package com.xh.service.customerService;
 
 import com.xh.po.User;
 import com.xh.po.Userlog;
+import com.xh.po.vo.TotalCreditsById;
 
 import java.util.List;
 
@@ -20,5 +21,18 @@ public interface UserLoginService {
 
     //根据用户id插入用户的结束登录时间
     public void updateEndLoginTime(Userlog userlog);
+
+    //个人资料中修改登录密码，根据登录用户的id修改密码
+    public void updataPwdById(User user);
+
+    //个人中心里修改登录密码，根据登录用户的id修改电话
+    public void updataLoginPhone(User user);
+
+
+    //个人中心我的积分显示
+    public List<TotalCreditsById> queryAllById(Integer userid);
+
+    //每一个用户所购买的所有商品的总积分
+    public TotalCreditsById queryTotalCriditsById(Integer userid);
 
 }

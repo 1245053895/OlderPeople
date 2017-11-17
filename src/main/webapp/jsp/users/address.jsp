@@ -306,7 +306,7 @@
 						<form id="form${gainaddres1.gainid}" action="${pageContext.request.contextPath}/UpdateGainAdress.action" method="post">
 							<li class="clearfix">
 								<div class="warn2" style="margin-left: 10px;border: none;font-weight: normal">
-									<input  class="inputx " name="gainid" value="${gainaddres1.gainid}" readonly="true">
+									<input  class="inputx  aa${gainaddres1.gainid}" name="gainid" value="${gainaddres1.gainid}" readonly="true">
 								</div>
 								<div class="warn2" style="margin-left: 10px;border: none;font-weight: normal">
 									<input  class="inputx  aa${gainaddres1.gainid}" name="gainname" value="${gainaddres1.gainname}" readonly="true">

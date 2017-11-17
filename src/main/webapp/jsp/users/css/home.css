@@ -711,7 +711,7 @@ a{
 
 .pc-banner {overflow:hidden;width:1010px;padding-left:190px;height: 480px;margin: 0 auto;position: relative;}
 .pc-banner1{ background:#ece5d3; width:100%; height:480px; position:absolute;top: 0;left: 0; }
-.button    { background:#ea4949; width:82px; height:36px; border:none; color:#fff; cursor: pointer; float: left; font-size: 16px; line-height: 1; font-weight:normal}
+.button    { background:#ea4949; width:82px; height:30px; border:none; color:#fff; cursor: pointer; float: left; font-size: 16px; line-height: 1; font-weight:normal}
 .button:hover{ background:#ea3232}
 .head-amount   { width:22px;  height:29px;  position:absolute; left:-1em; top:-14px; font-size:11px; color:#fff; display:inline-block; text-align:center; line-height:24px; }
 .head-mountain {  width:312px; height:104px; position:absolute; right:0; bottom:-35px;}
@@ -843,14 +843,21 @@ a{
 .pc-term {border:1px solid #e0e0e0; margin-bottom:15px; }
 .pc-term-dl { padding:10px;}
 .pc-term-dl dt {float:left; height:30px; padding-right:5px;}
-.pc-term-dl dd {float:left; width:150px; text-align:left; margin-bottom:4px;}
+.pc-term-dl dd {float:left; width:125px; text-align:left; margin-bottom:9px;}
 .pc-term-dl dd a {color:#005aa0;}
-.pc-search {padding:20px;}
+.pc-search { border-bottom: 1px #abbac3 solid;border-top: 1px #abbac3 solid;height: 42px;}
+.pc-search .sort-inner{
+	height: 42px;
+	background-color: #f5f5f5;
+}
+.pc-search .sort-inner .sorts{float: left;line-height: 42px;}
+.pc-search .sort-inner .sorts .sort{float: left}
 .pc-search-in input {height:24px; line-height:24px; border:1px solid #e0e0e0; border-radius:2px; padding-left:4px; float:left;}
-.pc-search-a {height:26px; width:55px; padding-left:34px; line-height:26px; color:#fff; display:block; background:#333; float:right; font-size:14px;}
+pc-search-in a:hover{background: #a63130;width: 90px;height: 20px;border: 1px transparent solid;border-radius: 3px;color: white;}
+.pc-search-a {height:25px; width:95px; padding-left:34px;border: 1px transparent solid;border-radius: 3px; line-height:26px; color:#fff; display:block; background:#EE4644; float:right; font-size:14px;}
 .pc-search-w {width:178px; margin-right:10px;}
 .pc-search-s {width:50px; margin-right:10px; color:#000;}
-.pc-search-in {height:26px; overflow:hidden;}
+.pc-search-in {height:40px; overflow:hidden;line-height: 40px;margin-left: 10px;margin-top: 8px;}
 .pc-with {color:#333; padding-top:5px;}
 .pc-with a {color:#005aa0;}
 .pc-with em {font-style:normal; color:#8f8f8f; padding:0 5px;}
@@ -858,11 +865,11 @@ a{
 .pc-search-p {padding:8px 20px;}
 .pc-search-e .cur {color:#fff; background:#e4393c; border-radius:3px; border:1px solid #e4393c;}
 .pc-search-e a:hover {color:#fff; background:#e4393c; border-radius:3px; border:1px solid #e4393c;}
-.pc-search-v {padding-top:6px;}
+.pc-search-v {padding-top:6px; float: left}
 .pc-search-v ul li {float:left; width:110px;}
-.pc-search-v ul li input {float:left; margin-top:3px;}
-.pc-search-v ul li a {padding-left:4px; float:left; display:block;}
-.pc-search-i {height:32px; background:#f7f7f7;}
+.pc-search-v ul li input {float:left; margin-top:3px;margin-left: -508px;}
+.pc-search-v ul li a {padding-left:4px; float:left; display:block;margin-left:-485px;color: #6d6d6d}
+.pc-search-i {height:32px;float: right;margin-top: -30px;margin-right: 20px;  }
 .pc-search-t {float:left; display:block; line-height:30px; padding-right:15px;}
 .pc-search-t b {color:#e5393c;}
 .pc-search-i a {width:60px; height:24px; border:1px solid #cccccc; border-radius:3px; display:block; float:left; line-height:24px; text-align:center; margin-right:10px; color:#005aa0; margin-top:3px;}
@@ -889,7 +896,7 @@ a{
 .pc-search-y em {float:left; line-height:28px; height:28px; font-style:normal; padding:0 10px;}
 .confirm {background:#f5f5f5;}
 
-.pc-search-re {padding:20px 0; background:#f6f6f6;}
+.pc-search-re {padding:20px 0; background:#f6f6f6;margin-top: 50px;height: 70px;}
 
 .pc-search-re dt { float: left;
 	font-size:14px;
@@ -898,7 +905,7 @@ a{
 	width: 70px;}
 
 .pc-search-re dd {  float: right;
-	height: 32px;
+	height: 30px;
 	padding-right: 83px;
 	position: relative;
 	width: 372px;}
@@ -906,13 +913,13 @@ a{
 .pc-search-re dl {
 	margin-left: 40px;
 	overflow: hidden;
-	width: 530px;
+	width: 730px;
 }
 .pc-search-re .text {
 	background: #fff none repeat scroll 0 0;
 	border: 1px solid #ccc;
 	color: #999;
-	height: 20px;
+	height: 30px;
 	line-height: 20px;
 	margin-right: 5px;
 	padding: 5px;

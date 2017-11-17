@@ -19,10 +19,20 @@
 	<link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/jsp/users/img/icon/favicon.ico">
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/jsp/users/css/base.css">
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/jsp/users/css/home.css">
+	<link id="bootstrap_221" rel="stylesheet" type="text/css" class="library" href="http://apps.bdimg.com/libs/bootstrap/3.3.4/css/bootstrap.min.css">
 	<script type="text/javascript" src="${pageContext.request.contextPath}/jsp/users/js/jquery.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/jsp/users/js/index.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/jsp/users/js/modernizr-custom-v2.7.1.min.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/jsp/users/js/jquery.SuperSlide.js"></script>
+	<style type="text/css">
+		.navbar .nav > li .dropdown-menu {
+			margin: 0;
+		}
+		.navbar .nav > li:hover .dropdown-menu {
+			display: block;
+		}
+	</style>
+
 	<script type="text/javascript">
 
         var intDiff = parseInt(90000);//倒计时总秒数量
@@ -209,64 +219,60 @@
 	<div style="padding:20px">
 		<div class="containers clearfix">
 			<div class="pc-info fr" style="width:1142px;margin-right: 80px;">
-				<div class="pc-term">
+				<div class="pc-term" style="height: 40px;">
 					<dl class="pc-term-dl clearfix">
-						<dt>品牌：</dt>
-						<dd><a href="#">三星（SAMSUNG）</a></dd>
-						<dd><a href="#">华为（HUAWEI）</a></dd>
-						<dd><a href="#">联想（lenovo）</a></dd>
-						<dd><a href="#">索尼（SONY）</a></dd>
-						<dd><a href="#">飞利浦（Philips）</a></dd>
-						<dd><a href="#">Apple</a></dd>
-						<dd><a href="#">小米（MI）</a></dd>
-						<dd><a href="#">HTC</a></dd>
-						<dd><a href="#">酷派（Coolpad）</a></dd>
-						<dd><a href="#">诺基亚（NOKIA）</a></dd>
-						<dd><a href="#">中兴（ZTE）</a></dd>
+						<dt>你是不是想找：</dt>
+						<dd><a href="#">折叠轮椅</a></dd>
+						<dd><a href="#">轮椅配件</a></dd>
+						<dd><a href="#">电动轮椅</a></dd>
+						<dd><a href="#">手动轮椅</a></dd>
+						<dd><a href="#">爬楼轮椅</a></dd>
+						<dd><a href="#">代步车</a></dd>
+						<dd><a href="#">助行器</a></dd>
+						<dd><a href="#">老年购物车</a></dd>
 					</dl>
-					<dl class="pc-term-dl clearfix">
-						<dt>尺寸：</dt>
-						<dd><a href="#">4.5英寸</a></dd>
-						<dd><a href="#">4.7英寸</a></dd>
-						<dd><a href="#">5.0英寸</a></dd>
-						<dd><a href="#">5.5英寸</a></dd>
-						<dd><a href="#">5.3英寸</a></dd>
-						<dd><a href="#">7.0英寸</a></dd>
-						<dd><a href="#">6.0英寸</a></dd>
-						<dd><a href="#">3.5英寸</a></dd>
-					</dl>
-					<dl class="pc-term-dl clearfix">
-						<dt>系统：</dt>
-						<dd><a href="#">iOS</a></dd>
-						<dd><a href="#">Android/安卓</a></dd>
-						<dd><a href="#">Windows Phone</a></dd>
-						<dd><a href="#">无操作系统</a></dd>
-						<dd><a href="#">YunOS</a></dd>
-						<dd><a href="#">FLyme</a></dd>
-						<dd><a href="#">MIUI</a></dd>
-						<dd><a href="#">MTK</a></dd>
-						<dd><a href="#">iOS</a></dd>
-					</dl>
-					<div>
-						<a href="#">更多</a>
-					</div>
-
 					<div class="pc-line"></div>
-					<div class="pc-search clearfix">
-						<div class="fl pc-search-in">
-							<input class="pc-search-w" type="text">
-							<input class="pc-search-s" placeholder="￥" type="text">
-							<input class="pc-search-s" placeholder="￥" type="text">
-							<a href="#" class="pc-search-a">搜索</a>
-						</div>
-						<div class="fr pc-with">
-							相关搜索： <a href="#">黑糖</a><em>|</em><a href="#">姜茶</a><em>|</em><a href="#">红印黑糖</a><em>|</em><a href="#">黑糖话梅</a><em>|</em><a href="#">黑糖姜母</a><em>|</em><a href="#">茶黑糖饼</a><em>|</em><a href="#">干黑糖</a><em>|</em><a href="#">沙琪玛</a>
-						</div>
-					</div>
+
 				</div>
 				<div class="pc-term">
 					<div class="clearfix pc-search-p">
-						<div class="fl pc-search-e"><a href="#" class="cur">销量</a><a href="#">价格</a><a href="#">评价</a><a href="#">上架时间</a></div>
+
+						<div class="pc-search clearfix">
+							<div class="sort-inner">
+								<div class="container">
+									<div class="navbar">
+										<div class="navbar-inner">
+											<ul class="nav nav-pills" style="width: 800px;">
+												<li><a href="#">综合排序</a></li>
+												<li class="dropdown"><a href="#">销量<span class="caret"></span></a>
+													<ul class="dropdown-menu">
+														<li><a href="#">销量由高到低</a></li>
+													</ul>
+												</li>
+												<li class="dropdown"><a href="#">人气<span class="caret"></span></a>
+													<ul class="dropdown-menu">
+														<li><a href="#">人气由高到低</a></li>
+													</ul>
+												</li>
+												<li class="dropdown"><a href="#">价格<span class="caret"></span></a>
+													<ul class="dropdown-menu">
+														<li><a href="#">价格由低到高</a></li>
+														<li><a href="#">价格由高到低</a></li>
+													</ul>
+												</li>
+												<li>
+													<div class="fl pc-search-in">
+														<input class="pc-search-s" placeholder="￥" type="text">
+														<input class="pc-search-s" placeholder="￥" type="text">
+														<a href="#" class="pc-search-a">搜索</a>
+													</div>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
 						<div class="fr pc-search-v">
 							<ul>
 								<li><input type="checkbox"><a href="#">有货</a> </li>
@@ -283,63 +289,80 @@
 						</div>
 					</div>
 				</div>
-				<div class="time-border-list pc-search-list clearfix">
-					<ul class="clearfix">
-						<li>
-							<a href="#"> <img src="images/shangpinxiangqing/X-1.png" width=100%></a>
-							<p class="head-name"><a href="#">小米 4 2GB内存版 白色 移动4G手机不锈钢金属边框</a> </p>
-							<p><span class="price">￥138.00</span></p>
-							<p class="head-futi clearfix"><span class="fl">好评度：90% </span> <span class="fr">100人购买</span></p>
-							<p class="clearfix"><span class="label-default fl">抢购</span> <a href="#" class="fr pc-search-c">收藏</a> </p>
-						</li>
-						<li>
-							<a href="#"> <img src="images/shangpinxiangqing/X-1.png" width=100%></a>
-							<p class="head-name"><a href="#">小米 4 2GB内存版 白色 移动4G手机不锈钢金属边框</a> </p>
-							<p><span class="price">￥138.00</span></p>
-							<p class="head-futi clearfix"><span class="fl">好评度：90% </span> <span class="fr">100人购买</span></p>
-							<p class="clearfix"><span class="label-default fl">抢购</span> <a href="#" class="fr pc-search-c">收藏</a> </p>
-						</li>
-						<li>
-							<a href="#"> <img src="images/shangpinxiangqing/X-1.png" width=100%></a>
-							<p class="head-name"><a href="#">小米 4 2GB内存版 白色 移动4G手机不锈钢金属边框</a> </p>
-							<p><span class="price">￥138.00</span></p>
-							<p class="head-futi clearfix"><span class="fl">好评度：90% </span> <span class="fr">100人购买</span></p>
-							<p class="clearfix"><span class="label-default fl">抢购</span> <a href="#" class="fr pc-search-c">收藏</a> </p>
-						</li>
-						<li>
-							<a href="#"> <img src="images/shangpinxiangqing/X-1.png" width=100%></a>
-							<p class="head-name"><a href="#">小米 4 2GB内存版 白色 移动4G手机不锈钢金属边框</a> </p>
-							<p><span class="price">￥138.00</span></p>
-							<p class="head-futi clearfix"><span class="fl">好评度：90% </span> <span class="fr">100人购买</span></p>
-							<p class="clearfix"><span class="label-default fl">抢购</span> <a href="#" class="fr pc-search-c">收藏</a> </p>
-						</li>
+				<div class="time-border">
 
-					</ul>
-					<div class="clearfix">
-						<div class="fr pc-search-g">
-							<a class="fl pc-search-f" href="#">上一页</a>
-							<a href="#" class="current">1</a>
-							<a href="javascript:;">2</a>
-							<a href="javascript:;">3</a>
-							<a href="javascript:;">4</a>
-							<a href="javascript:;">5</a>
-							<a href="javascript:;">6</a>
-							<a href="javascript:;">7</a>
-							<span class="pc-search-di">…</span>
-							<a title="使用方向键右键也可翻到下一页哦！" class="pc-search-n" href="javascript:;" onclick="SEARCH.page(3, true)">下一页</a>
-							<span class="pc-search-y">
-                        <em>  共20页    到第</em>
-                        <input class="pc-search-j" placeholder="1" type="text">
-                        <em>页</em>
-                        <a href="#" class="confirm">确定</a>
-                    </span>
 
+					<div class="yScrollList" style="width: 1180px;height: 100%">
+						<div class="yScrollListIn">
+							<div class="yScrollListInList yScrollListInList1" style="display:block; width: 1180px;height: 100%;margin-left: -55px">
+								<ul style="width: 1180px;text-align: center">
+									<li style="text-align: center;width: 152px;">
+										<div class="row">
+											<dl>
+												<dt><img src="${pageContext.request.contextPath}/jsp/users/images/rxsp/fhgz1.1.png"></dt>
+												<dd class="name">防滑拐杖</dd>
+												<dd style="color: #B0B0B0">老年出行更安全</dd>
+												<dd style="color: #ec1611;font: 13px/33px '微软雅黑'">149元</dd>
+											</dl>
+										</div>
+									</li>
+									<li style="text-align: center">
+										<div class="row">
+											<dl>
+												<dt><img src="${pageContext.request.contextPath}/jsp/users/images/rxsp/wfsb5.1.jpg"></dt>
+												<dd class="name">笔墨纸砚</dd>
+												<dd style="color: #B0B0B0">文房四宝，老年娱乐</dd>
+												<dd style="color: #ec1611;font: 13px/33px '微软雅黑'">149元</dd>
+											</dl>
+										</div>
+									</li>
+									<li style="text-align: center">
+										<div class="row">
+											<dl>
+												<dt><img src="${pageContext.request.contextPath}/jsp/users/images/rxsp/whj1.1.gif"></dt>
+												<dd class="name">雾化器</dd>
+												<dd style="color: #B0B0B0">治疗各种呼吸系统疾病</dd>
+												<dd style="color: #ec1611;font: 13px/33px '微软雅黑'">149元</dd>
+											</dl>
+										</div>
+									</li>
+									<li style="text-align: center">
+										<div class="row">
+											<dl>
+												<dt><img src="${pageContext.request.contextPath}/jsp/users/images/rxsp/sdly1.1.gif"></dt>
+												<dd class="name">手动轮椅</dd>
+												<dd style="color: #B0B0B0">残疾人轮椅代步</dd>
+												<dd style="color: #ec1611;font: 13px/33px '微软雅黑'">149元</dd>
+											</dl>
+										</div>
+									</li>
+									<li style="text-align: center">
+										<div class="row">
+											<dl>
+												<dt><img src="${pageContext.request.contextPath}/jsp/users/images/rxsp/tkmbj1.1.png"></dt>
+												<dd class="name">太空漫步机</dd>
+												<dd style="color: #B0B0B0">老年运动，活动关节腿脚</dd>
+												<dd style="color: #ec1611;font: 13px/33px '微软雅黑'">149元</dd>
+											</dl>
+										</div>
+									</li>
+									<li style="text-align: center">
+										<div class="row">
+											<dl>
+												<dt><img src="${pageContext.request.contextPath}/jsp/users/images/rxsp/tkmbj1.1.png"></dt>
+												<dd class="name">太空漫步机</dd>
+												<dd style="color: #B0B0B0">老年运动，活动关节腿脚</dd>
+												<dd style="color: #ec1611;font: 13px/33px '微软雅黑'">149元</dd>
+											</dl>
+										</div>
+									</li>
+								</ul>
+							</div>
 						</div>
 					</div>
 				</div>
 				<div class="pc-search-re clearfix">
 					<dl>
-						<dt>重新搜索</dt>
 						<dd>
 							<input value="三星" id="key-re-search" class="text" type="text">
 							<input value="搜&nbsp;索" id="btn-re-search" class="button" type="button">
@@ -350,9 +373,6 @@
 		</div>
 	</div>
 </div>
-
-
-<div style="height:100px"></div>
 
 <footer>
 	<div class="pc-footer-top">

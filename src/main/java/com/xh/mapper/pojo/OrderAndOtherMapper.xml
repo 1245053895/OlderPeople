@@ -2,6 +2,16 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xh.mapper.pojo.OrderAndOtherMapper">
 
+    <select id="selectAndName" resultType="com.xh.po.vo.OderAndString2" >
+        SELECT UserInputDate AS aaa,CreditsCore AS bbb,UserLoginCount AS ccc,UserName AS ddd,UserSex AS eee
+        FROM `user`
+        ORDER BY UserSex;
+    </select>
+   <!--用户人数-->
+    <select id="selectName5" resultType="com.xh.po.vo.OrderAndString" >
+        SELECT COUNT(*) AS name5
+    FROM `user`
+    </select>
     <!--1.查询交易总金额-->
     <select id="totalAmountOfTransaction" resultType="com.xh.po.vo.OrderAndString" >
     SELECT SUM(TotalMoneyCount) AS totalAmountOfTransaction
@@ -74,7 +84,7 @@
     <!--7.各个商品类型的订单数 -->
     <!--parameterType="com.xh.po.vo.OrderOfString"-->
     <select id="selectNotName1" resultType="com.xh.po.vo.OrderAndString" >
-         SELECT CONCAT(ProductTypeName,"(",COUNT(*),")") AS notname1
+         SELECT ProductTypeName AS name3,COUNT(*) AS name4
         FROM orderproduct a,product b,`order` c,producttype d
         WHERE b.ProductTypeId=d.ProductTypeId AND a.ProductId=b.ProductId AND a.OrderId=c.OrderId
         GROUP BY ProductTypeName
@@ -83,7 +93,7 @@
     <!--8.各个商品类型的交易金额 -->
     <!--parameterType="com.xh.po.vo.OrderOfString"-->
     <select id="selectNotName2" resultType="com.xh.po.vo.OrderAndString" >
-        SELECT CONCAT(ProductTypeName,SUM(TotalMoneyCount)) AS notname2
+        SELECT ProductTypeName AS name1,SUM(TotalMoneyCount) AS name2
         FROM orderproduct a,product b,`order` c,producttype d
         WHERE b.ProductTypeId=d.ProductTypeId AND a.ProductId=b.ProductId AND a.OrderId=c.OrderId
         GROUP BY ProductTypeName

@@ -61,7 +61,23 @@ public class LoginController {
                         session.setMaxInactiveInterval(52 * 60);
                         /*session.setAttribute("username", username);
                         session.setAttribute("password",password);*/
+
                         session.setAttribute("admin", admin);
+
+                        //获取ip
+                        String ip = request.getHeader("x-forwarded-for");
+                        if(ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
+                            ip = request.getHeader("Proxy-Client-IP");
+                        }
+                        if(ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
+                            ip = request.getHeader("WL-Proxy-Client-IP");
+                        }
+                        if(ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
+                            ip = request.getRemoteAddr();
+                        }
+                        session.setAttribute("ip",ip);
+
+
                         return "/jsp/admin/index.jsp";
                     } else {
                         model.addAttribute("error", "密码不正确");
@@ -75,6 +91,10 @@ public class LoginController {
         } else {
             model.addAttribute("error", "用户名不能为空");
         }
+
+
+
+
 
         return "/jsp/admin/login.jsp";
     }

@@ -1,5 +1,6 @@
 package com.xh.controller.customerController;
 
+import com.xh.po.Product;
 import com.xh.po.User;
 import com.xh.po.Userlog;
 import com.xh.po.vo.TotalCreditsById;
@@ -143,9 +144,11 @@ public class CustomerLoginController {
 
 
 
-    //查询出商品的图片，名称，描述，价格，展示在商城的首页
-    public String selectproduct(){
-        return null;
+    //查询出上市新品的商品的图片，名称，描述，价格，展示在商城的首页
+    public String selectproduct(Model model){
+       List<Product> products= userLoginService.selectproduct();
+       model.addAttribute("products",products);
+        return "jsp/users/index.jsp";
     }
 
 

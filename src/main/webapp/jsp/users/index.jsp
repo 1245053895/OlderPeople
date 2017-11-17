@@ -205,7 +205,7 @@
 							<div class="tx1">
 								<a href="#">
 									<i> </i>
-									<a href="#" target="_blank" style="font-size: 14px;">出行代步</a>
+									<a href="/jsp/users/my-all.jsp" target="_blank" style="font-size: 14px;">出行代步</a>
 									<span></span>
 								</a>
 							</div>
@@ -514,92 +514,19 @@
 					<div class="m-slide-contain m-s2">
 						<div class="m-slide-item">
 							<ul class="m-cols m-col-5">
-								<li class="col sku-item ">
-									<dl class="row">
-										<dt><img src="jsp/admin/images/upload/food.png"></dt>
-										<dd class="name"><a href="/xiangqing.action">零食特产</a></dd>
-										<dd class="desc">4GB内存+128GB闪存，陶瓷版</dd>
-										<dd class="price">1499元</dd>
-									</dl>
-								</li>
-								<li class="col sku-item ">
-									<dl class="row">
-										<dt><img src="${pageContext.request.contextPath}/jsp/users/images/single/single2.png"></dt>
-										<dd class="name">小米电视3S 43英寸</dd>
-										<dd class="desc">4GB内存+128GB闪存，陶瓷版</dd>
-										<dd class="price">1499元</dd>
-									</dl>
-								</li>
-								<li class="col sku-item ">
-									<dl class="row">
-										<dt><img src="${pageContext.request.contextPath}/jsp/users/images/single/single3.png"></dt>
-										<dd class="name">小米电视3S 43英寸</dd>
-										<dd class="desc">4GB内存+128GB闪存，陶瓷版</dd>
-										<dd class="price">1499元</dd>
-									</dl>
-								</li>
-								<li class="col sku-item ">
-									<dl class="row">
-										<dt><img src="${pageContext.request.contextPath}/jsp/users/images/single/single4.png"></dt>
-										<dd class="name">小米电视3S 43英寸</dd>
-										<dd class="desc">4GB内存+128GB闪存，陶瓷版</dd>
-										<dd class="price">1499元</dd>
-									</dl>
-								</li>
-								<li class="col sku-item ">
-									<dl class="row">
-										<dt><img src="${pageContext.request.contextPath}/jsp/users/images/single/single5.jpg"></dt>
-										<dd class="name">小米电视3S 43英寸</dd>
-										<dd class="desc">4GB内存+128GB闪存，陶瓷版</dd>
-										<dd class="price">1499元</dd>
-									</dl>
-								</li>
+								<c:forEach items="${products}" var="product">
+									<li class="col sku-item ">
+										<dl class="row">
+											<dt><img src="${product.productpicture}"></dt>
+											<dd class="name">${product.productname}</dd>
+											<dd class="desc">${product.productdescribe}</dd>
+											<dd class="price">${product.productprice}</dd>
+										</dl>
+									</li>
+								</c:forEach>
 							</ul>
 						</div>
-						<div class="m-slide-item">
-							<ul class="m-cols m-col-5">
-								<li class="col sku-item ">
-									<dl class="row">
-										<dt><img src="${pageContext.request.contextPath}/jsp/users/images/single/single6.png"></dt>
-										<dd class="name">小米电视3S 43英寸</dd>
-										<dd class="desc">4GB内存+128GB闪存，陶瓷版</dd>
-										<dd class="price">1499元</dd>
-									</dl>
-								</li>
-								<li class="col sku-item ">
-									<dl class="row">
-										<dt><img src="${pageContext.request.contextPath}/jsp/users/images/single/single10.png"></dt>
-										<dd class="name">小米电视3S 43英寸</dd>
-										<dd class="desc">4GB内存+128GB闪存，陶瓷版</dd>
-										<dd class="price">1499元</dd>
-									</dl>
-								</li>
-								<li class="col sku-item ">
-									<dl class="row">
-										<dt><img src="${pageContext.request.contextPath}/jsp/users/images/single/single7.png"></dt>
-										<dd class="name">小米电视3S 43英寸</dd>
-										<dd class="desc">4GB内存+128GB闪存，陶瓷版</dd>
-										<dd class="price">1499元</dd>
-									</dl>
-								</li>
-								<li class="col sku-item ">
-									<dl class="row">
-										<dt><img src="${pageContext.request.contextPath}/jsp/users/images/single/single8.png"></dt>
-										<dd class="name">小米电视3S 43英寸</dd>
-										<dd class="desc">4GB内存+128GB闪存，陶瓷版</dd>
-										<dd class="price">1499元</dd>
-									</dl>
-								</li>
-								<li class="col sku-item ">
-									<dl class="row">
-										<dt><img src="${pageContext.request.contextPath}/jsp/users/images/single/single9.jpg"></dt>
-										<dd class="name">小米电视3S 43英寸</dd>
-										<dd class="desc">4GB内存+128GB闪存，陶瓷版</dd>
-										<dd class="price">1499元</dd>
-									</dl>
-								</li>
-							</ul>
-						</div>
+
 					</div>
 				</section>
 			</div>

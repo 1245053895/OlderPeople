@@ -190,7 +190,7 @@
 </div>-->
 
 <header id="pc-header">
-	<c:if test="${empty products||empty hotsaleproducts||empty top10products||empty creditproducts||empty jiankang||empty jujia||empty yule}">
+	<c:if test="${empty products||empty hotsaleproducts||empty top10products||empty creditproducts||empty jiankang||empty jujia||empty yule|| empty Recommendations}">
 		<jsp:forward page="${pageContext.request.contextPath}/selectproduct.action"></jsp:forward>
 	</c:if>
 	<jsp:include page="/jsp/users/head.jsp"></jsp:include>
@@ -481,9 +481,9 @@
 			</div>
 			<div class="span16">
 				<ul class="m-cols m-col-3">
-					<li class="col"><img src="images/zhuanchang2.jpg"></li>
-					<li class="col"><img src="images/zhuanchang3.jpg"></li>
-					<li class="col"><img src="images/zhuanchang4.jpg"></li>
+					<li class="col"><img src="jsp/users/images/zhuanchang2.jpg"></li>
+					<li class="col"><img src="jsp/users/images/zhuanchang3.jpg"></li>
+					<li class="col"><img src="jsp/users/images/zhuanchang4.jpg"></li>
 				</ul>
 			</div>
 
@@ -511,7 +511,7 @@
 								<c:forEach begin="0" end="4" step="1" items="${products}" var="product">
 								<li class="col sku-item ">
 									<dl class="row">
-										<dt><img src="${product.productpicture}"></dt>
+										<dt><a href="${pageContext.request.contextPath}/xiangqing.action?productid=${product.productid}"><img src="${product.productpicture}"></a></dt>
 										<dd class="name"><a href="${pageContext.request.contextPath}/xiangqing.action?productid=${product.productid}">${product.productname}</a></dd>
 										<dd class="desc">${product.productdescribe}</dd>
 										<dd class="price">${product.productprice}</dd>
@@ -525,7 +525,7 @@
 								<c:forEach begin="5" end="9" step="1" items="${products}" var="product">
 									<li class="col sku-item ">
 										<dl class="row">
-											<dt><img src="${product.productpicture}"></dt>
+											<dt><a href="${pageContext.request.contextPath}/xiangqing.action?productid=${product.productid}"><img src="${product.productpicture}"></a></dt>
 											<dd class="name"><a href="${pageContext.request.contextPath}/xiangqing.action?productid=${product.productid}">${product.productname}</a></dd>
 											<dd class="desc">${product.productdescribe}</dd>
 											<dd class="price">${product.productprice}</dd>
@@ -603,7 +603,7 @@
 											<a href="page.jsp">
 												<span class="tip orange">销量${hotsaleproduct.totalhotsale}</span>
 												<dl>
-													<dt><img src="${hotsaleproduct.productpicture}"></dt>
+													<dt><a href="${pageContext.request.contextPath}/xiangqing.action?productid=${hotsaleproduct.productid}"><img src="${hotsaleproduct.productpicture}"></a></dt>
 													<dd class="name"><a href="${pageContext.request.contextPath}/xiangqing.action?productid=${hotsaleproduct.productid}">${hotsaleproduct.productname}</a></dd>
 													<dd class="desc">${hotsaleproduct.productdescribe}</dd>
 													<dd class="price">${hotsaleproduct.productprice}</dd>
@@ -617,7 +617,7 @@
 											<a href="page.jsp">
 												<span class="tip blue">销量${hotsaleproduct.totalhotsale}</span>
 												<dl>
-													<dt><img src="${hotsaleproduct.productpicture}"></dt>
+													<dt><a href="${pageContext.request.contextPath}/xiangqing.action?productid=${hotsaleproduct.productid}"><img src="${hotsaleproduct.productpicture}"></a></dt>
 													<dd class="name"><a href="${pageContext.request.contextPath}/xiangqing.action?productid=${hotsaleproduct.productid}">${hotsaleproduct.productname}</a></dd>
 													<dd class="desc">${hotsaleproduct.productdescribe}</dd>
 													<dd class="price">${hotsaleproduct.productprice}</dd>
@@ -819,7 +819,7 @@
 													<span class="tip orange">需${creditproduct.productdisabled}积分</span>
 													<dl>
 														<dt><a href="${pageContext.request.contextPath}/xiangqing.action?productid=${creditproduct.productid}"><img src="${creditproduct.productpicture}"></a></dt>
-														<dd class="name">${creditproduct.productname}</dd>
+														<dd class="name"><a href="${pageContext.request.contextPath}/xiangqing.action?productid=${creditproduct.productid}">${creditproduct.productname}</a></dd>
 														<dd class="price">${creditproduct.productprice}</dd>
 													</dl>
 												</div>
@@ -829,7 +829,7 @@
 													<span class="tip orange">需${creditproduct.productdisabled}积分</span>
 													<dl>
 														<dt><a href="${pageContext.request.contextPath}/xiangqing.action?productid=${creditproduct.productid}"><img src="${creditproduct.productpicture}"></a></dt>
-														<dd class="name">${creditproduct.productname}</dd>
+														<dd class="name"><a href="${pageContext.request.contextPath}/xiangqing.action?productid=${creditproduct.productid}">${creditproduct.productname}</a></dd>
 														<dd class="price">${creditproduct.productprice}</dd>
 													</dl>
 												</div>
@@ -840,7 +840,7 @@
 										<div class="row row_half small-intro">
 											<div class="small-introL">
 												<span class="tip orange">需${creditproduct.productdisabled}积分</span>
-												<b>${creditproduct.productname}</b>
+												<b><a href="${pageContext.request.contextPath}/xiangqing.action?productid=${creditproduct.productid}">${creditproduct.productname}</a></b>
 												<small>${creditproduct.productprice}</small>
 											</div>
 											<div class="small-introR"  style="margin-top: 35px;margin-right: 10px">
@@ -859,12 +859,11 @@
 										</c:forEach>
 									</ul>
 								</div>
-
 							<div class="m-slide-item">
 									<ul class="m-cols m-col-4">
 
 										<c:forEach begin="0" end="6" step="1" items="${creditproducts}" var="creditproduct" varStatus="status">
-											&lt;%&ndash;<c:if test="${status.index%2==0}">&ndash;%&gt;
+											<%--<c:if test="${status.index%2==0}">--%>
 												<li class="col">
 												<div class="row" content="fffffff" from="来自于hh的评价">
 													<span class="tip blue">1万人评价</span>
@@ -874,8 +873,8 @@
 														<dd class="price">${creditproduct.productprice}</dd>
 													</dl>
 												</div>
-									&lt;%&ndash;		</c:if>&ndash;%&gt;
-											&lt;%&ndash;<c:if test="${status.index%2==1}">&ndash;%&gt;
+									<%--		</c:if>--%>
+											<%--<c:if test="${status.index%2==1}">--%>
 												<div class="row" content="方便，特别安全，省了很多事" from="来自于hh的评价">
 													<span class="tip blue">1万人评价</span>
 													<dl>
@@ -885,11 +884,11 @@
 													</dl>
 												</div>
 												</li>
-										&lt;%&ndash;	</c:if>&ndash;%&gt;
+										<%--	</c:if>--%>
 										</c:forEach>
 
 
-									&lt;%&ndash;	<li class="col">
+									<%--	<li class="col">
 											<div class="row">
 												<span class="tip orange">免邮件</span>
 												<dl>
@@ -908,9 +907,9 @@
 													<dd class="price">149元</dd>
 												</dl>
 											</div>
-										</li>&ndash;%&gt;
+										</li>--%>
 
-									&lt;%&ndash;	<li class="col">
+									<%--	<li class="col">
 											<div class="row">
 												<span class="tip orange">免邮件</span>
 												<dl>
@@ -929,8 +928,8 @@
 													<dd class="price">149元</dd>
 												</dl>
 											</div>
-										</li>&ndash;%&gt;
-&lt;%&ndash;
+										</li>--%>
+<%--
 
 										<li class="col">
 											<div class="row">
@@ -952,10 +951,10 @@
 												</dl>
 											</div>
 										</li>
-&ndash;%&gt;
+--%>
 
 
-										&lt;%&ndash;<li class="col">
+										<%--<li class="col">
 											<div class="row">
 												<span class="tip orange">免邮件</span>
 												<dl>
@@ -981,13 +980,13 @@
 												</div>
 												<div class="scan-moreR icon"></div>
 											</div>
-										</li>&ndash;%&gt;
+										</li>--%>
 									</ul>
 								</div>
 								<div class="m-slide-item">
 									<ul class="m-cols m-col-4">
 
-										&lt;%&ndash;<li class="col">
+										<%--<li class="col">
 											<div class="row">
 												<span class="tip orange">免邮件</span>
 												<dl>
@@ -1006,9 +1005,9 @@
 													<dd class="price">149元</dd>
 												</dl>
 											</div>
-										</li>&ndash;%&gt;
+										</li>--%>
 
-									&lt;%&ndash;	<li class="col">
+									<%--	<li class="col">
 											<div class="row">
 												<span class="tip orange">免邮件</span>
 												<dl>
@@ -1028,9 +1027,9 @@
 												</dl>
 											</div>
 										</li>
-										&ndash;%&gt;
+										--%>
 
-										&lt;%&ndash;<li class="col">
+										<%--<li class="col">
 											<div class="row">
 												<span class="tip orange">免邮件</span>
 												<dl>
@@ -1049,9 +1048,9 @@
 													<dd class="price">149元</dd>
 												</dl>
 											</div>
-										</li>&ndash;%&gt;
+										</li>--%>
 
-									&lt;%&ndash;	<li class="col">
+									<%--	<li class="col">
 											<div class="row">
 												<span class="tip orange">免邮件</span>
 												<dl>
@@ -1077,14 +1076,14 @@
 												</div>
 												<div class="scan-moreR icon"></div>
 											</div>
-										</li>&ndash;%&gt;
+										</li>--%>
 
 									</ul>
 								</div>
 								<div class="m-slide-item">
 									<ul class="m-cols m-col-4">
 
-									&lt;%&ndash;	<li class="col">
+									<%--	<li class="col">
 											<div class="row">
 												<span class="tip orange">免邮件</span>
 												<dl>
@@ -1103,9 +1102,9 @@
 													<dd class="price">149元</dd>
 												</dl>
 											</div>
-										</li>&ndash;%&gt;
+										</li>--%>
 
-									&lt;%&ndash;	<li class="col">
+									<%--	<li class="col">
 											<div class="row">
 												<span class="tip orange">免邮件</span>
 												<dl>
@@ -1124,9 +1123,9 @@
 													<dd class="price">149元</dd>
 												</dl>
 											</div>
-										</li>&ndash;%&gt;
+										</li>--%>
 
-										&lt;%&ndash;<li class="col">
+										<%--<li class="col">
 											<div class="row">
 												<span class="tip orange">免邮件</span>
 												<dl>
@@ -1146,8 +1145,8 @@
 												</dl>
 											</div>
 										</li>
-&ndash;%&gt;
-									&lt;%&ndash;	<li class="col">
+--%>
+									<%--	<li class="col">
 											<div class="row">
 												<span class="tip orange">免邮件</span>
 												<dl>
@@ -1173,7 +1172,7 @@
 												</div>
 												<div class="scan-moreR icon"></div>
 											</div>
-										</li>&ndash;%&gt;
+										</li>--%>
 									</ul>
 								</div>
 							</div>
@@ -1324,21 +1323,24 @@
 				</header>
 				<section class="m-box">
 					<ul class="m-cols m-col-4">
-						<li class="col">
-							<div class="row">
-								<img src="${pageContext.request.contextPath}/jsp/users/images/djtj/djzbp.jpg">
-								<div style="border-bottom: 1px #CCCCCC solid"></div>
-								<div class="content">
-									<div class="from">推荐理由</div>
-									<div class="cmt">
-										冬季滋补，把玉树冬虫夏草带给老年人，精美礼盒包装送礼佳品，品质保障
+						<c:forEach items="${Recommendations}" var="Recommendation">
+							<li class="col">
+								<div class="row">
+									<img src="${Recommendation.productpicture}" style="width:auto;height:250px; ">
+									<div style="border-bottom: 1px #CCCCCC solid"></div>
+									<div class="content">
+										<div class="from">推荐理由</div>
+										<div class="cmt"  style="height:60px; ">
+											${Recommendation.productdescribe}
+										</div>
+										<a href="${pageContext.request.contextPath}/xiangqing.action?productid=${Recommendation.productid}" class="name">${Recommendation.productname}</a>
+										<a href="${pageContext.request.contextPath}/xiangqing.action?productid=${Recommendation.productid}" class="price"  style="width: 100px;">${Recommendation.productprice}元</a>
 									</div>
-									<a href="#" class="name">冬季滋补品</a>
-									<a href="#" class="price">1699元</a>
 								</div>
-							</div>
-						</li>
-						<li class="col">
+							</li>
+						</c:forEach>
+
+					<%--	<li class="col">
 							<div class="row">
 								<img src="${pageContext.request.contextPath}/jsp/users/images/djtj/yyllc.jpg">
 								<div style="border-bottom: 1px #CCCCCC solid"></div>
@@ -1379,7 +1381,7 @@
 									<a href="#" class="price">1699元</a>
 								</div>
 							</div>
-						</li>
+						</li>--%>
 					</ul>
 				</section>
 			</section>

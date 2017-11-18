@@ -103,4 +103,11 @@ public class UserLoginServiceImpl implements UserLoginService {
         return creditproducts;
     }
 
+    @Override
+    public List<TotalCreditsById> StoreRecommendation() {
+        List<TotalCreditsById> Recommendations= userLoginMapper.StoreRecommendation();
+        return Recommendations;
+    }
+
+
 }

@@ -181,7 +181,7 @@
 			<div class="Xcontent16 clearfix"><p style="margin-top:14px;">更多惊喜，你值得拥有！</p></div>
 			<div class="Xcontent17">
 				<p class="Xcontent18">售价</p>
-				<p class="Xcontent19">￥<span></span></p>
+				<p class="Xcontent19">￥<span id="price">90</span></p>
 				<p class="Xcontent18">原价</p>
 				<p class="Xcontent181">￥<span></span></p>
 				<!--<div class="Xcontent20">
@@ -227,7 +227,7 @@
 				<div class="Xcontent33"><img src="${pageContext.request.contextPath}/jsp/users/images/shangpinxiangqing/16.png"></div>
 			</div>
 			<div class="Xcontent34"><a href="#">立即购买</a></div>
-			<div class="Xcontent35"><a href="#">加入购物车</a></div>
+			<div class="Xcontent35"><a href="javascript:void(0);">加入购物车</a></div>
             <div class="Xcontent36">
                 <a href="#"><img src="${pageContext.request.contextPath}/jsp/users/images/shoucang.png" height="15px" width="15px"></a>
                 <a href="#">收藏宝贝</a>
@@ -562,6 +562,55 @@
 	</div>
 </footer>
 <script type="text/javascript">
+	$(".Xcontent35").click(function () {
+        console.log($("#price").text());
+	    var data=new Array();
+	    data.push(parseFloat(${myProduct.productid})); //商品
+		data.push(parseFloat($(".input").val())); //数量
+		data.push(parseFloat($("#price").text()));//价格
+
+		var d=ajax("ShopCat.action",data);
+		if(d){
+		    alert("加入购物车成功！");
+        }else {
+            alert("加入购物车失败！");
+		}
+    });
+
+
+
+
+	function ajax(url,data) {
+	    var flag=true;
+	    $.ajax({
+			url:'${pageContext.request.contextPath}/'+url,
+			data:{"data":data},
+			type:'POST',
+			async:false,
+			traditional:true,
+			timeout:10000,
+			cache:false,
+			success:successFuncion,
+			error:errorFunction,
+			beforeSend:LoadFunction
+		});
+	    function successFuncion(data) {
+			if(data){
+			    flag=true
+            }else{
+			    flag=false;
+			}
+        }
+        function errorFunction() {
+            flag=false;
+        }
+        function LoadFunction() {
+
+        }
+		return flag;
+    }
+
+
     //hover 触发两个事件，鼠标移上去和移走
     //mousehover 只触发移上去事件
     $(".top-nav ul li").hover(function(){

@@ -111,6 +111,16 @@
   </select>
 
 
+    <!--店家推荐，推荐商品类型为医疗保健中得到商品好评度最多的商品-->
+    <select id="StoreRecommendation" resultType="totalCreditsById">
+           SELECT product. ProductId,  productpicture, ProductName,ProductDescribe,ProductPrice,
+       COUNT(GoodComment>=4) totalcomment FROM  product,`comment`  WHERE  product.ProductId=`comment`.ProductId
+       AND  ProductTypeId=6
+        GROUP BY ProductId
+       ORDER BY totalcomment DESC  LIMIT 0,4
+    </select>
+
+
 
 
 

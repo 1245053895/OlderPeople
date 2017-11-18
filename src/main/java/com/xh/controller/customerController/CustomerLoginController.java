@@ -1,6 +1,7 @@
 package com.xh.controller.customerController;
 
 import com.xh.po.Product;
+import com.xh.po.Shopcar;
 import com.xh.po.User;
 import com.xh.po.Userlog;
 import com.xh.po.vo.TotalCreditsById;
@@ -12,13 +13,16 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 public class CustomerLoginController {
@@ -158,6 +162,7 @@ public class CustomerLoginController {
         List<TotalCreditsById> jujia= userLoginService.selectjujia();
         List<TotalCreditsById> yule =userLoginService.selectyule();
         List<TotalCreditsById> creditproducts= userLoginService.IsCredExchange();
+        List<TotalCreditsById> Recommendations= userLoginService.StoreRecommendation();
        model.addAttribute("products",products);
         model.addAttribute("hotsaleproducts",hotsaleproducts);
         model.addAttribute("top10products",top10products);
@@ -165,14 +170,32 @@ public class CustomerLoginController {
         model.addAttribute("jujia",jujia);
         model.addAttribute("yule",yule);
         model.addAttribute("creditproducts",creditproducts);
+        model.addAttribute("Recommendations",Recommendations);
         return "jsp/users/index.jsp";
     }
 
+    //page.jsp商品详情页面，点击加入购物车
+    @RequestMapping("/ShopCat.action")
+    public @ResponseBody Map ShopCat(HttpServletRequest request, float[] data){
+        Map map=new HashMap();
+        HttpSession session=request.getSession();
+        User user=(User) session.getAttribute("user");
+        int userid= user.getUserid();
+        Shopcar shopCat=new Shopcar();
+        shopCat.setProductid((int) data[0]);
+        shopCat.setOrderamount((int) data[1]);
+        shopCat.setPrice((double) data[2]);
 
-   // public List<TotalCreditsById> Max10Comment();
-  //  public List<Product> IsCredExchange();
+        /*if(userLoginService.insertNewUser(shopCat)){ //先插  再查
+            map.put("red",true);
+        }else{
+            map.put("red",false);
+        }*/
+        return map;
 
 
+       // List<Product> products= userLoginService.selectproduct();
+    }
 
 
 }

@@ -60,4 +60,6 @@ public interface UserLoginMapper {
     //查询出可用积分兑换的商品的图片，名称，描述，价格，展示在商城的首页
     public List<TotalCreditsById> IsCredExchange();
 
+    //店家推荐，推荐商品类型为医疗保健中得到商品好评度最多的商品
+    public List<TotalCreditsById> StoreRecommendation();
 }

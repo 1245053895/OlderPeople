@@ -57,7 +57,7 @@
         });//倒计时结束
 
         $(function(){
-			/*======右按钮======*/
+	        /*======右按钮======*/
             $(".you").click(function(){
                 nextscroll();
             });
@@ -70,7 +70,7 @@
                     $(this).css("margin-left","0px");
                 });
             };
-			/*========左按钮=========*/
+	        /*========左按钮=========*/
             $(".zuo").click(function(){
                 var vcon = $(".v_cont");
                 var offset = ($(".v_cont li").width()*-1);
@@ -204,38 +204,38 @@
 				<ul class="pullDownList">
 					<li>
 						<div class="tx">
-							<div class="tx1">
-								<a href="#">
-									<i> </i>
-									<a href="#" target="_blank" style="font-size: 14px;">出行代步</a>
-									<span></span>
-								</a>
-							</div>
-							<dl class="one1">
-								<dd>
-									<a>电动轮椅 </a>
-									<a>手动轮椅 </a>
-									<a> . . .</a>
-								</dd>
-							</dl>
+						<div class="tx1">
+							<a href="#">
+								<i> </i>
+								<a href="#" target="_blank" style="font-size: 14px;">出行代步</a>
+								<span></span>
+							</a>
+						</div>
+						<dl class="one1">
+							<dd>
+								<a>电动轮椅 </a>
+								<a>手动轮椅 </a>
+								<a> . . .</a>
+							</dd>
+						</dl>
 						</div>
 					</li>
 					<li>
 						<div class="tx">
-							<div class="tx2">
-								<a href="#">
-									<i> </i>
-									<a href="#" target="_blank" style="font-size: 14px;">健康监测</a>
-									<span></span>
-								</a>
-							</div>
-							<dl class="one1">
-								<dd>
-									<a>血压血糖 </a>
-									<a>运动监测 </a>
-									<a> . . .</a>
-								</dd>
-							</dl>
+						<div class="tx2">
+							<a href="#">
+								<i> </i>
+								<a href="#" target="_blank" style="font-size: 14px;">健康监测</a>
+								<span></span>
+							</a>
+						</div>
+						<dl class="one1">
+							<dd>
+								<a>血压血糖 </a>
+								<a>运动监测 </a>
+								<a> . . .</a>
+							</dd>
+						</dl>
 						</div>
 					</li>
 					<li>
@@ -457,12 +457,12 @@
 				<section class="main-right">
 					<div class="slider">
 						<ul class="contain">
-							<li class="item"><a href="#" alt=""><img src="${pageContext.request.contextPath}/jsp/users/images/index_slider_pic1.jpg"></a></li>
-							<li class="item"><a href="#" alt=""><img src="${pageContext.request.contextPath}/jsp/users/images/index_slider_pic2.jpg"></a></li>
-							<li class="item"><a href="#" alt=""><img src="${pageContext.request.contextPath}/jsp/users/images/index_slider_pic3.jpg"></a></li>
-							<li class="item"><a href="#" alt=""><img src="${pageContext.request.contextPath}/jsp/users/images/index_slider_pic4.jpg"></a></li>
+							<li class="item"><a href="#" alt=""><img src="${pageContext.request.contextPath}/jsp/users/images/lbztq.jpg"></a></li>
+							<li class="item"><a href="#" alt=""><img src="${pageContext.request.contextPath}/jsp/users/images/lbly.jpg"></a></li>
+							<li class="item"><a href="#" alt=""><img src="${pageContext.request.contextPath}/jsp/users/images/lbwfsb.jpg"></a></li>
+							<%--<li class="item"><a href="#" alt=""><img src="${pageContext.request.contextPath}/jsp/users/images/index_slider_pic4.jpg"></a></li>
 							<li class="item"><a href="#" alt=""><img src="${pageContext.request.contextPath}/jsp/users/images/index_slider_pic5.jpg"></a></li>
-						</ul>
+						--%></ul>
 					</div>
 				</section>
 			</section>
@@ -480,6 +480,11 @@
 				</ul>
 			</div>
 			<div class="span16">
+				<ul class="m-cols m-col-3">
+					<li class="col"><img src="images/zhuanchang2.jpg"></li>
+					<li class="col"><img src="images/zhuanchang3.jpg"></li>
+					<li class="col"><img src="images/zhuanchang4.jpg"></li>
+				</ul>
 			</div>
 
 		</section>
@@ -1309,10 +1314,10 @@
 			<!--为你推荐结束-->
 
 
-			<!--热评产品开始-->
+			<!--店家推荐开始-->
 			<section id="comment" class="wraper mi-hotCmtProd">
 				<header class="m-hd">
-					<h2 class="m-hdL">热评产品</h2>
+					<h2 class="m-hdL">店家推荐</h2>
 					<ul class="m-hdR">
 						<li></li>
 					</ul>
@@ -1378,7 +1383,7 @@
 					</ul>
 				</section>
 			</section>
-			<!--热评产品结束-->
+			<!--店家推荐结束-->
 
 		</div>
 
@@ -1386,96 +1391,96 @@
 
 
 
-	<div style="height:100px"></div>
+<div style="height:100px"></div>
 
-	<footer>
-		<div class="pc-footer-top">
-			<div class="center">
-				<ul class="clearfix">
-					<li>
-						<span>关于我们</span>
-						<a href="#">关于我们</a>
-						<a href="#">诚聘英才</a>
-						<a href="#">用户服务协议</a>
-						<a href="#">网站服务条款</a>
-						<a href="#">联系我们</a>
-					</li>
-					<li class="lw">
-						<span>购物指南</span>
-						<a href="#">新手上路</a>
-						<a href="#">订单查询</a>
-						<a href="#">会员介绍</a>
-						<a href="#">网站服务条款</a>
-						<a href="#">帮助中心</a>
-					</li>
-					<li class="lw">
-						<span>消费者保障</span>
-						<a href="#">人工验货</a>
-						<a href="#">退货退款政策</a>
-						<a href="#">运费补贴卡</a>
-						<a href="#">无忧售后</a>
-						<a href="#">先行赔付</a>
-					</li>
-					<li class="lw">
-						<span>商务合作</span>
-						<a href="#">人工验货</a>
-						<a href="#">退货退款政策</a>
-						<a href="#">运费补贴卡</a>
-						<a href="#">无忧售后</a>
-						<a href="#">先行赔付</a>
-					</li>
-					<li class="lss">
-						<span>下载手机版</span>
-						<div class="clearfix lss-pa">
-							<div class="fl lss-img"><img src="${pageContext.request.contextPath}/jsp/users/img/icon/code.png" alt=""></div>
-							<div class="fl" style="padding-left:20px">
-								<h4>扫描下载云购APP</h4>
-								<p>把优惠握在手心</p>
-								<P>把潮流带在身边</P>
-								<P></P>
-							</div>
+<footer>
+	<div class="pc-footer-top">
+		<div class="center">
+			<ul class="clearfix">
+				<li>
+					<span>关于我们</span>
+					<a href="#">关于我们</a>
+					<a href="#">诚聘英才</a>
+					<a href="#">用户服务协议</a>
+					<a href="#">网站服务条款</a>
+					<a href="#">联系我们</a>
+				</li>
+				<li class="lw">
+					<span>购物指南</span>
+					<a href="#">新手上路</a>
+					<a href="#">订单查询</a>
+					<a href="#">会员介绍</a>
+					<a href="#">网站服务条款</a>
+					<a href="#">帮助中心</a>
+				</li>
+				<li class="lw">
+					<span>消费者保障</span>
+					<a href="#">人工验货</a>
+					<a href="#">退货退款政策</a>
+					<a href="#">运费补贴卡</a>
+					<a href="#">无忧售后</a>
+					<a href="#">先行赔付</a>
+				</li>
+				<li class="lw">
+					<span>商务合作</span>
+					<a href="#">人工验货</a>
+					<a href="#">退货退款政策</a>
+					<a href="#">运费补贴卡</a>
+					<a href="#">无忧售后</a>
+					<a href="#">先行赔付</a>
+				</li>
+				<li class="lss">
+					<span>下载手机版</span>
+					<div class="clearfix lss-pa">
+						<div class="fl lss-img"><img src="${pageContext.request.contextPath}/jsp/users/img/icon/code.png" alt=""></div>
+						<div class="fl" style="padding-left:20px">
+							<h4>扫描下载云购APP</h4>
+							<p>把优惠握在手心</p>
+							<P>把潮流带在身边</P>
+							<P></P>
 						</div>
-					</li>
-				</ul>
-			</div>
-			<div class="pc-footer-lin">
-				<div class="center">
-					<p>友情链接：
-						卡宝宝信用卡
-						梦芭莎网上购物
-						手游交易平台
-						法律咨询
-						深圳地图
-						P2P网贷导航
-						名鞋库
-						万表网
-						叮当音乐网
-						114票务网
-						儿歌视频大全
-					</p>
-					<p>
-						京ICP证1900075号  京ICP备20051110号-5  京公网安备110104734773474323  统一社会信用代码 91113443434371298269B  食品流通许可证SP1101435445645645640352397
-					</p>
-					<p style="padding-bottom:30px">版物经营许可证 新出发京零字第朝160018号  Copyright©2011-2015 版权所有 ZHE800.COM </p>
-				</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<div class="pc-footer-lin">
+			<div class="center">
+				<p>友情链接：
+					卡宝宝信用卡
+					梦芭莎网上购物
+					手游交易平台
+					法律咨询
+					深圳地图
+					P2P网贷导航
+					名鞋库
+					万表网
+					叮当音乐网
+					114票务网
+					儿歌视频大全
+				</p>
+				<p>
+					京ICP证1900075号  京ICP备20051110号-5  京公网安备110104734773474323  统一社会信用代码 91113443434371298269B  食品流通许可证SP1101435445645645640352397
+				</p>
+				<p style="padding-bottom:30px">版物经营许可证 新出发京零字第朝160018号  Copyright©2011-2015 版权所有 ZHE800.COM </p>
 			</div>
 		</div>
-	</footer>
-	<script type="text/javascript">
-        //hover 触发两个事件，鼠标移上去和移走
-        //mousehover 只触发移上去事件
-        $(".top-nav ul li").hover(function(){
-            $(this).addClass("hover").siblings().removeClass("hover");
-            $(this).find("li .nav a").addClass("hover");
-            $(this).find(".con").show();
-        },function(){
-            //$(this).css("background-color","#f5f5f5");
-            $(this).find(".con").hide();
-            //$(this).find(".nav a").removeClass("hover");
-            $(this).removeClass("hover");
-            $(this).find(".nav a").removeClass("hover");
-        })
-	</script>
+	</div>
+</footer>
+<script type="text/javascript">
+    //hover 触发两个事件，鼠标移上去和移走
+    //mousehover 只触发移上去事件
+    $(".top-nav ul li").hover(function(){
+        $(this).addClass("hover").siblings().removeClass("hover");
+        $(this).find("li .nav a").addClass("hover");
+        $(this).find(".con").show();
+    },function(){
+        //$(this).css("background-color","#f5f5f5");
+        $(this).find(".con").hide();
+        //$(this).find(".nav a").removeClass("hover");
+        $(this).removeClass("hover");
+        $(this).find(".nav a").removeClass("hover");
+    })
+</script>
 </header>
 </body>
 </html>

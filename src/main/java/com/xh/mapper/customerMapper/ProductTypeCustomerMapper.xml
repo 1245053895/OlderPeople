@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xh.mapper.customerMapper.ProductTypeCustomerMapper">
+<!--查询商品类型-->
+    <select id="SelectProductType" resultType="com.xh.po.vo.ProductTypeExtend" >
+        SELECT ProductTypeId,ProductTypeName FROM producttype Limit 6
+    </select>
+    <!--通过商品类型查询商品中的商品Id-->
+    <select id="SelectProductByTypeId" resultType="com.xh.po.Product">
+        SELECT ProductId,ProductName,ProductPrice,ProductPicture ,ProductDescribe FROM product
+        WHERE product.ProductTypeId=#{productid}
+    </select>
+    <!--只查询两个-->
+    <select id="SelectProductByTypeIdLimit" resultType="com.xh.po.Product">
+
+       SELECT ProductId,ProductName FROM product
+       WHERE product.ProductTypeId=#{productid} Limit 2
+    </select>
+    <!--根据商品类型Id查询商品类型-->
+    <select id="SelectProductTpyeById" resultType="com.xh.po.vo.ProductTypeExtend">
+          SELECT ProductTypeId,ProductTypeName  FROM producttype
+          WHERE ProductTypeId=#{producttypeid}
+    </select>
+
+</mapper>

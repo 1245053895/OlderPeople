@@ -121,7 +121,7 @@ body{width: 100%;overflow-x:hidden;}
 .site-main .main-right{background:#ccc;width:100%;height:460px;background:white;float:right;}
 .site-main .main-right img{width:100%;height:auto;display: block;}
 .site-main .slider{overflow: hidden;}
-.site-main .slider .contain{width:500%;overflow: hidden;font-size:0px;}
+.site-main .slider .contain{width:500%;overflow: hidden;font-size:0px;margin-left: 120px;}
 .site-main .slider .item{width:20%;height:100%;font-size:14px;display:inline-block;}
 .site-main .slider img{height:100%;}
 
@@ -135,7 +135,7 @@ body{width: 100%;overflow-x:hidden;}
 .rect6::before{left:33.3333%;top:50%;}
 .rect6::after{left:66.66666%;top:50%;}
 .rect6 .item{width:33.3333%;height:50%;outline:solid #665E57 1px;text-align: center;font-size: 14px;float: left;}
-.site-adv img{display: block;width:100%;height: 46%;transition:all .3s;}
+.site-adv img{display: block;width:100%;height: 95%;transition:all .3s;}
 .site-adv img:hover{transform-origin:center center;box-shadow:0 15px 20px rgba(0,0,0,0.1);}
 
 /*------------------------------------------------------------------------------*/

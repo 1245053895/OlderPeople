@@ -11,6 +11,45 @@ public class TotalCreditsById extends Product{
     private Date endtime;
     private Integer userid;
     private Integer totalCredits;
+    private Integer totalcomment;
+    private String comment;
+    private String username;
+    private Integer totalhotsale;
+
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
+
+
+
+    public Integer getTotalhotsale() {
+        return totalhotsale;
+    }
+
+    public void setTotalhotsale(Integer totalhotsale) {
+        this.totalhotsale = totalhotsale;
+    }
+
+    public Integer getTotalcomment() {
+        return totalcomment;
+    }
+
+    public void setTotalcomment(Integer totalcomment) {
+        this.totalcomment = totalcomment;
+    }
 
     public Date getEndtime() {
         return endtime;

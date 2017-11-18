@@ -66,4 +66,41 @@ public class UserLoginServiceImpl implements UserLoginService {
       List<Product>  products= userLoginMapper.selectproduct();
         return products;
     }
+
+    @Override
+    public List<TotalCreditsById> hotSaleProduct() {
+        List<TotalCreditsById> hotsaleproducts= userLoginMapper.hotSaleProduct();
+        return hotsaleproducts;
+    }
+
+    @Override
+    public List<TotalCreditsById> Max10Comment() {
+     List<TotalCreditsById> top10products=  userLoginMapper.Max10Comment();
+        return top10products;
+    }
+
+    @Override
+    public List<TotalCreditsById> selectjiangkang() {
+        List<TotalCreditsById> jiangkang=  userLoginMapper.selectjiangkang();
+        return jiangkang;
+    }
+
+    @Override
+    public List<TotalCreditsById> selectjujia() {
+        List<TotalCreditsById> jujia=  userLoginMapper.selectjujia();
+        return jujia;
+    }
+
+    @Override
+    public List<TotalCreditsById> selectyule() {
+        List<TotalCreditsById> yule=  userLoginMapper.selectyule();
+        return yule;
+    }
+
+    @Override
+    public List<TotalCreditsById> IsCredExchange() {
+        List<TotalCreditsById>  creditproducts= userLoginMapper.IsCredExchange();
+        return creditproducts;
+    }
+
 }

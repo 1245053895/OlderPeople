@@ -145,12 +145,34 @@ public class CustomerLoginController {
 
 
     //查询出上市新品的商品的图片，名称，描述，价格，展示在商城的首页
+    //查询出热销商品的图片，名称，描述，价格，展示在商城的首页
+    //查询出热评(评论数最多的前十)商品的图片，名称，描述，价格，展示在商城的首页
+    //查询出可用积分兑换的商品的图片，名称，描述，价格，展示在商城的首页
+    //热销商品的销售量
     @RequestMapping("/selectproduct.action")
     public String selectproduct(Model model){
        List<Product> products= userLoginService.selectproduct();
+        List<TotalCreditsById> hotsaleproducts=  userLoginService.hotSaleProduct();
+      List<TotalCreditsById>  top10products=  userLoginService.Max10Comment();
+        List<TotalCreditsById> jiankang= userLoginService.selectjiangkang();
+        List<TotalCreditsById> jujia= userLoginService.selectjujia();
+        List<TotalCreditsById> yule =userLoginService.selectyule();
+        List<TotalCreditsById> creditproducts= userLoginService.IsCredExchange();
        model.addAttribute("products",products);
+        model.addAttribute("hotsaleproducts",hotsaleproducts);
+        model.addAttribute("top10products",top10products);
+        model.addAttribute("jiankang",jiankang);
+        model.addAttribute("jujia",jujia);
+        model.addAttribute("yule",yule);
+        model.addAttribute("creditproducts",creditproducts);
         return "jsp/users/index.jsp";
     }
+
+
+   // public List<TotalCreditsById> Max10Comment();
+  //  public List<Product> IsCredExchange();
+
+
 
 
 }

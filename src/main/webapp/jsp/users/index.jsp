@@ -431,12 +431,12 @@
 				<section class="main-right">
 					<div class="slider">
 						<ul class="contain">
-							<li class="item"><a href="#" alt=""><img src="${pageContext.request.contextPath}/jsp/users/images/index_slider_pic1.jpg"></a></li>
-							<li class="item"><a href="#" alt=""><img src="${pageContext.request.contextPath}/jsp/users/images/index_slider_pic2.jpg"></a></li>
-							<li class="item"><a href="#" alt=""><img src="${pageContext.request.contextPath}/jsp/users/images/index_slider_pic3.jpg"></a></li>
-							<li class="item"><a href="#" alt=""><img src="${pageContext.request.contextPath}/jsp/users/images/index_slider_pic4.jpg"></a></li>
+							<li class="item"><a href="#" alt=""><img src="${pageContext.request.contextPath}/jsp/users/images/lbztq.jpg"></a></li>
+							<li class="item"><a href="#" alt=""><img src="${pageContext.request.contextPath}/jsp/users/images/lbly.jpg"></a></li>
+							<li class="item"><a href="#" alt=""><img src="${pageContext.request.contextPath}/jsp/users/images/lbwfsb.jpg"></a></li>
+							<%--<li class="item"><a href="#" alt=""><img src="${pageContext.request.contextPath}/jsp/users/images/index_slider_pic4.jpg"></a></li>
 							<li class="item"><a href="#" alt=""><img src="${pageContext.request.contextPath}/jsp/users/images/index_slider_pic5.jpg"></a></li>
-						</ul>
+						--%></ul>
 					</div>
 				</section>
 			</section>
@@ -454,6 +454,11 @@
 				</ul>
 			</div>
 			<div class="span16">
+				<ul class="m-cols m-col-3">
+					<li class="col"><img src="images/zhuanchang2.jpg"></li>
+					<li class="col"><img src="images/zhuanchang3.jpg"></li>
+					<li class="col"><img src="images/zhuanchang4.jpg"></li>
+				</ul>
 			</div>
 
 		</section>

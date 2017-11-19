@@ -3,10 +3,7 @@ package com.xh.serviceimp;
 import com.xh.mapper.pojo.OrderAndOtherMapper;
 import com.xh.po.Order;
 import com.xh.po.Transport;
-import com.xh.po.vo.OrderAndOther;
-import com.xh.po.vo.OrderAndString;
-import com.xh.po.vo.OrderCustom;
-import com.xh.po.vo.OrderDetailCustom;
+import com.xh.po.vo.*;
 import com.xh.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,6 +20,18 @@ public class OrderServiceimpl implements OrderService {
     public List<Order> selectOrderByAll(Order order) {
         List<Order> orderList=  orderAndOtherMapper.selectOrderByAll(order);
         return orderList;
+    }
+
+    @Override
+    public List<OderAndString2> selectAndName() {
+        List<OderAndString2> oderAndString2s=orderAndOtherMapper.selectAndName();
+        return oderAndString2s;
+    }
+
+
+    @Override
+    public OrderAndString selectName5()  {
+        return orderAndOtherMapper.selectName5();
     }
 
     @Override
@@ -96,5 +105,15 @@ public class OrderServiceimpl implements OrderService {
     @Override
     public List<OrderCustom> getOrderByStatusOfSix(OrderCustom orderCustom) {
         return orderAndOtherMapper.getOrderByStatusOfSix(orderCustom);
+    }
+
+    @Override
+    public OrderCustom getReturnDetail(int orderId) {
+        return orderAndOtherMapper.getReturnDetail(orderId);
+    }
+
+    @Override
+    public void updateOrderStatus(OrderCustom orderCustom) {
+        orderAndOtherMapper.updateOrderStatus(orderCustom);
     }
 }

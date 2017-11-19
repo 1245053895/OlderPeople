@@ -87,7 +87,7 @@
                 </c:if>
                 <c:if test="${order.gainmethod==0}">
                     ${order.shippingname}<br/>
-                    <a href="http://www.kuaidi100.com" target="view_window">${order.shippingcode}</a>
+                    <a href="${pageContext.request.contextPath}/queryExpress.action?code=${order.shippingcode}&name=${order.shippingname}" target="_self" onclick="getExpress()">${order.shippingcode}</a>
                 </c:if>
             </td>
             <td>${order.buyerrequest}</td>
@@ -124,8 +124,18 @@
                         </span>
                 </c:if>
                 <c:if test="${order.status==6}">
-                        <span class="label label-warning radius">
-                            退货
+                        <span class="label label-danger radius">
+                            申请退货
+                        </span>
+                </c:if>
+                <c:if test="${order.status==7}">
+                        <span class="label label-purple radius">
+                            同意退货
+                        </span>
+                </c:if>
+                <c:if test="${order.status==8}">
+                        <span class="label label-pink radius">
+                            拒绝退货
                         </span>
                 </c:if>
                 <c:if test="${order.status==null}">
@@ -156,13 +166,13 @@
                     <a onClick="shipping(this,${order.orderid})"  href="javascript:void(0);" title="发货"  class="btn btn-xs btn-success">发货</a>
                 </c:if>
                 <c:if test="${order.gainmethod==0&&order.status!=0&&order.status!=1}">
-                    <a onClick="Delivery_stop(this,'10001')"  href="javascript:void(0);" title="物流详情"  class="btn btn-xs btn-success">物流详情</a>
+                    <a onClick="Delivery_stop(this,'10001')"  href="${pageContext.request.contextPath}/queryExpress.action?code=${order.shippingcode}&name=${order.shippingname}" title="物流详情"  class="btn btn-xs btn-success">物流详情</a>
                 </c:if>
                 <c:if test="${order.status==5}">
-                    <a onClick="Delivery_stop(this,'10001')"  href="javascript:void(0);" title="拒收理由"  class="btn btn-xs btn-success">拒收理由</a>
+                    <a onClick="check_eason(${order.orderid})"  href="javascript:void(0);" title="拒收理由"  class="btn btn-xs btn-success">拒收理由</a>
                 </c:if>
                 <c:if test="${order.status==6}">
-                    <a onClick="Delivery_stop(this,'10001')"  href="javascript:void(0);" title="审核"  class="btn btn-xs btn-success">审核</a>
+                    <a onClick="ReviewReturn(${order.orderid})"  href="javascript:void(0);" title="审核"  class="btn btn-xs btn-success">审核</a>
                 </c:if>
                 <a title="订单详情"  href="${pageContext.request.contextPath}/getOrderDetailByOrderId.action?id=${order.orderid}"  class="btn btn-xs btn-info order_detailed" >订单详情</a>
                 <c:if test="${order.status!=4 && order.status!=0}">
@@ -177,26 +187,87 @@
 </div>
 <!--发货-->
 <div id="Delivery_stop" style=" display:none;">
-        <div class="content_style" style="top: 10px">
-            <form id="updateOrderShipping" action="${pageContext.request.contextPath}/updateOrderShipping.action" method="post">
-                <input id="orderId" type="hidden" name="orderid">
-                <div class="form-group"><label class="col-sm-2 control-label no-padding-right" for="form-field-1">快递公司 </label>
-                    <div class="col-sm-9">
-                        <select name="shippingname" class="form-control" id="form-field-select-1">
+    <div class="content_style" style="top: 10px">
+        <form id="updateOrderShipping" action="${pageContext.request.contextPath}/updateOrderShipping.action" method="post">
+            <input id="orderId" type="hidden" name="orderid">
+            <div class="form-group"><label class="col-sm-2 control-label no-padding-right" for="form-field-1">快递公司 </label>
+                <div class="col-sm-9">
+                    <select name="shippingname" class="form-control" id="form-field-select-1">
 
-                        </select>
-                    </div>
+                    </select>
                 </div>
-                <div class="form-group"><label class="col-sm-2 control-label no-padding-right" for="form-field-1"> 快递号 </label>
-                    <div class="col-sm-9"><input  name="shippingcode" type="text" id="form-field-1" placeholder="快递号" class="col-xs-10" style="margin-left:0px;"></div>
-                </div>
-            </form>
-        </div>
+            </div>
+            <div class="form-group"><label class="col-sm-2 control-label no-padding-right" for="form-field-1"> 快递号 </label>
+                <div class="col-sm-9"><input  name="shippingcode" type="text" id="form-field-1" placeholder="快递号" class="col-xs-10" style="margin-left:0px;"></div>
+            </div>
+        </form>
+    </div>
 </div>
+
+<%--退货审核--%>
+<div id="ReviewReturn" style=" display:none;height: 155px;">
+    <div class="content_style">
+        <div style="float: left">
+            <label class="titleStyle">用户 : &nbsp;</label><span id="user_name" class="textColor">小明</span>
+        </div>
+        <div style="float: left;margin-left: 120px">
+            <label class="titleStyle">订单号 :&nbsp;</label><span id="order_id" class="textColor">1235244</span>
+        </div>
+        <div style="clear: both">
+            <label class="titleStyle">购买时间 : 距离现在&nbsp;</label><span id="day" class="textColor">7</span><label class="titleStyle">&nbsp;天</label><label id="<%--prompting--%>"></label>
+        </div>
+        <div style="clear: both">
+            <label class="titleStyle">退货理由 :&nbsp;</label><span id="cause" class="textColor">我不想要了我不想要了我不想要了我不想要了我不想要了我不想要了我不想要了我不想要了我不想要了我不想要了我不想要了我不想要了我不想要了我不想要了我不想要了</span>
+        </div>
+    </div>
+</div>
+
+<%--拒收理由--%>
+<div id="checkEason" style=" display:none;height: 155px;">
+    <div class="content_style">
+        <div style="float: left">
+            <label class="titleStyle">用户 : &nbsp;</label><span id="user_name1" class="textColor">小明</span>
+        </div>
+        <div style="float: left;margin-left: 120px">
+            <label class="titleStyle">订单号 :&nbsp;</label><span id="order_id1" class="textColor">1235244</span>
+        </div>
+        <div style="clear: both">
+            <label class="titleStyle">购买时间 : 距离现在&nbsp;</label><span id="day1" class="textColor">7</span><label class="titleStyle">&nbsp;天</label><label id="prompting"></label>
+        </div>
+        <div style="clear: both">
+            <label class="titleStyle">拒收理由 :&nbsp;</label><span id="cause1" class="textColor">我不想要了我不想要了我不想要了我不想要了我不想要了我不想要了我不想要了我不想要了我不想要了我不想要了我不想要了我不想要了我不想要了我不想要了我不想要了</span>
+        </div>
+    </div>
+</div>
+
 </div>
 </body>
 </html>
 <style>
+    #prompting{
+        margin-left: 20px;
+        height: 25px;
+        color: #ff2f2f;
+        font-size: 14px;
+    }
+    .content_style{
+        width: 400px;
+        margin: 0px auto;
+    }
+    .textColor{
+        height: 20px;
+        color: #00a0e9;
+        font-size: 14px;
+    }
+    .titleStyle{
+        height: 25px;
+        color: #0b3a58;
+        font-size: 14px;
+    }
+    .content_style div{
+        width: auto;
+        height: 30px;
+    }
     #payDetail{
         position: absolute;
         display: none;
@@ -219,7 +290,6 @@
         $(obj).children().css({"display":"block"});
     }
     function LoadFunction() {
-
     }
     function erryFunction() {
         alert("error");
@@ -229,6 +299,95 @@
     }
 </script>
 <script>
+    function check_eason(id) {
+        $.ajax({
+            type: 'POST',
+            url: '/getReturnDetail.action',
+            cache: false,
+            data: {"orderId":id},
+            timeout:10000,
+            success: succFunction, //成功执行方法
+            beforeSend: LoadFunction, //加载执行方法
+            error: erryFunction  //错误执行方法
+        });
+        function LoadFunction() {
+            layer.msg('获取中...',{icon:1,time:3000});
+        }
+        function erryFunction(){
+            layer.msg('获取失败,请重试!',{icon:1,time:3000});
+        }
+        function succFunction(data) {
+            console.log(data.orderid);
+            $("#user_name1").text(data.username);
+            $("#order_id1").text(data.orderid);
+            $("#day1").text(data.buyTime);
+            $("#cause1").text(data.orderA);
+            layer.open({
+                type: 1,
+                title: '拒收原因',
+                maxmin: true,
+                shadeClose:false,
+                area : ['500px' , ''],
+                content:$('#checkEason'),
+                btn:['确定'],
+                yes: function(index, layero){
+                    layer.close(index);
+                },
+            });
+        }
+    }
+    function ReviewReturn(id) {
+        $.ajax({
+            type: 'POST',
+            url: '/getReturnDetail.action',
+            cache: false,
+            data: {"orderId":id},
+            timeout:10000,
+            success: succFunction, //成功执行方法
+            beforeSend: LoadFunction, //加载执行方法
+            error: erryFunction  //错误执行方法
+        });
+        function LoadFunction() {
+            layer.msg('获取中...',{icon:1,time:3000});
+        }
+        function erryFunction(){
+            layer.msg('获取失败,请重试!',{icon:1,time:3000});
+        }
+        function succFunction(data) {
+            console.log(data.orderid);
+            $("#user_name").text(data.username);
+            $("#order_id").text(data.orderid);
+            $("#day").text(data.buyTime);
+            if(data.buyTime>7){
+                $("#prompting").text("(已超过 7 天无理由退货时间!)");
+            }
+            $("#cause").text(data.orderA);
+            layer.open({
+                type: 1,
+                title: '退货审核',
+                maxmin: true,
+                shadeClose:false,
+                area : ['500px' , ''],
+                content:$('#ReviewReturn'),
+                btn:['同意退货','拒绝退货'],
+                yes: function(index, layero){
+                    layer.confirm('确定同意退货吗！',{
+                        title: '提示框',
+                        icon:5,
+                    },function(i){
+                        window.location.href="/updateOrderStatus.action?status=7&orderid="+id;
+                        console.log("确定");
+                        layer.close(i);
+                        layer.close(index);
+                    });
+                },
+                cancel :function (index) {
+                    console.log("不同意");
+                    window.location.href="/updateOrderStatus.action?status=8&orderid="+id;
+                }
+            });
+        }
+    }
     //时间选择
     laydate({
         elem: '#start',
@@ -257,7 +416,6 @@
                 $(obj).parents("tr").find(".td-status").html('<span class="label label-default radius">已关闭</span>');
                 layer.msg('已关闭!',{icon:1,time:3000});
             }
-
         });
     }
     /**发货**/
@@ -300,14 +458,12 @@
                             title: '提示框',
                             icon:0,
                         })
-
                     }else{
                         $("#updateOrderShipping").submit();
                         layer.close(index);
                     }
-
                 }
-            })
+            });
         }
     };
     //面包屑返回值
@@ -324,9 +480,7 @@
         parent.$('.Current_page').attr({"name":herf,"href":"javascript:void(0)"}).css({"color":"#4c8fbd","cursor":"pointer"});
         //parent.$('.Current_page').html("<a href='javascript:void(0)' name="+herf+" class='iframeurl'>" + cnames + "</a>");
         parent.layer.close(index);
-
     });
-
     //初始化宽度、高度
     $(".hide_style").height($(".hide_style").height());
     var heights=$(".hide_style").outerHeight(true)+90;
@@ -352,7 +506,6 @@
             size:103
         }).css('color', $(this).data('color'));
     });
-
     $('[data-rel=tooltip]').tooltip();
     $('[data-rel=popover]').popover({html:true});
 </script>
@@ -366,8 +519,6 @@
                 //{"bVisible": false, "aTargets": [ 3 ]} //控制列的隐藏显示
                 {"orderable":false,"aTargets":[0,1,2,3,4,5,6,7,8,9]}// 制定列不参与排序
             ] } );
-
-
         $('table th input:checkbox').on('click' , function(){
             var that = this;
             $(this).closest('table').find('tr > td:first-child input:checkbox')
@@ -375,23 +526,19 @@
                     this.checked = that.checked;
                     $(this).closest('tr').toggleClass('selected');
                 });
-
         });
-
-
         $('[data-rel="tooltip"]').tooltip({placement: tooltip_placement});
         function tooltip_placement(context, source) {
             var $source = $(source);
             var $parent = $source.closest('table')
             var off1 = $parent.offset();
             var w1 = $parent.width();
-
             var off2 = $source.offset();
             var w2 = $source.width();
-
             if( parseInt(off2.left) < parseInt(off1.left) + parseInt(w1 / 2) ) return 'right';
             return 'left';
         }
     });
-
+    function getExpress() {
+    }
 </script>

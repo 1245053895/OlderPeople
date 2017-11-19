@@ -4,10 +4,7 @@ package com.xh.service;
 import com.xh.po.Product;
 
 import com.xh.po.Producttype;
-import com.xh.po.vo.Allproduct;
-import com.xh.po.vo.KindOfProduct;
-import com.xh.po.vo.ProductAndTypeVo;
-import com.xh.po.vo.StringAndString;
+import com.xh.po.vo.*;
 
 import java.util.Date;
 import java.util.List;
@@ -46,4 +43,21 @@ public interface ProductService {
     public void updateProductState(Product product);
 
     public void updateProductById(Product product);
+
+    List<PingJiaShu> pingJiaShu(Integer productid);
+
+    List<PingJia> pingJia(Integer productid);
+
+    MyProduct selectByPrimaryKey(Integer productid);
+
+    PingJiaShu pingJiaShu1(Integer productid);
+    PingJiaShu pingJia001(Integer productid);
+    PingJiaShu pingJia002(Integer productid);
+    PingJiaShu pingJia003(Integer productid);
+
+    List<TuiJian> tuiJian01();
+    List<TuiJian> tuiJian02();
+    List<TuiJian> tuiJian03();
+    List<TuiJian> tuiJian04();
+    List<TuiJian> tuiJian05();
 }

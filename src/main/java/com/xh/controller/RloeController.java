@@ -39,7 +39,6 @@ public class RloeController {
         model.addAttribute("firstviewList",firstviewList);
         return "/jsp/admin/Competence.jsp";
     }
-
     @RequestMapping("/addRloeAndView")
     public String addRloeAndView(AdminRoleCustom adminRoleCustom){
         //首先将新增角色插入数据库
@@ -82,7 +81,6 @@ public class RloeController {
         model.addAttribute("adminuser",adminuser);
         return  "/jsp/admin/admin_Competence.jsp";
     }
-
 
     //对角色修改页面进行批量删除
     @RequestMapping("/deletBatchRole.action")

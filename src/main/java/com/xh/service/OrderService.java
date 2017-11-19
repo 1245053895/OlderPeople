@@ -6,6 +6,7 @@ import com.xh.po.vo.OrderAndOther;
 import com.xh.po.vo.OrderAndString;
 import com.xh.po.vo.OrderCustom;
 import com.xh.po.vo.OrderDetailCustom;
+import com.xh.po.vo.*;
 import org.omg.CORBA.PUBLIC_MEMBER;
 
 import java.util.List;
@@ -15,6 +16,9 @@ public interface OrderService {
     // 查询订单   根据	所有条件（订单编号、下单时间。。。。。）
     //  如果 OrderOfString orderOfString=null代表查询全部订单
     public List<Order> selectOrderByAll(Order order);
+
+    List<OderAndString2> selectAndName();
+    OrderAndString  selectName5();
     //    查询交易总金额
     public OrderAndString totalAmountOfTransaction();
     //    订单数量
@@ -66,4 +70,18 @@ public interface OrderService {
      * @return
      */
     public List<OrderCustom> getOrderByStatusOfSix(OrderCustom orderCustom);
+
+    /**
+     * 通过id获得退货详情
+     * @param orderId
+     * @return
+     */
+    public OrderCustom getReturnDetail(int orderId);
+
+
+    /**
+     * 改变订单状态
+     * @param orderCustom
+     */
+    public void updateOrderStatus(OrderCustom orderCustom);
 }

@@ -27,11 +27,6 @@
 
 <header id="pc-header">
 
-
-
-
-
-
     <div class="pc-header-nav">
         <div class="pc-header-con">
 
@@ -39,7 +34,6 @@
                 <a href="/LoginPage.action" target="_blank">请登录</a>
                 <a href="/jsp/users/register.jsp" target="_blank"> 免费注册</a>
             </div>
-
 
 
             <div class="fr pc-header-list top-nav">
@@ -92,12 +86,6 @@
         </div>
     </div>
 
-
-
-
-
-
-
     <div class="yHeader">
         <!-- 导航   start  -->
         <div class="yNavIndex">
@@ -125,38 +113,38 @@
 
                 <div style="width: 150px;margin-left: 20px;font-size: 18px;">
                     <img src="/jsp/users/images/dingwei.png" height="50px" width="50px">
-
                     <h4 style="margin-top: -30px;margin-left: 45px;">热销商品</h4>
-
                 </div>
-                <div class="time-border">
 
 
-                    <div class="yScrollList" style="width: 1180px;height: 100%">
-                        <div class="yScrollListIn">
-                            <div class="yScrollListInList yScrollListInList1" style="display:block; width: 1180px;height: 100%;margin-left: -40px">
-                                <ul style="width: 1180px;text-align: center">
+                <section id="sku" class="wraper m-box mi-sku">
 
-                                    <li style="text-align: center">
-                                        <div class="row">
-                                            <dl>
-                                                <dd>销量:<span style="color: #ea4949">385</span></dd>
-                                                <dt><a href="/xiangqing.action?productid=1"><img src="jsp/admin/images/upload/ly1.1.jpg"></a></dt>
-                                                <dd class="name"><a href="/xiangqing.action?ProductTypeId=1">电动轮椅</a></dd>
+                    <div class="m-box" style="margin-top: 40px">
+                        <section class="span20 m-slide">
 
-                                                <dd style="color: #ec1611;font: 13px/33px '微软雅黑';margin-top: 10px">1260.0</dd>
-                                            </dl>
-                                        </div>
-                                    </li>
+                            <div class="m-slide-contain m-s2">
+                                <div class="m-slide-item" style="float: left">
+                                    <ul class="m-cols m-col-5">
+                                            <li class="col sku-item ">
+                                                <dl class="row" style="height: auto">
+                                                    <dd style="color: #ea4949;margin-top: 10px">销量：739</dd>
+                                                    <dt style="padding: 10px"><a href=""><img src="\jsp\users\images\adv1.jpg"></a></dt>
+                                                    <dd class="name"><a href="">电动轮椅</a></dd>
 
-                                </ul>
+                                                    <dd class="price" style="width: 100%;margin: -10px 0 0 0">1260</dd>
+                                                </dl>
+                                            </li>
+                                    </ul>
+                                </div>
+
                             </div>
-                        </div>
+                        </section>
                     </div>
-                </div>
+
+                </section>
+
             </div>
 
-        </div>
 
         <div style="padding-top:30px;">
             <div class="member-pages clearfix">
@@ -183,6 +171,7 @@
         </div>
     </div>
 
+    </div>
 </div>
 
 
@@ -280,197 +269,4 @@
 </script>
 
 </body>
-<%--<body>--%>
-
-<%--<header id="pc-header">--%>
-
-    <%--<jsp:include page="/jsp/users/head.jsp"></jsp:include>--%>
-    <%--<!--  顶部    start-->--%>
-    <%--<div class="yHeader">--%>
-        <%--<!-- 导航   start  -->--%>
-        <%--<div class="yNavIndex">--%>
-            <%--<ul class="yMenuIndex">--%>
-                <%--<li><a href="" target="_blank" title="首页">首页</a></li>--%>
-                <%--<li><a href="" target="_blank" title="热销专区">热销专区</a></li>--%>
-                <%--<li><a href="" target="_blank" title="新品专区">新品专区</a></li>--%>
-                <%--<li><a href="" target="_blank" title="积分商城">积分商城</a></li>--%>
-                <%--<li><a href="" target="_blank" title="合伙人">合伙人</a></li>--%>
-                <%--<li><a href="" target="_blank" title="关于我们">关于我们</a></li>--%>
-            <%--</ul>--%>
-        <%--</div>--%>
-        <%--<!-- 导航   end  -->--%>
-    <%--</div>--%>
-
-<%--</header>--%>
-
-<%--<div class="center" style="background:#fff;">--%>
-    <%--<div style="padding:20px">--%>
-        <%--&lt;%&ndash;		<div class="containers clearfix"><div class="pc-nav-item fl"><a href="#" class="pc-title">首页</a> &gt;<a href="#"> 所有货架</a></div> <div class="fr" style="padding-top:20px;"><a href="#" class="reds">所有品牌&gt;</a></div></div>&ndash;%&gt;--%>
-        <%--<div class="containers">--%>
-            <%--&lt;%&ndash;			<div class="pc-nav-rack clearfix">--%>
-                            <%--<ul>--%>
-                                <%--<li><a href="#">家用电器</a></li>--%>
-                                <%--<li><a href="#">手机数码</a></li>--%>
-                                <%--<li><a href="#">电脑办公</a></li>--%>
-                                <%--<li><a href="#">家居家装</a></li>--%>
-                                <%--<li><a href="#">男装女装</a></li>--%>
-                                <%--<li><a href="#">个护化妆</a></li>--%>
-                                <%--<li><a href="#">运动户外</a></li>--%>
-                                <%--<li><a href="#">箱包钟表</a></li>--%>
-                                <%--<li><a href="#">汽车用品</a></li>--%>
-                                <%--<li><a href="#">玩具乐器</a></li>--%>
-                                <%--<li><a href="#">食品酒类</a></li>--%>
-                                <%--<li><a href="#">玩具乐器</a></li>--%>
-                                <%--<li><a href="#">营养保健</a></li>--%>
-                                <%--<li><a href="#">图书音像</a></li>--%>
-                                <%--<li><a href="#">充值票务</a></li>--%>
-                            <%--</ul>--%>
-                        <%--</div>&ndash;%&gt;--%>
-
-            <%--<div class="container" style="margin-top: -20px;">--%>
-                <%--<div class="navbar">--%>
-                    <%--<div class="navbar-inner" style="border-bottom: 1px #3a87ad solid">--%>
-                        <%--<ul class="nav nav-pills" style="width: 100px;">--%>
-                            <%--<li class="dropdown"><a href="#">所有分类<span class="caret"></span></a>--%>
-                                <%--<ul class="dropdown-menu">--%>
-                                    <%--<c:forEach items="${productTypeExtends}" var="productTypeExtend">--%>
-                                        <%--<li class="wd">--%>
-                                            <%--<div class="dropdown-xl">--%>
-                                                <%--<dl>--%>
-                                                    <%--<dt><a href="${pageContext.request.contextPath}/SelectProductType.action?ProductTypeId=${productTypeExtend.producttypeid}">${productTypeExtend.producttypename}</a></dt>--%>
-
-                                                    <%--<c:forEach items="${productTypeExtend.product}" var="product">--%>
-                                                        <%--<dd><a>${product.productname}</a></dd>--%>
-                                                    <%--</c:forEach>--%>
-
-                                                <%--</dl>--%>
-                                            <%--</div>--%>
-                                        <%--</li>--%>
-                                    <%--</c:forEach>--%>
-                                <%--</ul>--%>
-                            <%--</li>--%>
-                        <%--</ul>--%>
-                    <%--</div>--%>
-                <%--</div>--%>
-            <%--</div>--%>
-
-            <%--<div style="width: 1180px;margin-left: 65px;margin-top: -25px;">--%>
-
-                <%--<div style="width: 150px;margin-left: 20px;font-size: 18px;">--%>
-                    <%--<img src="/jsp/users/images/dingwei.png" width="50px" height="50px">--%>
-                    <%--<c:forEach items="${productTypeExtends1}" var="productTypeExtends11">--%>
-                        <%--<h4 style="margin-top: -30px;margin-left: 45px;">${productTypeExtends11.producttypename}</h4>--%>
-                    <%--</c:forEach>--%>
-                <%--</div>--%>
-                <%--<div class="time-border">--%>
-
-
-                    <%--<div class="yScrollList" style="width: 1180px;height: 100%">--%>
-                        <%--<div class="yScrollListIn">--%>
-                            <%--<div class="yScrollListInList yScrollListInList1" style="display:block; width: 1180px;height: 100%;margin-left: -40px">--%>
-                                <%--<ul style="width: 1180px;text-align: center">--%>
-                                    <%--<c:forEach items="${productss}" var="products">--%>
-                                        <%--<li style="text-align: center">--%>
-                                            <%--<div class="row">--%>
-                                                <%--<dl>--%>
-                                                    <%--<dd><a>${products.productname}</a></dd>--%>
-                                                    <%--<dt><a href="${pageContext.request.contextPath}/xiangqing.action?productid=${products.productid}"><img src="${products.productpicture}"></a></dt>--%>
-                                                    <%--<dd class="name"><a href="${pageContext.request.contextPath}/xiangqing.action?ProductTypeId=${products.productid}">${products.productname}</a></dd>--%>
-
-                                                    <%--<dd style="color: #ec1611;font: 13px/33px '微软雅黑'">${products.productprice}</dd>--%>
-                                                <%--</dl>--%>
-                                            <%--</div>--%>
-                                        <%--</li>--%>
-                                    <%--</c:forEach>--%>
-                                <%--</ul>--%>
-                            <%--</div>--%>
-                        <%--</div>--%>
-                    <%--</div>--%>
-                <%--</div>--%>
-            <%--</div>--%>
-            <%--&lt;%&ndash;				<div class="pc-nav-digit clearfix">--%>
-                                <%--<ul>--%>
-                                    <%--<li>--%>
-                                        <%--<div class="digit1"><a href="#"><img src="images/shangpinxiangqing/X-1.png" width="100%"></a></div>--%>
-                                        <%--<div class="digit2"><a href="#">家用电器</a></div>--%>
-                                    <%--</li>--%>
-                                    <%--<li>--%>
-                                        <%--<div class="digit1"><a href="#"><img src="images/shangpinxiangqing/X-1.png" width="100%"></a></div>--%>
-                                        <%--<div class="digit2"><a href="#">家用电器</a></div>--%>
-                                    <%--</li>--%>
-                                    <%--<li>--%>
-                                        <%--<div class="digit1"><a href="#"><img src="images/shangpinxiangqing/X-1.png" width="100%"></a></div>--%>
-                                        <%--<div class="digit2"><a href="#">家用电器</a></div>--%>
-                                    <%--</li>--%>
-                                    <%--<li>--%>
-                                        <%--<div class="digit1"><a href="#"><img src="images/shangpinxiangqing/X-1.png" width="100%"></a></div>--%>
-                                        <%--<div class="digit2"><a href="#">家用电器</a></div>--%>
-                                    <%--</li>--%>
-                                    <%--<li>--%>
-                                        <%--<div class="digit1"><a href="#"><img src="images/shangpinxiangqing/X-1.png" width="100%"></a></div>--%>
-                                        <%--<div class="digit2"><a href="#">家用电器</a></div>--%>
-                                    <%--</li>--%>
-                                    <%--<li>--%>
-                                        <%--<div class="digit1"><a href="#"><img src="images/shangpinxiangqing/X-1.png" width="100%"></a></div>--%>
-                                        <%--<div class="digit2"><a href="#">家用电器</a></div>--%>
-                                    <%--</li>--%>
-                                    <%--<li>--%>
-                                        <%--<div class="digit1"><a href="#"><img src="images/shangpinxiangqing/X-1.png" width="100%"></a></div>--%>
-                                        <%--<div class="digit2"><a href="#">家用电器</a></div>--%>
-                                    <%--</li>--%>
-                                    <%--<li>--%>
-                                        <%--<div class="digit1"><a href="#"><img src="images/shangpinxiangqing/X-1.png" width="100%"></a></div>--%>
-                                        <%--<div class="digit2"><a href="#">家用电器</a></div>--%>
-                                    <%--</li>--%>
-                                    <%--<li>--%>
-                                        <%--<div class="digit1"><a href="#"><img src="images/shangpinxiangqing/X-1.png" width="100%"></a></div>--%>
-                                        <%--<div class="digit2"><a href="#">家用电器</a></div>--%>
-                                    <%--</li>--%>
-                                    <%--<li>--%>
-                                        <%--<div class="digit1"><a href="#"><img src="images/shangpinxiangqing/X-1.png" width="100%"></a></div>--%>
-                                        <%--<div class="digit2"><a href="#">家用电器</a></div>--%>
-                                    <%--</li>--%>
-                                    <%--<li>--%>
-                                        <%--<div class="digit1"><a href="#"><img src="images/shangpinxiangqing/X-1.png" width="100%"></a></div>--%>
-                                        <%--<div class="digit2"><a href="#">家用电器</a></div>--%>
-                                    <%--</li>--%>
-                                    <%--<li>--%>
-                                        <%--<div class="digit1"><a href="#"><img src="images/shangpinxiangqing/X-1.png" width="100%"></a></div>--%>
-                                        <%--<div class="digit2"><a href="#">家用电器</a></div>--%>
-                                    <%--</li>--%>
-                                <%--</ul>--%>
-                            <%--</div>&ndash;%&gt;--%>
-        <%--</div>--%>
-
-        <%--<div style="padding-top:30px;">--%>
-            <%--<div class="member-pages clearfix">--%>
-                <%--<div class="fr pc-search-g">--%>
-                    <%--<a href="#" class="fl pc-search-f">上一页</a>--%>
-                    <%--<a class="current" href="#">1</a>--%>
-                    <%--<a href="javascript:;">2</a>--%>
-                    <%--<a href="javascript:;">3</a>--%>
-                    <%--<a href="javascript:;">4</a>--%>
-                    <%--<a href="javascript:;">5</a>--%>
-                    <%--<a href="javascript:;">6</a>--%>
-                    <%--<a href="javascript:;">7</a>--%>
-                    <%--<span class="pc-search-di">…</span>--%>
-                    <%--<a onclick="SEARCH.page(3, true)" href="javascript:;" class="pc-search-n" title="使用方向键右键也可翻到下一页哦！">下一页</a>--%>
-                    <%--<span class="pc-search-y">--%>
-                        <%--<em>  共20页    到第</em>--%>
-                        <%--<input type="text" placeholder="1" class="pc-search-j">--%>
-                        <%--<em>页</em>--%>
-                        <%--<a class="confirm" href="#">确定</a>--%>
-                    <%--</span>--%>
-
-                <%--</div>--%>
-            <%--</div>--%>
-        <%--</div>--%>
-    <%--</div>--%>
-
-<%--</div>--%>
-
-<%--<div style="height:100px"></div>--%>
-
-
-<%--</body>--%>
 </html>

@@ -1,9 +1,7 @@
 package com.xh.serviceimp.customerServiceImpl;
 
 import com.xh.mapper.customerMapper.UserLoginMapper;
-import com.xh.po.Product;
-import com.xh.po.User;
-import com.xh.po.Userlog;
+import com.xh.po.*;
 import com.xh.po.vo.TotalCreditsById;
 import com.xh.service.customerService.UserLoginService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -107,6 +105,22 @@ public class UserLoginServiceImpl implements UserLoginService {
     public List<TotalCreditsById> StoreRecommendation() {
         List<TotalCreditsById> Recommendations= userLoginMapper.StoreRecommendation();
         return Recommendations;
+    }
+
+    @Override
+    public void ShopCarInsert(Shopcar shopcar) {
+        userLoginMapper.ShopCarInsert(shopcar);
+    }
+
+    @Override
+    public Shopcar IsSuccessInsert(Shopcar shopcar) {
+      Shopcar shopcar1=  userLoginMapper.IsSuccessInsert(shopcar);
+        return shopcar1;
+    }
+
+    @Override
+    public void InsertFavorites(Favorites favorites) {
+      userLoginMapper.InsertFavorites(favorites);
     }
 
 

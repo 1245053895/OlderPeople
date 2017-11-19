@@ -229,8 +229,8 @@
 			<div class="Xcontent34"><a href="#">立即购买</a></div>
 			<div class="Xcontent35"><a href="javascript:void(0);">加入购物车</a></div>
             <div class="Xcontent36">
-                <a href="#"><img src="${pageContext.request.contextPath}/jsp/users/images/shoucang.png" height="15px" width="15px"></a>
-                <a href="#">收藏宝贝</a>
+                <a href="<%--${pageContext.request.contextPath}/ShouCangShop.action?productid=${myProduct.productid}--%>"><img src="${pageContext.request.contextPath}/jsp/users/images/shoucang.png" height="15px" width="15px"></a>
+                <a href="">收藏宝贝</a>
             </div>
             <div class="Xcontent36">
                 <a href="#"><img src="${pageContext.request.contextPath}/jsp/users/images/kefu.png" height="15px" width="15px"></a>
@@ -251,26 +251,26 @@
 			<div class="pc-term clearfix">
 				<div class="H-over1 pc-text-word clearfix">
 					<ul class="clearfix">
-						<li>
-							<p>屏幕尺寸：4.8英寸</p>
-							<p>分辨率：1280×720(HD,720P) </p>
-						</li>
-						<li>
-							<p>后置摄像头：800万像素</p>
-							<p>分辨率：1280×720(HD,720P) </p>
-						</li>
-						<li>
-							<p>前置摄像头：190万像素</p>
-							<p>分辨率：1280×720(HD,720P) </p>
-						</li>
-						<li>
-							<p>3G：电信(CDMA2000)</p>
-							<p>2G：移动/联通(GSM)/电信(CDMA </p>
-						</li>
+					<%--	<li>
+					<p>屏幕尺寸：4.8英寸</p>
+					<p>分辨率：1280×720(HD,720P) </p>
+				</li>
+					<li>
+						<p>后置摄像头：800万像素</p>
+						<p>分辨率：1280×720(HD,720P) </p>
+					</li>
+					<li>
+						<p>前置摄像头：190万像素</p>
+						<p>分辨率：1280×720(HD,720P) </p>
+					</li>
+					<li>
+						<p>3G：电信(CDMA2000)</p>
+						<p>2G：移动/联通(GSM)/电信(CDMA </p>
+					</li>--%>
 					</ul>
 					<div class="pc-line"></div>
 					<ul class="clearfix">
-						<li>
+						<%--<li>
 							<p>商品名称：三星I939I</p>
 							<p>商品毛重：360.00g </p>
 						</li>
@@ -285,7 +285,7 @@
 						<li>
 							<p>上架时间：2015-03-30 09:07:18</p>
 							<p>机身颜色：白色</p>
-						</li>
+						</li>--%>
 					</ul>
 					<div style="margin-left: 30px;margin-right:30px ">
 						<c:forEach items="${myProduct.images}" var="it" varStatus="status">

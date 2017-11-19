@@ -194,6 +194,11 @@
 	<c:if test="${products==null||hotsaleproducts==null||top10products==null||creditproducts==null||jiankang==null|| jujia==null|| yule==null|| Recommendations==null}">
 		<jsp:forward page="${pageContext.request.contextPath}/selectproduct.action"></jsp:forward>
 	</c:if>
+
+	<%--<c:if test="${empty productTypeExtends1||empty productTypeExtends}">
+		<jsp:forward page="${pageContext.request.contextPath}/ShopFrontPage.action"></jsp:forward>
+	</c:if>--%>
+
 	<jsp:include page="/jsp/users/head.jsp"></jsp:include>
 
 	<!--  顶部    start-->

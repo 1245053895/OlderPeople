@@ -1,9 +1,6 @@
 package com.xh.controller.customerController;
 
-import com.xh.po.Product;
-import com.xh.po.Shopcar;
-import com.xh.po.User;
-import com.xh.po.Userlog;
+import com.xh.po.*;
 import com.xh.po.vo.ProductTypeExtend;
 import com.xh.po.vo.TotalCreditsById;
 import com.xh.service.customerService.ProductTypeService;
@@ -40,41 +37,41 @@ public class CustomerLoginController {
     @RequestMapping(value = "/ShopFrontPage.action", method = RequestMethod.GET)
     public String login(Model model) {
         //得到主页导航栏商类型品和两个商品
-        List<ProductTypeExtend> productTypeExtends=productTypeService.SelectProductType();
-        for (ProductTypeExtend productTypeExtend:productTypeExtends){
-            int id=productTypeExtend.getProducttypeid();
-            List<Product> products=productTypeService.SelectProductByTypeIdLimit(id);
+        List<ProductTypeExtend> productTypeExtends = productTypeService.SelectProductType();
+        for (ProductTypeExtend productTypeExtend : productTypeExtends) {
+            int id = productTypeExtend.getProducttypeid();
+            List<Product> products = productTypeService.SelectProductByTypeIdLimit(id);
             productTypeExtend.setProduct(products);
         }
         //得到主页导航栏商品类型了所有商品
-        List<ProductTypeExtend> productTypeExtends1=productTypeService.SelectProductType();
-        for (ProductTypeExtend productTypeExtend1:productTypeExtends1){
-            int id=productTypeExtend1.getProducttypeid();
-            List<Product> products1=productTypeService.SelectProductByTypeId(id);
+        List<ProductTypeExtend> productTypeExtends1 = productTypeService.SelectProductType();
+        for (ProductTypeExtend productTypeExtend1 : productTypeExtends1) {
+            int id = productTypeExtend1.getProducttypeid();
+            List<Product> products1 = productTypeService.SelectProductByTypeId(id);
             productTypeExtend1.setProduct(products1);
         }
-        model.addAttribute("productTypeExtends1",productTypeExtends1);
-        model.addAttribute("productTypeExtends",productTypeExtends);
+        model.addAttribute("productTypeExtends1", productTypeExtends1);
+        model.addAttribute("productTypeExtends", productTypeExtends);
         return "/jsp/users/index.jsp";
     }
 
     //进入商城的登录页面
     @RequestMapping("/LoginPage.action")
-    public String LoginPage(){
+    public String LoginPage() {
         return "/jsp/users/login.jsp";
     }
 
     //前端用户登录的验证
     @RequestMapping("/CustomerLogin.action")
-    public String CustomerLogin(String username, String password, HttpServletRequest request, HttpServletResponse response, Model model){
-        Userlog userlog=new Userlog();
+    public String CustomerLogin(String username, String password, HttpServletRequest request, HttpServletResponse response, Model model) {
+        Userlog userlog = new Userlog();
         if (username != null) {
             if (password != null) {
-                User user= userLoginService.selectAllNameAndPwd(username);
+                User user = userLoginService.selectAllNameAndPwd(username);
                 if (user != null) {
                     if (user.getUserpwd().equals(encodePassword(password))) {
                         HttpSession session = request.getSession();
-                        session.setMaxInactiveInterval(600*60*60);
+                        session.setMaxInactiveInterval(600 * 60 * 60);
                         session.setAttribute("user", user);
                         userlog.setUserid(user.getUserid());
                         userlog.setStartlogintime(new Date());
@@ -84,7 +81,7 @@ public class CustomerLoginController {
                             e.printStackTrace();
                         }
                         userLoginService.insertStartTimeAndIp(userlog);
-                        return "redirect:/ShopFrontPage.action";
+                        return "redirect:/ShopFrontPage.action";//"/jsp/users/index.jsp";
                     } else {
                         model.addAttribute("error", "密码不正确");
                     }
@@ -103,9 +100,9 @@ public class CustomerLoginController {
 
     //清空session中的值，使退出登录的用户能够调转到当前商城首页而没有用户名
     @RequestMapping("/ExitLogin.action")
-    public String ExitLogin(HttpServletRequest request,HttpServletResponse response,Userlog userlog){
-        HttpSession session=request.getSession();
-        User user= (User)session.getAttribute("user");
+    public String ExitLogin(HttpServletRequest request, HttpServletResponse response, Userlog userlog) {
+        HttpSession session = request.getSession();
+        User user = (User) session.getAttribute("user");
         userlog.setUserid(user.getUserid());
         userlog.setEndlogintime(new Date());
         userLoginService.updateEndLoginTime(userlog);
@@ -115,9 +112,9 @@ public class CustomerLoginController {
 
     //用户注册页
     @RequestMapping("/CustomerReginster.action")
-    public String CustomerReginster(User user){
+    public String CustomerReginster(User user) {
         user.setUserinputdate(new Date());
-        String pwd=user.getUserpwd();
+        String pwd = user.getUserpwd();
         user.setUserpwd(encodePassword(pwd));
         userLoginService.insertNewUser(user);
         return "/jsp/users/login.jsp";
@@ -126,15 +123,15 @@ public class CustomerLoginController {
 
     //个人中心里跳转到修改密码的页面
     @RequestMapping("/UpdataPwdPage.action")
-    public  String UpdataPwdPage(){
+    public String UpdataPwdPage() {
         return "/jsp/users/my-user.jsp";
     }
 
     //个人中心里根据登录用户的id修改登录密码
     @RequestMapping("/updateLoginPassword.action")
-    public String updateLoginPassword(HttpServletRequest request,User user){
-        HttpSession session=request.getSession();
-        User user2=(User)session.getAttribute("user");
+    public String updateLoginPassword(HttpServletRequest request, User user) {
+        HttpSession session = request.getSession();
+        User user2 = (User) session.getAttribute("user");
         user.setUserid(user2.getUserid());
         user.getUserpwd();
         userLoginService.updataPwdById(user);
@@ -143,9 +140,9 @@ public class CustomerLoginController {
 
     //个人中心里根据登录用户的id修改电话
     @RequestMapping("/updataLoginPhone.action")
-    public String updataLoginPhone(HttpServletRequest request,User user){
-        HttpSession session=request.getSession();
-        User user1=(User) session.getAttribute("user");
+    public String updataLoginPhone(HttpServletRequest request, User user) {
+        HttpSession session = request.getSession();
+        User user1 = (User) session.getAttribute("user");
         user.setUserid(user1.getUserid());
         user.getUserphone();
         userLoginService.updataLoginPhone(user);
@@ -154,23 +151,22 @@ public class CustomerLoginController {
 
     //个人中心中我的积分页面的展示,以及每一个用户购买的所有商品的总积分
     @RequestMapping("/MyCredits.action")
-    public String MyCredits(Model model,HttpServletRequest request,Integer userid){
-        HttpSession session=request.getSession();
-        User user= (User)session.getAttribute("user");
-         userid= user.getUserid();
-       List<TotalCreditsById> totalCreditsByIds= userLoginService.queryAllById(userid);
-        TotalCreditsById totalCreditsById=  userLoginService.queryTotalCriditsById(userid);
-       model.addAttribute("totalCreditsByIds",totalCreditsByIds);
-       model.addAttribute("totalCreditsById",totalCreditsById);
+    public String MyCredits(Model model, HttpServletRequest request, Integer userid) {
+        HttpSession session = request.getSession();
+        User user = (User) session.getAttribute("user");
+        userid = user.getUserid();
+        List<TotalCreditsById> totalCreditsByIds = userLoginService.queryAllById(userid);
+        TotalCreditsById totalCreditsById = userLoginService.queryTotalCriditsById(userid);
+        model.addAttribute("totalCreditsByIds", totalCreditsByIds);
+        model.addAttribute("totalCreditsById", totalCreditsById);
         return "/jsp/users/jifen.jsp";
     }
 
     //积分说明
     @RequestMapping("/CreditsMean.action")
-    public String CreditsMean(){
+    public String CreditsMean() {
         return "jsp/users/jifensm.jsp";
     }
-
 
 
     //查询出上市新品的商品的图片，名称，描述，价格，展示在商城的首页
@@ -179,48 +175,48 @@ public class CustomerLoginController {
     //查询出可用积分兑换的商品的图片，名称，描述，价格，展示在商城的首页
     //热销商品的销售量
     @RequestMapping("/selectproduct.action")
-    public String selectproduct(Model model){
-       List<Product> products= userLoginService.selectproduct();
-        List<TotalCreditsById> hotsaleproducts=  userLoginService.hotSaleProduct();
-      List<TotalCreditsById>  top10products=  userLoginService.Max10Comment();
-        List<TotalCreditsById> jiankang= userLoginService.selectjiangkang();
-        List<TotalCreditsById> jujia= userLoginService.selectjujia();
-        List<TotalCreditsById> yule =userLoginService.selectyule();
-        List<TotalCreditsById> creditproducts= userLoginService.IsCredExchange();
-        List<TotalCreditsById> Recommendations= userLoginService.StoreRecommendation();
-       model.addAttribute("products",products);
-        model.addAttribute("hotsaleproducts",hotsaleproducts);
-        model.addAttribute("top10products",top10products);
-        model.addAttribute("jiankang",jiankang);
-        model.addAttribute("jujia",jujia);
-        model.addAttribute("yule",yule);
-        model.addAttribute("creditproducts",creditproducts);
-        model.addAttribute("Recommendations",Recommendations);
+    public String selectproduct(Model model) {
+        List<Product> products = userLoginService.selectproduct();
+        List<TotalCreditsById> hotsaleproducts = userLoginService.hotSaleProduct();
+        List<TotalCreditsById> top10products = userLoginService.Max10Comment();
+        List<TotalCreditsById> jiankang = userLoginService.selectjiangkang();
+        List<TotalCreditsById> jujia = userLoginService.selectjujia();
+        List<TotalCreditsById> yule = userLoginService.selectyule();
+        List<TotalCreditsById> creditproducts = userLoginService.IsCredExchange();
+        List<TotalCreditsById> Recommendations = userLoginService.StoreRecommendation();
+        model.addAttribute("products", products);
+        model.addAttribute("hotsaleproducts", hotsaleproducts);
+        model.addAttribute("top10products", top10products);
+        model.addAttribute("jiankang", jiankang);
+        model.addAttribute("jujia", jujia);
+        model.addAttribute("yule", yule);
+        model.addAttribute("creditproducts", creditproducts);
+        model.addAttribute("Recommendations", Recommendations);
         return "jsp/users/index.jsp";
     }
 
     //page.jsp商品详情页面，点击加入购物车
     @RequestMapping("/ShopCat.action")
-    public @ResponseBody Map ShopCat(HttpServletRequest request, float[] data){
-        Map map=new HashMap();
-        HttpSession session=request.getSession();
-        User user=(User) session.getAttribute("user");
-        int userid= user.getUserid();
-        Shopcar shopCat=new Shopcar();
+    public @ResponseBody
+    Map ShopCat(HttpServletRequest request, float[] data) {
+        Map map = new HashMap();
+        HttpSession session = request.getSession();
+        User user = (User) session.getAttribute("user");
+        int userid = user.getUserid();
+        Shopcar shopCat = new Shopcar();
+        shopCat.setUserid(userid);
         shopCat.setProductid((int) data[0]);
         shopCat.setOrderamount((int) data[1]);
         shopCat.setPrice((double) data[2]);
-
-        /*if(userLoginService.insertNewUser(shopCat)){ //先插  再查
-            map.put("red",true);
-        }else{
-            map.put("red",false);
-        }*/
+        userLoginService.ShopCarInsert(shopCat);
+        Shopcar shopcar = userLoginService.IsSuccessInsert(shopCat);
+        if (shopcar == null)
+            map.put("red", false);
+        else
+            map.put("red", true);
         return map;
-
-
-       // List<Product> products= userLoginService.selectproduct();
     }
+
 
     //加密
     public String encodePassword(String password) {
@@ -243,6 +239,16 @@ public class CustomerLoginController {
             e.printStackTrace();
         }
         return new String(encodeHex);
+    }
+
+    //收藏宝贝
+    @RequestMapping("/ShouCangShop.action")
+    public String ShouCangShop(HttpServletRequest request, Favorites favorites){
+        HttpSession session=request.getSession();
+        User user=(User) session.getAttribute("user");
+        favorites.setUserid(user.getUserid());
+        userLoginService.InsertFavorites(favorites);
+        return "/jsp/users/page.jsp";
     }
 
 }

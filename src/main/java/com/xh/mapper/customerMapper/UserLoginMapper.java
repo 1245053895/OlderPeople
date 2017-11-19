@@ -1,8 +1,6 @@
 package com.xh.mapper.customerMapper;
 
-import com.xh.po.Product;
-import com.xh.po.User;
-import com.xh.po.Userlog;
+import com.xh.po.*;
 import com.xh.po.vo.TotalCreditsById;
 import org.springframework.stereotype.Component;
 
@@ -62,4 +60,14 @@ public interface UserLoginMapper {
 
     //店家推荐，推荐商品类型为医疗保健中得到商品好评度最多的商品
     public List<TotalCreditsById> StoreRecommendation();
+
+    //加入购物车
+    public void ShopCarInsert(Shopcar shopcar);
+
+    //查询是否成功插入
+    public Shopcar IsSuccessInsert(Shopcar shopcar);
+
+    //将商品添加到收藏表中
+    public void InsertFavorites(Favorites favorites);
+
 }

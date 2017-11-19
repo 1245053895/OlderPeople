@@ -121,6 +121,22 @@
     </select>
 
 
+    <!--加入购物车-->
+    <insert id="ShopCarInsert" parameterType="shopcar">
+        INSERT INTO shopcar(UserId,ProductId,orderamount,Price) VALUES
+          (#{userid},#{productid},#{orderamount},#{price})
+    </insert>
+
+    <!--查询购物车是否插入成功-->
+    <select id="IsSuccessInsert" parameterType="shopcar" resultType="shopcar">
+        SELECT * FROM shopcar
+          WHERE UserId=#{userid} AND ProductId=#{productid} AND orderamount=#{orderamount} AND Price=#{price}
+    </select>
+
+    <!--新增商品到收藏表中-->
+    <insert id="InsertFavorites" parameterType="favorites">
+        INSERT INTO favorites(UserId,ProductId) VALUES(#{userid},#{productid})
+    </insert>
 
 
 

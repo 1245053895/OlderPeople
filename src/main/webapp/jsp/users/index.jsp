@@ -57,7 +57,7 @@
         });//倒计时结束
 
         $(function(){
-	        /*======右按钮======*/
+			/*======右按钮======*/
             $(".you").click(function(){
                 nextscroll();
             });
@@ -70,7 +70,7 @@
                     $(this).css("margin-left","0px");
                 });
             };
-	        /*========左按钮=========*/
+			/*========左按钮=========*/
             $(".zuo").click(function(){
                 var vcon = $(".v_cont");
                 var offset = ($(".v_cont li").width()*-1);
@@ -190,255 +190,64 @@
 </div>-->
 
 <header id="pc-header">
-	<c:if test="${ products==null}">
+
+	<c:if test="${empty products||empty hotsaleproducts||empty top10products||empty creditproducts||empty jiankang||empty jujia||empty yule|| empty Recommendations}">
 		<jsp:forward page="${pageContext.request.contextPath}/selectproduct.action"></jsp:forward>
 	</c:if>
 	<jsp:include page="/jsp/users/head.jsp"></jsp:include>
 
 	<!--  顶部    start-->
-	<div class="yHeader1">
+	<div class="yHeader1" style="margin:0px auto;">
 		<!-- 导航   start  -->
 		<div class="yNavIndex">
 			<div class="pullDown">
 				<h2 class="pullDownTitle"><i class="icon-class"></i>所有商品分类</h2>
 				<ul class="pullDownList">
-					<li>
-						<div class="tx">
-						<div class="tx1">
-							<a href="#">
-								<i> </i>
-								<a href="#" target="_blank" style="font-size: 14px;">出行代步</a>
-								<span></span>
-							</a>
-						</div>
-						<dl class="one1">
-							<dd>
-								<a>电动轮椅 </a>
-								<a>手动轮椅 </a>
-								<a> . . .</a>
-							</dd>
-						</dl>
-						</div>
-					</li>
-					<li>
-						<div class="tx">
-						<div class="tx2">
-							<a href="#">
-								<i> </i>
-								<a href="#" target="_blank" style="font-size: 14px;">健康监测</a>
-								<span></span>
-							</a>
-						</div>
-						<dl class="one1">
-							<dd>
-								<a>血压血糖 </a>
-								<a>运动监测 </a>
-								<a> . . .</a>
-							</dd>
-						</dl>
-						</div>
-					</li>
-					<li>
-						<div class="tx">
-							<div class="tx3">
-								<a href="#">
-									<i> </i>
-									<a href="#" target="_blank" style="font-size: 14px;">康复护理</a>
-									<span></span>
-								</a>
-							</div>
-							<dl class="one1">
-								<dd>
-									<a>康复器材 </a>
-									<a>护理器材 </a>
-									<a> . . .</a>
-								</dd>
-							</dl>
-						</div>
-					</li>
-					<li>
-						<div class="tx">
-							<div class="tx4">
-								<a href="#">
-									<i> </i>
-									<a href="#" target="_blank" style="font-size: 14px;">生活日用</a>
-									<span></span>
-								</a>
-							</div>
-							<dl class="one1">
-								<dd>
-									<a>卫浴用品 </a>
-									<a>饮食居家 </a>
-									<a> . . .</a>
-								</dd>
-							</dl>
-						</div>
-					</li>
-					<li>
-						<div class="tx">
-							<div class="tx5">
-								<a href="#">
-									<i> </i>
-									<a href="#" target="_blank" style="font-size: 14px;">休闲娱乐</a>
-									<span></span>
-								</a>
-							</div>
-							<dl class="one1">
-								<dd>
-									<a>文房用具 </a>
-									<a>健身用具 </a>
-									<a> . . .</a>
-								</dd>
-							</dl>
-						</div>
-					</li>
-					<li>
-						<div class="tx">
-							<div class="tx6">
-								<a href="#">
-									<i> </i>
-									<a href="#" target="_blank" style="font-size: 14px;">医药保健</a>
-									<span></span>
-								</a>
-							</div>
-							<dl class="one1">
-								<dd>
-									<a>药品医疗 </a>
-									<a>医药器材 </a>
-									<a> . . .</a>
-								</dd>
-							</dl>
-						</div>
-					</li>
-				</ul>
 
+					<c:forEach items="${productTypeExtends}" var="productTypeExtend" varStatus="status">
+						<li>
+							<div class="tx">
+								<div class="tx${status.count}">
+									<a href="#">
+										<i> </i>
+											<a  href="${pageContext.request.contextPath}/SelectProductType.action?ProductTypeId=${productTypeExtend.producttypeid}"  style="font-size: 14px;">${productTypeExtend.producttypename}</a>
+										<span></span>
+									</a>
+								</div>
+								<dl class="one1">
+									<dd>
+										<c:forEach items="${productTypeExtend.product}" var="product">
+
+											<a href="${pageContext.request.contextPath}/xiangqing.action?productid=${product.productid}">${product.productname}</a>
+										</c:forEach>
+									</dd>
+
+								</dl>
+							</div>
+						</li>
+					</c:forEach>
+				</ul>
 				<!-- 下拉详细列表具体分类 -->
 				<div class="yMenuListCon">
-					<div class="yMenuListConin">
-						<div class="yMenuLCinList">
-							<h3><a href="" class="yListName1">老年助行</a><a href="" class="yListMore">更多 ></a></h3>
-							<dl>
-								<dl>
-									<%--<dt><a target="_blank" title="轮椅">轮椅 ></a></dt>--%>
-									<dd>
-										<a href="" target="_blank" title="轮椅">轮椅</a>
-										<a href="" target="_blank" title="防滑拐杖">防滑拐杖</a>
-										<a href="" target="_blank" title="代步车">代步车</a>
-										<a href="" target="_blank" title="助行架">助行架</a>
-										<a href="" target="_blank" title="老年购物车">老年购物车</a>
-										<a href="" target="_blank" title="爬楼助行器">爬楼助行器 </a>
-									</dd>
-								</dl>
-							</dl>
-							<%--<dl>
-								<dl>
-									&lt;%&ndash;<dt><a href="" target="_blank" title="手动轮椅">手动轮椅 ></a></dt>&ndash;%&gt;
-									<dd>
-										<a href="" target="_blank" title="全躺轮椅">全躺轮椅</a>
-										<a href="" target="_blank" title="半躺轮椅">半躺轮椅</a>
-										<a href="" target="_blank" title="可折叠轮椅">可折叠轮椅</a>
-										<a href="" target="_blank" title="带坐便轮椅">带坐便轮椅</a>
-										<a href="" target="_blank" title="站立式轮椅">站立式轮椅</a>
-										<a href="" target="_blank" title="站立式轮椅">爬楼电动轮椅</a>
-									</dd>
-								</dl>
-							</dl>--%>
-						</div>
-					</div>
 
-					<div class="yMenuListConin">
-						<div class="yMenuLCinList">
-							<h3><a href="" class="yListName2">老年健康</a><a href="" class="yListMore">更多 ></a></h3>
-							<dl>
+					<c:forEach items="${productTypeExtends1}" var="productTypeExtendss1"  varStatus="status">
+						<div class="yMenuListConin">
+							<div class="yMenuLCinList" >
+								<h3><a href="" class="yListName${status.count}">${productTypeExtendss1.producttypename}</a><a href="" class="yListMore">更多 ></a></h3>
 								<dl>
-									<%--<dt><a href="" target="_blank" title="健康检查">保健器械 ></a></dt>--%>
-									<dd>
-										<a href="" target="_blank" title="血压计">血压计</a>
-										<a href="" target="_blank" title="血糖仪">血糖仪</a>
-										<a href="" target="_blank" title="助听器">助听器</a>
-										<a href="" target="_blank" title="制氧机">制氧机</a>
-										<a href="" target="_blank" title="呼吸机">呼吸机</a>
-										<a href="" target="_blank" title="雾化机">雾化机</a>
-									</dd>
+									<dl>
+										<%--<dt><a href="" target="_blank" title="健康检查">保健器械 ></a></dt>--%>
+										<dd>
+											<c:forEach items="${productTypeExtendss1.product}" var="product1">
+												<a href="${pageContext.request.contextPath}/xiangqing.action?productid=${product1.productid}" target="_blank" >${product1.productname}</a>
+											</c:forEach>
+										</dd>
+									</dl>
 								</dl>
-							</dl>
+							</div>
 						</div>
-					</div>
-					<div class="yMenuListConin">
-						<div class="yMenuLCinList">
-							<h3><a href="" class="yListName3">老年护理</a><a href="" class="yListMore">更多 ></a></h3>
-							<dl>
-								<dl>
-									<%--<dt><a href="" target="_blank" title="电动轮椅">电动轮椅 ></a></dt>--%>
-									<dd>
-										<a href="" target="_blank" title="护理床">护理床</a>
-										<a href="" target="_blank" title="理疗仪">理疗仪</a>
-										<a href="" target="_blank" title="护理充气垫">可折叠轮椅</a>
-										<a href="" target="_blank" title="老年尿不湿">老年尿不湿</a>
-										<a href="" target="_blank" title="关节按摩器">关节按摩器</a>
-										<a href="" target="_blank" title="护理坐垫">护理坐垫</a>
-									</dd>
-								</dl>
-							</dl>
-						</div>
-					</div>
-					<div class="yMenuListConin">
-						<div class="yMenuLCinList">
-							<h3><a href="" class="yListName4">老年居家</a><a href="" class="yListMore">更多 ></a></h3>
-							<dl>
-								<dl>
-									<%--<dt><a href="" target="_blank" title="电动轮椅">电动轮椅 ></a></dt>--%>
-									<dd>
-										<a href="" target="_blank" title="扶手坐便器">扶手坐便器</a>
-										<a href="" target="_blank" title="防滑浴室椅">防滑浴室椅</a>
-										<a href="" target="_blank" title="便携坐厕椅">便携坐厕椅</a>
-										<a href="" target="_blank" title="老年益齿盒">老年益齿盒</a>
-										<a href="" target="_blank" title="软毛浴刷">软毛浴刷</a>
-										<a href="" target="_blank" title="老年保健球">老年保健球</a>
-									</dd>
-								</dl>
-							</dl>
-						</div>
-					</div>
-					<div class="yMenuListConin">
-						<div class="yMenuLCinList">
-							<h3><a href="" class="yListName5">老年娱乐</a><a href="" class="yListMore">更多 ></a></h3>
-							<dl>
-								<dl>
-									<%--<dt><a href="" target="_blank" title="电动轮椅">电动轮椅 ></a></dt>--%>
-									<dd>
-										<a href="" target="_blank" title="文房四宝">文房四宝</a>
-										<a href="" target="_blank" title="全自动麻将桌">收音机</a>
-										<a href="" target="_blank" title="中国象棋">中国象棋</a>
-										<a href="" target="_blank" title="太空漫步机">太空漫步机</a>
-										<a href="" target="_blank" title="转腰器">茶具</a>
-										<a href="" target="_blank" title="纸牌">太极</a>
-									</dd>
-								</dl>
-							</dl>
-						</div>
-					</div>
-					<div class="yMenuListConin">
-						<div class="yMenuLCinList">
-							<h3><a href="" class="yListName6">老年保健</a><a href="" class="yListMore">更多 ></a></h3>
-							<dl>
-								<dl>
-									<%--<dt><a href="" target="_blank" title="电动轮椅">电动轮椅 ></a></dt>--%>
-									<dd>
-										<a href="" target="_blank" title="老年奶粉">老年奶粉</a>
-										<a href="" target="_blank" title="老年钙片">老年钙片</a>
-										<a href="" target="_blank" title="燕窝">燕窝</a>
-										<a href="" target="_blank" title="人参">人参</a>
-										<a href="" target="_blank" title="助睡眠药品">助睡眠药品</a>
-										<a href="" target="_blank" title="降三高药品">降三高药品</a>
-									</dd>
-								</dl>
-							</dl>
-						</div>
-					</div>
-
+					</c:forEach>
 				</div>
-
 			</div>
 			<ul class="yMenuIndex">
 				<li><a href="" target="_blank" title="首页">首页</a></li>
@@ -481,10 +290,10 @@
 			</div>--%>
 
 				<ul class="m-cols m-col-3">
-					<li class="col"><img src="images/zhuanchang1.jpg"></li>
-					<li class="col"><img src="images/zhuanchang2.jpg"></li>
-					<li class="col"><img src="images/zhuanchang3.jpg"></li>
-					<li class="col"><img src="images/zhuanchang4.jpg"></li>
+					<li class="col"><img src="${pageContext.request.contextPath}/jsp/users/images/zhuanchang1.jpg"></li>
+					<li class="col"><img src="${pageContext.request.contextPath}/jsp/users/images/zhuanchang2.jpg"></li>
+					<li class="col"><img src="${pageContext.request.contextPath}/jsp/users/images/zhuanchang3.jpg"></li>
+					<li class="col"><img src="${pageContext.request.contextPath}/jsp/users/images/zhuanchang4.jpg"></li>
 				</ul>
 
 

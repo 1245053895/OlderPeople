@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Administrator
@@ -196,84 +197,20 @@
 				<ul class="nav nav-pills" style="width: 100px;">
 					<li class="dropdown"><a href="#">所有分类<span class="caret"></span></a>
 						<ul class="dropdown-menu">
-							<li class="wd">
-								<div class="dropdown-xl">
-									<dl>
-										<dt><a>代步出行</a></dt>
-										<dd><a>轮椅</a></dd>
-										<dd><a>防滑拐杖</a></dd>
-										<dd><a>代步车</a></dd>
-										<dd><a>助行器</a></dd>
-										<dd><a>老年购物车</a></dd>
-										<dd><a>爬楼助行器</a></dd>
-									</dl>
-								</div>
-							</li>
-							<li class="wd">
-								<div class="dropdown-xl">
-									<dl>
-										<dt><a>健康监测</a></dt>
-										<dd><a>血压计</a></dd>
-										<dd><a>血糖仪</a></dd>
-										<dd><a>助听器</a></dd>
-										<dd><a>制氧机</a></dd>
-										<dd><a>呼吸机</a></dd>
-										<dd><a>雾化机</a></dd>
-									</dl>
-								</div>
-							</li>
-							<li class="wd">
-								<div class="dropdown-xl">
-									<dl>
-										<dt><a>康复护理</a></dt>
-										<dd><a>护理床</a></dd>
-										<dd><a>理疗仪</a></dd>
-										<dd><a>可折叠轮椅</a></dd>
-										<dd><a>老年尿不湿</a></dd>
-										<dd><a>关节按摩器</a></dd>
-										<dd><a>护理坐垫</a></dd>
-									</dl>
-								</div>
-							</li>
-							<li class="wd">
-								<div class="dropdown-xl">
-									<dl>
-										<dt><a>生活日用</a></dt>
-										<dd><a>扶手坐便器</a></dd>
-										<dd><a>防滑浴室椅</a></dd>
-										<dd><a>便携坐厕椅</a></dd>
-										<dd><a>老年益齿盒</a></dd>
-										<dd><a>软毛浴刷</a></dd>
-										<dd><a>老年保健球</a></dd>
-									</dl>
-								</div>
-							</li>
-							<li class="wd">
-								<div class="dropdown-xl">
-									<dl>
-										<dt><a>休闲娱乐</a></dt>
-										<dd><a>文房四宝</a></dd>
-										<dd><a>收音机</a></dd>
-										<dd><a>中国象棋</a></dd>
-										<dd><a>太空漫步机</a></dd>
-										<dd><a>茶具</a></dd>
-										<dd><a>太极</a></dd>
-									</dl>
-								</div>
-							</li>
-							<li class="wd"  style="border-right: 1px transparent dashed">
-								<div class="dropdown-xl">
-									<dl>
-										<dt><a>医疗保健</a></dt>
-										<dd><a>老年奶粉</a></dd>
-										<dd><a>老年钙片</a></dd>
-										<dd><a>燕窝</a></dd>
-										<dd><a>人参</a></dd>
-										<dd><a>助睡眠药品</a></dd>
-										<dd><a>降三高药品</a></dd>
-									</dl>
-								</div>
-							</li>
+							<c:forEach items="${productTypeExtends}" var="productTypeExtend">
+								<li class="wd">
+										<div class="dropdown-xl">
+												<dl>
+													<dt><a href="${pageContext.request.contextPath}/SelectProductType.action?ProductTypeId=${productTypeExtend.producttypeid}">${productTypeExtend.producttypename}</a></dt>
+
+													<c:forEach items="${productTypeExtend.product}" var="product">
+														<dd><a>${product.productname}</a></dd>
+													</c:forEach>
+
+												</dl>
+										</div>
+								</li>
+							</c:forEach>
 						</ul>
 					</li>
 				</ul>
@@ -284,8 +221,10 @@
 			<div style="width: 1180px;margin-left: 65px;margin-top: -25px;">
 
 				<div style="width: 150px;margin-left: 20px;font-size: 18px;">
-					<img src="images/dingwei.png" width="50px" height="50px">
-					<h4 style="margin-top: -30px;margin-left: 45px;">出行代步</h4>
+					<img src="/jsp/users/images/dingwei.png" width="50px" height="50px">
+					<c:forEach items="${productTypeExtends1}" var="productTypeExtends11">
+					<h4 style="margin-top: -30px;margin-left: 45px;">${productTypeExtends11.producttypename}</h4>
+					</c:forEach>
 				</div>
 				<div class="time-border">
 
@@ -294,66 +233,19 @@
 						<div class="yScrollListIn">
 							<div class="yScrollListInList yScrollListInList1" style="display:block; width: 1180px;height: 100%;margin-left: -40px">
 								<ul style="width: 1180px;text-align: center">
-									<li style="text-align: center">
-										<div class="row">
-											<dl>
-												<dt><img src="./images/rxsp/fhgz1.1.png"></dt>
-												<dd class="name">防滑拐杖</dd>
-												<dd style="color: #B0B0B0">老年出行更安全</dd>
-												<dd style="color: #ec1611;font: 13px/33px '微软雅黑'">149元</dd>
-											</dl>
-										</div>
-									</li>
-									<li style="text-align: center">
-										<div class="row">
-											<dl>
-												<dt><img src="./images/rxsp/wfsb5.1.jpg"></dt>
-												<dd class="name">笔墨纸砚</dd>
-												<dd style="color: #B0B0B0">文房四宝，老年娱乐</dd>
-												<dd style="color: #ec1611;font: 13px/33px '微软雅黑'">149元</dd>
-											</dl>
-										</div>
-									</li>
-									<li style="text-align: center">
-										<div class="row">
-											<dl>
-												<dt><img src="./images/rxsp/whj1.1.gif"></dt>
-												<dd class="name">雾化器</dd>
-												<dd style="color: #B0B0B0">治疗各种呼吸系统疾病</dd>
-												<dd style="color: #ec1611;font: 13px/33px '微软雅黑'">149元</dd>
-											</dl>
-										</div>
-									</li>
-									<li style="text-align: center">
-										<div class="row">
-											<dl>
-												<dt><img src="./images/rxsp/sdly1.1.gif"></dt>
-												<dd class="name">手动轮椅</dd>
-												<dd style="color: #B0B0B0">残疾人轮椅代步</dd>
-												<dd style="color: #ec1611;font: 13px/33px '微软雅黑'">149元</dd>
-											</dl>
-										</div>
-									</li>
-									<li style="text-align: center">
-										<div class="row">
-											<dl>
-												<dt><img src="./images/rxsp/tkmbj1.1.png"></dt>
-												<dd class="name">太空漫步机</dd>
-												<dd style="color: #B0B0B0">老年运动，活动关节腿脚</dd>
-												<dd style="color: #ec1611;font: 13px/33px '微软雅黑'">149元</dd>
-											</dl>
-										</div>
-									</li>
-									<li style="text-align: center">
-										<div class="row">
-											<dl>
-												<dt><img src="./images/rxsp/tkmbj1.1.png"></dt>
-												<dd class="name">太空漫步机</dd>
-												<dd style="color: #B0B0B0">老年运动，活动关节腿脚</dd>
-												<dd style="color: #ec1611;font: 13px/33px '微软雅黑'">149元</dd>
-											</dl>
-										</div>
-									</li>
+									<c:forEach items="${productss}" var="products">
+										<li style="text-align: center">
+											<div class="row">
+												<dl>
+													<dd><a>${products.productname}</a></dd>
+													<dt><a href="${pageContext.request.contextPath}/xiangqing.action?productid=${products.productid}"><img src="${products.productpicture}"></a></dt>
+													<dd class="name"><a href="${pageContext.request.contextPath}/xiangqing.action?ProductTypeId=${products.productid}">${products.productname}</a></dd>
+
+													<dd style="color: #ec1611;font: 13px/33px '微软雅黑'">${products.productprice}</dd>
+												</dl>
+											</div>
+										</li>
+									</c:forEach>
 								</ul>
 							</div>
 						</div>
@@ -521,6 +413,7 @@
 <script type="text/javascript">
     //hover 触发两个事件，鼠标移上去和移走
     //mousehover 只触发移上去事件
+
     $(".top-nav ul li").hover(function(){
         $(this).addClass("hover").siblings().removeClass("hover");
         $(this).find("li .nav a").addClass("hover");

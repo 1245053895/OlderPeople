@@ -5,7 +5,7 @@
   Time: 16:40
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt" %>
 <html>
 <head>
@@ -21,6 +21,7 @@
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/jsp/users/css/base.css">
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/jsp/users/css/home.css">
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/jsp/users/css/member.css">
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/jsp/users/css/express.css">
 	<%--<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/jsp/admin/assets/*">--%>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/jsp/users/js/jquery.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/jsp/users/js/jquery-1.8.3.min.js"></script>
@@ -546,8 +547,8 @@
 
                     htmlStr1 = "<li>\n" +
                         "        <div class='member-minute clearfix'>\n" +
-                        "         <span>" + content.createtime + "</span>\n" +
-                        "         <span>订单号：<em>" + content.orderid + "</em></span>\n" +
+                        "         <span>" + gettime(content.createtime) + "</span>\n" +
+                        "         <span>订单号：<em id='order_id'>" + content.orderid + "</em></span>\n" +
                         "         <span class='member-custom'>客服电话：<em>010-6544-0986</em></span>\n" +
                         "        </div>\n" +
                         "        <div class='member-circle clearfix'>\n" +
@@ -577,7 +578,7 @@
                         case 0:
                             htmlStr3 += "<div class='ci5 height" + index + "'><p>交易关闭</p>"
                             if (content.shippingcode != null || content.shippingcode != "") {
-                                htmlStr3 += "<p><a href='#'>物流跟踪</a></p>"
+                                htmlStr3 += "<p><a class='express' href='javascript:queryExpress(" + content.shippingcode + ");'>物流跟踪</a></p>"
                             }
                             htmlStr3 += "<p><a href='#'>订单详情</a></p></div>\n";
 
@@ -588,32 +589,32 @@
                             htmlStr3 += "<div class='ci5 ci8 height" + index + "'><p><a href='#' class='member-touch'>提醒发货</a> </p> <p><a href='#'>取消订单</a> </p></div>\n";
                             break;
                         case 2:
-                            htmlStr3 += "<div class='ci5 height" + index + "'><p>已发货</p><p><a href='#'>物流跟踪</a></p> <p><a href='#'>订单详情</a></p></div>\n";
+                            htmlStr3 += "<div class='ci5 height" + index + "'><p>已发货</p><p><a class='express' href='javascript:queryExpress(" + content.shippingcode + ");'>物流跟踪</a></p> <p><a href='#'>订单详情</a></p></div>\n";
                             htmlStr3 += "<div class='ci5 ci8 height" + index + "'><p><a href='#' class='member-touch'>确认收货</a> </p></p></div>\n";
                             break;
                         case 3:
-                            htmlStr3 += "<div class='ci5 height" + index + "'><p>已签收</p><p><a href='#'>物流跟踪</a></p> <p><a href='#'>订单详情</a></p></div>\n";
+                            htmlStr3 += "<div class='ci5 height" + index + "'><p>已签收</p><p><a class='express' href='javascript:queryExpress(" + content.shippingcode + ");'>物流跟踪</a></p> <p><a href='#'>订单详情</a></p></div>\n";
                             htmlStr3 += "<div class='ci5 ci8 height" + index + "'><p><a href='#' class='member-touch'>评价</a></p><p><a href='#' class='member-touch'>售后服务</a></p></div>\n";
                             break;
                         case 4:
-                            htmlStr3 += "<div class='ci5 height" + index + "'><p>已完成</p><p><a href='#'>物流跟踪</a></p> <p><a href='#'>订单详情</a></p></div>\n";
+                            htmlStr3 += "<div class='ci5 height" + index + "'><p>已完成</p><p><a class='express' href='javascript:queryExpress(" + content.shippingcode + ");'>物流跟踪</a></p> <p><a href='#'>订单详情</a></p></div>\n";
                             htmlStr3 += "<div class='ci5 ci8 height" + index + "'><p>剩余15时20分</p><p><a href='#' class='member-touch'>再次购买</a></p><p><a href='#' class='member-touch'>售后服务</a></p></div>\n";
                             break;
                         case 5:
-                            htmlStr3 += "<div class='ci5 height" + index + "'><p>拒收</p><p><a href='#'>物流跟踪</a></p> <p><a href='#'>订单详情</a></p></div>\n";
+                            htmlStr3 += "<div class='ci5 height" + index + "'><p>拒收</p><p><a class='express' href='javascript:queryExpress(" + content.shippingcode + ");'>物流跟踪</a></p> <p><a href='#'>订单详情</a></p></div>\n";
                             htmlStr3 += "<div class='ci5 ci8 height" + index + "'><p><a href='#' class='member-touch'>拒收理由</a> </p></div>\n";
                             break;
                         case 6:
-                            htmlStr3 += "<div class='ci5 height" + index + "'><p>申请退货</p><p><a href='#'>物流跟踪</a></p> <p><a href='#'>订单详情</a></p></div>\n";
+                            htmlStr3 += "<div class='ci5 height" + index + "'><p>申请退货</p><p><a class='express' href='javascript:queryExpress(" + content.shippingcode + ");'>物流跟踪</a></p> <p><a href='#'>订单详情</a></p></div>\n";
                             htmlStr3 += "<div class='ci5 ci8 height" + index + "'><p><a href='#' class='member-touch'>撤销申请</a> </p></div>\n";
                             break;
                         case 7:
-                            htmlStr3 += "<div class='ci5 height" + index + "'><p>同意退货</p><p><a href='#'>物流跟踪</a></p> <p><a href='#'>订单详情</a></p></div>\n";
+                            htmlStr3 += "<div class='ci5 height" + index + "'><p>同意退货</p><p><a class='express' href='queryExpress(" + content.shippingcode + ");'>物流跟踪</a></p> <p><a href='#'>订单详情</a></p></div>\n";
                             htmlStr3 += "<div class='ci5 ci8 height" + index + "'><p>剩余15时20分</p><p><a href='#' class='member-touch'>填写物流</a> </p><p><a href='#' class='member-touch'>撤销申请</a> </p></div>\n";
                             break;
                             break;
                         case 8:
-                            htmlStr3 += "<div class='ci5 height" + index + "'><p>拒绝退货</p><p><a href='#'>物流跟踪</a></p> <p><a href='#'>订单详情</a></p></div>\n";
+                            htmlStr3 += "<div class='ci5 height" + index + "'><p>拒绝退货</p><p><a class='express' href='javascript:queryExpress(" + content.shippingcode + ");'>物流跟踪</a></p> <p><a href='#'>订单详情</a></p></div>\n";
                             htmlStr3 += "<div class='ci5 ci8 height" + index + "'><p><a href='#' class='member-touch'>查看原因</a> </p></div>\n";
                             break;
                         default:
@@ -623,8 +624,8 @@
                     }
                     htmlStr3 += "</div></li>"
                     $("#order").find("ul").append(htmlStr1 + htmlStr2 + htmlStr3);
-                    $(".height" + index).height(90 * productCount - 23);
-                    //console.log("++++"+htmlStr2);
+                    $(".height" + index).height(110 * productCount - 23);  //动态设置高度
+
                 });
             }
         }
@@ -1029,6 +1030,75 @@
         }
     }
 
+    //查询物流
+	function queryExpress(orderid) {
+        $.ajax({
+            url:"${pageContext.request.contextPath}/queryExpressBycode.action",
+            async:false,
+            type: 'POST',
+            data:{"id":orderid},
+            traditional: true,
+            timeout: 5000,
+            cache: false,
+            success: succFunction, //成功执行方法
+            beforeSend: LoadFunction, //加载执行方法
+            error: erryFunction  //错误执行方法
+        });
+        function LoadFunction() {
+
+        }
+        function erryFunction(){
+
+        }
+        function succFunction(data) {
+            var json= JSON.parse(data);
+            $(".member-head").nextAll("div").remove();
+            $(".member-heels").text("物流详情");
+			$(".member-right").append(
+			    "<div data-mohe-type='kuaidi_new' class='g-mohe ' id='mohe-kuaidi_new' style='margin: 0px auto;width: 800px;height:700px;overflow-y:scroll;'>\n" +
+                "    <div id='mohe-kuaidi_new_nucom'>\n" +
+                "        <div class='mohe-wrap mh-wrap'>\n" +
+                "            <div class='mh-cont mh-list-wrap mh-unfold'>\n" +
+                "                <div class='number' style='height: 50px;margin-top: 20px;font-size: 24px'>\n" +
+                "                    <label>快递单号:</label><span class='id' style='color: #2a91d8'></span>&nbsp;&nbsp;\n" +
+                "                    <label>快递公司:</label><span class='name' style='color: #2a91d8'>${name}</span>\n" +
+                "                </div>\n" +
+                "                <div class='mh-list'>\n" +
+                "                    <ul id='express_ul'>\n" +
+                "                    </ul>\n" +
+                "                </div>\n" +
+                "                <div style='width: auto;height: 100px;'></div>\n" +
+                "            </div>\n" +
+                "        </div>\n" +
+                "    </div>\n" +
+                "</div>"
+
+			);
+            console.log(data);
+
+            //var json=data;
+            //console.log(json);
+            //console.log(json.status);
+            $(".number").find(".id").html(json.result.number);
+            $(".number").find(".name").html(json.result.type);
+            $.each( json.result.list, function(index, content) {
+                console.log(json.status);
+                if (index == 0) {
+                    $("#express_ul").append("<li class='first' style='height:60px;'>\n" +
+                        "<p>" + content.time + "</p>\n" +
+                        " <p>" + content.status + "</p>\n" +
+                        " <span class='before'></span><span class='after'></span><i class='mh-icon mh-icon-new'></i></li>");
+                }else{
+                    $("#express_ul").append("<li  style='height:60px;'>\n" +
+                        "<p>" + content.time + "</p>\n" +
+                        " <p>" + content.status + "</p>\n" +
+                        " <span class='before'></span><span class='after'></span></li>");
+                }
+            });
+            $("#express_ul").append("<li style='margin-left:-100px;margin-top:50px;height: 120px;width: 100%;border-top: 1px #d3d3d3 solid'></li>");
+        }
+    }
+
     //通过id将购物车内商品移入收藏夹
     function shiftToFavorites(shopcarid) {
         var data=ajax('insertShiftToFavorites.action',shopcarid);
@@ -1132,6 +1202,8 @@
         summing();
     }
 
+
+
     function sleep(n) { //n表示的毫秒数
         var start = new Date().getTime();
         while (true) {
@@ -1148,20 +1220,33 @@
      * @returns {string}
      */
     function gettime(mydate){//将当前时间转换成yyyymmdd格式
-        //var mydate = new Date();
-        var str = "" + mydate.getFullYear();
-        var mm = mydate.getMonth()+1
+        var mydate = new Date(mydate);
+        var str = "" + mydate.getFullYear()+"-";
+        var mm = mydate.getMonth()
         if(mydate.getMonth()>9){
-            str += mm;
-        }
-        else{
-            str += "0" + mm;
+            str += mm+"-";
+        } else{
+            str += "0" + mm+"-";
         }
         if(mydate.getDate()>9){
-            str += mydate.getDate();
+            str += mydate.getDate()+" ";
+        } else{
+            str += "0" + mydate.getDate()+" ";
         }
-        else{
-            str += "0" + mydate.getDate();
+        if(mydate.getHours()>9){
+            str += mydate.getHours()+":";
+		}else {
+            str += "0"+mydate.getHours()+":";
+		}
+        if(mydate.getMinutes()>9){
+            str += mydate.getMinutes()+":";
+        }else {
+            str += "0"+mydate.getMinutes()+":";
+        }
+        if(mydate.getSeconds()>9){
+            str += mydate.getSeconds();
+        }else {
+            str += "0"+mydate.getSeconds();
         }
         return str;
     }

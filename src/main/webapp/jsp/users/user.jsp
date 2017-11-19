@@ -206,8 +206,8 @@
 							<div class="warn2">性别</div>
 							<span class="warn3">
 								<ul style="height: 0px;margin-top: -10px;margin-left: -25px">
-									<li style="border-bottom: 0px;"><input type="radio" name="usersex" data-labelauty="男" value="1" <c:if test="${sessionScope.user.usersex==1}">checked></c:if></li>
-									<li style="border-bottom: 0px;"><input type="radio" name="usersex" data-labelauty="女" value="0" <c:if test="${sessionScope.user.usersex==0}">checked></c:if></li>
+									<li style="border-bottom: 0px;"><input type="radio" name="usersex" data-labelauty="男" value="${userAndBrithday.usersex}" <c:if test="${userAndBrithday.usersex==1}">checked></c:if></li>
+									<li style="border-bottom: 0px;"><input type="radio" name="usersex" data-labelauty="女" value="${userAndBrithday.usersex}" <c:if test="${userAndBrithday.usersex==0}">checked></c:if></li>
 								</ul>
 							</span>
 

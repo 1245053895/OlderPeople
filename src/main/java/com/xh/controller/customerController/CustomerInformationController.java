@@ -40,15 +40,18 @@ public class CustomerInformationController {
             userInfo.setUserid(id);
             UserAndBrithday userAndBrithday=customerInformationService.SelectCustomerInformation(id);
             model.addAttribute(userAndBrithday);
-            String userBirthday = df.format(userAndBrithday.getUserbirthday());
-            String temp[] = userBirthday.split(" ")[0].split("-");
-            String year = temp[0];
-            String month = temp[1];
-            String day = temp[2];
-
-            model.addAttribute("temp", temp);
-
+            if(userInfo.getUserbirthday()!=null){
+                String userBirthday = df.format(userAndBrithday.getUserbirthday());
+                String temp[] = userBirthday.split(" ")[0].split("-");
+                String year = temp[0];
+                String month = temp[1];
+                String day = temp[2];
+                model.addAttribute("temp", temp);
+            }else {
+                return "/jsp/users/user.jsp";
+            }
             return "/jsp/users/user.jsp";
+
         }else {
             return "/jsp/users/user.jsp";
         }
@@ -59,7 +62,6 @@ public class CustomerInformationController {
         User user1= (User) request.getSession().getAttribute("user");
         Integer id=user1.getUserid();
         userAndBrithday.setUserid(id);
-
 
         String temp =userAndBrithday.getYear()+userAndBrithday.getMonth()+userAndBrithday.getDay();
         DateFormat df = new SimpleDateFormat("yyyyMMdd");

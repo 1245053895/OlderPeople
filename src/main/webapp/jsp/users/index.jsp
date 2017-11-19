@@ -318,14 +318,14 @@
 					</div>
 				</div>
 			</header>
-			<div class="m-box">
-				<section class="span20 m-slide">
-					<div class="m-slide-contain m-s2">
-						<div class="m-slide-item">
-							<ul class="m-cols m-col-5">
+			<div class="m-box" style="height:700px;">
+				<section class="span20 m-slide"  style="height: 330px">
+					<div class="m-slide-contain m-s2" >
+						<div class="m-slide-item" >
+							<ul class="m-cols m-col-5" >
 								<c:forEach begin="0" end="4" step="1" items="${products}" var="product">
-								<li class="col sku-item ">
-									<dl class="row">
+								<li class="col sku-item " >
+									<dl class="row" >
 										<dt><a href="${pageContext.request.contextPath}/xiangqing.action?productid=${product.productid}"><img src="${product.productpicture}"></a></dt>
 										<dd class="name"><a href="${pageContext.request.contextPath}/xiangqing.action?productid=${product.productid}">${product.productname}</a></dd>
 										<dd class="desc">${product.productdescribe}</dd>
@@ -347,8 +347,6 @@
 										</dl>
 									</li>
 								</c:forEach>
-
-
 
 							<%--
 								<li class="col sku-item ">
@@ -383,6 +381,7 @@
 										<dd class="price">1499元</dd>
 									</dl>
 								</li>--%>
+
 							</ul>
 						</div>
 					</div>
@@ -398,7 +397,7 @@
 					<h2 class="m-hdL">热销商品</h2>
 					<div class="m-hdR">
 						<div class="scan">
-							<span>查看全部</span>
+							<span><a href="${pageContext.request.contextPath}/ProductHot.action">查看全部</a></span>
 							<a href="#" class="icon">&gt;</a>
 						</div>
 					</div>

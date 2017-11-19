@@ -86,8 +86,83 @@
 	</div>
 -->
 	<div class="pc-header-nav">
-
-		<jsp:include page="/jsp/users/head.jsp"></jsp:include>
+		<div class="pc-header-con">
+			<div class="fl pc-header-link" >您好！，欢迎来孝和集团电子商城 
+				<a href="login.html" target="_blank">请登录</a> 
+				<a href="register.html" target="_blank"> 免费注册</a>
+			</div>
+			<div class="fr pc-header-list top-nav">
+				<ul>
+					<li><a href="#">我的收藏</a></li>
+					<li>
+						<div class="nav"><i class="pc-top-icon"></i><a href="#">个人中心</a></div>
+						<div class="con">
+							<dl>
+								<dt><a href="">个人资料</a></dt>
+								<dd><a href="">收货地址</a></dd>
+								<dd><a href="">修改登录密码</a></dd>
+								<dd><a href="">我的积分</a></dd>
+								<dd><a href="">已购买的宝贝</a></dd>
+							</dl>
+						</div>
+					</li>
+										
+					<li>
+						<div class="nav"><i class="pc-top-icon"></i><a href="#">帮助中心</a></div>
+						<div class="con">
+							<dl>
+								<dt><a href="">积分说明</a></dt>
+								<dd><a href="">联系客服</a></dd>
+							</dl>
+						</div>
+					</li>
+					
+				</ul>
+			</div>
+		</div>
+	</div>
+	
+	<div class="pc-header-logo clearfix">
+		<div class="pc-fl-logo fl">
+			<h1>
+				<a href="index.jsp"></a>
+			</h1>
+		</div>
+		<div class="head-form fl">
+			<form class="clearfix">
+				<input class="search-text" accesskey="" id="key" autocomplete="off" placeholder="洗衣机" type="text">
+				<button class="button" onclick="search('key');return false;">搜索</button>
+			</form>
+			<div class="words-text clearfix">
+				<a href="#">制氧机</a>
+				<a href="#">代步车</a>
+				<a href="#">电动轮椅</a>
+				<a href="#">血糖仪</a>
+				<a href="#">血压计</a>
+				<a href="#">木制拐杖</a>
+				<a href="#">足浴盆</a>
+			</div>
+		</div>
+		<div class="fr pc-head-car">
+			<i class="icon-car"></i>
+			<a href="#">我的购物车</a>
+		</div>
+	</div>
+	<!--  顶部    start-->
+	<div class="yHeader">
+		<!-- 导航   start  -->
+		<div class="yNavIndex">
+			<ul class="yMenuIndex">
+				<li><a href="" target="_blank" title="首页">首页</a></li>
+				<li><a href="" target="_blank" title="热销专区">热销专区</a></li>
+				<li><a href="" target="_blank" title="新品专区">新品专区</a></li>
+				<li><a href="" target="_blank" title="积分商城">积分商城</a></li>
+				<li><a href="" target="_blank" title="合伙人">合伙人</a></li>
+				<li><a href="" target="_blank" title="关于我们">关于我们</a></li>
+			</ul>
+		</div>
+		<!-- 导航   end  -->
+	</div>
 
 </header>
 
@@ -248,114 +323,6 @@
 							</div>
 							<!-- 收货方式 END-->
 
-<!--							<div class="xm-box">
-								<div class="box-hd ">
-									<h2 class="title">配送方式</h2>
-								</div>
-								<div class="box-bd">
-									<ul id="checkoutShipmentList" class="checkout-option-list clearfix J_optionList">
-										<li class="item selected">
-											<input type="radio" data-price="0" name="Checkout[shipment_id]" checked="checked" value="1">
-											<p>
-												快递配送（免运费）                                <span></span>
-											</p>
-										</li>
-									</ul>
-								</div>
-							</div>
-							&lt;!&ndash; 配送方式 END&ndash;&gt;                    &lt;!&ndash; 配送方式 END&ndash;&gt;
-						</div>
-						&lt;!&ndash; 送货时间 &ndash;&gt;
-						<div class="xm-box">
-							<div class="box-hd">
-								<h2 class="title">送货时间</h2>
-							</div>
-							<div class="box-bd">
-								<ul class="checkout-option-list clearfix J_optionList">
-									<li class="item selected">
-										<input type="radio" checked="checked" name="Checkout[best_time]" value="1">
-										<p>不限送货时间<span>周一至周日</span></p>
-									</li><li class="item ">
-									    <input type="radio"  name="Checkout[best_time]" value="2">
-									    <p>工作日送货<span>周一至周五</span></p>
-								    </li>
-									<li class="item ">
-									    <input type="radio"  name="Checkout[best_time]" value="3">
-									    <p>双休日、假日送货<span>周六至周日</span></p>
-								    </li>
-						    	</ul>
-							</div>
-						</div>
-						&lt;!&ndash; 送货时间 END&ndash;&gt;
-						&lt;!&ndash; 发票信息 &ndash;&gt;
-						<div id="checkoutInvoice">
-							<div class="xm-box">
-								<div class="box-hd">
-									<h2 class="title">发票信息</h2>
-								</div>
-								<div class="box-bd">
-									<ul class="checkout-option-list checkout-option-invoice clearfix J_optionList J_optionInvoice">
-										<li class="hide">
-											电子个人发票4
-										</li>
-										<li class="item selected">
-											&lt;!&ndash;<label><input type="radio"  class="needInvoice" value="0" name="Checkout[invoice]">不开发票</label>&ndash;&gt;
-											<input type="radio"    checked="checked"  value="4" name="Checkout[invoice]">
-											<p>电子发票（非纸质）</p>
-										</li>
-										<li class="item ">
-											<input type="radio"   value="1" name="Checkout[invoice]">
-											<p>普通发票（纸质）</p>
-										</li>
-									</ul>
-									<p id="eInvoiceTip" class="e-invoice-tip ">
-										电子发票是税务局认可的有效凭证，可作为售后维权凭据，不随商品寄送。开票后不可更换纸质发票，如需报销请选择普通发票。<a href="#" target="_blank">什么是电子发票？</a>
-									</p>
-									<div class="invoice-info nvoice-info-1" id="checkoutInvoiceElectronic" style="display:none;">
-
-										<p class="tip">电子发票目前仅对个人用户开具，不可用于单位报销 ，不随商品寄送</p>
-										<p>发票内容：购买商品明细</p>
-										<p>发票抬头：个人</p>
-										<p>
-											<span class="hide"><input type="radio" value="4" name="Checkout[invoice_type]"   checked="checked"   id="electronicPersonal" class="invoiceType"></span>
-										<dl>
-											<dt>什么是电子发票?</dt>
-											<dd>&#903; 电子发票是纸质发票的映像，是税务局认可的有效凭证，与传统纸质发票具有同等法律效力，可作为售后维权凭据。</dd>
-											<dd>&#903; 开具电子服务于个人，开票后不可更换纸质发票，不可用于单位报销。</dd>
-											<dd>&#903; 您在订单详情的"发票信息"栏可查看、下载您的电子发票。<a href="#" target="_blank">什么是电子发票？</a></dd>
-										</dl>
-										</p>
-									</div>
-									<div class="invoice-info invoice-info-2" id="checkoutInvoiceDetail"  style="display:none;" >
-										<p>发票内容：购买商品明细</p>
-										<p>
-											发票抬头：请确认单位名称正确,以免因名称错误耽搁您的报销。注：合约机话费仅能开个人发票
-										</p>
-										<ul class="type clearfix J_invoiceType">
-											<li class="hide">
-												<input type="radio" value="0" name="Checkout[invoice_type]" id="noNeedInvoice" >
-											</li>
-											<li class="">
-												<input  class="invoiceType" type="radio" id="commonPersonal" name="Checkout[invoice_type]" value="1" >
-												个人
-											</li>
-											<li class="">
-												<input  class="invoiceType" type="radio" name="Checkout[invoice_type]" value="2" >
-												单位
-											</li>
-										</ul>
-										<div  id='CheckoutInvoiceTitle' class=" hide  invoice-title">
-											<label>单位名称：</label>
-											<input name="Checkout[invoice_title]" type="text" maxlength="49" value="" class="input"> <span class="tip-msg J_tipMsg"></span>
-										</div>
-
-									</div>
-
-								</div>
-							</div>                </div>
-						&lt;!&ndash; 发票信息 END&ndash;&gt;
-					</div>
-					<div class="checkout-box-ft">-->
 						<!-- 商品清单 -->
 						<div id="checkoutGoodsList" class="checkout-goods-box">
 							<div class="xm-box">

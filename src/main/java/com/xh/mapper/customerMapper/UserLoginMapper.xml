@@ -50,10 +50,82 @@
     </select>
 
 
-    <!--查询出商品的图片，名称，描述，价格，展示在商城的首页-->
+    <!--查询出上市商品的图片，名称，描述，价格，展示在商城的首页-->
     <select id="selectproduct" resultType="product">
         SELECT ProductId, productpicture, ProductName,ProductDescribe,ProductPrice
-          FROM product WHERE ProductNew=1
+          FROM product WHERE ProductNew=1 LIMIT 0,10
     </select>
+
+<!--  查询出热销商品的图片，名称，描述，价格，展示在商城的首页，热销商品的销售量-->
+    <select id="hotSaleProduct" resultType="totalCreditsById">
+                SELECT product.ProductId, productpicture, ProductName,ProductDescribe,ProductPrice,
+                COUNT(OrderId) totalhotsale  FROM orderproduct,product WHERE
+                product.ProductId=orderproduct.ProductId AND ProducthotSale=1
+                GROUP BY  orderproduct.ProductId LIMIT 0,8
+    </select>
+
+    <!--查询出热评出行中(评论数最多的前十)商品的图片，名称，描述，价格，展示在商城的首页，这类商品的评论人数和评论内容，评论者-->
+    <select id="Max10Comment" resultType="totalCreditsById">
+      SELECT UserName, product.ProductId,    productpicture, ProductName,ProductDescribe,ProductPrice,
+     product.ProductId, COUNT(`Comment`) totalcomment ,`Comment` FROM `comment` ,   product,`user`
+    WHERE product.ProductId=`comment`.ProductId AND `user`.UserId=`Comment`.UserId AND ProductTypeId=1
+     GROUP BY ProductId
+      ORDER BY totalcomment DESC LIMIT 0,8
+    </select>
+
+    <!--查询出热评健康中,(评论数最多的前十)商品的图片，名称，描述，价格，展示在商城的首页，这类商品的评论人数和评论内容评论者-->
+    <select id="selectjiangkang" resultType="totalCreditsById">
+           SELECT  ProductTypeId, product.ProductId, UserName,  productpicture, ProductName,ProductDescribe,ProductPrice,
+     product.ProductId, COUNT(`Comment`) totalcomment ,`Comment` FROM `comment` ,   product,user
+    WHERE product.ProductId=`comment`.ProductId AND `user`.UserId=`Comment`.UserId AND ProductTypeId=2
+     GROUP BY ProductId
+      ORDER BY totalcomment DESC LIMIT 0,8
+    </select>
+
+    <!--查询出热评居家中(评论数最多的前十)商品的图片，名称，描述，价格，展示在商城的首页，这类商品的评论人数和评论内容评论者-->
+    <select id="selectjujia" resultType="totalCreditsById">
+               SELECT UserName, ProductTypeId,    productpicture, ProductName,ProductDescribe,ProductPrice,
+       product.ProductId, COUNT(`Comment`) totalcomment ,Comment  FROM `comment` ,   product,`user`
+      WHERE product.ProductId=`comment`.ProductId AND `user`.UserId=`Comment`.UserId AND ProductTypeId=4
+     GROUP BY ProductId
+      ORDER BY totalcomment DESC LIMIT 0,8
+    </select>
+
+    <!--查询出热评娱乐中(评论数最多的前十)商品的图片，名称，描述，价格，展示在商城的首页，这类商品的评论人数，评价者，和评论内容-->
+    <select id="selectyule" resultType="totalCreditsById">
+              SELECT   UserName,  ProductTypeId,    productpicture, ProductName,ProductDescribe,ProductPrice,
+         product.ProductId, COUNT(`Comment`) totalcomment,`Comment` FROM `comment` ,   product,user
+       WHERE product.ProductId=`comment`.ProductId AND `user`.UserId=`Comment`.UserId  AND ProductTypeId=5
+       GROUP BY ProductId
+       ORDER BY totalcomment DESC LIMIT 0,8
+    </select>
+
+
+
+    <!--查询出可用积分兑换的商品的图片，名称，描述，价格，和所需要的积分是多少，展示在商城的首页-->
+  <select id="IsCredExchange" resultType="totalCreditsById">
+          SELECT product.ProductId, productpicture, ProductName, ProductDisabled,ProductDescribe,ProductPrice,COUNT(`Comment`) totalcomment
+            FROM product,comment WHERE  product.ProductId=`comment`.ProductId AND  ProductDisabled>0
+            GROUP BY `Comment`.ProductId
+         ORDER BY totalcomment DESC LIMIT 0,8
+  </select>
+
+
+    <!--店家推荐，推荐商品类型为医疗保健中得到商品好评度最多的商品-->
+    <select id="StoreRecommendation" resultType="totalCreditsById">
+           SELECT product. ProductId,  productpicture, ProductName,ProductDescribe,ProductPrice,
+       COUNT(GoodComment>=4) totalcomment FROM  product,`comment`  WHERE  product.ProductId=`comment`.ProductId
+       AND  ProductTypeId=6
+        GROUP BY ProductId
+       ORDER BY totalcomment DESC  LIMIT 0,4
+    </select>
+
+
+
+
+
+
+
+
 
 </mapper>

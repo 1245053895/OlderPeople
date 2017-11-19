@@ -39,4 +39,26 @@ public interface UserLoginService {
     //查询出商品的图片，名称，描述，价格，展示在商城的首页selectproduct
     public List<Product> selectproduct();
 
+    //查询出热销商品的图片，名称，描述，价格，展示在商城的首页
+    public List<TotalCreditsById> hotSaleProduct();
+
+
+    //查询出热评出行(评论数最多的前八)商品的图片，名称，描述，价格，展示在商城的首页
+    public List<TotalCreditsById> Max10Comment();
+
+    //查询出热评健康
+    public List<TotalCreditsById> selectjiangkang();
+    //查询出热评居家
+    public List<TotalCreditsById> selectjujia();
+
+    //查询出热评娱乐
+    public List<TotalCreditsById> selectyule();
+
+    //查询出可用积分兑换的商品的图片，名称，描述，价格，展示在商城的首页
+    public List<TotalCreditsById> IsCredExchange();
+
+    //店家推荐，推荐商品类型为医疗保健中得到商品好评度最多的商品
+    public List<TotalCreditsById> StoreRecommendation();
+
+
 }

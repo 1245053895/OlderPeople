@@ -184,8 +184,8 @@ public class MyProduct {
     }
 
     public String[]getImages(){
-        if (productpicture != null) {
-            String[] images =productpicture.split(",");
+        if (productB != null) {
+            String[] images =productB.split(",");
             return images;
         }
         return null;

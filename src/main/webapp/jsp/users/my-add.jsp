@@ -47,44 +47,7 @@
 <body>
 
 <header id="pc-header">
-<!--
-	<div class="pc-header-nav">
-		<div class="pc-header-con">
-			<div class="fl pc-header-link" >您好！，欢迎来云购物 <a href="login.html" target="_blank">请登录</a> <a href="register.html" target="_blank"> 免费注册</a></div>
-			<div class="fr pc-header-list top-nav">
-				<ul>
-					<li>
-						<div class="nav"><i class="pc-top-icon"></i><a href="#">我的订单</a></div>
-						<div class="con">
-							<dl>
-								<dt><a href="">批发进货</a></dt>
-								<dd><a href="">已买到货品</a></dd>
-								<dd><a href="">优惠券</a></dd>
-								<dd><a href="">店铺动态</a></dd>
-							</dl>
-						</div>
-					</li>
-					<li>
-						<div class="nav"><i class="pc-top-icon"></i><a href="#">我的商城</a></div>
-						<div class="con">
-							<dl>
-								<dt><a href="">批发进货</a></dt>
-								<dd><a href="">已买到货品</a></dd>
-								<dd><a href="">优惠券</a></dd>
-								<dd><a href="">店铺动态</a></dd>
-							</dl>
-						</div>
-					</li>
-					<li><a href="#">我的云购</a></li>
-					<li><a href="#">我的收藏</a></li>
-					<li><a href="#">会员中心</a></li>
-					<li><a href="#">客户服务</a></li>
-					<li><a href="#">帮助中心</a></li>
-				</ul>
-			</div>
-		</div>
-	</div>
--->
+
 	<div class="pc-header-nav">
 		<div class="pc-header-con">
 			<div class="fl pc-header-link" >您好！，欢迎来孝和集团电子商城 
@@ -223,7 +186,34 @@
 											<input type="radio" name="Checkout[address]" class="addressId"  value="10140916720030323">
 										</dd>
 									</dl>
-									<div class="use-new-addr"  id="J_useNewAddr" data-state="off">
+
+									<dl class="item" id="newadr" style="display: none">
+										<dt>
+											<strong class="itemConsignee"><input class="itemRegion" placeholder="请填写收件人姓名" style="border: hidden;width: 120px"></strong>
+											<span class="tag" onclick="quxiao()">取消</span>
+											<span class="tag" onclick="queding()">确定</span>
+										</dt>
+										<br/>
+										<dd>
+											<input class="itemRegion" placeholder="请填写省份、城市" style="border: hidden">
+											<input class="itemStreet" placeholder="请填写详细地址" style="border: hidden">
+											<input class="tel" placeholder="请填写收件人手机号" style="border: hidden">
+										</dd>
+										<dd style="display:none">
+											<input type="radio" name="Checkout[address]" class="addressId"  value="10140916720030323">
+										</dd>
+									</dl>
+
+									<script>
+										function xzdz() {
+											document.getElementById("newadr").style.display = "block"
+                                        }
+                                        function quxiao() {
+                                            document.getElementById("newadr").style.display = "none"
+                                        }
+									</script>
+									
+									<div class="use-new-addr"  id="J_useNewAddr" data-state="off" onclick="xzdz()">
 										<span class="iconfont icon-add"><img src="images/add_cart.png" /></span>
 										新增收货地址
 									</div>

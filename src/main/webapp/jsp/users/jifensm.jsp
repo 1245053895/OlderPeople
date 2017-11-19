@@ -178,28 +178,8 @@
 </header>
 
 <section id="member">
-	<div class="member-center clearfix">
-		<%--<div class="member-left fl">--%>
-		<%--	<div class="member-apart clearfix">
-				<div class="fl"><a href="#"><img src="img/mem.png"></a></div>
-				<div class="fl">
-					<p>用户名：</p>
-					<p><a href="#">亚里士多德</a></p>
-					<p>搜悦号：</p>
-					<p>389323080</p>
-				</div>
-			</div>--%>
-		<%--	<div class="member-lists" id="leftinfo">
-				<dl  onclick = "change(this);">
-					<dt>个人中心</dt>
-					<dd><a href="#">个人资料</a></dd>
-					<dd><a href="#">收货地址</a></dd>
-					<dd><a href="#">修改登录密码</a></dd>
-					<dd><a href="#">我的积分</a></dd>
-				</dl>
+	<div class="member-center clearfix" style="margin-top: 10px;margin-left: 60px">
 
-			</div>--%>
-		<%--</div>--%>
 		<div class="member-right fr">
 			<div class="member-head">
 				<div class="member-heels fl"><h2>积分说明</h2></div>
@@ -213,18 +193,17 @@
 							1、积分仅限在本商城内使用；在商城内可用于兑换部分商品；
 						</p>
 						<br>
-						<p>2、积分可以累积，有效期至少为1年，即从获得开始至次年年底，逾期自动作废
-							（如若交易在使用的积分有效期之外发生退款，该部分积分不予退还）；</p>
+						<p>2、积分可以累积，如若交易在使用积分之后发生退款，该部分积分不予退还）；</p>
 						<br>
 						<p>
-							3、在本商城购物均可获得积分，积分的基准返点比例为商品售价的0.5
+							3、在本商城购物均可获得积分，积分的基准返点比例为商品售价的0.1
 						</p>
 						<br>
 						<p>
 							4、积分的数值精确到个位（小数点后全部舍弃，不进行四舍五入）
 						</p>
 						<p>
-							例如：原价109元的商品，返54（109*0.5=54.5）个积分；
+							例如：原价109元的商品，返10（109*0.1=10.9）个积分；
 						</p>
 						<br>
 						<p>
@@ -232,59 +211,13 @@
 						</p>
 						<br>
 						<p>
-							6、买家在使用积分时，优先消耗旧积分（如买家积分由去年3月份和今年5月份共同累积，则优先消耗去年3月份的积分）；
+							6、积分不能兑现，不可转让。
 						</p>
 						<br>
 						<p>
-							7、积分不能兑现，不可转让。
-						</p>
-						<br>
-						<p>
-							注：如有疑问请<a href="">联系客服</a>
+							注：如有疑问请<span style="color: #ea4949">联系客服</span>
 						</p>
 					</div>
-
-					<%--<ul>--%>
-						<%--<li class="clearfix">--%>
-							<%--<div class="warn1"></div>--%>
-							<%--<div class="warn2">可用的积分</div>--%>
-							<%--<div class="warn2" style="color: #ea4949;font-size: 16px;border: none">746</div>--%>
-						<%--</li>--%>
-						<%--<li class="clearfix">--%>
-								<%--<div class="warn2" style="margin-left: 10px;border: none">来源/用途</div>--%>
-								<%--<div class="warn2" style="margin-left: 260px;border: none">积分变化</div>--%>
-								<%--<div class="warn2" style="margin-left: 200px;border: none">日期</div>--%>
-						<%--</li>--%>
-						<%----%>
-						<%----%>
-						<%----%>
-						<%--<li class="clearfix">--%>
-							<%--<div class="warn2" style="margin-left: 10px;border: none;font-weight: normal;width: 380px;height: 60px">--%>
-								<%--<a class="img" href=""><img src="images/shangpinxiangqing/X-1.png" width="60px" height="60px"></a>--%>
-								<%--<a style="width: 290px;height: 40px;overflow: hidden;line-height: 20px;text-align: left;display: block">商品名称巴拉巴拉巴拉巴拉</a>--%>
-								<%--<span style="height: 20px;display: block;line-height: 20px;text-align: left">编号：3215345347457857</span>--%>
-							<%--</div>--%>
-							<%--<div class="warn2" style="margin-left: 15px;border: none;font-weight: normal;height: 60px">--%>
-								<%--<span style="font-size: 24px;font-weight: 700;text-align: center;color: #ea4949;line-height: 60px">+54</span>--%>
-							<%--</div>--%>
-							<%--<div class="warn2" style="float: right;margin-right: -40px;border: none;font-weight: normal;height: 60px;width: 300px;line-height: 60px">2017年11月10日 16:10:22--%>
-							<%--</div>--%>
-						<%--</li>--%>
-
-						<%--<li class="clearfix">--%>
-							<%--<div class="warn2" style="margin-left: 10px;border: none;font-weight: normal;width: 380px;height: 60px">--%>
-								<%--<a class="img" href=""><img src="images/shangpinxiangqing/X-1.png" width="60px" height="60px"></a>--%>
-								<%--<a style="width: 290px;height: 40px;overflow: hidden;line-height: 20px;text-align: left;display: block">商品抵扣~巴拉巴拉巴拉巴拉</a>--%>
-								<%--<span style="height: 20px;display: block;line-height: 20px;text-align: left">编号：65245656378293674</span>--%>
-							<%--</div>--%>
-							<%--<div class="warn2" style="margin-left: 15px;border: none;font-weight: normal;height: 60px">--%>
-								<%--<span style="font-size: 24px;font-weight: 700;text-align: center;color: green;line-height: 60px">-42</span>--%>
-							<%--</div>--%>
-							<%--<div class="warn2" style="float: right;margin-right: -40px;border: none;font-weight: normal;height: 60px;width: 300px;line-height: 60px">2017年11月3日 12:24:21--%>
-							<%--</div>--%>
-						<%--</li>--%>
-
-					<%--</ul>--%>
 				</div>
 			</div>
 		</div>

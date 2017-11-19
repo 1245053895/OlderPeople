@@ -9,6 +9,7 @@ import com.xh.po.vo.TotalCreditsById;
 import com.xh.service.customerService.ProductTypeService;
 import com.xh.service.customerService.UserLoginService;
 import com.xh.util.NetworkUtil;
+import org.apache.commons.codec.binary.Hex;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
@@ -21,6 +22,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -69,7 +72,7 @@ public class CustomerLoginController {
             if (password != null) {
                 User user= userLoginService.selectAllNameAndPwd(username);
                 if (user != null) {
-                    if (user.getUserpwd().equals(password)) {
+                    if (user.getUserpwd().equals(encodePassword(password))) {
                         HttpSession session = request.getSession();
                         session.setMaxInactiveInterval(600*60*60);
                         session.setAttribute("user", user);
@@ -81,7 +84,7 @@ public class CustomerLoginController {
                             e.printStackTrace();
                         }
                         userLoginService.insertStartTimeAndIp(userlog);
-                        return "/jsp/users/index.jsp";
+                        return "redirect:/ShopFrontPage.action";
                     } else {
                         model.addAttribute("error", "密码不正确");
                     }
@@ -114,6 +117,8 @@ public class CustomerLoginController {
     @RequestMapping("/CustomerReginster.action")
     public String CustomerReginster(User user){
         user.setUserinputdate(new Date());
+        String pwd=user.getUserpwd();
+        user.setUserpwd(encodePassword(pwd));
         userLoginService.insertNewUser(user);
         return "/jsp/users/login.jsp";
     }
@@ -217,5 +222,27 @@ public class CustomerLoginController {
        // List<Product> products= userLoginService.selectproduct();
     }
 
+    //加密
+    public String encodePassword(String password) {
+        //
+        //password = "gxzcwefxcbergfd123456errttyyytytrnfzeczxcvertwqqcxvxb";
+        //1:MD5  算法
+        String algorithm = "MD5";
+        char[] encodeHex = null;
+        try {
+            //MD5加密
+            MessageDigest instance = MessageDigest.getInstance(algorithm);
+            //加密后
+            byte[] digest = instance.digest(password.getBytes());
+            //
+            //2:十六进制
+
+            encodeHex = Hex.encodeHex(digest);
+        } catch (NoSuchAlgorithmException e) {
+
+            e.printStackTrace();
+        }
+        return new String(encodeHex);
+    }
 
 }

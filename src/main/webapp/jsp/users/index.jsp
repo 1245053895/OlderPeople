@@ -278,7 +278,7 @@
 		</div>
 
 		<section id="adv" class="wraper site-adv m-box clear_bottom">
-			<div class="span4">
+			<%--<div class="span4">
 				<ul class="rect6">
 					<li class="item"></li>
 					<li class="item"></li>
@@ -287,13 +287,13 @@
 					<li class="item"></li>
 					<li class="item"></li>
 				</ul>
-			</div>
+			</div>--%>
 
 				<ul class="m-cols m-col-3">
-					<li class="col"><img src="images/zhuanchang1.jpg"></li>
-					<li class="col"><img src="images/zhuanchang2.jpg"></li>
-					<li class="col"><img src="images/zhuanchang3.jpg"></li>
-					<li class="col"><img src="images/zhuanchang4.jpg"></li>
+					<li class="col"><img src="${pageContext.request.contextPath}/jsp/users/images/zhuanchang1.jpg"></li>
+					<li class="col"><img src="${pageContext.request.contextPath}/jsp/users/images/zhuanchang2.jpg"></li>
+					<li class="col"><img src="${pageContext.request.contextPath}/jsp/users/images/zhuanchang3.jpg"></li>
+					<li class="col"><img src="${pageContext.request.contextPath}/jsp/users/images/zhuanchang4.jpg"></li>
 				</ul>
 
 

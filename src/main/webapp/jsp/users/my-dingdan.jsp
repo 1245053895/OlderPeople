@@ -547,7 +547,7 @@
                             htmlStr3 += "<div class='ci5 ci8 height" + index + "'><p><a href='#' class='member-touch'>撤销申请</a> </p></div>\n";
                             break;
                         case 7:
-                            htmlStr3 += "<div class='ci5 height" + index + "'><p>同意退货</p><p><a class='express' href='queryExpress(" + content.shippingcode + ");'>物流跟踪</a></p> <p><a href='#'>订单详情</a></p></div>\n";
+                            htmlStr3 += "<div class='ci5 height" + index + "'><p>同意退货</p><p><a class='express' href='javascript:queryExpress(" + content.shippingcode + ");'>物流跟踪</a></p> <p><a href='#'>订单详情</a></p></div>\n";
                             htmlStr3 += "<div class='ci5 ci8 height" + index + "'><p>剩余15时20分</p><p><a href='#' class='member-touch'>填写物流</a> </p><p><a href='#' class='member-touch'>撤销申请</a> </p></div>\n";
                             break;
                             break;

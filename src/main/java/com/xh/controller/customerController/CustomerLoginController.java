@@ -197,8 +197,7 @@ public class CustomerLoginController {
 
     //page.jsp商品详情页面，点击加入购物车
     @RequestMapping("/ShopCat.action")
-    public @ResponseBody
-    Map ShopCat(HttpServletRequest request, float[] data) {
+    public @ResponseBody Map ShopCat(HttpServletRequest request, float[] data) {
         Map map = new HashMap();
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
@@ -208,13 +207,22 @@ public class CustomerLoginController {
         shopCat.setProductid((int) data[0]);
         shopCat.setOrderamount((int) data[1]);
         shopCat.setPrice((double) data[2]);
-        userLoginService.ShopCarInsert(shopCat);
-        Shopcar shopcar = userLoginService.IsSuccessInsert(shopCat);
-        if (shopcar == null)
-            map.put("red", false);
-        else
-            map.put("red", true);
-        return map;
+      Shopcar shopcar1=  userLoginService.queryShopCar(shopCat);
+        if(shopcar1==null){
+            userLoginService.ShopCarInsert(shopCat);
+            Shopcar shopcar = userLoginService.IsSuccessInsert(shopCat);
+            if (shopcar == null)
+                map.put("red", false);
+            else
+                map.put("red", true);
+            return map;
+
+        }else{
+            map.put("red",false);
+            return map;
+        }
+
+
     }
 
 
@@ -243,12 +251,27 @@ public class CustomerLoginController {
 
     //收藏宝贝
     @RequestMapping("/ShouCangShop.action")
-    public String ShouCangShop(HttpServletRequest request, Favorites favorites){
-        HttpSession session=request.getSession();
-        User user=(User) session.getAttribute("user");
+    public Map  ShouCangShop(HttpServletRequest request,Integer productid ) {
+        Map map=new HashMap();
+        HttpSession session = request.getSession();
+        User user = (User) session.getAttribute("user");
+        Favorites favorites=new Favorites();
         favorites.setUserid(user.getUserid());
-        userLoginService.InsertFavorites(favorites);
-        return "/jsp/users/page.jsp";
+        favorites.setProductid(productid);
+        Favorites favorites1 = userLoginService.queryFavorite(favorites);
+        if (favorites1 == null) {
+            userLoginService.InsertFavorites(favorites);
+          Favorites favorites2=  userLoginService.IsSuccess(favorites);
+          if(favorites2==null){
+              map.put("red",false);
+          }else{
+              map.put("red",true);
+          }
+            return map;
+        }
+        else {
+            map.put("red",false);
+            return map;
+        }
     }
-
 }

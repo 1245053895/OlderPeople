@@ -198,7 +198,7 @@
 						<li class="clearfix">
 							<div class="warn1"></div>
 							<div class="warn2">用户名</div>
-							<div class="warn3"><input  class="inputx " type="text" name="username" value="${userAndBrithday.username}" readonly="readonly"></div>
+							<div class="warn3"><input  class="inputx " type="text" name="username" value="<c:if test='${userAndBrithday.username!=null}'>${userAndBrithday.username}</c:if>" readonly="readonly"></div>
 
 						</li>
 						<li class="clearfix">

@@ -121,6 +121,11 @@
     </select>
 
 
+    <!--查询购物车里是否已有此商品-->
+ <select id="queryShopCar" parameterType="shopcar" resultType="shopcar">
+        SELECT * FROM shopcar WHERE UserId=#{userid} AND ProductId=#{productid}
+    </select>
+
     <!--加入购物车-->
     <insert id="ShopCarInsert" parameterType="shopcar">
         INSERT INTO shopcar(UserId,ProductId,orderamount,Price) VALUES
@@ -133,10 +138,24 @@
           WHERE UserId=#{userid} AND ProductId=#{productid} AND orderamount=#{orderamount} AND Price=#{price}
     </select>
 
+
+    <!--查看此商品是否已在收藏夹中-->
+    <select id="queryFavorite" parameterType="favorites" resultType="favorites">
+        SELECT * FROM favorites WHERE UserId=#{userid}  AND ProductId=#{productid}
+    </select>
+
     <!--新增商品到收藏表中-->
     <insert id="InsertFavorites" parameterType="favorites">
         INSERT INTO favorites(UserId,ProductId) VALUES(#{userid},#{productid})
     </insert>
+
+
+    <!--查看商品插入到收藏夹中是否成功-->
+    <select id="IsSuccess" parameterType="favorites" resultType="favorites">
+         SELECT * FROM favorites WHERE UserId=#{userid}  AND ProductId=#{productid}
+    </select>
+
+
 
 
 

@@ -36,9 +36,6 @@
                 $(this).find("a").addClass("dingdans");
             });
         });
-        function change(i){
-
-        }
 	</script>
 	<script>
         $(function(){
@@ -153,8 +150,8 @@
 <header id="pc-header">
 	<div class="pc-header-nav">
 		<div class="pc-header-con">
-			<div class="fl pc-header-link" >您好！，欢迎来孝和集团电子商城 
-				<a href="login.html" target="_blank">请登录</a> 
+			<div class="fl pc-header-link" >您好！，欢迎来孝和集团电子商城
+				<a href="login.html" target="_blank">请登录</a>
 				<a href="register.html" target="_blank"> 免费注册</a>
 			</div>
 			<div class="fr pc-header-list top-nav">
@@ -172,7 +169,7 @@
 							</dl>
 						</div>
 					</li>
-										
+
 					<li>
 						<div class="nav"><i class="pc-top-icon"></i><a href="#">帮助中心</a></div>
 						<div class="con">
@@ -182,12 +179,12 @@
 							</dl>
 						</div>
 					</li>
-					
+
 				</ul>
 			</div>
 		</div>
 	</div>
-	
+
 	<div class="pc-header-logo clearfix">
 		<div class="pc-fl-logo fl">
 			<h1>
@@ -406,7 +403,7 @@
                 queryOrderByUserId(0,5);
                 break;
             case '1':
-                queryFavoritesByUserId(0,5);
+                queryFavoritesByUserId(0,24);
                 break;
             case '2':
                 queryShopCarByUserId(0,5);
@@ -457,11 +454,9 @@
             "     </div>\n" +
             "     <div class='member-sheet clearfix'>\n" +
             "      <ul>\n" +
-            "\n" +
             "      </ul>\n" +
             "     </div>\n" +
             "    </div>\n" +
-            "\n" +
             "    <div class='clearfix' style='padding:30px 20px;'>\n" +
             "     <div class='fr pc-search-g pc-search-gs'>\n" +
             "      <a style='display:none' class='fl ' href='javascript:void(0);'>上一页</a>\n" +
@@ -523,98 +518,115 @@
             $(".loading").find("div").text("加载失败!");
         }
         function succFunction(data){
-			$(".loading").find("img").css("display", "none");
-			$(".loading").find("div").css("display", "none");
-            $("#order").find("ul").find("li").remove();
-            $.each( data, function(index, content) {
-                console.log(content.shoppingcount);
-                var htmlStr1="";
-                var htmlStr2="";
-                var htmlStr3="";
-                var productCount=0;
+            if(data==""){
+                $(".loading").find("img").attr("src","${pageContext.request.contextPath}/jsp/users/images/loading.gif");
+                if(para[3]==-1){
+                    $(".loading").find("div").text("您没有买过东西!");
+                }else if(para[3]==1){
+                    $(".loading").find("div").text("您没有待发货的订单!");
+                }else if(para[3]==2){
+                    $(".loading").find("div").text("您没有已发货订单!");
+                }else if(para[3]==3){
+                    $(".loading").find("div").text("您没有已签收订单!");
+                }else if(para[3]==4){
+                    $(".loading").find("div").text("您没有完成任何交易!");
+                }else if(para[3]==6){
+                    $(".loading").find("div").text("您没有正在退货的订单!");
+                }
+            }else {
+                $(".loading").find("img").css("display", "none");
+                $(".loading").find("div").css("display", "none");
+                $("#order").find("ul").find("li").remove();
+                $.each(data, function (index, content) {
+                    console.log(content.shoppingcount);
+                    var htmlStr1 = "";
+                    var htmlStr2 = "";
+                    var htmlStr3 = "";
+                    var productCount = 0;
 
-                htmlStr1="<li>\n" +
-                    "        <div class='member-minute clearfix'>\n" +
-                    "         <span>"+content.createtime+"</span>\n" +
-                    "         <span>订单号：<em>"+content.orderid+"</em></span>\n" +
-                    "         <span class='member-custom'>客服电话：<em>010-6544-0986</em></span>\n" +
-                    "        </div>\n" +
-                    "        <div class='member-circle clearfix'>\n" +
-                    "         <div class='ci1'>\n";
+                    htmlStr1 = "<li>\n" +
+                        "        <div class='member-minute clearfix'>\n" +
+                        "         <span>" + content.createtime + "</span>\n" +
+                        "         <span>订单号：<em>" + content.orderid + "</em></span>\n" +
+                        "         <span class='member-custom'>客服电话：<em>010-6544-0986</em></span>\n" +
+                        "        </div>\n" +
+                        "        <div class='member-circle clearfix'>\n" +
+                        "         <div class='ci1'>\n";
 
-                console.log(content.productCustoms);
-				$.each(content.productCustoms,function(i, productCustom) {
-                    productCount++;
-                    htmlStr2+="    <div class='ci7 clearfix'>\n" +
-                        "           <span class='gr1'><a href='#'><img src='/"+productCustom.productpicture+"' style='height: 80px;width: 80px;max-width:200px;' title='"+productCustom.productname+"' about='' width='60' height='60'></a></span>\n" +
-                        "           <span class='gr2' style='margin-left: 50px;width: 150px;height: 85px'><a href='#'>"+productCustom.productname+"</a></span>\n" +
-                        "           <span class='gr3'>X"+productCustom.shoppingcount+"</span>\n" +
-                        "          </div>\n";
+                    console.log(content.productCustoms);
+                    $.each(content.productCustoms, function (i, productCustom) {
+                        productCount++;
+                        htmlStr2 += "    <div class='ci7 clearfix'>\n" +
+                            "           <span class='gr1'><a href='#'><img src='/" + productCustom.productpicture + "' style='height: 80px;width: 80px;max-width:200px;' title='" + productCustom.productname + "' about='' width='60' height='60'></a></span>\n" +
+                            "           <span class='gr2' style='margin-left: 50px;width: 150px;height: 85px'><a href='#'>" + productCustom.productname + "</a></span>\n" +
+                            "           <span class='gr3'>X" + productCustom.shoppingcount + "</span>\n" +
+                            "          </div>\n";
+                    });
+
+                    htmlStr3 = "         </div>\n" +
+                        "         <div class='ci2 height" + index + "'>" + content.gainname + "</div>\n" +
+                        "         <div class='ci3 height" + index + "'><p class='red'>￥<span>" + content.amountpay + "</span></p><p>";
+                    if (content.paytype == 0) {
+                        htmlStr3 += "在线支付";
+                    } else {
+                        htmlStr3 += "货到付款"
+                    }
+                    htmlStr3 += "</p></div>\n" +
+                        "         <div class='ci4 height" + index + "'><p>2015-09-22</p></div>\n";
+                    switch (content.status) {
+                        case 0:
+                            htmlStr3 += "<div class='ci5 height" + index + "'><p>交易关闭</p>"
+                            if (content.shippingcode != null || content.shippingcode != "") {
+                                htmlStr3 += "<p><a href='#'>物流跟踪</a></p>"
+                            }
+                            htmlStr3 += "<p><a href='#'>订单详情</a></p></div>\n";
+
+                            htmlStr3 += "<div class='ci5 ci8 height" + index + "'><p><a href='#' class='member-touch'>重新购买</a> </p></div>\n";
+                            break;
+                        case 1:
+                            htmlStr3 += "<div class='ci5 height" + index + "'><p>待发货</p><p><a href='#'>订单详情</a></p></div>\n";
+                            htmlStr3 += "<div class='ci5 ci8 height" + index + "'><p><a href='#' class='member-touch'>提醒发货</a> </p> <p><a href='#'>取消订单</a> </p></div>\n";
+                            break;
+                        case 2:
+                            htmlStr3 += "<div class='ci5 height" + index + "'><p>已发货</p><p><a href='#'>物流跟踪</a></p> <p><a href='#'>订单详情</a></p></div>\n";
+                            htmlStr3 += "<div class='ci5 ci8 height" + index + "'><p><a href='#' class='member-touch'>确认收货</a> </p></p></div>\n";
+                            break;
+                        case 3:
+                            htmlStr3 += "<div class='ci5 height" + index + "'><p>已签收</p><p><a href='#'>物流跟踪</a></p> <p><a href='#'>订单详情</a></p></div>\n";
+                            htmlStr3 += "<div class='ci5 ci8 height" + index + "'><p><a href='#' class='member-touch'>评价</a></p><p><a href='#' class='member-touch'>售后服务</a></p></div>\n";
+                            break;
+                        case 4:
+                            htmlStr3 += "<div class='ci5 height" + index + "'><p>已完成</p><p><a href='#'>物流跟踪</a></p> <p><a href='#'>订单详情</a></p></div>\n";
+                            htmlStr3 += "<div class='ci5 ci8 height" + index + "'><p>剩余15时20分</p><p><a href='#' class='member-touch'>再次购买</a></p><p><a href='#' class='member-touch'>售后服务</a></p></div>\n";
+                            break;
+                        case 5:
+                            htmlStr3 += "<div class='ci5 height" + index + "'><p>拒收</p><p><a href='#'>物流跟踪</a></p> <p><a href='#'>订单详情</a></p></div>\n";
+                            htmlStr3 += "<div class='ci5 ci8 height" + index + "'><p><a href='#' class='member-touch'>拒收理由</a> </p></div>\n";
+                            break;
+                        case 6:
+                            htmlStr3 += "<div class='ci5 height" + index + "'><p>申请退货</p><p><a href='#'>物流跟踪</a></p> <p><a href='#'>订单详情</a></p></div>\n";
+                            htmlStr3 += "<div class='ci5 ci8 height" + index + "'><p><a href='#' class='member-touch'>撤销申请</a> </p></div>\n";
+                            break;
+                        case 7:
+                            htmlStr3 += "<div class='ci5 height" + index + "'><p>同意退货</p><p><a href='#'>物流跟踪</a></p> <p><a href='#'>订单详情</a></p></div>\n";
+                            htmlStr3 += "<div class='ci5 ci8 height" + index + "'><p>剩余15时20分</p><p><a href='#' class='member-touch'>填写物流</a> </p><p><a href='#' class='member-touch'>撤销申请</a> </p></div>\n";
+                            break;
+                            break;
+                        case 8:
+                            htmlStr3 += "<div class='ci5 height" + index + "'><p>拒绝退货</p><p><a href='#'>物流跟踪</a></p> <p><a href='#'>订单详情</a></p></div>\n";
+                            htmlStr3 += "<div class='ci5 ci8 height" + index + "'><p><a href='#' class='member-touch'>查看原因</a> </p></div>\n";
+                            break;
+                        default:
+                            htmlStr3 += "未获取到订单状态";
+                            break;
+
+                    }
+                    htmlStr3 += "</div></li>"
+                    $("#order").find("ul").append(htmlStr1 + htmlStr2 + htmlStr3);
+                    $(".height" + index).height(90 * productCount - 23);
+                    //console.log("++++"+htmlStr2);
                 });
-
-				htmlStr3="         </div>\n" +
-					"         <div class='ci2 height"+index+"'>"+content.gainname+"</div>\n" +
-					"         <div class='ci3 height"+index+"'><p class='red'>￥<span>"+content.amountpay+"</span></p><p>";
-				if(content.paytype==0){
-                    htmlStr3+="在线支付";
-				}else{
-                    htmlStr3+="货到付款"
-				}
-                htmlStr3+="</p></div>\n" +
-					"         <div class='ci4 height"+index+"'><p>2015-09-22</p></div>\n" ;
-				switch (content.status){
-					case 0:
-                        htmlStr3+="<div class='ci5 height"+index+"'><p>交易关闭</p>"
-						if(content.shippingcode!=null||content.shippingcode!=""){
-                            htmlStr3+="<p><a href='#'>物流跟踪</a></p>"
-						}
-						htmlStr3+="<p><a href='#'>订单详情</a></p></div>\n";
-
-                        htmlStr3+= "<div class='ci5 ci8 height"+index+"'><p><a href='#' class='member-touch'>重新购买</a> </p></div>\n";
-                        break;
-                    case 1:
-                        htmlStr3+="<div class='ci5 height"+index+"'><p>待发货</p><p><a href='#'>订单详情</a></p></div>\n";
-                        htmlStr3+= "<div class='ci5 ci8 height"+index+"'><p><a href='#' class='member-touch'>提醒发货</a> </p> <p><a href='#'>取消订单</a> </p></div>\n";
-                        break;
-                    case 2:
-                        htmlStr3+="<div class='ci5 height"+index+"'><p>已发货</p><p><a href='#'>物流跟踪</a></p> <p><a href='#'>订单详情</a></p></div>\n";
-                        htmlStr3+= "<div class='ci5 ci8 height"+index+"'><p><a href='#' class='member-touch'>确认收货</a> </p></p></div>\n";
-                        break;
-                    case 3:
-                        htmlStr3+="<div class='ci5 height"+index+"'><p>已签收</p><p><a href='#'>物流跟踪</a></p> <p><a href='#'>订单详情</a></p></div>\n";
-                        htmlStr3+= "<div class='ci5 ci8 height"+index+"'><p><a href='#' class='member-touch'>评价</a></p><p><a href='#' class='member-touch'>售后服务</a></p></div>\n";
-                        break;
-                    case 4:
-                        htmlStr3+="<div class='ci5 height"+index+"'><p>已完成</p><p><a href='#'>物流跟踪</a></p> <p><a href='#'>订单详情</a></p></div>\n";
-                        htmlStr3+= "<div class='ci5 ci8 height"+index+"'><p>剩余15时20分</p><p><a href='#' class='member-touch'>再次购买</a></p><p><a href='#' class='member-touch'>售后服务</a></p></div>\n";
-                        break;
-                    case 5:
-                        htmlStr3+="<div class='ci5 height"+index+"'><p>拒收</p><p><a href='#'>物流跟踪</a></p> <p><a href='#'>订单详情</a></p></div>\n";
-                        htmlStr3+= "<div class='ci5 ci8 height"+index+"'><p><a href='#' class='member-touch'>拒收理由</a> </p></div>\n";
-                        break;
-                    case 6:
-                        htmlStr3+="<div class='ci5 height"+index+"'><p>申请退货</p><p><a href='#'>物流跟踪</a></p> <p><a href='#'>订单详情</a></p></div>\n";
-                        htmlStr3+= "<div class='ci5 ci8 height"+index+"'><p><a href='#' class='member-touch'>撤销申请</a> </p></div>\n";
-                        break;
-                    case 7:
-                        htmlStr3+="<div class='ci5 height"+index+"'><p>同意退货</p><p><a href='#'>物流跟踪</a></p> <p><a href='#'>订单详情</a></p></div>\n";
-                        htmlStr3+= "<div class='ci5 ci8 height"+index+"'><p>剩余15时20分</p><p><a href='#' class='member-touch'>填写物流</a> </p><p><a href='#' class='member-touch'>撤销申请</a> </p></div>\n";
-                        break;
-                        break;
-                    case 8:
-                        htmlStr3+="<div class='ci5 height"+index+"'><p>拒绝退货</p><p><a href='#'>物流跟踪</a></p> <p><a href='#'>订单详情</a></p></div>\n";
-                        htmlStr3+= "<div class='ci5 ci8 height"+index+"'><p><a href='#' class='member-touch'>查看原因</a> </p></div>\n";
-                        break;
-					default:
-                        htmlStr3+="未获取到订单状态";
-                        break;
-
-				}
-                htmlStr3+="</div></li>"
-                $("#order").find("ul").append(htmlStr1+htmlStr2+htmlStr3);
-                $(".height"+index).height(90*productCount-23);
-                //console.log("++++"+htmlStr2);
-            });
+            }
         }
     }
     function queryFavoritesByUserId(start,count,status,conditions) {
@@ -626,10 +638,10 @@
             "       <a href='#' class='fl member-btn-fl'></a>\n" +
             "       <div class='member-whole clearfix' id='dingdan'>\n" +
             "        <ul id='H-table' class='H-table'>\n" +
-            "         <li><a href='javascript:queryFavoritesByUserId(0,5,-1);'>全部商品<em>(44)</em></a></li>\n" +
-            "         <li><a href='javascript:queryFavoritesByUserId(0,5,0);'>热销商品<em>(44)</em></a></li>\n" +
-            "         <li><a href='javascript:queryFavoritesByUserId(0,5,2);'>已下架<em>(44)</em></a></li>\n" +
-            "         <li><a href='javascript:queryFavoritesByUserId(0,5,3);'>积分兑换<em>(44)</em></a></li>\n" +
+            "         <li><a href='javascript:queryFavoritesByUserId(0,24,-1);'>全部商品<em>(44)</em></a></li>\n" +
+            "         <li><a href='javascript:queryFavoritesByUserId(0,24,0);'>热销商品<em>(44)</em></a></li>\n" +
+            "         <li><a href='javascript:queryFavoritesByUserId(0,24,2);'>已下架<em>(44)</em></a></li>\n" +
+            "         <li><a href='javascript:queryFavoritesByUserId(0,24,3);'>积分兑换<em>(44)</em></a></li>\n" +
             "        </ul>\n" +
             "        <div class='member-check clearfix fl' style='float: right'>\n" +
             "         <a href='#' class='member-shops'>一键加入购物车</a>\n" +
@@ -709,27 +721,128 @@
             $("#id_head").css("visibility", "visible");
             $.each(data, function (index, content) {
                 console.log(content.shoppingcount);
-                var html="<li class='module'>\n" +
-                    "          <ul class='shop-tools clearfix'>\n" +
-                    "           <li class='shop-tools-item1' style='background-position:-20px -20px;' title='加入购物车'>置顶</li>\n" +
-                    "           <li class='shop-tools-item2' style='background-position:4px -98px;' title='删除商品'>删除</li>\n" +
+                var html="<li class='module' value='"+content.productid+"'>\n" +
+                    "          <ul class='shop-tools clearfix'>\n" ;
+
+				if(content.isOnShopcar==0){
+                    html+="<li class='shop-tools-item1' style='background-position:-20px -20px;' value='"+content.productid+"' title='加入购物车'>置顶</li>";
+				}
+
+                html+="           <li class='shop-tools-item2' style='background-position:4px -98px;' value='"+content.productid+"' title='删除商品'>删除</li>\n" +
                     "          </ul>\n" +
                     "          <a href='#'><img src='/"+content.productpicture+"' style='overflow:hidden;width:125px;height: 125px' title='"+content.productname+"'></a>\n" +
                     "          <a href='#'>"+content.productname+"</a>\n" +
                     "          <p>￥"+content.productprice+" <i style='text-decoration: line-through;color: #666a6e;font-size: 11px;'>￥"+content.marketprice+"</i></p>\n" +
-                    "         </li>";
+                    "       </li>";
 
                 $("#favorites").append(html);
+
+                if(index==0){
+                    var i=0
+                    $("#H-table").find("li").each(function(){
+                        if(i==0){
+                            $(this).find("a").text("全部商品("+content.countNumb[0]+")");
+                        }
+                        if(i==1){
+                            $(this).find("a").text("热销商品("+content.countNumb[1]+")");
+                        }
+                        /*if(i==2){
+                            $(this).find("a").text("新品("+content.countNumb[2]+")");
+                        }*/
+                        if(i==3){
+                            $(this).find("a").text("已下架("+content.countNumb[3]+")");
+                        }
+                        if(i==2){
+                            $(this).find("a").text("积分兑换("+content.countNumb[4]+")");
+                        }
+                        i++;
+                    });
+                }
+            });
+
+            //商品移入购物车
+            $(".shop-tools-item1").click(function(){
+                var id = new Array();
+                id.push($(this).val());
+                id.push(1);//默认一个商品
+                //var s=$(this).siblings("li").val();
+                var data=ajax("insertShiftToCart.action",id);
+                if(data){
+                    $(this).remove();
+                    alert("移入成功!");
+                }else {
+                    alert("移入失败!");
+                }
+
+            });
+            //一键加入购物车
+            $(".member-shops").click(function () {
+                var flag=true;
+                var count=0;
+                $("li[class='module']").each(function(){
+                    if(!!$(this).find(".shop-tools-item1").val()){ //如果购物车中没有该商品 则加入购物车
+						count++;
+                        var id = new Array();
+                        id.push($(this).val());
+                        id.push(1);//默认一个商品
+                        var data=ajax("insertShiftToCart.action",id);
+                        if(data){
+                            flag=flag&&true;
+                        }else {
+                            flag=flag&&false;
+                        }
+                        $(this).find(".shop-tools-item1").remove();
+                	}
+                });
+                if(count>0){
+                    if(flag){
+                        alert("加入成功!");
+                    }else {
+                        alert("加入失败!");
+                    }
+				}else{
+                    alert("这些商品已经在购物车中!不要重复加入!")
+				}
+
+            })
+
+
+            //一键移除收藏夹商品
+            $(".member-delete").click(function () {
+				if(confirm("确定删除吗!")){
+                    $("li[class='module']").each(function(){
+                        var id=$(this).val();
+                        //var s=$(this).siblings("li").val();
+                        var data=ajax("delectFavorites.action",id);
+                        if(data){
+                            $(this).fadeOut("slod");
+                            //$(this).remove();
+                        }
+                    });
+				}
+                alert("移除成功");
+            });
+            //删除商品
+            $(".shop-tools-item2").click(function(){
+                var id=$(this).val();
+                //var s=$(this).siblings("li").val();
+                var data=ajax("delectFavorites.action",id);
+                if(data){
+                    $(this).parent().parent().remove();
+				}else {
+                    alert("删除失败!");
+				}
+
             });
         }
     }
     function queryShopCarByUserId(start,count,status,conditions) {
         var car="<div class='center ' id='dingdan'>\n" +
             "    <ul class='pc-shopping-title clearfix'>\n" +
-            "     <li><a href='javascript:queryShopCarByUserId(0,5,-1);'>全部商品(10)</a></li>\n" +
-            "     <li><a href='javascript:queryShopCarByUserId(0,5,2);'>已下架(0)</a></li>\n" +
-            "     <li><a href='javascript:queryShopCarByUserId(0,5,0);'>热销商品(0)</a></li>\n" +
-            "     <li><a href='javascript:queryShopCarByUserId(0,5,1);'>新品(0)</a></li>\n" +
+            "     <li><a href='javascript:queryShopCarByUserId(0,5,-1);'>全部商品</a></li>\n" +
+            "     <li><a href='javascript:queryShopCarByUserId(0,5,0);'>热销商品</a></li>\n" +
+            "     <li><a href='javascript:queryShopCarByUserId(0,5,1);'>新品</a></li>\n" +
+            "     <li><a href='javascript:queryShopCarByUserId(0,5,2);'>已下架</a></li>\n" +
             "    </ul>\n" +
             "   </div>\n" +
             "   <div class='pc-shopping-cart center'>\n" +
@@ -760,6 +873,21 @@
             "     </table>\n" +
             "    </div>\n" +
             "   </div>\n" +
+			"   <div style='height:10px'></div>\n" +
+            "   <div class='center'>\n" +
+            "    <div class='clearfix pc-shop-go'>\n" +
+            "     <div class='fl pc-shop-fl'>\n" +
+            "      <input type='checkbox' name='s_all' style='margin-left:5px'>\n" +
+            "      <label style='margin-left: 15px;'>全选</label>\n" +
+            "      <a href='javascript:batchDeleteShopCar()'>批量删除</a>\n" +
+            "     </div>\n" +
+            "     <div class='fr pc-shop-fr'>\n" +
+            "      <p>共有 <em class='red pc-shop-shu' id='count'>0</em> 款商品，总计（含运费）</p>\n" +
+            "      <span id='sum'>¥0.00</span>\n" +
+            "      <a href='#'>去付款</a>\n" +
+            "     </div>\n" +
+            "    </div>\n" +
+            "   </div>"+
 			"    <div class='clearfix' style='padding:30px 20px;'>\n" +
             "     <div class='fr pc-search-g pc-search-gs'>\n" +
             "      <a style='display:none' class='fl ' href='javascript:void(0);'>上一页</a>\n" +
@@ -825,9 +953,8 @@
             $(".loading").find("div").css("display", "none");
             $("#id_head").css("visibility","visible");
             $.each( data, function(index, content) {
-                console.log(content.shoppingcount);
-                var html="<tr>\n" +
-                    "        <th><input type='checkbox'  style='margin-left:15px; float:left'></th>\n" +
+                var html="<tr id='tr_"+content.shopcarid+"'>\n" +
+                    "        <th><input type='checkbox' name='stuCheckBox' value='"+content.shopcarid+"' style='margin-left:15px; float:left'></th>\n" +
                     "        <th class='tab-th-1'>\n" +
                     "         <a href='#' style='border: 0px;'><img src='/"+content.productpicture+"' style='height: 120px;width: 120px;max-width:200px;margin-left: 50px' alt='"+content.productname+"' title='"+content.productname+"'></a>\n" +
                     "         <a href='#' style='margin-left: 50px;width: 200px' class='tab-title'>"+content.productname+"</a>\n" +
@@ -843,26 +970,167 @@
                     "        </th>\n" +
                     "        <th class='tab-th-2'>\n" +
                     "         <div onclick='minus(this)' class='Xcontent32'><img src='images/shangpinxiangqing/X15.png'></div>\n" +
-                    "         <input class='input' value='"+content.orderamount+"'>" +
+                    "         <input class='input' type='number' max='1000' oninput='computations(this)' onpropertychange='computations(this)' value='"+content.orderamount+"'>" +
                     "         <div onclick='add(this)' class='Xcontent33'><img src='images/shangpinxiangqing/16.png'></div>\n" +
                     "        </th>\n" +
-                    "        <th class='red'>￥<span>"+content.productprice*content.orderamount+"</span></th>\n" +
+                    "        <th class='red'>￥<span id='xiaoji'>"+content.productprice*content.orderamount+"</span></th>\n" +
                     "        <th>\n" +
-                    "         <p><a href='#'>删除</a></p>\n" +
-                    "         <br/>\n" +
-                    "         <p><a href='#'>移入收藏夹</a></p>\n" +
-                    "        </th>\n" +
-                    "       </tr>";
+                    "         <p><a href='javascript:delectShopCarById("+content.shopcarid+")'>删除</a></p>\n" +
+                    "         <br/>\n"
+				if(content.isOnFavorites==0){
+                    html+= "      <p id='move_"+content.productid+"'><a href='javascript:shiftToFavorites("+content.productid+",this)'>移入收藏夹</a></p>\n" ;
+				}
+                html+="</th></tr>";
 
                 $("#car").append(html);
+                if(index==0){
+                    var i=0
+                    $(".pc-shopping-title").find("li").each(function(){
+                        if(i==0){
+                            $(this).find("a").text("全部商品("+content.countNumb[0]+")");
+						}
+                        if(i==1){
+                            $(this).find("a").text("热销商品("+content.countNumb[1]+")");
+                        }
+                        if(i==2){
+                            $(this).find("a").text("新品("+content.countNumb[2]+")");
+                        }
+                        if(i==3){
+                            $(this).find("a").text("已下架("+content.countNumb[3]+")");
+                        }
+						i++;
+                    });
+				}
             });
+
+            /*全选 反选*/
+            $('input[name="s_all"]').click(function(){
+                if($(this).is(':checked')){
+                    $('input[name="stuCheckBox"]').each(function(){
+                        //此处如果用attr，会出现第三次失效的情况
+                        $(this).prop("checked",true);
+                        $('input[name="s_all"]').prop("checked",true);
+                        summing();
+                    });
+                }else{
+                    $('input[name="stuCheckBox"]').each(function(){
+                        $(this).removeAttr("checked",false);
+                        $('input[name="s_all"]').removeAttr("checked",false);
+                        summing();
+                    });
+                }
+
+            });
+            //选择商品计算总计
+            $('input[name="stuCheckBox"]').click(function () {
+                summing();
+            });
+
         }
-
-
-
-
     }
 
+    //通过id将购物车内商品移入收藏夹
+    function shiftToFavorites(shopcarid) {
+        var data=ajax('insertShiftToFavorites.action',shopcarid);
+        console.log(data+"**")
+        if(data==1){
+            //$(obj).parents("tr").remove();
+            //$("#tr_"+shopcarid).remove();
+			$("#move_"+shopcarid).remove();
+			alert("已经成功移入收藏夹!");
+        }
+    }
+
+    //通过id删除购物车商品
+    function delectShopCarById(shopcarid) {
+        var data=ajax('delectShopCarById.action',shopcarid);
+        console.log(data+"**")
+        if(data==1){
+            //$(obj).parents("tr").remove();
+            //$("#tr_"+shopcarid).remove();
+            $("#tr_"+shopcarid).slideToggle();
+        }
+        summing();
+    }
+
+    //批量删除
+	function batchDeleteShopCar() {
+        var ids=new Array();
+        $('input[name="stuCheckBox"]').each(function(){
+            if($(this).is(':checked')){
+                console.log($(this).val());
+                ids.push($(this).val());
+            }
+        });
+        var  data=ajax("delectBatchDeleteShopCar.action",ids);
+        if(data==1){
+            $('input[name="stuCheckBox"]').each(function(){
+                if($(this).is(':checked')){
+                    $(this).parents("tr").remove();
+                }
+            });
+            summing();
+		}else{
+            alert("删除失败!");
+		}
+    }
+
+    function ajax(url,data) {
+        var flag;
+        $.ajax({
+            url:"${pageContext.request.contextPath}/"+url,
+            async:false,
+            type: 'POST',
+            data:{"id":data},
+            traditional: true,
+            timeout: 5000,
+            cache: false,
+            success: succFunction, //成功执行方法
+            beforeSend: LoadFunction, //加载执行方法
+            error: erryFunction  //错误执行方法
+        });
+        function LoadFunction() {
+
+        }
+        function erryFunction(){
+            flag=0;
+        }
+        function succFunction(data) {
+            if(data) {
+                flag=1;
+            }else {
+                flag=0;
+            }
+        }
+        return flag;
+    }
+    //计算总计
+    function summing() {
+        var count=0,sum=0;
+        $('input[name="stuCheckBox"]').each(function () {
+            if($(this).is(':checked')){
+                sum+=parseInt($(this).parent().siblings("th").find("#xiaoji").text());
+                count++;
+            }
+        })
+		if(sum==0){
+            $("#sum").text("¥0.00");
+            $("#count").text(count);
+		}else {
+            $("#sum").text("¥"+sum);
+            $("#count").text(count);
+		}
+
+    }
+    //计算小计 并显示到小计栏
+    function computations(obj){
+		console.log("+++"+$(obj).val());
+		var price=$(obj).parent().siblings("th").find(".red").text();
+		var numb=$(obj).parent().find(".input").val();
+		var sum=price*numb;
+		$(obj).parent().siblings("th").find("#xiaoji").text(sum);
+        summing();
+    }
 
     function sleep(n) { //n表示的毫秒数
         var start = new Date().getTime();
@@ -898,8 +1166,6 @@
         return str;
     }
 
-
-
     //hover 触发两个事件，鼠标移上去和移走
     //mousehover 只触发移上去事件
     $(".top-nav ul li").hover(function(){
@@ -915,14 +1181,18 @@
     });
     function add(obj){
         var value=parseInt($(obj).siblings("input").val())+1;
-        $(obj).siblings("input").val(value);
+        $(obj).siblings("input").val(value); //无法改变value=""li的值
+        $(obj).siblings("input").attr("value",value);
+        computations(obj);
     };
 
     function minus(obj){
         var num = $(obj).siblings("input").val()
         if(num>0){
-            $(obj).siblings("input").val(num-1);
+            $(obj).siblings("input").val(num-1);  //无法改变value=""li的值
+            $(obj).siblings("input").attr("value",num-1);
         }
+        computations(obj);
     };
 </script>
 </body>

@@ -13,9 +13,12 @@ public class ShopCarCustom extends Product {
 
     private Integer upperlimit;
 
-    private int start;
-    private int count;
-    String conditions;
+    private Integer start;
+    private Integer count;
+    String conditions;//用于条件查询
+    private int isOnFavorites;
+
+    private int[] countNumb;
 
     public Integer getShopcarid() {
         return shopcarid;
@@ -49,30 +52,6 @@ public class ShopCarCustom extends Product {
         this.price = price;
     }
 
-    public int getStart() {
-        return start;
-    }
-
-    public void setStart(int start) {
-        this.start = start;
-    }
-
-    public int getCount() {
-        return count;
-    }
-
-    public void setCount(int count) {
-        this.count = count;
-    }
-
-    public String getConditions() {
-        return conditions;
-    }
-
-    public void setConditions(String conditions) {
-        this.conditions = conditions;
-    }
-
     public Double getMarketprice() {
         return marketprice;
     }
@@ -95,5 +74,45 @@ public class ShopCarCustom extends Product {
 
     public void setUpperlimit(Integer upperlimit) {
         this.upperlimit = upperlimit;
+    }
+
+    public Integer getStart() {
+        return start;
+    }
+
+    public void setStart(Integer start) {
+        this.start = start;
+    }
+
+    public Integer getCount() {
+        return count;
+    }
+
+    public void setCount(Integer count) {
+        this.count = count;
+    }
+
+    public String getConditions() {
+        return conditions;
+    }
+
+    public void setConditions(String conditions) {
+        this.conditions = conditions;
+    }
+
+    public int getIsOnFavorites() {
+        return isOnFavorites;
+    }
+
+    public void setIsOnFavorites(int isOnFavorites) {
+        this.isOnFavorites = isOnFavorites;
+    }
+
+    public int[] getCountNumb() {
+        return countNumb;
+    }
+
+    public void setCountNumb(int[] countNumb) {
+        this.countNumb = countNumb;
     }
 }

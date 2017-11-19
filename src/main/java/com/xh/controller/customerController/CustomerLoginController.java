@@ -81,7 +81,7 @@ public class CustomerLoginController {
                             e.printStackTrace();
                         }
                         userLoginService.insertStartTimeAndIp(userlog);
-                        return "/jsp/users/index.jsp";
+                        return "redirect:/ShopFrontPage.action";//"/jsp/users/index.jsp";
                     } else {
                         model.addAttribute("error", "密码不正确");
                     }
@@ -196,26 +196,26 @@ public class CustomerLoginController {
 
     //page.jsp商品详情页面，点击加入购物车
     @RequestMapping("/ShopCat.action")
-    public @ResponseBody Map ShopCat(HttpServletRequest request, float[] data){
-        Map map=new HashMap();
-        HttpSession session=request.getSession();
-        User user=(User) session.getAttribute("user");
-        int userid= user.getUserid();
-        Shopcar shopCat=new Shopcar();
+    public @ResponseBody Map ShopCat(HttpServletRequest request, float[] data) {
+        Map map = new HashMap();
+        HttpSession session = request.getSession();
+        User user = (User) session.getAttribute("user");
+        int userid = user.getUserid();
+        Shopcar shopCat = new Shopcar();
+        shopCat.setUserid(userid);
         shopCat.setProductid((int) data[0]);
         shopCat.setOrderamount((int) data[1]);
         shopCat.setPrice((double) data[2]);
-
-        /*if(userLoginService.insertNewUser(shopCat)){ //先插  再查
-            map.put("red",true);
-        }else{
-            map.put("red",false);
-        }*/
+        userLoginService.ShopCarInsert(shopCat);
+        Shopcar shopcar = userLoginService.IsSuccessInsert(shopCat);
+        if (shopcar == null)
+            map.put("red", false);
+        else
+            map.put("red", true);
         return map;
 
-
-       // List<Product> products= userLoginService.selectproduct();
     }
 
+    //收藏宝贝
 
 }

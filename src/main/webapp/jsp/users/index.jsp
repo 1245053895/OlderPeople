@@ -434,16 +434,16 @@
 							<li class="item"><a href="#" alt=""><img src="${pageContext.request.contextPath}/jsp/users/images/lbztq.jpg"></a></li>
 							<li class="item"><a href="#" alt=""><img src="${pageContext.request.contextPath}/jsp/users/images/lbly.jpg"></a></li>
 							<li class="item"><a href="#" alt=""><img src="${pageContext.request.contextPath}/jsp/users/images/lbwfsb.jpg"></a></li>
-							<%--<li class="item"><a href="#" alt=""><img src="${pageContext.request.contextPath}/jsp/users/images/index_slider_pic4.jpg"></a></li>
+							<li class="item"><a href="#" alt=""><img src="${pageContext.request.contextPath}/jsp/users/images/lbxyj.gif"></a></li>
 							<li class="item"><a href="#" alt=""><img src="${pageContext.request.contextPath}/jsp/users/images/index_slider_pic5.jpg"></a></li>
-						--%></ul>
+						</ul>
 					</div>
 				</section>
 			</section>
 		</div>
 
 		<section id="adv" class="wraper site-adv m-box clear_bottom">
-			<div class="span4">
+			<%--<div class="span4">
 				<ul class="rect6">
 					<li class="item"></li>
 					<li class="item"></li>
@@ -452,14 +452,15 @@
 					<li class="item"></li>
 					<li class="item"></li>
 				</ul>
-			</div>
-			<div class="span16">
+			</div>--%>
+
 				<ul class="m-cols m-col-3">
+					<li class="col"><img src="images/zhuanchang1.jpg"></li>
 					<li class="col"><img src="images/zhuanchang2.jpg"></li>
 					<li class="col"><img src="images/zhuanchang3.jpg"></li>
 					<li class="col"><img src="images/zhuanchang4.jpg"></li>
 				</ul>
-			</div>
+
 
 		</section>
 		<!--中部区域结束-->

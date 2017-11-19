@@ -48,7 +48,6 @@ public class CustomerInformationController {
 
             model.addAttribute("temp", temp);
 
-
             return "/jsp/users/user.jsp";
         }else {
             return "/jsp/users/user.jsp";

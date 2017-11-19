@@ -4,7 +4,9 @@ import com.xh.po.Product;
 import com.xh.po.Shopcar;
 import com.xh.po.User;
 import com.xh.po.Userlog;
+import com.xh.po.vo.ProductTypeExtend;
 import com.xh.po.vo.TotalCreditsById;
+import com.xh.service.customerService.ProductTypeService;
 import com.xh.service.customerService.UserLoginService;
 import com.xh.util.NetworkUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,10 +30,28 @@ import java.util.Map;
 public class CustomerLoginController {
     @Autowired
     private UserLoginService userLoginService;
+    @Autowired
+    private ProductTypeService productTypeService;
 
     //通过该url进入到商城的首页面
     @RequestMapping(value = "/ShopFrontPage.action", method = RequestMethod.GET)
-    public String login() {
+    public String login(Model model) {
+        //得到主页导航栏商类型品和两个商品
+        List<ProductTypeExtend> productTypeExtends=productTypeService.SelectProductType();
+        for (ProductTypeExtend productTypeExtend:productTypeExtends){
+            int id=productTypeExtend.getProducttypeid();
+            List<Product> products=productTypeService.SelectProductByTypeIdLimit(id);
+            productTypeExtend.setProduct(products);
+        }
+        //得到主页导航栏商品类型了所有商品
+        List<ProductTypeExtend> productTypeExtends1=productTypeService.SelectProductType();
+        for (ProductTypeExtend productTypeExtend1:productTypeExtends1){
+            int id=productTypeExtend1.getProducttypeid();
+            List<Product> products1=productTypeService.SelectProductByTypeId(id);
+            productTypeExtend1.setProduct(products1);
+        }
+        model.addAttribute("productTypeExtends1",productTypeExtends1);
+        model.addAttribute("productTypeExtends",productTypeExtends);
         return "/jsp/users/index.jsp";
     }
 

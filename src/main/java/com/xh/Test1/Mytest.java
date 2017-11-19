@@ -1,8 +1,11 @@
 package com.xh.Test1;
 
 import com.xh.mapper.customerMapper.CustomerInformationMapper;
+import com.xh.mapper.customerMapper.ProductTypeCustomerMapper;
 import com.xh.mapper.customerMapper.UserLoginMapper;
 import com.xh.po.Gainaddres;
+import com.xh.po.Product;
+import com.xh.po.Producttype;
 import com.xh.po.User;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -22,6 +25,8 @@ public class Mytest {
    private CustomerInformationMapper customerInformationMapper;
     @Autowired
     private UserLoginMapper userLoginMapper;
+    @Autowired
+    private ProductTypeCustomerMapper productTypeCustomerMapper;
 
     @Test
    public void TestA(){
@@ -36,11 +41,15 @@ public class Mytest {
         gainaddres.setGainid(3);
         gainaddres.setGainaddress("hjnsdk11151561");
         customerInformationMapper.UpdateGainAdress(gainaddres);*/
-        User user=new User();
+     /*   User user=new User();
         user.setUserbirthday(new Date());
         user.setUsername("nihao");
-        user.setUserid(13);
+        user.setUserid(13);*/
      /*  customerInformationMapper.UpdateUserByid(user);*/
+
+     List<Product> products=productTypeCustomerMapper.SelectProductByTypeId(1);
+     System.out.print(products);
+
    }
 }
 

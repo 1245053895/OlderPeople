@@ -48,7 +48,7 @@ public class expressController {
             HttpResponse response = HttpUtils.doGet(host, path, method, headers, querys);
             //System.out.println(response.toString());
             //获取response的body
-            System.out.println(EntityUtils.toString(response.getEntity()));
+            //System.out.println(EntityUtils.toString(response.getEntity()));
             express=EntityUtils.toString(response.getEntity());
         } catch (Exception e) {
             e.printStackTrace();

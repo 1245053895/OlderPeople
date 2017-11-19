@@ -1,9 +1,6 @@
 package com.xh.controller.customerController;
 
-import com.xh.po.Product;
-import com.xh.po.Shopcar;
-import com.xh.po.User;
-import com.xh.po.Userlog;
+import com.xh.po.*;
 import com.xh.po.vo.ProductTypeExtend;
 import com.xh.po.vo.TotalCreditsById;
 import com.xh.service.customerService.ProductTypeService;
@@ -213,9 +210,16 @@ public class CustomerLoginController {
         else
             map.put("red", true);
         return map;
-
     }
 
     //收藏宝贝
+    @RequestMapping("/ShouCangShop.action")
+    public String ShouCangShop(HttpServletRequest request, Favorites favorites){
+        HttpSession session=request.getSession();
+       User user=(User) session.getAttribute("user");
+       favorites.setUserid(user.getUserid());
+       userLoginService.InsertFavorites(favorites);
+        return "/jsp/users/page.jsp";
+    }
 
 }

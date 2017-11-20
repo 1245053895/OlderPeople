@@ -112,10 +112,20 @@ public class CustomerLoginController {
 
     //用户注册页
     @RequestMapping("/CustomerReginster.action")
-    public String CustomerReginster(User user) {
+    public String CustomerReginster(User user ,HttpServletRequest request,HttpServletResponse response,Model model) {
         user.setUserinputdate(new Date());
         String pwd = user.getUserpwd();
         user.setUserpwd(encodePassword(pwd));
+        String username=request.getParameter("username");
+        List<User> userList1=userLoginService.SelectAllQuerry();
+        for (User userList:userList1){
+            String name=userList.getUsername();
+            if (name.equals(username)){
+                model.addAttribute("error", "用户名相同");
+                return "/jsp/users/register.jsp";
+            }else {
+            }
+        }
         userLoginService.insertNewUser(user);
         return "/jsp/users/login.jsp";
     }
@@ -197,7 +207,8 @@ public class CustomerLoginController {
 
     //page.jsp商品详情页面，点击加入购物车
     @RequestMapping("/ShopCat.action")
-    public @ResponseBody Map ShopCat(HttpServletRequest request, float[] data) {
+    public @ResponseBody
+    Map ShopCat(HttpServletRequest request, float[] data) {
         Map map = new HashMap();
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
@@ -274,4 +285,24 @@ public class CustomerLoginController {
             return map;
         }
     }
+
+
+    //用户注册验证
+    @RequestMapping("/customerReginsterCheck.action")
+    public @ResponseBody Map customerReginsterCheck(User user , HttpServletRequest request, HttpServletResponse response, Model model, String data) {
+        Map map=new HashMap();
+        List<User> userList1=userLoginService.SelectAllQuerry();
+        for (User userList:userList1){
+            String name=userList.getUsername();
+            if (data!=null&&name.equals(data)){
+                map.put("result",false);
+                return  map;
+            }
+        }
+        map.put("result",true);
+        return  map;
+
+    }
+
+
 }

@@ -156,6 +156,10 @@ public class UserLoginServiceImpl implements UserLoginService {
     public void AutoIncreaseOne(Integer productid) {
         userLoginMapper.AutoIncreaseOne(productid);
     }
-
+    @Override
+    public List<User> SelectAllQuerry() {
+        List<User> userList1 =userLoginMapper.SelectAllQuerry();
+        return userList1;
+    }
 
 }

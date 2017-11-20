@@ -198,7 +198,7 @@
 						<li class="clearfix">
 							<div class="warn1"></div>
 							<div class="warn2">用户名</div>
-							<div class="warn3"><input  class="inputx " type="text" name="username" value="<c:if test='${userAndBrithday.username!=null}'>${userAndBrithday.username}</c:if>" readonly="readonly"></div>
+							<div class="warn3"><input  class="inputx " type="text" name="username" value="${userAndBrithday.username}" readonly="readonly"></div>
 
 						</li>
 						<li class="clearfix">
@@ -226,22 +226,25 @@
 							<div class="warn3">
 								<select style="width: 80px" name = "Year">
 									<option selected = "selected">${temp[0]}</option>
-									<option value = "2017">2017</option>
-									<option value = "2016">2016</option>
-									<option value = "2015">2015</option>
 									<option value = "2014">2014</option>
+									<option value = "2015">2015</option>
+									<option value = "2016">2016</option>
+									<option value = "2017">2017</option>
+									<option value = "2018">2018</option>
+
+
 								</select> 年
 								<select style="margin-left: 20px;width: 60px" name = "Month">
 									<option>${temp[1]}</option>
-									<option value = "02">2</option>
-									<option value = "03">3</option>
-									<option value = "04">4</option>
+									<option value = "02">02</option>
+									<option value = "03">03</option>
+									<option value = "04">04</option>
 								</select> 月
 								<select style="margin-left: 20px;width: 60px" name = "Day">
 									<option>${temp[2]}</option>
-									<option value = "02">2</option>
-									<option value = "02">3</option>
-									<option value = "03">4</option>
+									<option value = "02">02</option>
+									<option value = "03">03</option>
+									<option value = "04">04</option>
 								</select> 日
 							</div>
 

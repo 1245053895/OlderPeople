@@ -86,6 +86,9 @@ public interface UserLoginService {
     //商品浏览次数当不为空时，让它自动加1
     public void AutoIncreaseOne(Integer productid);
 
+    //查询所有用户
+    public List<User> SelectAllQuerry();
+
 
 
 }

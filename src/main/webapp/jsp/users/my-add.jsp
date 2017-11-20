@@ -248,6 +248,32 @@
 							</div>
 							<!-- 收货方式 END-->
 
+<<<<<<<<< Temporary merge branch 1
+						<!-- 商品清单 -->
+						<div id="checkoutGoodsList" class="checkout-goods-box">
+							<div class="xm-box">
+								<div class="box-hd">
+									<h2 class="title">确认订单信息</h2>
+								</div>
+								<div class="box-bd">
+									<dl class="checkout-goods-list">
+										<dt class="clearfix">
+											<span class="col col-1">商品名称</span>
+											<span class="col col-2">购买价格</span>
+											<span class="col col-3">购买数量</span>
+											<span class="col col-4">小计（元）</span>
+										</dt>
+										<dd class="item clearfix">
+											<div class="item-row">
+												<div class="col col-1">
+													<div class="g-pic">
+														<img src="images/shangpinxiangqing/X1.png" width="40" height="40" />
+													</div>
+													<div class="g-info">
+														<a href="#" target="_blank">
+															赛亿（shinee)取暖器家用/取暖电器/电暖器/电暖气台式摇头暖风机HN2118PT
+														</a>
+=========
 							<!-- 商品清单 -->
 							<div id="checkoutGoodsList" class="checkout-goods-box">
 								<div class="xm-box">
@@ -273,6 +299,7 @@
 																赛亿（shinee)取暖器家用/取暖电器/电暖器/电暖气台式摇头暖风机HN2118PT
 															</a>
 														</div>
+>>>>>>>>> Temporary merge branch 2
 													</div>
 													<div class="col col-2">39元</div>
 													<div class="col col-3">1</div>

@@ -123,5 +123,11 @@ public class UserLoginServiceImpl implements UserLoginService {
       userLoginMapper.InsertFavorites(favorites);
     }
 
+    @Override
+    public List<User> SelectAllQuerry() {
+        List<User> userList1 =userLoginMapper.SelectAllQuerry();
+        return userList1;
+    }
+
 
 }

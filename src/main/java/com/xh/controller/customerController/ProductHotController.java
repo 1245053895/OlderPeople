@@ -18,6 +18,6 @@ public class ProductHotController {
     public String ProductHot(Model model){
         List<TotalCreditsById> totalCreditsByIds=productHotService.SelectHotProduct();
        model.addAttribute("totalCreditsByIds",totalCreditsByIds);
-        return "/jsp/users/rexiaoshangpin.jsp";
+        return "/jsp/users/my-rx.jsp";
     }
 }

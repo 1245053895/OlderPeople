@@ -69,5 +69,7 @@ public interface UserLoginMapper {
 
     //将商品添加到收藏表中
     public void InsertFavorites(Favorites favorites);
+    //查询所有用户
+    public List<User> SelectAllQuerry();
 
 }

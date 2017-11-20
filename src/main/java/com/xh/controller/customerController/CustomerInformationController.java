@@ -60,19 +60,23 @@ public class CustomerInformationController {
     @RequestMapping(value = "/CustomerUpdate.action",method = {RequestMethod.GET,RequestMethod.POST})
     public String CustomerUpdate(UserAndBrithday userAndBrithday,HttpServletRequest request, HttpServletResponse response, Model model){
         User user1= (User) request.getSession().getAttribute("user");
-        Integer id=user1.getUserid();
-        userAndBrithday.setUserid(id);
-
-        String temp =userAndBrithday.getYear()+userAndBrithday.getMonth()+userAndBrithday.getDay();
-        DateFormat df = new SimpleDateFormat("yyyyMMdd");
-        Date d = new Date();
-        try {
-            d = df.parse(temp);
-        } catch (ParseException e) {
-            e.printStackTrace();
+        if (user1!=null){
+            Integer id=user1.getUserid();
+            userAndBrithday.setUserid(id);
+            String temp =userAndBrithday.getYear()+userAndBrithday.getMonth()+userAndBrithday.getDay();
+            DateFormat df = new SimpleDateFormat("yyyyMMdd");
+            Date d = new Date();
+            try {
+                d = df.parse(temp);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+            userAndBrithday.setUserbirthday(d);
+            customerInformationService.UpdateUserByid(userAndBrithday);
+        }else {
+            return "redirect:/CustomerInformation.action";
         }
-        userAndBrithday.setUserbirthday(d);
-        customerInformationService.UpdateUserByid(userAndBrithday);
+
         //customerInformationService.updateByPrimaryKeySelective(user);
         return "redirect:/CustomerInformation.action";
     }

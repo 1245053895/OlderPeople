@@ -23,6 +23,7 @@
 	<script src="${pageContext.request.contextPath}/jsp/users/js/jquery-1.11.3.min.js"></script>
 
 	<script type="text/javascript">
+
         function len6to16(self) {
             var allNext = $(self).nextAll();
             if (self.value.length < 6 || self.value.length > 18) {
@@ -64,6 +65,68 @@
             });
         });
 	</script>
+
+	<script type="text/javascript">
+        function createXMLHttpRequest() {
+            /*try {
+                return new XMLHttpRequest();
+            } catch (e) {
+                try {
+                    return new ActiveXObject("Msxml2.XMLHTTP");
+                } catch (e) {
+                    return new ActiveXObject("Microsoft.XMLHTTP");
+                }
+            }*/
+        }
+
+        function send() {
+            var data=$("#username").val();
+            console.log(data+"ffff");
+            $.ajax({
+                url:"${pageContext.request.contextPath}/customerReginsterCheck.action",
+                async:true,
+                type: 'POST',
+                data:{'data':data},
+                traditional: true,
+                timeout: 10000,
+                cache: false,
+                success: succFunction, //成功执行方法
+                beforeSend: LoadFunction, //加载执行方法
+                error: erryFunction  //错误执行方法
+            });
+            function LoadFunction() {
+                $(".loading").find("img").css("display","block");
+                $(".loading").find("div").css("display","block");
+            }
+            function erryFunction(){
+                $(".loading").find("img").attr("src","${pageContext.request.contextPath}/jsp/users/images/loading.gif");
+                $(".loading").find("div").text("加载失败!");
+            }
+            function succFunction(data){
+				if(data.result){
+				    $("#error").text("")
+                }else {
+                    $("#error").text("此用户已经被注册")
+					$("#error").css("font-color","#FF0000")
+                }
+            }
+            /*var xmlHttp = createXMLHttpRequest();
+            xmlHttp.onreadystatechange = function() {
+                if(xmlHttp.readyState == 4 && xmlHttp.status == 200) {
+                    if(xmlHttp.responseText == "true") {
+                        document.getElementById("error").innerHTML = "用户名已被注册！";
+                    } else {
+                        document.getElementById("error").innerHTML = "";
+                    }
+                }
+            };
+
+            xmlHttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            var username = document.getElementById("username").value;
+            xmlHttp.send("username=" + username);*/
+        }
+	</script>
+
 </head>
 <body>
 
@@ -128,9 +191,10 @@
 					<form id="form_submit" action="${pageContext.request.contextPath}/CustomerReginster.action" method="post">
 					<div class="list">
 						<div class="box">
-							<input type="text" name="username" class="regTextBox" placeholder="用户名" />
+							<input  id="username" onblur="send()" type="text" name="username" class="regTextBox" placeholder="用户名" />
 							<span class="icon"><img src="${pageContext.request.contextPath}/jsp/users/images/zhuce/username.png" /></span>
-							<b class="error">×</b>
+							<span id="error" style="color: red"></span>
+							<b class="error"></b>
 							<span class="tops"></span>
 						</div>
 					</div>

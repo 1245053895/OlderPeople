@@ -69,6 +69,8 @@ public interface UserLoginMapper {
 
     //将商品添加到收藏表中
     public void InsertFavorites(Favorites favorites);
+    //查询所有用户
+    public List<User> SelectAllQuerry();
 
     //查询购物车是否已有此产品
     public Shopcar queryShopCar(Shopcar shopcar);

@@ -346,6 +346,7 @@ td, th {
     height: 36px;
     line-height: 1;
     width: 82px;
+
 }
 .button:hover {
     background: #ea4949 none repeat scroll 0 0;
@@ -369,7 +370,7 @@ td, th {
 
 .head-form{
     padding-top:18px;
-    padding-left:100px;
+    padding-left:115px;
 }
 
 .top-nav ul li .con{

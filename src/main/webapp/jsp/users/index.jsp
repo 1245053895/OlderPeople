@@ -105,89 +105,6 @@
 </head>
 <body>
 
-<!--	<div style="height: 100%;top: 0px;bottom: auto; position: fixed;top: 0;right: 0;height: 100%;width: 35px;z-index: 99999;padding-top: 1px;background-color: #333333">
-		<div style="position: relative;height: 100%;padding: 0;margin: 0">
-&lt;!&ndash;			功能&ndash;&gt;
-			<div style="position: absolute;height: 570px;top: 50%;margin-top: -258px">
-&lt;!&ndash;				个人中心&ndash;&gt;
-				<div style="height: 45px;display: block;cursor: auto">
-					<a style="width: 35px;display: block;overflow: hidden;position: relative;text-align: center;z-index: 2" title="个人中心" href="">
-						<img src="img/icon/head.jpg" style="border: medium none">
-					</a>
-				</div>
-
-&lt;!&ndash;				客服&ndash;&gt;
-				<div style="width: 35px;height: 45px;font-size: 12px;margin: 20px 0 14px;overflow: visible;position: relative;border: 0;z-index: 1;padding: 0;">
-					<a target="_blank" style="width: 35px;height: 45px;font-size: 12px;display: block;overflow: hidden;position: relative;text-align: center;z-index: 2;color: #4A4A4A;outline: medium none;text-decoration: none;padding: 0;margin: 0" href="" title="在线客服">
-&lt;!&ndash;
-						<table style="border-collapse: collapse;border-spacing: 0;padding: 0;margin: 0;display: table;font-size: 12px;text-align">
-							<tbody>
-								<tr style="display: table-row;vertical-align: inherit;border-color: inherit">
-									<td>
-&ndash;&gt;
-										<img src="img/icon/kefu.jpg" style="border: medium none;margin: 0;padding: 0;list-style: none;color: #ffffff;font-size: 12px;text-align: center;cursor: pointer;border-collapse: collapse">
-&lt;!&ndash;
-									</td>
-								</tr>
-								<tr>
-									<td>
-										在线<br>客服
-									</td>
-								</tr>
-							</tbody>
-						</table>
-&ndash;&gt;
-					</a>
-				</div>
-
-&lt;!&ndash;				购物车&ndash;&gt;
-				<div style="height: 135px;width: 35px;font-size: 12px;margin: 20px 0 14px;overflow: visible;position: relative;border: 0;z-index: 1;padding: 0;display: block;cursor:auto;color: #666666">
-					<form method="post" style="padding: 0;margin: 0;border: none;list-style-type: none;display: block;font-size: 12px" action="">
-						<a href="" style="height: 135px;padding-top: 5px;color: #fff;position: relative;width: 35px;font-size: 12px;text-align: center;z-index: 2;outline: medium none;padding: 0;margin: 0;cursor: auto">
-							<li style="width: 35px;height: 35px;background-position: 0px -39px;display: block;font-size: normal;padding: 0;margin: 0;color: #fff;font-size: 12px;text-align: center;list-style-type: none;background: url(img/icon/gwc.jpg) no-repeat"></li>
-							<font size="+1" style="text-align: center">购<br>物<br>车<br></font>
-							<span style="margin-top: 7px">0</span>
-						</a>
-					</form>
-				</div>
-			</div>
-&lt;!&ndash;			回顶&ndash;&gt;
-			<div style="background-color: #333333;position: absolute;bottom: 0;z-index: 5;padding: 0;margin: 0;cursor: auto">
-				<div style="margin-bottom: 3px;margin-top: 5px;height: 0;margin: 0;overflow: hidden;position: relative;border: 0;z-index: 1;padding: 0">
-					<a style="width: 35px;height: 45px;font-size: 12px;display: block;overflow: hidden;position: relative;text-align: center;z-index: 2;color: #4A4A4A;outline: medium none;padding: 0;margin: 0">
-						<table>
-							<tbody>
-
-							</tbody>
-						</table>
-					</a>
-				</div>
-			</div>
-		</div>
-	</div>-->
-
-<!--
-<div class="sidebar-nav">
-    <div class="mods">
-		<div class="middle-items">
-			<div class="mod">
-				<a href="#" target="_blank" class="btn">
-					<table>
-						<tbody>
-						<tr>
-							<td><img src="images/kefu.pngs" height="45px" width="35px"></td>
-						</tr>
-						<tr>
-							<td>"在线客服"</td>
-						</tr>
-						</tbody>
-					</table>
-				</a>
-			</div>
-
-		</div>
-	</div>
-</div>-->
 
 <header id="pc-header">
 
@@ -343,41 +260,6 @@
 									</li>
 								</c:forEach>
 
-
-
-							<%--
-								<li class="col sku-item ">
-									<dl class="row">
-										<dt><img src="${pageContext.request.contextPath}/jsp/users/images/single/single10.png"></dt>
-										<dd class="name">小米电视3S 43英寸</dd>
-										<dd class="desc">4GB内存+128GB闪存，陶瓷版</dd>
-										<dd class="price">1499元</dd>
-									</dl>
-								</li>
-								<li class="col sku-item ">
-									<dl class="row">
-										<dt><img src="${pageContext.request.contextPath}/jsp/users/images/single/single7.png"></dt>
-										<dd class="name">小米电视3S 43英寸</dd>
-										<dd class="desc">4GB内存+128GB闪存，陶瓷版</dd>
-										<dd class="price">1499元</dd>
-									</dl>
-								</li>
-								<li class="col sku-item ">
-									<dl class="row">
-										<dt><img src="${pageContext.request.contextPath}/jsp/users/images/single/single8.png"></dt>
-										<dd class="name">小米电视3S 43英寸</dd>
-										<dd class="desc">4GB内存+128GB闪存，陶瓷版</dd>
-										<dd class="price">1499元</dd>
-									</dl>
-								</li>
-								<li class="col sku-item ">
-									<dl class="row">
-										<dt><img src="${pageContext.request.contextPath}/jsp/users/images/single/single9.jpg"></dt>
-										<dd class="name">小米电视3S 43英寸</dd>
-										<dd class="desc">4GB内存+128GB闪存，陶瓷版</dd>
-										<dd class="price">1499元</dd>
-									</dl>
-								</li>--%>
 							</ul>
 						</div>
 					</div>
@@ -1150,48 +1032,6 @@
 							</li>
 						</c:forEach>
 
-					<%--	<li class="col">
-							<div class="row">
-								<img src="${pageContext.request.contextPath}/jsp/users/images/djtj/yyllc.jpg">
-								<div style="border-bottom: 1px #CCCCCC solid"></div>
-								<div class="content">
-									<div class="from">推荐理由</div>
-									<div class="cmt">
-										冬季滋补，把玉树冬虫夏草带给老年人，精美礼盒包装送礼佳品，品质保障
-									</div>
-									<a href="#" class="name">医用理疗车</a>
-									<a href="#" class="price">1699元</a>
-								</div>
-							</div>
-						</li>
-						<li class="col">
-							<div class="row">
-								<img src="${pageContext.request.contextPath}/jsp/users/images/djtj/fdjzjq.jpg">
-								<div style="border-bottom: 1px #CCCCCC solid"></div>
-								<div class="content">
-									<div class="from">推荐理由</div>
-									<div class="cmt">
-										冬季滋补，把玉树冬虫夏草带给老年人，精美礼盒包装送礼佳品，品质保障
-									</div>
-									<a href="#" class="name">放大镜指甲钳</a>
-									<a href="#" class="price">1699元</a>
-								</div>
-							</div>
-						</li>
-						<li class="col">
-							<div class="row">
-								<img src="${pageContext.request.contextPath}/jsp/users/images/djtj/rs.jpg">
-								<div style="border-bottom: 1px #CCCCCC solid"></div>
-								<div class="content">
-									<div class="from">推荐理由</div>
-									<div class="cmt">
-										冬季滋补，把玉树冬虫夏草带给老年人，精美礼盒包装送礼佳品，品质保障
-									</div>
-									<a href="#" class="name">人参</a>
-									<a href="#" class="price">1699元</a>
-								</div>
-							</div>
-						</li>--%>
 					</ul>
 				</section>
 			</section>
@@ -1278,6 +1118,14 @@
 		</div>
 	</div>
 </footer>
+<div class="float">
+	<ul>
+		<li><a href="#" class="a01" title="购物车"></a></li>
+		<li><a href="#" class="a02" title="收藏夹"></a></li>
+		<li><a href="#" class="a03" title="联系客服"></a></li>
+		<li><p><a href="#" class="a04" title="置顶"></a></p></li>
+	</ul>
+</div>
 <script type="text/javascript">
     //hover 触发两个事件，鼠标移上去和移走
     //mousehover 只触发移上去事件

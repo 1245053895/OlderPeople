@@ -415,7 +415,7 @@
 								<c:if test="${status.index%2==0}">
 									<li class="col">
 										<div class="row">
-											<a href="page.jsp">
+											<a href="${pageContext.request.contextPath}/xiangqing.action?productid=${hotsaleproduct.productid}">
 												<span class="tip orange">销量${hotsaleproduct.totalhotsale}</span>
 												<dl>
 													<dt><a href="${pageContext.request.contextPath}/xiangqing.action?productid=${hotsaleproduct.productid}"><img src="${hotsaleproduct.productpicture}"></a></dt>
@@ -429,7 +429,7 @@
 
 								<c:if test="${status.index%2==1}">
 										<div class="row">
-											<a href="page.jsp">
+											<a href="${pageContext.request.contextPath}/xiangqing.action?productid=${hotsaleproduct.productid}">
 												<span class="tip blue">销量${hotsaleproduct.totalhotsale}</span>
 												<dl>
 													<dt><a href="${pageContext.request.contextPath}/xiangqing.action?productid=${hotsaleproduct.productid}"><img src="${hotsaleproduct.productpicture}"></a></dt>
@@ -1141,7 +1141,7 @@
 						<c:forEach items="${Recommendations}" var="Recommendation">
 							<li class="col">
 								<div class="row">
-									<img src="${Recommendation.productpicture}" style="width:auto;height:250px; ">
+									<a href="${pageContext.request.contextPath}/xiangqing.action?productid=${Recommendation.productid}"><img src="${Recommendation.productpicture}" style="width:250px;height:250px; "></a>
 									<div style="border-bottom: 1px #CCCCCC solid"></div>
 									<div class="content">
 										<div class="from">推荐理由</div>
@@ -1151,6 +1151,7 @@
 										<a href="${pageContext.request.contextPath}/xiangqing.action?productid=${Recommendation.productid}" class="name">${Recommendation.productname}</a>
 										<a href="${pageContext.request.contextPath}/xiangqing.action?productid=${Recommendation.productid}" class="price"  style="width: 100px;">${Recommendation.productprice}元</a>
 									</div>
+
 								</div>
 							</li>
 						</c:forEach>

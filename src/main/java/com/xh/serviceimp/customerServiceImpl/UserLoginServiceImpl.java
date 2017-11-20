@@ -141,5 +141,21 @@ public class UserLoginServiceImpl implements UserLoginService {
         return favorites2;
     }
 
+    @Override
+    public Integer queryLookcount(Integer productid) {
+      Integer ProductLookCount=  userLoginMapper.queryLookcount(productid);
+        return ProductLookCount;
+    }
+
+    @Override
+    public void setLookcount(Integer productid) {
+        userLoginMapper.setLookcount(productid);
+    }
+
+    @Override
+    public void AutoIncreaseOne(Integer productid) {
+        userLoginMapper.AutoIncreaseOne(productid);
+    }
+
 
 }

@@ -78,4 +78,15 @@ public interface UserLoginMapper {
 
     //查看收藏是否已经成功
     public Favorites IsSuccess(Favorites favorites);
+
+   //查询商品的浏览次数是否为空
+    public Integer queryLookcount(Integer productid);
+
+    //商品浏览次数当为空时，赋值为1
+    public void setLookcount(Integer productid);
+
+    //商品浏览次数当不为空时，让它自动加1
+    public void AutoIncreaseOne(Integer productid);
+
+
 }

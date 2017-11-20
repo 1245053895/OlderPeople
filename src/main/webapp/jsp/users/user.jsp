@@ -225,7 +225,7 @@
 							<div class="warn2">出生年月</div>
 							<div class="warn3">
 								<select style="width: 80px" name = "Year">
-									<option value = "1" selected = "selected">${temp[0]}</option>
+									<option selected = "selected">${temp[0]}</option>
 									<option value = "2017">2017</option>
 									<option value = "2016">2016</option>
 									<option value = "2015">2015</option>

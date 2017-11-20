@@ -156,11 +156,20 @@
     </select>
 
 
+    <!--查询商品的浏览次数是否为空-->
+    <select id="queryLookcount" parameterType="Integer" resultType="Integer">
+        SELECT ProductLookCount FROM product WHERE ProductId=#{productid}
+    </select>
 
 
+<!--商品浏览次数当为空时，赋值为1-->
+    <update id="setLookcount" parameterType="Integer">
+        UPDATE product set ProductLookCount=1 WHERE ProductId=#{productid}
+    </update>
 
-
-
-
+    <!--商品浏览次数当不为空时，让它自动加1-->
+    <update id="AutoIncreaseOne" parameterType="Integer">
+        UPDATE product set ProductLookCount=ProductLookCount+1 WHERE ProductId=#{productid}
+    </update>
 
 </mapper>

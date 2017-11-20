@@ -251,7 +251,7 @@ public class CustomerLoginController {
 
     //收藏宝贝
     @RequestMapping("/ShouCangShop.action")
-    public Map  ShouCangShop(HttpServletRequest request,Integer productid ) {
+    public @ResponseBody Map  ShouCangShop(HttpServletRequest request,Integer productid ) {
         Map map=new HashMap();
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");

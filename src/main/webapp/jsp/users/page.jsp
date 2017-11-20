@@ -288,7 +288,7 @@
 						</li>--%>
 					</ul>
 					<div style="margin-left: 30px;margin-right:30px ">
-						<c:forEach items="${myProduct.images}" var="it" varStatus="status">
+						<c:forEach items="${myProduct.images1}" var="it" varStatus="status">
 							<div style="text-align:center"><img src="${pageContext.request.contextPath}/${it}"width="95%";height="100px"></div>
 						</c:forEach>
 					</div>
@@ -569,12 +569,16 @@
 	    data.push(parseFloat(${myProduct.productid})); //商品
 		data.push(parseFloat($(".input").val())); //数量
 		data.push(parseFloat($("#price").text()));//价格
-		var d=ajax("ShopCat.action",data);
-		if(d){
-		    alert("加入购物车成功！");
+		if(${sessionScope.user==null}){
+            alert("请先登录！");
         }else {
-            alert("此商品已在购物车！");
-		}
+            var d=ajax("ShopCat.action",data);
+            if(d){
+                alert("加入购物车成功！");
+            }else {
+                alert("此商品已在购物车！");
+            }
+        }
     });
 
 	function ajax(url,data) {
@@ -611,13 +615,16 @@
        /* 商品加入收藏夹的ajax实现传值*/
         $(".Xcontent36").click(function () {
             var productid=${myProduct.productid}
-            var b=ajax1("ShouCangShop.action",productid);
-            if(b){
-                alert("收藏成功")
+            if(${sessionScope.user==null}){
+                alert("请先登录！");
             }else {
-                alert("此商品已在收藏夹")
+                var b=ajax1("ShouCangShop.action",productid);
+                if(b){
+                    alert("收藏成功")
+                }else {
+                    alert("此商品已在收藏夹")
+                }
             }
-
         });
 
 function ajax1(url,productid) {

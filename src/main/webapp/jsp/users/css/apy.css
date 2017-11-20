@@ -1,0 +1,82 @@
+.zfbody{
+    width: 968px;
+    height: 500px;
+    border: 1px #d0d8e0 solid;
+}
+.zfbody .zfxq{
+    font-size: 14px;
+}
+.zfbody .zfxqs{
+    font-size: 14px;
+    float: left;
+    margin-left: 100px;
+    text-align: left;
+    margin-top: 30px;
+}
+.zfbody .zfxqs p{padding: 5px;}
+.zzfs{float: left;width: 150px;margin-right: 30px}
+.zzfs img{ margin-left: 30px;margin-top: -20px;}
+.zfbody .zfxq .yxzffs{
+    width: 968px;
+    height: 80px;
+    text-align: left;
+    float: left;
+    background-color: #ECFCD7;
+    border-bottom: 2px #e0e0e0 solid;
+}
+.zfbody .zfxq .yxzffs img{
+    padding: 20px 40px;
+}
+.qrzf{
+    margin-top: 20px;
+    text-align: center;
+    margin-left: 110px;
+}
+.qrzf input{
+    height:40px;
+    width: 100px;
+    border-radius: 3px;
+    text-align: center;
+    line-height: 30px;
+    color: white;
+    margin-right: 50px;
+}
+.qrzfbtn{
+    background-color: #ee4644;
+    border: 1px #EE4644 solid;
+}
+.qxzfbtn{
+    background-color: #d0d8e0;
+    border: 1px #d0d8e0 solid
+}
+.zfcg{
+    width: 970px;
+    height: 300px;
+    margin-left: 180px;
+    margin-top: 30px;
+    background-color:#EFFFE4 ;
+    border: 1px #7F8954 solid;
+}
+.zfcg .fk{
+    float: left;
+    text-align: center;
+    margin-left:425px;
+    margin-top: -30px;
+}
+.fsdd{
+    float: left;
+    text-align: center;
+    margin-top: 20px;
+    margin-left: 330px;
+}
+.dd{
+    margin-top: 60px;
+    font-size: 14px;
+    margin-left: 330px;
+    color:#666666;
+}
+.dd a{
+    border-right: 1px #e0e0e0 solid;
+    padding-right: 8px;
+
+}

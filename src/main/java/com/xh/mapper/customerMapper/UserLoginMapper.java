@@ -69,6 +69,7 @@ public interface UserLoginMapper {
 
     //将商品添加到收藏表中
     public void InsertFavorites(Favorites favorites);
+
     //查询所有用户
     public List<User> SelectAllQuerry();
 
@@ -90,8 +91,7 @@ public interface UserLoginMapper {
     //商品浏览次数当不为空时，让它自动加1
     public void AutoIncreaseOne(Integer productid);
 
-    //查询所有用户
-    public List<User> SelectAllQuerry();
+
 
 
 }

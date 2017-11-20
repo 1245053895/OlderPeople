@@ -398,7 +398,7 @@
 					<h2 class="m-hdL">热销商品</h2>
 					<div class="m-hdR">
 						<div class="scan">
-							<span>查看全部</span>
+							<span><a href="${pageContext.request.contextPath}/ProductHot.action">查看全部</a></span>
 							<a href="#" class="icon">&gt;</a>
 						</div>
 					</div>

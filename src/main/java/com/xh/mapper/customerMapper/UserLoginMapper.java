@@ -70,4 +70,12 @@ public interface UserLoginMapper {
     //将商品添加到收藏表中
     public void InsertFavorites(Favorites favorites);
 
+    //查询购物车是否已有此产品
+    public Shopcar queryShopCar(Shopcar shopcar);
+
+    //查看此商品是否已在收藏夹中
+    public Favorites queryFavorite(Favorites favorites);
+
+    //查看收藏是否已经成功
+    public Favorites IsSuccess(Favorites favorites);
 }

@@ -227,13 +227,13 @@
 				<div class="Xcontent33"><img src="${pageContext.request.contextPath}/jsp/users/images/shangpinxiangqing/16.png"></div>
 			</div>
 			<div class="Xcontent34"><a href="#">立即购买</a></div>
-			<div class="Xcontent35"><a href="javascript:void(0);">加入购物车</a></div>
+			<div class="Xcontent35"><a href="javascript:void(0)">加入购物车</a></div>
             <div class="Xcontent36">
-                <a href="<%--${pageContext.request.contextPath}/ShouCangShop.action?productid=${myProduct.productid}--%>"><img src="${pageContext.request.contextPath}/jsp/users/images/shoucang.png" height="15px" width="15px"></a>
+                <a href=""><img src="${pageContext.request.contextPath}/jsp/users/images/shoucang.png" height="15px" width="15px"></a>
                 <a href="">收藏宝贝</a>
             </div>
             <div class="Xcontent36">
-                <a href="#"><img src="${pageContext.request.contextPath}/jsp/users/images/kefu.png" height="15px" width="15px"></a>
+                <a href=""><img src="${pageContext.request.contextPath}/jsp/users/images/kefu.png" height="15px" width="15px"></a>
                 <a href="#">联系客服</a>
             </div>
 		</ol>
@@ -562,23 +562,20 @@
 	</div>
 </footer>
 <script type="text/javascript">
+	/*商品加入购物车的ajax*/
 	$(".Xcontent35").click(function () {
         console.log($("#price").text());
 	    var data=new Array();
 	    data.push(parseFloat(${myProduct.productid})); //商品
 		data.push(parseFloat($(".input").val())); //数量
 		data.push(parseFloat($("#price").text()));//价格
-
 		var d=ajax("ShopCat.action",data);
 		if(d){
 		    alert("加入购物车成功！");
         }else {
-            alert("加入购物车失败！");
+            alert("此商品已在购物车！");
 		}
     });
-
-
-
 
 	function ajax(url,data) {
 	    var flag=true;
@@ -594,12 +591,12 @@
 			error:errorFunction,
 			beforeSend:LoadFunction
 		});
-	    function successFuncion(data) {
-			if(data){
-			    flag=true
+        function successFuncion(data) {
+            if(data.red){
+                flag=true
             }else{
-			    flag=false;
-			}
+                flag=false;
+            }
         }
         function errorFunction() {
             flag=false;
@@ -607,8 +604,53 @@
         function LoadFunction() {
 
         }
+        return flag;
+	}
+
+
+       /* 商品加入收藏夹的ajax实现传值*/
+        $(".Xcontent36").click(function () {
+            var productid=${myProduct.productid}
+            var b=ajax1("ShouCangShop.action",productid);
+            if(b){
+                alert("收藏成功")
+            }else {
+                alert("此商品已在收藏夹")
+            }
+
+        });
+
+function ajax1(url,productid) {
+	    var flag=true;
+	    $.ajax({
+			url:'${pageContext.request.contextPath}/'+url,
+			data:{'productid':productid},
+			type:'POST',
+			async:false,
+			timeout:10000,
+			cache:false,
+			success:successMethod,
+			error:errorMethod,
+	        beforeSend:LoadMethod,
+
+		});
+	    function successMethod(data) {
+	        if(data.red){
+	            flag=true
+            }else {
+	            flag=false;
+			}
+
+        }
+		function errorMethod() {
+
+		}
+		function LoadMethod() {
+
+		}
 		return flag;
-    }
+
+}
 
 
     //hover 触发两个事件，鼠标移上去和移走

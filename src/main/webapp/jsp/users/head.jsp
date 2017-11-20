@@ -29,7 +29,8 @@
                         <li><a href="${pageContext.request.contextPath}/jsp/users/my-dingdan.jsp?flag=1">收藏夹</a></li>
                         <!-- flag=0 表示跳到订单页面; flag=1 表示跳到收藏页面;flag=2 表示跳到购物车页面; ...-->
                         <li><a href="${pageContext.request.contextPath}/jsp/users/my-dingdan.jsp?flag=0">我的订单</a></li>
-                        <li><a href="${pageContext.request.contextPath}/CustomerInformation.action">个人中心</a></li>
+
+                      <li><a href="${pageContext.request.contextPath}/CustomerInformation.action">个人中心</a></li>
 
                     <li><a href="${pageContext.request.contextPath}/ShopFrontPage.action">返回首页</a></li>
                     <li>

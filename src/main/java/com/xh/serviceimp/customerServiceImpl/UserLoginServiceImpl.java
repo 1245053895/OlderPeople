@@ -123,5 +123,23 @@ public class UserLoginServiceImpl implements UserLoginService {
       userLoginMapper.InsertFavorites(favorites);
     }
 
+    @Override
+    public Shopcar queryShopCar(Shopcar shopcar) {
+     Shopcar shopcar1=   userLoginMapper.queryShopCar(shopcar);
+        return shopcar1;
+    }
+
+    @Override
+    public Favorites queryFavorite(Favorites favorites) {
+       Favorites favorites1= userLoginMapper.queryFavorite(favorites);
+        return favorites1;
+    }
+
+    @Override
+    public Favorites IsSuccess(Favorites favorites) {
+       Favorites favorites2= userLoginMapper.IsSuccess(favorites);
+        return favorites2;
+    }
+
 
 }

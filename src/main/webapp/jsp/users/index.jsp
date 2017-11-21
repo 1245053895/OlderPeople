@@ -256,7 +256,7 @@
 			</div>
 			<ul class="yMenuIndex">
 				<li><a href="" target="_blank" title="首页">首页</a></li>
-				<li><a href="" target="_blank" title="热销专区">热销专区</a></li>
+				<li><a href="${pageContext.request.contextPath}/ProductHot.action" target="_blank" title="热销专区">热销专区</a></li>
 				<li><a href="" target="_blank" title="新品专区">新品专区</a></li>
 				<li><a href="" target="_blank" title="积分商城">积分商城</a></li>
 				<li><a href="${pageContext.request.contextPath}/queryTotalCommentshop.action" target="_blank" title="好评专区">好评专区</a></li>

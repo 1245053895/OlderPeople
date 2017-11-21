@@ -67,22 +67,35 @@ public class CustomerLoginController {
             if (password != null) {
                 User user = userLoginService.selectAllNameAndPwd(username);
                 if (user != null) {
-                    if (user.getUserpwd().equals(encodePassword(password))) {
-                        HttpSession session = request.getSession();
-                        session.setMaxInactiveInterval(600 * 60 * 60);
-                        session.setAttribute("user", user);
-                        userlog.setUserid(user.getUserid());
-                        userlog.setStartlogintime(new Date());
-                        try {
-                            userlog.setUserip(NetworkUtil.getIpAddress(request));
-                        } catch (IOException e) {
-                            e.printStackTrace();
+                    if (user.getUserA().equals("1")) {
+                        if (user.getUserpwd().equals(encodePassword(password))) {
+                            HttpSession session = request.getSession();
+                            session.setMaxInactiveInterval(600 * 60 * 60);
+                            session.setAttribute("user", user);
+                            userlog.setUserid(user.getUserid());
+                            userlog.setStartlogintime(new Date());
+                            try {
+                                userlog.setUserip(NetworkUtil.getIpAddress(request));
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                            userLoginService.insertStartTimeAndIp(userlog);
+                            user.setUserid(user.getUserid());
+                            user.setUserlogintime(new Date());
+                            userLoginService.UpdateUserLoginTimeById(user);
+                          Integer userlogincount=  userLoginService.IsUserLoginNull(user.getUserid());
+                          if(userlogincount==null){
+                              userLoginService.LoginCountOne(user.getUserid());
+                          }else {
+                              userLoginService.AutoIncreaeOne(user.getUserid());
+                          }
+                            return "redirect:/ShopFrontPage.action";//"/jsp/users/index.jsp";
+                        } else {
+                            model.addAttribute("error", "密码不正确");
                         }
-                        userLoginService.insertStartTimeAndIp(userlog);
-                        return "redirect:/ShopFrontPage.action";//"/jsp/users/index.jsp";
-                    } else {
-                        model.addAttribute("error", "密码不正确");
-                    }
+                      }else {
+                            model.addAttribute("error","该账号已被冻结");
+                        }
                 } else {
                     model.addAttribute("error", "用户名不正确");
                 }

@@ -10,9 +10,33 @@
     <!--根据登录用户的用户名查询出该登录用户的用户名和密码-->
     <select id="selectAllNameAndPwd" resultType="user" parameterType="String">
     SELECT UserId, UserName, UserPwd, UserSex, UserRealName, UserPhone, UserBirthday, UserAddress,
-    UserEmail, CreditsCore, UserInputDate, UserZip, UserLoginCount, UserLoginTime, User_A,
-    User_B, User_C FROM `user` WHERE UserName=#{username}
+    UserEmail, CreditsCore, UserInputDate, UserZip, UserLoginCount, UserLoginTime, User_A as userA,
+    User_B as userB, User_C as userC  FROM `user` WHERE UserName=#{username}
     </select>
+
+    <!--向用户表中根据用户的id更新用户最近一次登录的时间-->
+    <update id="UpdateUserLoginTimeById" parameterType="user">
+        UPDATE user SET UserLoginTime=#{userlogintime} WHERE UserId=#{userid}
+    </update>
+
+    <!--根据用户的id查询用户登录的总次数是否为空-->
+    <select id="IsUserLoginNull" parameterType="Integer" resultType="Integer">
+          SELECT UserLoginCount FROM  `user` WHERE UserId=#{userid}
+    </select>
+
+    <!--当用户登录的总次数为空时，就对它赋1的值-->
+    <update id="LoginCountOne" parameterType="Integer">
+        UPDATE `user`  SET UserLoginCount=1  WHERE UserId=#{userid}
+    </update>
+
+    <!--当用户登录的总次数为1时，让它自动加一-->
+    <update id="AutoIncreaeOne" parameterType="Integer">
+        UPDATE `user`  SET UserLoginCount=UserLoginCount+1  WHERE UserId=#{userid}
+    </update>
+
+
+
+
 
     <!--根据登录用户的id向用户日志表中插入用户开始登录的时间，用户的登录ip-->
     <insert id="insertStartTimeAndIp" parameterType="com.xh.po.Userlog">

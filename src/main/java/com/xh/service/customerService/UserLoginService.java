@@ -97,4 +97,18 @@ public interface UserLoginService {
 
 
 
+    //向用户表中根据用户的id更新用户最近一次登录的时间
+    public void UpdateUserLoginTimeById(User user);
+
+    //根据用户的id查询用户登录的总次数是否为空
+    public Integer IsUserLoginNull(Integer userid);
+
+    //当用户登录的总次数为空时，就对它赋1的值
+    public  void  LoginCountOne(Integer userid);
+
+    //当用户登录的总次数为1时，让它自动加一
+    public void AutoIncreaeOne(Integer userid);
+
+
+
 }

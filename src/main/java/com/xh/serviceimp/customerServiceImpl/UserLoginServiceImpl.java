@@ -170,6 +170,29 @@ public class UserLoginServiceImpl implements UserLoginService {
     }
 
     @Override
+    public void UpdateUserLoginTimeById(User user) {
+        userLoginMapper.UpdateUserLoginTimeById(user);
+    }
+
+    @Override
+    public Integer IsUserLoginNull(Integer userid) {
+      Integer userlogincount=  userLoginMapper.IsUserLoginNull(userid);
+        return userlogincount;
+    }
+
+    @Override
+    public void LoginCountOne(Integer userid) {
+        userLoginMapper.LoginCountOne(userid);
+
+    }
+
+    @Override
+    public void AutoIncreaeOne(Integer userid) {
+        userLoginMapper.AutoIncreaeOne(userid);
+
+    }
+
+    @Override
     public List<User> SelectAllQuerry() {
         List<User> userList1 =userLoginMapper.SelectAllQuerry();
         return userList1;

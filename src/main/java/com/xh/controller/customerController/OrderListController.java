@@ -1,5 +1,6 @@
 package com.xh.controller.customerController;
 
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import com.xh.po.Favorites;
 import com.xh.po.User;
 import com.xh.po.vo.FavoritesCustom;
@@ -9,11 +10,13 @@ import com.xh.po.vo.ShopCarCustom;
 import com.xh.service.customerService.OrderListService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -290,5 +293,38 @@ public class OrderListController  {
         }
         return map;
     }
+
+    /**
+     * 通过订单id查询商品及其评论
+     * @param session
+     * @param model
+     * @param id
+     * @return
+     */
+    @RequestMapping(value = "/queryProductByOrderId", method ={ RequestMethod.GET,RequestMethod.POST})
+    public String queryProductByOrderId(HttpSession session , Model model, int id){
+        User user= (User) session.getAttribute("user");
+        List<ProductCustom> productCustoms=orderListService.queryProductByOrderId(id);
+        model.addAttribute("productCustoms",productCustoms);
+        return "/jsp/users/my-pingjia.jsp";
+    }
+
+    @RequestMapping(value = "/updateCommentByids", method ={ RequestMethod.GET,RequestMethod.POST})
+    public @ResponseBody Map updateCommentByids(HttpSession session , Model model, String[] data){
+        User user= (User) session.getAttribute("user");
+        Map map=new HashMap();
+        ProductCustom productCustom=new ProductCustom();
+        productCustom.setCommentid(Integer.valueOf(data[0]));
+        productCustom.setGoodcomment(Integer.valueOf(data[1]));
+        productCustom.setComment(data[2]);
+        productCustom.setCommenttime(new Date());
+        boolean red=orderListService.updateCommentByids(productCustom);
+        map.put("red",red);
+        return map;
+    }
+
+
+
+
 
 }

@@ -149,4 +149,36 @@
         INSERT INTO shopcar (UserId, ProductId, orderamount, Price) VALUES (#{userid},#{productid},#{orderamount},#{price})
     </insert>
 
+    <select id="queryProductByOrderId" resultType="com.xh.po.vo.ProductCustom" parameterType="int">
+        SELECT
+          o.OrderId,
+          p.*,
+          op.PayPrice,
+          op.ShoppingCount,
+          op.TotalMoneyCount,
+          c.Comment,
+          c.UserId,
+          c.CommentReview,
+          c.CommentTime,
+          c.GoodComment,
+          c.CommentId
+        FROM `order` o
+        LEFT JOIN comment c ON c.Comment_C=o.OrderId
+        INNER JOIN orderproduct op ON op.ProductId=c.ProductId
+        INNER JOIN product p ON c.ProductId = p.ProductId
+        WHERE o.OrderId=#{id} AND op.OrderId=o.OrderId
+        ORDER BY c.Comment,c.CommentTime DESC
+    </select>
+
+    <!--Comment_C  是订单id-->
+    <update id="updateCommentByids" parameterType="com.xh.po.vo.ProductCustom">
+        UPDATE comment SET Comment=#{comment},GoodComment=#{goodcomment},CommentTime=#{commenttime} WHERE CommentId=#{commentid}
+    </update>
+
+    <select id="selectCommentByids" parameterType="com.xh.po.vo.ProductCustom" resultType="com.xh.po.vo.ProductCustom">
+        SELECT *
+        FROM comment
+        WHERE CommentId=#{commentid}
+    </select>
+
 </mapper>

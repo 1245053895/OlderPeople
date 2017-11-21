@@ -124,12 +124,9 @@ input,button{border-top-width: 0px;
 .banner .point span{width:43px; text-indent:-9999px; cursor:pointer; height:4px;color:#fff;display:inline; float:left; margin-right:10px;background:#a89fc7}
 .banner .point span:hover, .banner .point span.on{background:#e83426;}
 
-
-
 #idx04 dl dt{color:#ea1d24;font-weight:bold;background:url(../images/ico29.png) no-repeat left center;border-bottom:4px solid #ea1d24;padding-left:35px}
-
-
-
+#idx05 dl dt{color:#ff9033;font-weight:bold;background:url(../images/ico30.png) no-repeat left center;border-bottom:4px solid #ff9033;padding-left:35px}
+#idx05 dl dd .big img{right:0;width:599px;height:280px}
 
 .idx02{margin-top:25px}
 .idx02 dl dt{color:#0087cc;font-weight:bold;padding-left:25px;border-bottom:4px solid #0087cc;font-size:20px;line-height:45px}
@@ -141,3 +138,31 @@ input,button{border-top-width: 0px;
 .idx02 dl dd .item p{margin:40px 0 0 30px;color:#ea1d24;font-size:20px;font-weight:bold;z-index:2;position:relative;}
 .idx02 dl dd .item p font{font-size:15px;}
 .idx02 dl dd .big{padding-left:20px;width:579px}
+
+/*product*/
+.pro_cont{margin-top:25px}
+.pro_cont .item{float:left;padding:5px;border:2px solid #d9d9d9;width:215px;height:330px;margin-right:13px;margin-bottom:23px}
+.pro_cont .item.last{margin-right:0;margin-left:2px}
+.pro_cont .item:hover,.pro_cont .item.on{border:2px solid #e3393c;cursor:pointer}
+.pro_cont .item dl dt img{width:215px;height:205px}
+.pro_cont .item dl dd{margin-top:5px}
+.pro_cont .item dl dd img{width:27px;height:27px;border:1px solid #dedcdd;padding:1px;margin-right:5px}
+.pro_cont .item dl dd .on{border:1px solid #e2393c}
+.pro_cont .item .p01{font-size:20px;margin-top:15px;color:#ea1d22}
+.pro_cont .item .p01 font{font-size:14px}
+.pro_cont .item .p02{line-height:22px;margin-top:10px;font-family:"宋体";}
+.pro_cont .item .p02 a{color:#5a5a5a;}
+.pro_cont .item .p03{margin-top:10px;border-top:1px solid #dadada}
+.pro_cont .item .p03 span{display:inline-block;width:95px;height:32px;line-height:32px;padding-left:10px}
+.pro_cont .item .p03 .sp01{border-right:1px solid #dadada}
+.pro_cont .item .p03 span b{color:#ea8c1a}
+.pro_cont .item .p03 span strong{color:#0193de}
+
+/*page*/
+.page{margin-top:90px;text-align:center;font-size:14px}
+.page a{border:1px solid #dedede;background:#f5f5f5;color:#818183;padding:8px 14px;margin-right:2px;display:inline-block}
+.page a.pre,.page a.next{border:1px solid #f5f5f5;background:#fff}
+.page a.on{background:#ea1d24;color:#fff;border:1px solid #ca030a}
+.page span{padding:0 20px}
+.page input{border:1px solid #dedede;background:#fff;width:10px;color:#818183;padding:8px 14px;height:20px;margin:-4px 5px 0 5px;display:inline-block}
+.page .sub{margin-left:10px}

@@ -122,7 +122,7 @@
                         </c:if>
                     </div>
                 </div>
-                <c:if test="${orderDetailCustoms.get(0).shippingname=='自取'}">
+                <c:if test="${orderDetailCustoms.get(0).gainmethod==1}">
                     <div class="col-xs-4">
                         <label class="label_name"> 收货方式： </label>
                         <div class="o_content">
@@ -130,7 +130,7 @@
                         </div>
                     </div>
                 </c:if>
-                <c:if test="${orderDetailCustoms.get(0).shippingname!='自取'}">
+                <c:if test="${orderDetailCustoms.get(0).gainmethod==0}">
                     <div class="col-xs-4">
                         <label class="label_name"> 收货方式： </label>
                         <div class="o_content">

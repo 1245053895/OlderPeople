@@ -178,4 +178,17 @@
         UPDATE product set ProductLookCount=ProductLookCount+1 WHERE ProductId=#{productid}
     </update>
 
+
+    <!--选出商品的图片，价格，名称，评论数-->
+    <select id="queryTotalCommentshop" resultType="totalCreditsById" parameterType="Integer">
+            SELECT comment.ProductId,productpicture, ProductName,ProductPrice,
+                 COUNT(`UserId`) shopComment FROM `comment`,product WHERE `comment`.ProductId=product.ProductId
+                 GROUP BY `comment`.ProductId LIMIT #{startpage},15
+    </select>
+
+    <!--根据商品的id,查询出每个商品对应的好评度个数-->
+    <select id="EveryShopGoodComment" parameterType="Integer" resultType="Integer">
+        SELECT COUNT(GoodComment) onegood  FROM `comment` WHERE ProductId=#{productid} AND
+         GoodComment>=4
+    </select>
 </mapper>

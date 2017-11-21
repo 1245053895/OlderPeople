@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
@@ -21,10 +22,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Controller
 public class CustomerLoginController {
@@ -304,5 +302,23 @@ public class CustomerLoginController {
 
     }
 
+//好评区
+    @RequestMapping("/queryTotalCommentshop.action")
+    public String queryTotalCommentshop(Model model,@RequestParam(defaultValue = "1") Integer currentpage){
+        Integer startpage=(currentpage-1)*15;
+      List<TotalCreditsById> totalCreditsByIds=  userLoginService.queryTotalCommentshop(startpage);
+       for(TotalCreditsById totalCreditsById:totalCreditsByIds){
+           Integer onegood=  userLoginService.EveryShopGoodComment(totalCreditsById.getProductid());
+           totalCreditsById.setTotalgoodcomment(onegood);
+           totalCreditsById.setStartpage(startpage);
+       }
+        model.addAttribute("totalCreditsByIds",totalCreditsByIds);
+        return "/jsp/users/rpzq.jsp";
+    }
+
 
 }
+
+
+
+

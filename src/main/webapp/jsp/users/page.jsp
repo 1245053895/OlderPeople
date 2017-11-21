@@ -386,16 +386,17 @@
 <div style="height:100px"></div>
 <div class="center" style="background:#fff">
     <div class="tabox">
-        <div class="hd">
+        <div class="hd top-nav">
             <ul class="li-ul-ss">
-                <li class=" " style="width:238px">疯狂抢购</li>
-                <li class=" ">热评商品</li>
-                <li class=" ">热卖商品</li>
-                <li class=" ">猜您喜欢</li>
-                <li class="">新品上架</li></ul>
+                <li class="con " style="width:238px">疯狂抢购</li>
+                <li class="con ">热评商品</li>
+                <li class="con ">热卖商品</li>
+                <li class="con ">猜您喜欢</li>
+                <li class="con ">新品上架</li>
+			</ul>
         </div>
-        <div class="bd">
-            <ul class="lh" style="display: none;">
+        <div class="bd my_ul">
+            <ul class="lh bd_1" style="display: block;">1
 				<c:forEach items="${tuiJianList01}" var="it1" varStatus="status">
 					<%--<div class="Xcontent07"><img  src="${pageContext.request.contextPath}/${it}"></div>--%>
 
@@ -412,7 +413,8 @@
                 </li>
 				</c:forEach>
             </ul>
-			<ul class="lh" style="display: none;">
+
+			<ul class="lh bd_2" style="display: none;">2
 				<c:forEach items="${tuiJianList02}" var="it2" varStatus="status">
 					<%--<div class="Xcontent07"><img  src="${pageContext.request.contextPath}/${it}"></div>--%>
 
@@ -429,7 +431,7 @@
 					</li>
 				</c:forEach>
 			</ul>
-			<ul class="lh" style="display: none;">
+			<ul class="lh bd_3" style="display: none;">3
 				<c:forEach items="${tuiJianList03}" var="it3" varStatus="status">
 					<%--<div class="Xcontent07"><img  src="${pageContext.request.contextPath}/${it}"></div>--%>
 
@@ -446,7 +448,7 @@
 					</li>
 				</c:forEach>
 			</ul>
-			<ul class="lh" style="display: none;">
+			<ul class="lh bd_4" style="display: none;">
 				<c:forEach items="${tuiJianList04}" var="it4" varStatus="status">
 					<%--<div class="Xcontent07"><img  src="${pageContext.request.contextPath}/${it}"></div>--%>
 
@@ -463,7 +465,7 @@
 					</li>
 				</c:forEach>
 			</ul>
-			<ul class="lh" style="display: none;">
+			<ul class="lh bd_5" style="display: none;">
 				<c:forEach items="${tuiJianList05}" var="it5" varStatus="status">
 					<%--<div class="Xcontent07"><img  src="${pageContext.request.contextPath}/${it}"></div>--%>
 
@@ -663,10 +665,13 @@ function ajax1(url,productid) {
     //hover 触发两个事件，鼠标移上去和移走
     //mousehover 只触发移上去事件
     $(".top-nav ul li").hover(function(){
+        console.log("jjjjj");
         $(this).addClass("hover").siblings().removeClass("hover");
         $(this).find("li .nav a").addClass("hover");
         $(this).find(".con").show();
+
     },function(){
+        console.log("dddd");
         //$(this).css("background-color","#f5f5f5");
         $(this).find(".con").hide();
         //$(this).find(".nav a").removeClass("hover");
@@ -677,7 +682,20 @@ function ajax1(url,productid) {
 
 <script type="text/javascript">
 
-	function myfun() {
+    $(".li-ul-ss").find("li").click(function(){
+        var index=$(this).index();
+        console.log(index);
+        for(var i=0;i<5;i++){
+            if(i==index){
+                $(".my_ul").find("ul").eq(i).css("display","block");
+            }else {
+                $(".my_ul").find("ul").eq(i).css("display","none");
+            }
+        }
+    });
+
+
+    function myfun() {
 		//alert("自动加载") 01  23 45
         <%--alert("自动加载");--%>
         <%--alert( ${pingJiaShuList[0].goodcomment});--%>

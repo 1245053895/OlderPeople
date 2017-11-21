@@ -259,7 +259,7 @@
 				<li><a href="" target="_blank" title="热销专区">热销专区</a></li>
 				<li><a href="" target="_blank" title="新品专区">新品专区</a></li>
 				<li><a href="" target="_blank" title="积分商城">积分商城</a></li>
-				<li><a href="" target="_blank" title="合伙人">合伙人</a></li>
+				<li><a href="${pageContext.request.contextPath}/queryTotalCommentshop.action" target="_blank" title="好评专区">好评专区</a></li>
 				<li><a href="" target="_blank" title="关于我们">关于我们</a></li>
 			</ul>
 		</div>

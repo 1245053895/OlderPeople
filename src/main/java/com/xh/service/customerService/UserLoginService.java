@@ -89,6 +89,12 @@ public interface UserLoginService {
     public void AutoIncreaseOne(Integer productid);
 
 
+    //  //选出商品的图片，价格，名称，评论数
+    public List<TotalCreditsById> queryTotalCommentshop(Integer startpage);
+
+    //根据商品的id,查询出每个商品对应的好评度个数
+    public Integer EveryShopGoodComment(Integer productid);
+
 
 
 }

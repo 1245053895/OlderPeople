@@ -156,6 +156,19 @@ public class UserLoginServiceImpl implements UserLoginService {
     public void AutoIncreaseOne(Integer productid) {
         userLoginMapper.AutoIncreaseOne(productid);
     }
+
+    @Override
+    public List<TotalCreditsById> queryTotalCommentshop(Integer startpage) {
+      List<TotalCreditsById> ShoptotalCreditsByIds= userLoginMapper.queryTotalCommentshop(startpage);
+        return ShoptotalCreditsByIds;
+    }
+
+    @Override
+    public Integer EveryShopGoodComment(Integer productid) {
+        Integer totalgood = userLoginMapper.EveryShopGoodComment(productid);
+        return totalgood;
+    }
+
     @Override
     public List<User> SelectAllQuerry() {
         List<User> userList1 =userLoginMapper.SelectAllQuerry();

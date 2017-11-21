@@ -191,7 +191,7 @@
 
 <header id="pc-header">
 
-	<c:if test="${products==null||hotsaleproducts==null||top10products==null||creditproducts==null||jiankang==null|| jujia==null|| yule==null|| Recommendations==null}">
+	<c:if test="${ products==null|| hotsaleproducts==null|| top10products==null|| creditproducts==null|| jiankang==null|| jujia==null|| yule==null||  Recommendations==null}">
 		<jsp:forward page="${pageContext.request.contextPath}/selectproduct.action"></jsp:forward>
 	</c:if>
 
@@ -397,7 +397,7 @@
 					<h2 class="m-hdL">热销商品</h2>
 					<div class="m-hdR">
 						<div class="scan">
-							<span><a href="${pageContext.request.contextPath}/ProductHot.action">查看全部</a></span>
+							<span>查看全部</span>
 							<a href="#" class="icon">&gt;</a>
 						</div>
 					</div>

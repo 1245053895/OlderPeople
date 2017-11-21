@@ -32,4 +32,10 @@ public interface OrderListMapper {
     public void delectFavorites(Favorites favorites);
 
     public void insertShiftToCart(ShopCarCustom shopCarCustom);
+
+    public List<ProductCustom> queryProductByOrderId(int id);
+
+    public void updateCommentByids(ProductCustom productCustom);
+
+    ProductCustom selectCommentByids(ProductCustom productCustom);
 }

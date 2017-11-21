@@ -78,4 +78,20 @@ public class OrderListServiceImpl implements OrderListService {
             return true;
         }
     }
+
+    @Override
+    public List<ProductCustom> queryProductByOrderId(int id) {
+        return orderListMapper.queryProductByOrderId(id);
+    }
+
+    @Override
+    public boolean updateCommentByids(ProductCustom productCustom) {
+        orderListMapper.updateCommentByids(productCustom);
+        ProductCustom pc =orderListMapper.selectCommentByids(productCustom);
+        if(!pc.getComment().equals(productCustom.getComment())){
+            return false;
+        }else{
+            return true;
+        }
+    }
 }

@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
 	<meta charset="UTF-8">
@@ -148,6 +149,10 @@
 </head>
 <body>
 
+<c:if test="${sessionScope.user==null}">
+	<jsp:forward page="${pageContext.request.contextPath}/LoginPage.action"></jsp:forward>
+</c:if>
+
 <header id="pc-header">
 	<jsp:include page="/jsp/users/head.jsp"></jsp:include>
 	<%--</div>--%>
@@ -191,7 +196,7 @@
 					<dd><a href="javascript:check('0');">我的订单</a></dd>
 					<dd><a href="javascript:check('2');">我的购物车</a></dd>
 					<dd><a href="javascript:check('1');">我的收藏</a></dd>
-					<dd><a href="${pageContext.request.contextPath}/jsp/users/my-pingjia.jsp">我的评价</a></dd>
+					<%--<dd><a href="${pageContext.request.contextPath}/queryProductByOrderId.action?id=1">我的评价</a></dd>--%>
 					<%--<dd><a href="${pageContext.request.contextPath}/jsp/users/my-dingdan.jsp?flag=0">我的订单</a></dd>
 					<dd><a href="${pageContext.request.contextPath}/jsp/users/my-dingdan.jsp?flag=2">我的购物车</a></dd>
 					<dd><a href="${pageContext.request.contextPath}/jsp/users/my-car.jsp">我的收藏</a></dd>
@@ -199,8 +204,8 @@
 				</dl>
 				<dl  onclick = "change(this);">
 					<dt>客户服务</dt>
-					<dd><a href="#">退货订单</a></dd>
-					<dd><a href="#">退货/退款记录</a></dd>
+					<dd><a href="#">联系客服</a></dd>
+					<dd><a href="#">关于我们</a></dd>
 				</dl>
 			</div>
 		</div>
@@ -333,7 +338,7 @@
     $(document).ready(function(){
         var flag=$.getUrlParam('flag')
         console.log(flag);
-        check(flag)
+		check(flag);
 	});
     function check(flag) {
         switch(flag){
@@ -417,7 +422,7 @@
 		$(".member-head").nextAll("div").remove();
         $(".member-heels").text("我的订单");
         $(".member-right").append(order);
-
+        var html=new Array();
 
         $(".member-heels").text("我的订单");
         console.log("这是订单"+${user.userid});
@@ -496,8 +501,8 @@
                     $.each(content.productCustoms, function (i, productCustom) {
                         productCount++;
                         htmlStr2 += "    <div class='ci7 clearfix'>\n" +
-                            "           <span class='gr1'><a href='#'><img src='/" + productCustom.productpicture + "' style='height: 80px;width: 80px;max-width:200px;' title='" + productCustom.productname + "' about='' width='60' height='60'></a></span>\n" +
-                            "           <span class='gr2' style='margin-left: 50px;width: 150px;height: 85px'><a href='#'>" + productCustom.productname + "</a></span>\n" +
+                            "           <span class='gr1'><a href='${pageContext.request.contextPath}/xiangqing.action?productid="+productCustom.productid+"' target='blank'><img src='/" + productCustom.productpicture + "' style='height: 80px;width: 80px;max-width:200px;' title='" + productCustom.productname + "' about='' width='60' height='60'></a></span>\n" +
+                            "           <span class='gr2' style='margin-left: 50px;width: 150px;height: 85px'><a href='${pageContext.request.contextPath}/xiangqing.action?productid="+productCustom.productid+"' target='blank'>" + productCustom.productname + "</a></span>\n" +
                             "           <span class='gr3'>X" + productCustom.shoppingcount + "</span>\n" +
                             "          </div>\n";
                     });
@@ -518,41 +523,41 @@
                             if (content.shippingcode != null || content.shippingcode != "") {
                                 htmlStr3 += "<p><a class='express' href='javascript:queryExpress(" + content.shippingcode + ");'>物流跟踪</a></p>"
                             }
-                            htmlStr3 += "<p><a href='#'>订单详情</a></p></div>\n";
+                            htmlStr3 += "<p><a href='#'>订单分析</a></p></div>\n";
 
                             htmlStr3 += "<div class='ci5 ci8 height" + index + "'><p><a href='#' class='member-touch'>重新购买</a> </p></div>\n";
                             break;
                         case 1:
-                            htmlStr3 += "<div class='ci5 height" + index + "'><p>待发货</p><p><a href='#'>订单详情</a></p></div>\n";
+                            htmlStr3 += "<div class='ci5 height" + index + "'><p>待发货</p><p><a href='#'>订单分析</a></p></div>\n";
                             htmlStr3 += "<div class='ci5 ci8 height" + index + "'><p><a href='#' class='member-touch'>提醒发货</a> </p> <p><a href='#'>取消订单</a> </p></div>\n";
                             break;
                         case 2:
-                            htmlStr3 += "<div class='ci5 height" + index + "'><p>已发货</p><p><a class='express' href='javascript:queryExpress(" + content.shippingcode + ");'>物流跟踪</a></p> <p><a href='#'>订单详情</a></p></div>\n";
+                            htmlStr3 += "<div class='ci5 height" + index + "'><p>已发货</p><p><a class='express' href='javascript:queryExpress(" + content.shippingcode + ");'>物流跟踪</a></p> <p><a href='#'>订单分析</a></p></div>\n";
                             htmlStr3 += "<div class='ci5 ci8 height" + index + "'><p><a href='#' class='member-touch'>确认收货</a> </p></p></div>\n";
                             break;
                         case 3:
-                            htmlStr3 += "<div class='ci5 height" + index + "'><p>已签收</p><p><a class='express' href='javascript:queryExpress(" + content.shippingcode + ");'>物流跟踪</a></p> <p><a href='#'>订单详情</a></p></div>\n";
-                            htmlStr3 += "<div class='ci5 ci8 height" + index + "'><p><a href='#' class='member-touch'>评价</a></p><p><a href='#' class='member-touch'>售后服务</a></p></div>\n";
+                            htmlStr3 += "<div class='ci5 height" + index + "'><p>已签收</p><p><a class='express' href='javascript:queryExpress(" + content.shippingcode + ");'>物流跟踪</a></p> <p><a href='#'>订单分析</a></p></div>\n";
+                            htmlStr3 += "<div class='ci5 ci8 height" + index + "'><p><a href='javascript:void(0);'  class='member-touch comments'>评价</a></p><p><a href='#' class='member-touch'>售后服务</a></p></div>\n";
                             break;
                         case 4:
-                            htmlStr3 += "<div class='ci5 height" + index + "'><p>已完成</p><p><a class='express' href='javascript:queryExpress(" + content.shippingcode + ");'>物流跟踪</a></p> <p><a href='#'>订单详情</a></p></div>\n";
-                            htmlStr3 += "<div class='ci5 ci8 height" + index + "'><p>剩余15时20分</p><p><a href='#' class='member-touch'>再次购买</a></p><p><a href='#' class='member-touch'>售后服务</a></p></div>\n";
+                            htmlStr3 += "<div class='ci5 height" + index + "'><p>已完成</p><p><a class='express' href='javascript:queryExpress(" + content.shippingcode + ");'>物流跟踪</a></p> <p><a href='#'>订单分析</a></p></div>\n";
+                            htmlStr3 += "<div class='ci5 ci8 height" + index + "'><p>剩余15时20分</p><p><a href='#' class='member-touch'>再次购买</a></p><p><a href='javascript:void(0);'  class='member-touch comments'>评价</a></p><p><a href='#' class='member-touch'>售后服务</a></p></div>\n";
                             break;
                         case 5:
-                            htmlStr3 += "<div class='ci5 height" + index + "'><p>拒收</p><p><a class='express' href='javascript:queryExpress(" + content.shippingcode + ");'>物流跟踪</a></p> <p><a href='#'>订单详情</a></p></div>\n";
+                            htmlStr3 += "<div class='ci5 height" + index + "'><p>拒收</p><p><a class='express' href='javascript:queryExpress(" + content.shippingcode + ");'>物流跟踪</a></p> <p><a href='#'>订单分析</a></p></div>\n";
                             htmlStr3 += "<div class='ci5 ci8 height" + index + "'><p><a href='#' class='member-touch'>拒收理由</a> </p></div>\n";
                             break;
                         case 6:
-                            htmlStr3 += "<div class='ci5 height" + index + "'><p>申请退货</p><p><a class='express' href='javascript:queryExpress(" + content.shippingcode + ");'>物流跟踪</a></p> <p><a href='#'>订单详情</a></p></div>\n";
+                            htmlStr3 += "<div class='ci5 height" + index + "'><p>申请退货</p><p><a class='express' href='javascript:queryExpress(" + content.shippingcode + ");'>物流跟踪</a></p> <p><a href='#'>订单分析</a></p></div>\n";
                             htmlStr3 += "<div class='ci5 ci8 height" + index + "'><p><a href='#' class='member-touch'>撤销申请</a> </p></div>\n";
                             break;
                         case 7:
-                            htmlStr3 += "<div class='ci5 height" + index + "'><p>同意退货</p><p><a class='express' href='javascript:queryExpress(" + content.shippingcode + ");'>物流跟踪</a></p> <p><a href='#'>订单详情</a></p></div>\n";
+                            htmlStr3 += "<div class='ci5 height" + index + "'><p>同意退货</p><p><a class='express' href='javascript:queryExpress(" + content.shippingcode + ");'>物流跟踪</a></p> <p><a href='#'>订单分析</a></p></div>\n";
                             htmlStr3 += "<div class='ci5 ci8 height" + index + "'><p>剩余15时20分</p><p><a href='#' class='member-touch'>填写物流</a> </p><p><a href='#' class='member-touch'>撤销申请</a> </p></div>\n";
                             break;
                             break;
                         case 8:
-                            htmlStr3 += "<div class='ci5 height" + index + "'><p>拒绝退货</p><p><a class='express' href='javascript:queryExpress(" + content.shippingcode + ");'>物流跟踪</a></p> <p><a href='#'>订单详情</a></p></div>\n";
+                            htmlStr3 += "<div class='ci5 height" + index + "'><p>拒绝退货</p><p><a class='express' href='javascript:queryExpress(" + content.shippingcode + ");'>物流跟踪</a></p> <p><a href='#'>订单分析</a></p></div>\n";
                             htmlStr3 += "<div class='ci5 ci8 height" + index + "'><p><a href='#' class='member-touch'>查看原因</a> </p></div>\n";
                             break;
                         default:
@@ -563,7 +568,16 @@
                     htmlStr3 += "</div></li>"
                     $("#order").find("ul").append(htmlStr1 + htmlStr2 + htmlStr3);
                     $(".height" + index).height(110 * productCount - 23);  //动态设置高度
+					html.push(htmlStr1 + htmlStr2 + htmlStr3);
+                });
 
+                $(".comments").click(function () {
+                    console.log($(this).parents("li").find("em[id='order_id']").text()+"***");
+                    queryCommentsByUserId($(this).parents("li").find("em[id='order_id']").text());
+                });
+                $(".comments").click(function () {
+                    console.log($(this).parents("li").find("em[id='order_id']").text()+"***");
+                    queryCommentsByUserId($(this).parents("li").find("em[id='order_id']").text());
                 });
             }
         }
@@ -577,10 +591,10 @@
             "       <a href='#' class='fl member-btn-fl'></a>\n" +
             "       <div class='member-whole clearfix' id='dingdan'>\n" +
             "        <ul id='H-table' class='H-table'>\n" +
-            "         <li><a href='javascript:queryFavoritesByUserId(0,24,-1);'>全部商品<em>(44)</em></a></li>\n" +
-            "         <li><a href='javascript:queryFavoritesByUserId(0,24,0);'>热销商品<em>(44)</em></a></li>\n" +
-            "         <li><a href='javascript:queryFavoritesByUserId(0,24,2);'>已下架<em>(44)</em></a></li>\n" +
-            "         <li><a href='javascript:queryFavoritesByUserId(0,24,3);'>积分兑换<em>(44)</em></a></li>\n" +
+            "         <li><a href='javascript:queryFavoritesByUserId(0,24,-1);'>全部商品<em></em></a></li>\n" +
+            "         <li><a href='javascript:queryFavoritesByUserId(0,24,0);'>热销商品<em></em></a></li>\n" +
+            "         <li><a href='javascript:queryFavoritesByUserId(0,24,2);'>已下架<em></em></a></li>\n" +
+            "         <li><a href='javascript:queryFavoritesByUserId(0,24,3);'>积分兑换<em></em></a></li>\n" +
             "        </ul>\n" +
             "        <div class='member-check clearfix fl' style='float: right'>\n" +
             "         <a href='#' class='member-shops'>一键加入购物车</a>\n" +
@@ -669,8 +683,8 @@
 
                 html+="           <li class='shop-tools-item2' style='background-position:4px -98px;' value='"+content.productid+"' title='删除商品'>删除</li>\n" +
                     "          </ul>\n" +
-                    "          <a href='#'><img src='/"+content.productpicture+"' style='overflow:hidden;width:125px;height: 125px' title='"+content.productname+"'></a>\n" +
-                    "          <a href='#'>"+content.productname+"</a>\n" +
+                    "          <a href='${pageContext.request.contextPath}/xiangqing.action?productid="+content.productid+"' target='blank'><img src='/"+content.productpicture+"' style='overflow:hidden;width:125px;height: 125px' title='"+content.productname+"'></a>\n" +
+                    "          <a href='${pageContext.request.contextPath}/xiangqing.action?productid="+content.productid+"' target='blank'>"+content.productname+"</a>\n" +
                     "          <p>￥"+content.productprice+" <i style='text-decoration: line-through;color: #666a6e;font-size: 11px;'>￥"+content.marketprice+"</i></p>\n" +
                     "       </li>";
 
@@ -795,7 +809,7 @@
             "         <label style='margin-left: 20px;'> 全选</label>\n" +
             "        </th>\n" +
             "        <th class='tab-2'>商品</th>\n" +
-            "        <th class='tab-3'>商品信息</th>\n" +
+           /* "        <th class='tab-3'style='width:100px'>商品信息</th>\n" +*/
             "        <th class='tab-4'>金额</th>\n" +
             "        <th class='tab-5'>数量</th>\n" +
             "        <th class='tab-6'>小计</th>\n" +
@@ -895,13 +909,13 @@
                 var html="<tr id='tr_"+content.shopcarid+"'>\n" +
                     "        <th><input type='checkbox' name='stuCheckBox' value='"+content.shopcarid+"' style='margin-left:15px; float:left'></th>\n" +
                     "        <th class='tab-th-1'>\n" +
-                    "         <a href='#' style='border: 0px;'><img src='/"+content.productpicture+"' style='height: 120px;width: 120px;max-width:200px;margin-left: 50px' alt='"+content.productname+"' title='"+content.productname+"'></a>\n" +
-                    "         <a href='#' style='margin-left: 50px;width: 200px' class='tab-title'>"+content.productname+"</a>\n" +
+                    "         <a href='${pageContext.request.contextPath}/xiangqing.action?productid="+content.productid+"' target='blank' style='border: 0px;'><img src='/"+content.productpicture+"' style='height: 120px;width: 120px;max-width:200px;margin-left: 50px' alt='"+content.productname+"' title='"+content.productname+"'></a>\n" +
+                    "         <a href='${pageContext.request.contextPath}/xiangqing.action?productid="+content.productid+"' target='blank' style='margin-left: 50px;width: 200px' class='tab-title'>"+content.productname+"</a>\n" +
                     "        </th>\n" +
-                    "        <th>\n" +
+                 /*   "        <th>\n" +
                     "         <p>"+content.productdescribe+"</p>\n" +
                     "         <p></p>\n" +
-                    "        </th>\n" +
+                    "        </th>\n" +*/
                     "        <th>\n" +
                     "         <p>售价￥<span class='red'>"+content.productprice+"</span></p>\n" +
                     "         <p>市场价￥<span style='text-decoration: line-through;'>"+content.marketprice+"</span></p>\n" +
@@ -917,7 +931,7 @@
                     "         <p><a href='javascript:delectShopCarById("+content.shopcarid+")'>删除</a></p>\n" +
                     "         <br/>\n"
 				if(content.isOnFavorites==0){
-                    html+= "      <p id='move_"+content.productid+"'><a href='javascript:shiftToFavorites("+content.productid+",this)'>移入收藏夹</a></p>\n" ;
+                    html+= "      <p id='move_"+content.productid+"'><a href='javascript:shiftToFavorites("+content.productid+",this)'>移入收藏夹</a></p>" ;
 				}
                 html+="</th></tr>";
 
@@ -966,6 +980,64 @@
             });
 
         }
+    }
+    function queryCommentsByUserId(id) {
+        $.ajax({
+            url:"${pageContext.request.contextPath}/queryProductByOrderId.action",
+            async:true,
+            type: 'POST',
+			data:{'id':id},
+            timeout: 5000,
+            cache: false,
+            success: succFunction, //成功执行方法
+            beforeSend: LoadFunction, //加载执行方法
+            error: erryFunction  //错误执行方法
+        });
+        function LoadFunction() {
+            $(".loading").find("img").css("display","block");
+            $(".loading").find("div").css("display","block");
+            $("#id_head").css("visibility","hidden");
+            //$(".loading").find("div").text("加载中...");
+        }
+        function erryFunction(){
+            $(".loading").find("img").attr("src","${pageContext.request.contextPath}/jsp/users/images/loading.gif");
+            $(".loading").find("div").text("加载失败!");
+            $("#id_head").css("visibility","hidden");
+        }
+        function succFunction(data) {
+            //var dom=loadXMLString(data);
+            $(".member-head").nextAll("div").remove();
+            $(".member-heels").text("我的评论");
+            var doms = $.parseHTML( data, true );  //将字符串转为一个DOM元素的集合
+			// 会执行脚本代码
+            $(".member-right").append($(doms).find(".member-border"));
+            $(".member-right").css("width","970px");
+        }
+
+    }
+    /*字符串转dom对象*/
+    function loadXMLString(txt)
+    {
+        try //Internet Explorer
+        {
+            xmlDoc=new ActiveXObject("Microsoft.XMLDOM");
+            xmlDoc.async="false";
+            xmlDoc.loadXML(txt);
+            //alert('IE');
+            return(xmlDoc);
+        }
+        catch(e)
+        {
+            try //Firefox, Mozilla, Opera, etc.
+            {
+                parser=new DOMParser();
+                xmlDoc=parser.parseFromString(txt,"text/xml");
+                //alert('FMO');
+                return(xmlDoc);
+            }
+            catch(e) {alert(e.message)}
+        }
+        return(null);
     }
 
     //查询物流

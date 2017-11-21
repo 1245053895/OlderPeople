@@ -27,4 +27,8 @@ public interface OrderListService {
     public boolean delectFavorites(Favorites favorites);
 
     public boolean insertShiftToCart(ShopCarCustom shopCarCustom);
+
+    public List<ProductCustom> queryProductByOrderId(int id);
+
+    public boolean updateCommentByids(ProductCustom productCustom);
 }

@@ -1,3 +1,5 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%--
   Created by IntelliJ IDEA.
   User: Administrator
@@ -124,44 +126,6 @@
 <body>
 
 <header id="pc-header">
-<!--
-	<div class="pc-header-nav">
-		<div class="pc-header-con">
-			<div class="fl pc-header-link" >您好！，欢迎来云购物 <a href="login.html" target="_blank">请登录</a> <a href="register.html" target="_blank"> 免费注册</a></div>
-			<div class="fr pc-header-list top-nav">
-				<ul>
-					<li>
-						<div class="nav"><i class="pc-top-icon"></i><a href="#">我的订单</a></div>
-						<div class="con">
-							<dl>
-								<dt><a href="">批发进货</a></dt>
-								<dd><a href="">已买到货品</a></dd>
-								<dd><a href="">优惠券</a></dd>
-								<dd><a href="">店铺动态</a></dd>
-							</dl>
-						</div>
-					</li>
-					<li>
-						<div class="nav"><i class="pc-top-icon"></i><a href="#">我的商城</a></div>
-						<div class="con">
-							<dl>
-								<dt><a href="">批发进货</a></dt>
-								<dd><a href="">已买到货品</a></dd>
-								<dd><a href="">优惠券</a></dd>
-								<dd><a href="">店铺动态</a></dd>
-							</dl>
-						</div>
-					</li>
-					<li><a href="#">我的云购</a></li>
-					<li><a href="#">我的收藏</a></li>
-					<li><a href="#">会员中心</a></li>
-					<li><a href="#">客户服务</a></li>
-					<li><a href="#">帮助中心</a></li>
-				</ul>
-			</div>
-		</div>
-	</div>
--->
 	<div class="pc-header-nav">
 
 		<jsp:include page="/jsp/users/head.jsp"></jsp:include>
@@ -213,92 +177,118 @@
 					<span class="co2">购买时间</span>
 					<span class="co3">评价状态</span>
 				</div>
-				<div class="member-class clearfix">
-					<ul>
-						<li class="clearfix">
-							<div class="sp1">
-								<span class="gr1"><a href="#"><img about="" title="" src="images/shangpinxiangqing/X-1.png" width="60" height="60"></a></span>
-								<span class="gr2"><a href="#">红米Note2 标准版 白色 移动4G手机 双卡双待</a></span>
-								<span class="gr3">X1</span>
-							</div>
-							<div class="sp2">2015 - 09 -  02</div>
-							<div class="sp3"><a href="#" onClick="pj()">发表评价</a> </div>
-						</li>
-					</ul>
-				</div>
-				
-<!--				<div style="width: 100px;height: 100px;display: none">dfasd</div>-->
-				
-				
-				<script>
-					function pj(){
-						var ui = document.getElementById("pj");
-						ui.style.display="block";
-					}
-					function pjl(){
-						var ui = document.getElementById("pj");
-						ui.style.display="none";
-					}
-				</script>
-				
-				
-				
-				
-				
-				<div class="member-setup clearfix" id="pj" style="display: none">
-					<ul>
-						<li class="clearfix">
-							<div class="member-score fl"><i class="reds">*</i>评分：</div>
-							<div class="member-star fl">
-<!--
-								<ul style="text-align: center">
-									<li class="on">1</li>
-									<li class="on">2</li>
-									<li>3</li>
-									<li>4</li>
-									<li>5</li>
-								</ul>
--->
-								<select style="width: 50px;text-align: center">
-									<option>1</option>
-									<option>2</option>
-									<option>3</option>
-									<option>4</option>
-									<option>5</option>
-								</select>
-								
-							</div>
-<!--							<div class="member-judge fr"><input type="checkbox"> 匿名评价</div>-->
-							<div class="member-judge fr"><a href="#" onClick="pjl()">发表评价</a> </div>
-						</li>
+				<c:forEach items="${productCustoms}" var="productCustom">
+					<div class="member-class clearfix">
+						<ul>
+							<li class="clearfix">
+								<div class="sp1">
+									<span class="gr1"><a href="#"><img about="" title="" src="${pageContext.request.contextPath}/${productCustom.productpicture}" width="60" height="60"></a></span>
+									<span class="gr2"><a href="#">${productCustom.productname}</a></span>
+									<span class="gr3">X${productCustom.shoppingcount}</span>
+								</div>
+								<div></div>
+								<div class="sp2"><fmt:formatDate value="${productCustom.commenttime}" pattern="yyyy-MM-dd HH:mm:ss"/> </div>
 
-						<li class="clearfix">
-							<div class="member-score fl"><i class="reds">*</i>商品评价：</div>
-							<div class="member-star fl">
-								<textarea maxlength="200"></textarea>
-							</div>
-						</li>
-<!--
-						<li class="clearfix">
-							<div class="member-score fl">晒单：</div>
-							<div class="member-star fl">
-								<a href="#"><img src="images/shangpinxiangqing/X1.png"></a>
-								<a href="#"><img src="images/shangpinxiangqing/X1.png"></a>
-								<a href="#"><img src="images/shangpinxiangqing/X1.png"></a>
-							</div>
-						</li>
-						<li class="clearfix">
-							<div style="padding-left:85px;">最多可以增加<i class="reds">10</i>张</div>
-						</li>
--->
-					</ul>
-				</div>
-				
-				
-				
-				
-				
-				<div class="member-class clearfix">
+								<c:if test="${productCustom.comment==''}">
+									<div class="sp3">
+										<a href="javascript:void (0);">发表评价</a>
+									</div>
+								</c:if>
+								<c:if test="${productCustom.comment!=''}">
+									<div class="sp3" style="line-height: 90px">
+										<div style="margin-top: -30px;margin-left: -60px;line-height: normal;">${productCustom.comment}</div>
+									</div>
+								</c:if>
+							</li>
+						</ul>
+					</div>
+
+					<div class="member-setup clearfix" id="pj" style="display: none">
+						<ul>
+							<li class="clearfix">
+								<div class="member-score fl"><i class="reds">*</i>评分：</div>
+								<div class="member-star fl">
+									<select style="width: 50px;text-align: center">
+										<option>1</option>
+										<option>2</option>
+										<option>3</option>
+										<option>4</option>
+										<option>5</option>
+									</select>
+								</div>
+								<div class="member-judge fr">
+									<a href="javascript:void (0);" style="border: 1px #32a3ce solid;width: 70px;height: 50px;">发表评价</a>
+								</div>
+							</li>
+							<li>
+								<input value="${productCustom.commentid}" type="hidden">
+							</li>
+
+							<li class="clearfix comment">
+								<div class="member-score fl"><i class="reds">*</i>商品评价：</div>
+								<div class="member-star fl">
+									<textarea maxlength="200"></textarea>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</c:forEach>
+
+				<script>
+                    $(document).ready(function(){
+                        $(".sp3").find("a").click(function () {
+                            $(this).parents(".member-class").next().css("display","block");
+                        });
+                        $(".member-judge").click(function () {
+                            var data=new Array();
+							data.push($(this).parents("li").next().find("input").val());
+                            console.log($(this).parents("li[class='clearfix']").find("select").val()+"^^^");
+                            console.log($(this).parents("ul").find("textarea").val()+"//");
+                            data.push($(this).parents("li[class='clearfix']").find("select").val());//好评   0 评论id
+							data.push($(this).parents("ul").find("textarea").val());//评论内容
+							if(ajax("updateCommentByids.action",data)){
+								alert("谢谢您的评价!");
+							}else{
+							    alert("评价失败!")
+							}
+                            $(this).parents(".member-setup").css("display","none");
+                        });
+                    });
+
+                    function ajax(url,data) {
+                        var flag;
+                        $.ajax({
+                            url:"${pageContext.request.contextPath}/"+url,
+                            async:false,
+                            type: 'POST',
+                            data:{"data":data},
+                            traditional: true,
+                            timeout: 5000,
+                            cache: false,
+                            success: succFunction, //成功执行方法
+                            beforeSend: LoadFunction, //加载执行方法
+                            error: erryFunction  //错误执行方法
+                        });
+                        function LoadFunction() {
+
+                        }
+                        function erryFunction(){
+                            flag=0;
+                        }
+                        function succFunction(data) {
+                            if(data) {
+                                flag=1;
+                            }else {
+                                flag=0;
+                            }
+                        }
+                        return flag;
+                    }
+
+
+				</script>
+
+				<%--<div class="member-class clearfix">
 					<ul>
 						<li class="clearfix">
 							<div class="sp1">
@@ -328,8 +318,8 @@
 							<div class="sp3"><a href="#">发表评价</a> </div>
 						</li>
 					</ul>
-				</div>
-				<div class="member-pages clearfix">
+				</div>--%>
+				<%--<div class="member-pages clearfix">
 					<div class="fr pc-search-g">
 						<a class="fl pc-search-f" href="#">上一页</a>
 						<a href="#" class="current">1</a>
@@ -349,7 +339,7 @@
                     </span>
 
 					</div>
-				</div>
+				</div>--%>
 
 			</div>
 		</div>

@@ -47,122 +47,47 @@
 <body>
 
 <header id="pc-header">
-<!--
+	<!--
+        <div class="pc-header-nav">
+            <div class="pc-header-con">
+                <div class="fl pc-header-link" >您好！，欢迎来云购物 <a href="login.html" target="_blank">请登录</a> <a href="register.html" target="_blank"> 免费注册</a></div>
+                <div class="fr pc-header-list top-nav">
+                    <ul>
+                        <li>
+                            <div class="nav"><i class="pc-top-icon"></i><a href="#">我的订单</a></div>
+                            <div class="con">
+                                <dl>
+                                    <dt><a href="">批发进货</a></dt>
+                                    <dd><a href="">已买到货品</a></dd>
+                                    <dd><a href="">优惠券</a></dd>
+                                    <dd><a href="">店铺动态</a></dd>
+                                </dl>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="nav"><i class="pc-top-icon"></i><a href="#">我的商城</a></div>
+                            <div class="con">
+                                <dl>
+                                    <dt><a href="">批发进货</a></dt>
+                                    <dd><a href="">已买到货品</a></dd>
+                                    <dd><a href="">优惠券</a></dd>
+                                    <dd><a href="">店铺动态</a></dd>
+                                </dl>
+                            </div>
+                        </li>
+                        <li><a href="#">我的云购</a></li>
+                        <li><a href="#">我的收藏</a></li>
+                        <li><a href="#">会员中心</a></li>
+                        <li><a href="#">客户服务</a></li>
+                        <li><a href="#">帮助中心</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    -->
 	<div class="pc-header-nav">
-		<div class="pc-header-con">
-			<div class="fl pc-header-link" >您好！，欢迎来云购物 <a href="login.html" target="_blank">请登录</a> <a href="register.html" target="_blank"> 免费注册</a></div>
-			<div class="fr pc-header-list top-nav">
-				<ul>
-					<li>
-						<div class="nav"><i class="pc-top-icon"></i><a href="#">我的订单</a></div>
-						<div class="con">
-							<dl>
-								<dt><a href="">批发进货</a></dt>
-								<dd><a href="">已买到货品</a></dd>
-								<dd><a href="">优惠券</a></dd>
-								<dd><a href="">店铺动态</a></dd>
-							</dl>
-						</div>
-					</li>
-					<li>
-						<div class="nav"><i class="pc-top-icon"></i><a href="#">我的商城</a></div>
-						<div class="con">
-							<dl>
-								<dt><a href="">批发进货</a></dt>
-								<dd><a href="">已买到货品</a></dd>
-								<dd><a href="">优惠券</a></dd>
-								<dd><a href="">店铺动态</a></dd>
-							</dl>
-						</div>
-					</li>
-					<li><a href="#">我的云购</a></li>
-					<li><a href="#">我的收藏</a></li>
-					<li><a href="#">会员中心</a></li>
-					<li><a href="#">客户服务</a></li>
-					<li><a href="#">帮助中心</a></li>
-				</ul>
-			</div>
-		</div>
-	</div>
--->
-	<div class="pc-header-nav">
-		<div class="pc-header-con">
-			<div class="fl pc-header-link" >您好！，欢迎来孝和集团电子商城 
-				<a href="login.html" target="_blank">请登录</a> 
-				<a href="register.html" target="_blank"> 免费注册</a>
-			</div>
-			<div class="fr pc-header-list top-nav">
-				<ul>
-					<li><a href="#">我的收藏</a></li>
-					<li>
-						<div class="nav"><i class="pc-top-icon"></i><a href="#">个人中心</a></div>
-						<div class="con">
-							<dl>
-								<dt><a href="">个人资料</a></dt>
-								<dd><a href="">收货地址</a></dd>
-								<dd><a href="">修改登录密码</a></dd>
-								<dd><a href="">我的积分</a></dd>
-								<dd><a href="">已购买的宝贝</a></dd>
-							</dl>
-						</div>
-					</li>
-										
-					<li>
-						<div class="nav"><i class="pc-top-icon"></i><a href="#">帮助中心</a></div>
-						<div class="con">
-							<dl>
-								<dt><a href="">积分说明</a></dt>
-								<dd><a href="">联系客服</a></dd>
-							</dl>
-						</div>
-					</li>
-					
-				</ul>
-			</div>
-		</div>
-	</div>
-	
-	<div class="pc-header-logo clearfix">
-		<div class="pc-fl-logo fl">
-			<h1>
-				<a href="index.jsp"></a>
-			</h1>
-		</div>
-		<div class="head-form fl">
-			<form class="clearfix">
-				<input class="search-text" accesskey="" id="key" autocomplete="off" placeholder="洗衣机" type="text">
-				<button class="button" onclick="search('key');return false;">搜索</button>
-			</form>
-			<div class="words-text clearfix">
-				<a href="#">制氧机</a>
-				<a href="#">代步车</a>
-				<a href="#">电动轮椅</a>
-				<a href="#">血糖仪</a>
-				<a href="#">血压计</a>
-				<a href="#">木制拐杖</a>
-				<a href="#">足浴盆</a>
-			</div>
-		</div>
-		<div class="fr pc-head-car">
-			<i class="icon-car"></i>
-			<a href="#">我的购物车</a>
-		</div>
-	</div>
-	<!--  顶部    start-->
-	<div class="yHeader">
-		<!-- 导航   start  -->
-		<div class="yNavIndex">
-			<ul class="yMenuIndex">
-				<li><a href="" target="_blank" title="首页">首页</a></li>
-				<li><a href="" target="_blank" title="热销专区">热销专区</a></li>
-				<li><a href="" target="_blank" title="新品专区">新品专区</a></li>
-				<li><a href="" target="_blank" title="积分商城">积分商城</a></li>
-				<li><a href="" target="_blank" title="合伙人">合伙人</a></li>
-				<li><a href="" target="_blank" title="关于我们">关于我们</a></li>
-			</ul>
-		</div>
-		<!-- 导航   end  -->
-	</div>
+
+		<jsp:include page="/jsp/users/head.jsp"></jsp:include>
 
 </header>
 
@@ -323,6 +248,7 @@
 							</div>
 							<!-- 收货方式 END-->
 
+<<<<<<<<< Temporary merge branch 1
 						<!-- 商品清单 -->
 						<div id="checkoutGoodsList" class="checkout-goods-box">
 							<div class="xm-box">
@@ -347,120 +273,146 @@
 														<a href="#" target="_blank">
 															赛亿（shinee)取暖器家用/取暖电器/电暖器/电暖气台式摇头暖风机HN2118PT
 														</a>
+=========
+							<!-- 商品清单 -->
+							<div id="checkoutGoodsList" class="checkout-goods-box">
+								<div class="xm-box">
+									<div class="box-hd">
+										<h2 class="title">确认订单信息</h2>
+									</div>
+									<div class="box-bd">
+										<dl class="checkout-goods-list">
+											<dt class="clearfix">
+												<span class="col col-1">商品名称</span>
+												<span class="col col-2">购买价格</span>
+												<span class="col col-3">购买数量</span>
+												<span class="col col-4">小计（元）</span>
+											</dt>
+											<dd class="item clearfix">
+												<div class="item-row">
+													<div class="col col-1">
+														<div class="g-pic">
+															<img src="images/shangpinxiangqing/X1.png" width="40" height="40" />
+														</div>
+														<div class="g-info">
+															<a href="#" target="_blank">
+																赛亿（shinee)取暖器家用/取暖电器/电暖器/电暖气台式摇头暖风机HN2118PT
+															</a>
+														</div>
+>>>>>>>>> Temporary merge branch 2
 													</div>
-												</div>
 													<div class="col col-2">39元</div>
 													<div class="col col-3">1</div>
 													<div class="col col-4">39元</div>
 												</div>
-										</dd>
-										<dd class="item clearfix">
-											<div class="item-row">
-												<div class="col col-1">
-													<div class="g-pic">
-														<img src="images/shangpinxiangqing/X-1.png" width="40" height="40" />
+											</dd>
+											<dd class="item clearfix">
+												<div class="item-row">
+													<div class="col col-1">
+														<div class="g-pic">
+															<img src="images/shangpinxiangqing/X-1.png" width="40" height="40" />
+														</div>
+														<div class="g-info">
+															<a href="#" target="_blank">
+																赛亿（shinee)取暖器家用/取暖电器/电暖器/电暖气台式摇头暖风机HN2118PT
+															</a>
+														</div>
 													</div>
-													<div class="g-info">
-														<a href="#" target="_blank">
-															赛亿（shinee)取暖器家用/取暖电器/电暖器/电暖气台式摇头暖风机HN2118PT
-														</a>
-													</div>
+													<div class="col col-2">49元</div>
+													<div class="col col-3">1</div>
+													<div class="col col-4">49元</div>
 												</div>
-												<div class="col col-2">49元</div>
-												<div class="col col-3">1</div>
-												<div class="col col-4">49元</div>
-											</div>
-										</dd>
-										<dd class="item clearfix">
-											<div class="item-row">
-												<div class="col col-1">
-													<div class="g-pic">
-														<img src="images/shangpinxiangqing/X2.png" width="40" height="40" />
+											</dd>
+											<dd class="item clearfix">
+												<div class="item-row">
+													<div class="col col-1">
+														<div class="g-pic">
+															<img src="images/shangpinxiangqing/X2.png" width="40" height="40" />
+														</div>
+														<div class="g-info">
+															<a href="#" target="_blank">
+																赛亿（shinee)取暖器家用/取暖电器/电暖器/电暖气台式摇头暖风机HN2118PT
+															</a>
+														</div>
 													</div>
-													<div class="g-info">
-														<a href="#" target="_blank">
-															赛亿（shinee)取暖器家用/取暖电器/电暖器/电暖气台式摇头暖风机HN2118PT
-														</a>
-													</div>
-												</div>
 
-												<div class="col col-2">39元</div>
-												<div class="col col-3">4</div>
-												<div class="col col-4">156元</div>
-											</div>
-										</dd>
-									</dl>
-									<div class="checkout-count clearfix">
-										<div class="checkout-count-extend xm-add-buy">
-											<h2 class="title">会员留言</h2></br>
+													<div class="col col-2">39元</div>
+													<div class="col col-3">4</div>
+													<div class="col col-4">156元</div>
+												</div>
+											</dd>
+										</dl>
+										<div class="checkout-count clearfix">
+											<div class="checkout-count-extend xm-add-buy">
+												<h2 class="title">会员留言</h2></br>
 												<input type="text" />
 
+											</div>
+											<!-- checkout-count-extend -->
+											<div class="checkout-price">
+												<ul>
+													<li>
+														订单总额：<span>244元</span>
+													</li>
+													<!--<li>
+                                                        活动优惠：<span>-0元</span>
+                                                        <script type="text/javascript">
+                                                            checkoutConfig.activityDiscountMoney=5;
+                                                            checkoutConfig.totalPrice=244.00;
+                                                        </script>
+                                                    </li>-->
+													<li>
+														积分抵扣：<span id="couponDesc">-0元</span>
+													</li>
+													<li>
+														运费：<span id="postageDesc">0元</span>
+													</li>
+												</ul>
+												<p class="checkout-total">应付总额：<span><strong id="totalPrice">244</strong>元</span></p>
+											</div>
+											<!--  -->
 										</div>
-										<!-- checkout-count-extend -->
-										<div class="checkout-price">
-											<ul>
-												<li>
-													订单总额：<span>244元</span>
-												</li>
-												<!--<li>
-													活动优惠：<span>-0元</span>
-													<script type="text/javascript">
-                                                        checkoutConfig.activityDiscountMoney=5;
-                                                        checkoutConfig.totalPrice=244.00;
-													</script>
-												</li>-->
-												<li>
-													积分抵扣：<span id="couponDesc">-0元</span>
-												</li>
-												<li>
-													运费：<span id="postageDesc">0元</span>
-												</li>
+									</div>
+								</div>
+
+								<!--S 加价购 产品选择弹框 -->
+								<div class="modal hide modal-choose-pro" id="J_choosePro-664">
+									<div class="modal-header">
+										<span class="close" data-dismiss='modal'><i class="iconfont">&#xe617;</i></span>
+										<h3>选择产品</h3>
+										<div class="more">
+											<div class="xm-recommend-page clearfix">
+												<a class="page-btn-prev   J_carouselPrev iconfont" href="javascript: void(0);">&#xe604;</a><a class="page-btn-next  J_carouselNext iconfont" href="javascript: void(0);">&#xe605;</a>
+											</div>
+										</div>
+									</div>
+									<div class="modal-body J_chooseProCarousel">
+										<div class="J_carouselWrap modal-choose-pro-list-wrap">
+											<ul class="clearfix J_carouselList">
 											</ul>
-											<p class="checkout-total">应付总额：<span><strong id="totalPrice">244</strong>元</span></p>
-										</div>
-										<!--  -->
-									</div>
-								</div>
-							</div>
-
-							<!--S 加价购 产品选择弹框 -->
-							<div class="modal hide modal-choose-pro" id="J_choosePro-664">
-								<div class="modal-header">
-									<span class="close" data-dismiss='modal'><i class="iconfont">&#xe617;</i></span>
-									<h3>选择产品</h3>
-									<div class="more">
-										<div class="xm-recommend-page clearfix">
-											<a class="page-btn-prev   J_carouselPrev iconfont" href="javascript: void(0);">&#xe604;</a><a class="page-btn-next  J_carouselNext iconfont" href="javascript: void(0);">&#xe605;</a>
 										</div>
 									</div>
-								</div>
-								<div class="modal-body J_chooseProCarousel">
-									<div class="J_carouselWrap modal-choose-pro-list-wrap">
-										<ul class="clearfix J_carouselList">
-										</ul>
+									<div class="modal-footer">
+										<a href="#" class="btn btn-disabled J_chooseProBtn">加入购物车</a>
 									</div>
 								</div>
-								<div class="modal-footer">
-									<a href="#" class="btn btn-disabled J_chooseProBtn">加入购物车</a>
-								</div>
+								<!--E 加价购 产品选择弹框 -->
+
+								<!--S 保障计划 产品选择弹框 -->
+
+
 							</div>
-							<!--E 加价购 产品选择弹框 -->
+							<!-- 商品清单 END -->
+							<input type="hidden"  id="couponType" name="Checkout[couponsType]">
+							<input type="hidden" id="couponValue" name="Checkout[couponsValue]">
+							<div class="checkout-confirm">
 
-							<!--S 保障计划 产品选择弹框 -->
+								<a href="#" class="btn btn-lineDakeLight btn-back-cart">返回购物车</a>
+								<a href="#" class="btn btn-primary">立即下单</a>
 
-
-						</div>
-						<!-- 商品清单 END -->
-						<input type="hidden"  id="couponType" name="Checkout[couponsType]">
-						<input type="hidden" id="couponValue" name="Checkout[couponsValue]">
-						<div class="checkout-confirm">
-
-							<a href="#" class="btn btn-lineDakeLight btn-back-cart">返回购物车</a>
-							<a href="#" class="btn btn-primary">立即下单</a>
-
+							</div>
 						</div>
 					</div>
-				  </div>
 				</form>
 			</div>
 			</form>

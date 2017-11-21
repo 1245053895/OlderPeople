@@ -402,7 +402,6 @@ a:hover,a:focus {
 	_margin-top:0;
 	background-color:#fff;
 	-webkit-background-clip:padding-box;
-	-moz-background-clip:padding-box;
 	background-clip:padding-box;
 	outline:none
 }
@@ -990,7 +989,6 @@ a:hover,a:focus {
 	width:70px;
 	height:70px;
 	background-image:url('http://c1.mifile.cn/f/i/2014/cn/icon/site-logo.png');
-	background-image:-webkit-image-set(url('http://c1.mifile.cn/f/i/2014/cn/icon/site-logo.png') 1x,url('http://c1.mifile.cn/f/i/2014/cn/icon/site-logo_2x.png') 2x);
 	background-repeat:no-repeat;
 	-webkit-border-radius:2px;
 	-moz-border-radius:2px;
@@ -1505,7 +1503,6 @@ a:hover,a:focus {
 	position:absolute;
 	left:50%;
 	bottom:-3px;
-	_bottom:-1px;
 	z-index:12;
 	width:0;
 	height:0;

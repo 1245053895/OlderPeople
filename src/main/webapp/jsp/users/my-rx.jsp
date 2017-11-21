@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Administrator
@@ -39,48 +40,29 @@
         <dl>
             <dt>热销产品</dt>
             <dd>
-                <div class="item big">
-                    <a href="#" class="title">代步车 代步车 代步车 代步车代步车代步车</a>
-                    <p><font>￥</font>2658.<font>00</font></p>
-                    <a href="#" class="buy"></a>
-                    <img src="${pageContext.request.contextPath}/jsp/users/images/img18.jpg"/>
-                </div>
-                <div class="item">
-                    <a href="#" class="title">代步车 代步车 代步车 代步车代步车代步车</a>
-                    <p><font>￥</font>2658.<font>00</font></p>
-                    <a href="#" class="buy"></a>
-                    <img src="${pageContext.request.contextPath}/jsp/users/images/img20.jpg"/>
-                </div>
-                <div class="item">
-                    <a href="#" class="title">代步车 代步车 代步车 代步车代步车代步车</a>
-                    <p><font>￥</font>2658.<font>00</font></p>
-                    <a href="#" class="buy"></a>
-                    <img src="${pageContext.request.contextPath}/jsp/users/images/img19.jpg"/>
-                </div>
-                <div class="item">
-                    <a href="#" class="title">代步车 代步车 代步车 代步车代步车代步车</a>
-                    <p><font>￥</font>2658.<font>00</font></p>
-                    <a href="#" class="buy"></a>
-                    <img src="${pageContext.request.contextPath}/jsp/users/images/img23.jpg"/>
-                </div>
-                <div class="item">
-                    <a href="#" class="title">代步车 代步车 代步车 代步车代步车代步车</a>
-                    <p><font>￥</font>2658.<font>00</font></p>
-                    <a href="#" class="buy"></a>
-                    <img src="${pageContext.request.contextPath}/jsp/users/images/img24.jpg"/>
-                </div>
-                <div class="item">
-                    <a href="#" class="title">代步车 代步车 代步车 代步车代步车代步车</a>
-                    <p><font>￥</font>2658.<font>00</font></p>
-                    <a href="#" class="buy"></a>
-                    <img src="${pageContext.request.contextPath}/jsp/users/images/img21.jpg"/>
-                </div>
-                <div class="item">
-                    <a href="#" class="title">代步车 代步车 代步车 代步车代步车代步车</a>
-                    <p><font>￥</font>2658.<font>00</font></p>
-                    <a href="#" class="buy"></a>
-                    <img src="${pageContext.request.contextPath}/jsp/users/images/img22.jpg"/>
-                </div>
+                 <c:forEach varStatus="status" items="${totalCreditsByIds}" var="totalCreditsByIds1" >
+                        <div class="item <c:if test='${status.index%11==0}'>big</c:if>">
+
+                            <a href="${pageContext.request.contextPath}/xiangqing.action?productid=${totalCreditsByIds1.productid}" class="title">${totalCreditsByIds1.productname}</a>
+                            <p style="font-size: 18px;font-weight:500;color: #0b6cbc;margin-top: 0px;"><font>销量</font>${totalCreditsByIds1.totalhotsale}</p>
+                            <p><font>￥</font>${totalCreditsByIds1.productprice}<font>0</font></p>
+                            <a href="#" class="buy"></a>
+                            <a  href="${pageContext.request.contextPath}/xiangqing.action?productid=${totalCreditsByIds1.productid}">
+                                <img  style="width: 180px;height: 200px;" src="${totalCreditsByIds1.productpicture}"/>
+                            </a>
+                        </div>
+                 </c:forEach>
+               <%-- <c:forEach items="${totalCreditsByIds}" var="totalCreditsByIds1" begin="2" end="7">
+                    <div class="item">
+                        <a href="${pageContext.request.contextPath}/xiangqing.action?productid=${totalCreditsByIds1.productid}" class="title">${totalCreditsByIds1.productname}</a>
+                        <p><font>销量</font>${totalCreditsByIds1.totalhotsale}<font></font></p>
+                        <p><font>￥</font>${totalCreditsByIds1.productprice}<font>0</font></p>
+                        <a href="#" class="buy"></a>
+                        <a  href="${pageContext.request.contextPath}/xiangqing.action?productid=${totalCreditsByIds1.productid}">
+                            <img  style="width: 180px;height: 200px;" src="${totalCreditsByIds1.productpicture}"/>
+                        </a>
+                    </div>
+                </c:forEach>--%>
                 <div class="clear"></div>
             </dd>
         </dl>

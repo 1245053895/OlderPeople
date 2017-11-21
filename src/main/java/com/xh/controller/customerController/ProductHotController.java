@@ -17,7 +17,7 @@ public class ProductHotController {
     @RequestMapping(value = "/ProductHot.action")
     public String ProductHot(Model model){
         List<TotalCreditsById> totalCreditsByIds=productHotService.SelectHotProduct();
-       model.addAttribute("totalCreditsByIds",totalCreditsByIds);
+        model.addAttribute("totalCreditsByIds",totalCreditsByIds);
         return "/jsp/users/my-rx.jsp";
     }
 }

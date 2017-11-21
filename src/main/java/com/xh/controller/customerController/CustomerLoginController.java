@@ -127,6 +127,7 @@ public class CustomerLoginController {
         user.setUserinputdate(new Date());
         String pwd = user.getUserpwd();
         user.setUserpwd(encodePassword(pwd));
+        user.setUserA("1");
         String username=request.getParameter("username");
         List<User> userList1=userLoginService.SelectAllQuerry();
         for (User userList:userList1){

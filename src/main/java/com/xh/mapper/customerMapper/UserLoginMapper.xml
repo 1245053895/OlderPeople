@@ -50,7 +50,7 @@
 
     <!--用户注册后向数据库中插入一个新的用户-->
     <insert id="insertNewUser" parameterType="user">
-        INSERT INTO user(UserName,UserPhone,UserPwd,UserInputDate) VALUES (#{username},#{userphone},#{userpwd},#{userinputdate})
+        INSERT INTO user(UserName,UserPhone,UserPwd,UserInputDate,User_A ) VALUES (#{username},#{userphone},#{userpwd},#{userinputdate},#{userA})
     </insert>
 
 

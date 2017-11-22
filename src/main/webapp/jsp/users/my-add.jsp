@@ -228,7 +228,37 @@
 											<input type="radio" name="Checkout[address]" class="addressId"  value="10140916720030323">
 										</dd>
 									</dl>
-									<div class="use-new-addr"  id="J_useNewAddr" data-state="off">
+
+
+									<dl class="item" id="newadr" style="display: none">
+										<dt>
+											<strong class="itemConsignee"><input class="itemRegion" placeholder="请填写收件人姓名" style="border: hidden;width: 120px"></strong>
+											<span class="tag" onclick="quxiao()">取消</span>
+											<span class="tag" onclick="queding()">确定</span>
+										</dt>
+										<br/>
+										<dd>
+											<input class="itemRegion" placeholder="请填写省份、城市" style="border: hidden">
+											<input class="itemStreet" placeholder="请填写详细地址" style="border: hidden">
+											<input class="tel" placeholder="请填写收件人手机号" style="border: hidden">
+										</dd>
+										<dd style="display:none">
+											<input type="radio" name="Checkout[address]" class="addressId"  value="10140916720030323">
+										</dd>
+									</dl>
+
+									<script>
+                                        function xzdz() {
+                                            document.getElementById("newadr").style.display = "block"
+                                        }
+                                        function quxiao() {
+                                            document.getElementById("newadr").style.display = "none"
+                                        }
+									</script>
+
+
+
+									<div class="use-new-addr"  id="J_useNewAddr" data-state="off" onclick="xzdz()">
 										<span class="iconfont icon-add"><img src="${pageContext.request.contextPath}/jsp/users/images/add_cart.png" /></span>
 										新增收货地址
 									</div>
@@ -484,17 +514,14 @@
 							<div class="checkout-confirm">
 
 								<a href="#" class="btn btn-lineDakeLight btn-back-cart">返回购物车</a>
-								<%--<input type="hidden" class="ace" name="userid" value="${sessionScope.user.userid}" />--%>
-								<input type="hidden" class="ace" name="userid" value="5" />
-								<%--这里传入userid  userid=${sessionScope.user.userid}  --%>
-								<a href="javascript:jiesuan('<%=basePath%>');" class="btn btn-primary">立即下单</a>
+								<a href="#" class="btn btn-primary">立即下单</a>
 
 							</div>
 						</div>
 					</div>
 				</form>
 			</div>
-
+			</form>
 
 		</div>
 		<!-- 禮品卡提示 S-->
@@ -573,10 +600,10 @@
 
 
 
-		<script src="${pageContext.request.contextPath}/jsp/users/js/base.min.js"></script>
+		<script src="js/base.min.js"></script>
 
-		<script type="text/javascript" src="${pageContext.request.contextPath}/jsp/users/js/address_all.js"></script>
-		<script type="text/javascript" src="${pageContext.request.contextPath}/jsp/users/js/checkout.min.js"></script>
+		<script type="text/javascript" src="js/address_all.js"></script>
+		<script type="text/javascript" src="js/checkout.min.js"></script>
 	</div>
 	<!--收货地址body部分结束-->
 </div>
@@ -624,7 +651,7 @@
 				<li class="lss">
 					<span>下载手机版</span>
 					<div class="clearfix lss-pa">
-						<div class="fl lss-img"><img src="${pageContext.request.contextPath}/jsp/users/img/icon/code.png" alt=""></div>
+						<div class="fl lss-img"><img src="img/icon/code.png" alt=""></div>
 						<div class="fl" style="padding-left:20px">
 							<h4>扫描下载云购APP</h4>
 							<p>把优惠握在手心</p>
@@ -674,15 +701,6 @@
     })
 </script>
 
-<script type="text/javascript">
-
-function jiesuan(basePath) {
-       alert('前去付款？');
-    $("#checkoutForm").attr("action",basePath + "jieSuan.action");
-    $("#checkoutForm").submit();
-}
-
-</script>
 
 </body>
 </html>

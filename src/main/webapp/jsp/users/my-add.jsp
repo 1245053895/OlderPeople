@@ -47,47 +47,85 @@
 <body>
 
 <header id="pc-header">
-	<!--
-        <div class="pc-header-nav">
-            <div class="pc-header-con">
-                <div class="fl pc-header-link" >您好！，欢迎来云购物 <a href="login.html" target="_blank">请登录</a> <a href="register.html" target="_blank"> 免费注册</a></div>
-                <div class="fr pc-header-list top-nav">
-                    <ul>
-                        <li>
-                            <div class="nav"><i class="pc-top-icon"></i><a href="#">我的订单</a></div>
-                            <div class="con">
-                                <dl>
-                                    <dt><a href="">批发进货</a></dt>
-                                    <dd><a href="">已买到货品</a></dd>
-                                    <dd><a href="">优惠券</a></dd>
-                                    <dd><a href="">店铺动态</a></dd>
-                                </dl>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="nav"><i class="pc-top-icon"></i><a href="#">我的商城</a></div>
-                            <div class="con">
-                                <dl>
-                                    <dt><a href="">批发进货</a></dt>
-                                    <dd><a href="">已买到货品</a></dd>
-                                    <dd><a href="">优惠券</a></dd>
-                                    <dd><a href="">店铺动态</a></dd>
-                                </dl>
-                            </div>
-                        </li>
-                        <li><a href="#">我的云购</a></li>
-                        <li><a href="#">我的收藏</a></li>
-                        <li><a href="#">会员中心</a></li>
-                        <li><a href="#">客户服务</a></li>
-                        <li><a href="#">帮助中心</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    -->
-	<div class="pc-header-nav">
 
-		<jsp:include page="/jsp/users/head.jsp"></jsp:include>
+	<div class="pc-header-nav">
+		<div class="pc-header-con">
+			<div class="fl pc-header-link" >您好！，欢迎来孝和集团电子商城
+				<a href="login.html" target="_blank">请登录</a>
+				<a href="register.html" target="_blank"> 免费注册</a>
+			</div>
+			<div class="fr pc-header-list top-nav">
+				<ul>
+					<li><a href="#">我的收藏</a></li>
+					<li>
+						<div class="nav"><i class="pc-top-icon"></i><a href="#">个人中心</a></div>
+						<div class="con">
+							<dl>
+								<dt><a href="">个人资料</a></dt>
+								<dd><a href="">收货地址</a></dd>
+								<dd><a href="">修改登录密码</a></dd>
+								<dd><a href="">我的积分</a></dd>
+								<dd><a href="">已购买的宝贝</a></dd>
+							</dl>
+						</div>
+					</li>
+
+					<li>
+						<div class="nav"><i class="pc-top-icon"></i><a href="#">帮助中心</a></div>
+						<div class="con">
+							<dl>
+								<dt><a href="">积分说明</a></dt>
+								<dd><a href="">联系客服</a></dd>
+							</dl>
+						</div>
+					</li>
+
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<div class="pc-header-logo clearfix">
+		<div class="pc-fl-logo fl">
+			<h1>
+				<a href="index.jsp"></a>
+			</h1>
+		</div>
+		<div class="head-form fl">
+			<form class="clearfix">
+				<input class="search-text" accesskey="" id="key" autocomplete="off" placeholder="洗衣机" type="text">
+				<button class="button" onclick="search('key');return false;">搜索</button>
+			</form>
+			<div class="words-text clearfix">
+				<a href="#">制氧机</a>
+				<a href="#">代步车</a>
+				<a href="#">电动轮椅</a>
+				<a href="#">血糖仪</a>
+				<a href="#">血压计</a>
+				<a href="#">木制拐杖</a>
+				<a href="#">足浴盆</a>
+			</div>
+		</div>
+		<div class="fr pc-head-car">
+			<i class="icon-car"></i>
+			<a href="#">我的购物车</a>
+		</div>
+	</div>
+	<!--  顶部    start-->
+	<div class="yHeader">
+		<!-- 导航   start  -->
+		<div class="yNavIndex">
+			<ul class="yMenuIndex">
+				<li><a href="" target="_blank" title="首页">首页</a></li>
+				<li><a href="" target="_blank" title="热销专区">热销专区</a></li>
+				<li><a href="" target="_blank" title="新品专区">新品专区</a></li>
+				<li><a href="" target="_blank" title="积分商城">积分商城</a></li>
+				<li><a href="" target="_blank" title="合伙人">合伙人</a></li>
+				<li><a href="" target="_blank" title="关于我们">关于我们</a></li>
+			</ul>
+		</div>
+		<!-- 导航   end  -->
+	</div>
 
 </header>
 
@@ -148,7 +186,36 @@
 											<input type="radio" name="Checkout[address]" class="addressId"  value="10140916720030323">
 										</dd>
 									</dl>
-									<div class="use-new-addr"  id="J_useNewAddr" data-state="off">
+
+									<form action="${pageContext.request.contextPath}/InsertGainAddress.action" method="post">
+										<dl class="item" id="newadr" style="display: none">
+											<dt>
+												<strong class="itemConsignee"><input class="itemRegion" placeholder="请填写收件人姓名"  name="gainname" style="border: hidden;width: 120px"></strong>
+												<span class="tag" onclick="quxiao()">取消</span>
+												<input style="background-color: inherit;border: hidden;margin-top: 5px"  type="submit" value="确定" class="tag" >
+
+											</dt>
+											<br/>
+											<dd>
+												<input class="itemStreet" placeholder="请填写详细地址"  name="gainaddress" style="border: hidden">
+												<input class="tel" placeholder="请填写收件人手机号" style="border: hidden" name="gainmobile">
+											</dd>
+											<dd style="display:none">
+												<input type="radio" name="Checkout[address]" class="addressId"  value="10140916720030323">
+											</dd>
+										</dl>
+									</form>
+
+									<script>
+                                        function xzdz() {
+                                            document.getElementById("newadr").style.display = "block"
+                                        }
+                                        function quxiao() {
+                                            document.getElementById("newadr").style.display = "none"
+                                        }
+									</script>
+
+									<div class="use-new-addr"  id="J_useNewAddr" data-state="off" onclick="xzdz()">
 										<span class="iconfont icon-add"><img src="images/add_cart.png" /></span>
 										新增收货地址
 									</div>
@@ -248,32 +315,6 @@
 							</div>
 							<!-- 收货方式 END-->
 
-<<<<<<<<< Temporary merge branch 1
-						<!-- 商品清单 -->
-						<div id="checkoutGoodsList" class="checkout-goods-box">
-							<div class="xm-box">
-								<div class="box-hd">
-									<h2 class="title">确认订单信息</h2>
-								</div>
-								<div class="box-bd">
-									<dl class="checkout-goods-list">
-										<dt class="clearfix">
-											<span class="col col-1">商品名称</span>
-											<span class="col col-2">购买价格</span>
-											<span class="col col-3">购买数量</span>
-											<span class="col col-4">小计（元）</span>
-										</dt>
-										<dd class="item clearfix">
-											<div class="item-row">
-												<div class="col col-1">
-													<div class="g-pic">
-														<img src="images/shangpinxiangqing/X1.png" width="40" height="40" />
-													</div>
-													<div class="g-info">
-														<a href="#" target="_blank">
-															赛亿（shinee)取暖器家用/取暖电器/电暖器/电暖气台式摇头暖风机HN2118PT
-														</a>
-=========
 							<!-- 商品清单 -->
 							<div id="checkoutGoodsList" class="checkout-goods-box">
 								<div class="xm-box">
@@ -299,7 +340,6 @@
 																赛亿（shinee)取暖器家用/取暖电器/电暖器/电暖气台式摇头暖风机HN2118PT
 															</a>
 														</div>
->>>>>>>>> Temporary merge branch 2
 													</div>
 													<div class="col col-2">39元</div>
 													<div class="col col-3">1</div>

@@ -128,7 +128,10 @@ public class CustomerInformationController {
             Integer id=user1.getUserid();
             List<Gainaddres> gainaddres1=customerInformationService.SelectUserAddressByid(id);
             for (Gainaddres gainaddre:gainaddres1){
-                if(gainaddre.getGainA().equals("1")){
+                if (gainaddre.getGainA()==null){
+                    gainaddre.setGainA("0");
+                    customerInformationService.UpdateGainAdress(gainaddres);
+                }else if(gainaddre.getGainA().equals("1")){
                     customerInformationService.UpdateGainAflase(gainaddre.getGainid());
                 }
             }

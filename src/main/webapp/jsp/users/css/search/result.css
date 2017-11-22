@@ -1,0 +1,10 @@
+.result-list{
+    top: 0%;
+    left: 10%;
+    display: none;
+    position: fixed;
+    width: 80%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 999;
+}

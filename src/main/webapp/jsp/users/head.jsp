@@ -18,8 +18,13 @@
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/jsp/users/css/style.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/jsp/users/css/media_index.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/jsp/users/css/mod.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/jsp/users/css/search/search.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/jsp/users/css/search/upload.css">
     <script type="text/javascript" src="${pageContext.request.contextPath}/jsp/users/js/jquery.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/jsp/users/js/jquery-1.8.3.min.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/jsp/users/js/index.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/jsp/users/js/search/search.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/jsp/users/js/search/upload.js"></script>
     <style>
         body, ul, li
         {
@@ -105,6 +110,62 @@
     </style>
 </head>
 <body>
+<div class="search_my">
+    <div class="bg"></div>
+    <div class="search-wrapper">
+        <div class="input-holder">
+            <input type="text" class="search-input" placeholder="请输入关键词" />
+            <button class="search-icon" onClick="searchToggle(this, event);"><span></span></button>
+            <div class="search-select"></div>
+            <div class="upload_image">
+                <form id="uploadForm" action="" method="post" enctype="multipart/form-data">
+                    <div class="select_img">
+                        <div id="select_area"></div>
+                        <input type="file" id="imageFile" style="filter:alpha(opacity=0);opacity:0;width: 0;height: 0;"/>
+                        <div id="select_text">上传图片</div>
+                    </div>
+                    <div id="drop_img">
+                        <div id="preview">
+                            <div class="drop_this">
+                                <center>请将图片拖到这里!</center>
+                            </div>
+                        </div>
+                        <div class="header-tip"></div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <span class="close" onClick="searchToggle(this, event);"></span>
+        <div class="result-container">
+        </div>
+    </div>
+    <div class="result-list">
+        <%--<table border="1">
+            <tr>
+                <th>姓名</th>
+                <th colspan="2">电话</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>5</td>
+                <td>6</td>
+            </tr>
+        </table>--%>
+    </div>
+</div>
+
+<script>
+
+    //阻止默认事件
+    window.onload = function(){
+        upload_img();//拖拽上传
+    };
+</script>
 <div class="pc-header-nav">
     <div class="pc-header-con">
         <c:if test="${empty user.userid}">

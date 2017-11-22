@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xh.mapper.pojo.ProductMapper1">
+  <resultMap id="BaseResultMap" type="com.xh.po.Product">
+    <id column="ProductId" jdbcType="INTEGER" property="productid" />
+    <result column="ProductTypeId" jdbcType="INTEGER" property="producttypeid" />
+    <result column="ProductName" jdbcType="VARCHAR" property="productname" />
+    <result column="ProductPrice" jdbcType="DOUBLE" property="productprice" />
+    <result column="PictureSizes" jdbcType="VARCHAR" property="picturesizes" />
+    <result column="PictureColors" jdbcType="VARCHAR" property="picturecolors" />
+    <result column="ProductLookCount" jdbcType="INTEGER" property="productlookcount" />
+    <result column="ProductDescribe" jdbcType="VARCHAR" property="productdescribe" />
+    <result column="ProductStoreTime" jdbcType="TIMESTAMP" property="productstoretime" />
+    <result column="ProductPicture" jdbcType="VARCHAR" property="productpicture" />
+    <result column="ProductNew" jdbcType="INTEGER" property="productnew" />
+    <result column="ProducthotSale" jdbcType="CHAR" property="producthotsale" />
+    <result column="ProductDisabled" jdbcType="CHAR" property="productdisabled" />
+    <result column="ProductCredits" jdbcType="CHAR" property="productcredits" />
+    <result column="ProductCreateTime" jdbcType="TIMESTAMP" property="productcreatetime" />
+    <result column="Product_A" jdbcType="VARCHAR" property="productA" />
+    <result column="Product_B" jdbcType="VARCHAR" property="productB" />
+    <result column="Product_C" jdbcType="VARCHAR" property="productC" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+    ProductId, ProductTypeId, ProductName, ProductPrice, PictureSizes, PictureColors, 
+    ProductLookCount, ProductDescribe, ProductStoreTime, ProductPicture, ProductNew, 
+    ProducthotSale, ProductDisabled, ProductCredits, ProductCreateTime, Product_A, Product_B, 
+    Product_C
+  </sql>
+
+  <select id="selectByPrimaryKey" parameterType="java.util.List" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from product
+    where ProductId in(
+    <foreach collection="list" item="item" separator=",">
+      #{item}
+    </foreach>
+    )
+
+  </select>
+
+  <!--修改购物车商品数量-->
+  <update id="updateShopCarShuLiang" parameterType="com.xh.po.Shopcar">
+  UPDATE shopcar SET orderamount= #{orderamount,jdbcType=INTEGER}
+  where ShopCarId= #{shopcarid,jdbcType=INTEGER}
+  </update>
+  <!--查询购物车    (orderamount*Price) AS shopcarB保存商品总价-->
+  <select id="selectShopCarShangPing" resultType="com.xh.po.Shopcar" parameterType="Integer[]">
+    SELECT  ShopCarId AS shopcarid,UserId AS userid,ProductId AS productid,orderamount AS orderamount,Price AS price,(orderamount*Price) AS shopcarB
+    FROM `shopcar`
+    where ShopCarId in(
+    <foreach collection="array" item="item" separator=",">
+      #{item}
+    </foreach>
+    )
+  </select>
+
+
+
+  <!--传入在购物车付款完成的购物车id    将 shopcar 的 C变为0   代表已付款-->
+  <update id="updateShopCarC" parameterType="java.util.List">
+    UPDATE `shopcar` SET ShopCar_C=1
+    where ShopCarId in(
+    <foreach collection="list" item="item" separator=",">
+      #{item}
+    </foreach>
+    )
+  </update>
+
+  <!--修改order表中paystatus为1表示已支付-->
+  <update id="updateOrderPayStatus" parameterType="int">
+  UPDATE  `order` SET PayStatus=1
+  where OrderId =#{orderid,jdbcType=INTEGER}
+  </update>
+
+
+</mapper>

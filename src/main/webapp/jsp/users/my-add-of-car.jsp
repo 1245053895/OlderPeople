@@ -342,30 +342,26 @@
 												<span class="col col-3">购买数量</span>
 												<span class="col col-4">小计（元）</span>
 											</dt>
+											<c:forEach items="${myshopcarList}" var="myshopcar" varStatus="status">
 											<dd class="item clearfix" style="background-color: #deffb3">
 												<div class="item-row">
 													<div class="col col-1">
 														<div class="g-pic">
-															<img src="${pageContext.request.contextPath}/${productList[0].productpicture}" width="40" height="40" />
+															<img src="${pageContext.request.contextPath}/${myshopcar.shopcarC}" width="40" height="40" />
 														</div>
 														<div class="g-info">
-															<a href="#" target="_blank">
-																${productList[0].productname}
-															</a>
+															<%--<a href="#" target="_blank">--%>
+																${myshopcar.shopcarA}
+															<%--</a>--%>
 														</div>
 													</div>
-													<input type="hidden" class="ace" name="productname" value="${productList[0].productname}" />
-													<input type="hidden" class="ace" name="productid" value="${productList[0].productid}" />
-													<div  id="jisuan0" class="col col-2"  style="text-align: left">${productList[0].productprice}</div>
-													<input type="hidden" class="ace" name="productprice" value="${productList[0].productprice}" />
-													<input type="hidden" class="ace" name="payprice" value="${productList[0].productprice}" />
-													<div id="jisuan1" class="col col-3" style="text-align: left">${idList[0]}</div>
-													<input type="hidden" class="ace" name="shoppingcount" value="${idList[0]}" />
-													<div id="jisuan2" class="col col-4" style="text-align: left">${zongjia[0]}</div>
-													<input type="hidden" class="ace" name="totalmoneycount" value="${zongjia[0]}" />
+													<div  id="jisuan0" class="col col-2"  style="text-align: left">${myshopcar.price}</div>
+													<div id="jisuan1" class="col col-3" style="text-align: left">${myshopcar.orderamount}</div>
+													<div id="jisuan2" class="col col-4" style="text-align: left">${myshopcar.shopcarB}</div>
+
 												</div>
 											</dd>
-
+											</c:forEach>
 										</dl>
 
 										<script type="text/javascript">
@@ -424,10 +420,10 @@
 											<div class="checkout-price">
 												<ul>
 													<li>
-														订单总额：<span id="aaaa">${zongjia[0]}</span>
+														订单总额：<span id="aaaa">${zongjia}</span>
 													</li>
 													<%--amountpay 应付金额    realpay实付=应付+邮费postfee--%>
-													<input type="hidden" class="ace" name="amountpay" value="${zongjia[0]}" />
+													<input type="hidden" class="ace" name="amountpay" value="${zongjia}" />
 													<!--<li>
                                                         活动优惠：<span>-0元</span>
                                                         <script type="text/javascript">
@@ -437,14 +433,14 @@
                                                     </li>-->
 													<li>
 														<%--用户购买的所有商品积分和======（数量*积分）的和--%>
-														可获得积分：<span id="couponDesc">${zongjifen[0]}</span>
-															<input type="hidden" class="ace" name="totalcredit" value="${zongjifen[0]}" />
+														可获得积分：<span id="couponDesc">${totalcredit}</span>
+															<input type="hidden" class="ace" name="totalcredit" value="${totalcredit}" />
 													</li>
 													<li>
 														运费：<span id="postageDesc">0元</span>
 													</li>
 												</ul>
-												<p class="checkout-total">应付总额：<span><strong id="totalPrice">${zongjia[0]}</strong>元</span></p>
+												<p class="checkout-total">应付总额：<span><strong id="totalPrice">${zongjia}</strong>元</span></p>
 											</div>
 											<!--  -->
 										</div>
@@ -485,7 +481,7 @@
 
 								<a href="#" class="btn btn-lineDakeLight btn-back-cart">返回购物车</a>
 								<%--<input type="hidden" class="ace" name="userid" value="${sessionScope.user.userid}" />--%>
-								<input type="hidden" class="ace" name="userid" value="5" />
+								<input type="hidden" class="ace" name="userid" value="11" />
 								<%--这里传入userid  userid=${sessionScope.user.userid}  --%>
 								<a href="javascript:jiesuan('<%=basePath%>');" class="btn btn-primary">立即下单</a>
 
@@ -678,7 +674,7 @@
 
 function jiesuan(basePath) {
        alert('前去付款？');
-    $("#checkoutForm").attr("action",basePath + "jieSuan.action");
+    $("#checkoutForm").attr("action",basePath + "jieSuanForCar.action");
     $("#checkoutForm").submit();
 }
 

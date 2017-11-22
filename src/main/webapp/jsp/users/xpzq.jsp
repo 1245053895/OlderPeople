@@ -1,3 +1,5 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%--
   Created by IntelliJ IDEA.
   User: Administrator
@@ -23,9 +25,9 @@
         <!-- 导航   start  -->
         <div class="yNavIndex">
             <ul class="yMenuIndex">
-                <li><a href="" target="_blank" title="首页">首页</a></li>
-                <li><a href="" target="_blank" title="热销专区">热销专区</a></li>
-                <li><a href="" target="_blank" title="新品专区">新品专区</a></li>
+                <li><a href="${pageContext.request.contextPath}/ShopFrontPage.action"  title="首页">首页</a></li>
+                <li><a href="${pageContext.request.contextPath}/ProductHot.action" title="热销专区">热销专区</a></li>
+                <li><a href="${pageContext.request.contextPath}/SelectNewProduct.action"  title="新品专区">新品专区</a></li>
                 <li><a href="" target="_blank" title="积分商城">积分商城</a></li>
                 <li><a href="" target="_blank" title="合伙人">合伙人</a></li>
                 <li><a href="" target="_blank" title="关于我们">关于我们</a></li>
@@ -49,81 +51,28 @@
                             New Product Zone
                         </span>
             </h3>
+
             <ul class="wares_list">
-                <li>
-                    <div class="wares_pic">
-                        <a href="#" target="_blank">
-                            <img src="${pageContext.request.contextPath}/jsp/users/images/jfscs/14472206401499.jpg" data-original="#" width="298" height="298">
-                        </a>
-                    </div>
-                    <div class="wares_title">
-                        <a href="#">
-                            【桔瓣主题游】韩国首尔一地五日自由行
-                        </a>
-                    </div>
-                    <div class="wares_price">
-                        原价 <span style="text-decoration: line-through">¥2390</span>
-                    </div>
-                    <div class="wares_tag">
-                        预售价：￥121.09
-                    </div>
-                </li>
-                <li>
-                    <div class="wares_pic">
-                        <a href="#" target="_blank">
-                            <img src="${pageContext.request.contextPath}/jsp/users/images/jfscs/14485062857773.jpg" data-original="#" width="298" height="298">
-                        </a>
-                    </div>
-                    <div class="wares_title">
-                        <a href="#">
-                            【桔瓣主题游】华东五市 南山竹海 三国情 乌镇二飞六日游
-                        </a>
-                    </div>
-                    <div class="wares_price">
-                        原价 <span style="text-decoration: line-through">¥2390</span>
-                    </div>
-                    <div class="wares_tag">
-                        预售价：￥121.09
-                    </div>
-                </li>
-                <li>
-                    <div class="wares_pic">
-                        <a href="#" target="_blank">
-                            <img src="${pageContext.request.contextPath}/jsp/users/images/jfscs/14483566137628.jpg" data-original="#" width="298" height="298">
-                        </a>
-                    </div>
-                    <div class="wares_title">
-                        <a href="#">
-                            【桔瓣精品游】厦门 鼓浪屿、曾厝垵双飞四日
-                        </a>
-                    </div>
-                    <div class="wares_price">
-                        原价 <span style="text-decoration: line-through">¥2390</span>
-                    </div>
-                    <div class="wares_tag">
-                        预售价：￥121.09
-                    </div>
-                </li>
-                <li>
-                    <div class="wares_pic">
-                        <a href="#" target="_blank">
-                            <img src="${pageContext.request.contextPath}/jsp/users/images/jfscs/14483522201412.jpg" data-original="#" width="298" height="298">
-                        </a>
-                    </div>
-                    <div class="wares_title">
-                        <a href="#">
-                            【桔瓣主题游】曼谷、芭堤雅浪漫双岛五星六日游
-                        </a>
-                    </div>
-                    <div class="wares_price">
-                        原价 <span style="text-decoration: line-through">¥2390</span>
-                    </div>
-                    <div class="wares_tag">
-                        预售价：￥121.09
-                    </div>
-                </li>
-                <div class="clear">
-                </div>
+                <c:forEach items="${totalCreditsByIdNew}" var="totalCreditsByIdNew1">
+                    <li>
+                        <div class="wares_pic">
+                            <a href="${pageContext.request.contextPath}/xiangqing.action?productid=${totalCreditsByIdNew1.productid}" target="_blank">
+                                <img src="  ${totalCreditsByIdNew1.productpicture}" data-original="#" width="298" height="298">
+                            </a>
+                        </div>
+                        <div class="wares_title">
+                            <a href="${pageContext.request.contextPath}/xiangqing.action?productid=${totalCreditsByIdNew1.productid}">
+                               ${totalCreditsByIdNew1.productname}
+                            </a>
+                        </div>
+                        <div class="wares_price">
+                            原价 <span style="text-decoration: line-through"><fmt:formatNumber value="${totalCreditsByIdNew1.productprice* 1.2 }"  pattern="$.00"/></span>
+                        </div>
+                        <div class="wares_tag">
+                            预售价： <a>${totalCreditsByIdNew1.productprice}</a>
+                        </div>
+                    </li>
+                </c:forEach>
             </ul>
             <!-- 新品专区 end -->
         </div>

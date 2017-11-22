@@ -27,12 +27,12 @@ public class XiangQingController {
 
     @RequestMapping(value = "/xiangqing",method={RequestMethod.POST,RequestMethod.GET})
     public String getAllOrder(@RequestParam(defaultValue="1")Integer productid, Model model){
-       Integer ProductLookCount= userLoginService.queryLookcount(productid);
-       if(ProductLookCount==null){
-           userLoginService.setLookcount(productid);
-       }else {
-          userLoginService.AutoIncreaseOne(productid);
-       }
+        Integer ProductLookCount= userLoginService.queryLookcount(productid);
+        if(ProductLookCount==null){
+            userLoginService.setLookcount(productid);
+        }else {
+            userLoginService.AutoIncreaseOne(productid);
+        }
 
         List<PingJiaShu> pingJiaShuList = productService.pingJiaShu(productid);
         List<PingJia> pingJiaList = productService.pingJia(productid);
@@ -51,6 +51,7 @@ public class XiangQingController {
         model.addAttribute("tuiJianList05",tuiJianList05);
 
 
+        model.addAttribute("productid",productid);
 
 
 

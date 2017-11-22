@@ -189,7 +189,7 @@
 								<div></div>
 								<div class="sp2"><fmt:formatDate value="${productCustom.commenttime}" pattern="yyyy-MM-dd HH:mm:ss"/> </div>
 
-								<c:if test="${productCustom.comment==''}">
+								<c:if test="${productCustom.comment==''||productCustom.comment==null}">
 									<div class="sp3">
 										<a href="javascript:void (0);">发表评价</a>
 									</div>

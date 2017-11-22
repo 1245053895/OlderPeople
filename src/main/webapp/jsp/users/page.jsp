@@ -1,5 +1,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="f" uri="http://java.sun.com/jstl/fmt_rt" %>
+<%
+	String path = request.getContextPath();
+	String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
 <%--
   Created by IntelliJ IDEA.
   User: Administrator
@@ -165,7 +169,7 @@
 		</div>
 	</div>
 </nav>-->
-
+<form id="mainForm">
 <div class="Xcontent">
 	<ul class="Xcontent01">
 <%--${myProduct.images[0]}--%>
@@ -223,10 +227,11 @@
 				<div class="Xcontent32"><img src="${pageContext.request.contextPath}/jsp/users/images/shangpinxiangqing/X15.png"></div>
 				<form>
 					<%--max为库存量--%>
-					<input class="input" value="1"></form>
+					<input class="input" name="shuliang" value="1"></form>
 				<div class="Xcontent33"><img src="${pageContext.request.contextPath}/jsp/users/images/shangpinxiangqing/16.png"></div>
 			</div>
-			<div class="Xcontent34"><a href="#">立即购买</a></div>
+			<input type="hidden" class="ace" name="productid" value="${productid}" />
+			<div class="Xcontent34"><a href="javascript:oneMei('<%=basePath%>');">立即购买</a></div>
 			<div class="Xcontent35"><a href="javascript:void(0)">加入购物车</a></div>
             <div class="Xcontent36">
                 <a href=""><img src="${pageContext.request.contextPath}/jsp/users/images/shoucang.png" height="15px" width="15px"></a>
@@ -238,7 +243,7 @@
             </div>
 		</ol>
 	</ul>
-</div>
+</div></form>
 
 <div class="containers center clearfix" style="margin-top:20px; background:#fff;">
 	<div class="pc-info fr" style="padding-left:10px; padding-top:20px">
@@ -678,6 +683,13 @@ function ajax1(url,productid) {
         $(this).removeClass("hover");
         $(this).find(".nav a").removeClass("hover");
     })
+
+    function oneMei(basePath) {
+//        alert('您确定要删除吗？');
+        $("#mainForm").attr("action",basePath + "querendingdan.action");
+        $("#mainForm").submit();
+    }
+
 </script>
 
 <script type="text/javascript">

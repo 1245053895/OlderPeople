@@ -1,12 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xh.mapper.customerMapper.UserLoginMapper">
+    <!--查询所有用户-->
+    <select id="SelectAllQuerry" resultType="com.xh.po.User" parameterType="list">
+         SELECT UserId, UserName, UserPwd, UserSex, UserRealName, UserPhone, UserBirthday, UserAddress,
+          UserEmail, CreditsCore, UserInputDate, UserZip, UserLoginCount, UserLoginTime, User_A,
+          User_B, User_C FROM user
+    </select>
     <!--根据登录用户的用户名查询出该登录用户的用户名和密码-->
     <select id="selectAllNameAndPwd" resultType="user" parameterType="String">
     SELECT UserId, UserName, UserPwd, UserSex, UserRealName, UserPhone, UserBirthday, UserAddress,
-    UserEmail, CreditsCore, UserInputDate, UserZip, UserLoginCount, UserLoginTime, User_A,
-    User_B, User_C FROM `user` WHERE UserName=#{username}
+    UserEmail, CreditsCore, UserInputDate, UserZip, UserLoginCount, UserLoginTime, User_A as userA,
+    User_B as userB, User_C as userC  FROM `user` WHERE UserName=#{username}
     </select>
+
+    <!--向用户表中根据用户的id更新用户最近一次登录的时间-->
+    <update id="UpdateUserLoginTimeById" parameterType="user">
+        UPDATE user SET UserLoginTime=#{userlogintime} WHERE UserId=#{userid}
+    </update>
+
+    <!--根据用户的id查询用户登录的总次数是否为空-->
+    <select id="IsUserLoginNull" parameterType="Integer" resultType="Integer">
+          SELECT UserLoginCount FROM  `user` WHERE UserId=#{userid}
+    </select>
+
+    <!--当用户登录的总次数为空时，就对它赋1的值-->
+    <update id="LoginCountOne" parameterType="Integer">
+        UPDATE `user`  SET UserLoginCount=1  WHERE UserId=#{userid}
+    </update>
+
+    <!--当用户登录的总次数为1时，让它自动加一-->
+    <update id="AutoIncreaeOne" parameterType="Integer">
+        UPDATE `user`  SET UserLoginCount=UserLoginCount+1  WHERE UserId=#{userid}
+    </update>
+
+
+
+
 
     <!--根据登录用户的id向用户日志表中插入用户开始登录的时间，用户的登录ip-->
     <insert id="insertStartTimeAndIp" parameterType="com.xh.po.Userlog">
@@ -20,7 +50,7 @@
 
     <!--用户注册后向数据库中插入一个新的用户-->
     <insert id="insertNewUser" parameterType="user">
-        INSERT INTO user(UserName,UserPhone,UserPwd,UserInputDate) VALUES (#{username},#{userphone},#{userpwd},#{userinputdate})
+        INSERT INTO user(UserName,UserPhone,UserPwd,UserInputDate,User_A ) VALUES (#{username},#{userphone},#{userpwd},#{userinputdate},#{userA})
     </insert>
 
 
@@ -121,11 +151,68 @@
     </select>
 
 
+    <!--查询购物车里是否已有此商品-->
+ <select id="queryShopCar" parameterType="shopcar" resultType="shopcar">
+        SELECT * FROM shopcar WHERE UserId=#{userid} AND ProductId=#{productid}
+    </select>
+
+    <!--加入购物车-->
+    <insert id="ShopCarInsert" parameterType="shopcar">
+        INSERT INTO shopcar(UserId,ProductId,orderamount,Price) VALUES
+          (#{userid},#{productid},#{orderamount},#{price})
+    </insert>
+
+    <!--查询购物车是否插入成功-->
+    <select id="IsSuccessInsert" parameterType="shopcar" resultType="shopcar">
+        SELECT * FROM shopcar
+          WHERE UserId=#{userid} AND ProductId=#{productid} AND orderamount=#{orderamount} AND Price=#{price}
+    </select>
 
 
+    <!--查看此商品是否已在收藏夹中-->
+    <select id="queryFavorite" parameterType="favorites" resultType="favorites">
+        SELECT * FROM favorites WHERE UserId=#{userid}  AND ProductId=#{productid}
+    </select>
+
+    <!--新增商品到收藏表中-->
+    <insert id="InsertFavorites" parameterType="favorites">
+        INSERT INTO favorites(UserId,ProductId) VALUES(#{userid},#{productid})
+    </insert>
 
 
+    <!--查看商品插入到收藏夹中是否成功-->
+    <select id="IsSuccess" parameterType="favorites" resultType="favorites">
+         SELECT * FROM favorites WHERE UserId=#{userid}  AND ProductId=#{productid}
+    </select>
 
 
+    <!--查询商品的浏览次数是否为空-->
+    <select id="queryLookcount" parameterType="Integer" resultType="Integer">
+        SELECT ProductLookCount FROM product WHERE ProductId=#{productid}
+    </select>
 
+
+<!--商品浏览次数当为空时，赋值为1-->
+    <update id="setLookcount" parameterType="Integer">
+        UPDATE product set ProductLookCount=1 WHERE ProductId=#{productid}
+    </update>
+
+    <!--商品浏览次数当不为空时，让它自动加1-->
+    <update id="AutoIncreaseOne" parameterType="Integer">
+        UPDATE product set ProductLookCount=ProductLookCount+1 WHERE ProductId=#{productid}
+    </update>
+
+
+    <!--选出商品的图片，价格，名称，评论数-->
+    <select id="queryTotalCommentshop" resultType="totalCreditsById" parameterType="Integer">
+            SELECT comment.ProductId,productpicture, ProductName,ProductPrice,
+                 COUNT(`UserId`) shopComment FROM `comment`,product WHERE `comment`.ProductId=product.ProductId
+                 GROUP BY `comment`.ProductId LIMIT #{startpage},15
+    </select>
+
+    <!--根据商品的id,查询出每个商品对应的好评度个数-->
+    <select id="EveryShopGoodComment" parameterType="Integer" resultType="Integer">
+        SELECT COUNT(GoodComment) onegood  FROM `comment` WHERE ProductId=#{productid} AND
+         GoodComment>=4
+    </select>
 </mapper>

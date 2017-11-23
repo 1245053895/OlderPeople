@@ -149,13 +149,13 @@
 
 	<jsp:include page="/jsp/users/head.jsp"></jsp:include>
 	<!--  顶部    start-->
-	<div class="yHeader">
+	<div class="yHeader" style="margin-top: 50px">
 		<!-- 导航   start  -->
 		<div class="yNavIndex">
 			<ul class="yMenuIndex">
-				<li><a href="" target="_blank" title="首页">首页</a></li>
-				<li><a href="" target="_blank" title="热销专区">热销专区</a></li>
-				<li><a href="" target="_blank" title="新品专区">新品专区</a></li>
+				<li><a href="${pageContext.request.contextPath}/ShopFrontPage.action"  title="首页">首页</a></li>
+				<li><a href="${pageContext.request.contextPath}/ProductHot.action" title="热销专区">热销专区</a></li>
+				<li><a href="${pageContext.request.contextPath}/SelectNewProduct.action"  title="新品专区">新品专区</a></li>
 				<li><a href="" target="_blank" title="积分商城">积分商城</a></li>
 				<li><a href="" target="_blank" title="合伙人">合伙人</a></li>
 				<li><a href="" target="_blank" title="关于我们">关于我们</a></li>
@@ -204,7 +204,7 @@
 													<dt><a href="${pageContext.request.contextPath}/SelectProductType.action?ProductTypeId=${productTypeExtend.producttypeid}">${productTypeExtend.producttypename}</a></dt>
 
 													<c:forEach items="${productTypeExtend.product}" var="product">
-														<dd><a>${product.productname}</a></dd>
+														<dd><a  href="${pageContext.request.contextPath}/xiangqing.action?productid=${product.productid}" >${product.productname}</a></dd>
 													</c:forEach>
 
 												</dl>
@@ -218,7 +218,7 @@
 		</div>
 	</div>
 
-			<div style="width: 1180px;margin-left: 65px;margin-top: -25px;">
+			<div style="width: 1180px;margin:0px auto;" >
 
 				<div style="width: 150px;margin-left: 20px;font-size: 18px;">
 					<img src="/jsp/users/images/dingwei.png" width="50px" height="50px">
@@ -337,10 +337,10 @@
 
 <div style="height:100px"></div>
 
-<footer>
+<footer >
 	<div class="pc-footer-top">
 		<div class="center">
-			<ul class="clearfix">
+			<ul class="clearfix" style="margin:0px auto;">
 				<li>
 					<span>关于我们</span>
 					<a href="#">关于我们</a>

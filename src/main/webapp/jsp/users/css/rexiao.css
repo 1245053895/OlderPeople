@@ -132,10 +132,10 @@ input,button{border-top-width: 0px;
 .idx02 dl dt{color:#0087cc;font-weight:bold;padding-left:25px;border-bottom:4px solid #0087cc;font-size:20px;line-height:45px}
 .idx02 dl dd{border-left:1px solid #d9d9d9}
 .idx02 dl dd .item{position:relative;float:left;border-right:1px solid #d9d9d9;border-bottom:1px solid #d9d9d9;height:280px;width:299px}
-.idx02 dl dd .item img{position:absolute;bottom:0px;right:10px;z-index:1}
+.idx02 dl dd .item img{position:absolute;bottom:0px;right:10px;z-index:1;}
 .idx02 dl dd .item .buy{width:32px;height:32px;background:url(../images/ico19.jpg) no-repeat;display:inline-block;margin:40px 0 0 30px;z-index:2;position:relative;}
 .idx02 dl dd .item .title{font-size:16px;line-height:25px;margin:35px 0 0 30px;width:220px;display:inline-block;z-index:2;position:relative;}
-.idx02 dl dd .item p{margin:60px 0 0 30px;color:#ea1d24;font-size:20px;font-weight:bold;z-index:2;position:relative;}
+.idx02 dl dd .item p{margin:40px 0 0 30px;color:#ea1d24;font-size:20px;font-weight:bold;z-index:2;position:relative;}
 .idx02 dl dd .item p font{font-size:15px;}
 .idx02 dl dd .big{padding-left:20px;width:579px}
 

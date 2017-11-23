@@ -1,3 +1,8 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%
+    String path = request.getContextPath();
+    String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
 <%--
   Created by IntelliJ IDEA.
   User: Administrator
@@ -28,6 +33,7 @@
 
 <body>
     <div class="member-head" style="margin-top: 30px; margin-left: 200px;text-align: center">
+        <form id="wancheng" action="/wanCheng.action" method="post">
         <div class="member-heels" style="font-size: 18px;">在线支付</div>
         <div class="zfbody">
             <div class="zfxq">
@@ -36,16 +42,19 @@
                     <div style="margin-left:95px;margin-top: -55px;">
                         <span>您正在使用***进行支付</span>
                         <p style="margin-top: -15px;">
-                            <span style="font-weight: 600;">老年代步车防滑折叠方便轻便好用</span>
-                            <i style="margin-left: 40px;">订单编号：123456</i>
-                            <span class="red" style="font-size: 16px;margin-left: 350px">￥<span>69.00</span></span>
+                            <c:if test="${productname[0]}!=null">
+                            <span style="font-weight: 600;">${productname[0]}</span>
+                            </c:if>
+                            <span style="font-weight: 600;">${myshopcarList[0].shopcarA} ${myshopcarList[1].shopcarA} ${myshopcarList[2].shopcarA}.......</span>
+                            <i style="margin-left: 40px;">订单编号：${orderid}</i>
+                            <span class="red" style="font-size: 16px;margin-left: 350px">￥<span>${realpay}</span></span>
                         </p>
                     </div>
                 </div>
             </div>
             <div class="zfxqs">
-                <p>支付人姓名：陈思顶</p>
-                <p>支付总金额：<span class="red">￥<span>69.00</span></span></p>
+                <p>支付人姓名：${sessionScope.user.username}</p>
+                <p>支付总金额：<span class="red">￥<span>${realpay}</span></span></p>
                 <p>支付方式 ：
                    <div class="zzfs">
                        <input type="radio" value="支付宝" name="zffs">
@@ -66,12 +75,24 @@
                 </p>
                 <p>支付密码    ：<input type="text" placeholder="请输入支付密码" height="5px" style="margin-left: 12px;margin-top: 30px;"></p>
                 <div class="qrzf">
-                    <input type="button" value="确认支付" class="qrzfbtn">
-                    <input type="button" value="取消支付" class="qxzfbtn">
+                    <%--付款成功 将 shopcar 的 C变为0   代表已付款--%>
+                    <input type="hidden" class="ace" name="orderid" value="${orderid}" />
+                        <input type="submit" value="确认支付"  class="qrzfbtn">
+
+                        <%--<a href="javascript:jiesuan('<%=basePath%>');" class="qrzfbtn">确认支付</a>--%>
+                        <input type="button" value="取消支付" class="qxzfbtn">
                 </div>
             </div>
 
         </div>
+        </form>
     </div>
+
+   <%-- <script type="text/javascript">
+        function wancheng(basePath) {
+            $("#wancheng").attr("action",basePath + "wanCheng.action");
+            $("#wancheng").submit();
+        }
+    </script>--%>
 </body>
 </html>

@@ -203,6 +203,7 @@
            o.AmountPay amountpay,
            o.TotalCredit totalcredit,
            o.Status status,
+           o.GainMethod,
            g.GainName gainname,
            g.GainAddress gainaddress,
            g.GainCode gaincode,

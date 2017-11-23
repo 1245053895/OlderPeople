@@ -40,15 +40,18 @@ public class CustomerInformationController {
             userInfo.setUserid(id);
             UserAndBrithday userAndBrithday=customerInformationService.SelectCustomerInformation(id);
             model.addAttribute(userAndBrithday);
-            String userBirthday = df.format(userAndBrithday.getUserbirthday());
-            String temp[] = userBirthday.split(" ")[0].split("-");
-            String year = temp[0];
-            String month = temp[1];
-            String day = temp[2];
-
-            model.addAttribute("temp", temp);
-
+            if(userInfo.getUserbirthday()!=null){
+                String userBirthday = df.format(userAndBrithday.getUserbirthday());
+                String temp[] = userBirthday.split(" ")[0].split("-");
+                String year = temp[0];
+                String month = temp[1];
+                String day = temp[2];
+                model.addAttribute("temp", temp);
+            }else {
+                return "/jsp/users/user.jsp";
+            }
             return "/jsp/users/user.jsp";
+
         }else {
             return "/jsp/users/user.jsp";
         }
@@ -57,20 +60,23 @@ public class CustomerInformationController {
     @RequestMapping(value = "/CustomerUpdate.action",method = {RequestMethod.GET,RequestMethod.POST})
     public String CustomerUpdate(UserAndBrithday userAndBrithday,HttpServletRequest request, HttpServletResponse response, Model model){
         User user1= (User) request.getSession().getAttribute("user");
-        Integer id=user1.getUserid();
-        userAndBrithday.setUserid(id);
-
-
-        String temp =userAndBrithday.getYear()+userAndBrithday.getMonth()+userAndBrithday.getDay();
-        DateFormat df = new SimpleDateFormat("yyyyMMdd");
-        Date d = new Date();
-        try {
-            d = df.parse(temp);
-        } catch (ParseException e) {
-            e.printStackTrace();
+        if (user1!=null){
+            Integer id=user1.getUserid();
+            userAndBrithday.setUserid(id);
+            String temp =userAndBrithday.getYear()+userAndBrithday.getMonth()+userAndBrithday.getDay();
+            DateFormat df = new SimpleDateFormat("yyyyMMdd");
+            Date d = new Date();
+            try {
+                d = df.parse(temp);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+            userAndBrithday.setUserbirthday(d);
+            customerInformationService.UpdateUserByid(userAndBrithday);
+        }else {
+            return "redirect:/CustomerInformation.action";
         }
-        userAndBrithday.setUserbirthday(d);
-        customerInformationService.UpdateUserByid(userAndBrithday);
+
         //customerInformationService.updateByPrimaryKeySelective(user);
         return "redirect:/CustomerInformation.action";
     }
@@ -122,7 +128,10 @@ public class CustomerInformationController {
             Integer id=user1.getUserid();
             List<Gainaddres> gainaddres1=customerInformationService.SelectUserAddressByid(id);
             for (Gainaddres gainaddre:gainaddres1){
-                if(gainaddre.getGainA().equals("1")){
+                if (gainaddre.getGainA()==null){
+                    gainaddre.setGainA("0");
+                    customerInformationService.UpdateGainAdress(gainaddres);
+                }else if(gainaddre.getGainA().equals("1")){
                     customerInformationService.UpdateGainAflase(gainaddre.getGainid());
                 }
             }

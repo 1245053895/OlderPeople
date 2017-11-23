@@ -194,7 +194,6 @@
 			<div class="member-lists" id="leftinfo">
 				<dl  onclick = "change(this);">
 					<dt>个人中心</dt>
-					<dt>个人中心</dt>
 					<dd><a href="/CustomerInformation.action">个人资料</a></dd>
 					<dd><a href="/CustomersAddress.action">收货地址</a></dd>
 					<dd><a href="/UpdataPwdPage.action">修改登录密码</a></dd>

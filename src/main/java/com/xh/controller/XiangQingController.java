@@ -5,6 +5,7 @@ import com.xh.po.vo.PingJia;
 import com.xh.po.vo.PingJiaShu;
 import com.xh.po.vo.TuiJian;
 import com.xh.service.ProductService;
+import com.xh.service.customerService.UserLoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,9 +21,19 @@ public class XiangQingController {
     @Autowired
     ProductService productService;
 
+    @Autowired
+    private UserLoginService userLoginService;
+
 
     @RequestMapping(value = "/xiangqing",method={RequestMethod.POST,RequestMethod.GET})
     public String getAllOrder(@RequestParam(defaultValue="1")Integer productid, Model model){
+        Integer ProductLookCount= userLoginService.queryLookcount(productid);
+        if(ProductLookCount==null){
+            userLoginService.setLookcount(productid);
+        }else {
+            userLoginService.AutoIncreaseOne(productid);
+        }
+
         List<PingJiaShu> pingJiaShuList = productService.pingJiaShu(productid);
         List<PingJia> pingJiaList = productService.pingJia(productid);
         MyProduct myProduct = productService.selectByPrimaryKey(productid);
@@ -40,6 +51,7 @@ public class XiangQingController {
         model.addAttribute("tuiJianList05",tuiJianList05);
 
 
+        model.addAttribute("productid",productid);
 
 
 

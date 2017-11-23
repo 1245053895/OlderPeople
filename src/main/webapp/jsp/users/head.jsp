@@ -154,7 +154,7 @@
                     <%--<span class="search_t">关键词匹配搜索</span>--%>
                     <input type="text" class="input_search_key" id="gover_search_key" placeholder="请输入关键词搜索" />
                     <%--<button type="submit" class="search_btn">搜索</button>--%>
-                        <button class="button" onclick="search('key');return false;" style="margin-left: -6px;margin-top: -1px;"> 搜索</button>
+                    <button class="button" onclick="search('key');return false;" style="margin-left: -6px;margin-top: -1px;"> 搜索</button>
                     <div class="search_suggest" id="gov_search_suggest">
                         <ul>
                         </ul>

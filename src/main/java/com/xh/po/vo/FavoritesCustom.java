@@ -4,25 +4,29 @@ import com.xh.po.Order;
 import com.xh.po.Product;
 
 public class FavoritesCustom extends Product {
-    private int start;
-    private int count;
-    String conditions;
+    private Integer start;
+    private Integer count;
+    String conditions; //用于条件查询
     private Integer userid;
     private Double marketprice;
 
-    public int getStart() {
+    private int isOnShopcar;
+
+    private int[] countNumb;
+
+    public Integer getStart() {
         return start;
     }
 
-    public void setStart(int start) {
+    public void setStart(Integer start) {
         this.start = start;
     }
 
-    public int getCount() {
+    public Integer getCount() {
         return count;
     }
 
-    public void setCount(int count) {
+    public void setCount(Integer count) {
         this.count = count;
     }
 
@@ -48,5 +52,21 @@ public class FavoritesCustom extends Product {
 
     public void setMarketprice(Double marketprice) {
         this.marketprice = marketprice;
+    }
+
+    public int getIsOnShopcar() {
+        return isOnShopcar;
+    }
+
+    public void setIsOnShopcar(int isOnShopcar) {
+        this.isOnShopcar = isOnShopcar;
+    }
+
+    public int[] getCountNumb() {
+        return countNumb;
+    }
+
+    public void setCountNumb(int[] countNumb) {
+        this.countNumb = countNumb;
     }
 }

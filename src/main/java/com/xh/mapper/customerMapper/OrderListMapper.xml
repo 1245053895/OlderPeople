@@ -51,7 +51,12 @@
           INNER JOIN product p ON (sc.ProductId=p.ProductId)
           INNER JOIN stock s ON (s.ProductId=p.ProductId)
         <where>
-            sc.UserId=#{userid}
+            <if test="userid!=null">
+                AND sc.UserId=#{userid}
+            </if>
+            <if test="productid!=null">
+                AND p.ProductId=#{productid}
+            </if>
             <if test="productA!=null">
                 AND p.product_A=#{productA}
             </if>
@@ -73,14 +78,19 @@
     <select id="selectFavoritesList" parameterType="favoritesCustom" resultType="favoritesCustom">
         SELECT
           p.*,
-          p.Product_A product_a,
+          p.Product_A productA,
           f.UserId,
           s.MarketPrice
         FROM product p
         INNER JOIN favorites f ON (p.ProductId=f.ProductId)
         INNER JOIN stock s ON (s.ProductId=f.ProductId)
         <where>
-            f.UserId=#{userid}
+            <if test="userid!=null">
+                AND f.UserId=#{userid}
+            </if>
+            <if test="productid!=null">
+                AND p.ProductId=#{productid}
+            </if>
             <if test="productA!=null">
                 AND p.product_A=#{productA}
             </if>
@@ -104,6 +114,71 @@
             </if>
         </where>
         LIMIT #{start},#{count};
+    </select>
+
+    <delete id="deleteShopCarById" parameterType="int">
+        DELETE FROM shopcar
+        WHERE ShopCarId=#{_parameter}
+    </delete>
+
+    <select id="selectShopcarById" resultType="favoritesCustom" parameterType="int">
+        SELECT *
+        FROM shopcar
+        WHERE ShopCarId=#{_parameter}
+    </select>
+
+    <insert id="insertShiftToFavorites" parameterType="int">
+        INSERT INTO favorites (UserId, ProductId) VALUES (#{userid},#{productid})
+    </insert>
+
+    <select id="selectFavoritesById" parameterType="com.xh.po.Favorites" resultType="com.xh.po.Favorites">
+        SELECT
+        f.*,
+        f.Favorites_A favoritesA,
+        f.Favorites_B favoritesB,
+        f.Favorites_C favoritesC
+        FROM favorites f
+        WHERE UserId=#{userid} AND ProductId=#{productid}
+    </select>
+
+    <delete id="delectFavorites" parameterType="com.xh.po.Favorites">
+        DELETE FROM favorites WHERE UserId=#{userid} AND ProductId=#{productid}
+    </delete>
+
+    <insert id="insertShiftToCart" parameterType="com.xh.po.vo.ShopCarCustom">
+        INSERT INTO shopcar (UserId, ProductId, orderamount, Price) VALUES (#{userid},#{productid},#{orderamount},#{price})
+    </insert>
+
+    <select id="queryProductByOrderId" resultType="com.xh.po.vo.ProductCustom" parameterType="int">
+        SELECT
+          o.OrderId,
+          p.*,
+          op.PayPrice,
+          op.ShoppingCount,
+          op.TotalMoneyCount,
+          c.Comment,
+          c.UserId,
+          c.CommentReview,
+          c.CommentTime,
+          c.GoodComment,
+          c.CommentId
+        FROM `order` o
+        LEFT JOIN comment c ON c.Comment_C=o.OrderId
+        INNER JOIN orderproduct op ON op.ProductId=c.ProductId
+        INNER JOIN product p ON c.ProductId = p.ProductId
+        WHERE o.OrderId=#{id} AND op.OrderId=o.OrderId
+        ORDER BY c.Comment,c.CommentTime DESC
+    </select>
+
+    <!--Comment_C  是订单id-->
+    <update id="updateCommentByids" parameterType="com.xh.po.vo.ProductCustom">
+        UPDATE comment SET Comment=#{comment},GoodComment=#{goodcomment},CommentTime=#{commenttime} WHERE CommentId=#{commentid}
+    </update>
+
+    <select id="selectCommentByids" parameterType="com.xh.po.vo.ProductCustom" resultType="com.xh.po.vo.ProductCustom">
+        SELECT *
+        FROM comment
+        WHERE CommentId=#{commentid}
     </select>
 
 </mapper>

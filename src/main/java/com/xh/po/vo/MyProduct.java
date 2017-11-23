@@ -190,4 +190,12 @@ public class MyProduct {
         }
         return null;
     }
+
+    public String[]getImages1(){
+        if (productC != null) {
+            String[] images1 =productC.split(",");
+            return images1;
+        }
+        return null;
+    }
 }

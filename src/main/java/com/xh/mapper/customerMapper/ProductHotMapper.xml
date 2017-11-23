@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xh.mapper.customerMapper.ProductHotMapper">
+    <select id="SelectHotProduct" resultType="totalCreditsById">
+        SELECT  product.ProductId, productpicture, ProductName,ProductDescribe,ProductPrice,
+        COUNT(OrderId) totalhotsale  FROM orderproduct,product WHERE
+        product.ProductId=orderproduct.ProductId AND ProducthotSale=1
+        GROUP BY orderproduct.ProductId Limit 11;
+    </select>
+
+</mapper>

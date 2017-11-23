@@ -1,5 +1,6 @@
 package com.xh.mapper.customerMapper;
 
+import com.xh.po.Favorites;
 import com.xh.po.Product;
 import com.xh.po.vo.FavoritesCustom;
 import com.xh.po.vo.OrderCustom;
@@ -19,4 +20,22 @@ public interface OrderListMapper {
     public List<ShopCarCustom> selectShopcarList(ShopCarCustom scc);
 
     public List<FavoritesCustom> selectFavoritesList(FavoritesCustom fc);
+
+    public void deleteShopCarById(int id);
+
+    public FavoritesCustom selectShopcarById(int id);
+
+    public void insertShiftToFavorites(Favorites favorites);
+
+    public Favorites selectFavoritesById(Favorites favorites);
+
+    public void delectFavorites(Favorites favorites);
+
+    public void insertShiftToCart(ShopCarCustom shopCarCustom);
+
+    public List<ProductCustom> queryProductByOrderId(int id);
+
+    public void updateCommentByids(ProductCustom productCustom);
+
+    ProductCustom selectCommentByids(ProductCustom productCustom);
 }

@@ -64,4 +64,20 @@
 	<task:scheduler id="qbScheduler" pool-size="10"/>-->
 
 
+	<!--拦截器 -->
+	<mvc:interceptors>
+		<!--多个拦截器,顺序执行 -->
+		<mvc:interceptor>
+			<mvc:mapping path="/CustomerInformation.action"/>
+			<bean class="com.xh.controller.Interceptors.LoginInterceptors">
+			</bean>
+		</mvc:interceptor>
+	</mvc:interceptors>
+
+
+
+
+
+
+
 </beans>

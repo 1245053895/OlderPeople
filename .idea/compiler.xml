@@ -9,7 +9,7 @@
         <module name="OlderPeople" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel target="1.7">
+    <bytecodeTargetLevel>
       <module name="OlderPeople" target="1.6" />
     </bytecodeTargetLevel>
   </component>

@@ -185,9 +185,9 @@
 						<ul class="contain">
 							<li class="item"><a href="#" alt=""><img src="${pageContext.request.contextPath}/jsp/users/images/lbztq.jpg"></a></li>
 							<li class="item"><a href="#" alt=""><img src="${pageContext.request.contextPath}/jsp/users/images/lbly.jpg"></a></li>
+							<li class="item"><a href="#" alt=""><img src="${pageContext.request.contextPath}/jsp/users/images/lbch.jpg"></a></li>
+							<li class="item"><a href="#" alt=""><img src="${pageContext.request.contextPath}/jsp/users/images/lbghl.jpg"></a></li>
 							<li class="item"><a href="#" alt=""><img src="${pageContext.request.contextPath}/jsp/users/images/lbwfsb.jpg"></a></li>
-							<li class="item"><a href="#" alt=""><img src="${pageContext.request.contextPath}/jsp/users/images/lbxyj.gif"></a></li>
-							<li class="item"><a href="#" alt=""><img src="${pageContext.request.contextPath}/jsp/users/images/index_slider_pic5.jpg"></a></li>
 						</ul>
 					</div>
 				</section>

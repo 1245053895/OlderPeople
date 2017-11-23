@@ -99,13 +99,39 @@ function ajax(files) {
         url: "/uploadSearchImage.action",
         data: fd,
         success: function (msg) {
-            var jsonString = JSON.parse(msg);
+            $(".upload_image").toggle(500);
+            $(".result-list").hide(1000,function () {
+                $(".result-list").show(1000)
+            });
+            //var jsonString = JSON.parse(msg);
+            var jsonString = msg;
             $(".result-list").show();
+            $(".product_center").find("div").remove();
             $.each( jsonString.product_list, function(index, content) {
+                var html="<div class='product_list'>\n" +
+                            "<div>\n" +
+                                "<img src='"+content.product_image+"'>\n" +
+                            "</div>\n" +
+                            "<div class='product_name'>"+content.product_name+"</div>\n" +
+                            "<div class='product_price'><em>"+content.price+"</em>元</div>\n" +
+                           "</div>";
+                $(".product_center").append(html);
+
+
                 console.log(content.url);
                 console.log(content.product_image);
                 console.log(content.price);
                 console.log(content.product_name);
+            });
+            $.each( jsonString.productCustoms, function(index, content) {
+                var html="<div class='product_list'>\n" +
+                    "<div>\n" +
+                    "<img src='"+content.productpicture+"'>\n" +
+                    "</div>\n" +
+                    "<div class='product_name'>"+content.productname+"</div>\n" +
+                    "<div class='product_price'><em>"+content.productprice+"</em>元</div>\n" +
+                    "</div>";
+                $(".product_center").append(html);
             });
         },
         error: function (msg) {

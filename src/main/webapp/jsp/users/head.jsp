@@ -20,6 +20,7 @@
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/jsp/users/css/mod.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/jsp/users/css/search/search.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/jsp/users/css/search/upload.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/jsp/users/css/search/result.css">
     <script type="text/javascript" src="${pageContext.request.contextPath}/jsp/users/js/jquery.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/jsp/users/js/jquery-1.8.3.min.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/jsp/users/js/index.js"></script>
@@ -140,22 +141,78 @@
         </div>
     </div>
     <div class="result-list">
-        <%--<table border="1">
-            <tr>
-                <th>姓名</th>
-                <th colspan="2">电话</th>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>2</td>
-                <td>3</td>
-            </tr>
-            <tr>
-                <td>4</td>
-                <td>5</td>
-                <td>6</td>
-            </tr>
-        </table>--%>
+        <div class="product_center">
+            <div class="product_list">
+                <div>
+                    <img src="${pageContext.request.contextPath}/jsp/users/images/wntj/cy.jpg">
+                </div>
+                <div class="product_name">金黄嫩茶叶</div>
+                <div class="product_price"><em>149</em>元</div>
+            </div>
+            <div class="product_list">
+                <div>
+                    <img src="${pageContext.request.contextPath}/jsp/users/images/wntj/cy.jpg">
+                </div>
+                <div class="product_name">金黄嫩茶叶</div>
+                <div class="product_price"><em>149</em>元</div>
+            </div>
+            <div class="product_list">
+                <div>
+                    <img src="${pageContext.request.contextPath}/jsp/users/images/wntj/cy.jpg">
+                </div>
+                <div class="product_name">金黄嫩茶叶</div>
+                <div class="product_price"><em>149</em>元</div>
+            </div>
+            <div class="product_list">
+                <div>
+                    <img src="${pageContext.request.contextPath}/jsp/users/images/wntj/cy.jpg">
+                </div>
+                <div class="product_name">金黄嫩茶叶</div>
+                <div class="product_price"><em>149</em>元</div>
+            </div>
+            <div class="product_list">
+                <div>
+                    <img src="${pageContext.request.contextPath}/jsp/users/images/wntj/cy.jpg">
+                </div>
+                <div class="product_name">金黄嫩茶叶</div>
+                <div class="product_price"><em>149</em>元</div>
+            </div>
+            <div class="product_list">
+                <div>
+                    <img src="${pageContext.request.contextPath}/jsp/users/images/wntj/cy.jpg">
+                </div>
+                <div class="product_name">金黄嫩茶叶</div>
+                <div class="product_price"><em>149</em>元</div>
+            </div>
+            <div class="product_list">
+                <div>
+                    <img src="${pageContext.request.contextPath}/jsp/users/images/wntj/cy.jpg">
+                </div>
+                <div class="product_name">金黄嫩茶叶</div>
+                <div class="product_price"><em>149</em>元</div>
+            </div>
+            <div class="product_list">
+                <div>
+                    <img src="${pageContext.request.contextPath}/jsp/users/images/wntj/cy.jpg">
+                </div>
+                <div class="product_name">金黄嫩茶叶</div>
+                <div class="product_price"><em>149</em>元</div>
+            </div>
+            <div class="product_list">
+                <div>
+                    <img src="${pageContext.request.contextPath}/jsp/users/images/wntj/cy.jpg">
+                </div>
+                <div class="product_name">金黄嫩茶叶</div>
+                <div class="product_price"><em>149</em>元</div>
+            </div>
+            <div class="product_list">
+                <div>
+                    <img src="${pageContext.request.contextPath}/jsp/users/images/wntj/cy.jpg">
+                </div>
+                <div class="product_name">金黄嫩茶叶</div>
+                <div class="product_price"><em>149</em>元</div>
+            </div>
+        </div>
     </div>
 </div>
 

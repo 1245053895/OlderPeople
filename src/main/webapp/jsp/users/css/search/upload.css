@@ -14,6 +14,7 @@
     margin-top: 20px;
     margin-left: 20px;
     border: 1px rgba(234,73,73,0.9) dashed;
+    z-index: 99999;
 }
 #select_area{
     width:70px;

@@ -438,12 +438,6 @@
                                             window.onload=myfun;
 										</script>
 
-
-
-
-
-
-
 										<div class="checkout-count clearfix">
 											<div class="checkout-count-extend xm-add-buy">
 												<h2 class="title">会员留言</h2></br>
@@ -514,14 +508,17 @@
 							<div class="checkout-confirm">
 
 								<a href="#" class="btn btn-lineDakeLight btn-back-cart">返回购物车</a>
-								<a href="#" class="btn btn-primary">立即下单</a>
+								<%--<input type="hidden" class="ace" name="userid" value="${sessionScope.user.userid}" />--%>
+								<input type="hidden" class="ace" name="userid" value="5" />
+								<%--这里传入userid  userid=${sessionScope.user.userid}  --%>
+								<a href="javascript:jiesuan('<%=basePath%>');" class="btn btn-primary">立即下单</a>
 
 							</div>
 						</div>
 					</div>
 				</form>
 			</div>
-			</form>
+
 
 		</div>
 		<!-- 禮品卡提示 S-->
@@ -600,10 +597,10 @@
 
 
 
-		<script src="js/base.min.js"></script>
+		<script src="${pageContext.request.contextPath}/jsp/users/js/base.min.js"></script>
 
-		<script type="text/javascript" src="js/address_all.js"></script>
-		<script type="text/javascript" src="js/checkout.min.js"></script>
+		<script type="text/javascript" src="${pageContext.request.contextPath}/jsp/users/js/address_all.js"></script>
+		<script type="text/javascript" src="${pageContext.request.contextPath}/jsp/users/js/checkout.min.js"></script>
 	</div>
 	<!--收货地址body部分结束-->
 </div>
@@ -651,7 +648,7 @@
 				<li class="lss">
 					<span>下载手机版</span>
 					<div class="clearfix lss-pa">
-						<div class="fl lss-img"><img src="img/icon/code.png" alt=""></div>
+						<div class="fl lss-img"><img src="${pageContext.request.contextPath}/jsp/users/img/icon/code.png" alt=""></div>
 						<div class="fl" style="padding-left:20px">
 							<h4>扫描下载云购APP</h4>
 							<p>把优惠握在手心</p>
@@ -701,6 +698,15 @@
     })
 </script>
 
+<script type="text/javascript">
+
+function jiesuan(basePath) {
+       alert('前去付款？');
+    $("#checkoutForm").attr("action",basePath + "jieSuan.action");
+    $("#checkoutForm").submit();
+}
+
+</script>
 
 </body>
 </html>

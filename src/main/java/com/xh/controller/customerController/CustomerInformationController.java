@@ -60,23 +60,28 @@ public class CustomerInformationController {
     @RequestMapping(value = "/CustomerUpdate.action",method = {RequestMethod.GET,RequestMethod.POST})
     public String CustomerUpdate(UserAndBrithday userAndBrithday,HttpServletRequest request, HttpServletResponse response, Model model){
         User user1= (User) request.getSession().getAttribute("user");
-        if (user1!=null){
-            Integer id=user1.getUserid();
-            userAndBrithday.setUserid(id);
-            String temp =userAndBrithday.getYear()+userAndBrithday.getMonth()+userAndBrithday.getDay();
-            DateFormat df = new SimpleDateFormat("yyyyMMdd");
-            Date d = new Date();
-            try {
-                d = df.parse(temp);
-            } catch (ParseException e) {
-                e.printStackTrace();
+        String u=user1.getUsername();
+        String username=request.getParameter("username");
+        List<User> user=customerInformationService.SelectAllUser(u);
+        for(User user2:user){
+            String name=user2.getUsername();
+            if (username.equals(name)){
+                model.addAttribute("error","用户名不能相同");
+                return "forward:/CustomerInformation.action";
             }
-            userAndBrithday.setUserbirthday(d);
-            customerInformationService.UpdateUserByid(userAndBrithday);
-        }else {
-            return "redirect:/CustomerInformation.action";
         }
-
+        Integer id=user1.getUserid();
+        userAndBrithday.setUserid(id);
+        String temp =userAndBrithday.getYear()+userAndBrithday.getMonth()+userAndBrithday.getDay();
+        DateFormat df = new SimpleDateFormat("yyyyMMdd");
+        Date d = new Date();
+        try {
+            d = df.parse(temp);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        userAndBrithday.setUserbirthday(d);
+        customerInformationService.UpdateUserByid(userAndBrithday);
         //customerInformationService.updateByPrimaryKeySelective(user);
         return "redirect:/CustomerInformation.action";
     }
@@ -127,14 +132,11 @@ public class CustomerInformationController {
         if (user1!=null){
             Integer id=user1.getUserid();
             List<Gainaddres> gainaddres1=customerInformationService.SelectUserAddressByid(id);
-            for (Gainaddres gainaddre:gainaddres1){
-                if (gainaddre.getGainA()==null){
-                    gainaddre.setGainA("0");
-                    customerInformationService.UpdateGainAdress(gainaddres);
-                }else if(gainaddre.getGainA().equals("1")){
-                    customerInformationService.UpdateGainAflase(gainaddre.getGainid());
+                for (Gainaddres gainaddre:gainaddres1){
+                    if(gainaddre.getGainA()==null||gainaddre.getGainA().equals("1")){
+                        customerInformationService.UpdateGainAflase(gainaddre.getGainid());
+                    }
                 }
-            }
             customerInformationService.UpdateGainAture(gainid);
         }
 

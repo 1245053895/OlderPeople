@@ -146,6 +146,41 @@
         })
 	</script>
 
+	<script type="text/javascript">
+        function send() {
+            var data=$("#username").val();
+            console.log(data+"ffff");
+            $.ajax({
+                url:"${pageContext.request.contextPath}/CustomerUpdate.action",
+                async:true,
+                type: 'POST',
+                data:{'data':data},
+                traditional: true,
+                timeout: 10000,
+                cache: false,
+                success: succFunction, //成功执行方法
+                beforeSend: LoadFunction, //加载执行方法
+                error: erryFunction  //错误执行方法
+            });
+            function LoadFunction() {
+                $(".loading").find("img").css("display","block");
+                $(".loading").find("div").css("display","block");
+            }
+            function erryFunction(){
+                $(".loading").find("img").attr("src","${pageContext.request.contextPath}/jsp/users/images/loading.gif");
+                $(".loading").find("div").text("加载失败!");
+            }
+            function succFunction(data){
+                if(data.result){
+                    $("#error").text("")
+                }else {
+                    $("#error").text("此用户已经被注册")
+                    $("#error").css("font-color","#FF0000")
+                }
+            }
+		}
+	</script>
+
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/jsp/users/css/jquery-labelauty.css">
 	<style>
 		/*ul { list-style-type: none;}*/
@@ -167,12 +202,13 @@
 	<div class="member-center clearfix">
 		<div class="member-left fl">
 			<div class="member-apart clearfix">
-				<div class="fl"><a href="#"><img src="jsp/users/img/mem.png"></a></div>
+
+				<div class="fl"><a href="#"><img src="${userAndBrithday.userC}"></a></div>
 				<div class="fl">
 					<p>用户名：</p>
-					<p><a href="#">${sessionScope.user.username}</a></p>
+					<p><a href="#">${userAndBrithday.username}</a></p>
 					<p>账号：</p>
-					<p>${sessionScope.user.userid}</p>
+					<p>${userAndBrithday.userid}</p>
 				</div>
 			</div>
 			<div class="member-lists" id="leftinfo">
@@ -197,8 +233,9 @@
 						<ul>
 						<li class="clearfix">
 							<div class="warn1"></div>
-							<div class="warn2">用户名</div>
-							<div class="warn3"><input  class="inputx " type="text" name="username" value="${userAndBrithday.username}" readonly="readonly"></div>
+							<div class="warn2">用户名 </div>
+							<span id="erro" style="color: red">${error}</span>
+							<div class="warn3"><input   id="username" onblur="send()" class="inputx " type="text" name="username" value="${userAndBrithday.username}" readonly="readonly"></div>
 
 						</li>
 						<li class="clearfix">
@@ -206,11 +243,10 @@
 							<div class="warn2">性别</div>
 							<span class="warn3">
 								<ul style="height: 0px;margin-top: -10px;margin-left: -25px">
-									<li style="border-bottom: 0px;"><input type="radio" name="usersex" data-labelauty="男" value="${userAndBrithday.usersex}" <c:if test="${userAndBrithday.usersex==1}">checked></c:if></li>
-									<li style="border-bottom: 0px;"><input type="radio" name="usersex" data-labelauty="女" value="${userAndBrithday.usersex}" <c:if test="${userAndBrithday.usersex==0}">checked></c:if></li>
+									<li style="border-bottom: 0px;"><input  type="radio" name="usersex" data-labelauty="男" value="1" <c:if test="${userAndBrithday.usersex==1}">checked></c:if></li>
+									<li style="border-bottom: 0px;"><input type="radio" name="usersex" data-labelauty="女" value="0" <c:if test="${userAndBrithday.usersex==0}">checked></c:if></li>
 								</ul>
 							</span>
-
 						</li>
 
 						<li class="clearfix">
@@ -226,11 +262,35 @@
 							<div class="warn3">
 								<select style="width: 80px" name = "Year">
 									<option selected = "selected">${temp[0]}</option>
-									<option value = "2014">2014</option>
-									<option value = "2015">2015</option>
+									<option value = "2014">2018</option>
+									<option value = "2015">2017</option>
 									<option value = "2016">2016</option>
-									<option value = "2017">2017</option>
-									<option value = "2018">2018</option>
+									<option value = "2017">2015</option>
+									<option value = "2018">2014</option>
+									<option value = "2014">2013</option>
+									<option value = "2015">2012</option>
+									<option value = "2016">2011</option>
+									<option value = "2017">2010</option>
+									<option value = "2018">2009</option>
+									<option value = "2014">2008</option>
+									<option value = "2015">2007</option>
+									<option value = "2016">2006</option>
+									<option value = "2017">2005</option>
+									<option value = "2018">2004</option>
+									<option value = "2014">2003</option>
+									<option value = "2015">2002</option>
+									<option value = "2016">2001</option>
+									<option value = "2017">2000</option>
+									<option value = "2018">1998</option>
+									<option value = "2018">1997</option>
+									<option value = "2018">1996</option>
+									<option value = "2018">1995</option>
+									<option value = "2018">1994</option>
+									<option value = "2018">1993</option>
+									<option value = "2018">1992</option>
+									<option value = "2018">1991</option>
+									<option value = "2018">1990</option>
+
 
 
 								</select> 年

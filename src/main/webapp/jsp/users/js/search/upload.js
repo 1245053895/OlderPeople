@@ -108,34 +108,34 @@ function ajax(files) {
             $(".result-list").show();
             $(".product_center").find("div").remove();
             $.each( jsonString.product_list, function(index, content) {
-                var html="<div class='product_list'>\n" +
+                var html="<a href='"+content.url+"'><div class='product_list'>\n" +
                             "<div>\n" +
                                 "<img src='"+content.product_image+"'>\n" +
                             "</div>\n" +
                             "<div class='product_name'>"+content.product_name+"</div>\n" +
                             "<div class='product_price'><em>"+content.price+"</em>元</div>\n" +
-                           "</div>";
-                //$(".product_center").append(html);
+                           "</div></a>";
+                $(".product_center").append(html);
             });
             $.each( jsonString.productCustoms, function(index, content) {
-                var html="<div class='product_list'>\n" +
+                var html="<a target='_blank' href='/xiangqing.action?productid="+content.productid+"'><div class='product_list'>\n" +
                     "<div>\n" +
                     "<img src='"+content.productpicture+"'>\n" +
                     "</div>\n" +
                     "<div class='product_name'>"+content.productname+"</div>\n" +
                     "<div class='product_price'><em>"+content.productprice+"</em>元</div>\n" +
-                    "</div>";
+                    "</div></a>";
                 $(".product_center").append(html);
             });
 
             $.each( jsonString.productCNN, function(index, content) {
-                var html="<div class='product_list'>\n" +
+                var html="<a target='_blank' href='/xiangqing.action?productid="+content.productid+"'><div class='product_list'>\n" +
                     "<div>\n" +
                     "<img src='"+content.productpicture+"'>\n" +
                     "</div>\n" +
                     "<div class='product_name'>"+content.productname+"</div>\n" +
                     "<div class='product_price'><em>"+content.productprice+"</em>元</div>\n" +
-                    "</div>";
+                    "</div></a>";
                 $(".product_center").append(html);
             });
         },

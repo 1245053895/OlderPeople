@@ -1,5 +1,6 @@
 package com.xh.util.cnn;
 import java.io.Serializable;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Random;
 import java.util.Set;
@@ -176,6 +177,11 @@ public class Util {
         return outMatrix;
     }
 
+    /**
+     * 得到概率最大的
+     * @param out
+     * @return
+     */
     public static int getMaxIndex(double[] out) {
         double max=out[0];
         int index=0;
@@ -186,6 +192,23 @@ public class Util {
             }
         }
         return index;
+    }
+
+    public static int[] getMaxTen(double[] out) {
+        int o[]=new int[10];
+        int index=0;
+        for (int j=0;j<5;j++) {
+            double temp=0;
+            for (int i = 0; i < out.length; i++) {
+                if (out[i] > temp) {
+                    temp = out[i];
+                    index=i;
+                }
+            }
+            out[index]=0;
+            o[j] = index;
+        }
+        return o;
     }
     /**
      * 对矩阵进行180度旋转,是在matrix的副本上复制，不会对原来的矩阵进行修改
@@ -248,7 +271,7 @@ public class Util {
     }
     /**
      * 克罗内克积,对矩阵进行扩展
-     * @param nextError
+     * @param matrix
      * @param scale
      * @return
      */

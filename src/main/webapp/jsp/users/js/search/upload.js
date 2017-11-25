@@ -115,13 +115,7 @@ function ajax(files) {
                             "<div class='product_name'>"+content.product_name+"</div>\n" +
                             "<div class='product_price'><em>"+content.price+"</em>元</div>\n" +
                            "</div>";
-                $(".product_center").append(html);
-
-
-                console.log(content.url);
-                console.log(content.product_image);
-                console.log(content.price);
-                console.log(content.product_name);
+                //$(".product_center").append(html);
             });
             $.each( jsonString.productCustoms, function(index, content) {
                 var html="<div class='product_list'>\n" +

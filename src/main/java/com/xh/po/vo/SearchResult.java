@@ -6,6 +6,7 @@ public class SearchResult {
     private List<SearchProduct> product_list;
     private SearchRectangle rectangle;
     private List<ProductCustom> productCustoms;
+    private List<ProductCustom> productCNN;
 
     public List<SearchProduct> getProduct_list() {
         return product_list;
@@ -29,5 +30,13 @@ public class SearchResult {
 
     public void setProductCustoms(List<ProductCustom> productCustoms) {
         this.productCustoms = productCustoms;
+    }
+
+    public List<ProductCustom> getProductCNN() {
+        return productCNN;
+    }
+
+    public void setProductCNN(List<ProductCustom> productCNN) {
+        this.productCNN = productCNN;
     }
 }

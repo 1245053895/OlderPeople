@@ -25,4 +25,9 @@ public class SearchServiceImpl implements SearchService {
     public List<ProductCustom> queryProductBySearch(List<String> words) {
         return searchMapper.queryProductBySearch(words);
     }
+
+    @Override
+    public List<ProductCustom> queryProductByProductIds(int[] productId) {
+        return searchMapper.queryProductByProductIds(productId);
+    }
 }

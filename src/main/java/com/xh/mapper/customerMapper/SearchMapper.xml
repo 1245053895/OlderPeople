@@ -24,4 +24,19 @@
         </where>
     </select>
 
+    <select id="queryProductByProductIds" resultType="com.xh.po.vo.ProductCustom" parameterType="map">
+        SELECT
+            p.*,
+            p.Product_A productA,
+            p.Product_B productB,
+            p.Product_C productC
+        FROM product p
+        <where>
+            p.ProductId IN
+            <foreach collection="array" item="id" index="index" open="(" close=")" separator=",">
+                #{id}
+            </foreach>
+        </where>
+    </select>
+
 </mapper>

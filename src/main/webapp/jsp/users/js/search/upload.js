@@ -133,6 +133,17 @@ function ajax(files) {
                     "</div>";
                 $(".product_center").append(html);
             });
+
+            $.each( jsonString.productCNN, function(index, content) {
+                var html="<div class='product_list'>\n" +
+                    "<div>\n" +
+                    "<img src='"+content.productpicture+"'>\n" +
+                    "</div>\n" +
+                    "<div class='product_name'>"+content.productname+"</div>\n" +
+                    "<div class='product_price'><em>"+content.productprice+"</em>元</div>\n" +
+                    "</div>";
+                $(".product_center").append(html);
+            });
         },
         error: function (msg) {
             debugger;

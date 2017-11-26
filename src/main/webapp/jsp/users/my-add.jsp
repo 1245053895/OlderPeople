@@ -250,9 +250,9 @@
 												<span class="col col-3">购买数量</span>
 												<span class="col col-4">小计（元）</span>
 											</dt>
-											<dd class="item clearfix" style="background-color: #deffb3;width: 1310px">
+											<dd class="item clearfix" style="background-color: #deffb3">
 												<div class="item-row">
-													<div class="col col-1" style="width: 175px">
+													<div class="col col-1">
 														<div class="g-pic">
 															<img src="${pageContext.request.contextPath}/${productList[0].productpicture}" width="40" height="40" />
 														</div>
@@ -264,10 +264,10 @@
 													</div>
 													<input type="hidden" class="ace" name="productname" value="${productList[0].productname}" />
 													<input type="hidden" class="ace" name="productid" value="${productList[0].productid}" />
-													<div  id="jisuan0" class="col col-2"  style="text-align: left;width: 25px;">${productList[0].productprice}</div>
+													<div  id="jisuan0" class="col col-2"  style="text-align: left">${productList[0].productprice}</div>
 													<input type="hidden" class="ace" name="productprice" value="${productList[0].productprice}" />
 													<input type="hidden" class="ace" name="payprice" value="${productList[0].productprice}" />
-													<div id="jisuan1" class="col col-3" style="text-align: left;width: 20px;">${idList[0]}</div>
+													<div id="jisuan1" class="col col-3" style="text-align: left">${idList[0]}</div>
 													<input type="hidden" class="ace" name="shoppingcount" value="${idList[0]}" />
 													<div id="jisuan2" class="col col-4" style="text-align: left">${zongjia[0]}</div>
 													<input type="hidden" class="ace" name="totalmoneycount" value="${zongjia[0]}" />

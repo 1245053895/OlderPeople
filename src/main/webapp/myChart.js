@@ -1,6 +1,10 @@
 $(document).ready(function(){
     var myChart = echarts.init(document.getElementById('Statistics'));
     var	option = {
+        backgroundColor: '#d7d5da',
+        color:['#40e0d0', '#ffa500','#cd5c5c','#ba55d3','#ff69b4','#6495ed','#32cd32','#B5C334','#FCCE10','#E87C25','#27727B',
+            '#FE8463','#9BCA63','#FAD860','#F3A43B','#60C0DD',
+            '#D7504B','#C6E579','#F4E001','#F0805A','#26C0C0'],
         title : {
             text: '各个商品类型的交易金额',
             subtext: '这里是副标题',

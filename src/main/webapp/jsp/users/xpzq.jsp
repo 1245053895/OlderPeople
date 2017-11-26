@@ -57,7 +57,7 @@
                     <li style="margin-top: 30px;">
                         <div class="wares_pic">
                             <a href="${pageContext.request.contextPath}/xiangqing.action?productid=${totalCreditsByIdNew1.productid}" target="_blank">
-                                <img src="  ${totalCreditsByIdNew1.productpicture}" data-original="#" width="298" height="298">
+                                <img src="  ${totalCreditsByIdNew1.productpicture}" data-original="#">
                             </a>
                         </div>
                         <div class="wares_title">

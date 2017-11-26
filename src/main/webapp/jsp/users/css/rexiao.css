@@ -141,16 +141,16 @@ input,button{border-top-width: 0px;
 
 /*product*/
 .pro_cont{margin-top:25px}
-.pro_cont .item{float:left;padding:5px;border:2px solid #d9d9d9;width:215px;height:330px;margin-right:13px;margin-bottom:23px}
+.pro_cont .item{float:left;padding:5px;border:2px solid #d9d9d9;width:215px;height:308px;margin-right:13px;margin-bottom:23px}
 .pro_cont .item.last{margin-right:0;margin-left:2px}
 .pro_cont .item:hover,.pro_cont .item.on{border:2px solid #e3393c;cursor:pointer}
 .pro_cont .item dl dt img{width:215px;height:205px}
 .pro_cont .item dl dd{margin-top:5px}
 .pro_cont .item dl dd img{width:27px;height:27px;border:1px solid #dedcdd;padding:1px;margin-right:5px}
 .pro_cont .item dl dd .on{border:1px solid #e2393c}
-.pro_cont .item .p01{font-size:20px;margin-top:15px;color:#ea1d22}
+.pro_cont .item .p01{font-size:20px;margin-top:15px;color:#ea1d22;text-align:center;}
 .pro_cont .item .p01 font{font-size:14px}
-.pro_cont .item .p02{line-height:22px;margin-top:10px;font-family:"宋体";}
+.pro_cont .item .p02{line-height:22px;margin-top:10px;font-family:"宋体";text-align:center;}
 .pro_cont .item .p02 a{color:#5a5a5a;}
 .pro_cont .item .p03{margin-top:10px;border-top:1px solid #dadada}
 .pro_cont .item .p03 span{display:inline-block;width:95px;height:32px;line-height:32px;padding-left:10px}

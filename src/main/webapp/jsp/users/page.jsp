@@ -404,11 +404,12 @@
     <div class="tabox">
         <div class="hd top-nav">
             <ul class="li-ul-ss">
-                <li class="con " style="width:238px">疯狂抢购</li>
+                <li class="con " style="width:238px">猜您喜欢</li>
+				<li class="con ">新品上架</li>
                 <li class="con ">热评商品</li>
-                <li class="con ">热卖商品</li>
-                <li class="con ">猜您喜欢</li>
-                <li class="con ">新品上架</li>
+                <li class="con ">热销商品</li>
+                <li class="con ">疯狂抢购</li>
+
 			</ul>
         </div>
         <div class="bd my_ul">

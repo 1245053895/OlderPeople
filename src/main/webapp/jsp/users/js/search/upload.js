@@ -108,7 +108,7 @@ function ajax(files) {
             $(".result-list").show();
             $(".product_center").find("div").remove();
             $.each( jsonString.product_list, function(index, content) {
-                var html="<a href='"+content.url+"'><div class='product_list'>\n" +
+                var html="<a target='_blank' href='"+content.url+"'><div class='product_list'>\n" +
                             "<div>\n" +
                                 "<img src='"+content.product_image+"'>\n" +
                             "</div>\n" +

@@ -141,6 +141,11 @@
         </div>
     </div>
     <div class="result-list">
+        <div class="product_advertising">
+            <div>
+                这是一个广告
+            </div>
+        </div>
         <div class="product_center">
             <div class="product_list">
                 <div>

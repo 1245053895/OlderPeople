@@ -1,10 +1,7 @@
 package com.xh.util.timer;
 
 import com.xh.po.vo.ProductCustom;
-import com.xh.util.cnn.CNN;
-import com.xh.util.cnn.Constant;
-import com.xh.util.cnn.CreateCNN;
-import com.xh.util.cnn.DataUtil;
+import com.xh.util.cnn.*;
 import org.springframework.web.context.ContextLoader;
 import org.springframework.web.context.WebApplicationContext;
 
@@ -30,11 +27,6 @@ public class MyTimer extends TimerTask {
         // 得到模型绝对路径
         String modelPath = servletContext.getRealPath(Constant.modelName);
         File modelFile=new File(modelPath);
-        if(modelFile.exists()){
-            cnn=CNN.loadModel(modelPath);
-        }else{
-            cnn= CreateCNN.getCNN(1);
-        }
         for (ProductCustom productCustom:productCustoms){
 
             String imgPath = servletContext.getRealPath(File.separator+productCustom.getProductpicture());
@@ -49,7 +41,25 @@ public class MyTimer extends TimerTask {
         }
         //String path="D:"+File.separator+"img"+File.separator+"test";
         DataUtil dataUtil=DataUtil.load(map);
-        cnn.train(dataUtil,2000);
+        if(modelFile.exists()){ //如果模型已经存在
+            cnn=CNN.loadModel(modelPath);
+            if(cnn==null){
+                cnn= CreateCNN.getCNN(1,productCustoms.size()+1);
+                cnn.train(dataUtil,2000);
+            }else {
+                int out=cnn.getLayers().size()-1; //cnn输出层
+                int outNum=cnn.getLayers().get(out).getOutMapNum();
+                if(outNum<productCustoms.size()){
+                    cnn= CreateCNN.getCNN(1,productCustoms.size()+1);
+                    cnn.train(dataUtil,2000);
+                }else {
+                    cnn.train(dataUtil,20);
+                }
+            }
+        }else{
+            cnn= CreateCNN.getCNN(1,productCustoms.size()+1);
+            cnn.train(dataUtil,2000);
+        }
         cnn.saveModel(modelPath);
     }
 }

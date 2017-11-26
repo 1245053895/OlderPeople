@@ -8,7 +8,9 @@
     border: 0px #008FDD solid;
     z-index: 9998;
 }
+/*搜索结果*/
 .product_center{
+    width: 1200px;
     height: 100%;
     margin: 0px auto;
 }
@@ -56,4 +58,15 @@
 .product_price em{
     color: #f0323f;
     text-shadow:5px 2px 6px #000;
+}
+
+/*广告位*/
+.product_advertising{
+    position: absolute;
+    width: 250px;
+    height: 500px;
+    top: -100px;
+    left: -150px;
+    background-color: rgba(255,0,0,0.8);
+    z-index: 10000;
 }

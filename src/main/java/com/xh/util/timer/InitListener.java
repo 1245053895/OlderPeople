@@ -37,7 +37,7 @@ public class InitListener implements ServletContextListener {
         System.out.println(productCustoms);
 
         Timer t=new Timer();
-        t.schedule(new MyTimer(productCustoms), 1000,60*60*1000);//一小时执行一次
+        t.schedule(new MyTimer(productCustoms), 1000,1*60*1000);//一小时执行一次
 
     }
 

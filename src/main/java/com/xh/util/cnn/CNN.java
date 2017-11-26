@@ -239,6 +239,9 @@ public class CNN implements Serializable {
                 Log.i("Set ALPHA = " + ALPHA);
             }
             Log.i("准确率: " + right + "/" + count + "=" + p);
+            if(p>0.98){
+                break;
+            }
         }
     }
 
@@ -566,6 +569,14 @@ public class CNN implements Serializable {
             mLayers.add(layer);
             return this;
         }
+
+        public List<Layer> getmLayers() {
+            return mLayers;
+        }
+
+        public void setmLayers(List<Layer> mLayers) {
+            this.mLayers = mLayers;
+        }
     }
 
     /**
@@ -609,6 +620,10 @@ public class CNN implements Serializable {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public List<Layer> getLayers() {
+        return layers;
     }
 }
 

@@ -17,7 +17,7 @@
 	<meta name="Description" content="">
 	<meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE">
 	<meta name="renderer" content="webkit">
-	<title>购物商城-会员中心</title>
+	<title>购物商城-个人中心</title>
 	<link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/jsp/users/img/icon/favicon.ico">
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/jsp/users/css/base.css">
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/jsp/users/css/home.css">
@@ -145,6 +145,17 @@
 
         })
 	</script>
+	<script>
+        $(function(){
+            $("#leftinfo dl dd").click(function(){
+                $("#leftinfo dl dd a").removeClass("leftinfos");
+                $(this).find("a").addClass("leftinfos");
+            });
+        });
+        function change(i){
+
+        }
+	</script>
 
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/jsp/users/css/jquery-labelauty.css">
 	<style>
@@ -158,8 +169,24 @@
 <body>
 
 <header id="pc-header">
-
 	<jsp:include page="/jsp/users/head.jsp"></jsp:include>
+	<%--</div>--%>
+	<!--  顶部    start-->
+	<div class="yHeader">
+		<!-- 导航   start  -->
+		<div class="yNavIndex">
+			<ul class="yMenuIndex">
+				<li><a href="" target="_blank" title="首页">首页</a></li>
+				<li><a href="" target="_blank" title="热销专区">热销专区</a></li>
+				<li><a href="" target="_blank" title="新品专区">新品专区</a></li>
+				<li><a href="" target="_blank" title="积分商城">积分商城</a></li>
+				<li><a href="" target="_blank" title="合伙人">合伙人</a></li>
+				<li><a href="" target="_blank" title="关于我们">关于我们</a></li>
+			</ul>
+		</div>
+		<!-- 导航   end  -->
+	</div>
+
 </header>
 
 
@@ -188,7 +215,7 @@
 		</div>
 		<div class="member-right fr">
 			<div class="member-head">
-				<div class="member-heels fl"><h2>我的资料</h2></div>
+				<div class="member-heels fl"><h2>个人资料</h2></div>
 			</div>
 			<div class="member-border">
 
@@ -256,7 +283,7 @@
 							<div class="warn3" id="text"><input  class="inputx " type="text" name="useremail" value="${userAndBrithday.useremail}" readonly="readonly"> </div>
 						</li>
 							<li class="clearfix">
-								<a style="font-size: 23px" class="warn4" href="javascript:void(0);" onclick="status(this)">修改</a>
+								<a class="warn4" href="javascript:void(0);" onclick="status(this)">修改</a>
 							</li>
 					</ul>
 					</form>

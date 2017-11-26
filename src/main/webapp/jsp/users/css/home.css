@@ -83,7 +83,11 @@ a{
 	width:200px;
 	height:90px;
 	background-image:url("../img/icon/logo2.png");
+	background-repeat: no-repeat;
 	background-size: 200px 90px;
+/*	margin-left: 150px;
+	border-right: 1px #e0e0e0 dashed;
+	padding-right: 30px;*/
 }
 .pc-fl-logo h1 a{
 	display:block;
@@ -143,19 +147,21 @@ a{
 .pc-login-box{
 	background-color: rgba(255, 255, 255, 0.92);
 	display: inline;
-	margin-top: 80px;
-
+	margin-top: 5px;
+    margin-right: 50px;
 	padding:20px;
 	width: 356px;
 }
 
 .pc-login-title{
 	padding-bottom:20px;
+
 }
 .pc-login-title h2{
 	border-bottom:1px solid #ccc;
 	padding-bottom: 10px;
-	font-size:14px;
+	font-size: 16px;
+	font-weight: 700;
 }
 
 .pc-sign{
@@ -516,6 +522,7 @@ a{
 	text-align:center;
 	margin-right: 10px;
 }
+.pc-shop-fr a:hover{color: white}
 
 .pc-shop-fl{
 	height: 52px;

@@ -21,14 +21,15 @@
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/jsp/users/css/home.css">
 	<script type="text/javascript" src="${pageContext.request.contextPath}/jsp/users/js/jquery-1.8.3.min.js"></script>
 </head>
-<body>
+<body style="background-color: white">
 
 <header id="pc-header">
 	<div class="center">
 		<div class="pc-fl-logo">
-			<h1>
+			<h1 style="margin-left: 150px;">
 				<a href="index.jsp"></a>
 			</h1>
+
 		</div>
 	</div>
 </header>
@@ -46,10 +47,12 @@
 						<input type="password" name="password" placeholder="请输入您的密码">
 					</div>
 					<div class="pc-sign">
-						<input id="authCode" oninput="check()" name="authCode" type="text" placeholder="请输入验证码"/>
+						<input id="authCode" oninput="check()" name="authCode" type="text" style="width: 222px;float: left" placeholder="请输入验证码"/>
 						<!--这里img标签的src属性的值为后台实现图片验证码方法的请求地址-->
-						<br><label><img type="image" src="/authCode.action" id="codeImage" onclick="chageCode()" title="图片看不清？点击重新得到验证码" style="cursor:pointer;"/></label>
-					    <label><a onclick="chageCode()">换一张</a></label>
+						<label style="float: left;margin-left: 230px;margin-top: -40px;">
+							<img type="image" src="/authCode.action" id="codeImage" onclick="chageCode()" title="图片看不清？点击重新得到验证码" style="cursor:pointer;float: left"/>
+							<a onclick="chageCode()" style="float: left;margin-top: 10px;margin-left: 5px;">换一张</a>
+						</label>
 					</div>
 
 					<script>
@@ -86,12 +89,12 @@
 
 
 					<div class="pc-submit-ss">
-						<input id="but" type="submit" disabled="disabled" value="登录" placeholder="" style="background-color: #a11">
+						<input id="but" type="submit" disabled="disabled" value="登录" placeholder="" style="background-color: #a11;margin-top: 15px;">
 					</div>
 					<div class="pc-item-san clearfix">
 						<a href="#"><img src="${pageContext.request.contextPath}/jsp/users/img/icon/weixin.png" alt="">微信登录</a>
 						<a href="#"><img src="${pageContext.request.contextPath}/jsp/users/img/icon/weibo.png" alt="">微博登录</a>
-						<a href="#" style="margin-right:0"><img src="${pageContext.request.contextPath}/jsp/users/img/icon/tengxun.png" alt="">QQ登录</a>
+						<a href="#" style="margin-right:0;"><img src="${pageContext.request.contextPath}/jsp/users/img/icon/tengxun.png" alt="">QQ登录</a>
 					</div>
 					<div class="pc-reg">
 						<a href="#">忘记密码</a>

@@ -107,6 +107,51 @@ td, th {
 .pc-top-20{
     padding-top:20px;
 }
+
+.pay_lc1{
+    width: 1123px;
+    height: 34px;
+    background: url("../images/ico1.jpg");
+    background-size: 972px 34px;
+    background-repeat: no-repeat;
+    line-height: 34px;
+    font-weight: bold;
+    font-size: 14px;
+    color: white;
+    margin-left: 180px;
+    margin-top: 30px;
+}
+.pay_lc1 span{ display: inline-block}
+.pay_lc1 .sp01{
+    width: 328px;
+    padding-left: 125px;
+}
+.pay_lc1 .sp02{
+    width: 320px;
+}
+
+
+.pay_lc2{
+    width: 1050px;
+    height: 34px;
+    background: url("../images/ico2.jpg");
+    background-size: 972px 34px;
+    background-repeat: no-repeat;
+    line-height: 34px;
+    font-weight: bold;
+    font-size: 14px;
+    color: white;
+    margin-top: 30px;
+}
+.pay_lc2 span{ display: inline-block}
+.pay_lc2 .sp01{
+    width: 65px;
+    padding-left: -90px;
+}
+.pay_lc2 .sp02{
+    width:615px;
+}
+
 /*顶部    start*/
 .yHeader1{width: 1228px;margin-left: 60px; background:#ee4644;}
 .yHeader{width: 100%; background:#ee4644;}
@@ -174,7 +219,7 @@ td, th {
 .center{
     width:100%;
     margin-top: 15px;
-    margin-bottom: 45px;
+    margin-bottom: 15px;
     position:relative;
 }
 .pullDownList li:link{ background-color: #A63130;}
@@ -2517,7 +2562,7 @@ li.suc{
     height: 50px;
 }
 .Xcontent30{
-    width: 554px;
+    width:580px;
     height: 100px;
     overflow: hidden;
 }
@@ -2538,6 +2583,7 @@ li.suc{
 .input{
     height: 32px;
     width: 60px;
+    padding-left: 15px;
     margin-top: 34px;
     border: 1px solid #dddddd;
     line-height: 30px;
@@ -2547,7 +2593,10 @@ li.suc{
 .inputx{
     border: hidden;
     background-color:#F5F5F5;
-    font-size: 18px;
+    border: 1px #e0e0e0 solid;
+    font-weight: 500;
+    padding-left: 8px;
+    font-size: 15px;
 }
 .Xcontent33>img{
     float: left;
@@ -2576,19 +2625,27 @@ li.suc{
     float: left;
 
 }
+.Xcontent341{
+    float: left;
+    margin-left: 20px;
+}
 .Xcontent35{
     float: left;
     margin-left: 20px;
 }
 .Xcontent36{
     float: left;
-    margin-left: 20px;
-    margin-top: 12px;
+    margin-left: 60px;
+    margin-top: 40px;
     width: 80px;
     text-align: center;
     line-height: 0px;
 }
-
+.shoucangs{
+    background-image: url("../images/shoucangs.png");
+    background-repeat: no-repeat;
+    background-size: 15px 15px;
+}
 .Xcontent34 a{
     background:#ff6500;
     color:#fff;
@@ -2598,6 +2655,16 @@ li.suc{
     display:block;
     padding:10px 0;
     border:1px solid #ff6500;
+}
+.Xcontent341 a{
+    background:#6aaedf;
+    color:#fff;
+    font-size:14px;
+    width:150px;
+    text-align:center;
+    display:block;
+    padding:10px 0;
+    border:1px solid #6aaedf;
 }
 .Xcontent35 a{
     border:1px solid #ea4949;

@@ -34,7 +34,11 @@
 <body>
     <div class="member-head" style="margin-top: 30px; margin-left: 200px;text-align: center">
         <form id="wancheng" action="/wanCheng.action" method="post">
-        <div class="member-heels" style="font-size: 18px;">在线支付</div>
+            <div class="pay_lc2">
+                <span class="sp01">确认订单</span>
+                <span class="sp02">在线支付</span>
+                <span class="sp03">支付成功</span>
+            </div>
         <div class="zfbody">
             <div class="zfxq">
                 <div class="yxzffs">

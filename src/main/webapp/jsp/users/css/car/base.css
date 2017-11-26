@@ -1972,7 +1972,6 @@ a:hover,a:focus {
 	width:220px;
 	height:220px;
 	background:url(http://c1.mifile.cn/f/i/2014/cn/placeholder-220.png) no-repeat 50% 50%;
-	background-image:-webkit-image-set(url(http://c1.mifile.cn/f/i/2014/cn/placeholder-220.png) 1x,url(http://c1.mifile.cn/f/i/2014/cn/placeholder-440.png) 2x)
 }
 .xm-goods-item .item-title {
 	height:21px;
@@ -2353,4 +2352,6 @@ a:hover,a:focus {
 	padding-left:20px;
 	padding-right:20px;
 	padding-bottom:20px;
+	width: 970px;
+	margin-left: 160px;
 }

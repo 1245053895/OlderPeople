@@ -193,9 +193,29 @@ public class UserLoginServiceImpl implements UserLoginService {
     }
 
     @Override
+    public List<Pay> queryPayMethod() {
+      List<Pay>  pays= userLoginMapper.queryPayMethod();
+        return pays;
+    }
+
+    @Override
+    public void updateUserPic(User user) {
+        userLoginMapper.updateUserPic(user);
+    }
+
+    @Override
+    public User queryUserPic(User user) {
+       User user1= userLoginMapper.queryUserPic(user);
+        return user1;
+    }
+
+    @Override
     public List<User> SelectAllQuerry() {
         List<User> userList1 =userLoginMapper.SelectAllQuerry();
         return userList1;
     }
+
+
+
 
 }

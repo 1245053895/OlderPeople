@@ -126,6 +126,14 @@
 
         })
 	</script>
+	<script>
+        $(function(){
+            $("#shoucang a").click(function(){
+                $("#shoucang a img").removeClass("shoucangs");
+                $(this).find("img").addClass("shoucangs");
+            });
+        });
+	</script>
 	<style>
 		.li-ul-ss l{
 			width:200px;
@@ -227,26 +235,29 @@
 				<div class="Xcontent32"><img src="${pageContext.request.contextPath}/jsp/users/images/shangpinxiangqing/X15.png"></div>
 				<form>
 					<%--max为库存量--%>
-					<input class="input" name="shuliang" value="1"></form>
+					<input class="input" style="padding-left:0px;" name="shuliang" value="1"></form>
 				<div class="Xcontent33"><img src="${pageContext.request.contextPath}/jsp/users/images/shangpinxiangqing/16.png"></div>
+				<div class="Xcontent36" id="shoucang">
+					<a href=""><img src="${pageContext.request.contextPath}/jsp/users/images/shoucang.png" height="15px" width="15px"></a>
+					<a href="">收藏宝贝</a>
+				</div>
+				<div class="Xcontent36">
+					<a href=""><img src="${pageContext.request.contextPath}/jsp/users/images/kefu.png" height="15px" width="15px"></a>
+					<a href="#">联系客服</a>
+				</div>
 			</div>
+
 			<input type="hidden" class="ace" name="productid" value="${productid}" />
 			<div class="Xcontent34"><a href="javascript:oneMei('<%=basePath%>');">立即购买</a></div>
+			<div class="Xcontent341"><a href="#">立即兑换</a></div>
 			<div class="Xcontent35"><a href="javascript:void(0)">加入购物车</a></div>
-            <div class="Xcontent36">
-                <a href=""><img src="${pageContext.request.contextPath}/jsp/users/images/shoucang.png" height="15px" width="15px"></a>
-                <a href="">收藏宝贝</a>
-            </div>
-            <div class="Xcontent36">
-                <a href=""><img src="${pageContext.request.contextPath}/jsp/users/images/kefu.png" height="15px" width="15px"></a>
-                <a href="#">联系客服</a>
-            </div>
+
 		</ol>
 	</ul>
 </div></form>
 
 <div class="containers center clearfix" style="margin-top:20px; background:#fff;">
-	<div class="pc-info fr" style="padding-left:10px; padding-top:20px">
+	<div class="pc-info fr" style="padding-left:10px; padding-top:20px;float: left;margin-left: 100px;margin-top: -100px;">
 		<div class="pc-overall">
 			<ul id="H-table1" class="brand-tab H-table1 H-table-shop clearfix ">
 				<li class="cur"><a href="javascript:void(0);">商品介绍</a></li>
@@ -294,7 +305,7 @@
 					</ul>
 					<div style="margin-left: 30px;margin-right:30px ">
 						<c:forEach items="${myProduct.images1}" var="it" varStatus="status">
-							<div style="text-align:center"><img src="${pageContext.request.contextPath}/${it}"width="95%";height="100px"></div>
+							<div style="text-align:center;margin-left: 200px;"><img src="${pageContext.request.contextPath}/${it}"width="70%";height="100%"></div>
 						</c:forEach>
 					</div>
 				</div>

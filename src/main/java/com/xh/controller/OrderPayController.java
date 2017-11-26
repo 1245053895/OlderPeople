@@ -2,6 +2,7 @@ package com.xh.controller;
 
 import com.xh.po.*;
 import com.xh.service.OrderPayService;
+import com.xh.service.customerService.UserLoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,6 +20,9 @@ public class OrderPayController {
 
     @Autowired
     private OrderPayService orderPayService;
+
+    @Autowired
+    private UserLoginService userLoginService;
 
 
     //    详情页面的单个商品购买
@@ -51,25 +55,18 @@ public class OrderPayController {
         model.addAttribute("productList", productList);
 //        Integer zongjia= (idList[0])*(productList[0].productprice);
         model.addAttribute("idList", idList);
-
         return "/jsp/users/my-add.jsp";
 
     }
 
-
-
     //商品详情的结算
     @RequestMapping(value = "/jieSuan.action", method = {RequestMethod.GET, RequestMethod.POST})
-    public String jieSuan(Model model, String[] productid, Gainaddres gainaddres, Order order, Orderproduct orderproduct
+    public String jieSuan(HttpServletRequest request,Model model, String[] productid, Gainaddres gainaddres, Order order, Orderproduct orderproduct
             , String[] productname) {
         model.addAttribute("productname", productname);  /*保存商品名称*/
         model.addAttribute("totalcredit", order.getTotalcredit());  /*保存用户此次购买可获得的积分*/
-
-/*       先得到用户id
-        HttpSession session = request.getSession();
-        User user= (User) session.getAttribute("user");
-        Integer userid=user.getUserid();*/
-//        存入数据库
+        List<Pay> pays= userLoginService.queryPayMethod();/*支付方式的页面显示*/
+        model.addAttribute("pays",pays);
         //        Gainaddres gainaddres   Order order    Orderproduct orderproduct
         String return1 = orderPayService.insertSelective1(gainaddres);
         Integer gainid = gainaddres.getGainid();  /*数据库返回的主键*/
@@ -83,7 +80,7 @@ public class OrderPayController {
                 order.setPostfee(15.0);
                 order.setRealpay(order.getAmountpay() + 15);
             }
-            order.setStatus(0);       /* 订单状态 订单新建时为0*/
+            order.setStatus(1);       /* 订单状态 订单新建时为1,表示该订单是待发货的订单*/
             String return2 = orderPayService.insertSelective2(order);
             Integer orderid = order.getOrderid();  /*数据库返回的主键*/
             orderproduct.setOrderid(orderid);       /*主键是另外一张表的外键需要插入*/
@@ -91,8 +88,8 @@ public class OrderPayController {
             model.addAttribute("realpay", order.getRealpay());  /*保存支付金额*/
             if (return2.equals("OK")) {
                 orderPayService.insertSelective3(orderproduct);
-                //        判断支付方式  1在线支付------返回付款页面  0货到付款------
-                if (order.getPaytype() == 1) {
+                //        判断支付方式  0在线支付------返回付款页面  1货到付款------
+                if (order.getPaytype() == 0) {
 
 
                     return "/jsp/users/my-apy.jsp";
@@ -204,7 +201,7 @@ public class OrderPayController {
 
     //进行用户支付是否成功的处理   支付成功返回到 my-apy-suc
     @RequestMapping(value = "/wanCheng.action", method = {RequestMethod.GET, RequestMethod.POST})
-    public String wanCheng(HttpSession session,Model model, Integer orderid) {
+    public String wanCheng(HttpSession session,Model model, Integer orderid,Order order) {
 
         //  此处需要进行支付是否成功验证
 
@@ -220,11 +217,11 @@ public class OrderPayController {
             idList.add(  myshopcarList.get(i).getShopcarid() );
         }
         orderPayService.updateShopCarC(idList);}
+        model.addAttribute("totalcredit", order.getTotalcredit());  /*保存用户此次购买可获得的积分*/
         return "/jsp/users/my-apy-suc.jsp";
 
 
     }
-
 
 
 

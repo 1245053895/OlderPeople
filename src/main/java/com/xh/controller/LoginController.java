@@ -121,8 +121,6 @@ public class LoginController {
         }
         return new String(encodeHex);
     }
-
-
     //个人资料的显示
     @RequestMapping("/ShowInformation.action")
     public String ShowInformation(Model model, Integer adminid) {

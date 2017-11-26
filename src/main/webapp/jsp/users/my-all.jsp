@@ -235,7 +235,7 @@
 								<ul style="width: 1180px;text-align: center">
 									<c:forEach items="${productss}" var="products">
 										<li style="text-align: center">
-											<div class="row">
+											<div class="row" style="margin-left: 10px;">
 												<dl>
 													<dd><a>${products.productname}</a></dd>
 													<dt><a href="${pageContext.request.contextPath}/xiangqing.action?productid=${products.productid}"><img src="${products.productpicture}"></a></dt>

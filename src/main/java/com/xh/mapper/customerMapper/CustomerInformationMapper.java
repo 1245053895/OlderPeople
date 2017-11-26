@@ -28,4 +28,6 @@ public interface CustomerInformationMapper {
     public void UpdateGainAture(Integer gainid);
     //取消收货地址
     public void  UpdateGainAflase(Integer gainid);
+    //查询所有用户
+    public List<User> SelectAllUser(String username);
 }

@@ -28,7 +28,6 @@
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/jsp/users/css/car/base.css">
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/jsp/users/css/car/home.css">
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/jsp/users/css/jquery-labelauty.css">
-
 	<script src="${pageContext.request.contextPath}/jsp/users/js/jquery-1.8.3.min.js"></script>
 	<script src="${pageContext.request.contextPath}/jsp/users/js/jquery-labelauty.js"></script>
 	<script>
@@ -36,141 +35,20 @@
             $(':input').labelauty();
         });
 	</script>
-	<!--<script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
-	<script>
-        $(function(){
-            $("#zhifu ul li").click(function(){
-                $("#zhifu ul li p").removeClass("zhifufs");
-                $(this).find("p").addClass("zhifufs");
-            });
-        });
-        function change(i){
-        }
-	</script>-->
+
 </head>
 <body>
 
-<header id="pc-header">
-	<!--
-        <div class="pc-header-nav">
-            <div class="pc-header-con">
-                <div class="fl pc-header-link" >您好！，欢迎来云购物 <a href="login.html" target="_blank">请登录</a> <a href="register.html" target="_blank"> 免费注册</a></div>
-                <div class="fr pc-header-list top-nav">
-                    <ul>
-                        <li>
-                            <div class="nav"><i class="pc-top-icon"></i><a href="#">我的订单</a></div>
-                            <div class="con">
-                                <dl>
-                                    <dt><a href="">批发进货</a></dt>
-                                    <dd><a href="">已买到货品</a></dd>
-                                    <dd><a href="">优惠券</a></dd>
-                                    <dd><a href="">店铺动态</a></dd>
-                                </dl>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="nav"><i class="pc-top-icon"></i><a href="#">我的商城</a></div>
-                            <div class="con">
-                                <dl>
-                                    <dt><a href="">批发进货</a></dt>
-                                    <dd><a href="">已买到货品</a></dd>
-                                    <dd><a href="">优惠券</a></dd>
-                                    <dd><a href="">店铺动态</a></dd>
-                                </dl>
-                            </div>
-                        </li>
-                        <li><a href="#">我的云购</a></li>
-                        <li><a href="#">我的收藏</a></li>
-                        <li><a href="#">会员中心</a></li>
-                        <li><a href="#">客户服务</a></li>
-                        <li><a href="#">帮助中心</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    -->
-	<div class="pc-header-nav">
-		<div class="pc-header-con">
-			<div class="fl pc-header-link" >您好！，欢迎来孝和集团电子商城
-				<a href="login.html" target="_blank">请登录</a>
-				<a href="register.html" target="_blank"> 免费注册</a>
-			</div>
-			<div class="fr pc-header-list top-nav">
-				<ul>
-					<li><a href="#">我的收藏</a></li>
-					<li>
-						<div class="nav"><i class="pc-top-icon"></i><a href="#">个人中心</a></div>
-						<div class="con">
-							<dl>
-								<dt><a href="">个人资料</a></dt>
-								<dd><a href="">收货地址</a></dd>
-								<dd><a href="">修改登录密码</a></dd>
-								<dd><a href="">我的积分</a></dd>
-								<dd><a href="">已购买的宝贝</a></dd>
-							</dl>
-						</div>
-					</li>
+<%--<header id="pc-header">
+	<jsp:include page="/jsp/users/head.jsp"></jsp:include>
+</header>--%>
 
-					<li>
-						<div class="nav"><i class="pc-top-icon"></i><a href="#">帮助中心</a></div>
-						<div class="con">
-							<dl>
-								<dt><a href="">积分说明</a></dt>
-								<dd><a href="">联系客服</a></dd>
-							</dl>
-						</div>
-					</li>
-
-				</ul>
-			</div>
-		</div>
+<div class="center" style="background:#fff;margin-top: -15px;">
+	<div class="pay_lc1">
+		<span class="sp01">确认订单</span>
+		<span class="sp02">在线支付</span>
+		<span class="sp03">支付成功</span>
 	</div>
-
-	<div class="pc-header-logo clearfix">
-		<div class="pc-fl-logo fl">
-			<h1>
-				<a href="index.jsp"></a>
-			</h1>
-		</div>
-		<div class="head-form fl">
-			<form class="clearfix">
-				<input class="search-text" accesskey="" id="key" autocomplete="off" placeholder="洗衣机" type="text">
-				<button class="button" onclick="search('key');return false;">搜索</button>
-			</form>
-			<div class="words-text clearfix">
-				<a href="#">制氧机</a>
-				<a href="#">代步车</a>
-				<a href="#">电动轮椅</a>
-				<a href="#">血糖仪</a>
-				<a href="#">血压计</a>
-				<a href="#">木制拐杖</a>
-				<a href="#">足浴盆</a>
-			</div>
-		</div>
-		<div class="fr pc-head-car">
-			<i class="icon-car"></i>
-			<a href="#">我的购物车</a>
-		</div>
-	</div>
-	<!--  顶部    start-->
-	<div class="yHeader">
-		<!-- 导航   start  -->
-		<div class="yNavIndex">
-			<ul class="yMenuIndex">
-				<li><a href="" target="_blank" title="首页">首页</a></li>
-				<li><a href="" target="_blank" title="热销专区">热销专区</a></li>
-				<li><a href="" target="_blank" title="新品专区">新品专区</a></li>
-				<li><a href="" target="_blank" title="积分商城">积分商城</a></li>
-				<li><a href="" target="_blank" title="合伙人">合伙人</a></li>
-				<li><a href="" target="_blank" title="关于我们">关于我们</a></li>
-			</ul>
-		</div>
-		<!-- 导航   end  -->
-	</div>
-
-</header>
-
-<div class="center" style="background:#fff">
 	<!--收货地址body部分开始-->
 	<div class="border_top_cart">
 		<script type="text/javascript">
@@ -331,10 +209,10 @@
 								<div>
 									<ul class="checkout-option-list clearfix J_optionList">
 										<li>
-											<input type="radio" name="paytype" value="1" checked="checked" data-labelauty="在线支付">
+											<input type="radio" name="paytype" value="0" checked="checked" data-labelauty="在线支付">
 										</li>
 										<li style=" display: inline-block;margin-left: -20px;">
-											<input type="radio" name="paytype" value="0" data-labelauty="货到付款">
+											<input type="radio" name="paytype" value="1" data-labelauty="货到付款">
 										</li>
 									</ul>
 								</div>
@@ -348,10 +226,10 @@
 								<div>
 									<ul class="checkout-option-list clearfix J_optionList">
 										<li>
-											<input type="radio" name="gainmethod" value="1" checked="checked" data-labelauty="快递配送">
+											<input type="radio" name="gainmethod" value="0" checked="checked" data-labelauty="快递配送">
 										</li>
 										<li style=" display: inline-block;margin-left: -20px;">
-											<input type="radio" name="gainmethod" value="0" data-labelauty="货物自取">
+											<input type="radio" name="gainmethod" value="1" data-labelauty="货物自取">
 										</li>
 									</ul>
 								</div>
@@ -372,9 +250,9 @@
 												<span class="col col-3">购买数量</span>
 												<span class="col col-4">小计（元）</span>
 											</dt>
-											<dd class="item clearfix" style="background-color: #deffb3">
+											<dd class="item clearfix" style="background-color: #deffb3;width: 1310px">
 												<div class="item-row">
-													<div class="col col-1">
+													<div class="col col-1" style="width: 175px">
 														<div class="g-pic">
 															<img src="${pageContext.request.contextPath}/${productList[0].productpicture}" width="40" height="40" />
 														</div>
@@ -386,10 +264,10 @@
 													</div>
 													<input type="hidden" class="ace" name="productname" value="${productList[0].productname}" />
 													<input type="hidden" class="ace" name="productid" value="${productList[0].productid}" />
-													<div  id="jisuan0" class="col col-2"  style="text-align: left">${productList[0].productprice}</div>
+													<div  id="jisuan0" class="col col-2"  style="text-align: left;width: 25px;">${productList[0].productprice}</div>
 													<input type="hidden" class="ace" name="productprice" value="${productList[0].productprice}" />
 													<input type="hidden" class="ace" name="payprice" value="${productList[0].productprice}" />
-													<div id="jisuan1" class="col col-3" style="text-align: left">${idList[0]}</div>
+													<div id="jisuan1" class="col col-3" style="text-align: left;width: 20px;">${idList[0]}</div>
 													<input type="hidden" class="ace" name="shoppingcount" value="${idList[0]}" />
 													<div id="jisuan2" class="col col-4" style="text-align: left">${zongjia[0]}</div>
 													<input type="hidden" class="ace" name="totalmoneycount" value="${zongjia[0]}" />
@@ -441,7 +319,7 @@
 										<div class="checkout-count clearfix">
 											<div class="checkout-count-extend xm-add-buy">
 												<h2 class="title">会员留言</h2></br>
-												<input type="text" style="background-color: #bcbfb1" placeholder="点击输入留言信息" name="buyerrequest"/>
+												<input type="text" style="background-color: #f5f5f5" placeholder="点击输入留言信息" name="buyerrequest"/>
 
 											</div>
 											<!-- checkout-count-extend -->
@@ -493,7 +371,7 @@
 										</div>
 									</div>
 									<div class="modal-footer">
-										<a href="#" class="btn btn-disabled J_chooseProBtn">加入购物车</a>
+										<a href="/jsp/users/my-dingdan.jsp?flag=2" class="btn btn-disabled J_chooseProBtn">加入购物车</a>
 									</div>
 								</div>
 								<!--E 加价购 产品选择弹框 -->
@@ -507,9 +385,9 @@
 							<input type="hidden" id="couponValue" name="Checkout[couponsValue]">
 							<div class="checkout-confirm">
 
-								<a href="#" class="btn btn-lineDakeLight btn-back-cart">返回购物车</a>
+								<a href="<%--${pageContext.request.c}--%>/jsp/users/my-dingdan.jsp?flag=2" class="btn btn-lineDakeLight btn-back-cart">返回购物车</a>
 								<%--<input type="hidden" class="ace" name="userid" value="${sessionScope.user.userid}" />--%>
-								<input type="hidden" class="ace" name="userid" value="5" />
+								<input type="hidden" class="ace" name="userid" value="${sessionScope.user.userid}" />
 								<%--这里传入userid  userid=${sessionScope.user.userid}  --%>
 								<a href="javascript:jiesuan('<%=basePath%>');" class="btn btn-primary">立即下单</a>
 

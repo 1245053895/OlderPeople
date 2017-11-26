@@ -178,11 +178,11 @@
 </header>
 
 <section id="member">
-	<div class="member-center clearfix" style="margin-top: 10px;margin-left: 60px">
+	<div class="member-center clearfix" style="margin-top: 10px;margin-left: -45px">
 
 		<div class="member-right fr">
 			<div class="member-head">
-				<div class="member-heels fl"><h2>积分说明</h2></div>
+				<div class="member-heels fl"><h2 style="margin-left: 400px;">积分说明</h2></div>
 			</div>
 			<div class="member-border">
 
@@ -215,7 +215,7 @@
 						</p>
 						<br>
 						<p>
-							注：如有疑问请<span style="color: #ea4949">联系客服</span>
+							注：如有疑问请<a  href="#" style="color: #ea4949">联系客服</a>
 						</p>
 					</div>
 				</div>

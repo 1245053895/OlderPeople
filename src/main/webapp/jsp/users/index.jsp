@@ -105,90 +105,6 @@
 </head>
 <body>
 
-<!--	<div style="height: 100%;top: 0px;bottom: auto; position: fixed;top: 0;right: 0;height: 100%;width: 35px;z-index: 99999;padding-top: 1px;background-color: #333333">
-		<div style="position: relative;height: 100%;padding: 0;margin: 0">
-&lt;!&ndash;			功能&ndash;&gt;
-			<div style="position: absolute;height: 570px;top: 50%;margin-top: -258px">
-&lt;!&ndash;				个人中心&ndash;&gt;
-				<div style="height: 45px;display: block;cursor: auto">
-					<a style="width: 35px;display: block;overflow: hidden;position: relative;text-align: center;z-index: 2" title="个人中心" href="">
-						<img src="img/icon/head.jpg" style="border: medium none">
-					</a>
-				</div>
-
-&lt;!&ndash;				客服&ndash;&gt;
-				<div style="width: 35px;height: 45px;font-size: 12px;margin: 20px 0 14px;overflow: visible;position: relative;border: 0;z-index: 1;padding: 0;">
-					<a target="_blank" style="width: 35px;height: 45px;font-size: 12px;display: block;overflow: hidden;position: relative;text-align: center;z-index: 2;color: #4A4A4A;outline: medium none;text-decoration: none;padding: 0;margin: 0" href="" title="在线客服">
-&lt;!&ndash;
-						<table style="border-collapse: collapse;border-spacing: 0;padding: 0;margin: 0;display: table;font-size: 12px;text-align">
-							<tbody>
-								<tr style="display: table-row;vertical-align: inherit;border-color: inherit">
-									<td>
-&ndash;&gt;
-										<img src="img/icon/kefu.jpg" style="border: medium none;margin: 0;padding: 0;list-style: none;color: #ffffff;font-size: 12px;text-align: center;cursor: pointer;border-collapse: collapse">
-&lt;!&ndash;
-									</td>
-								</tr>
-								<tr>
-									<td>
-										在线<br>客服
-									</td>
-								</tr>
-							</tbody>
-						</table>
-&ndash;&gt;
-					</a>
-				</div>
-
-&lt;!&ndash;				购物车&ndash;&gt;
-				<div style="height: 135px;width: 35px;font-size: 12px;margin: 20px 0 14px;overflow: visible;position: relative;border: 0;z-index: 1;padding: 0;display: block;cursor:auto;color: #666666">
-					<form method="post" style="padding: 0;margin: 0;border: none;list-style-type: none;display: block;font-size: 12px" action="">
-						<a href="" style="height: 135px;padding-top: 5px;color: #fff;position: relative;width: 35px;font-size: 12px;text-align: center;z-index: 2;outline: medium none;padding: 0;margin: 0;cursor: auto">
-							<li style="width: 35px;height: 35px;background-position: 0px -39px;display: block;font-size: normal;padding: 0;margin: 0;color: #fff;font-size: 12px;text-align: center;list-style-type: none;background: url(img/icon/gwc.jpg) no-repeat"></li>
-							<font size="+1" style="text-align: center">购<br>物<br>车<br></font>
-							<span style="margin-top: 7px">0</span>
-						</a>
-					</form>
-				</div>
-			</div>
-&lt;!&ndash;			回顶&ndash;&gt;
-			<div style="background-color: #333333;position: absolute;bottom: 0;z-index: 5;padding: 0;margin: 0;cursor: auto">
-				<div style="margin-bottom: 3px;margin-top: 5px;height: 0;margin: 0;overflow: hidden;position: relative;border: 0;z-index: 1;padding: 0">
-					<a style="width: 35px;height: 45px;font-size: 12px;display: block;overflow: hidden;position: relative;text-align: center;z-index: 2;color: #4A4A4A;outline: medium none;padding: 0;margin: 0">
-						<table>
-							<tbody>
-
-							</tbody>
-						</table>
-					</a>
-				</div>
-			</div>
-		</div>
-	</div>-->
-
-<!--
-<div class="sidebar-nav">
-    <div class="mods">
-		<div class="middle-items">
-			<div class="mod">
-				<a href="#" target="_blank" class="btn">
-					<table>
-						<tbody>
-						<tr>
-							<td><img src="images/kefu.pngs" height="45px" width="35px"></td>
-						</tr>
-						<tr>
-							<td>"在线客服"</td>
-						</tr>
-						</tbody>
-					</table>
-				</a>
-			</div>
-
-		</div>
-	</div>
-</div>-->
-
 <header id="pc-header">
 
 	<c:if test="${ products==null|| hotsaleproducts==null|| top10products==null|| creditproducts==null|| jiankang==null|| jujia==null|| yule==null||  Recommendations==null}">
@@ -273,9 +189,9 @@
 						<ul class="contain">
 							<li class="item"><a href="#" alt=""><img src="${pageContext.request.contextPath}/jsp/users/images/lbztq.jpg"></a></li>
 							<li class="item"><a href="#" alt=""><img src="${pageContext.request.contextPath}/jsp/users/images/lbly.jpg"></a></li>
+							<li class="item"><a href="#" alt=""><img src="${pageContext.request.contextPath}/jsp/users/images/lbch.jpg"></a></li>
+							<li class="item"><a href="#" alt=""><img src="${pageContext.request.contextPath}/jsp/users/images/lbghl.jpg"></a></li>
 							<li class="item"><a href="#" alt=""><img src="${pageContext.request.contextPath}/jsp/users/images/lbwfsb.jpg"></a></li>
-							<li class="item"><a href="#" alt=""><img src="${pageContext.request.contextPath}/jsp/users/images/lbxyj.gif"></a></li>
-							<li class="item"><a href="#" alt=""><img src="${pageContext.request.contextPath}/jsp/users/images/index_slider_pic5.jpg"></a></li>
 						</ul>
 					</div>
 				</section>
@@ -405,7 +321,7 @@
 				<section class="m-box line2">
 					<div class="span4">
 						<div class="row main-pic">
-							<img src="${pageContext.request.contextPath}/jsp/users/images/rxsp/row2Img.jpg">
+							<img src="${pageContext.request.contextPath}/jsp/users/images/rxsp/left2.jpg">
 						</div>
 					</div>
 					<div class="span16">
@@ -468,7 +384,7 @@
 				<section class="m-box line2  clear_top  clear_bottom">
 					<div class="span4">
 						<div class="row main-pic">
-							<img src="${pageContext.request.contextPath}/jsp/users/images/rxsp/row2Img.jpg">
+							<img src="${pageContext.request.contextPath}/jsp/users/images/rxsp/left1.jpg">
 						</div>
 					</div>
 					<div class="span16">
@@ -618,7 +534,7 @@
 				<section class="m-box line2">
 					<div class="span4">
 						<div class="main-pic">
-							<img src="${pageContext.request.contextPath}/jsp/users/images/rxsp/row2Img.jpg">
+							<img src="${pageContext.request.contextPath}/jsp/users/images/rxsp/left3.jpg">
 						</div>
 					</div>
 					<div class="span16">
@@ -1213,7 +1129,7 @@
 <footer>
 	<div class="pc-footer-top">
 		<div class="center">
-			<ul class="clearfix">
+			<ul class="clearfix" style="margin-left: 110px;">
 				<li>
 					<span>关于我们</span>
 					<a href="#">关于我们</a>

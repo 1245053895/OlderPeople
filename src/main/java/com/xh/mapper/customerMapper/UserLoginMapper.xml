@@ -215,4 +215,19 @@
         SELECT COUNT(GoodComment) onegood  FROM `comment` WHERE ProductId=#{productid} AND
          GoodComment>=4
     </select>
+
+    <!--支付方式的页面显示-->
+    <select id="queryPayMethod" resultType="pay">
+        SELECT PayId,PayName,PayPicture,Pay_A as payA,Pay_B as payB,Pay_C as payC  FROM pay
+    </select>
+
+<!--根据用户的登录id修改用户的头像-->
+    <update id="updateUserPic" parameterType="user">
+        UPDATE user SET User_C=#{userC}  WHERE UserId=#{userid}
+    </update>
+    <!--根据用户的id查询用户的头像-->
+    <select id="queryUserPic" parameterType="user" resultType="user">
+        SELECT User_C as userc  FROM user WHERE UserId=#{userid}
+    </select>
+
 </mapper>

@@ -36,11 +36,11 @@
         <!-- 导航   start  -->
         <div class="yNavIndex">
             <ul class="yMenuIndex">
-                <li><a href="" target="_blank" title="首页">首页</a></li>
-                <li><a href="" target="_blank" title="热销专区">热销专区</a></li>
-                <li><a href="" target="_blank" title="新品专区">新品专区</a></li>
+                <li><a href="${pageContext.request.contextPath}/ShopFrontPage.action"  title="首页">首页</a></li>
+                <li><a href="${pageContext.request.contextPath}/ProductHot.action" target="_blank" title="热销专区">热销专区</a></li>
+                <li><a href="${pageContext.request.contextPath}/SelectNewProduct.action" target="_blank" title="新品专区">新品专区</a></li>
                 <li><a href="" target="_blank" title="积分商城">积分商城</a></li>
-                <li><a href="" target="_blank" title="合伙人">合伙人</a></li>
+                <li><a href="${pageContext.request.contextPath}/queryTotalCommentshop.action" target="_blank" title="好评专区">好评专区</a></li>
                 <li><a href="" target="_blank" title="关于我们">关于我们</a></li>
             </ul>
         </div>
@@ -49,6 +49,11 @@
 
 </header>
 <section>
+    <div class="pay_lc">
+        <span class="sp01">确认订单</span>
+        <span class="sp02">在线支付</span>
+        <span class="sp03">支付成功</span>
+    </div>
     <div class="zfcg">
         <div style="margin-top: 50px;height: 500px;">
             <img src="${pageContext.request.contextPath}/jsp/users/images/zfcg.png" height="60px" width="60px;" style="margin-left: 320px;">
@@ -63,9 +68,9 @@
              </div>--%>
             <div class="dd" style="">
                <%-- 已购买： 从数据库 购物车表中读出 C字段不为0--%>
-                <a href="#">已购买的商品</a>
-                <a href="#">订单详情</a>
+                <a href="/jsp/users/my-dingdan.jsp?flag=0">已购买的商品</a>
                 <span>获得积分  <a href="#" class="red" style="border-right: 1px transparent solid">${totalcredit}</a>分</span>
+                <a href="#" style="border-right: 1px transparent solid">积分商城</a>
             </div>
         </div>
     </div>

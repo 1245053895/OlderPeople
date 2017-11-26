@@ -104,7 +104,7 @@ public class SearchController {
             File modelFile=new File(modelPath);
             if(modelFile.exists()){
                 cnn=CNN.loadModel(modelPath);
-                BufferedImage bSmallImage=zoomImage(new File(realFilePath),28,28);
+                BufferedImage bSmallImage=zoomImage(file,28,28);
                 DataUtil dataUtil2=DataUtil.load(bSmallImage);
                 double out[]=cnn.analysis2(dataUtil2);
                 for(int i=0;i<out.length;i++){

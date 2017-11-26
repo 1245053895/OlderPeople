@@ -176,10 +176,10 @@ public class CNN implements Serializable {
                 int lable=Util.getMaxIndex(out);
                 double attrs[]=record.getAttrs();
                 String str="";
-                BufferedImage grayImage=new BufferedImage(28,28,BufferedImage.TYPE_BYTE_GRAY);
+                BufferedImage grayImage=new BufferedImage(Constant.imageWidth,Constant.imageHeight,BufferedImage.TYPE_BYTE_GRAY);
                 for (int i = 0; i < attrs.length; i++) {
-                    grayImage.setRGB(i%28,i/28,attrs[i]==0?0:16777215);
-                    if(i%28==0){
+                    grayImage.setRGB(i%Constant.imageWidth,i/Constant.imageHeight,attrs[i]==0?0:16777215);
+                    if(i%Constant.imageWidth==0){
                         str+="\n"+(attrs[i]==0?"  ":" *");
                     }else{
                         str+=(attrs[i]==0?" ":" *");

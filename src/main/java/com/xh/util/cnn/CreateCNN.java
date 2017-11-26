@@ -9,7 +9,7 @@ public class CreateCNN {
     public CreateCNN(int batchSize,int outputLayerNum){
 
         LayerBuilder builder = new LayerBuilder();
-        builder.addLayer(Layer.buildInputLayer(new Size(28, 28)));// 初始化输入层  设置map的大小为28*28  输入层的map个数为默认为1
+        builder.addLayer(Layer.buildInputLayer(new Size(Constant.imageWidth, Constant.imageHeight)));// 初始化输入层  设置map的大小为28*28  输入层的map个数为默认为1
         builder.addLayer(Layer.buildConvLayer(6, new Size(5,5)));//构造卷积层: 6是卷积层的map个数  5*5是卷积核大小
         builder.addLayer(Layer.buildSampLayer(new Size(2, 2)));//构造采样层  均值卷积核大小2*2
         builder.addLayer(Layer.buildConvLayer(12, new Size(5, 5)));//构造卷积层 : 12是卷积层的map个数  5*5是卷积核大小

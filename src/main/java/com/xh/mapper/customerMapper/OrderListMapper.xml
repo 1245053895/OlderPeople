@@ -181,4 +181,18 @@
         WHERE CommentId=#{commentid}
     </select>
 
+    <!--改变订单状态-->
+    <update id="updataOrderStatusZero" parameterType="int">
+        UPDATE `order` SET Status=#{status} WHERE OrderId=#{orderid}
+    </update>
+
+    <!--查询对应状态的订单-->
+    <select id="selectOrderIdById" parameterType="int" resultType="order">
+        SELECT
+          *
+        FROM `order` o
+        WHERE
+          o.OrderId=#{orderid} AND o.Status=#{status}
+    </select>
+
 </mapper>

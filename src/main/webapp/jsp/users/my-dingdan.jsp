@@ -486,8 +486,13 @@
                     var htmlStr1 = "";
                     var htmlStr2 = "";
                     var htmlStr3 = "";
+                    var wl;
                     var productCount = 0;
-
+					if(content.gainmethod==1){
+                        wl="<p><a class='' href='javascript:void(0);'>上门自提</a></p>";
+					}else {
+					    wl="<p><a class='express' href='javascript:queryExpress("+ content.shippingcode +" );'>物流跟踪</a></p>";
+					}
                     htmlStr1 = "<li>\n" +
                         "        <div class='member-minute clearfix'>\n" +
                         "         <span>" + gettime(content.createtime) + "</span>\n" +
@@ -500,6 +505,7 @@
                     console.log(content.productCustoms);
                     $.each(content.productCustoms, function (i, productCustom) {
                         productCount++;
+
                         htmlStr2 += "    <div class='ci7 clearfix'>\n" +
                             "           <span class='gr1'><a href='${pageContext.request.contextPath}/xiangqing.action?productid="+productCustom.productid+"' target='blank'><img src='/" + productCustom.productpicture + "' style='height: 80px;width: 80px;max-width:200px;' title='" + productCustom.productname + "' about='' width='60' height='60'></a></span>\n" +
                             "           <span class='gr2' style='margin-left: 50px;width: 150px;height: 85px'><a href='${pageContext.request.contextPath}/xiangqing.action?productid="+productCustom.productid+"' target='blank'>" + productCustom.productname + "</a></span>\n" +
@@ -521,7 +527,7 @@
                         case 0:
                             htmlStr3 += "<div class='ci5 height" + index + "'><p>交易关闭</p>"
                             if (content.shippingcode != null || content.shippingcode != "") {
-                                htmlStr3 += "<p><a class='express' href='javascript:queryExpress(" + content.shippingcode + ");'>物流跟踪</a></p>"
+                                htmlStr3 += wl
                             }
                             htmlStr3 += "<p><a href='#'>订单分析</a></p></div>\n";
 
@@ -529,35 +535,35 @@
                             break;
                         case 1:
                             htmlStr3 += "<div class='ci5 height" + index + "'><p>待发货</p><p><a href='#'>订单分析</a></p></div>\n";
-                            htmlStr3 += "<div class='ci5 ci8 height" + index + "'><p><a href='#' class='member-touch'>提醒发货</a> </p> <p><a href='#'>取消订单</a> </p></div>\n";
+                            htmlStr3 += "<div class='ci5 ci8 height" + index + "'><p><a href='#' class='member-touch'>提醒发货</a> </p> <p><a class='cancelOrder' href='javascript:cancelOrder("+ content.orderid +" );'>取消订单</a> </p></div>\n";
                             break;
                         case 2:
-                            htmlStr3 += "<div class='ci5 height" + index + "'><p>已发货</p><p><a class='express' href='javascript:queryExpress(" + content.shippingcode + ");'>物流跟踪</a></p> <p><a href='#'>订单分析</a></p></div>\n";
+                            htmlStr3 += "<div class='ci5 height" + index + "'><p>已发货</p>"+wl+" <p><a href='#'>订单分析</a></p></div>\n";
                             htmlStr3 += "<div class='ci5 ci8 height" + index + "'><p><a href='#' class='member-touch'>确认收货</a> </p></p></div>\n";
                             break;
                         case 3:
-                            htmlStr3 += "<div class='ci5 height" + index + "'><p>已签收</p><p><a class='express' href='javascript:queryExpress(" + content.shippingcode + ");'>物流跟踪</a></p> <p><a href='#'>订单分析</a></p></div>\n";
+                            htmlStr3 += "<div class='ci5 height" + index + "'><p>已签收</p>"+wl+" <p><a href='#'>订单分析</a></p></div>\n";
                             htmlStr3 += "<div class='ci5 ci8 height" + index + "'><p><a href='javascript:void(0);'  class='member-touch comments'>评价</a></p><p><a href='#' class='member-touch'>售后服务</a></p></div>\n";
                             break;
                         case 4:
-                            htmlStr3 += "<div class='ci5 height" + index + "'><p>已完成</p><p><a class='express' href='javascript:queryExpress(" + content.shippingcode + ");'>物流跟踪</a></p> <p><a href='#'>订单分析</a></p></div>\n";
+                            htmlStr3 += "<div class='ci5 height" + index + "'><p>已完成</p>"+wl+" <p><a href='#'>订单分析</a></p></div>\n";
                             htmlStr3 += "<div class='ci5 ci8 height" + index + "'><p>剩余15时20分</p><p><a href='#' class='member-touch'>再次购买</a></p><p><a href='javascript:void(0);'  class='member-touch comments'>评价</a></p><p><a href='#' class='member-touch'>售后服务</a></p></div>\n";
                             break;
                         case 5:
-                            htmlStr3 += "<div class='ci5 height" + index + "'><p>拒收</p><p><a class='express' href='javascript:queryExpress(" + content.shippingcode + ");'>物流跟踪</a></p> <p><a href='#'>订单分析</a></p></div>\n";
+                            htmlStr3 += "<div class='ci5 height" + index + "'><p>拒收</p>"+wl+" <p><a href='#'>订单分析</a></p></div>\n";
                             htmlStr3 += "<div class='ci5 ci8 height" + index + "'><p><a href='#' class='member-touch'>拒收理由</a> </p></div>\n";
                             break;
                         case 6:
-                            htmlStr3 += "<div class='ci5 height" + index + "'><p>申请退货</p><p><a class='express' href='javascript:queryExpress(" + content.shippingcode + ");'>物流跟踪</a></p> <p><a href='#'>订单分析</a></p></div>\n";
+                            htmlStr3 += "<div class='ci5 height" + index + "'><p>申请退货</p>"+wl+" <p><a href='#'>订单分析</a></p></div>\n";
                             htmlStr3 += "<div class='ci5 ci8 height" + index + "'><p><a href='#' class='member-touch'>撤销申请</a> </p></div>\n";
                             break;
                         case 7:
-                            htmlStr3 += "<div class='ci5 height" + index + "'><p>同意退货</p><p><a class='express' href='javascript:queryExpress(" + content.shippingcode + ");'>物流跟踪</a></p> <p><a href='#'>订单分析</a></p></div>\n";
+                            htmlStr3 += "<div class='ci5 height" + index + "'><p>同意退货</p>"+wl+" <p><a href='#'>订单分析</a></p></div>\n";
                             htmlStr3 += "<div class='ci5 ci8 height" + index + "'><p>剩余15时20分</p><p><a href='#' class='member-touch'>填写物流</a> </p><p><a href='#' class='member-touch'>撤销申请</a> </p></div>\n";
                             break;
                             break;
                         case 8:
-                            htmlStr3 += "<div class='ci5 height" + index + "'><p>拒绝退货</p><p><a class='express' href='javascript:queryExpress(" + content.shippingcode + ");'>物流跟踪</a></p> <p><a href='#'>订单分析</a></p></div>\n";
+                            htmlStr3 += "<div class='ci5 height" + index + "'><p>拒绝退货</p>"+wl+" <p><a href='#'>订单分析</a></p></div>\n";
                             htmlStr3 += "<div class='ci5 ci8 height" + index + "'><p><a href='#' class='member-touch'>查看原因</a> </p></div>\n";
                             break;
                         default:
@@ -1038,6 +1044,16 @@
             catch(e) {alert(e.message)}
         }
         return(null);
+    }
+
+    function cancelOrder(orderId) {
+		var flag=ajax("updataOrderStatusZero.action",orderId);
+		if(flag==1){
+		    alert("取消成功！");
+		    $(".cancelOrder").hide();
+		}else {
+            alert("取消失败！");
+		}
     }
 
     //查询物流

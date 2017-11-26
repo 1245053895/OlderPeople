@@ -13,7 +13,7 @@ $(document).ready(function(){
     });
     /*当input空间内容改变时执行*/
     $("#imageFile").change(function () {
-        ajax(this.files);
+        ajaxUploadImg(this.files);
     });
     /*当点击提示时执行*/
     $(".header-tip").click(function () {
@@ -39,12 +39,28 @@ function upload_img(){
     //拖来拖去
     document.addEventListener('dragover',function(e){e.preventDefault();});
     var box = document.getElementById('drop_img'); //拖拽区域
+    window.addEventListener("dragenter",function (e) { //拖进
+        if(!$(".search-wrapper").hasClass("active")){
+
+        }else {
+            $(".upload_image").show();
+        }
+        console.log("+999999");
+    });
+    window.addEventListener("drop",function (e) { //释放
+        if(!$(".search-wrapper").hasClass("active")){
+
+        }else {
+            $(".upload_image").hide();
+        }
+        console.log("+999999");
+    });
     document.addEventListener("dragover",function(e){ //拖来拖去
         $(".header-tip").show();
-        console.log("+6666");
     });
     document.addEventListener("drop",function(e){ //释放
         $(".header-tip").hide();
+        //$(".upload_image").hide();
         console.log("+6666");
     });
     box.addEventListener("dragleave",function(e){ //拖离
@@ -57,11 +73,11 @@ function upload_img(){
         //检测是否是拖拽文件到页面的操作
         if(files.length == 0){return false;}
         //检测文件是不是图片
-        ajax(files);
+        ajaxUploadImg(files);
     },false);
 };
 
-function ajax(files) {
+function ajaxUploadImg(files) {
     if(files[0].type.indexOf('image') === -1){
         alert("您拖的不是图片！");
         return false;
@@ -99,9 +115,10 @@ function ajax(files) {
         url: "/uploadSearchImage.action",
         data: fd,
         success: function (msg) {
-            $(".upload_image").toggle(500);
+            $(".upload_image").hide(500);
             $(".result-list").hide(1000,function () {
-                $(".result-list").show(1000)
+                $(".result-list").show(1000);
+                //$(".upload_image").hide();
             });
             //var jsonString = JSON.parse(msg);
             var jsonString = msg;
@@ -115,12 +132,12 @@ function ajax(files) {
                             "<div class='product_name'>"+content.product_name+"</div>\n" +
                             "<div class='product_price'><em>"+content.price+"</em>元</div>\n" +
                            "</div></a>";
-                $(".product_center").append(html);
+                //$(".product_center").append(html);
             });
             $.each( jsonString.productCustoms, function(index, content) {
                 var html="<a target='_blank' href='/xiangqing.action?productid="+content.productid+"'><div class='product_list'>\n" +
                     "<div>\n" +
-                    "<img src='"+content.productpicture+"'>\n" +
+                    "<img src='/"+content.productpicture+"'>\n" +
                     "</div>\n" +
                     "<div class='product_name'>"+content.productname+"</div>\n" +
                     "<div class='product_price'><em>"+content.productprice+"</em>元</div>\n" +
@@ -131,7 +148,7 @@ function ajax(files) {
             $.each( jsonString.productCNN, function(index, content) {
                 var html="<a target='_blank' href='/xiangqing.action?productid="+content.productid+"'><div class='product_list'>\n" +
                     "<div>\n" +
-                    "<img src='"+content.productpicture+"'>\n" +
+                    "<img src='/"+content.productpicture+"'>\n" +
                     "</div>\n" +
                     "<div class='product_name'>"+content.productname+"</div>\n" +
                     "<div class='product_price'><em>"+content.productprice+"</em>元</div>\n" +

@@ -1,6 +1,8 @@
 package com.xh.util.timer;
 
 import com.xh.po.vo.ProductCustom;
+import com.xh.service.customerService.CNNService;
+import com.xh.serviceimp.customerServiceImpl.CNNServiceImpl;
 import com.xh.util.cnn.*;
 import org.springframework.web.context.ContextLoader;
 import org.springframework.web.context.WebApplicationContext;
@@ -16,13 +18,17 @@ import java.util.TimerTask;
 public class MyTimer extends TimerTask {
     CNN cnn;
     List<ProductCustom> productCustoms;
-    public MyTimer(List<ProductCustom> productCustoms){
+    /*public MyTimer(List<ProductCustom> productCustoms){
         this.productCustoms=productCustoms;
-    }
+    }*/
     @Override
     public void run() {
         Map<String,Double> map=new HashMap<String,Double>();
         WebApplicationContext webApplicationContext = ContextLoader.getCurrentWebApplicationContext();
+        CNNService cnnService = webApplicationContext.getBean(CNNServiceImpl.class);
+        productCustoms = cnnService.queryAllProduct();
+        /*servletContextEvent.getServletContext().setAttribute("productCustoms", productCustoms);*/
+
         ServletContext servletContext = webApplicationContext.getServletContext();
         // 得到模型绝对路径
         String modelPath = servletContext.getRealPath(Constant.modelName);
@@ -32,7 +38,9 @@ public class MyTimer extends TimerTask {
             String imgPath = servletContext.getRealPath(File.separator+productCustom.getProductpicture());
             double productId=productCustom.getProductid();
             map.put(imgPath,productId);
-            String productImgStr=productCustom.getProductB();
+            String productImgStrB=productCustom.getProductB();
+            String productImgStrC=productCustom.getProductC();
+            String productImgStr=productImgStrB+","+productImgStrC;
             String []productImgs=productImgStr.split(",");
             for (String productImg:productImgs){
                 String productP = servletContext.getRealPath(File.separator+productImg);

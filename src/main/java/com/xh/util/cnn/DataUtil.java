@@ -128,7 +128,7 @@ public class DataUtil {
                         String fileName=getMatcher(regex,img.getName());
                         double lable=Double.parseDouble(fileName);
                         //BufferedImage image = ImageIO.read(img);
-                        BufferedImage image=zoomImage(img,28,28);
+                        BufferedImage image=zoomImage(img,Constant.imageWidth,Constant.imageHeight);
                         int imageWidth=image.getWidth();
                         int imageHeight=image.getHeight();
                         double data[]=new double[imageWidth*imageHeight];
@@ -170,7 +170,7 @@ public class DataUtil {
 
                     BufferedImage image;
                     //image = ImageIO.read(file);
-                    image=zoomImage(file,28,28);
+                    image=zoomImage(file,Constant.imageWidth,Constant.imageHeight);
                     int imageWidth=image.getWidth();
                     int imageHeight=image.getHeight();
                     double data[]=new double[imageWidth*imageHeight];
@@ -206,7 +206,7 @@ public class DataUtil {
             Double productId=entry.getValue();
             System.out.println("Key = " + productId + ", Value = " + productPath);
             File file=new File(productPath);
-            image=zoomImage(file,28,28);
+            image=zoomImage(file,Constant.imageWidth,Constant.imageHeight);
             int imageWidth=image.getWidth();
             int imageHeight=image.getHeight();
             double data[]=new double[imageWidth*imageHeight];
@@ -349,7 +349,7 @@ public class DataUtil {
         for(int j=0;j<1;j++){
             for(int i=0;i<784;i++){
                 System.out.print(data.getRecord(0).getAttrs()[i]==0?"  ":"1 ");
-                if(i%28==27)System.out.println();
+                if(i%Constant.imageWidth==27)System.out.println();
             }
         }
     }

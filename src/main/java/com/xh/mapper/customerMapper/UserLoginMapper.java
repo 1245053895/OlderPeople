@@ -1,8 +1,6 @@
 package com.xh.mapper.customerMapper;
 
-import com.xh.po.Product;
-import com.xh.po.User;
-import com.xh.po.Userlog;
+import com.xh.po.*;
 import com.xh.po.vo.TotalCreditsById;
 import org.springframework.stereotype.Component;
 
@@ -62,4 +60,67 @@ public interface UserLoginMapper {
 
     //店家推荐，推荐商品类型为医疗保健中得到商品好评度最多的商品
     public List<TotalCreditsById> StoreRecommendation();
+
+    //加入购物车
+    public void ShopCarInsert(Shopcar shopcar);
+
+    //查询是否成功插入
+    public Shopcar IsSuccessInsert(Shopcar shopcar);
+
+    //将商品添加到收藏表中
+    public void InsertFavorites(Favorites favorites);
+
+    //查询所有用户
+    public List<User> SelectAllQuerry();
+
+    //查询购物车是否已有此产品
+    public Shopcar queryShopCar(Shopcar shopcar);
+
+    //查看此商品是否已在收藏夹中
+    public Favorites queryFavorite(Favorites favorites);
+
+    //查看收藏是否已经成功
+    public Favorites IsSuccess(Favorites favorites);
+
+   //查询商品的浏览次数是否为空
+    public Integer queryLookcount(Integer productid);
+
+    //商品浏览次数当为空时，赋值为1
+    public void setLookcount(Integer productid);
+
+    //商品浏览次数当不为空时，让它自动加1
+    public void AutoIncreaseOne(Integer productid);
+
+    //选出商品的图片，价格，名称，评论数
+    public List<TotalCreditsById> queryTotalCommentshop(Integer startpage);
+
+    //根据商品的id,查询出每个商品对应的好评度个数
+    public Integer EveryShopGoodComment(Integer productid);
+
+
+       //向用户表中根据用户的id更新用户最近一次登录的时间
+      public void UpdateUserLoginTimeById(User user);
+
+      //根据用户的id查询用户登录的总次数是否为空
+      public Integer IsUserLoginNull(Integer userid);
+
+     //当用户登录的总次数为空时，就对它赋1的值
+     public  void  LoginCountOne(Integer userid);
+
+      //当用户登录的总次数为1时，让它自动加一
+      public void AutoIncreaeOne(Integer userid);
+
+    //支付方式的页面显示
+    public List<Pay> queryPayMethod();
+
+
+    //根据用户的id修改用户的头像
+    public void updateUserPic(User user);
+
+    //根据用户的id查询用户的头像
+    public User queryUserPic(User user);
+
+    //根据用户的id查询出该用户对应的收货地址
+    public List<Gainaddres> selectGainAddressByUserId(Integer userid);
+
 }

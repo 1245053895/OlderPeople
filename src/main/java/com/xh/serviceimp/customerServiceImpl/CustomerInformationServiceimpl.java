@@ -65,5 +65,11 @@ public class CustomerInformationServiceimpl implements CustomerInformationServic
         customerInformationMapper.UpdateGainAflase(gainid);
     }
 
+    @Override
+    public List<User> SelectAllUser(String username) {
+        List<User> userList=customerInformationMapper.SelectAllUser(username);
+        return userList;
+    }
+
 
 }

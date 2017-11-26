@@ -137,12 +137,39 @@
 
         }
 	</script>
+	<script>
+        $(function(){
+            $("#leftinfo dl dd").click(function(){
+                $("#leftinfo dl dd a").removeClass("leftinfos");
+                $(this).find("a").addClass("leftinfos");
+            });
+        });
+        function change(i){
+
+        }
+	</script>
 </head>
 <body>
 
 <header id="pc-header">
-
 	<jsp:include page="/jsp/users/head.jsp"></jsp:include>
+	<%--</div>--%>
+	<!--  顶部    start-->
+	<div class="yHeader">
+		<!-- 导航   start  -->
+		<div class="yNavIndex">
+			<ul class="yMenuIndex">
+				<li><a href="" target="_blank" title="首页">首页</a></li>
+				<li><a href="" target="_blank" title="热销专区">热销专区</a></li>
+				<li><a href="" target="_blank" title="新品专区">新品专区</a></li>
+				<li><a href="" target="_blank" title="积分商城">积分商城</a></li>
+				<li><a href="" target="_blank" title="合伙人">合伙人</a></li>
+				<li><a href="" target="_blank" title="关于我们">关于我们</a></li>
+			</ul>
+		</div>
+		<!-- 导航   end  -->
+	</div>
+
 </header>
 
 
@@ -150,12 +177,12 @@
 	<div class="member-center clearfix">
 		<div class="member-left fl">
 			<div class="member-apart clearfix">
-				<div class="fl"><a href="#"><img src="jsp/users/img/mem.png"></a></div>
+				<div class="fl"><a href="#"><img src="${userAndBrithday.userC}"></a></div>
 				<div class="fl">
-					<p>用户名：</p>
-					<p><a href="#">${sessionScope.user.username}</a></p>
-					<p>账号：</p>
-					<p>${sessionScope.user.userid}</p>
+					用户名：${userAndBrithday.username}<br>
+					<%--<p></p>--%>
+					账号：${userAndBrithday.userid}
+					<%--<p></p>--%>
 				</div>
 			</div>
 			<div class="member-lists" id="leftinfo">
@@ -364,14 +391,12 @@
                     -->
 
 					<!--					</ul>-->
-					<!--
                                         <div class="member-prompt">
                                             <p>安全提示：</p>
                                             <p>您当前IP地址是：<i class="reds">110.106.0.01</i>  北京市          上次登录的TP： 2015-09-16  <i class="reds">110.106.0.02 </i> 天津市</p>
                                             <p>1. 注意防范进入钓鱼网站，不要轻信各种即时通讯工具发送的商品或支付链接，谨防网购诈骗。</p>
                                             <p>2. 建议您安装杀毒软件，并定期更新操作系统等软件补丁，确保账户及交易安全。      </p>
                                         </div>
-                    -->
 
 				</div>
 			</div>

@@ -1,9 +1,7 @@
 package com.xh.serviceimp.customerServiceImpl;
 
 import com.xh.mapper.customerMapper.UserLoginMapper;
-import com.xh.po.Product;
-import com.xh.po.User;
-import com.xh.po.Userlog;
+import com.xh.po.*;
 import com.xh.po.vo.TotalCreditsById;
 import com.xh.service.customerService.UserLoginService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -108,6 +106,122 @@ public class UserLoginServiceImpl implements UserLoginService {
         List<TotalCreditsById> Recommendations= userLoginMapper.StoreRecommendation();
         return Recommendations;
     }
+
+    @Override
+    public void ShopCarInsert(Shopcar shopcar) {
+        userLoginMapper.ShopCarInsert(shopcar);
+    }
+
+    @Override
+    public Shopcar IsSuccessInsert(Shopcar shopcar) {
+      Shopcar shopcar1=  userLoginMapper.IsSuccessInsert(shopcar);
+        return shopcar1;
+    }
+
+    @Override
+    public void InsertFavorites(Favorites favorites) {
+      userLoginMapper.InsertFavorites(favorites);
+    }
+
+    @Override
+    public Shopcar queryShopCar(Shopcar shopcar) {
+     Shopcar shopcar1=   userLoginMapper.queryShopCar(shopcar);
+        return shopcar1;
+    }
+
+    @Override
+    public Favorites queryFavorite(Favorites favorites) {
+       Favorites favorites1= userLoginMapper.queryFavorite(favorites);
+        return favorites1;
+    }
+
+    @Override
+    public Favorites IsSuccess(Favorites favorites) {
+       Favorites favorites2= userLoginMapper.IsSuccess(favorites);
+        return favorites2;
+    }
+
+    @Override
+    public Integer queryLookcount(Integer productid) {
+      Integer ProductLookCount=  userLoginMapper.queryLookcount(productid);
+        return ProductLookCount;
+    }
+
+    @Override
+    public void setLookcount(Integer productid) {
+        userLoginMapper.setLookcount(productid);
+    }
+
+    @Override
+    public void AutoIncreaseOne(Integer productid) {
+        userLoginMapper.AutoIncreaseOne(productid);
+    }
+
+    @Override
+    public List<TotalCreditsById> queryTotalCommentshop(Integer startpage) {
+      List<TotalCreditsById> ShoptotalCreditsByIds= userLoginMapper.queryTotalCommentshop(startpage);
+        return ShoptotalCreditsByIds;
+    }
+
+    @Override
+    public Integer EveryShopGoodComment(Integer productid) {
+        Integer totalgood = userLoginMapper.EveryShopGoodComment(productid);
+        return totalgood;
+    }
+
+    @Override
+    public void UpdateUserLoginTimeById(User user) {
+        userLoginMapper.UpdateUserLoginTimeById(user);
+    }
+
+    @Override
+    public Integer IsUserLoginNull(Integer userid) {
+      Integer userlogincount=  userLoginMapper.IsUserLoginNull(userid);
+        return userlogincount;
+    }
+
+    @Override
+    public void LoginCountOne(Integer userid) {
+        userLoginMapper.LoginCountOne(userid);
+
+    }
+
+    @Override
+    public void AutoIncreaeOne(Integer userid) {
+        userLoginMapper.AutoIncreaeOne(userid);
+
+    }
+
+    @Override
+    public List<Pay> queryPayMethod() {
+      List<Pay>  pays= userLoginMapper.queryPayMethod();
+        return pays;
+    }
+
+    @Override
+    public void updateUserPic(User user) {
+        userLoginMapper.updateUserPic(user);
+    }
+
+    @Override
+    public User queryUserPic(User user) {
+       User user1= userLoginMapper.queryUserPic(user);
+        return user1;
+    }
+
+    @Override
+    public List<Gainaddres> selectGainAddressByUserId(Integer userid) {
+      List<Gainaddres> gainaddres=  userLoginMapper.selectGainAddressByUserId(userid);
+        return gainaddres;
+    }
+
+    @Override
+    public List<User> SelectAllQuerry() {
+        List<User> userList1 =userLoginMapper.SelectAllQuerry();
+        return userList1;
+    }
+
+
 
 
 }

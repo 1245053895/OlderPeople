@@ -1,6 +1,6 @@
 package com.xh.service.customerService;
 
-import com.xh.po.Product;
+import com.xh.po.Favorites;
 import com.xh.po.vo.FavoritesCustom;
 import com.xh.po.vo.OrderCustom;
 import com.xh.po.vo.ProductCustom;
@@ -19,4 +19,16 @@ public interface OrderListService {
     public List<ShopCarCustom> selectShopcarList(ShopCarCustom scc);
 
     public List<FavoritesCustom> selectFavoritesList(FavoritesCustom fc);
+
+    public boolean deleteShopCarById(int id);
+
+    public boolean insertShiftToFavorites(Favorites favorites);
+
+    public boolean delectFavorites(Favorites favorites);
+
+    public boolean insertShiftToCart(ShopCarCustom shopCarCustom);
+
+    public List<ProductCustom> queryProductByOrderId(int id);
+
+    public boolean updateCommentByids(ProductCustom productCustom);
 }

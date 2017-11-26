@@ -170,7 +170,7 @@
 				<li><a href="" target="_blank" title="热销专区">热销专区</a></li>
 				<li><a href="" target="_blank" title="新品专区">新品专区</a></li>
 				<li><a href="" target="_blank" title="积分商城">积分商城</a></li>
-				<li><a href="" target="_blank" title="合伙人">合伙人</a></li>
+				<li><a href="" target="_blank" title="好评专区">好评专区</a></li>
 				<li><a href="" target="_blank" title="关于我们">关于我们</a></li>
 			</ul>
 		</div>
@@ -183,17 +183,16 @@
 	<div class="member-center clearfix">
 		<div class="member-left fl">
 			<div class="member-apart clearfix">
-				<div class="fl"><a href="#"><img src="${pageContext.request.contextPath}/jsp/users/img/mem.png"></a></div>
+				<div class="fl"><a href="#"><img src="${userAndBrithday.userC}"></a></div>
 				<div class="fl">
-					<p>用户名：</p>
-					<p><a href="#">${sessionScope.user.username}</a></p>
-					<p>账号：</p>
-					<p>${sessionScope.user.userid}</p>
+					用户名：${userAndBrithday.username}<br>
+					<%--<p></p>--%>
+					账号：${userAndBrithday.userid}
+					<%--<p></p>--%>
 				</div>
 			</div>
 			<div class="member-lists" id="leftinfo">
 				<dl  onclick = "change(this);">
-					<dt>个人中心</dt>
 					<dt>个人中心</dt>
 					<dd><a href="/CustomerInformation.action">个人资料</a></dd>
 					<dd><a href="/CustomersAddress.action">收货地址</a></dd>

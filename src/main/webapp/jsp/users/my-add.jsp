@@ -1,3 +1,9 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="f" uri="http://java.sun.com/jstl/fmt_rt" %>
+<%
+	String path = request.getContextPath();
+	String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
 <%--
   Created by IntelliJ IDEA.
   User: Administrator
@@ -22,114 +28,27 @@
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/jsp/users/css/car/base.css">
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/jsp/users/css/car/home.css">
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/jsp/users/css/jquery-labelauty.css">
-
-	<script src="js/jquery-1.8.3.min.js"></script>
-	<script src="js/jquery-labelauty.js"></script>
+	<script src="${pageContext.request.contextPath}/jsp/users/js/jquery-1.8.3.min.js"></script>
+	<script src="${pageContext.request.contextPath}/jsp/users/js/jquery-labelauty.js"></script>
 	<script>
         $(function(){
             $(':input').labelauty();
         });
 	</script>
-	<!--<script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
 
-	<script>
-        $(function(){
-            $("#zhifu ul li").click(function(){
-                $("#zhifu ul li p").removeClass("zhifufs");
-                $(this).find("p").addClass("zhifufs");
-            });
-        });
-        function change(i){
-
-        }
-	</script>-->
 </head>
 <body>
 
-<header id="pc-header">
+<%--<header id="pc-header">
+	<jsp:include page="/jsp/users/head.jsp"></jsp:include>
+</header>--%>
 
-	<div class="pc-header-nav">
-		<div class="pc-header-con">
-			<div class="fl pc-header-link" >您好！，欢迎来孝和集团电子商城 
-				<a href="login.html" target="_blank">请登录</a> 
-				<a href="register.html" target="_blank"> 免费注册</a>
-			</div>
-			<div class="fr pc-header-list top-nav">
-				<ul>
-					<li><a href="#">我的收藏</a></li>
-					<li>
-						<div class="nav"><i class="pc-top-icon"></i><a href="#">个人中心</a></div>
-						<div class="con">
-							<dl>
-								<dt><a href="">个人资料</a></dt>
-								<dd><a href="">收货地址</a></dd>
-								<dd><a href="">修改登录密码</a></dd>
-								<dd><a href="">我的积分</a></dd>
-								<dd><a href="">已购买的宝贝</a></dd>
-							</dl>
-						</div>
-					</li>
-										
-					<li>
-						<div class="nav"><i class="pc-top-icon"></i><a href="#">帮助中心</a></div>
-						<div class="con">
-							<dl>
-								<dt><a href="">积分说明</a></dt>
-								<dd><a href="">联系客服</a></dd>
-							</dl>
-						</div>
-					</li>
-					
-				</ul>
-			</div>
-		</div>
+<div class="center" style="background:#fff;margin-top: -15px;">
+	<div class="pay_lc1">
+		<span class="sp01">确认订单</span>
+		<span class="sp02">在线支付</span>
+		<span class="sp03">支付成功</span>
 	</div>
-	
-	<div class="pc-header-logo clearfix">
-		<div class="pc-fl-logo fl">
-			<h1>
-				<a href="index.jsp"></a>
-			</h1>
-		</div>
-		<div class="head-form fl">
-			<form class="clearfix">
-				<input class="search-text" accesskey="" id="key" autocomplete="off" placeholder="洗衣机" type="text">
-				<button class="button" onclick="search('key');return false;">搜索</button>
-			</form>
-			<div class="words-text clearfix">
-				<a href="#">制氧机</a>
-				<a href="#">代步车</a>
-				<a href="#">电动轮椅</a>
-				<a href="#">血糖仪</a>
-				<a href="#">血压计</a>
-				<a href="#">木制拐杖</a>
-				<a href="#">足浴盆</a>
-			</div>
-		</div>
-		<div class="fr pc-head-car">
-			<i class="icon-car"></i>
-			<a href="#">我的购物车</a>
-		</div>
-	</div>
-	<!--  顶部    start-->
-	<div class="yHeader">
-		<!-- 导航   start  -->
-		<div class="yNavIndex">
-			<ul class="yMenuIndex">
-				<li><a href="" target="_blank" title="首页">首页</a></li>
-				<li><a href="" target="_blank" title="热销专区">热销专区</a></li>
-				<li><a href="" target="_blank" title="新品专区">新品专区</a></li>
-				<li><a href="" target="_blank" title="积分商城">积分商城</a></li>
-				<li><a href="" target="_blank" title="合伙人">合伙人</a></li>
-				<li><a href="" target="_blank" title="关于我们">关于我们</a></li>
-			</ul>
-		</div>
-		<!-- 导航   end  -->
-	</div>
-
-</header>
-
-<div class="center" style="background:#fff">
 	<!--收货地址body部分开始-->
 	<div class="border_top_cart">
 		<script type="text/javascript">
@@ -158,6 +77,7 @@
 		</script>
 		<div class="container">
 			<div class="checkout-box">
+				<%--*************************--%>
 				<form  id="checkoutForm" action="#" method="post">
 					<div class="checkout-box-bd">
 						<!-- 地址状态 0：默认选择；1：新增地址；2：修改地址 -->
@@ -170,22 +90,59 @@
 							</div>
 							<div class="box-bd">
 								<div class="clearfix xm-address-list" id="checkoutAddrList">
+								<c:forEach items="${gainaddresList}" var="gainaddres">
 									<dl class="item" >
 										<dt>
-											<strong class="itemConsignee">陈思顶</strong>
+											<strong class="itemConsignee">${gainaddres.gainname}</strong>
 											<span class="tag">修改</span>
 											<span class="tag">删除</span>
 										</dt>
 										<br/>
 										<dd>
-											<p class="itemRegion">贵州省 贵阳市</p>
-											<p class="itemStreet">贵州省仁怀市贵州大学北校区</p>
-											<p class="tel">188010666666</p>
+											<p class="itemRegion">${gainaddres.gainaddress}</p>
+											<p class="itemStreet">${gainaddres.gainmobile}</p>
+											<p class="tel">${gainaddres.gaincode}</p>
 										</dd>
 										<dd style="display:none">
 											<input type="radio" name="Checkout[address]" class="addressId"  value="10140916720030323">
 										</dd>
 									</dl>
+								</c:forEach>
+
+								<%--	<dl class="item" >
+										<dt>
+											<strong class="itemConsignee">姓名</strong>
+											<span class="tag">修改1</span>
+											<span class="tag">删除</span>
+										</dt>
+										<br/>
+										<dd>
+											<p class="itemRegion">地址</p>
+											<p class="itemStreet">电话</p>
+											<p class="tel">邮箱</p>
+										</dd>
+										<dd style="display:none">
+											<input type="radio" name="Checkout[address]" class="addressId"  value="10140916720030323">
+										</dd>
+									</dl>
+
+									<dl class="item" >
+										<dt>
+											<strong class="itemConsignee">姓名</strong>
+											<span class="tag">修改</span>
+											<span class="tag">删除</span>
+										</dt>
+										<br/>
+										<dd>
+											<p class="itemRegion">地址</p>
+											<p class="itemStreet">电话</p>
+											<p class="tel">邮箱</p>
+										</dd>
+										<dd style="display:none">
+											<input type="radio" name="Checkout[address]" class="addressId"  value="10140916720030323">
+										</dd>
+									</dl>--%>
+
 
 									<dl class="item" id="newadr" style="display: none">
 										<dt>
@@ -195,9 +152,9 @@
 										</dt>
 										<br/>
 										<dd>
-											<input class="itemRegion" placeholder="请填写省份、城市" style="border: hidden">
-											<input class="itemStreet" placeholder="请填写详细地址" style="border: hidden">
-											<input class="tel" placeholder="请填写收件人手机号" style="border: hidden">
+											<input class="itemRegion" placeholder="请填写收件人的地址" style="border: hidden">
+											<input class="itemStreet" placeholder="请填写收件人的手机号" style="border: hidden">
+											<input class="tel" placeholder="请填写邮编" style="border: hidden">
 										</dd>
 										<dd style="display:none">
 											<input type="radio" name="Checkout[address]" class="addressId"  value="10140916720030323">
@@ -205,16 +162,18 @@
 									</dl>
 
 									<script>
-										function xzdz() {
-											document.getElementById("newadr").style.display = "block"
+                                        function xzdz() {
+                                            document.getElementById("newadr").style.display = "block"
                                         }
                                         function quxiao() {
                                             document.getElementById("newadr").style.display = "none"
                                         }
 									</script>
-									
+
+
+
 									<div class="use-new-addr"  id="J_useNewAddr" data-state="off" onclick="xzdz()">
-										<span class="iconfont icon-add"><img src="images/add_cart.png" /></span>
+										<span class="iconfont icon-add"><img src="${pageContext.request.contextPath}/jsp/users/images/add_cart.png" /></span>
 										新增收货地址
 									</div>
 								</div>
@@ -286,10 +245,10 @@
 								<div>
 									<ul class="checkout-option-list clearfix J_optionList">
 										<li>
-											<input type="radio" name="radio" data-labelauty="在线支付">
+											<input type="radio" name="paytype" value="0" checked="checked" data-labelauty="在线支付">
 										</li>
 										<li style=" display: inline-block;margin-left: -20px;">
-											<input type="radio" name="radio" data-labelauty="货到付款">
+											<input type="radio" name="paytype" value="1" data-labelauty="货到付款">
 										</li>
 									</ul>
 								</div>
@@ -303,157 +262,177 @@
 								<div>
 									<ul class="checkout-option-list clearfix J_optionList">
 										<li>
-											<input type="radio" name="radio1" data-labelauty="快递配送">
+											<input type="radio" name="gainmethod" value="0" checked="checked" data-labelauty="快递配送">
 										</li>
 										<li style=" display: inline-block;margin-left: -20px;">
-											<input type="radio" name="radio1" data-labelauty="货物自取">
+											<input type="radio" name="gainmethod" value="1" data-labelauty="货物自取">
 										</li>
 									</ul>
 								</div>
 							</div>
 							<!-- 收货方式 END-->
 
-						<!-- 商品清单 -->
-						<div id="checkoutGoodsList" class="checkout-goods-box">
-							<div class="xm-box">
-								<div class="box-hd">
-									<h2 class="title">确认订单信息</h2>
-								</div>
-								<div class="box-bd">
-									<dl class="checkout-goods-list">
-										<dt class="clearfix">
-											<span class="col col-1">商品名称</span>
-											<span class="col col-2">购买价格</span>
-											<span class="col col-3">购买数量</span>
-											<span class="col col-4">小计（元）</span>
-										</dt>
-										<dd class="item clearfix">
-											<div class="item-row">
-												<div class="col col-1">
-													<div class="g-pic">
-														<img src="images/shangpinxiangqing/X1.png" width="40" height="40" />
+							<!-- 商品清单 -->
+							<div id="checkoutGoodsList" class="checkout-goods-box">
+								<div class="xm-box">
+									<div class="box-hd">
+										<h2 class="title">确认订单信息</h2>
+									</div>
+									<div class="box-bd">
+										<dl class="checkout-goods-list">
+											<dt class="clearfix">
+												<span class="col col-1">商品名称</span>
+												<span class="col col-2">购买价格</span>
+												<span class="col col-3">购买数量</span>
+												<span class="col col-4">小计（元）</span>
+											</dt>
+											<dd class="item clearfix" style="background-color: #deffb3">
+												<div class="item-row">
+													<div class="col col-1">
+														<div class="g-pic">
+															<img src="${pageContext.request.contextPath}/${productList[0].productpicture}" width="40" height="40" />
+														</div>
+														<div class="g-info">
+															<a href="#" target="_blank">
+																${productList[0].productname}
+															</a>
+														</div>
 													</div>
-													<div class="g-info">
-														<a href="#" target="_blank">
-															赛亿（shinee)取暖器家用/取暖电器/电暖器/电暖气台式摇头暖风机HN2118PT
-														</a>
-													</div>
+													<input type="hidden" class="ace" name="productname" value="${productList[0].productname}" />
+													<input type="hidden" class="ace" name="productid" value="${productList[0].productid}" />
+													<div  id="jisuan0" class="col col-2"  style="text-align: left">${productList[0].productprice}</div>
+													<input type="hidden" class="ace" name="productprice" value="${productList[0].productprice}" />
+													<input type="hidden" class="ace" name="payprice" value="${productList[0].productprice}" />
+													<div id="jisuan1" class="col col-3" style="text-align: left">${idList[0]}</div>
+													<input type="hidden" class="ace" name="shoppingcount" value="${idList[0]}" />
+													<div id="jisuan2" class="col col-4" style="text-align: left">${zongjia[0]}</div>
+													<input type="hidden" class="ace" name="totalmoneycount" value="${zongjia[0]}" />
 												</div>
-													<div class="col col-2">39元</div>
-													<div class="col col-3">1</div>
-													<div class="col col-4">39元</div>
-												</div>
-										</dd>
-										<dd class="item clearfix">
-											<div class="item-row">
-												<div class="col col-1">
-													<div class="g-pic">
-														<img src="images/shangpinxiangqing/X-1.png" width="40" height="40" />
-													</div>
-													<div class="g-info">
-														<a href="#" target="_blank">
-															赛亿（shinee)取暖器家用/取暖电器/电暖器/电暖气台式摇头暖风机HN2118PT
-														</a>
-													</div>
-												</div>
-												<div class="col col-2">49元</div>
-												<div class="col col-3">1</div>
-												<div class="col col-4">49元</div>
-											</div>
-										</dd>
-										<dd class="item clearfix">
-											<div class="item-row">
-												<div class="col col-1">
-													<div class="g-pic">
-														<img src="images/shangpinxiangqing/X2.png" width="40" height="40" />
-													</div>
-													<div class="g-info">
-														<a href="#" target="_blank">
-															赛亿（shinee)取暖器家用/取暖电器/电暖器/电暖气台式摇头暖风机HN2118PT
-														</a>
-													</div>
-												</div>
+											</dd>
 
-												<div class="col col-2">39元</div>
-												<div class="col col-3">4</div>
-												<div class="col col-4">156元</div>
-											</div>
-										</dd>
-									</dl>
-									<div class="checkout-count clearfix">
-										<div class="checkout-count-extend xm-add-buy">
-											<h2 class="title">会员留言</h2></br>
-												<input type="text" />
+										</dl>
 
+										<script type="text/javascript">
+
+                                            function myfun() {
+
+                                                <%--alert("自动加载");--%>
+                                                <%--alert( ${pingJiaShuList[0].goodcomment});--%>
+                                                <%--alert( ${pingJiaShuList[0].goodcommentcount});--%>
+//                                                var test0= document.getElementById("jisuan0").innerHTML;
+//                                                var test1= document.getElementById("jisuan1").innerHTML;
+//                                                var test2=test1*test0;
+//                                                document.getElementById("jisuan2").innerHTML=test2;
+//                                                alert(test2);
+                                                  <%--var userid=${sessionScope.user.userid}--%>
+                                              <%--alert(userid);--%>
+                                                var posoooo= document.getElementById("aaaa").innerHTML;
+//                                                alert(posoooo);
+                                                if (posoooo<88){ document.getElementById("postageDesc").innerHTML=15;
+                                                    document.getElementById("totalPrice").innerHTML=parseInt(posoooo)+15;
+                                                }
+
+                                                console.log('${productList[0].productname}');
+
+
+//                                                var test4= document.getElementById("postageDesc").innerHTML;
+//                                                var test5=test3+test4;
+//                                                document.getElementById("totalPrice").innerHTML=test5;
+
+//                                            alert(obj.innerHTML);
+                                                <%--$(".Xcontent19 span").text(${myProduct.productprice});--%>
+                                                //alert($(".Xcontent19 span").text());
+
+//                                            var a = $(".Xcontent19 span").text() * 1.2 +"";
+                                                //alert(a.split(".")[0]+".0")
+
+//                                            $(".Xcontent181 span").text(a.split(".")[0]+".0");
+
+                                            }
+                                            window.onload=myfun;
+										</script>
+
+										<div class="checkout-count clearfix">
+											<div class="checkout-count-extend xm-add-buy">
+												<h2 class="title">会员留言</h2></br>
+												<input type="text" style="background-color: #f5f5f5" placeholder="点击输入留言信息" name="buyerrequest"/>
+
+											</div>
+											<!-- checkout-count-extend -->
+											<div class="checkout-price">
+												<ul>
+													<li>
+														订单总额：<span id="aaaa">${zongjia[0]}</span>
+													</li>
+													<%--amountpay 应付金额    realpay实付=应付+邮费postfee--%>
+													<input type="hidden" class="ace" name="amountpay" value="${zongjia[0]}" />
+													<!--<li>
+                                                        活动优惠：<span>-0元</span>
+                                                        <script type="text/javascript">
+                                                            checkoutConfig.activityDiscountMoney=5;
+                                                            checkoutConfig.totalPrice=244.00;
+                                                        </script>
+                                                    </li>-->
+													<li>
+														<%--用户购买的所有商品积分和======（数量*积分）的和--%>
+														可获得积分：<span id="couponDesc">${zongjifen[0]}</span>
+															<input type="hidden" class="ace" name="totalcredit" value="${zongjifen[0]}" />
+													</li>
+													<li>
+														运费：<span id="postageDesc">0元</span>
+													</li>
+												</ul>
+												<p class="checkout-total">应付总额：<span><strong id="totalPrice">${zongjia[0]}</strong>元</span></p>
+											</div>
+											<!--  -->
 										</div>
-										<!-- checkout-count-extend -->
-										<div class="checkout-price">
-											<ul>
-												<li>
-													订单总额：<span>244元</span>
-												</li>
-												<!--<li>
-													活动优惠：<span>-0元</span>
-													<script type="text/javascript">
-                                                        checkoutConfig.activityDiscountMoney=5;
-                                                        checkoutConfig.totalPrice=244.00;
-													</script>
-												</li>-->
-												<li>
-													积分抵扣：<span id="couponDesc">-0元</span>
-												</li>
-												<li>
-													运费：<span id="postageDesc">0元</span>
-												</li>
+									</div>
+								</div>
+
+								<!--S 加价购 产品选择弹框 -->
+								<div class="modal hide modal-choose-pro" id="J_choosePro-664">
+									<div class="modal-header">
+										<span class="close" data-dismiss='modal'><i class="iconfont">&#xe617;</i></span>
+										<h3>选择产品</h3>
+										<div class="more">
+											<div class="xm-recommend-page clearfix">
+												<a class="page-btn-prev   J_carouselPrev iconfont" href="javascript: void(0);">&#xe604;</a><a class="page-btn-next  J_carouselNext iconfont" href="javascript: void(0);">&#xe605;</a>
+											</div>
+										</div>
+									</div>
+									<div class="modal-body J_chooseProCarousel">
+										<div class="J_carouselWrap modal-choose-pro-list-wrap">
+											<ul class="clearfix J_carouselList">
 											</ul>
-											<p class="checkout-total">应付总额：<span><strong id="totalPrice">244</strong>元</span></p>
-										</div>
-										<!--  -->
-									</div>
-								</div>
-							</div>
-
-							<!--S 加价购 产品选择弹框 -->
-							<div class="modal hide modal-choose-pro" id="J_choosePro-664">
-								<div class="modal-header">
-									<span class="close" data-dismiss='modal'><i class="iconfont">&#xe617;</i></span>
-									<h3>选择产品</h3>
-									<div class="more">
-										<div class="xm-recommend-page clearfix">
-											<a class="page-btn-prev   J_carouselPrev iconfont" href="javascript: void(0);">&#xe604;</a><a class="page-btn-next  J_carouselNext iconfont" href="javascript: void(0);">&#xe605;</a>
 										</div>
 									</div>
-								</div>
-								<div class="modal-body J_chooseProCarousel">
-									<div class="J_carouselWrap modal-choose-pro-list-wrap">
-										<ul class="clearfix J_carouselList">
-										</ul>
+									<div class="modal-footer">
+										<a href="/jsp/users/my-dingdan.jsp?flag=2" class="btn btn-disabled J_chooseProBtn">加入购物车</a>
 									</div>
 								</div>
-								<div class="modal-footer">
-									<a href="#" class="btn btn-disabled J_chooseProBtn">加入购物车</a>
-								</div>
+								<!--E 加价购 产品选择弹框 -->
+
+								<!--S 保障计划 产品选择弹框 -->
+
+
 							</div>
-							<!--E 加价购 产品选择弹框 -->
+							<!-- 商品清单 END -->
+							<input type="hidden"  id="couponType" name="Checkout[couponsType]">
+							<input type="hidden" id="couponValue" name="Checkout[couponsValue]">
+							<div class="checkout-confirm">
 
-							<!--S 保障计划 产品选择弹框 -->
+								<a href="<%--${pageContext.request.c}--%>/jsp/users/my-dingdan.jsp?flag=2" class="btn btn-lineDakeLight btn-back-cart">返回购物车</a>
+								<%--<input type="hidden" class="ace" name="userid" value="${sessionScope.user.userid}" />--%>
+								<input type="hidden" class="ace" name="userid" value="${sessionScope.user.userid}" />
+								<%--这里传入userid  userid=${sessionScope.user.userid}  --%>
+								<a href="javascript:jiesuan('<%=basePath%>');" class="btn btn-primary">立即下单</a>
 
-
-						</div>
-						<!-- 商品清单 END -->
-						<input type="hidden"  id="couponType" name="Checkout[couponsType]">
-						<input type="hidden" id="couponValue" name="Checkout[couponsValue]">
-						<div class="checkout-confirm">
-
-							<a href="#" class="btn btn-lineDakeLight btn-back-cart">返回购物车</a>
-							<a href="#" class="btn btn-primary">立即下单</a>
-
+							</div>
 						</div>
 					</div>
-				  </div>
 				</form>
 			</div>
-			</form>
+
 
 		</div>
 		<!-- 禮品卡提示 S-->
@@ -532,10 +511,10 @@
 
 
 
-		<script src="js/base.min.js"></script>
+		<script src="${pageContext.request.contextPath}/jsp/users/js/base.min.js"></script>
 
-		<script type="text/javascript" src="js/address_all.js"></script>
-		<script type="text/javascript" src="js/checkout.min.js"></script>
+		<script type="text/javascript" src="${pageContext.request.contextPath}/jsp/users/js/address_all.js"></script>
+		<script type="text/javascript" src="${pageContext.request.contextPath}/jsp/users/js/checkout.min.js"></script>
 	</div>
 	<!--收货地址body部分结束-->
 </div>
@@ -583,7 +562,7 @@
 				<li class="lss">
 					<span>下载手机版</span>
 					<div class="clearfix lss-pa">
-						<div class="fl lss-img"><img src="img/icon/code.png" alt=""></div>
+						<div class="fl lss-img"><img src="${pageContext.request.contextPath}/jsp/users/img/icon/code.png" alt=""></div>
 						<div class="fl" style="padding-left:20px">
 							<h4>扫描下载云购APP</h4>
 							<p>把优惠握在手心</p>
@@ -633,6 +612,15 @@
     })
 </script>
 
+<script type="text/javascript">
+
+function jiesuan(basePath) {
+       alert('前去付款？');
+    $("#checkoutForm").attr("action",basePath + "jieSuan.action");
+    $("#checkoutForm").submit();
+}
+
+</script>
 
 </body>
 </html>

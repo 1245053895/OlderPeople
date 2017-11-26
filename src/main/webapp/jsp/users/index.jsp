@@ -24,6 +24,8 @@
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/jsp/users/css/style.css">
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/jsp/users/css/media_index.css">
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/jsp/users/css/mod.css">
+<%--	<link href="${pageContext.request.contextPath}/jsp/users/jfsc/css/index/style.css" rel="stylesheet" type="text/css">
+	<link href="${pageContext.request.contextPath}/jsp/users/jfsc/css/index/top.css" rel="stylesheet" type="text/css">--%>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/jsp/users/js/jquery.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/jsp/users/js/index.js"></script>
 	<script type="text/javascript">
@@ -105,95 +107,16 @@
 </head>
 <body>
 
-<!--	<div style="height: 100%;top: 0px;bottom: auto; position: fixed;top: 0;right: 0;height: 100%;width: 35px;z-index: 99999;padding-top: 1px;background-color: #333333">
-		<div style="position: relative;height: 100%;padding: 0;margin: 0">
-&lt;!&ndash;			功能&ndash;&gt;
-			<div style="position: absolute;height: 570px;top: 50%;margin-top: -258px">
-&lt;!&ndash;				个人中心&ndash;&gt;
-				<div style="height: 45px;display: block;cursor: auto">
-					<a style="width: 35px;display: block;overflow: hidden;position: relative;text-align: center;z-index: 2" title="个人中心" href="">
-						<img src="img/icon/head.jpg" style="border: medium none">
-					</a>
-				</div>
+<header id="pc-header">
 
-&lt;!&ndash;				客服&ndash;&gt;
-				<div style="width: 35px;height: 45px;font-size: 12px;margin: 20px 0 14px;overflow: visible;position: relative;border: 0;z-index: 1;padding: 0;">
-					<a target="_blank" style="width: 35px;height: 45px;font-size: 12px;display: block;overflow: hidden;position: relative;text-align: center;z-index: 2;color: #4A4A4A;outline: medium none;text-decoration: none;padding: 0;margin: 0" href="" title="在线客服">
-&lt;!&ndash;
-						<table style="border-collapse: collapse;border-spacing: 0;padding: 0;margin: 0;display: table;font-size: 12px;text-align">
-							<tbody>
-								<tr style="display: table-row;vertical-align: inherit;border-color: inherit">
-									<td>
-&ndash;&gt;
-										<img src="img/icon/kefu.jpg" style="border: medium none;margin: 0;padding: 0;list-style: none;color: #ffffff;font-size: 12px;text-align: center;cursor: pointer;border-collapse: collapse">
-&lt;!&ndash;
-									</td>
-								</tr>
-								<tr>
-									<td>
-										在线<br>客服
-									</td>
-								</tr>
-							</tbody>
-						</table>
-&ndash;&gt;
-					</a>
-				</div>
-
-&lt;!&ndash;				购物车&ndash;&gt;
-				<div style="height: 135px;width: 35px;font-size: 12px;margin: 20px 0 14px;overflow: visible;position: relative;border: 0;z-index: 1;padding: 0;display: block;cursor:auto;color: #666666">
-					<form method="post" style="padding: 0;margin: 0;border: none;list-style-type: none;display: block;font-size: 12px" action="">
-						<a href="" style="height: 135px;padding-top: 5px;color: #fff;position: relative;width: 35px;font-size: 12px;text-align: center;z-index: 2;outline: medium none;padding: 0;margin: 0;cursor: auto">
-							<li style="width: 35px;height: 35px;background-position: 0px -39px;display: block;font-size: normal;padding: 0;margin: 0;color: #fff;font-size: 12px;text-align: center;list-style-type: none;background: url(img/icon/gwc.jpg) no-repeat"></li>
-							<font size="+1" style="text-align: center">购<br>物<br>车<br></font>
-							<span style="margin-top: 7px">0</span>
-						</a>
-					</form>
-				</div>
-			</div>
-&lt;!&ndash;			回顶&ndash;&gt;
-			<div style="background-color: #333333;position: absolute;bottom: 0;z-index: 5;padding: 0;margin: 0;cursor: auto">
-				<div style="margin-bottom: 3px;margin-top: 5px;height: 0;margin: 0;overflow: hidden;position: relative;border: 0;z-index: 1;padding: 0">
-					<a style="width: 35px;height: 45px;font-size: 12px;display: block;overflow: hidden;position: relative;text-align: center;z-index: 2;color: #4A4A4A;outline: medium none;padding: 0;margin: 0">
-						<table>
-							<tbody>
-
-							</tbody>
-						</table>
-					</a>
-				</div>
-			</div>
-		</div>
-	</div>-->
-
-<!--
-<div class="sidebar-nav">
-    <div class="mods">
-		<div class="middle-items">
-			<div class="mod">
-				<a href="#" target="_blank" class="btn">
-					<table>
-						<tbody>
-						<tr>
-							<td><img src="images/kefu.pngs" height="45px" width="35px"></td>
-						</tr>
-						<tr>
-							<td>"在线客服"</td>
-						</tr>
-						</tbody>
-					</table>
-				</a>
-			</div>
-
-		</div>
-	</div>
-</div>-->
-
-<header id="pc-header"> 
-
-	<c:if test="${ products==null}">
+	<c:if test="${ products==null|| hotsaleproducts==null|| top10products==null|| creditproducts==null|| jiankang==null|| jujia==null|| yule==null||  Recommendations==null}">
 		<jsp:forward page="${pageContext.request.contextPath}/selectproduct.action"></jsp:forward>
 	</c:if>
+
+	<%--<c:if test="${empty productTypeExtends1||empty productTypeExtends}">
+		<jsp:forward page="${pageContext.request.contextPath}/ShopFrontPage.action"></jsp:forward>
+	</c:if>--%>
+
 	<jsp:include page="/jsp/users/head.jsp"></jsp:include>
 
 	<!--  顶部    start-->
@@ -250,11 +173,11 @@
 				</div>
 			</div>
 			<ul class="yMenuIndex">
-				<li><a href="" target="_blank" title="首页">首页</a></li>
-				<li><a href="" target="_blank" title="热销专区">热销专区</a></li>
-				<li><a href="" target="_blank" title="新品专区">新品专区</a></li>
+				<li><a href="${pageContext.request.contextPath}/ShopFrontPage.action"  title="首页">首页</a></li>
+				<li><a href="${pageContext.request.contextPath}/ProductHot.action" target="_blank" title="热销专区">热销专区</a></li>
+				<li><a href="${pageContext.request.contextPath}/SelectNewProduct.action" target="_blank" title="新品专区">新品专区</a></li>
 				<li><a href="" target="_blank" title="积分商城">积分商城</a></li>
-				<li><a href="" target="_blank" title="合伙人">合伙人</a></li>
+				<li><a href="${pageContext.request.contextPath}/queryTotalCommentshop.action" target="_blank" title="好评专区">好评专区</a></li>
 				<li><a href="" target="_blank" title="关于我们">关于我们</a></li>
 			</ul>
 		</div>
@@ -268,17 +191,54 @@
 						<ul class="contain">
 							<li class="item"><a href="#" alt=""><img src="${pageContext.request.contextPath}/jsp/users/images/lbztq.jpg"></a></li>
 							<li class="item"><a href="#" alt=""><img src="${pageContext.request.contextPath}/jsp/users/images/lbly.jpg"></a></li>
+							<li class="item"><a href="#" alt=""><img src="${pageContext.request.contextPath}/jsp/users/images/lbch.jpg"></a></li>
+							<li class="item"><a href="#" alt=""><img src="${pageContext.request.contextPath}/jsp/users/images/lbghl.jpg"></a></li>
 							<li class="item"><a href="#" alt=""><img src="${pageContext.request.contextPath}/jsp/users/images/lbwfsb.jpg"></a></li>
-							<li class="item"><a href="#" alt=""><img src="${pageContext.request.contextPath}/jsp/users/images/lbxyj.gif"></a></li>
-							<li class="item"><a href="#" alt=""><img src="${pageContext.request.contextPath}/jsp/users/images/index_slider_pic5.jpg"></a></li>
 						</ul>
 					</div>
 				</section>
 			</section>
 		</div>
-
-		<section id="adv" class="wraper site-adv m-box clear_bottom">
-			<%--<div class="span4">
+		<section class="row1">
+			<ul class="service1">
+				<li class="s1">
+					<div class="title">
+						卓越品质
+					</div>
+					正品保障
+					<br>
+					放心购物
+				</li>
+				<li class="s2">
+					<div class="title">
+						积分兑换商品
+					</div>
+					有机会享受
+					<br>
+					0元购物
+				</li>
+				<li class="s3">
+					<div class="title">
+						专业配送
+					</div>
+					快速安全
+					<br>
+					保证商品完好
+				</li>
+				<li class="s4">
+					<div class="title">
+						金牌服务
+					</div>
+					为您呈现最优服务
+					<br>
+					售后无忧
+				</li>
+				<div class="clear">
+				</div>
+			</ul>
+		</section>
+		<%--<section id="adv" class="wraper site-adv m-box clear_bottom">
+			&lt;%&ndash;<div class="span4">
 				<ul class="rect6">
 					<li class="item"></li>
 					<li class="item"></li>
@@ -287,7 +247,7 @@
 					<li class="item"></li>
 					<li class="item"></li>
 				</ul>
-			</div>--%>
+			</div>&ndash;%&gt;
 
 				<ul class="m-cols m-col-3">
 					<li class="col"><img src="${pageContext.request.contextPath}/jsp/users/images/zhuanchang1.jpg"></li>
@@ -297,7 +257,7 @@
 				</ul>
 
 
-		</section>
+		</section>--%>
 		<!--中部区域结束-->
 
 		<!--上市新品开始-->
@@ -313,14 +273,14 @@
 					</div>
 				</div>
 			</header>
-			<div class="m-box">
-				<section class="span20 m-slide">
-					<div class="m-slide-contain m-s2">
-						<div class="m-slide-item">
-							<ul class="m-cols m-col-5">
+			<div class="m-box" style="height:700px;">
+				<section class="span20 m-slide"  style="height: 330px">
+					<div class="m-slide-contain m-s2" >
+						<div class="m-slide-item" >
+							<ul class="m-cols m-col-5" >
 								<c:forEach begin="0" end="4" step="1" items="${products}" var="product">
-								<li class="col sku-item ">
-									<dl class="row">
+								<li class="col sku-item " >
+									<dl class="row" >
 										<dt><a href="${pageContext.request.contextPath}/xiangqing.action?productid=${product.productid}"><img src="${product.productpicture}"></a></dt>
 										<dd class="name"><a href="${pageContext.request.contextPath}/xiangqing.action?productid=${product.productid}">${product.productname}</a></dd>
 										<dd class="desc">${product.productdescribe}</dd>
@@ -342,8 +302,6 @@
 										</dl>
 									</li>
 								</c:forEach>
-
-
 
 							<%--
 								<li class="col sku-item ">
@@ -378,6 +336,7 @@
 										<dd class="price">1499元</dd>
 									</dl>
 								</li>--%>
+
 							</ul>
 						</div>
 					</div>
@@ -393,7 +352,7 @@
 					<h2 class="m-hdL">热销商品</h2>
 					<div class="m-hdR">
 						<div class="scan">
-							<span>查看全部</span>
+							<span><a href="${pageContext.request.contextPath}/ProductHot.action">查看全部</a></span>
 							<a href="#" class="icon">&gt;</a>
 						</div>
 					</div>
@@ -401,7 +360,7 @@
 				<section class="m-box line2">
 					<div class="span4">
 						<div class="row main-pic">
-							<img src="${pageContext.request.contextPath}/jsp/users/images/rxsp/row2Img.jpg">
+							<img src="${pageContext.request.contextPath}/jsp/users/images/rxsp/left2.jpg">
 						</div>
 					</div>
 					<div class="span16">
@@ -410,7 +369,7 @@
 								<c:if test="${status.index%2==0}">
 									<li class="col">
 										<div class="row">
-											<a href="page.jsp">
+											<a href="${pageContext.request.contextPath}/xiangqing.action?productid=${hotsaleproduct.productid}">
 												<span class="tip orange">销量${hotsaleproduct.totalhotsale}</span>
 												<dl>
 													<dt><a href="${pageContext.request.contextPath}/xiangqing.action?productid=${hotsaleproduct.productid}"><img src="${hotsaleproduct.productpicture}"></a></dt>
@@ -424,7 +383,7 @@
 
 								<c:if test="${status.index%2==1}">
 										<div class="row">
-											<a href="page.jsp">
+											<a href="${pageContext.request.contextPath}/xiangqing.action?productid=${hotsaleproduct.productid}">
 												<span class="tip blue">销量${hotsaleproduct.totalhotsale}</span>
 												<dl>
 													<dt><a href="${pageContext.request.contextPath}/xiangqing.action?productid=${hotsaleproduct.productid}"><img src="${hotsaleproduct.productpicture}"></a></dt>
@@ -464,7 +423,7 @@
 				<section class="m-box line2  clear_top  clear_bottom">
 					<div class="span4">
 						<div class="row main-pic">
-							<img src="${pageContext.request.contextPath}/jsp/users/images/rxsp/row2Img.jpg">
+							<img src="${pageContext.request.contextPath}/jsp/users/images/rxsp/left1.jpg">
 						</div>
 					</div>
 					<div class="span16">
@@ -614,7 +573,7 @@
 				<section class="m-box line2">
 					<div class="span4">
 						<div class="main-pic">
-							<img src="${pageContext.request.contextPath}/jsp/users/images/rxsp/row2Img.jpg">
+							<img src="${pageContext.request.contextPath}/jsp/users/images/rxsp/left3.jpg">
 						</div>
 					</div>
 					<div class="span16">
@@ -1136,7 +1095,7 @@
 						<c:forEach items="${Recommendations}" var="Recommendation">
 							<li class="col">
 								<div class="row">
-									<img src="${Recommendation.productpicture}" style="width:auto;height:250px; ">
+									<a href="${pageContext.request.contextPath}/xiangqing.action?productid=${Recommendation.productid}"><img src="${Recommendation.productpicture}" style="width:250px;height:250px; "></a>
 									<div style="border-bottom: 1px #CCCCCC solid"></div>
 									<div class="content">
 										<div class="from">推荐理由</div>
@@ -1146,6 +1105,7 @@
 										<a href="${pageContext.request.contextPath}/xiangqing.action?productid=${Recommendation.productid}" class="name">${Recommendation.productname}</a>
 										<a href="${pageContext.request.contextPath}/xiangqing.action?productid=${Recommendation.productid}" class="price"  style="width: 100px;">${Recommendation.productprice}元</a>
 									</div>
+
 								</div>
 							</li>
 						</c:forEach>
@@ -1208,7 +1168,7 @@
 <footer>
 	<div class="pc-footer-top">
 		<div class="center">
-			<ul class="clearfix">
+			<ul class="clearfix" style="margin-left: 110px;">
 				<li>
 					<span>关于我们</span>
 					<a href="#">关于我们</a>

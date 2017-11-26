@@ -24,6 +24,8 @@
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/jsp/users/css/style.css">
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/jsp/users/css/media_index.css">
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/jsp/users/css/mod.css">
+<%--	<link href="${pageContext.request.contextPath}/jsp/users/jfsc/css/index/style.css" rel="stylesheet" type="text/css">
+	<link href="${pageContext.request.contextPath}/jsp/users/jfsc/css/index/top.css" rel="stylesheet" type="text/css">--%>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/jsp/users/js/jquery.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/jsp/users/js/index.js"></script>
 	<script type="text/javascript">
@@ -197,9 +199,46 @@
 				</section>
 			</section>
 		</div>
-
-		<section id="adv" class="wraper site-adv m-box clear_bottom">
-			<%--<div class="span4">
+		<section class="row1">
+			<ul class="service1">
+				<li class="s1">
+					<div class="title">
+						卓越品质
+					</div>
+					正品保障
+					<br>
+					放心购物
+				</li>
+				<li class="s2">
+					<div class="title">
+						积分兑换商品
+					</div>
+					有机会享受
+					<br>
+					0元购物
+				</li>
+				<li class="s3">
+					<div class="title">
+						专业配送
+					</div>
+					快速安全
+					<br>
+					保证商品完好
+				</li>
+				<li class="s4">
+					<div class="title">
+						金牌服务
+					</div>
+					为您呈现最优服务
+					<br>
+					售后无忧
+				</li>
+				<div class="clear">
+				</div>
+			</ul>
+		</section>
+		<%--<section id="adv" class="wraper site-adv m-box clear_bottom">
+			&lt;%&ndash;<div class="span4">
 				<ul class="rect6">
 					<li class="item"></li>
 					<li class="item"></li>
@@ -208,7 +247,7 @@
 					<li class="item"></li>
 					<li class="item"></li>
 				</ul>
-			</div>--%>
+			</div>&ndash;%&gt;
 
 				<ul class="m-cols m-col-3">
 					<li class="col"><img src="${pageContext.request.contextPath}/jsp/users/images/zhuanchang1.jpg"></li>
@@ -218,7 +257,7 @@
 				</ul>
 
 
-		</section>
+		</section>--%>
 		<!--中部区域结束-->
 
 		<!--上市新品开始-->

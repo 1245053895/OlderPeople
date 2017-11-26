@@ -92,15 +92,49 @@
 								<div class="clearfix xm-address-list" id="checkoutAddrList">
 									<dl class="item" >
 										<dt>
-											<strong class="itemConsignee">陈思顶</strong>
+											<strong class="itemConsignee">姓名</strong>
 											<span class="tag">修改</span>
 											<span class="tag">删除</span>
 										</dt>
 										<br/>
 										<dd>
-											<p class="itemRegion">贵州省 贵阳市</p>
-											<p class="itemStreet">贵州省仁怀市贵州大学北校区</p>
-											<p class="tel">188010666666</p>
+											<p class="itemRegion">地址</p>
+											<p class="itemStreet">电话</p>
+											<p class="tel">邮箱</p>
+										</dd>
+										<dd style="display:none">
+											<input type="radio" name="Checkout[address]" class="addressId"  value="10140916720030323">
+										</dd>
+									</dl>
+
+									<dl class="item" >
+										<dt>
+											<strong class="itemConsignee">姓名</strong>
+											<span class="tag">修改1</span>
+											<span class="tag">删除</span>
+										</dt>
+										<br/>
+										<dd>
+											<p class="itemRegion">地址</p>
+											<p class="itemStreet">电话</p>
+											<p class="tel">邮箱</p>
+										</dd>
+										<dd style="display:none">
+											<input type="radio" name="Checkout[address]" class="addressId"  value="10140916720030323">
+										</dd>
+									</dl>
+
+									<dl class="item" >
+										<dt>
+											<strong class="itemConsignee">姓名</strong>
+											<span class="tag">修改</span>
+											<span class="tag">删除</span>
+										</dt>
+										<br/>
+										<dd>
+											<p class="itemRegion">地址</p>
+											<p class="itemStreet">电话</p>
+											<p class="tel">邮箱</p>
 										</dd>
 										<dd style="display:none">
 											<input type="radio" name="Checkout[address]" class="addressId"  value="10140916720030323">
@@ -116,9 +150,9 @@
 										</dt>
 										<br/>
 										<dd>
-											<input class="itemRegion" placeholder="请填写省份、城市" style="border: hidden">
-											<input class="itemStreet" placeholder="请填写详细地址" style="border: hidden">
-											<input class="tel" placeholder="请填写收件人手机号" style="border: hidden">
+											<input class="itemRegion" placeholder="请填写收件人的地址" style="border: hidden">
+											<input class="itemStreet" placeholder="请填写收件人的手机号" style="border: hidden">
+											<input class="tel" placeholder="请填写邮编" style="border: hidden">
 										</dd>
 										<dd style="display:none">
 											<input type="radio" name="Checkout[address]" class="addressId"  value="10140916720030323">

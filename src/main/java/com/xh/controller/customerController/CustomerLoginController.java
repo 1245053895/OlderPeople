@@ -3,6 +3,8 @@ package com.xh.controller.customerController;
 import com.xh.po.*;
 import com.xh.po.vo.ProductTypeExtend;
 import com.xh.po.vo.TotalCreditsById;
+import com.xh.po.vo.UserAndBrithday;
+import com.xh.service.customerService.CustomerInformationService;
 import com.xh.service.customerService.ProductTypeService;
 import com.xh.service.customerService.UserLoginService;
 import com.xh.util.NetworkUtil;
@@ -15,10 +17,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.File;
 import java.io.IOException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -30,6 +34,9 @@ public class CustomerLoginController {
     private UserLoginService userLoginService;
     @Autowired
     private ProductTypeService productTypeService;
+
+    @Autowired
+    private CustomerInformationService customerInformationService;
 
     //通过该url进入到商城的首页面
     @RequestMapping(value = "/ShopFrontPage.action", method = RequestMethod.GET)
@@ -145,7 +152,12 @@ public class CustomerLoginController {
 
     //个人中心里跳转到修改密码的页面
     @RequestMapping("/UpdataPwdPage.action")
-    public String UpdataPwdPage() {
+    public String UpdataPwdPage(Model model,HttpServletRequest request) {
+        HttpSession session=request.getSession();
+       User user=(User) session.getAttribute("user");
+        Integer id=user.getUserid();
+        UserAndBrithday userAndBrithday=customerInformationService.SelectCustomerInformation(id);
+        model.addAttribute("userAndBrithday",userAndBrithday);
         return "/jsp/users/my-user.jsp";
     }
 
@@ -177,6 +189,9 @@ public class CustomerLoginController {
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
         userid = user.getUserid();
+        Integer id=user.getUserid();
+        UserAndBrithday userAndBrithday=customerInformationService.SelectCustomerInformation(id);
+        model.addAttribute("userAndBrithday",userAndBrithday);
         List<TotalCreditsById> totalCreditsByIds = userLoginService.queryAllById(userid);
         TotalCreditsById totalCreditsById = userLoginService.queryTotalCriditsById(userid);
         model.addAttribute("totalCreditsByIds", totalCreditsByIds);
@@ -316,7 +331,7 @@ public class CustomerLoginController {
 
     }
 
-//好评区
+//好评专区
     @RequestMapping("/queryTotalCommentshop.action")
     public String queryTotalCommentshop(Model model,@RequestParam(defaultValue = "1") Integer currentpage){
         Integer startpage=(currentpage-1)*15;
@@ -329,6 +344,33 @@ public class CustomerLoginController {
         model.addAttribute("totalCreditsByIds",totalCreditsByIds);
         return "/jsp/users/rpzq.jsp";
     }
+
+    //用户个人中心中个人资料头像的显示
+    @RequestMapping("/HeadPictrueShow.action")
+    public String HeadPictrueShow(Model model,HttpServletRequest request, MultipartFile userC)throws IllegalStateException, IOException{
+        HttpSession session=request.getSession();
+       User user=(User) session.getAttribute("user");
+       Integer id=user.getUserid();
+        String sqlPath = null;
+        if (userC != null && userC.getOriginalFilename() != null) {
+            String path = session.getServletContext().getRealPath("/jsp/admin/images/upload");
+            String realName = userC.getOriginalFilename();
+            String realFilePath = path + File.separator + realName;
+            File file = new File(realFilePath);
+            userC.transferTo(file);
+            user.setUserC(realFilePath);
+            sqlPath = "jsp/admin/images/upload/"+realName;
+            user.setUserC(sqlPath);
+            user.setUserid(id);
+            userLoginService.updateUserPic(user);/*得到登录用户的id，根据用户的id修改用户的头像*/
+            UserAndBrithday userAndBrithday=customerInformationService.SelectCustomerInformation(id);
+          // User user1=userLoginService.queryUserPic(user); /*根据用户的id查询用户的账号，用户名和头像*/
+           model.addAttribute("userAndBrithday",userAndBrithday);
+            return "/jsp/users/user.jsp";
+        }
+        return null;
+    }
+
 
 
 }

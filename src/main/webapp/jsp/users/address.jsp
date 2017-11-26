@@ -177,12 +177,12 @@
 	<div class="member-center clearfix">
 		<div class="member-left fl">
 			<div class="member-apart clearfix">
-				<div class="fl"><a href="#"><img src="jsp/users/img/mem.png"></a></div>
+				<div class="fl"><a href="#"><img src="${userAndBrithday.userC}"></a></div>
 				<div class="fl">
-					<p>用户名：</p>
-					<p><a href="#">${sessionScope.user.username}</a></p>
-					<p>账号：</p>
-					<p>${sessionScope.user.userid}</p>
+					用户名：${userAndBrithday.username}<br>
+					<%--<p></p>--%>
+					账号：${userAndBrithday.userid}
+					<%--<p></p>--%>
 				</div>
 			</div>
 			<div class="member-lists" id="leftinfo">

@@ -109,6 +109,17 @@ public interface UserLoginService {
     //当用户登录的总次数为1时，让它自动加一
     public void AutoIncreaeOne(Integer userid);
 
+    //支付方式的页面显示
+    public List<Pay> queryPayMethod();
+
+    //根据用户的id修改用户的头像
+    public void updateUserPic(User user);
+
+    //根据用户的id查询用户的头像
+    public User queryUserPic(User user);
+
+    //根据用户的id查询出该用户对应的收货地址
+    public List<Gainaddres> selectGainAddressByUserId(Integer userid);
 
 
 }

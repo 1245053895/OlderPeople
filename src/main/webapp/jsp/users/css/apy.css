@@ -80,11 +80,11 @@
 
 }
 .pay_lc{
-    width: 1123px;
+    width: 1123px !important;
     height: 34px;
-    background: url("../images/ico3.jpg");
-    background-size: 972px 34px;
-    background-repeat: no-repeat;
+    background: url("../images/ico3.jpg") !important;
+    background-size: 972px 34px !important;
+    background-repeat: no-repeat !important;
     line-height: 34px;
     font-weight: bold;
     font-size: 14px;

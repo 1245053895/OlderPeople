@@ -43,8 +43,8 @@
     <!--查询用户信息-->
     <select id="SelectCustomerInformation" resultType="com.xh.po.vo.UserAndBrithday" >
          SELECT UserId, UserName, UserPwd, UserSex, UserRealName, UserPhone, UserBirthday, UserAddress,
-        UserEmail, CreditsCore, UserInputDate, UserZip, UserLoginCount, UserLoginTime, User_A,
-        User_B, User_C FROM `user` WHERE UserId=#{userid}
+        UserEmail, CreditsCore, UserInputDate, UserZip, UserLoginCount, UserLoginTime, User_A AS UserA,
+        User_B AS UserB, User_C AS UserC FROM `user` WHERE UserId=#{userid}
     </select>
     <!--修改用户信息-->
     <update id="UpdateUserByid" parameterType="com.xh.po.vo.UserAndBrithday">
@@ -111,5 +111,8 @@
         SET Gain_A="0"
         WHERE GainId=#{gainid}
     </update>
-
+ <!--查询所有用户-->
+    <select id="SelectAllUser" resultType="user">
+      SELECT UserName FROM user WHERE UserName NOT IN (#{username})
+    </select>
 </mapper>

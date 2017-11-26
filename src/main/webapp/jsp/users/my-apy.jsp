@@ -58,13 +58,19 @@
             </div>
             <div class="zfxqs">
                 <p>支付人姓名：${sessionScope.user.username}</p>
+               <input type="hidden" class="ace" name="realpay" value="${realpay}" />
+                <input type="hidden" class="ace" name="totalcredit" value="${totalcredit}" />
                 <p>支付总金额：<span class="red">￥<span>${realpay}</span></span></p>
+
                 <p>支付方式 ：
+
+                <c:forEach items="${pays}" var="pay">
                    <div class="zzfs">
                        <input type="radio" value="支付宝" name="zffs">
-                       <img src="${pageContext.request.contextPath}/jsp/admin/images/zfb.png" height="50px" width="110px">
+                       <img src="${pay.paypicture}" height="50px" width="110px">
                    </div>
-                   <div class="zzfs">
+                </c:forEach>
+                  <%-- <div class="zzfs">
                        <input type="radio" value="微信支付" name="zffs">
                        <img src="${pageContext.request.contextPath}/jsp/admin/images/zfb.png" height="50px" width="110px">
                    </div>
@@ -75,16 +81,15 @@
                    <div class="zzfs">
                        <input type="radio" value="微信支付" name="zffs">
                        <img src="${pageContext.request.contextPath}/jsp/admin/images/zfb.png" height="50px" width="110px">
-                   </div>
+                   </div>--%>
                 </p>
                 <p>支付密码    ：<input type="text" placeholder="请输入支付密码" height="5px" style="margin-left: 12px;margin-top: 30px;"></p>
                 <div class="qrzf">
                     <%--付款成功 将 shopcar 的 C变为0   代表已付款--%>
                     <input type="hidden" class="ace" name="orderid" value="${orderid}" />
                         <input type="submit" value="确认支付"  class="qrzfbtn">
-
-                        <%--<a href="javascript:jiesuan('<%=basePath%>');" class="qrzfbtn">确认支付</a>--%>
-                        <input type="button" value="取消支付" class="qxzfbtn">
+                    <%--<a href="javascript:jiesuan('<%=basePath%>');" class="qrzfbtn">确认支付</a>--%>
+                        <input type="button" onclick="cancel()" value="取消支付" class="qxzfbtn">
                 </div>
             </div>
 

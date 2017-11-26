@@ -90,22 +90,58 @@
 							</div>
 							<div class="box-bd">
 								<div class="clearfix xm-address-list" id="checkoutAddrList">
+								<c:forEach items="${gainaddresList}" var="gainaddres">
 									<dl class="item" >
 										<dt>
-											<strong class="itemConsignee">陈思顶</strong>
+											<strong class="itemConsignee">${gainaddres.gainname}</strong>
 											<span class="tag">修改</span>
 											<span class="tag">删除</span>
 										</dt>
 										<br/>
 										<dd>
-											<p class="itemRegion">贵州省 贵阳市</p>
-											<p class="itemStreet">贵州省仁怀市贵州大学北校区</p>
-											<p class="tel">188010666666</p>
+											<p class="itemRegion">${gainaddres.gainaddress}</p>
+											<p class="itemStreet">${gainaddres.gainmobile}</p>
+											<p class="tel">${gainaddres.gaincode}</p>
 										</dd>
 										<dd style="display:none">
 											<input type="radio" name="Checkout[address]" class="addressId"  value="10140916720030323">
 										</dd>
 									</dl>
+								</c:forEach>
+
+								<%--	<dl class="item" >
+										<dt>
+											<strong class="itemConsignee">姓名</strong>
+											<span class="tag">修改1</span>
+											<span class="tag">删除</span>
+										</dt>
+										<br/>
+										<dd>
+											<p class="itemRegion">地址</p>
+											<p class="itemStreet">电话</p>
+											<p class="tel">邮箱</p>
+										</dd>
+										<dd style="display:none">
+											<input type="radio" name="Checkout[address]" class="addressId"  value="10140916720030323">
+										</dd>
+									</dl>
+
+									<dl class="item" >
+										<dt>
+											<strong class="itemConsignee">姓名</strong>
+											<span class="tag">修改</span>
+											<span class="tag">删除</span>
+										</dt>
+										<br/>
+										<dd>
+											<p class="itemRegion">地址</p>
+											<p class="itemStreet">电话</p>
+											<p class="tel">邮箱</p>
+										</dd>
+										<dd style="display:none">
+											<input type="radio" name="Checkout[address]" class="addressId"  value="10140916720030323">
+										</dd>
+									</dl>--%>
 
 
 									<dl class="item" id="newadr" style="display: none">
@@ -116,9 +152,9 @@
 										</dt>
 										<br/>
 										<dd>
-											<input class="itemRegion" placeholder="请填写省份、城市" style="border: hidden">
-											<input class="itemStreet" placeholder="请填写详细地址" style="border: hidden">
-											<input class="tel" placeholder="请填写收件人手机号" style="border: hidden">
+											<input class="itemRegion" placeholder="请填写收件人的地址" style="border: hidden">
+											<input class="itemStreet" placeholder="请填写收件人的手机号" style="border: hidden">
+											<input class="tel" placeholder="请填写邮编" style="border: hidden">
 										</dd>
 										<dd style="display:none">
 											<input type="radio" name="Checkout[address]" class="addressId"  value="10140916720030323">
@@ -209,10 +245,10 @@
 								<div>
 									<ul class="checkout-option-list clearfix J_optionList">
 										<li>
-											<input type="radio" name="paytype" value="1" checked="checked" data-labelauty="在线支付">
+											<input type="radio" name="paytype" value="0" checked="checked" data-labelauty="在线支付">
 										</li>
 										<li style=" display: inline-block;margin-left: -20px;">
-											<input type="radio" name="paytype" value="0" data-labelauty="货到付款">
+											<input type="radio" name="paytype" value="1" data-labelauty="货到付款">
 										</li>
 									</ul>
 								</div>
@@ -226,10 +262,10 @@
 								<div>
 									<ul class="checkout-option-list clearfix J_optionList">
 										<li>
-											<input type="radio" name="gainmethod" value="1" checked="checked" data-labelauty="快递配送">
+											<input type="radio" name="gainmethod" value="0" checked="checked" data-labelauty="快递配送">
 										</li>
 										<li style=" display: inline-block;margin-left: -20px;">
-											<input type="radio" name="gainmethod" value="0" data-labelauty="货物自取">
+											<input type="radio" name="gainmethod" value="1" data-labelauty="货物自取">
 										</li>
 									</ul>
 								</div>
@@ -250,9 +286,9 @@
 												<span class="col col-3">购买数量</span>
 												<span class="col col-4">小计（元）</span>
 											</dt>
-											<dd class="item clearfix" style="background-color: #deffb3;width: 1310px">
+											<dd class="item clearfix" style="background-color: #deffb3">
 												<div class="item-row">
-													<div class="col col-1" style="width: 175px">
+													<div class="col col-1">
 														<div class="g-pic">
 															<img src="${pageContext.request.contextPath}/${productList[0].productpicture}" width="40" height="40" />
 														</div>
@@ -264,10 +300,10 @@
 													</div>
 													<input type="hidden" class="ace" name="productname" value="${productList[0].productname}" />
 													<input type="hidden" class="ace" name="productid" value="${productList[0].productid}" />
-													<div  id="jisuan0" class="col col-2"  style="text-align: left;width: 25px;">${productList[0].productprice}</div>
+													<div  id="jisuan0" class="col col-2"  style="text-align: left">${productList[0].productprice}</div>
 													<input type="hidden" class="ace" name="productprice" value="${productList[0].productprice}" />
 													<input type="hidden" class="ace" name="payprice" value="${productList[0].productprice}" />
-													<div id="jisuan1" class="col col-3" style="text-align: left;width: 20px;">${idList[0]}</div>
+													<div id="jisuan1" class="col col-3" style="text-align: left">${idList[0]}</div>
 													<input type="hidden" class="ace" name="shoppingcount" value="${idList[0]}" />
 													<div id="jisuan2" class="col col-4" style="text-align: left">${zongjia[0]}</div>
 													<input type="hidden" class="ace" name="totalmoneycount" value="${zongjia[0]}" />
@@ -371,7 +407,7 @@
 										</div>
 									</div>
 									<div class="modal-footer">
-										<a href="#" class="btn btn-disabled J_chooseProBtn">加入购物车</a>
+										<a href="/jsp/users/my-dingdan.jsp?flag=2" class="btn btn-disabled J_chooseProBtn">加入购物车</a>
 									</div>
 								</div>
 								<!--E 加价购 产品选择弹框 -->
@@ -385,9 +421,9 @@
 							<input type="hidden" id="couponValue" name="Checkout[couponsValue]">
 							<div class="checkout-confirm">
 
-								<a href="#" class="btn btn-lineDakeLight btn-back-cart">返回购物车</a>
+								<a href="<%--${pageContext.request.c}--%>/jsp/users/my-dingdan.jsp?flag=2" class="btn btn-lineDakeLight btn-back-cart">返回购物车</a>
 								<%--<input type="hidden" class="ace" name="userid" value="${sessionScope.user.userid}" />--%>
-								<input type="hidden" class="ace" name="userid" value="5" />
+								<input type="hidden" class="ace" name="userid" value="${sessionScope.user.userid}" />
 								<%--这里传入userid  userid=${sessionScope.user.userid}  --%>
 								<a href="javascript:jiesuan('<%=basePath%>');" class="btn btn-primary">立即下单</a>
 

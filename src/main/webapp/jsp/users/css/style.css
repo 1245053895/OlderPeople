@@ -58,6 +58,70 @@ body{width: 100%;overflow-x:hidden;}
 .buyCar:hover .content{height:98px;}
 .buyCar .content{width:316px;height:0px;position: absolute;right:0;top:100%;background: #fff;z-index:-999;box-shadow:0 0 8px rgba(0,0,0,.3);transition:all .2s;transform-origin:top center; }
 
+.row1 {
+	width:1224px;
+	margin-left:auto;
+	margin-right:auto;
+	margin-top: 50px;
+}
+.service1 {
+	margin-bottom:50px;
+}
+.service1 li {
+	float: left;
+	height: 100px;
+	width: 165px;
+	font-size: 14px;
+	line-height: 1.5em;
+	color: #9D9D9D;
+	padding-top: 20px;
+	padding-left: 140px;
+	opacity: 0.8;
+	-webkit-transition: all 0.2s ease-in-out;
+	-moz-transition: all 0.2s ease-in-out;
+	-o-transition: all 0.2s ease-in-out;
+	transition: all 0.2s ease-in-out;
+}
+.service1 li:hover {
+	opacity: 1;
+}
+.service1 li.s1 {
+	background-image: url(../images/service_pic.gif);
+	background-repeat: no-repeat;
+	background-position: left center;
+	width: 167px;
+}
+.service1 li.s2 {
+	background-image: url(../images/service_pic2.gif);
+	background-repeat: no-repeat;
+	background-position: left center;
+	width: 167px;
+}
+.service1 li.s3 {
+	background-image: url(../images/service_pic3.gif);
+	background-repeat: no-repeat;
+	background-position: left center;
+}
+.service1 li.s4 {
+	background-image: url(../images/service_pic4.gif);
+	background-repeat: no-repeat;
+	background-position: left center;
+}
+
+.service1 li .title {
+	font-size: 16px;
+	color: #000;
+	margin-bottom: 10px;
+}
+.service1 .clear {
+	font-size: 0px;
+	clear: both;
+	line-height: 0px;
+	height: 1px;
+}
+
+
+
 /*------------------------------------------------------------------------------*/
 /*头部样式设定*/
 .site-header{position: relative;}

@@ -25,6 +25,8 @@
 	<script type="text/javascript" src="${pageContext.request.contextPath}/jsp/users/js/index.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/jsp/users/js/modernizr-custom-v2.7.1.min.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/jsp/users/js/jquery.SuperSlide.js"></script>
+	<script src="http://cdn.bootcss.com/blueimp-md5/1.1.0/js/md5.js"></script>
+	<script src="http://cdn.bootcss.com/blueimp-md5/1.1.0/js/md5.min.js"></script>
 	<script type="text/javascript">
 
         var intDiff = parseInt(90000);//倒计时总秒数量
@@ -155,12 +157,12 @@
 	<div class="member-center clearfix">
 		<div class="member-left fl">
 			<div class="member-apart clearfix">
-				<div class="fl"><a href="#"><img src="${pageContext.request.contextPath}/jsp/users/img/mem.png"></a></div>
+				<div class="fl"><a href="#"><img src="${userAndBrithday.userC}"></a></div>
 				<div class="fl">
-					<p>用户名：</p>
-					<p><a href="#">${sessionScope.user.username}</a></p>
-					<p>账号：</p>
-					<p>${sessionScope.user.userid}</p>
+					用户名：${userAndBrithday.username}<br>
+					<%--<p></p>--%>
+					账号：${userAndBrithday.userid}
+					<%--<p></p>--%>
 				</div>
 			</div>
 			<div class="member-lists" id="leftinfo">
@@ -214,14 +216,19 @@
 						</li>
 						<script>
                             function mmyz() {
-                                var yz = prompt("请输入原始密码验证身份");
+                                var yz = md5(prompt("请输入原始密码验证身份"));
                                 //yz为用户输入的密码，验证过后弹出新密码框；xmm的值是用户输入的新密码
-                                var password=${sessionScope.user.userpwd};
+                                var password='${sessionScope.user.userpwd}';
                                 if (password!=yz){
                                     alert("密码不正确，请重新输入");
                                     return false;
                                 }
                                 var xmm = prompt("请输入新密码");
+                                if(xmm==""){
+                                    alert("密码不能为空");
+                                    return false;
+								}
+
                                 $.ajax({
                                     url:"${pageContext.request.contextPath}/updateLoginPassword.action",
                                     data:{"userpwd":xmm},
@@ -242,13 +249,18 @@
                                 }
                             }
                             function sjyz() {
-                                var yz = prompt("请输入登录密码验证身份")
-                                var password=${sessionScope.user.userpwd};
+                                var yz = md5(prompt("请输入登录密码验证身份"));
+                                var password='${sessionScope.user.userpwd}';
                                 if (password!=yz){
                                     alert("密码不正确，请重新输入");
                                     return false;
                                 }
                                 var xsj = prompt("请输入新手机号")
+                                if(xsj==""){
+                                    alert("输入的手机号不能为空");
+                                    return false;
+                                }
+
                                 $.ajax({
                                     url:"${pageContext.request.contextPath}/updataLoginPhone.action",
                                     data:{"userphone":xsj},

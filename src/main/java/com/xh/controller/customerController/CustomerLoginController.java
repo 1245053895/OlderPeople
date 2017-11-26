@@ -3,6 +3,8 @@ package com.xh.controller.customerController;
 import com.xh.po.*;
 import com.xh.po.vo.ProductTypeExtend;
 import com.xh.po.vo.TotalCreditsById;
+import com.xh.po.vo.UserAndBrithday;
+import com.xh.service.customerService.CustomerInformationService;
 import com.xh.service.customerService.ProductTypeService;
 import com.xh.service.customerService.UserLoginService;
 import com.xh.util.NetworkUtil;
@@ -13,18 +15,18 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.File;
 import java.io.IOException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Controller
 public class CustomerLoginController {
@@ -32,6 +34,9 @@ public class CustomerLoginController {
     private UserLoginService userLoginService;
     @Autowired
     private ProductTypeService productTypeService;
+
+    @Autowired
+    private CustomerInformationService customerInformationService;
 
     //通过该url进入到商城的首页面
     @RequestMapping(value = "/ShopFrontPage.action", method = RequestMethod.GET)
@@ -69,22 +74,35 @@ public class CustomerLoginController {
             if (password != null) {
                 User user = userLoginService.selectAllNameAndPwd(username);
                 if (user != null) {
-                    if (user.getUserpwd().equals(encodePassword(password))) {
-                        HttpSession session = request.getSession();
-                        session.setMaxInactiveInterval(600 * 60 * 60);
-                        session.setAttribute("user", user);
-                        userlog.setUserid(user.getUserid());
-                        userlog.setStartlogintime(new Date());
-                        try {
-                            userlog.setUserip(NetworkUtil.getIpAddress(request));
-                        } catch (IOException e) {
-                            e.printStackTrace();
+                    if (user.getUserA().equals("1")) {
+                        if (user.getUserpwd().equals(encodePassword(password))) {
+                            HttpSession session = request.getSession();
+                            session.setMaxInactiveInterval(600 * 60 * 60);
+                            session.setAttribute("user", user);
+                            userlog.setUserid(user.getUserid());
+                            userlog.setStartlogintime(new Date());
+                            try {
+                                userlog.setUserip(NetworkUtil.getIpAddress(request));
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                            userLoginService.insertStartTimeAndIp(userlog);
+                            user.setUserid(user.getUserid());
+                            user.setUserlogintime(new Date());
+                            userLoginService.UpdateUserLoginTimeById(user);
+                          Integer userlogincount=  userLoginService.IsUserLoginNull(user.getUserid());
+                          if(userlogincount==null){
+                              userLoginService.LoginCountOne(user.getUserid());
+                          }else {
+                              userLoginService.AutoIncreaeOne(user.getUserid());
+                          }
+                            return "redirect:/ShopFrontPage.action";//"/jsp/users/index.jsp";
+                        } else {
+                            model.addAttribute("error", "密码不正确");
                         }
-                        userLoginService.insertStartTimeAndIp(userlog);
-                        return "redirect:/ShopFrontPage.action";//"/jsp/users/index.jsp";
-                    } else {
-                        model.addAttribute("error", "密码不正确");
-                    }
+                      }else {
+                            model.addAttribute("error","该账号已被冻结");
+                        }
                 } else {
                     model.addAttribute("error", "用户名不正确");
                 }
@@ -112,10 +130,21 @@ public class CustomerLoginController {
 
     //用户注册页
     @RequestMapping("/CustomerReginster.action")
-    public String CustomerReginster(User user) {
+    public String CustomerReginster(User user ,HttpServletRequest request,HttpServletResponse response,Model model) {
         user.setUserinputdate(new Date());
         String pwd = user.getUserpwd();
         user.setUserpwd(encodePassword(pwd));
+        user.setUserA("1");
+        String username=request.getParameter("username");
+        List<User> userList1=userLoginService.SelectAllQuerry();
+        for (User userList:userList1){
+            String name=userList.getUsername();
+            if (name.equals(username)){
+                model.addAttribute("error", "用户名相同");
+                return "/jsp/users/register.jsp";
+            }else {
+            }
+        }
         userLoginService.insertNewUser(user);
         return "/jsp/users/login.jsp";
     }
@@ -123,7 +152,12 @@ public class CustomerLoginController {
 
     //个人中心里跳转到修改密码的页面
     @RequestMapping("/UpdataPwdPage.action")
-    public String UpdataPwdPage() {
+    public String UpdataPwdPage(Model model,HttpServletRequest request) {
+        HttpSession session=request.getSession();
+       User user=(User) session.getAttribute("user");
+        Integer id=user.getUserid();
+        UserAndBrithday userAndBrithday=customerInformationService.SelectCustomerInformation(id);
+        model.addAttribute("userAndBrithday",userAndBrithday);
         return "/jsp/users/my-user.jsp";
     }
 
@@ -155,6 +189,9 @@ public class CustomerLoginController {
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
         userid = user.getUserid();
+        Integer id=user.getUserid();
+        UserAndBrithday userAndBrithday=customerInformationService.SelectCustomerInformation(id);
+        model.addAttribute("userAndBrithday",userAndBrithday);
         List<TotalCreditsById> totalCreditsByIds = userLoginService.queryAllById(userid);
         TotalCreditsById totalCreditsById = userLoginService.queryTotalCriditsById(userid);
         model.addAttribute("totalCreditsByIds", totalCreditsByIds);
@@ -197,7 +234,8 @@ public class CustomerLoginController {
 
     //page.jsp商品详情页面，点击加入购物车
     @RequestMapping("/ShopCat.action")
-    public @ResponseBody Map ShopCat(HttpServletRequest request, float[] data) {
+    public @ResponseBody
+    Map ShopCat(HttpServletRequest request, float[] data) {
         Map map = new HashMap();
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
@@ -251,7 +289,7 @@ public class CustomerLoginController {
 
     //收藏宝贝
     @RequestMapping("/ShouCangShop.action")
-    public Map  ShouCangShop(HttpServletRequest request,Integer productid ) {
+    public @ResponseBody Map  ShouCangShop(HttpServletRequest request,Integer productid ) {
         Map map=new HashMap();
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
@@ -274,4 +312,69 @@ public class CustomerLoginController {
             return map;
         }
     }
+
+
+    //用户注册验证
+    @RequestMapping("/customerReginsterCheck.action")
+    public @ResponseBody Map customerReginsterCheck(User user , HttpServletRequest request, HttpServletResponse response, Model model, String data) {
+        Map map=new HashMap();
+        List<User> userList1=userLoginService.SelectAllQuerry();
+        for (User userList:userList1){
+            String name=userList.getUsername();
+            if (data!=null&&name.equals(data)){
+                map.put("result",false);
+                return  map;
+            }
+        }
+        map.put("result",true);
+        return  map;
+
+    }
+
+//好评专区
+    @RequestMapping("/queryTotalCommentshop.action")
+    public String queryTotalCommentshop(Model model,@RequestParam(defaultValue = "1") Integer currentpage){
+        Integer startpage=(currentpage-1)*15;
+      List<TotalCreditsById> totalCreditsByIds=  userLoginService.queryTotalCommentshop(startpage);
+       for(TotalCreditsById totalCreditsById:totalCreditsByIds){
+           Integer onegood=  userLoginService.EveryShopGoodComment(totalCreditsById.getProductid());
+           totalCreditsById.setTotalgoodcomment(onegood);
+           totalCreditsById.setStartpage(startpage);
+       }
+        model.addAttribute("totalCreditsByIds",totalCreditsByIds);
+        return "/jsp/users/rpzq.jsp";
+    }
+
+    //用户个人中心中个人资料头像的显示
+    @RequestMapping("/HeadPictrueShow.action")
+    public String HeadPictrueShow(Model model,HttpServletRequest request, MultipartFile userC)throws IllegalStateException, IOException{
+        HttpSession session=request.getSession();
+       User user=(User) session.getAttribute("user");
+       Integer id=user.getUserid();
+        String sqlPath = null;
+        if (userC != null && userC.getOriginalFilename() != null) {
+            String path = session.getServletContext().getRealPath("/jsp/admin/images/upload");
+            String realName = userC.getOriginalFilename();
+            String realFilePath = path + File.separator + realName;
+            File file = new File(realFilePath);
+            userC.transferTo(file);
+            user.setUserC(realFilePath);
+            sqlPath = "jsp/admin/images/upload/"+realName;
+            user.setUserC(sqlPath);
+            user.setUserid(id);
+            userLoginService.updateUserPic(user);/*得到登录用户的id，根据用户的id修改用户的头像*/
+            UserAndBrithday userAndBrithday=customerInformationService.SelectCustomerInformation(id);
+          // User user1=userLoginService.queryUserPic(user); /*根据用户的id查询用户的账号，用户名和头像*/
+           model.addAttribute("userAndBrithday",userAndBrithday);
+            return "/jsp/users/user.jsp";
+        }
+        return null;
+    }
+
+
+
 }
+
+
+
+

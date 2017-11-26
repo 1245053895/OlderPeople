@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Administrator
@@ -9,7 +10,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>热评专区</title>
+    <title>好评专区</title>
     <link href="${pageContext.request.contextPath}/jsp/users/css/rexiao.css" type="text/css" rel="stylesheet" />
 </head>
 <body class="index">
@@ -25,7 +26,7 @@
                 <li><a href="" target="_blank" title="热销专区">热销专区</a></li>
                 <li><a href="" target="_blank" title="新品专区">新品专区</a></li>
                 <li><a href="" target="_blank" title="积分商城">积分商城</a></li>
-                <li><a href="" target="_blank" title="合伙人">合伙人</a></li>
+                <li><a href="" target="_blank" title="合伙人">好评专区</a></li>
                 <li><a href="" target="_blank" title="关于我们">关于我们</a></li>
             </ul>
         </div>
@@ -37,26 +38,29 @@
     <div class="pro_cont">
         <div class="idx02" id="idx05">
             <dl>
-                <dt>热评专区</dt>
+                <dt>好评专区</dt>
             </dl>
         </div>
-        <div class="item">
+<c:forEach items="${totalCreditsByIds}" var="totalCreditsById" varStatus="status">
+    <div class="item <c:if test='${status.index%5==4}'>last</c:if>">
             <dl>
-                <dt><img src="${pageContext.request.contextPath}/jsp/users/images/rpsp/img39.jpg"/></dt>
+                <dt><a href="${pageContext.request.contextPath}/xiangqing.action?productid=${totalCreditsById.productid}"><img src="${totalCreditsById.productpicture}"/></a></dt>
                 
             </dl>
-            <p class="p01"><font>￥</font><font>1599.00</font></p>
-            <p class="p02"><a href="#">进口天然乳胶床垫弹簧1.51.8米双人软硬席梦思 椰梦维棕垫</a></p>
-            <p class="p03"><span class="sp01">月销量：<b>4523</b></span><span>评价：<strong>3958</strong></span></p>
+            <p class="p01"><font>￥</font><font>${totalCreditsById.productprice}</font></p>
+            <p class="p02"><a href="#">${totalCreditsById.productname}</a></p>
+            <p class="p03"><span class="sp01">评价数：<b>${totalCreditsById.shopComment}</b></span><span>好评数：<strong>${totalCreditsById.totalgoodcomment}</strong></span></p>
         </div>
-        <div class="item">
+</c:forEach>
+
+       <%-- <div class="item">
             <dl>
                 <dt><img src="${pageContext.request.contextPath}/jsp/users/images/rpsp/img39.jpg"/></dt>
                    
             </dl>
             <p class="p01"><font>￥</font><font>1599.00</font></p>
             <p class="p02"><a href="#">进口天然乳胶床垫弹簧1.51.8米双人软硬席梦思 椰梦维棕垫</a></p>
-            <p class="p03"><span class="sp01">月销量：<b>4523</b></span><span>评价：<strong>3958</strong></span></p>
+            <p class="p03"><span class="sp01">评价数：<b>4523</b></span><span>好评数：<strong>3958</strong></span></p>
         </div>
         <div class="item">
             <dl>
@@ -65,7 +69,7 @@
             </dl>
             <p class="p01"><font>￥</font><font>1599.00</font></p>
             <p class="p02"><a href="#">进口天然乳胶床垫弹簧1.51.8米双人软硬席梦思 椰梦维棕垫</a></p>
-            <p class="p03"><span class="sp01">月销量：<b>4523</b></span><span>评价：<strong>3958</strong></span></p>
+            <p class="p03"><span class="sp01">评价数：<b>4523</b></span><span>好评数：<strong>3958</strong></span></p>
         </div>
         <div class="item">
             <dl>
@@ -74,7 +78,7 @@
             </dl>
             <p class="p01"><font>￥</font><font>1599.00</font></p>
             <p class="p02"><a href="#">进口天然乳胶床垫弹簧1.51.8米双人软硬席梦思 椰梦维棕垫</a></p>
-            <p class="p03"><span class="sp01">月销量：<b>4523</b></span><span>评价：<strong>3958</strong></span></p>
+            <p class="p03"><span class="sp01">评价数：<b>4523</b></span><span>好评数：<strong>3958</strong></span></p>
         </div>
         <div class="item last">
             <dl>
@@ -83,7 +87,7 @@
             </dl>
             <p class="p01"><font>￥</font><font>1599.00</font></p>
             <p class="p02"><a href="#">进口天然乳胶床垫弹簧1.51.8米双人软硬席梦思 椰梦维棕垫</a></p>
-            <p class="p03"><span class="sp01">月销量：<b>4523</b></span><span>评价：<strong>3958</strong></span></p>
+            <p class="p03"><span class="sp01">评价数：<b>4523</b></span><span>好评数：<strong>3958</strong></span></p>
         </div>
         <div class="item">
             <dl>
@@ -92,7 +96,7 @@
             </dl>
             <p class="p01"><font>￥</font><font>1599.00</font></p>
             <p class="p02"><a href="#">进口天然乳胶床垫弹簧1.51.8米双人软硬席梦思 椰梦维棕垫</a></p>
-            <p class="p03"><span class="sp01">月销量：<b>4523</b></span><span>评价：<strong>3958</strong></span></p>
+            <p class="p03"><span class="sp01">评价数：<b>4523</b></span><span>好评数：<strong>3958</strong></span></p>
         </div>
         <div class="item">
             <dl>
@@ -101,7 +105,7 @@
             </dl>
             <p class="p01"><font>￥</font><font>1599.00</font></p>
             <p class="p02"><a href="#">进口天然乳胶床垫弹簧1.51.8米双人软硬席梦思 椰梦维棕垫</a></p>
-            <p class="p03"><span class="sp01">月销量：<b>4523</b></span><span>评价：<strong>3958</strong></span></p>
+            <p class="p03"><span class="sp01">评价数：<b>4523</b></span><span>好评数：<strong>3958</strong></span></p>
         </div>
         <div class="item">
             <dl>
@@ -109,7 +113,7 @@
             </dl>
             <p class="p01"><font>￥</font><font>1599.00</font></p>
             <p class="p02"><a href="#">进口天然乳胶床垫弹簧1.51.8米双人软硬席梦思 椰梦维棕垫</a></p>
-            <p class="p03"><span class="sp01">月销量：<b>4523</b></span><span>评价：<strong>3958</strong></span></p>
+            <p class="p03"><span class="sp01">评价数：<b>4523</b></span><span>好评数：<strong>3958</strong></span></p>
         </div>
         <div class="item">
             <dl>
@@ -118,7 +122,7 @@
             </dl>
             <p class="p01"><font>￥</font><font>1599.00</font></p>
             <p class="p02"><a href="#">进口天然乳胶床垫弹簧1.51.8米双人软硬席梦思 椰梦维棕垫</a></p>
-            <p class="p03"><span class="sp01">月销量：<b>4523</b></span><span>评价：<strong>3958</strong></span></p>
+            <p class="p03"><span class="sp01">评价数：：<b>4523</b></span><span>好评数：<strong>3958</strong></span></p>
         </div>
         <div class="item last">
             <dl>
@@ -127,16 +131,18 @@
             </dl>
             <p class="p01"><font>￥</font><font>1599.00</font></p>
             <p class="p02"><a href="#">进口天然乳胶床垫弹簧1.51.8米双人软硬席梦思 椰梦维棕垫</a></p>
-            <p class="p03"><span class="sp01">月销量：<b>4523</b></span><span>评价：<strong>3958</strong></span></p>
-        </div>
+            <p class="p03"><span class="sp01">评价数：<b>4523</b></span><span>好评数：<strong>3958</strong></span></p>
+        </div>--%>
+
+
         <div class="clear"></div>
     </div>
     <div class="page">
         <a href="#" class="pre"> < 上一页 </a>
-        <a href="#" class="on">1</a>
-        <a href="#">2</a>
-        <a href="#">3</a>
-        <a href="#">4</a>
+        <a href="/queryTotalCommentshop.action?currentpage=1" class="<c:if test='${totalCreditsByIds.get(0).startpage==0}'>on</c:if>">1</a>
+        <a href="/queryTotalCommentshop.action?currentpage=2" class="<c:if test='${totalCreditsByIds.get(0).startpage==15}'>on</c:if>">2</a>
+        <a href="/queryTotalCommentshop.action?currentpage=3" class="<c:if test='${totalCreditsByIds.get(0).startpage==30}'>on</c:if>">3</a>
+        <a href="/queryTotalCommentshop.action?currentpage=4" class="<c:if test='${totalCreditsByIds.get(0).startpage==45}'>on</c:if>">4</a>
         <a href="#">5</a>
         <a href="#">6</a>
         <span>...</span>

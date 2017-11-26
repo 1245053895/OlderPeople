@@ -303,6 +303,7 @@
 }
 .wares_list {
 	margin-bottom:60px;
+	width: 1240px;
 }
 
 .wares_list li {
@@ -311,6 +312,7 @@
 	width: 298px;
 	margin-right: 1px;
 	margin-left: 1px;
+	margin-right: 10px;
 	background-color: #FFF;
 	font-size: 14px;
 	position: relative;
@@ -345,9 +347,12 @@
 	overflow: hidden;
 }
 .wares_pic img {
-	height: 298px;
-	width: 298px;
+	height: 230px;
+	width: 230px;
 	opacity: 0.9;
+	margin-left: 35px;
+	margin-top: 30px;
+
 	/*transition-duration: .4s;
 	-moz-transition-duration: .4s;
 	-ms-transition-duration: .4s;
@@ -368,6 +373,7 @@
 	color: #a3a3a3;
 	margin-left: 15px;
 	font-size: 14px;
+	margin-top: -7px;
 }
 
 .wares_tag {

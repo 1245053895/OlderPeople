@@ -1,5 +1,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="f" uri="http://java.sun.com/jstl/fmt_rt" %>
+<%
+	String path = request.getContextPath();
+	String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
 <%--
   Created by IntelliJ IDEA.
   User: Administrator
@@ -122,6 +126,14 @@
 
         })
 	</script>
+	<script>
+        $(function(){
+            $("#shoucang a").click(function(){
+                $("#shoucang a img").removeClass("shoucangs");
+                $(this).find("img").addClass("shoucangs");
+            });
+        });
+	</script>
 	<style>
 		.li-ul-ss l{
 			width:200px;
@@ -165,7 +177,7 @@
 		</div>
 	</div>
 </nav>-->
-
+<form id="mainForm">
 <div class="Xcontent">
 	<ul class="Xcontent01">
 <%--${myProduct.images[0]}--%>
@@ -223,25 +235,29 @@
 				<div class="Xcontent32"><img src="${pageContext.request.contextPath}/jsp/users/images/shangpinxiangqing/X15.png"></div>
 				<form>
 					<%--max为库存量--%>
-					<input class="input" value="1"></form>
+					<input class="input" style="padding-left:0px;" name="shuliang" value="1"></form>
 				<div class="Xcontent33"><img src="${pageContext.request.contextPath}/jsp/users/images/shangpinxiangqing/16.png"></div>
+				<div class="Xcontent36" id="shoucang">
+					<a href=""><img src="${pageContext.request.contextPath}/jsp/users/images/shoucang.png" height="15px" width="15px"></a>
+					<a href="">收藏宝贝</a>
+				</div>
+				<div class="Xcontent36">
+					<a href=""><img src="${pageContext.request.contextPath}/jsp/users/images/kefu.png" height="15px" width="15px"></a>
+					<a href="#">联系客服</a>
+				</div>
 			</div>
-			<div class="Xcontent34"><a href="#">立即购买</a></div>
+
+			<input type="hidden" class="ace" name="productid" value="${productid}" />
+			<div class="Xcontent34"><a href="javascript:oneMei('<%=basePath%>');">立即购买</a></div>
+			<div class="Xcontent341"><a href="#">立即兑换</a></div>
 			<div class="Xcontent35"><a href="javascript:void(0)">加入购物车</a></div>
-            <div class="Xcontent36">
-                <a href=""><img src="${pageContext.request.contextPath}/jsp/users/images/shoucang.png" height="15px" width="15px"></a>
-                <a href="">收藏宝贝</a>
-            </div>
-            <div class="Xcontent36">
-                <a href=""><img src="${pageContext.request.contextPath}/jsp/users/images/kefu.png" height="15px" width="15px"></a>
-                <a href="#">联系客服</a>
-            </div>
+
 		</ol>
 	</ul>
-</div>
+</div></form>
 
 <div class="containers center clearfix" style="margin-top:20px; background:#fff;">
-	<div class="pc-info fr" style="padding-left:10px; padding-top:20px">
+	<div class="pc-info fr" style="padding-left:10px; padding-top:20px;float: left;margin-left: 100px;margin-top: -100px;">
 		<div class="pc-overall">
 			<ul id="H-table1" class="brand-tab H-table1 H-table-shop clearfix ">
 				<li class="cur"><a href="javascript:void(0);">商品介绍</a></li>
@@ -288,8 +304,8 @@
 						</li>--%>
 					</ul>
 					<div style="margin-left: 30px;margin-right:30px ">
-						<c:forEach items="${myProduct.images}" var="it" varStatus="status">
-							<div style="text-align:center"><img src="${pageContext.request.contextPath}/${it}"width="95%";height="100px"></div>
+						<c:forEach items="${myProduct.images1}" var="it" varStatus="status">
+							<div style="text-align:center;margin-left: 200px;"><img src="${pageContext.request.contextPath}/${it}"width="70%";height="100%"></div>
 						</c:forEach>
 					</div>
 				</div>
@@ -386,16 +402,18 @@
 <div style="height:100px"></div>
 <div class="center" style="background:#fff">
     <div class="tabox">
-        <div class="hd">
+        <div class="hd top-nav">
             <ul class="li-ul-ss">
-                <li class=" " style="width:238px">疯狂抢购</li>
-                <li class=" ">热评商品</li>
-                <li class=" ">热卖商品</li>
-                <li class=" ">猜您喜欢</li>
-                <li class="">新品上架</li></ul>
+                <li class="con " style="width:238px">猜您喜欢</li>
+				<li class="con ">新品上架</li>
+                <li class="con ">热评商品</li>
+                <li class="con ">热销商品</li>
+                <li class="con ">疯狂抢购</li>
+
+			</ul>
         </div>
-        <div class="bd">
-            <ul class="lh" style="display: none;">
+        <div class="bd my_ul">
+            <ul class="lh bd_1" style="display: block;">1
 				<c:forEach items="${tuiJianList01}" var="it1" varStatus="status">
 					<%--<div class="Xcontent07"><img  src="${pageContext.request.contextPath}/${it}"></div>--%>
 
@@ -412,7 +430,8 @@
                 </li>
 				</c:forEach>
             </ul>
-			<ul class="lh" style="display: none;">
+
+			<ul class="lh bd_2" style="display: none;">2
 				<c:forEach items="${tuiJianList02}" var="it2" varStatus="status">
 					<%--<div class="Xcontent07"><img  src="${pageContext.request.contextPath}/${it}"></div>--%>
 
@@ -429,7 +448,7 @@
 					</li>
 				</c:forEach>
 			</ul>
-			<ul class="lh" style="display: none;">
+			<ul class="lh bd_3" style="display: none;">3
 				<c:forEach items="${tuiJianList03}" var="it3" varStatus="status">
 					<%--<div class="Xcontent07"><img  src="${pageContext.request.contextPath}/${it}"></div>--%>
 
@@ -446,7 +465,7 @@
 					</li>
 				</c:forEach>
 			</ul>
-			<ul class="lh" style="display: none;">
+			<ul class="lh bd_4" style="display: none;">
 				<c:forEach items="${tuiJianList04}" var="it4" varStatus="status">
 					<%--<div class="Xcontent07"><img  src="${pageContext.request.contextPath}/${it}"></div>--%>
 
@@ -463,7 +482,7 @@
 					</li>
 				</c:forEach>
 			</ul>
-			<ul class="lh" style="display: none;">
+			<ul class="lh bd_5" style="display: none;">
 				<c:forEach items="${tuiJianList05}" var="it5" varStatus="status">
 					<%--<div class="Xcontent07"><img  src="${pageContext.request.contextPath}/${it}"></div>--%>
 
@@ -569,12 +588,16 @@
 	    data.push(parseFloat(${myProduct.productid})); //商品
 		data.push(parseFloat($(".input").val())); //数量
 		data.push(parseFloat($("#price").text()));//价格
-		var d=ajax("ShopCat.action",data);
-		if(d){
-		    alert("加入购物车成功！");
+		if(${sessionScope.user==null}){
+            alert("请先登录！");
         }else {
-            alert("此商品已在购物车！");
-		}
+            var d=ajax("ShopCat.action",data);
+            if(d){
+                alert("加入购物车成功！");
+            }else {
+                alert("此商品已在购物车！");
+            }
+        }
     });
 
 	function ajax(url,data) {
@@ -611,13 +634,16 @@
        /* 商品加入收藏夹的ajax实现传值*/
         $(".Xcontent36").click(function () {
             var productid=${myProduct.productid}
-            var b=ajax1("ShouCangShop.action",productid);
-            if(b){
-                alert("收藏成功")
+            if(${sessionScope.user==null}){
+                alert("请先登录！");
             }else {
-                alert("此商品已在收藏夹")
+                var b=ajax1("ShouCangShop.action",productid);
+                if(b){
+                    alert("收藏成功")
+                }else {
+                    alert("此商品已在收藏夹")
+                }
             }
-
         });
 
 function ajax1(url,productid) {
@@ -656,21 +682,44 @@ function ajax1(url,productid) {
     //hover 触发两个事件，鼠标移上去和移走
     //mousehover 只触发移上去事件
     $(".top-nav ul li").hover(function(){
+        console.log("jjjjj");
         $(this).addClass("hover").siblings().removeClass("hover");
         $(this).find("li .nav a").addClass("hover");
         $(this).find(".con").show();
+
     },function(){
+        console.log("dddd");
         //$(this).css("background-color","#f5f5f5");
         $(this).find(".con").hide();
         //$(this).find(".nav a").removeClass("hover");
         $(this).removeClass("hover");
         $(this).find(".nav a").removeClass("hover");
     })
+
+    function oneMei(basePath) {
+//        alert('您确定要删除吗？');
+        $("#mainForm").attr("action",basePath + "querendingdan.action");
+        $("#mainForm").submit();
+    }
+
 </script>
 
 <script type="text/javascript">
 
-	function myfun() {
+    $(".li-ul-ss").find("li").click(function(){
+        var index=$(this).index();
+        console.log(index);
+        for(var i=0;i<5;i++){
+            if(i==index){
+                $(".my_ul").find("ul").eq(i).css("display","block");
+            }else {
+                $(".my_ul").find("ul").eq(i).css("display","none");
+            }
+        }
+    });
+
+
+    function myfun() {
 		//alert("自动加载") 01  23 45
         <%--alert("自动加载");--%>
         <%--alert( ${pingJiaShuList[0].goodcomment});--%>

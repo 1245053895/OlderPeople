@@ -414,13 +414,13 @@ em {
 	text-align:center
 }
 .checkout-goods-list .col-2 {
-	width:110px
+	width:105px
 }
 .checkout-goods-list .col-3 {
 	width:80px
 }
 .checkout-goods-list .col-4 {
-	width:78px;
+	width:87px;
 	text-align: right;
 	padding-right:30px;
 }
@@ -437,7 +437,7 @@ em {
 	color: #6d6d6d;
 }
 .checkout-goods-list dt .col-1 {
-	width:840px;
+	width:645px;
 	padding-left:20px
 }
 .checkout-goods-list dt .col-3 {
@@ -507,7 +507,7 @@ em {
 
 .checkout-count {
 	position:relative;
-	padding:25px 30px 25px 0;
+	padding:25px 53px 25px 0;
 	min-height:160px;
 	_height:160px;
 	border-top:1px solid #dfdfdf;
@@ -626,7 +626,6 @@ em {
 .checkout-count-extend {
 	float:left;
 	position:relative;
-	margin-left: 30px;
 }
 .checkout-count-extend  h3{
 	font-size: 18px;
@@ -634,7 +633,9 @@ em {
 	color: #333;
 	}
 	.checkout-count-extend input{
-		 width:700px; height:75px; border:1px solid #dfdfdf;
+		 width:600px;
+		height:75px;
+		border:1px solid #dfdfdf;
 	}
 .checkout-count-extend .item input {
 	display:none

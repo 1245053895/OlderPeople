@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xh.mapper.pojo.OrderPayMapper">
+    <!--收货地址-->
+    <insert id="insertSelective1" parameterType="com.xh.po.Gainaddres"
+            useGeneratedKeys="true" keyProperty="gainid" keyColumn="GainId">
+
+
+        insert into gainaddres
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="gainid != null">
+                GainId,
+            </if>
+            <if test="userid != null">
+                UserId,
+            </if>
+            <if test="gainname != null">
+                GainName,
+            </if>
+            <if test="gainmobile != null">
+                GainMobile,
+            </if>
+            <if test="gainaddress != null">
+                GainAddress,
+            </if>
+            <if test="gaincode != null">
+                GainCode,
+            </if>
+            <if test="gainA != null">
+                Gain_A,
+            </if>
+            <if test="gainB != null">
+                Gain_B,
+            </if>
+            <if test="gainC != null">
+                Gain_C,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="gainid != null">
+                #{gainid,jdbcType=INTEGER},
+            </if>
+            <if test="userid != null">
+                #{userid,jdbcType=INTEGER},
+            </if>
+            <if test="gainname != null">
+                #{gainname,jdbcType=VARCHAR},
+            </if>
+            <if test="gainmobile != null">
+                #{gainmobile,jdbcType=VARCHAR},
+            </if>
+            <if test="gainaddress != null">
+                #{gainaddress,jdbcType=VARCHAR},
+            </if>
+            <if test="gaincode != null">
+                #{gaincode,jdbcType=INTEGER},
+            </if>
+            <if test="gainA != null">
+                #{gainA,jdbcType=VARCHAR},
+            </if>
+            <if test="gainB != null">
+                #{gainB,jdbcType=VARCHAR},
+            </if>
+            <if test="gainC != null">
+                #{gainC,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <!--查询收货地址的主键             此方式不可取不能用-->
+    <select id="selectGainId" parameterType="com.xh.po.Gainaddres" resultType="com.xh.po.Gainaddres">
+     SELECT GainId
+     FROM  gainaddres
+        <where>
+            <!--<if test="2>1">-->
+            <if test="userid != null ">
+                AND UserId = #{userid}
+            </if>
+            <if test="gainname != null and !&quot;&quot;.equals(gainname.trim())">
+                AND GainName = #{gainname}
+            </if>
+            <if test="gainmobile != null and !&quot;&quot;.equals(gainmobile.trim())">
+                AND GainMobile = #{gainmobile}
+            </if>
+            <if test="gainaddress != null and !&quot;&quot;.equals(gainaddress.trim())">
+                AND GainAddress = #{gainaddress}
+            </if>
+            <if test="gaincode != null ">
+                AND GainCode = #{gaincode}
+            </if>
+        </where>
+    </select>
+
+    <!--订单信息-->
+    <insert id="insertSelective2" parameterType="com.xh.po.Order"
+            useGeneratedKeys="true" keyProperty="orderid" keyColumn="OrderId">
+        insert into `order`
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="gainid != null">
+                GainId,
+            </if>
+            <if test="gainmethod != null">
+                GainMethod,
+            </if>
+            <if test="orderid != null">
+                OrderId,
+            </if>
+            <if test="userid != null">
+                UserId,
+            </if>
+            <if test="realpay != null">
+                RealPay,
+            </if>
+            <if test="amountpay != null">
+                AmountPay,
+            </if>
+            <if test="paytype != null">
+                PayType,
+            </if>
+            <if test="postfee != null">
+                PostFee,
+            </if>
+            <if test="status != null">
+                Status,
+            </if>
+            <if test="paystatus != null">
+                PayStatus,
+            </if>
+            <if test="2>1">
+                CreateTime,
+            </if>
+            <if test="2>1">
+                UpdateTime,
+            </if>
+            <if test="2>1">
+                PaymentTime,
+            </if>
+            <if test="sendtime != null">
+                SendTime,
+            </if>
+            <if test="endtime != null">
+                EndTime,
+            </if>
+            <if test="closetime != null">
+                CloseTime,
+            </if>
+            <if test="shippingname != null">
+                ShippingName,
+            </if>
+            <if test="shippingcode != null">
+                ShippingCode,
+            </if>
+            <if test="buyerrequest != null">
+                BuyerRequest,
+            </if>
+            <if test="totalcredit != null">
+                TotalCredit,
+            </if>
+            <if test="orderA != null">
+                Order_A,
+            </if>
+            <if test="orderB != null">
+                Order_B,
+            </if>
+            <if test="orderC != null">
+                Order_C,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="gainid != null">
+                #{gainid,jdbcType=INTEGER},
+            </if>
+            <if test="gainmethod != null">
+                #{gainmethod,jdbcType=INTEGER},
+            </if>
+            <if test="orderid != null">
+                #{orderid,jdbcType=INTEGER},
+            </if>
+            <if test="userid != null">
+                #{userid,jdbcType=INTEGER},
+            </if>
+            <if test="realpay != null">
+                #{realpay,jdbcType=DOUBLE},
+            </if>
+            <if test="amountpay != null">
+                #{amountpay,jdbcType=DOUBLE},
+            </if>
+            <if test="paytype != null">
+                #{paytype,jdbcType=INTEGER},
+            </if>
+            <if test="postfee != null">
+                #{postfee,jdbcType=DOUBLE},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=INTEGER},
+            </if>
+            <if test="paystatus != null">
+                #{paystatus,jdbcType=INTEGER},
+            </if>
+            <if test="createtime != null">
+                #{createtime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updatetime != null">
+                #{updatetime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="paymenttime != null">
+                #{paymenttime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="sendtime != null">
+                #{sendtime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="endtime != null">
+                #{endtime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="closetime != null">
+                #{closetime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="shippingname != null">
+                #{shippingname,jdbcType=VARCHAR},
+            </if>
+            <if test="shippingcode != null">
+                #{shippingcode,jdbcType=VARCHAR},
+            </if>
+            <if test="buyerrequest != null">
+                #{buyerrequest,jdbcType=VARCHAR},
+            </if>
+            <if test="totalcredit != null">
+                #{totalcredit,jdbcType=INTEGER},
+            </if>
+            <if test="orderA != null">
+                #{orderA,jdbcType=VARCHAR},
+            </if>
+            <if test="orderB != null">
+                #{orderB,jdbcType=VARCHAR},
+            </if>
+            <if test="orderC != null">
+                #{orderC,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <!--订单商品-->
+    <insert id="insertSelective3" parameterType="com.xh.po.Orderproduct">
+        insert into orderproduct
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+
+            <if test="payprice != null">
+                PayPrice,
+            </if>
+            <if test="orderproductid != null">
+                OrderProductId,
+            </if>
+            <if test="productid != null">
+                ProductId,
+            </if>
+            <if test="orderid != null">
+                OrderId,
+            </if>
+            <if test="shoppingcount != null">
+                ShoppingCount,
+            </if>
+            <if test="totalmoneycount != null">
+                TotalMoneyCount,
+            </if>
+            <if test="orderproductA != null">
+                OrderProduct_A,
+            </if>
+            <if test="orderproductB != null">
+                OrderProduct_B,
+            </if>
+            <if test="orderproductC != null">
+                OrderProduct_C,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+
+            <if test="payprice != null">
+                #{payprice,jdbcType=DOUBLE},
+            </if>
+            <if test="orderproductid != null">
+                #{orderproductid,jdbcType=INTEGER},
+            </if>
+            <if test="productid != null">
+                #{productid,jdbcType=INTEGER},
+            </if>
+            <if test="orderid != null">
+                #{orderid,jdbcType=INTEGER},
+            </if>
+            <if test="shoppingcount != null">
+                #{shoppingcount,jdbcType=INTEGER},
+            </if>
+            <if test="totalmoneycount != null">
+                #{totalmoneycount,jdbcType=DOUBLE},
+            </if>
+            <if test="orderproductA != null">
+                #{orderproductA,jdbcType=VARCHAR},
+            </if>
+            <if test="orderproductB != null">
+                #{orderproductB,jdbcType=VARCHAR},
+            </if>
+            <if test="orderproductC != null">
+                #{orderproductC,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+
+
+</mapper>

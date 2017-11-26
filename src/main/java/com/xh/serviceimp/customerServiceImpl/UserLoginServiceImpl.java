@@ -141,5 +141,81 @@ public class UserLoginServiceImpl implements UserLoginService {
         return favorites2;
     }
 
+    @Override
+    public Integer queryLookcount(Integer productid) {
+      Integer ProductLookCount=  userLoginMapper.queryLookcount(productid);
+        return ProductLookCount;
+    }
+
+    @Override
+    public void setLookcount(Integer productid) {
+        userLoginMapper.setLookcount(productid);
+    }
+
+    @Override
+    public void AutoIncreaseOne(Integer productid) {
+        userLoginMapper.AutoIncreaseOne(productid);
+    }
+
+    @Override
+    public List<TotalCreditsById> queryTotalCommentshop(Integer startpage) {
+      List<TotalCreditsById> ShoptotalCreditsByIds= userLoginMapper.queryTotalCommentshop(startpage);
+        return ShoptotalCreditsByIds;
+    }
+
+    @Override
+    public Integer EveryShopGoodComment(Integer productid) {
+        Integer totalgood = userLoginMapper.EveryShopGoodComment(productid);
+        return totalgood;
+    }
+
+    @Override
+    public void UpdateUserLoginTimeById(User user) {
+        userLoginMapper.UpdateUserLoginTimeById(user);
+    }
+
+    @Override
+    public Integer IsUserLoginNull(Integer userid) {
+      Integer userlogincount=  userLoginMapper.IsUserLoginNull(userid);
+        return userlogincount;
+    }
+
+    @Override
+    public void LoginCountOne(Integer userid) {
+        userLoginMapper.LoginCountOne(userid);
+
+    }
+
+    @Override
+    public void AutoIncreaeOne(Integer userid) {
+        userLoginMapper.AutoIncreaeOne(userid);
+
+    }
+
+    @Override
+    public List<Pay> queryPayMethod() {
+      List<Pay>  pays= userLoginMapper.queryPayMethod();
+        return pays;
+    }
+
+    @Override
+    public void updateUserPic(User user) {
+        userLoginMapper.updateUserPic(user);
+    }
+
+    @Override
+    public User queryUserPic(User user) {
+       User user1= userLoginMapper.queryUserPic(user);
+        return user1;
+    }
+
+    @Override
+    public List<User> SelectAllQuerry() {
+        List<User> userList1 =userLoginMapper.SelectAllQuerry();
+        return userList1;
+    }
+
+
+
 
 }

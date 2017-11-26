@@ -106,7 +106,6 @@
 </head>
 <body>
 
-
 <header id="pc-header">
 
 	<c:if test="${ products==null|| hotsaleproducts==null|| top10products==null|| creditproducts==null|| jiankang==null|| jujia==null|| yule==null||  Recommendations==null}">
@@ -173,11 +172,11 @@
 				</div>
 			</div>
 			<ul class="yMenuIndex">
-				<li><a href="" target="_blank" title="首页">首页</a></li>
-				<li><a href="" target="_blank" title="热销专区">热销专区</a></li>
-				<li><a href="" target="_blank" title="新品专区">新品专区</a></li>
+				<li><a href="${pageContext.request.contextPath}/ShopFrontPage.action"  title="首页">首页</a></li>
+				<li><a href="${pageContext.request.contextPath}/ProductHot.action" target="_blank" title="热销专区">热销专区</a></li>
+				<li><a href="${pageContext.request.contextPath}/SelectNewProduct.action" target="_blank" title="新品专区">新品专区</a></li>
 				<li><a href="" target="_blank" title="积分商城">积分商城</a></li>
-				<li><a href="" target="_blank" title="合伙人">合伙人</a></li>
+				<li><a href="${pageContext.request.contextPath}/queryTotalCommentshop.action" target="_blank" title="好评专区">好评专区</a></li>
 				<li><a href="" target="_blank" title="关于我们">关于我们</a></li>
 			</ul>
 		</div>
@@ -191,9 +190,9 @@
 						<ul class="contain">
 							<li class="item"><a href="#" alt=""><img src="${pageContext.request.contextPath}/jsp/users/images/lbztq.jpg"></a></li>
 							<li class="item"><a href="#" alt=""><img src="${pageContext.request.contextPath}/jsp/users/images/lbly.jpg"></a></li>
+							<li class="item"><a href="#" alt=""><img src="${pageContext.request.contextPath}/jsp/users/images/lbch.jpg"></a></li>
+							<li class="item"><a href="#" alt=""><img src="${pageContext.request.contextPath}/jsp/users/images/lbghl.jpg"></a></li>
 							<li class="item"><a href="#" alt=""><img src="${pageContext.request.contextPath}/jsp/users/images/lbwfsb.jpg"></a></li>
-							<li class="item"><a href="#" alt=""><img src="${pageContext.request.contextPath}/jsp/users/images/lbxyj.gif"></a></li>
-							<li class="item"><a href="#" alt=""><img src="${pageContext.request.contextPath}/jsp/users/images/index_slider_pic5.jpg"></a></li>
 						</ul>
 					</div>
 				</section>
@@ -236,14 +235,14 @@
 					</div>
 				</div>
 			</header>
-			<div class="m-box">
-				<section class="span20 m-slide">
-					<div class="m-slide-contain m-s2">
-						<div class="m-slide-item">
-							<ul class="m-cols m-col-5">
+			<div class="m-box" style="height:700px;">
+				<section class="span20 m-slide"  style="height: 330px">
+					<div class="m-slide-contain m-s2" >
+						<div class="m-slide-item" >
+							<ul class="m-cols m-col-5" >
 								<c:forEach begin="0" end="4" step="1" items="${products}" var="product">
-								<li class="col sku-item ">
-									<dl class="row">
+								<li class="col sku-item " >
+									<dl class="row" >
 										<dt><a href="${pageContext.request.contextPath}/xiangqing.action?productid=${product.productid}"><img src="${product.productpicture}"></a></dt>
 										<dd class="name"><a href="${pageContext.request.contextPath}/xiangqing.action?productid=${product.productid}">${product.productname}</a></dd>
 										<dd class="desc">${product.productdescribe}</dd>
@@ -266,6 +265,40 @@
 									</li>
 								</c:forEach>
 
+							<%--
+								<li class="col sku-item ">
+									<dl class="row">
+										<dt><img src="${pageContext.request.contextPath}/jsp/users/images/single/single10.png"></dt>
+										<dd class="name">小米电视3S 43英寸</dd>
+										<dd class="desc">4GB内存+128GB闪存，陶瓷版</dd>
+										<dd class="price">1499元</dd>
+									</dl>
+								</li>
+								<li class="col sku-item ">
+									<dl class="row">
+										<dt><img src="${pageContext.request.contextPath}/jsp/users/images/single/single7.png"></dt>
+										<dd class="name">小米电视3S 43英寸</dd>
+										<dd class="desc">4GB内存+128GB闪存，陶瓷版</dd>
+										<dd class="price">1499元</dd>
+									</dl>
+								</li>
+								<li class="col sku-item ">
+									<dl class="row">
+										<dt><img src="${pageContext.request.contextPath}/jsp/users/images/single/single8.png"></dt>
+										<dd class="name">小米电视3S 43英寸</dd>
+										<dd class="desc">4GB内存+128GB闪存，陶瓷版</dd>
+										<dd class="price">1499元</dd>
+									</dl>
+								</li>
+								<li class="col sku-item ">
+									<dl class="row">
+										<dt><img src="${pageContext.request.contextPath}/jsp/users/images/single/single9.jpg"></dt>
+										<dd class="name">小米电视3S 43英寸</dd>
+										<dd class="desc">4GB内存+128GB闪存，陶瓷版</dd>
+										<dd class="price">1499元</dd>
+									</dl>
+								</li>--%>
+
 							</ul>
 						</div>
 					</div>
@@ -281,7 +314,7 @@
 					<h2 class="m-hdL">热销商品</h2>
 					<div class="m-hdR">
 						<div class="scan">
-							<span>查看全部</span>
+							<span><a href="${pageContext.request.contextPath}/ProductHot.action">查看全部</a></span>
 							<a href="#" class="icon">&gt;</a>
 						</div>
 					</div>
@@ -289,7 +322,7 @@
 				<section class="m-box line2">
 					<div class="span4">
 						<div class="row main-pic">
-							<img src="${pageContext.request.contextPath}/jsp/users/images/rxsp/row2Img.jpg">
+							<img src="${pageContext.request.contextPath}/jsp/users/images/rxsp/left2.jpg">
 						</div>
 					</div>
 					<div class="span16">
@@ -298,7 +331,7 @@
 								<c:if test="${status.index%2==0}">
 									<li class="col">
 										<div class="row">
-											<a href="page.jsp">
+											<a href="${pageContext.request.contextPath}/xiangqing.action?productid=${hotsaleproduct.productid}">
 												<span class="tip orange">销量${hotsaleproduct.totalhotsale}</span>
 												<dl>
 													<dt><a href="${pageContext.request.contextPath}/xiangqing.action?productid=${hotsaleproduct.productid}"><img src="${hotsaleproduct.productpicture}"></a></dt>
@@ -312,7 +345,7 @@
 
 								<c:if test="${status.index%2==1}">
 										<div class="row">
-											<a href="page.jsp">
+											<a href="${pageContext.request.contextPath}/xiangqing.action?productid=${hotsaleproduct.productid}">
 												<span class="tip blue">销量${hotsaleproduct.totalhotsale}</span>
 												<dl>
 													<dt><a href="${pageContext.request.contextPath}/xiangqing.action?productid=${hotsaleproduct.productid}"><img src="${hotsaleproduct.productpicture}"></a></dt>
@@ -352,7 +385,7 @@
 				<section class="m-box line2  clear_top  clear_bottom">
 					<div class="span4">
 						<div class="row main-pic">
-							<img src="${pageContext.request.contextPath}/jsp/users/images/rxsp/row2Img.jpg">
+							<img src="${pageContext.request.contextPath}/jsp/users/images/rxsp/left1.jpg">
 						</div>
 					</div>
 					<div class="span16">
@@ -502,7 +535,7 @@
 				<section class="m-box line2">
 					<div class="span4">
 						<div class="main-pic">
-							<img src="${pageContext.request.contextPath}/jsp/users/images/rxsp/row2Img.jpg">
+							<img src="${pageContext.request.contextPath}/jsp/users/images/rxsp/left3.jpg">
 						</div>
 					</div>
 					<div class="span16">
@@ -1024,7 +1057,7 @@
 						<c:forEach items="${Recommendations}" var="Recommendation">
 							<li class="col">
 								<div class="row">
-									<img src="${Recommendation.productpicture}" style="width:auto;height:250px; ">
+									<a href="${pageContext.request.contextPath}/xiangqing.action?productid=${Recommendation.productid}"><img src="${Recommendation.productpicture}" style="width:250px;height:250px; "></a>
 									<div style="border-bottom: 1px #CCCCCC solid"></div>
 									<div class="content">
 										<div class="from">推荐理由</div>
@@ -1034,10 +1067,53 @@
 										<a href="${pageContext.request.contextPath}/xiangqing.action?productid=${Recommendation.productid}" class="name">${Recommendation.productname}</a>
 										<a href="${pageContext.request.contextPath}/xiangqing.action?productid=${Recommendation.productid}" class="price"  style="width: 100px;">${Recommendation.productprice}元</a>
 									</div>
+
 								</div>
 							</li>
 						</c:forEach>
 
+					<%--	<li class="col">
+							<div class="row">
+								<img src="${pageContext.request.contextPath}/jsp/users/images/djtj/yyllc.jpg">
+								<div style="border-bottom: 1px #CCCCCC solid"></div>
+								<div class="content">
+									<div class="from">推荐理由</div>
+									<div class="cmt">
+										冬季滋补，把玉树冬虫夏草带给老年人，精美礼盒包装送礼佳品，品质保障
+									</div>
+									<a href="#" class="name">医用理疗车</a>
+									<a href="#" class="price">1699元</a>
+								</div>
+							</div>
+						</li>
+						<li class="col">
+							<div class="row">
+								<img src="${pageContext.request.contextPath}/jsp/users/images/djtj/fdjzjq.jpg">
+								<div style="border-bottom: 1px #CCCCCC solid"></div>
+								<div class="content">
+									<div class="from">推荐理由</div>
+									<div class="cmt">
+										冬季滋补，把玉树冬虫夏草带给老年人，精美礼盒包装送礼佳品，品质保障
+									</div>
+									<a href="#" class="name">放大镜指甲钳</a>
+									<a href="#" class="price">1699元</a>
+								</div>
+							</div>
+						</li>
+						<li class="col">
+							<div class="row">
+								<img src="${pageContext.request.contextPath}/jsp/users/images/djtj/rs.jpg">
+								<div style="border-bottom: 1px #CCCCCC solid"></div>
+								<div class="content">
+									<div class="from">推荐理由</div>
+									<div class="cmt">
+										冬季滋补，把玉树冬虫夏草带给老年人，精美礼盒包装送礼佳品，品质保障
+									</div>
+									<a href="#" class="name">人参</a>
+									<a href="#" class="price">1699元</a>
+								</div>
+							</div>
+						</li>--%>
 					</ul>
 				</section>
 			</section>
@@ -1054,7 +1130,7 @@
 <footer>
 	<div class="pc-footer-top">
 		<div class="center">
-			<ul class="clearfix">
+			<ul class="clearfix" style="margin-left: 110px;">
 				<li>
 					<span>关于我们</span>
 					<a href="#">关于我们</a>
@@ -1124,14 +1200,6 @@
 		</div>
 	</div>
 </footer>
-<div class="float">
-	<ul>
-		<li><a href="#" class="a01" title="购物车"></a></li>
-		<li><a href="#" class="a02" title="收藏夹"></a></li>
-		<li><a href="#" class="a03" title="联系客服"></a></li>
-		<li><p><a href="#" class="a04" title="置顶"></a></p></li>
-	</ul>
-</div>
 <script type="text/javascript">
     //hover 触发两个事件，鼠标移上去和移走
     //mousehover 只触发移上去事件

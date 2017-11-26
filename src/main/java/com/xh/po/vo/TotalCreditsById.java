@@ -15,7 +15,42 @@ public class TotalCreditsById extends Product{
     private String comment;
     private String username;
     private Integer totalhotsale;
+    private Integer shopComment;
+    private Integer totalgoodcomment;
+    private Integer onegood;
+    private Integer startpage;
 
+    public Integer getStartpage() {
+        return startpage;
+    }
+
+    public void setStartpage(Integer startpage) {
+        this.startpage = startpage;
+    }
+
+    public Integer getOnegood() {
+        return onegood;
+    }
+
+    public void setOnegood(Integer onegood) {
+        this.onegood = onegood;
+    }
+
+    public Integer getTotalgoodcomment() {
+        return totalgoodcomment;
+    }
+
+    public void setTotalgoodcomment(Integer totalgoodcomment) {
+        this.totalgoodcomment = totalgoodcomment;
+    }
+
+    public Integer getShopComment() {
+        return shopComment;
+    }
+
+    public void setShopComment(Integer shopComment) {
+        this.shopComment = shopComment;
+    }
 
     public String getUsername() {
         return username;

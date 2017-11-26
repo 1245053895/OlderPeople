@@ -1,12 +1,15 @@
 package com.xh.Test1;
 
 import com.xh.mapper.customerMapper.CustomerInformationMapper;
+import com.xh.mapper.customerMapper.ProductNewMapper;
 import com.xh.mapper.customerMapper.ProductTypeCustomerMapper;
 import com.xh.mapper.customerMapper.UserLoginMapper;
 import com.xh.po.Gainaddres;
 import com.xh.po.Product;
 import com.xh.po.Producttype;
 import com.xh.po.User;
+import com.xh.po.vo.TotalCreditsById;
+import com.xh.service.customerService.ProductNewService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +30,8 @@ public class Mytest {
     private UserLoginMapper userLoginMapper;
     @Autowired
     private ProductTypeCustomerMapper productTypeCustomerMapper;
+    @Autowired
+    private ProductNewMapper productNewMapper;
 
     @Test
    public void TestA(){
@@ -47,8 +52,9 @@ public class Mytest {
         user.setUserid(13);*/
      /*  customerInformationMapper.UpdateUserByid(user);*/
 
-     List<Product> products=productTypeCustomerMapper.SelectProductByTypeId(1);
-     System.out.print(products);
+    /* List<Product> products=productTypeCustomerMapper.SelectProductByTypeId(1);
+     System.out.print(products);*/
+    List<TotalCreditsById> totalCreditsByIds=productNewMapper.SelectProductNew();
 
    }
 }

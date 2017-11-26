@@ -27,7 +27,12 @@ public class OrderPayController {
 
     //    详情页面的单个商品购买
     @RequestMapping(value = "/querendingdan.action", method = {RequestMethod.GET, RequestMethod.POST})
-    public String QuerryAllPay44(Model model, String[] productid, String[] shuliang) {
+    public String QuerryAllPay44(HttpServletRequest request,Model model, String[] productid, String[] shuliang) {
+        HttpSession session=request.getSession();
+        User user=(User) session.getAttribute("user");
+        Integer userid=user.getUserid();
+        List<Gainaddres> gainaddresList=  userLoginService.selectGainAddressByUserId(userid); /*根据用户的id查询出该用户的收货地址*/
+        model.addAttribute("gainaddresList",gainaddresList);
 
         List<Integer> idList = new ArrayList<Integer>();
         for (String id : shuliang) {

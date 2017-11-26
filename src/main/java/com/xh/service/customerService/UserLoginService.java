@@ -118,5 +118,8 @@ public interface UserLoginService {
     //根据用户的id查询用户的头像
     public User queryUserPic(User user);
 
+    //根据用户的id查询出该用户对应的收货地址
+    public List<Gainaddres> selectGainAddressByUserId(Integer userid);
+
 
 }

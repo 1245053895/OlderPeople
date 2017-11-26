@@ -210,6 +210,12 @@ public class UserLoginServiceImpl implements UserLoginService {
     }
 
     @Override
+    public List<Gainaddres> selectGainAddressByUserId(Integer userid) {
+      List<Gainaddres> gainaddres=  userLoginMapper.selectGainAddressByUserId(userid);
+        return gainaddres;
+    }
+
+    @Override
     public List<User> SelectAllQuerry() {
         List<User> userList1 =userLoginMapper.SelectAllQuerry();
         return userList1;

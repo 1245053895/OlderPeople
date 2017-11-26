@@ -90,24 +90,26 @@
 							</div>
 							<div class="box-bd">
 								<div class="clearfix xm-address-list" id="checkoutAddrList">
+								<c:forEach items="${gainaddresList}" var="gainaddres">
 									<dl class="item" >
 										<dt>
-											<strong class="itemConsignee">姓名</strong>
+											<strong class="itemConsignee">${gainaddres.gainname}</strong>
 											<span class="tag">修改</span>
 											<span class="tag">删除</span>
 										</dt>
 										<br/>
 										<dd>
-											<p class="itemRegion">地址</p>
-											<p class="itemStreet">电话</p>
-											<p class="tel">邮箱</p>
+											<p class="itemRegion">${gainaddres.gainaddress}</p>
+											<p class="itemStreet">${gainaddres.gainmobile}</p>
+											<p class="tel">${gainaddres.gaincode}</p>
 										</dd>
 										<dd style="display:none">
 											<input type="radio" name="Checkout[address]" class="addressId"  value="10140916720030323">
 										</dd>
 									</dl>
+								</c:forEach>
 
-									<dl class="item" >
+								<%--	<dl class="item" >
 										<dt>
 											<strong class="itemConsignee">姓名</strong>
 											<span class="tag">修改1</span>
@@ -139,7 +141,7 @@
 										<dd style="display:none">
 											<input type="radio" name="Checkout[address]" class="addressId"  value="10140916720030323">
 										</dd>
-									</dl>
+									</dl>--%>
 
 
 									<dl class="item" id="newadr" style="display: none">

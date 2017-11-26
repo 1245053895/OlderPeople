@@ -189,9 +189,9 @@
 	</div>
 </div>-->
 
-<header id="pc-header">
+<header id="pc-header"> 
 
-	<c:if test="${empty products||empty hotsaleproducts||empty top10products||empty creditproducts||empty jiankang||empty jujia||empty yule|| empty Recommendations}">
+	<c:if test="${ products==null}">
 		<jsp:forward page="${pageContext.request.contextPath}/selectproduct.action"></jsp:forward>
 	</c:if>
 	<jsp:include page="/jsp/users/head.jsp"></jsp:include>

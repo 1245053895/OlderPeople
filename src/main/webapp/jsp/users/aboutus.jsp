@@ -171,7 +171,7 @@
     <div class="member-center clearfix" style="margin-top: 10px;margin-left: 50px">
 
         <div class="member-right fr">
-                <img src="images/abs.jpg">
+                <img src="images/abt.jpg">
             <div class="member-border">
 
                 <div class="member-caution clearfix">

@@ -37,7 +37,7 @@
     </div>
 
 </header>
-<div style="height: 30px;"></div>
+<div style="height: 30px;background-color: #f5f5f5"></div>
 <div id="wrap" class="clearfix">
 
     <section class="row clearfix">
@@ -54,10 +54,10 @@
 
             <ul class="wares_list">
                 <c:forEach items="${pagination.list}" var="totalCreditsByIdNew1">
-                    <li style="margin-top:14px">
+                    <li style="margin-top:30px">
                         <div class="wares_pic">
                             <a href="${pageContext.request.contextPath}/xiangqing.action?productid=${totalCreditsByIdNew1.productid}" target="_blank">
-                                <img src="  ${totalCreditsByIdNew1.productpicture}" data-original="#" width="298" height="298">
+                                <img src="  ${totalCreditsByIdNew1.productpicture}" data-original="#" >
                             </a>
                         </div>
                         <div class="wares_title">

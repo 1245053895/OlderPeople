@@ -25,7 +25,7 @@ public class OrderPayController {
     private UserLoginService userLoginService;
 
 
-    //    详情页面的单个商品购买
+    //   详情页面的单个商品购买
     @RequestMapping(value = "/querendingdan.action", method = {RequestMethod.GET, RequestMethod.POST})
     public String QuerryAllPay44(HttpServletRequest request,Model model, String[] productid, String[] shuliang) {
         HttpSession session=request.getSession();

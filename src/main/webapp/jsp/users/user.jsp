@@ -204,8 +204,8 @@
 <body>
 
 <header id="pc-header">
+
 	<jsp:include page="/jsp/users/head.jsp"></jsp:include>
-	<%--</div>--%>
 	<!--  顶部    start-->
 	<div class="yHeader">
 		<!-- 导航   start  -->

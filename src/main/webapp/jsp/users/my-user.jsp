@@ -150,6 +150,22 @@
 <header id="pc-header">
 
 	<jsp:include page="/jsp/users/head.jsp"></jsp:include>
+	<!--  顶部    start-->
+	<div class="yHeader">
+		<!-- 导航   start  -->
+		<div class="yNavIndex">
+			<ul class="yMenuIndex">
+				<li><a href="${pageContext.request.contextPath}/ShopFrontPage.action"  title="首页">首页</a></li>
+				<li><a href="${pageContext.request.contextPath}/ProductHot.action" target="_blank" title="热销专区">热销专区</a></li>
+				<li><a href="${pageContext.request.contextPath}/SelectNewProduct.action" target="_blank" title="新品专区">新品专区</a></li>
+				<li><a href="${pageContext.request.contextPath}/SelectProducCredits.action" target="_blank" title="积分商城">积分商城</a></li>
+				<li><a href="${pageContext.request.contextPath}/queryTotalCommentshop.action" target="_blank" title="好评专区">好评专区</a></li>
+				<li><a href="${pageContext.request.contextPath}/jsp/users/aboutus.jsp" target="_blank" title="关于我们">关于我们</a></li>
+			</ul>
+		</div>
+		<!-- 导航   end  -->
+	</div>
+
 </header>
 
 

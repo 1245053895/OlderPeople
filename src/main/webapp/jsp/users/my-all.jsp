@@ -148,6 +148,7 @@
 
 
 
+
 <div class="center" style="background:#fff;">
 	<div style="padding:20px">
 <%--		<div class="containers clearfix"><div class="pc-nav-item fl"><a href="#" class="pc-title">首页</a> &gt;<a href="#"> 所有货架</a></div> <div class="fr" style="padding-top:20px;"><a href="#" class="reds">所有品牌&gt;</a></div></div>--%>

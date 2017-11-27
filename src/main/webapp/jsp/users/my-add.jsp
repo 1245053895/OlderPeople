@@ -28,8 +28,112 @@
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/jsp/users/css/car/base.css">
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/jsp/users/css/car/home.css">
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/jsp/users/css/jquery-labelauty.css">
+	<link rel="stylesheet" type="text/css" href="css/styledz.css">
+	<link rel="stylesheet" type="text/css" href="css/css.css" />
 	<script src="${pageContext.request.contextPath}/jsp/users/js/jquery-1.8.3.min.js"></script>
 	<script src="${pageContext.request.contextPath}/jsp/users/js/jquery-labelauty.js"></script>
+	<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+	<script type="text/javascript">
+        $(function() {
+            var region = $("#region");
+            var address = $("#address");
+            var number_this = $("#number_this");
+            var name = $("#name_");
+            var phone = $("#phone");
+            $("#sub_setID").click(function() {
+                var input_out = $(".input_style");
+                for (var i = 0; i <= input_out.length; i++) {
+                    if ($(input_out[i]).val() == "") {
+                        $(input_out[i]).css("border", "1px solid red");
+
+                        return false;
+                    } else {
+                        $(input_out[i]).css("border", "1px solid #cccccc");
+                    }
+                }
+            });
+            var span_momey = $(".span_momey");
+            var b = 0;
+            for (var i = 0; i < span_momey.length; i++) {
+                b += parseFloat($(span_momey[i]).html());
+            }
+            var out_momey = $(".out_momey");
+            out_momey.html(b);
+            $(".shade_content").hide();
+            $(".shade").hide();
+            $('.nav_mini ul li').hover(function() {
+                $(this).find('.two_nav').show(100);
+            }, function() {
+                $(this).find('.two_nav').hide(100);
+            })
+            $('.left_nav').hover(function() {
+                $(this).find('.nav_mini').show(100);
+            }, function() {
+                $(this).find('.nav_mini').hide(100);
+            })
+            $('#jia').click(function() {
+                $('input[name=num]').val(parseInt($('input[name=num]').val()) + 1);
+            })
+            $('#jian').click(function() {
+                $('input[name=num]').val(parseInt($('input[name=num]').val()) - 1);
+            })
+            $('.Caddress .add_mi').click(function() {
+                $(this).css('background', 'url("images/mail_1.jpg") no-repeat').siblings('.add_mi').css('background', 'url("images/mail.jpg") no-repeat')
+            })
+        })
+        var x = Array();
+
+        function func(a, b) {
+            x[b] = a.html();
+            alert(x)
+            a.css('border', '2px solid #f00').siblings('.min_mx').css('border', '2px solid #ccc');
+        }
+
+        function onclick_close() {
+            var shade_content = $(".shade_content");
+            var shade = $(".shade");
+            if (confirm("确认关闭么！此操作不可恢复")) {
+                shade_content.hide();
+                shade.hide();
+            }
+        }
+
+        function onclick_open() {
+            $(".shade_content").show();
+            $(".shade").show();
+            var input_out = $(".input_style");
+            for (var i = 0; i <= input_out.length; i++) {
+                if ($(input_out[i]).val() != "") {
+                    $(input_out[i]).val("");
+                }
+            }
+        }
+
+        function onclick_remove(r) {
+            if (confirm("确认删除么！此操作不可恢复")) {
+                var out_momey = $(".out_momey");
+                var input_val = $(r).parent().prev().children().eq(1).val();
+                var span_html = $(r).parent().prev().prev().children().html();
+                var out_add = parseFloat(input_val).toFixed(2) * parseFloat(span_html).toFixed(2);
+                var reduce = parseFloat(out_momey.html()).toFixed(2)- parseFloat(out_add).toFixed(2);
+                console.log(parseFloat(reduce).toFixed(2));
+                out_momey.text(parseFloat(reduce).toFixed(2))
+                $(r).parent().parent().remove();
+            }
+        }
+
+        function onclick_btnAdd(a) {
+            var out_momey = $(".out_momey");
+            var input_ = $(a).prev();
+            var input_val = $(a).prev().val();
+            var input_add = parseInt(input_val) + 1;
+            input_.val(input_add);
+            var btn_momey = parseFloat($(a).parent().prev().children().html());
+            var out_momey_float = parseFloat(out_momey.html()) + btn_momey;
+            out_momey.text(out_momey_float.toFixed(2));
+        }
+
+	</script>
 	<script>
         $(function(){
             $(':input').labelauty();
@@ -39,9 +143,9 @@
 </head>
 <body>
 
-<%--<header id="pc-header">
+<header id="pc-header">
 	<jsp:include page="/jsp/users/head.jsp"></jsp:include>
-</header>--%>
+</header>
 
 <div class="center" style="background:#fff;margin-top: -15px;">
 	<div class="pay_lc1">
@@ -83,7 +187,10 @@
 						<!-- 地址状态 0：默认选择；1：新增地址；2：修改地址 -->
 						<input type="hidden" name="Checkout[addressState]" id="addrState"   value="0">
 						<!-- 收货地址 -->
-						<div class="xm-box">
+						<div>
+							<jsp:include page="/jsp/users/shdz/shdz.jsp"></jsp:include>
+						</div>
+<%--						<div class="xm-box">
 							<div class="box-hd ">
 								<h2 class="title">收货地址</h2>
 								<!---->
@@ -109,7 +216,7 @@
 									</dl>
 								</c:forEach>
 
-								<%--	<dl class="item" >
+								&lt;%&ndash;	<dl class="item" >
 										<dt>
 											<strong class="itemConsignee">姓名</strong>
 											<span class="tag">修改1</span>
@@ -141,7 +248,7 @@
 										<dd style="display:none">
 											<input type="radio" name="Checkout[address]" class="addressId"  value="10140916720030323">
 										</dd>
-									</dl>--%>
+									</dl>&ndash;%&gt;
 
 
 									<dl class="item" id="newadr" style="display: none">
@@ -234,7 +341,7 @@
 								<!--点击弹出新增/收货地址界面end-->
 								<div class="xm-edit-addr-backdrop" id="J_editAddrBackdrop"></div>
 							</div>
-						</div>
+						</div>--%>
 						<!-- 收货地址 END-->
 						<div id="checkoutPayment">
 							<!-- 支付方式 -->
@@ -243,12 +350,14 @@
 									<h2 class="title">支付方式</h2>
 								</div>
 								<div>
-									<ul class="checkout-option-list clearfix J_optionList">
+									<ul class=" clearfix" style="margin-left: 30px;margin-top: 20px">
 										<li>
-											<input type="radio" name="paytype" value="0" checked="checked" data-labelauty="在线支付">
+											<input type="radio" name="paytype" value="在线支付" style="float: left"/>
+											<span style="font-size: 16px; float: left;margin-left: 5px;margin-right: 30px;">在线支付</span>
 										</li>
-										<li style=" display: inline-block;margin-left: -20px;">
-											<input type="radio" name="paytype" value="1" data-labelauty="货到付款">
+										<li>
+											<input type="radio" name="paytype" value="货到付款" style="float: left"/>
+											<span style="font-size: 16px; float: left;margin-left: 5px;margin-right: 30px;">货到付款</span>
 										</li>
 									</ul>
 								</div>
@@ -260,12 +369,14 @@
 									<h2 class="title">收货方式</h2>
 								</div>
 								<div>
-									<ul class="checkout-option-list clearfix J_optionList">
+									<ul class=" clearfix" style="margin-left: 30px;margin-top: 20px">
 										<li>
-											<input type="radio" name="gainmethod" value="0" checked="checked" data-labelauty="快递配送">
+											<input type="radio" name="gainmethod" value="快递配送" style="float: left"/>
+											<span style="font-size: 16px; float: left;margin-left: 5px;margin-right: 30px;">快递配送</span>
 										</li>
-										<li style=" display: inline-block;margin-left: -20px;">
-											<input type="radio" name="gainmethod" value="1" data-labelauty="货物自取">
+										<li>
+											<input type="radio" name="gainmethod" value="货物自取" style="float: left"/>
+											<span style="font-size: 16px; float: left;margin-left: 5px;margin-right: 30px;">货物自取</span>
 										</li>
 									</ul>
 								</div>
@@ -275,7 +386,7 @@
 							<!-- 商品清单 -->
 							<div id="checkoutGoodsList" class="checkout-goods-box">
 								<div class="xm-box">
-									<div class="box-hd">
+									<div class="box-hd" style="border-bottom: 1px solid #dfdfdf">
 										<h2 class="title">确认订单信息</h2>
 									</div>
 									<div class="box-bd">
@@ -300,12 +411,12 @@
 													</div>
 													<input type="hidden" class="ace" name="productname" value="${productList[0].productname}" />
 													<input type="hidden" class="ace" name="productid" value="${productList[0].productid}" />
-													<div  id="jisuan0" class="col col-2"  style="text-align: left">${productList[0].productprice}</div>
+													<div  id="jisuan0" class="col col-2"  style="text-align: left;width: 137px;">${productList[0].productprice}</div>
 													<input type="hidden" class="ace" name="productprice" value="${productList[0].productprice}" />
 													<input type="hidden" class="ace" name="payprice" value="${productList[0].productprice}" />
-													<div id="jisuan1" class="col col-3" style="text-align: left">${idList[0]}</div>
+													<div id="jisuan1" class="col col-3" style="text-align: left;width: 100px;">${idList[0]}</div>
 													<input type="hidden" class="ace" name="shoppingcount" value="${idList[0]}" />
-													<div id="jisuan2" class="col col-4" style="text-align: left">${zongjia[0]}</div>
+													<div id="jisuan2" class="col col-4" style="text-align: left;width:55px;">${zongjia[0]}</div>
 													<input type="hidden" class="ace" name="totalmoneycount" value="${zongjia[0]}" />
 												</div>
 											</dd>

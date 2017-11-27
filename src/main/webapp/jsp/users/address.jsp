@@ -159,15 +159,15 @@
 		<!-- 导航   start  -->
 		<div class="yNavIndex">
 			<ul class="yMenuIndex">
-				<li><a href="" target="_blank" title="首页">首页</a></li>
-				<li><a href="" target="_blank" title="热销专区">热销专区</a></li>
-				<li><a href="" target="_blank" title="新品专区">新品专区</a></li>
+				<li><a href="${pageContext.request.contextPath}/ShopFrontPage.action"  title="首页">首页</a></li>
+				<li><a href="${pageContext.request.contextPath}/ProductHot.action" target="_blank" title="热销专区">热销专区</a></li>
+				<li><a href="${pageContext.request.contextPath}/SelectNewProduct.action" target="_blank" title="新品专区">新品专区</a></li>
 				<li><a href="" target="_blank" title="积分商城">积分商城</a></li>
-				<li><a href="" target="_blank" title="合伙人">合伙人</a></li>
+				<li><a href="${pageContext.request.contextPath}/queryTotalCommentshop.action" target="_blank" title="好评专区">好评专区</a></li>
 				<li><a href="" target="_blank" title="关于我们">关于我们</a></li>
 			</ul>
-		</div>
 		<!-- 导航   end  -->
+	</div>
 	</div>
 
 </header>
@@ -211,8 +211,8 @@
 
 					<ul>
 						<li class="clearfix">
-							<div class="warn2" style="margin-left: 10px;border: none">地址编号</div>
-							<div class="warn2" style="margin-left: 10px;border: none">收货人</div>
+							<div class="warn2" style="margin-left: 10px;border: none;display: none">地址编号</div>
+							<div class="warn2" style=" border-right:1px dashed transparent; ">收货人</div>
 							<div class="warn2" style="margin-left: 10px;border: none">详细地址</div>
 							<div class="warn2" style="margin-left: 10px;border: none">邮编</div>
 							<div class="warn2" style="margin-left: 10px;border: none">电话</div>
@@ -232,8 +232,8 @@
                             }
 						</script>
 						<form action="${pageContext.request.contextPath}/InsertGainAddress.action" method="post">
-							<li class="clearfix" style="display: none" id="dz">
-								<input name="userid" value="${user.userid}"  readonly="ture" class="warn2" style="margin-left: 10px;font-weight: normal;border-color: red">
+							<li class="clearfix" style="display: none;background-color: #f5f5f5" id="dz">
+								<input name="userid" value="${user.userid}"  readonly="ture" class="warn2" style="margin-left: 10px;font-weight: normal;border-color: red;display: none">
 								<input name="gainname" placeholder="收货人姓名" class="warn2" style="margin-left: 10px;font-weight: normal;border-color: red">
 								<input name="gainaddress" placeholder="地址" class="warn2" style="margin-left: 10px;font-weight: normal;border-color: red">
 								<input name="gaincode" placeholder="邮编"  class="warn2" style="margin-left: 10px;font-weight: normal;border-color: red">
@@ -246,9 +246,9 @@
 
 						<c:forEach items="${gainaddres}" var="gainaddres1">
 							<form id="form${gainaddres1.gainid}" action="${pageContext.request.contextPath}/UpdateGainAdress.action" method="post">
-								<li class="clearfix">
-									<div class="warn2" style="margin-left: 10px;border: none;font-weight: normal">
-										<input  class="inputx  aa${gainaddres1.gainid}" name="gainid" value="${gainaddres1.gainid}" readonly="true">
+								<li class="clearfix" style="background-color: #f5f5f5">
+									<div class="warn2" style="margin-left: 10px;border: none;font-weight: normal;display: none">
+										<input  class="inputx  aa${gainaddres1.gainid}" name="gainid" value="${gainaddres1.gainid}" readonly="true" style="back">
 									</div>
 									<div class="warn2" style="margin-left: 10px;border: none;font-weight: normal">
 										<input  class="inputx  aa${gainaddres1.gainid}" name="gainname" value="${gainaddres1.gainname}" readonly="true">

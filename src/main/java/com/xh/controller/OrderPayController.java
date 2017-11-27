@@ -30,7 +30,7 @@ public class OrderPayController {
     public String QuerryAllPay44(HttpServletRequest request,Model model, String[] productid, String[] shuliang) {
         HttpSession session=request.getSession();
         User user=(User) session.getAttribute("user");
-        Integer userid=user.getUserid();
+        Integer userid=user.getUserid();   /*得到登录用户的id，根据用户的id来查找收货地址*/
         List<Gainaddres> gainaddresList=  userLoginService.selectGainAddressByUserId(userid); /*根据用户的id查询出该用户的收货地址*/
         model.addAttribute("gainaddresList",gainaddresList);
 

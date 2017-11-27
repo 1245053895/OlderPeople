@@ -837,7 +837,7 @@
             "     <div class='fr pc-shop-fr'>\n" +
             "      <p>共有 <em class='red pc-shop-shu' id='count'>0</em> 款商品，总计（含运费）</p>\n" +
             "      <span id='sum'>¥0.00</span>\n" +
-            "      <a href='#'>去付款</a>\n" +
+            "      <a href='/jsp/users/payTest.jsp'>去付款</a>\n" +
             "     </div>\n" +
             "    </div>\n" +
             "   </div>"+

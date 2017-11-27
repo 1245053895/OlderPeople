@@ -94,8 +94,8 @@
 									<dl class="item" >
 										<dt>
 											<strong class="itemConsignee">${gainaddres.gainname}</strong>
-											<span class="tag">修改</span>
-											<span class="tag">删除</span>
+										<%--	<span class="tag" onclick="">修改</span>
+											<span class="tag">删除</span>--%>
 										</dt>
 										<br/>
 										<dd>
@@ -109,52 +109,18 @@
 									</dl>
 								</c:forEach>
 
-								<%--	<dl class="item" >
-										<dt>
-											<strong class="itemConsignee">姓名</strong>
-											<span class="tag">修改1</span>
-											<span class="tag">删除</span>
-										</dt>
-										<br/>
-										<dd>
-											<p class="itemRegion">地址</p>
-											<p class="itemStreet">电话</p>
-											<p class="tel">邮箱</p>
-										</dd>
-										<dd style="display:none">
-											<input type="radio" name="Checkout[address]" class="addressId"  value="10140916720030323">
-										</dd>
-									</dl>
-
-									<dl class="item" >
-										<dt>
-											<strong class="itemConsignee">姓名</strong>
-											<span class="tag">修改</span>
-											<span class="tag">删除</span>
-										</dt>
-										<br/>
-										<dd>
-											<p class="itemRegion">地址</p>
-											<p class="itemStreet">电话</p>
-											<p class="tel">邮箱</p>
-										</dd>
-										<dd style="display:none">
-											<input type="radio" name="Checkout[address]" class="addressId"  value="10140916720030323">
-										</dd>
-									</dl>--%>
-
 
 									<dl class="item" id="newadr" style="display: none">
 										<dt>
-											<strong class="itemConsignee"><input class="itemRegion" placeholder="请填写收件人姓名" style="border: hidden;width: 120px"></strong>
+											<strong class="itemConsignee"><input class="itemRegion" name="gainname" placeholder="请填写收件人姓名" style="border: hidden;width: 120px"></strong>
 											<span class="tag" onclick="quxiao()">取消</span>
 											<span class="tag" onclick="queding()">确定</span>
 										</dt>
 										<br/>
 										<dd>
-											<input class="itemRegion" placeholder="请填写收件人的地址" style="border: hidden">
-											<input class="itemStreet" placeholder="请填写收件人的手机号" style="border: hidden">
-											<input class="tel" placeholder="请填写邮编" style="border: hidden">
+											<input class="itemRegion" name="gainaddress" placeholder="请填写收件人的地址" style="border: hidden">
+											<input class="itemStreet" name="gainmobile" placeholder="请填写收件人的手机号" style="border: hidden">
+											<input class="tel" name="gaincode" placeholder="请填写邮编" style="border: hidden">
 										</dd>
 										<dd style="display:none">
 											<input type="radio" name="Checkout[address]" class="addressId"  value="10140916720030323">
@@ -171,32 +137,31 @@
 									</script>
 
 
-
 									<div class="use-new-addr"  id="J_useNewAddr" data-state="off" onclick="xzdz()">
 										<span class="iconfont icon-add"><img src="${pageContext.request.contextPath}/jsp/users/images/add_cart.png" /></span>
 										新增收货地址
 									</div>
 								</div>
-								<input type="hidden" name="newAddress[type]" id="newType" value="common">
-								<input type="hidden" name="newAddress[consignee]" id="newConsignee">
-								<input type="hidden" name="newAddress[province]" id="newProvince">
-								<input type="hidden" name="newAddress[city]" id="newCity">
-								<input type="hidden" name="newAddress[district]" id="newCounty">
-								<input type="hidden" name="newAddress[address]" id="newStreet">
-								<input type="hidden" name="newAddress[zipcode]" id="newZipcode">
-								<input type="hidden" name="newAddress[tel]" id="newTel">
-								<input type="hidden" name="newAddress[tag_name]" id="newTag">
+								<%--<input type="hidden" name="newAddress[type]" id="newType" value="common">--%>
+								<%--<input type="hidden" name="newAddress[consignee]" id="newConsignee">--%>
+								<%--<input type="hidden" name="newAddress[province]" id="newProvince">--%>
+								<%--<input type="hidden" name="newAddress[city]" id="newCity">--%>
+								<%--<input type="hidden" name="newAddress[district]" id="newCounty">--%>
+							<%--<input type="hidden" name="newAddress[address]" id="newStreet">--%>
+								<%--<input type="hidden" name="newAddress[zipcode]" id="newZipcode">--%>
+								<%--<input type="hidden" name="newAddress[tel]" id="newTel">--%>
+								<%--<input type="hidden" name="newAddress[tag_name]" id="newTag">--%>
 								<!--点击弹出新增/收货地址界面start-->
-								<div class="xm-edit-addr-box" id="J_editAddrBox">
+								<%--<div class="xm-edit-addr-box" id="J_editAddrBox">
 									<div class="bd">
 										<div class="item">
 											<label>收货人姓名<span>*</span></label>
-											<input type="text" name="userAddress[consignee]" id="Consignee" class="input" placeholder="收货人姓名" maxlength="15" autocomplete='off'>
+											<input type="text" name="gainname" class="input" placeholder="收货人姓名" maxlength="15" autocomplete='off'>
 											<p class="tip-msg tipMsg"></p>
 										</div>
 										<div class="item">
 											<label>联系电话<span>*</span></label>
-											<input type="text" name="userAddress[tel]" class="input" id="Telephone" placeholder="11位手机号" autocomplete='off'>
+											<input type="text" name="gainmobile" class="input"  placeholder="11位手机号" autocomplete='off'>
 											<p class="tel-modify-tip" id="telModifyTip"></p>
 											<p class="tip-msg tipMsg"></p>
 										</div>
@@ -232,7 +197,7 @@
 									</div>
 								</div>
 								<!--点击弹出新增/收货地址界面end-->
-								<div class="xm-edit-addr-backdrop" id="J_editAddrBackdrop"></div>
+								<div class="xm-edit-addr-backdrop" id="J_editAddrBackdrop"></div>--%>
 							</div>
 						</div>
 						<!-- 收货地址 END-->
@@ -411,10 +376,7 @@
 									</div>
 								</div>
 								<!--E 加价购 产品选择弹框 -->
-
 								<!--S 保障计划 产品选择弹框 -->
-
-
 							</div>
 							<!-- 商品清单 END -->
 							<input type="hidden"  id="couponType" name="Checkout[couponsType]">
@@ -426,14 +388,11 @@
 								<input type="hidden" class="ace" name="userid" value="${sessionScope.user.userid}" />
 								<%--这里传入userid  userid=${sessionScope.user.userid}  --%>
 								<a href="javascript:jiesuan('<%=basePath%>');" class="btn btn-primary">立即下单</a>
-
 							</div>
 						</div>
 					</div>
 				</form>
 			</div>
-
-
 		</div>
 		<!-- 禮品卡提示 S-->
 		<div class="modal hide lipin-modal" id="lipinTip">
@@ -486,7 +445,6 @@
 			</div>
 		</div>
 		<!--  预售提示 E-->
-
 		<script id="newAddrTemplate" type="text/x-dot-template">
 			<dl class="item selected" data-isnew="true" data-consignee="{{=it.consignee}}" data-tel="{{=it.tel}}" data-province="{{=it.province}}" data-provincename="{{=it.provinceName}}" data-city="{{=it.city}}" data-cityname="{{=it.cityName}}" data-county="{{=it.county}}" data-countyname="{{=it.countyName}}" data-zipcode="{{=it.zipcode}}" data-street="{{=it.street}}" data-tag="{{=it.tag}}">
 				<dt>
@@ -503,14 +461,8 @@
 				</dd>
 			</dl>
 		</script>
-
-
 		<!-- 保险弹窗 -->
 		<!-- 保险弹窗 -->
-
-
-
-
 		<script src="${pageContext.request.contextPath}/jsp/users/js/base.min.js"></script>
 
 		<script type="text/javascript" src="${pageContext.request.contextPath}/jsp/users/js/address_all.js"></script>

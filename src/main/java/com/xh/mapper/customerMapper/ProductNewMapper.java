@@ -11,5 +11,7 @@ import java.util.List;
 @Component
 public interface ProductNewMapper {
     //查询热销商品
-    public List<TotalCreditsById>  SelectProductNew();
+    public List<TotalCreditsById>  SelectProductNew(TotalCreditsById totalCreditsById);
+    //查询新品总数
+    public Integer SelectNewCount(TotalCreditsById totalCreditsById);
 }

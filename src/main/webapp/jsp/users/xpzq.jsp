@@ -26,9 +26,9 @@
         <div class="yNavIndex">
             <ul class="yMenuIndex">
                 <li><a href="${pageContext.request.contextPath}/ShopFrontPage.action"  title="首页">首页</a></li>
-                <li><a href="${pageContext.request.contextPath}/ProductHot.action" title="热销专区">热销专区</a></li>
-                <li><a href="${pageContext.request.contextPath}/SelectNewProduct.action"  title="新品专区">新品专区</a></li>
-                <li><a href="" target="_blank" title="积分商城">积分商城</a></li>
+                <li><a href="${pageContext.request.contextPath}/ProductHot.action" target="_blank" title="热销专区">热销专区</a></li>
+                <li><a href="${pageContext.request.contextPath}/SelectNewProduct.action" target="_blank" title="新品专区">新品专区</a></li>
+                <li><a href="${pageContext.request.contextPath}/SelectProducCredits.action" target="_blank" title="积分商城">积分商城</a></li>
                 <li><a href="" target="_blank" title="合伙人">合伙人</a></li>
                 <li><a href="" target="_blank" title="关于我们">关于我们</a></li>
             </ul>
@@ -53,8 +53,8 @@
             </h3>
 
             <ul class="wares_list">
-                <c:forEach items="${totalCreditsByIdNew}" var="totalCreditsByIdNew1">
-                    <li>
+                <c:forEach items="${pagination.list}" var="totalCreditsByIdNew1">
+                    <li style="margin-top:14px">
                         <div class="wares_pic">
                             <a href="${pageContext.request.contextPath}/xiangqing.action?productid=${totalCreditsByIdNew1.productid}" target="_blank">
                                 <img src="  ${totalCreditsByIdNew1.productpicture}" data-original="#" width="298" height="298">
@@ -66,7 +66,7 @@
                             </a>
                         </div>
                         <div class="wares_price">
-                            原价 <span style="text-decoration: line-through"><fmt:formatNumber value="${totalCreditsByIdNew1.productprice* 1.2 }"  pattern="$.00"/></span>
+                            原价 <span style="text-decoration: line-through"><fmt:formatNumber value="${totalCreditsByIdNew1.productprice* 1.2 }"  pattern="￥.00"/></span>
                         </div>
                         <div class="wares_tag">
                             预售价： <a>${totalCreditsByIdNew1.productprice}</a>
@@ -76,8 +76,12 @@
             </ul>
             <!-- 新品专区 end -->
         </div>
+        <div style="margin-top: 20px;font-size: 20px;float: right;" >
+            <c:forEach items="${pagination.pageView }" var="page">
+                ${page }
+            </c:forEach>
+        </div>
     </section>
-
 </div>
 </body>
 </html>

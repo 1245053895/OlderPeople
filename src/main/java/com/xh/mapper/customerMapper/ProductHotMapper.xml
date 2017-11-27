@@ -5,7 +5,13 @@
         SELECT  product.ProductId, productpicture, ProductName,ProductDescribe,ProductPrice,
         COUNT(OrderId) totalhotsale  FROM orderproduct,product WHERE
         product.ProductId=orderproduct.ProductId AND ProducthotSale=1
-        GROUP BY orderproduct.ProductId Limit 11;
+        GROUP BY  orderproduct.ProductId limit #{startRow},#{pageSize}
+
+    </select>
+    <select id="SelectCount" parameterType="totalCreditsById" resultType="Integer">
+        select count(1)
+        from product
+        WHERE ProducthotSale=1
     </select>
 
 </mapper>

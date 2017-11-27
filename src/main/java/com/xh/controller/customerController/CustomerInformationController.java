@@ -39,7 +39,7 @@ public class CustomerInformationController {
             Integer id=userInfo.getUserid();
             userInfo.setUserid(id);
             UserAndBrithday userAndBrithday=customerInformationService.SelectCustomerInformation(id);
-            model.addAttribute(userAndBrithday);
+            model.addAttribute("userAndBrithday",userAndBrithday);
             if(userInfo.getUserbirthday()!=null){
                 String userBirthday = df.format(userAndBrithday.getUserbirthday());
                 String temp[] = userBirthday.split(" ")[0].split("-");
@@ -60,10 +60,13 @@ public class CustomerInformationController {
     @RequestMapping(value = "/CustomerUpdate.action",method = {RequestMethod.GET,RequestMethod.POST})
     public String CustomerUpdate(UserAndBrithday userAndBrithday,HttpServletRequest request, HttpServletResponse response, Model model){
         User user1= (User) request.getSession().getAttribute("user");
+        //sess                           ion中的username
         String u=user1.getUsername();
+        //输入的Username
         String username=request.getParameter("username");
         List<User> user=customerInformationService.SelectAllUser(u);
         for(User user2:user){
+            //数据库中的name
             String name=user2.getUsername();
             if (username.equals(name)){
                 model.addAttribute("error","用户名不能相同");
@@ -82,6 +85,7 @@ public class CustomerInformationController {
         }
         userAndBrithday.setUserbirthday(d);
         customerInformationService.UpdateUserByid(userAndBrithday);
+
         //customerInformationService.updateByPrimaryKeySelective(user);
         return "redirect:/CustomerInformation.action";
     }

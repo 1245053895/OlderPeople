@@ -12,7 +12,9 @@ import java.util.List;
  */
 @Component
 public interface ProductHotMapper {
+    //查询热销商品结果集
+    public List<TotalCreditsById> SelectHotProduct(TotalCreditsById totalCreditsById);
+    //查询总条数
+    public Integer SelectCount(TotalCreditsById totalCreditsById);
 
-    //查询热销商品
-    public List<TotalCreditsById>  SelectHotProduct();
 }

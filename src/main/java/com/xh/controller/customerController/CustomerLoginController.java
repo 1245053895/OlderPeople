@@ -43,7 +43,7 @@ public class CustomerLoginController {
             List<Product> products = productTypeService.SelectProductByTypeIdLimit(id);
             productTypeExtend.setProduct(products);
         }
-        //得到主页导航栏商品类型了所有商品
+        //得到主页导航栏商品类型所有商品
         List<ProductTypeExtend> productTypeExtends1 = productTypeService.SelectProductType();
         for (ProductTypeExtend productTypeExtend1 : productTypeExtends1) {
             int id = productTypeExtend1.getProducttypeid();

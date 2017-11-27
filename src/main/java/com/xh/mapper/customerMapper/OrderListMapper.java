@@ -1,6 +1,7 @@
 package com.xh.mapper.customerMapper;
 
 import com.xh.po.Favorites;
+import com.xh.po.Order;
 import com.xh.po.Product;
 import com.xh.po.vo.FavoritesCustom;
 import com.xh.po.vo.OrderCustom;
@@ -37,5 +38,9 @@ public interface OrderListMapper {
 
     public void updateCommentByids(ProductCustom productCustom);
 
-    ProductCustom selectCommentByids(ProductCustom productCustom);
+    public ProductCustom selectCommentByids(ProductCustom productCustom);
+
+    public void updataOrderStatusZero(@Param("orderid")Integer orderid, @Param("status")Integer status);
+
+    public Order selectOrderIdById(@Param("orderid")Integer orderid, @Param("status")Integer status);
 }

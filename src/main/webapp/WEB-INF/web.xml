@@ -13,10 +13,11 @@
   <listener>
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener>
-  <!--<listener>
-    <listener-class>com.xh.Timer.ContextListener</listener-class>
+
+
+  <listener>
+    <listener-class>com.xh.util.timer.InitListener</listener-class>
   </listener>
--->
   <!--  解决post乱码问题-->
   <filter>
     <filter-name>CharacterEncodingFilter</filter-name>

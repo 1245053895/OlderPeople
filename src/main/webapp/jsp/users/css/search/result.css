@@ -1,0 +1,72 @@
+.result-list{
+    top: 20%;
+    left: 10%;
+    display: none;
+    position: fixed;
+    width: 80%;
+    height: 100%;
+    border: 0px #008FDD solid;
+    z-index: 9998;
+}
+/*搜索结果*/
+.product_center{
+    width: 1200px;
+    height: 100%;
+    margin: 0px auto;
+}
+.product_list{
+    float: left;
+    margin: 10px;
+    border: 0px #FFFFCC solid;
+    border-radius: 5%;
+    padding: 20px;
+    width: 170px;
+    height: 260px;
+    box-shadow: 0px 0px 15px 5px #AAAAAA;
+    background-color: rgba(0,0,0,0.1);
+    z-index: 9999;
+}
+.product_list:hover{
+    box-shadow: 0px 0px 15px 5px #FFFFFF;
+}
+.product_list img{
+    margin: 0px auto;
+    width: auto;
+    height: 170px;
+    filter:alpha(opacity=0.9);
+    opacity:0.9;
+}
+.product_name{
+    margin: 10px auto;
+    text-align: center;
+    font-size: 12px;
+    color: #F2F0F1;
+    text-shadow:5px 2px 6px #000;
+    width: 150px;
+    height: 40px;
+    text-overflow:ellipsis;
+}
+.product_price{
+    margin: 20px auto;
+    text-align: center;
+    font-size: 20px;
+    color: #FFFFFF;
+    width: 180px;
+    height: 30px;
+    text-shadow:5px 2px 6px #000;
+}
+.product_price em{
+    color: #f0323f;
+    text-shadow:5px 2px 6px #000;
+}
+
+/*广告位*/
+.product_advertising{
+    position: absolute;
+    width: 250px;
+    height: 500px;
+    top: -100px;
+    left: -150px;
+    background-color: rgba(255,0,0,0.8);
+    z-index: 10000;
+}

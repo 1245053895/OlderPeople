@@ -2,6 +2,7 @@ package com.xh.serviceimp.customerServiceImpl;
 
 import com.xh.mapper.customerMapper.OrderListMapper;
 import com.xh.po.Favorites;
+import com.xh.po.Order;
 import com.xh.po.vo.FavoritesCustom;
 import com.xh.po.vo.OrderCustom;
 import com.xh.po.vo.ProductCustom;
@@ -93,5 +94,12 @@ public class OrderListServiceImpl implements OrderListService {
         }else{
             return true;
         }
+    }
+
+    @Override
+    public Boolean updataOrderStatusZero(int orderid,int status) {
+        orderListMapper.updataOrderStatusZero(orderid,status);
+        Order pc =orderListMapper.selectOrderIdById(orderid,status);
+        return pc!=null;
     }
 }

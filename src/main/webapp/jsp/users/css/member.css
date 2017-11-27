@@ -189,7 +189,7 @@
 .member-caution li { border-bottom:1px solid #e0e0e0; padding:10px 25px;}
 .member-caution .warn1 { width:33px;  height:33px; line-height:33px; float:left; color:#666666; }
 .member-caution .warn6 { width:33px;  height:33px; line-height:33px; float:left; color:#666666;}
-.member-caution .warn2 { width:133px; height:22px; line-height:22px; float:left; color:#666666; font-size:14px; font-weight:500; border-right:1px dashed #999999; text-align:center; margin-top:4px;}
+.member-caution .warn2 { width:160px; height:22px; line-height:22px; float:left; color:#666666; font-size:14px; font-weight:500; border-right:1px dashed #999999; text-align:center; margin-top:4px;}
 .member-caution .warn3 { width:500px; height:33px; line-height:33px; float:left; color:#666666; font-size:12px; padding-left:45px;}
 .member-caution .warn4 { width:100px; height:33px; line-height:33px; float:right;color:white; font-size:20px;display:block;background-color: #EE4644;text-align: center;border: transparent;border-radius: 3px;}
 .member-caution .warn4 a{ width:100px;height:33px; line-height:33px; float:right;color:#155cd0; font-size:14px; padding-left:20px; display:block;}

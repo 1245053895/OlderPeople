@@ -6,6 +6,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script type="text/javascript">
+        var root="<%=root%>";
+    </script>
+    <script src="echarts.min.js"></script>
+    <script src="jquery-1.4.4.min.js"></script>
+    <script src="myChart3.js"></script>
 		<link href="/jsp/admin/assets/css/bootstrap.min.css" rel="stylesheet" />
         <link rel="stylesheet" href="/jsp/admin/css/style.css"/>
         <link rel="stylesheet" href="/jsp/admin/assets/css/font-awesome.min.css" />
@@ -26,10 +32,7 @@
 		<!-- <![endif]-->
            	<script src="/jsp/admin/assets/dist/echarts.js"></script>
         <script src="/jsp/admin/assets/js/bootstrap.min.js"></script>
-    <script type="text/javascript">
-        var root="<%=root%>";
-    </script>
-      
+
        <title>系统后台首页</title>
        </head>
 <script type="text/javascript">
@@ -206,6 +209,8 @@
                   </div>
 
               </div>
+
+    <div id="main" style="height:400px; overflow:hidden; width:100%; overflow:auto" >555</div>
 
      </div>
 </body>

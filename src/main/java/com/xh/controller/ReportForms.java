@@ -2,7 +2,9 @@ package com.xh.controller;
 
 import com.xh.po.vo.OderAndString2;
 import com.xh.po.vo.OrderAndString;
+import com.xh.po.vo.ReportFormsString;
 import com.xh.service.OrderService;
+import com.xh.service.ReportFormsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Arrays;
+import java.util.Calendar;
 import java.util.List;
 
 
@@ -20,6 +24,8 @@ public class ReportForms {
 
     @Autowired
     OrderService orderService;
+    @Autowired
+    ReportFormsService reportFormsService;
 
     //用于ajax的报表
     @RequestMapping(value = "/readforms")
@@ -35,13 +41,21 @@ public class ReportForms {
         return List1;
     }
 
-//    @RequestMapping(value = "/readforms3")
-//    public @ResponseBody
-//    List< OderAndString1> findBigDecimal001(@RequestBody OrderAndString orderAndString, HttpServletRequest request){
-//         List<OderAndString1> oderAndString1List1 =orderService.selectName001();
-//         List<OderAndString1> oderAndString1List2 =orderService.selectName002();
-//
-//         return oderAndString1List1;}
+   @RequestMapping(value = "/getArray")
+   public @ResponseBody
+   List<Integer> findBigDecimal005551(  ){
+    //获取今年   如     2017
+       Calendar cal = Calendar.getInstance();
+       int year = cal.get(Calendar.YEAR);
+       int[] array =  reportFormsService.getArray(year);
+       int n=array.length;
+       Integer[] iarr=new Integer[n];
+       for(int i=0;i<n;i++){
+           iarr[i]=new Integer(array[i]);
+       }
+       List<Integer> listppp= Arrays.asList(iarr);
+       return  listppp;
+    }
 
 
     @RequestMapping(value = "/readforms4")

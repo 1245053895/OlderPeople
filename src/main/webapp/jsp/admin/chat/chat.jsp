@@ -3,13 +3,17 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 
+<style type="text/css">
+    #userList {list-style:none}
+</style>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>联系客服</title>
 <script type="text/javascript"  src="jquery-1.4.4.min.js"></script>
 <script type="text/javascript">
 	var  ws;
-	var url="ws://localhost:8070/chatSocket?username=${sessionScope.username}";
+	//此处改为服务器ip
+	var url="ws://127.0.0.1:8080/chatSocket?username=${sessionScope.username}";
 	
 	function connect(){
 		 if ('WebSocket' in window) {
@@ -22,11 +26,11 @@
          }
 		 ws.onmessage=function(event){
 			eval("var result="+event.data);
-			
+
 			if(result.alert!=undefined){
-				$("#content").append(result.alert+"<br/>");
+				$("#content").append("<p style=\"color: rgba(209,6,7,0.96);font-size: small;\">"+result.alert+"</p>");
 			}
-			
+
 			if(result.names!=undefined){
 				//$("#userList").html("<b>在线人员</b><br/>");
 				//$(result.names).each(function(){
@@ -41,10 +45,10 @@
 			}
 			
 			if(result.from!=undefined){
-				$("#content").append(result.date+"   "
-						+result.sendMsg+"<br/>");
+				$("#content").append( "<b style=\"color: rgba(209,6,7,0.96);font-size: large;background: rgba(242,35,255,0.2)\">"
+                    +result.date+"   "+"<b style=\"color: rgba(3,8,3,0.95)\">"+result.sendMsg+"</b>"+"</p>");
 			}
-			
+
 		 };
 	}//
 	
@@ -93,19 +97,20 @@
 
 <div>
     <div id="msg" >
-        <div>  <h3>欢迎 ${sessionScope.username } 使用本系统！！</h3></div>
-        <p id="content" style="width: 400px;height: 380px; border: solid 1px;">
+        <div >  <h3>欢迎 ${sessionScope.username } 使用本系统！！</h3></div>
+        <p id="content" style="width: 400px;height: 380px; border: solid 1px;background-image: url(chat.jpg); ">
         </p>
     </div>
     <div id="users"
-         style="width: 150px;height: 530px;border: solid 1px; position:absolute;left: 412px;top:8px;">
-        <ul id="userList">
+         style="width: 150px;height: 530px;border: solid 1px; position:absolute;left: 412px;top:8px;background-color: #d0ff9e">
+        <ul id="userList" >
         </ul>
     </div>
     <div id="send" style="width: 400px;height:80px;border: solid 1px;"
          align="right">
-        <textarea style="width: 400px;height: 50px;" id="sendMsg"></textarea>
+        <textarea style="width: 400px;height: 50px;background-color: rgba(46,52,35,0.07)" id="sendMsg"></textarea>
         <input type="button" value="发送消息" onclick="send();">
     </div>  </div>
+
 </body>
 </html>

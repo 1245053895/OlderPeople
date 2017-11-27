@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xh.mapper.customerMapper.ProductNewMapper">
+    <!--查询新品结果集-->
    <select id="SelectProductNew" resultType="TotalCreditsById">
        SELECT ProductId ,ProductPicture, ProductName,ProductPrice,ProductNew FROM product
-       WHERE ProductNew=1
+       WHERE ProductNew=1 limit #{startRow},#{pageSize}
    </select>
+    <!--查询总的新平数量-->
+    <select id="SelectNewCount" parameterType="totalCreditsById" resultType="Integer">
+        select count(1)
+        from product
+        WHERE ProductNew=1
+    </select>
 </mapper>

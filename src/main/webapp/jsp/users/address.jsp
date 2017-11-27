@@ -268,7 +268,7 @@
 										<a title="删除" href="javascript:void(0);" onclick="user_del(this,'${gainaddres1.gainid}')">删除</a>
 									</div>
 
-									<a title="默认" href="javascript:void(0);" <c:if test="${gainaddres1.gainA.equals('1')}">style="background-color: #f4dae5"</c:if> onclick="moren(this,'${gainaddres1.gainid}')">默认</a>
+									<a  title="默认" href="javascript:void(0);" <c:if test="${gainaddres1.gainA.equals('1')}">style="background-color: #f4dae5;margin-top: 8px"</c:if> onclick="moren(this,'${gainaddres1.gainid}')">默认</a>
 								</li>
 							</form>
 						</c:forEach>

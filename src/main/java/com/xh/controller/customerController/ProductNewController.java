@@ -1,5 +1,6 @@
 package com.xh.controller.customerController;
 
+import com.xh.controller.page.Pagination;
 import com.xh.po.vo.TotalCreditsById;
 import com.xh.service.customerService.ProductNewService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,9 +17,9 @@ public class ProductNewController {
     @Autowired
     private  ProductNewService productNewService;
     @RequestMapping(value = "/SelectNewProduct.action" ,method = {RequestMethod.GET,RequestMethod.POST})
-    public String SelectNewProduct(Model model){
-        List<TotalCreditsById> totalCreditsByIdNew=productNewService.SelectProductNew();
-        model.addAttribute("totalCreditsByIdNew",totalCreditsByIdNew);
+    public String SelectNewProduct(Model model,Integer pageNo){
+        Pagination pagination=productNewService.selectPaginationByQuery(pageNo);
+        model.addAttribute("pagination",pagination);
         return "jsp/users/xpzq.jsp";
     }
 }

@@ -211,13 +211,13 @@
 
 					<ul>
 						<li class="clearfix">
-							<div class="warn2" style="margin-left: 10px;border: none;display: none">地址编号</div>
+							<div class="warn2" style="margin-left: 0px;border: none;display: none;">地址编号</div>
 							<div class="warn2" style=" border-right:1px dashed transparent; ">收货人</div>
 							<div class="warn2" style="margin-left: 10px;border: none">详细地址</div>
 							<div class="warn2" style="margin-left: 10px;border: none">邮编</div>
 							<div class="warn2" style="margin-left: 10px;border: none">电话</div>
-							<div class="warn2" style="margin-left: 10px;border: none">操作</div>
-							<input type="button" class="warn2" style="width: 50px;float: left;margin-left: 10px;border: 1px;font-weight: 800;text-align:center;margin-top:6px;font-size:15px;color: #FF9100;border-radius: 5px" id="xz" onClick="xdz()" value="新地址">
+							<div class="warn2" style="margin-left: 0px;border: none;width: 115px;text-align: right">操作</div>
+							<input type="button" class="warn2" style="width: 100px;float: left;margin-left: 10px;border: 1px;font-weight: 800;text-align:center;margin-top:6px;font-size:15px;background-color: #FF9100;color:white;border-radius: 5px" id="xz" onClick="xdz()" value="添加新地址">
 
 						</li>
 
@@ -233,13 +233,13 @@
 						</script>
 						<form action="${pageContext.request.contextPath}/InsertGainAddress.action" method="post">
 							<li class="clearfix" style="display: none;background-color: #f5f5f5" id="dz">
-								<input name="userid" value="${user.userid}"  readonly="ture" class="warn2" style="margin-left: 10px;font-weight: normal;border-color: red;display: none">
-								<input name="gainname" placeholder="收货人姓名" class="warn2" style="margin-left: 10px;font-weight: normal;border-color: red">
-								<input name="gainaddress" placeholder="地址" class="warn2" style="margin-left: 10px;font-weight: normal;border-color: red">
-								<input name="gaincode" placeholder="邮编"  class="warn2" style="margin-left: 10px;font-weight: normal;border-color: red">
-								<input name="gainmobile" placeholder="电话"  class="warn2" style="margin-left: 10px;font-weight: normal;border-color: red">
-								<input  type="submit" value="保存" class="warn2" style="margin-left: 10px;font-weight: normal;border-radius: 10px;background-color: black;color: aliceblue;" onClick="bc()">
-								<input  value="取消" class="warn2" style="margin-left: 10px;font-weight: normal;border-radius: 10px;background-color: black;color: aliceblue;" onClick="bc()">
+								<input name="userid" value="${user.userid}"  readonly="ture" class="warn2" style="margin-left: 10px;font-weight: normal;display: none">
+								<input name="gainname" placeholder="收货人姓名" class="warn2" style="margin-left: 10px;font-weight: normal;">
+								<input name="gainaddress" placeholder="地址" class="warn2" style="margin-left: 10px;font-weight: normal;">
+								<input name="gaincode" placeholder="邮编"  class="warn2" style="margin-left: 10px;font-weight: normal;">
+								<input name="gainmobile" placeholder="电话"  class="warn2" style="margin-left: 10px;font-weight: normal;">
+								<input  type="submit" value="保存" class="warn2" style="margin-left: 10px;font-weight: normal;border-radius: 3px;background-color:#ee4644;opacity:0.8;color: white;width: 80px;height: 25px;" onClick="bc()">
+								<input  value="取消" class="warn2" style="margin-left: 10px;font-weight: normal;border-radius: 3px;background-color:#6c90ab;opacity:0.7;color: white;width: 80px;height: 25px;" onClick="bc()">
 							</li>
 						</form>
 
@@ -248,7 +248,7 @@
 							<form id="form${gainaddres1.gainid}" action="${pageContext.request.contextPath}/UpdateGainAdress.action" method="post">
 								<li class="clearfix" style="background-color: #f5f5f5">
 									<div class="warn2" style="margin-left: 10px;border: none;font-weight: normal;display: none">
-										<input  class="inputx  aa${gainaddres1.gainid}" name="gainid" value="${gainaddres1.gainid}" readonly="true" style="back">
+										<input  class="inputx  aa${gainaddres1.gainid}" name="gainid" value="${gainaddres1.gainid}" readonly="true">
 									</div>
 									<div class="warn2" style="margin-left: 10px;border: none;font-weight: normal">
 										<input  class="inputx  aa${gainaddres1.gainid}" name="gainname" value="${gainaddres1.gainname}" readonly="true">
@@ -266,9 +266,11 @@
 										<a href="javascript:void(0);" onclick="status(this,'${gainaddres1.gainid}')">修改</a>
 										<span style="margin: auto 4px">|</span>
 										<a title="删除" href="javascript:void(0);" onclick="user_del(this,'${gainaddres1.gainid}')">删除</a>
+										<span style="margin: auto 4px">|</span>
+										<a title="设为默认地址" href="javascript:void(0);" <c:if test="${gainaddres1.gainA.equals('1')}">style="background-color:#f4c0b1;"</c:if> onclick="moren(this,'${gainaddres1.gainid}')">默认</a>
+
 									</div>
 
-									<a title="默认" href="javascript:void(0);" <c:if test="${gainaddres1.gainA.equals('1')}">style="background-color: #f4dae5"</c:if> onclick="moren(this,'${gainaddres1.gainid}')">默认</a>
 								</li>
 							</form>
 						</c:forEach>
@@ -514,7 +516,7 @@
     function status(obj,id) {
         if(flag){
             $(".aa"+id).removeAttr("readonly");
-            $(".aa"+id).css("border","1px #E6E6FA solid");
+            $(".aa"+id).css("border","1px #ee4644 solid");
             $(obj).text("提交");
             flag=false;
         }else {

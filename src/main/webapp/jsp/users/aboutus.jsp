@@ -168,7 +168,7 @@
 </header>
 
 <section id="member">
-    <div class="member-center clearfix" style="margin-top: 10px;margin-left: 50px">
+    <div class="member-center clearfix" style="margin-top: 10px;margin-left: -50px">
 
         <div class="member-right fr">
                 <img src="images/abt.jpg">
@@ -177,7 +177,7 @@
                 <div class="member-caution clearfix">
                     <br>
                     <div>
-                        <p><strong>关于我们</strong></p>
+                        <p><strong style="font-size: 18px">关于我们</strong></p>
                         <br>
                         <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp孝和集团致力于传承中国传统孝文化，提升中老年人生活品质，为他们提供优质的产品和服务。</p>
                         <br>

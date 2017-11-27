@@ -267,7 +267,7 @@
 <div class="pc-header-logo clearfix">
     <div class="pc-fl-logo fl">
         <h1>
-            <a href="index.jsp"></a>
+            <a href="${pageContext.request.contextPath}/ShopFrontPage.action"></a>
         </h1>
     </div>
     <div class="head-form fl">

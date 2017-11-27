@@ -1,10 +1,12 @@
 package com.xh.serviceimp.customerServiceImpl;
 
 
+import com.xh.controller.page.Pagination;
 import com.xh.mapper.customerMapper.ProductTypeCustomerMapper;
 import com.xh.po.Product;
 import com.xh.po.Producttype;
 import com.xh.po.vo.ProductTypeExtend;
+import com.xh.po.vo.TotalCreditsById;
 import com.xh.service.customerService.ProductTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

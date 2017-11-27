@@ -133,7 +133,7 @@
 								<div class="tx${status.count}">
 									<a href="#">
 										<i> </i>
-											<a  href="${pageContext.request.contextPath}/SelectProductType.action?ProductTypeId=${productTypeExtend.producttypeid}"  style="font-size: 14px;">${productTypeExtend.producttypename}</a>
+											<a  href="${pageContext.request.contextPath}/SelectProductType.action?productTypeId=${productTypeExtend.producttypeid}"  style="font-size: 14px;">${productTypeExtend.producttypename}</a>
 										<span></span>
 									</a>
 								</div>
@@ -176,8 +176,8 @@
 				<li><a href="${pageContext.request.contextPath}/ShopFrontPage.action"  title="首页">首页</a></li>
 				<li><a href="${pageContext.request.contextPath}/ProductHot.action" target="_blank" title="热销专区">热销专区</a></li>
 				<li><a href="${pageContext.request.contextPath}/SelectNewProduct.action" target="_blank" title="新品专区">新品专区</a></li>
-				<li><a href="" target="_blank" title="积分商城">积分商城</a></li>
-				<li><a href="${pageContext.request.contextPath}/queryTotalCommentshop.action" target="_blank" title="好评专区">好评专区</a></li>
+				<li><a href="${pageContext.request.contextPath}/SelectProducCredits.action" target="_blank" title="积分商城">积分商城</a></li>
+				<li><a href="" target="_blank" title="合伙人">合伙人</a></li>
 				<li><a href="" target="_blank" title="关于我们">关于我们</a></li>
 			</ul>
 		</div>

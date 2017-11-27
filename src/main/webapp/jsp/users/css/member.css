@@ -8,7 +8,7 @@
 .member-center { width:1200px; margin:0 auto;}
 .member-left   { width:208px; height:auto; margin-top:10px; border:1px solid #e0e0e0; }
 .member-right  { width:950px; height:auto; margin-top:10px; padding-bottom:50px; }
-.member-head   { width:970px; height:42px; margin-bottom:12px; line-height:42px;}
+.member-head   { width:970px; height:42px; margin-bottom:12px; line-height:42px;background-color: #EE4644;}
 .member-border { width:968px; height:auto;margin-bottom:10px;}
 .member-return{ margin-top: 30px;}
 .member-sheet{border:1px solid #e0e0e0;}

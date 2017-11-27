@@ -1,4 +1,5 @@
 ﻿<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%--
   Created by IntelliJ IDEA.
   User: Administrator
@@ -8,7 +9,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-    
+
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta charset="utf-8">
@@ -27,6 +28,14 @@
 <body>
     <header id="pc-header">
 
+
+        <c:if test="${productLists==null}">
+            <jsp:forward page="${pageContext.request.contextPath}/SelectProductDiscont.action"></jsp:forward>
+        </c:if>
+        <c:if test="${totalCreditsByIds==null}">
+            <jsp:forward page="${pageContext.request.contextPath}/SelectProductHotDiscont.action"></jsp:forward>
+        </c:if>
+
         <jsp:include page="/jsp/users/head.jsp"></jsp:include>
     </header>
     <div id="wrap" class="clearfix" style="width:100%;background-color: #f5f5f5;">
@@ -38,48 +47,66 @@
                         积分商品分类
                     </div>
                     <ul class="aside_list">
+                        <c:forEach items="${productTypeExtendsTraver}" var="productTypeExtendsTravers">
+                            <li>
+                                <a href="${pageContext.request.contextPath}/SelectCreditsProductQuerry.action?productTypeId=${productTypeExtendsTravers.producttypeid}" class="tra">
+                                   出行/${productTypeExtendsTravers.producttypename}...
+                                    <br>
+                                    <span class="en">
+                                            Travel
+                                        </span>
+                                </a>
+                            </li>
+                        </c:forEach>
+
+
                         <li>
-                            <a href="#" class="tra">
-                                出  行
-                                <br>
-                                <span class="en">
-                                        Travel
-                                    </span>
-                            </a>
-                        </li>
-                        <li>
+
                             <a href="#" class="edu">
-                                健  康
+                                <c:forEach items="${productTypeExtendsHealth}" var="productTypeExtendsHealths" varStatus="status">
+
+                                       <a href="${pageContext.request.contextPath}/SelectCreditsProductQuerry.action?productTypeId=${productTypeExtendsHealths.producttypeid}" style="float: left">
+                                           ${productTypeExtendsHealths.producttypename}...
+                                       </a>
+
+                                </c:forEach>
                                 <br>
                                 <span class="en">
-                                        Healthy
+
                                     </span>
                             </a>
                         </li>
+
+
                         <li>
                             <a href="#" class="spe">
-                                生  活
+                                <c:forEach items="${productTypeExtendsLife}" var="productTypeExtendsLifes" varStatus="status">
+                                    <a href="${pageContext.request.contextPath}/SelectCreditsProductQuerry.action?productTypeId=${productTypeExtendsLifes.producttypeid}" style="float:left">
+                                        ${productTypeExtendsLifes.producttypename}...
+                                    </a>
+                                </c:forEach>
                                 <br>
                                 <span class="en">
-                                        Life
-                                    </span>
+
+                                </span>
                             </a>
                         </li>
+
                     </ul>
                 </aside>
                 <ul id="nav">
                     <li>
-                        <a href="#">
+                        <a href="${pageContext.request.contextPath}/ShopFrontPage.action">
                             商城首页
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="active">
+                        <a href="${pageContext.request.contextPath}/SelectProducCredits.action" class="active">
                             积分商城
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="${pageContext.request.contextPath}/ProductHot.action">
                             热销专区
                         </a>
                     </li>
@@ -89,7 +116,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="${pageContext.request.contextPath}/SelectNewProduct.action">
                             新品专区
                         </a>
                     </li>
@@ -154,126 +181,39 @@
                     </span>
             </h3>
             <ul class="spe_list">
-                <li>
-                    <div class="spe_pic">
-                        <a href="#" target="_blank">
-                            <img src="${pageContext.request.contextPath}/jsp/users/jfsc/images/14582691498974.jpg" data-original="" width="360" height="225"
-                                 style="display: inline;">
-                        </a>
-                    </div>
-                    <div class="spe_box">
-                        <div class="spe_title">
-                            <p class="font20 font_b">
-                                步步高xplay5
-                            </p>
-                            曲屛·金属 xplay5 震撼发售·12内期免息，审核通过后两天发货！
-                            <br>
+                <c:forEach items="${productLists}" var="productLists1">
+                    <li>
+                        <div class="spe_pic">
+                            <a href="${pageContext.request.contextPath}/xiangqing.action?productid=${productLists1.productid}" target="_blank">
+                                <img src="${productLists1.productpicture}" data-original="" width="360" height="225"
+                                     style="display: inline;">
+                            </a>
                         </div>
-                        <p class="al_center font14">
-                                <span class="font_orange font20">
-                                    ￥3698
-                                </span>
-                            <span class="font_del font12">
-                                    ￥3698
-                                </span>
-                            <br/>
-                            <br/>
-                            <span class="font_redd font20">所需积分： 345分</span>
-                        </p>
-                    </div>
-                    <div class="clear">
-                    </div>
-                </li>
-                <li>
-                    <div class="spe_pic">
-                        <a href="#" target="_blank">
-                            <img src="${pageContext.request.contextPath}/jsp/users/jfsc/images/14576734279883.jpg" data-original="#" width="360" height="225"
-                                 style="display: inline;">
-                        </a>
-                    </div>
-                    <div class="spe_box">
-                        <div class="spe_title">
-                            <p class="font20 font_b">
-                                亚马逊Kindle
+                        <div class="spe_box">
+                            <div class="spe_title">
+                                <p class="font20 font_b">
+                                    <a href="${pageContext.request.contextPath}/xiangqing.action?productid=${productLists1.productid}">${productLists1.productname}</a>
+                                </p>
+                                <br style="height: 5px">
+                                <a href="${pageContext.request.contextPath}/xiangqing.action?productid=${productLists1.productid}">${productLists1.productdescribe}</a>
+                                <br>
+                            </div>
+                            <p class="al_center font14">
+                                    <span class="font_orange font20">
+                                     <fmt:formatNumber value="${productLists1.productprice* 1.2 }"  pattern="￥.0"/>
+                                    </span>
+                                <span class="font_del font12">
+                                      <fmt:formatNumber value="${productLists1.productprice* 1.2 }"  pattern="￥.0"/>
+                                    </span>
+                                <br/>
+                                <br/>
+                                <span class="font_redd font20">所需积分：${productLists1.productdisabled}分</span>
                             </p>
-                            护眼健康、超长续航！给你喧嚣中的一片安宁，kindle便携电子书阅读器！
-                            <br>
                         </div>
-                        <p class="al_center font14">
-                                <span class="font_orange font20">
-                                    ￥3698
-                                </span>
-                            <span class="font_del font12">
-                                    ￥3698
-                                </span>
-                            <br/>
-                            <br/>
-                            <span class="font_redd font20">所需积分： 345分</span>
-                        </p>
-                    </div>
-                    <div class="clear">
-                    </div>
-                </li>
-                <li>
-                    <div class="spe_pic">
-                        <a href="#" target="_blank">
-                            <img src="${pageContext.request.contextPath}/jsp/users/jfsc/images/14568221702470.jpg" data-original="images/14568221702470.jpg"
-                                 width="360" height="225" style="display: inline;">
-                        </a>
-                    </div>
-                    <div class="spe_box">
-                        <div class="spe_title">
-                            <p class="font20 font_b">
-                                三星 Note5
-                            </p>
-                            提笔 出新 点击一下 写您所爱。
-                            <br>
+                        <div class="clear">
                         </div>
-                        <p class="al_center font14">
-                                <span class="font_orange font20">
-                                    ￥3698
-                                </span>
-                            <span class="font_del font12">
-                                    ￥3698
-                                </span>
-                            <br/>
-                            <br/>
-                            <span class="font_redd font20">所需积分： 345分</span>
-                        </p>
-                    </div>
-                    <div class="clear">
-                    </div>
-                </li>
-                <li>
-                    <div class="spe_pic">
-                        <a href="#" target="_blank">
-                            <img src="${pageContext.request.contextPath}/jsp/users/jfsc/images/14576821418640.jpg" data-original="" width="360" height="225"
-                                 style="display: inline;">
-                        </a>
-                    </div>
-                    <div class="spe_box">
-                        <div class="spe_title">
-                            <p class="font20 font_b">
-                                独角仙 鼠标垫
-                            </p>
-                            一款柔软纤薄的游戏鼠标垫，如果玩家时常奔波在外，却又要求精准度和便携性，那么
-                            <br>
-                        </div>
-                        <p class="al_center font14">
-                                <span class="font_orange font20">
-                                    ￥3698
-                                </span>
-                            <span class="font_del font12">
-                                    ￥3698
-                                </span>
-                            <br/>
-                            <br/>
-                            <span class="font_redd font20">所需积分： 345分</span>
-                        </p>
-                    </div>
-                    <div class="clear">
-                    </div>
-                </li>
+                    </li>
+                </c:forEach>
                 <div class="clear">
                 </div>
             </ul>
@@ -288,134 +228,26 @@
                     best sales Recommend
                 </div>
                 <ul class="rec_list">
-                    <li>
-                        <div class="rec_pic">
-                            <a href="#" target="_blank">
-                                <img src="${pageContext.request.contextPath}/jsp/users/jfsc/images/14582871146524.jpg" data-original="#" width="220" height="220">
-                            </a>
-                        </div>
-                        <div class="rec_title2">
-                            <a href="#" target="_blank" title="OPPO R9 全网通 手机">
-                                OPPO R9 全网通 手机
-                            </a>
-                        </div>
-                        <span style="font-size: 14px; font-weight: 500; color: #ee4644;margin-left: 8px;">售价：￥151.95</span>
-                        <div class="rec_tag">
-                            所需积分 2999
-                        </div>
-                    </li>
-                    <li>
-                        <div class="rec_pic">
-                            <a href="#" target="_blank">
-                                <img src="${pageContext.request.contextPath}/jsp/users/jfsc/images/14582919735882.jpg" data-original="#" width="220" height="220">
-                            </a>
-                        </div>
-                        <div class="rec_title2">
-                            <a href="#" target="_blank" title="魅族 MEIZU  魅蓝note2 联通版 手机">
-                                魅族 MEIZU 魅蓝note2
-                            </a>
-                        </div>
-                        <span style="font-size: 14px; font-weight: 500; color: #ee4644;margin-left: 8px;">售价：￥151.95</span>
-                        <div class="rec_tag">
-                            所需积分 2999
-                        </div>
-                    </li>
-                    <li>
-                        <div class="rec_pic">
-                            <a href="#" target="_blank">
-                                <img src="${pageContext.request.contextPath}/jsp/users/jfsc/images/14579430349421.jpg" data-original="#" width="220" height="220">
-                            </a>
-                        </div>
-                        <div class="rec_title2">
-                            <a href="#" target="_blank" title="魅族 MEIZU  MX5 PRO 公开版 手机">
-                                魅族 MEIZU MX5 PRO
-                            </a>
-                        </div>
-                        <span style="font-size: 14px; font-weight: 500; color: #ee4644;margin-left: 8px;">售价：￥151.95</span>
-                        <div class="rec_tag">
-                            所需积分 2999
-                        </div>
-                    </li>
-                    <li>
-                        <div class="rec_pic">
-                            <a href="#" target="_blank">
-                                <img src="${pageContext.request.contextPath}/jsp/users/jfsc/images/14532555542421.jpg" data-original="#" width="220" height="220">
-                            </a>
-                        </div>
-                        <div class="rec_title2">
-                            <a href="#" target="_blank" title="华为 HUAWEI 荣耀X2 移动联通版 平板电脑">
-                                华为 HUAWEI 荣耀X2 移动联
-                            </a>
-                        </div>
-                        <span style="font-size: 14px; font-weight: 500; color: #ee4644;margin-left: 8px;">售价：￥151.95</span>
-                        <div class="rec_tag">
-                            所需积分 2999
-                        </div>
-                    </li>
-                    <li>
-                        <div class="rec_pic">
-                            <a href="#" target="_blank">
-                                <img src="${pageContext.request.contextPath}/jsp/users/jfsc/images/14579352009317.jpg" data-original="#" width="220" height="220">
-                            </a>
-                        </div>
-                        <div class="rec_title2">
-                            <a href="#" target="_blank" title="华为 HUAWEI 荣耀 7I   移动版 手机">
-                                华为 HUAWEI 荣耀 7I
-                            </a>
-                        </div>
-                        <span style="font-size: 14px; font-weight: 500; color: #ee4644;margin-left: 8px;">售价：￥151.95</span>
-                        <div class="rec_tag">
-                            所需积分 2999
-                        </div>
-                    </li>
-                    <li>
-                        <div class="rec_pic">
-                            <a href="#" target="_blank">
-                                <img src="${pageContext.request.contextPath}/jsp/users/jfsc/images/14579240697697.jpg" data-original="#" width="220" height="220">
-                            </a>
-                        </div>
-                        <div class="rec_title2">
-                            <a href="#" target="_blank" title="【桔瓣精品游】经典东南亚-魅力 新马泰玩乐10日游 ">
-                                【桔瓣精品游】经典东南亚-魅力 新马
-                            </a>
-                        </div>
-                        <span style="font-size: 14px; font-weight: 500; color: #ee4644;margin-left: 8px;">售价：￥151.95</span>
-                        <div class="rec_tag">
-                            所需积分 2999
-                        </div>
-                    </li>
-                    <li>
-                        <div class="rec_pic">
-                            <a href="#" target="_blank">
-                                <img src="${pageContext.request.contextPath}/jsp/users/jfsc/images/14581858216138.jpg" data-original="#" width="220" height="220">
-                            </a>
-                        </div>
-                        <div class="rec_title2">
-                            <a href="#" target="_blank" title="【桔瓣精品游】【欢购东京4+2】 东京、富士山、奥特莱斯6日欢购之旅">
-                                【桔瓣精品游】【欢购东京4+2】 东
-                            </a>
-                        </div>
-                        <span style="font-size: 14px; font-weight: 500; color: #ee4644;margin-left: 8px;">售价：￥151.95</span>
-                        <div class="rec_tag">
-                            所需积分 2999
-                        </div>
-                    </li>
-                    <li>
-                        <div class="rec_pic">
-                            <a href="#" target="_blank">
-                                <img src="${pageContext.request.contextPath}/jsp/users/jfsc/images/14582049911134.jpg" data-original="#" width="220" height="220">
-                            </a>
-                        </div>
-                        <div class="rec_title2">
-                            <a href="#" target="_blank" title="【桔瓣精品游】皇家加勒比海洋神话号豪华游轮4晚5日（8.3-8.7）">
-                                【桔瓣精品游】皇家加勒比海洋神话号豪
-                            </a>
-                        </div>
-                        <span style="font-size: 14px; font-weight: 500; color: #ee4644;margin-left: 8px;">售价：￥151.95</span>
-                        <div class="rec_tag">
-                            所需积分 2999
-                        </div>
-                    </li>
+                    <c:forEach items="${totalCreditsByIds}" var="totalCreditsByIds1">
+                        <li style="margin-top: 10px">
+                            <div class="rec_pic">
+                                <a href="${pageContext.request.contextPath}/xiangqing.action?productid=${totalCreditsByIds1.productid}" target="_blank">
+                                    <img src="${totalCreditsByIds1.productpicture}" data-original="#" width="220" height="220">
+                                </a>
+                            </div>
+                            <div class="rec_title2">
+                                <a href="${pageContext.request.contextPath}/xiangqing.action?productid=${totalCreditsByIds1.productid}" target="_blank" title="OPPO R9 全网通 手机">
+                                    ${totalCreditsByIds1.productname}
+                                </a>
+                            </div>
+                            <span style="font-size: 14px; font-weight: 500; color: #ee4644;margin-left: 8px;">销量：${totalCreditsByIds1.totalhotsale}</span>
+                            <span style="font-size: 14px; font-weight: 500; color: #ee4644;margin-left: 8px;">售价：￥${totalCreditsByIds1.productprice}</span>
+                            <div class="rec_tag">
+                                所需积分 ${totalCreditsByIds1.productdisabled}
+                            </div>
+                        </li>
+                    </c:forEach>
+
                     <div class="clear">
                     </div>
                 </ul>
@@ -426,6 +258,9 @@
         <section class="row clearfix">
             <div id="local">
                 <!-- 老年出行 -->
+
+
+                <c:forEach items="${productTypeExtendsTraver}" var="productTypeExtendsTravers">
                 <h3 class="top_title">
                         <span class="link">
                             <span class="font_blue ml15">
@@ -434,91 +269,45 @@
                                 </a>
                             </span>
                         </span>
-                    <span class="cn">
-                            老年出行
+                        <span class="cn">
+                            ${productTypeExtendsTraver.get(0).producttypename}
                         </span>
                     <span class="en">
                             Elderly travel
-                        </span>
+                    </span>
                 </h3>
+
                 <ul class="wares_list">
-                    <li>
-                        <div class="wares_pic">
-                            <a href="#" target="_blank">
-                                <img src="${pageContext.request.contextPath}/jsp/users/jfsc/images/14472206401499.jpg" data-original="#" width="298" height="298">
-                            </a>
-                        </div>
-                        <div class="wares_title">
-                            <a href="#">
-                                【桔瓣主题游】韩国首尔一地五日自由行
-                            </a>
-                        </div>
-                        <div class="wares_price">
-                            <span style="font-size: 14px; font-weight: 500; color: #ee4644;margin-left: 8px;">售价：￥121.09</span>
-                        </div>
-                        <div class="wares_tag">
-                            所需积分 2999
-                        </div>
-                    </li>
-                    <li>
-                        <div class="wares_pic">
-                            <a href="#" target="_blank">
-                                <img src="${pageContext.request.contextPath}/jsp/users/jfsc/images/14485062857773.jpg" data-original="#" width="298" height="298">
-                            </a>
-                        </div>
-                        <div class="wares_title">
-                            <a href="#">
-                                【桔瓣主题游】华东五市 南山竹海 三国情 乌镇二飞六日游
-                            </a>
-                        </div>
-                        <div class="wares_price">
-                            <span style="font-size: 14px; font-weight: 500; color: #ee4644;margin-left: 8px;">售价：￥121.09</span>
-                        </div>
-                        <div class="wares_tag">
-                            所需积分 2999
-                        </div>
-                    </li>
-                    <li>
-                        <div class="wares_pic">
-                            <a href="#" target="_blank">
-                                <img src="${pageContext.request.contextPath}/jsp/users/jfsc/images/14483566137628.jpg" data-original="#" width="298" height="298">
-                            </a>
-                        </div>
-                        <div class="wares_title">
-                            <a href="#">
-                                【桔瓣精品游】厦门 鼓浪屿、曾厝垵双飞四日
-                            </a>
-                        </div>
-                        <div class="wares_price">
-                            <span style="font-size: 14px; font-weight: 500; color: #ee4644;margin-left: 8px;">售价：￥121.09</span>
-                        </div>
-                        <div class="wares_tag">
-                            所需积分 2999
-                        </div>
-                    </li>
-                    <li>
-                        <div class="wares_pic">
-                            <a href="#" target="_blank">
-                                <img src="${pageContext.request.contextPath}/jsp/users/jfsc/images/14483522201412.jpg" data-original="#" width="298" height="298">
-                            </a>
-                        </div>
-                        <div class="wares_title">
-                            <a href="#">
-                                【桔瓣主题游】曼谷、芭堤雅浪漫双岛五星六日游
-                            </a>
-                        </div>
-                        <div class="wares_price">
-                            <span style="font-size: 14px; font-weight: 500; color: #ee4644;margin-left: 8px;">售价：￥121.09</span>
-                        </div>
-                        <div class="wares_tag">
-                            所需积分 2999
-                        </div>
-                    </li>
+                    <c:forEach items="${productTypeExtendsTravers.product}" var="product">
+                        <li style="margin-top: 20px">
+                            <div class="wares_pic">
+                                <a href="${pageContext.request.contextPath}/xiangqing.action?productid=${product.productid}" target="_blank">
+                                    <img src="${product.productpicture}" data-original="#" width="298" height="298">
+                                </a>
+                            </div>
+                            <div class="wares_title">
+                                <a href="${pageContext.request.contextPath}/xiangqing.action?productid=${product.productid}">
+                                    【${product.productname}】${product.productdescribe}
+                                </a>
+                            </div>
+                            <div class="wares_price">
+                                <span style="font-size: 14px; font-weight: 500; color: #ee4644;margin-left: 8px;">售价：${product.productprice}￥</span>
+                            </div>
+                            <div class="wares_tag">
+                                所需积分${product.productdisabled}
+                            </div>
+                        </li>
+                    </c:forEach>
                     <div class="clear">
                     </div>
                 </ul>
+
+                </c:forEach>
+
                 <!-- 老年出行 end -->
                 <!-- 老年健康 -->
+
+                <c:forEach items="${productTypeExtendsHealth}" var="productTypeExtendsHealths">
                 <h3 class="top_title">
                         <span class="link">
                             <span class="font_blue ml15">
@@ -528,90 +317,46 @@
                             </span>
                         </span>
                     <span class="cn">
-                            老年健康
+                            老年健康/${productTypeExtendsHealths.producttypename}
                         </span>
                     <span class="en">
                             Elderly health
                         </span>
                 </h3>
-                <ul class="wares_list">
-                    <li>
-                        <div class="wares_pic">
-                            <a href="#" target="_blank">
-                                <img src="${pageContext.request.contextPath}/jsp/users/jfsc/images/14519778619298.jpg" data-original="#" width="298" height="298">
-                            </a>
-                        </div>
-                        <div class="wares_title">
-                            <a href="#">
-                                【桔瓣周边游】成都→九寨沟往返套餐三日自由游
-                            </a>
-                        </div>
-                        <div class="wares_price">
-                            <span style="font-size: 14px; font-weight: 500; color: #ee4644;margin-left: 8px;">售价：￥121.09</span>
-                        </div>
-                        <div class="wares_tag">
-                            所需积分 2999
-                        </div>
-                    </li>
-                    <li>
-                        <div class="wares_pic">
-                            <a href="#" target="_blank">
-                                <img src="${pageContext.request.contextPath}/jsp/users/jfsc/images/14520499639804.jpg" data-original="#" width="298" height="298">
-                            </a>
-                        </div>
-                        <div class="wares_title">
-                            <a href="#">
-                                【桔瓣周边游】成都—峨眉山往返套餐二日游
-                            </a>
-                        </div>
-                        <div class="wares_price">
-                            <span style="font-size: 14px; font-weight: 500; color: #ee4644;margin-left: 8px;">售价：￥121.09</span>
-                        </div>
-                        <div class="wares_tag">
-                            所需积分 2999
-                        </div>
-                    </li>
-                    <li>
-                        <div class="wares_pic">
-                            <a href="#" target="_blank">
-                                <img src="${pageContext.request.contextPath}/jsp/users/jfsc/images/14519832141189.jpg" data-original="#" width="298" height="298">
-                            </a>
-                        </div>
-                        <div class="wares_title">
-                            <a href="#">
-                                【桔瓣周边游】成都--西岭雪山往返套餐一日游
-                            </a>
-                        </div>
-                        <div class="wares_price">
-                            <span style="font-size: 14px; font-weight: 500; color: #ee4644;margin-left: 8px;">售价：￥121.09</span>
-                        </div>
-                        <div class="wares_tag">
-                            所需积分 2999
-                        </div>
-                    </li>
-                    <li>
-                        <div class="wares_pic">
-                            <a href="#" target="_blank">
-                                <img src="${pageContext.request.contextPath}/jsp/users/jfsc/images/14486133295565.jpg" data-original="#" width="298" height="298">
-                            </a>
-                        </div>
-                        <div class="wares_title">
-                            <a href="#">
-                                【桔瓣周边游】成都牛背山三日游
-                            </a>
-                        </div>
-                        <div class="wares_price">
-                            <span style="font-size: 14px; font-weight: 500; color: #ee4644;margin-left: 8px;">售价：￥121.09</span>
-                        </div>
-                        <div class="wares_tag">
-                            所需积分 2999
-                        </div>
-                    </li>
-                    <div class="clear">
-                    </div>
-                </ul>
+
+                        <ul class="wares_list">
+
+
+                                <c:forEach items="${productTypeExtendsHealths.product}" var="product">
+                                    <li>
+                                        <div class="wares_pic">
+                                            <a href="${pageContext.request.contextPath}/xiangqing.action?productid=${product.productid}" target="_blank">
+                                                <img src="${product.productpicture}" data-original="#" width="298" height="298">
+                                            </a>
+                                        </div>
+                                        <div class="wares_title">
+                                            <a href="${pageContext.request.contextPath}/xiangqing.action?productid=${product.productid}">
+                                                【${product.productname}】${product.productdescribe}
+                                            </a>
+                                        </div>
+                                        <div class="wares_price">
+                                            <span style="font-size: 14px; font-weight: 500; color: #ee4644;margin-left: 8px;">售价：${product.productprice}￥</span>
+                                        </div>
+                                        <div class="wares_tag">
+                                            所需积分 ${product.productdisabled}
+                                        </div>
+                                    </li>
+                                </c:forEach>
+                                <div class="clear">
+                                </div>
+                        </ul>
+                </c:forEach>
+
+
+
                 <!-- 老年健康 end -->
                 <!-- 老年生活 -->
+                <c:forEach items="${productTypeExtendsLife}" var="productTypeExtendsLifes">
                 <h3 class="top_title">
                         <span class="link">
                             <span class="font_blue ml15">
@@ -621,88 +366,37 @@
                             </span>
                         </span>
                     <span class="cn">
-                            老年生活
+                            老年生活/${productTypeExtendsLifes.producttypename}
                         </span>
                     <span class="en">
                            Elderly life
                         </span>
                 </h3>
                 <ul class="wares_list">
-                    <li>
-                        <div class="wares_pic">
-                            <a href="#" target="_blank">
-                                <img src="${pageContext.request.contextPath}/jsp/users/jfsc/images/14580332488602.jpg" data-original="#" width="298" height="298">
-                            </a>
-                        </div>
-                        <div class="wares_title">
-                            <a href="#">
-                                【桔瓣精品游】云景无限《旅游护照》
-                            </a>
-                        </div>
-                        <div class="wares_price">
-                            <span style="font-size: 14px; font-weight: 500; color: #ee4644;margin-left: 8px;">售价：￥121.09</span>
-                        </div>
-                        <div class="wares_tag">
-                            所需积分 2999
-                        </div>
-                    </li>
-                    <li>
-                        <div class="wares_pic">
-                            <a href="#" target="_blank">
-                                <img src="${pageContext.request.contextPath}/jsp/users/jfsc/images/14579219397152.png" data-original="#" width="298" height="298">
-                            </a>
-                        </div>
-                        <div class="wares_title">
-                            <a href="#">
-                                【桔瓣精品游】泰国·普吉岛+曼 谷+芭提雅·全景十日游
-                            </a>
-                        </div>
-                        <div class="wares_price">
-                            <span style="font-size: 14px; font-weight: 500; color: #ee4644;margin-left: 8px;">售价：￥121.09</span>
-                        </div>
-                        <div class="wares_tag">
-                            所需积分 2999
-                        </div>
-                    </li>
-                    <li>
-                        <div class="wares_pic">
-                            <a href="#" target="_blank">
-                                <img src="${pageContext.request.contextPath}/jsp/users/jfsc/images/14579203033420.jpg" data-original="#" width="298" height="298">
-                            </a>
-                        </div>
-                        <div class="wares_title">
-                            <a href="#">
-                                【桔瓣精品游】【致海南】遇见小 月湾6日游（三亚）
-                            </a>
-                        </div>
-                        <div class="wares_price">
-                            <span style="font-size: 14px; font-weight: 500; color: #ee4644;margin-left: 8px;">售价：￥121.09</span>
-                        </div>
-                        <div class="wares_tag">
-                            所需积分 2999
-                        </div>
-                    </li>
-                    <li>
-                        <div class="wares_pic">
-                            <a href="#" target="_blank">
-                                <img src="${pageContext.request.contextPath}/jsp/users/jfsc/images/14484379589527.jpg" data-original="#" width="298" height="298">
-                            </a>
-                        </div>
-                        <div class="wares_title">
-                            <a href="#">
-                                【桔瓣主题游】其乐蜈琼·遇见蜈支洲六日游
-                            </a>
-                        </div>
-                        <div class="wares_price">
-                            <span style="font-size: 14px; font-weight: 500; color: #ee4644;margin-left: 8px;">售价：￥121.09</span>
-                        </div>
-                        <div class="wares_tag">
-                            所需积分 2999
-                        </div>
-                    </li>
+                    <c:forEach items="${productTypeExtendsLifes.product}" var="product">
+                        <li>
+                            <div class="wares_pic">
+                                <a href="${pageContext.request.contextPath}/xiangqing.action?productid=${product.productid}" target="_blank">
+                                    <img src="${product.productpicture}" data-original="#" width="298" height="298">
+                                </a>
+                            </div>
+                            <div class="wares_title">
+                                <a href="${pageContext.request.contextPath}/xiangqing.action?productid=${product.productid}">
+                                    【${product.productname}】${product.productdescribe}
+                                </a>
+                            </div>
+                            <div class="wares_price">
+                                <span style="font-size: 14px; font-weight: 500; color: #ee4644;margin-left: 8px;">售价：￥${product.productprice}</span>
+                            </div>
+                            <div class="wares_tag">
+                                所需积分 ${product.productdisabled}
+                            </div>
+                        </li>
+                    </c:forEach>
                     <div class="clear">
                     </div>
                 </ul>
+                </c:forEach>
                 <!-- 老年生活 end -->
             </div>
         </section>

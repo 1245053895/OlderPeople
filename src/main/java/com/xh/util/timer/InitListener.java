@@ -38,13 +38,13 @@ public class InitListener implements ServletContextListener {
         WebApplicationContext ac = WebApplicationContextUtils.getWebApplicationContext(servletContextEvent.getServletContext());
         CNNService cnnService = ac.getBean(CNNServiceImpl.class);
         List<ProductCustom> productCustoms_1 = cnnService.queryAllProduct(0,32);
-        t.schedule(new MyTimer(productCustoms_1, Constant.modelName+ File.separator+"product_1.model",0), 1000,60*60*1000);//一小时执行一次
+        t.schedule(new MyTimer(productCustoms_1, Constant.modelName+ File.separator+"product_1.model",0), 60*60*1000,60*60*1000);//一小时执行一次
 
         List<ProductCustom> productCustoms_2 = cnnService.queryAllProduct(32,32);
-        t.schedule(new MyTimer(productCustoms_2, Constant.modelName+ File.separator+"product_2.model",33), 1000,60*60*1000);//一小时执行一次
+        t.schedule(new MyTimer(productCustoms_2, Constant.modelName+ File.separator+"product_2.model",33), 60*60*1000,60*60*1000);//一小时执行一次
 
         List<ProductCustom> productCustoms_3 = cnnService.queryAllProduct(64,32);
-        t.schedule(new MyTimer(productCustoms_3, Constant.modelName+ File.separator+"product_3.model",65), 1000,60*60*1000);//一小时执行一次
+        t.schedule(new MyTimer(productCustoms_3, Constant.modelName+ File.separator+"product_3.model",65), 60*60*1000,60*60*1000);//一小时执行一次
 
         //servletContextEvent.getServletContext().setAttribute("productCustoms", productCustoms);
         //System.out.println(productCustoms);

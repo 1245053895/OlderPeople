@@ -12,4 +12,6 @@ public interface SearchService {
     public List<ProductCustom> queryProductBySearch(List<String> words);
 
     public List<ProductCustom> queryProductByProductIds(int[] productId);
+
+    public List<ProductCustom> queryProductByProductName(String productName);
 }

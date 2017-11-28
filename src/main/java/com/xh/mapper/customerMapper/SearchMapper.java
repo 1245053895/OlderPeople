@@ -15,4 +15,6 @@ public interface SearchMapper {
     public List<ProductCustom> queryProductBySearch(List<String> words);
 
     public List<ProductCustom> queryProductByProductIds(int[] productId);
+
+    public List<ProductCustom> queryProductByProductName(String productName);
 }

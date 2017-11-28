@@ -194,7 +194,7 @@ public class Util {
         return index;
     }
 
-    public static int[] getMaxTen(double[] out) {
+    public static int[] getMaxTen(double[] out,int num) {
         int o[]=new int[3];
         int index=0;
         for (int j=0;j<3;j++) {
@@ -206,7 +206,7 @@ public class Util {
                 }
             }
             out[index]=0;
-            o[j] = index;
+            o[j] = index+num;
         }
         return o;
     }

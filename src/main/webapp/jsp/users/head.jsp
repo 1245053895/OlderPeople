@@ -21,6 +21,7 @@
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/jsp/users/css/search/search.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/jsp/users/css/search/upload.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/jsp/users/css/search/result.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/jsp/users/css/search/loading.css">
     <script type="text/javascript" src="${pageContext.request.contextPath}/jsp/users/js/jquery.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/jsp/users/js/jquery-1.8.3.min.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/jsp/users/js/index.js"></script>
@@ -115,11 +116,11 @@
     <div class="bg"></div>
     <div class="search-wrapper">
         <div class="input-holder">
-            <input type="text" class="search-input" placeholder="请输入关键词" />
-            <button class="search-icon" onClick="searchToggle(this, event);"><span></span></button>
-            <div class="search-select"></div>
-            <div class="upload_image">
-                <form id="uploadForm" action="" method="post" enctype="multipart/form-data">
+            <form id="uploadForm" action="" method="post" enctype="multipart/form-data">
+                <input type="text" name="input_text" class="search-input" placeholder="请输入关键词" />
+                <button class="search-icon" onClick="searchToggle(this, event);"><span></span></button>
+                <div class="search-select"></div>
+                <div class="upload_image">
                     <div class="select_img">
                         <div id="select_area"></div>
                         <input type="file" id="imageFile" style="filter:alpha(opacity=0);opacity:0;width: 0;height: 0;"/>
@@ -133,18 +134,23 @@
                         </div>
                         <div class="header-tip"></div>
                     </div>
-                </form>
-            </div>
+                </div>
+                <div class="result-suggest">
+                    <ul>
+                        <li>老人</li>
+                        <li>老年得出</li>
+                    </ul>
+                </div>
+            </form>
         </div>
         <span class="close" onClick="searchToggle(this, event);"></span>
         <div class="result-container">
+
         </div>
     </div>
     <div class="result-list">
         <div class="product_advertising">
-            <div>
-                这是一个广告
-            </div>
+            <%--这是广告--%>
         </div>
         <div class="product_center">
             <div class="product_list">
@@ -154,71 +160,41 @@
                 <div class="product_name">金黄嫩茶叶</div>
                 <div class="product_price"><em>149</em>元</div>
             </div>
-            <div class="product_list">
-                <div>
-                    <img src="${pageContext.request.contextPath}/jsp/users/images/wntj/cy.jpg">
-                </div>
-                <div class="product_name">金黄嫩茶叶</div>
-                <div class="product_price"><em>149</em>元</div>
+        </div>
+    </div>
+    <div class="loading">
+        <div class="circle-loader">
+            <div class="circle-line">
+                <div class="circle circle-blue"></div>
+                <div class="circle circle-blue"></div>
+                <div class="circle circle-blue"></div>
             </div>
-            <div class="product_list">
-                <div>
-                    <img src="${pageContext.request.contextPath}/jsp/users/images/wntj/cy.jpg">
-                </div>
-                <div class="product_name">金黄嫩茶叶</div>
-                <div class="product_price"><em>149</em>元</div>
+            <div class="circle-line">
+                <div class="circle circle-yellow"></div>
+                <div class="circle circle-yellow"></div>
+                <div class="circle circle-yellow"></div>
             </div>
-            <div class="product_list">
-                <div>
-                    <img src="${pageContext.request.contextPath}/jsp/users/images/wntj/cy.jpg">
-                </div>
-                <div class="product_name">金黄嫩茶叶</div>
-                <div class="product_price"><em>149</em>元</div>
+            <div class="circle-line">
+                <div class="circle circle-red"></div>
+                <div class="circle circle-red"></div>
+                <div class="circle circle-red"></div>
             </div>
-            <div class="product_list">
-                <div>
-                    <img src="${pageContext.request.contextPath}/jsp/users/images/wntj/cy.jpg">
-                </div>
-                <div class="product_name">金黄嫩茶叶</div>
-                <div class="product_price"><em>149</em>元</div>
-            </div>
-            <div class="product_list">
-                <div>
-                    <img src="${pageContext.request.contextPath}/jsp/users/images/wntj/cy.jpg">
-                </div>
-                <div class="product_name">金黄嫩茶叶</div>
-                <div class="product_price"><em>149</em>元</div>
-            </div>
-            <div class="product_list">
-                <div>
-                    <img src="${pageContext.request.contextPath}/jsp/users/images/wntj/cy.jpg">
-                </div>
-                <div class="product_name">金黄嫩茶叶</div>
-                <div class="product_price"><em>149</em>元</div>
-            </div>
-            <div class="product_list">
-                <div>
-                    <img src="${pageContext.request.contextPath}/jsp/users/images/wntj/cy.jpg">
-                </div>
-                <div class="product_name">金黄嫩茶叶</div>
-                <div class="product_price"><em>149</em>元</div>
-            </div>
-            <div class="product_list">
-                <div>
-                    <img src="${pageContext.request.contextPath}/jsp/users/images/wntj/cy.jpg">
-                </div>
-                <div class="product_name">金黄嫩茶叶</div>
-                <div class="product_price"><em>149</em>元</div>
-            </div>
-            <div class="product_list">
-                <div>
-                    <img src="${pageContext.request.contextPath}/jsp/users/images/wntj/cy.jpg">
-                </div>
-                <div class="product_name">金黄嫩茶叶</div>
-                <div class="product_price"><em>149</em>元</div>
+            <div class="circle-line">
+                <div class="circle circle-green"></div>
+                <div class="circle circle-green"></div>
+                <div class="circle circle-green"></div>
             </div>
         </div>
     </div>
+    <%--弹幕--%>
+    <%--<div class="barrage">
+        <div class="barrage_body">
+            <div>
+                6666
+            </div>
+        </div>
+
+    </div>--%>
 </div>
 
 <script>

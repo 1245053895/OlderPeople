@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Administrator
@@ -60,7 +61,7 @@
             })
             $('.Caddress .add_mi').click(function() {
                 $(this).css('background', 'url("${pageContext.request.contextPath}/jsp/users/shdz/images/mail_1.jpg") no-repeat').siblings('.add_mi').css('background', 'url("${pageContext.request.contextPath}/jsp/users/shdz/images/mail.jpg") no-repeat')
-            })
+            });
         })
         var x = Array();
 
@@ -289,31 +290,30 @@
 			<div class="jubao">
 			</div>
 		</div>-->
-<div class="Caddress">
-    <%--<div class="open_new">
-        <button class="open_btn" onclick="javascript:onclick_open();">使用新地址</button>
+<div class="Caddress" style="height: auto!important;width: 990px!important;">
+        <div class="shdz ">
+            <h2 class="shdztitle">收货地址</h2>
+        </div>
+     <c:forEach items="${gainaddresList}" var="gainaddres">
+        <div class="add_mi">
+            <p style="border-bottom:1px dashed #ccc;line-height:28px;">${gainaddres.gainname}</p>
+            <p>${gainaddres.gainaddress}</p>
+            <span>电话：${gainaddres.gainmobile}</span>
+            <p>邮编：${gainaddres.gaincode}</p>
+        </div>
+     </c:forEach>
+   <%-- <div class="add_mi">
+        <p style="border-bottom:1px dashed #ccc;line-height:28px;">陈思顶</p>
+        <p>萧山 北干 明怡花苑53幢3单元</p>
+        <span> 电话：13735683918</span>
+        <p>邮编：564511</p>
+    </div>
+    <div class="add_mi">
+        <p style="border-bottom:1px dashed #ccc;line-height:28px;">陈思顶</p>
+        <p>萧山 北干 明怡花苑53幢3单元</p>
+        <span> 电话：13735683918</span>
+        <p>邮编：564511</p>
     </div>--%>
-    <div class="shdz ">
-        <h2 class="shdztitle">收货地址</h2>
-    </div>
-    <div class="add_mi">
-        <p style="border-bottom:1px dashed #ccc;line-height:28px;">陈思顶</p>
-        <p>萧山 北干 明怡花苑53幢3单元</p>
-        <span> 电话：13735683918</span>
-        <p>邮编：564511</p>
-    </div>
-    <div class="add_mi">
-        <p style="border-bottom:1px dashed #ccc;line-height:28px;">陈思顶</p>
-        <p>萧山 北干 明怡花苑53幢3单元</p>
-        <span> 电话：13735683918</span>
-        <p>邮编：564511</p>
-    </div>
-    <div class="add_mi">
-        <p style="border-bottom:1px dashed #ccc;line-height:28px;">陈思顶</p>
-        <p>萧山 北干 明怡花苑53幢3单元</p>
-        <span> 电话：13735683918</span>
-        <p>邮编：564511</p>
-    </div>
     <div class="use-new-addr"  id="J_useNewAddr" data-state="off" onclick="javascript:onclick_open();">
         <span class="iconfont icon-add" ><img src="${pageContext.request.contextPath}/jsp/users/images/add_cart.png" /></span>
         新增收货地址
@@ -329,211 +329,31 @@
             新增收货地址
         </div>
         <div class="col-xs-12 shade_from">
-            <form action="" method="post">
+            <%--<form action="" method="post">--%>
                 <div class="col-xs-12">
                     <span class="span_style" class="span_sty">收&nbsp;件&nbsp;人&nbsp;</span>
-                    <input class="input_style" type="" name="" id="name_" value="" placeholder="&nbsp;&nbsp;请输入您的姓名" />
+                    <input class="input_style" type="text" name="gainname" id="name_" value="" placeholder="&nbsp;&nbsp;请输入您的姓名" />
                 </div>
                 <div class="col-xs-12">
                     <span class="span_style">详细地址</span>
-                    <input class="input_style" type="" name="" id="address" value="" placeholder="&nbsp;&nbsp;请输入您的详细地址" />
+                    <input class="input_style" type="text" name="gainaddress" id="address" value="" placeholder="&nbsp;&nbsp;请输入您的详细地址" />
                 </div>
                 <div class="col-xs-12">
                     <span class="span_style">手机号码</span>
-                    <input class="input_style" type="" name="" id="phone" value="" placeholder="&nbsp;&nbsp;请输入您的手机号码" />
+                    <input class="input_style" type="number" name="gainmobile" id="phone" value="" placeholder="&nbsp;&nbsp;请输入您的手机号码" />
                 </div>
                 <div class="col-xs-12">
                     <span class="span_style">邮政编码</span>
-                    <input class="input_style" type="" name="" id="number_this" value="" placeholder="&nbsp;&nbsp;请输入您的邮政编号" />
+                    <input class="input_style" type="email" name="gaincode" id="number_this" value="" placeholder="&nbsp;&nbsp;请输入您的邮政编号" />
                 </div>
                 <div class="col-xs-12">
                     <input class="btn_remove" type="button" onclick="javascript:onclick_close();" value="取消" />
-                    <input type="submit" class="sub_set" id="sub_setID" value="提交" />
+                    <input type="button" class="sub_set" id="sub_setID" value="提交" />
                 </div>
-            </form>
+            <%--</form>--%>
         </div>
     </div>
 </div>
-
-
-<!--		<div class="shopping_content">
-			<div class="shopping_table">
-				<table border="1" bordercolor="#cccccc" cellspacing="0" cellpadding="0" style="width: 100%; text-align: center;">
-					<tr>
-						<th>商品图片</th>
-						<th>商品名称</th>
-						<th>商品属性</th>
-						<th>商品价格</th>
-						<th>商品数量</th>
-						<th>商品操作</th>
-					</tr>
-					<tr>
-						<td>
-							<a><img src="images/2f1.jpg" /></a>
-						</td>
-						<td><span>小消息下</span></td>
-						<td>
-							<div class="">
-								<span id="">颜色</span>：<span>白色</span>
-							</div>
-							<div class="">
-								<span id="">尺码</span>：<span>L</span>
-							</div>
-						</td>
-						<td>
-							<span class="span_momey">11.10</span>
-						</td>
-						<td>
-							<button class="btn_reduce" onclick="javascript:onclick_reduce(this);">-</button>
-							<input class="momey_input" type="" name="" id="" value="1" disabled="disabled" />
-							<button class="btn_add" onclick="javascript:onclick_btnAdd(this);">+</button>
-						</td>
-						<td>
-							<button class="btn_r" onclick="javascript:onclick_remove(this);">删除</button>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<a><img src="images/2f1.jpg" /></a>
-						</td>
-						<td><span>小消息下</span></td>
-						<td>
-							<div class="">
-								<span id="">颜色</span>：<span>白色</span>
-							</div>
-							<div class="">
-								<span id="">尺码</span>：<span>L</span>
-							</div>
-						</td>
-						<td>
-							<span class="span_momey">11.10</span>
-						</td>
-						<td>
-							<button class="btn_reduce" onclick="javascript:onclick_reduce(this);">-</button>
-							<input class="momey_input" type="" name="" id="" value="1"  disabled="disabled"/>
-							<button class="btn_add" onclick="javascript:onclick_btnAdd(this);">+</button>
-						</td>
-						<td>
-							<button class="btn_r" onclick="javascript:onclick_remove(this);">删除</button>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<a><img src="images/2f1.jpg" /></a>
-						</td>
-						<td><span>小消息下</span></td>
-						<td>
-							<div class="">
-								<span id="">颜色</span>：<span>白色</span>
-							</div>
-							<div class="">
-								<span id="">尺码</span>：<span>L</span>
-							</div>
-						</td>
-						<td>
-							<span class="span_momey">11.10</span>
-						</td>
-						<td>
-							<button class="btn_reduce" onclick="javascript:onclick_reduce(this);">-</button>
-							<input class="momey_input" type="" name="" id="" value="1"  disabled="disabled"/>
-							<button class="btn_add" onclick="javascript:onclick_btnAdd(this);">+</button>
-						</td>
-						<td>
-							<button class="btn_r" onclick="javascript:onclick_remove(this);">删除</button>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<a><img src="images/2f1.jpg" /></a>
-						</td>
-						<td><span>小消息下</span></td>
-						<td>
-							<div class="">
-								<span id="">颜色</span>：<span>白色</span>
-							</div>
-							<div class="">
-								<span id="">尺码</span>：<span>L</span>
-							</div>
-						</td>
-						<td>
-							<span class="span_momey">11.10</span>
-						</td>
-						<td>
-							<button class="btn_reduce" onclick="javascript:onclick_reduce(this);">-</button>
-							<input class="momey_input" type="" name="" id="" value="1" disabled="disabled" />
-							<button class="btn_add" onclick="javascript:onclick_btnAdd(this);">+</button>
-						</td>
-						<td>
-							<button class="btn_r" onclick="javascript:onclick_remove(this);">删除</button>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<a><img src="images/2f1.jpg" /></a>
-						</td>
-						<td><span>小消息下</span></td>
-						<td>
-							<div class="">
-								<span id="">颜色</span>：<span>白色</span>
-							</div>
-							<div class="">
-								<span id="">尺码</span>：<span>L</span>
-							</div>
-						</td>
-						<td>
-							<span class="span_momey">11.00</span>
-						</td>
-						<td>
-							<button class="btn_reduce" onclick="javascript:onclick_reduce(this);">-</button>
-							<input class="momey_input" type="" name="" id="" value="1"  disabled="disabled"/>
-							<button class="btn_add" onclick="javascript:onclick_btnAdd(this);">+</button>
-						</td>
-						<td>
-							<button class="btn_r" onclick="javascript:onclick_remove(this);">删除</button>
-						</td>
-					</tr>
-				</table>
-				<div class="" style="width: 100%; text-align: right; margin-top: 10px;">
-					<div class="div_outMumey" style="float: left;">
-						总价：<span class="out_momey">11</span>
-					</div>
-					<button class="btn_closing">结算</button>
-				</div>
-			</div>
-		</div>
-
-
-		<div class="shade">
-		</div>
-
-
-
-		<div id="down">
-			<div class="down_top">
-				<a href="#">关于我们</a>
-				<a href="#">联系我们</a>
-				<a href="#">商家入驻</a>
-				<a href="#">营销中心</a>
-				<a href="#">手机商城</a>
-				<a href="#">友情链接</a>
-				<a href="#">销售联盟</a>
-				<a href="#">商城社区</a>
-				<a href="#">商城公益</a>
-				<a href="#" style="border-right:none">English Site</a>
-			</div>
-			<div class="down_center">
-				<span>北京市公安局朝阳分局备案编号110105014669  |  京ICP证070359号  |  <a href="#">互联网药品信息服务资格证编号(京)-经营性-2014-0008</a>  |  新出发京零 字第大120007号</span>
-				<span><a href="#">音像制品经营许可证苏宿批005号</a>  |  出版物经营许可证编号新出发(苏)批字第N-012号  |  互联网出版许可证编号新出网证(京)字150号</span>
-				<span><a href="#">网络文化经营许可证京网文[2011]0168-061号</a>  违法和不良信息举报电话：4006561155  Copyright © 2004-2014  商城JD.com 版权所有</span>
-				<span>商城旗下网站：<a href="#">360TOP</a><a href="#">拍拍网</a><a href="#">网银在线</a></span>
-			</div>
-			<div class="down_bot">
-				<img src="images/bot1.gif" alt="" />
-				<img src="images/bot2.gif" alt="" />
-				<img src="images/bot3.png" alt="" />
-				<img src="images/bot4.png" alt="" />
-			</div>
-		</div>-->
 
 </body>
 

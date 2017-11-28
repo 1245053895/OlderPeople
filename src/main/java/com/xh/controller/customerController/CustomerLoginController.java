@@ -68,7 +68,7 @@ public class CustomerLoginController {
 
     //前端用户登录的验证
     @RequestMapping("/CustomerLogin.action")
-    public String CustomerLogin(String username, String password, HttpServletRequest request, HttpServletResponse response, Model model) {
+    public String CustomerLogin(String username, String password, HttpServletRequest request,String returnUrl, HttpServletResponse response, Model model) {
         Userlog userlog = new Userlog();
         if (username != null) {
             if (password != null) {
@@ -96,7 +96,7 @@ public class CustomerLoginController {
                           }else {
                               userLoginService.AutoIncreaeOne(user.getUserid());
                           }
-                            return "redirect:/ShopFrontPage.action";//"/jsp/users/index.jsp";
+                            return "redirect:" + returnUrl;//"/jsp/users/index.jsp";
                         } else {
                             model.addAttribute("error", "密码不正确");
                         }

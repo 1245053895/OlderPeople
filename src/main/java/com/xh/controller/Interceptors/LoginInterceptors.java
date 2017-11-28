@@ -17,15 +17,17 @@ public class LoginInterceptors implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o) throws Exception {
+        String Url=httpServletRequest.getHeader("referer");
 
-     HttpSession session=httpServletRequest.getSession();
-       User user= (User) session.getAttribute("user");
+        HttpSession session=httpServletRequest.getSession();
+        User user= (User) session.getAttribute("user");
        if (user!=null){
            //身份存在，放行
            return true;
        }
        //执行这里表示用户的身份需要认证，跳转到登录页面。
-        httpServletRequest.getRequestDispatcher("/jsp/users/login.jsp").forward(httpServletRequest,httpServletResponse);
+
+        httpServletRequest.getRequestDispatcher("/LoginPage.action?returnUrl="+Url).forward(httpServletRequest,httpServletResponse);
         return false;
 
     }

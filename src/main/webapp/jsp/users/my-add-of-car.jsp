@@ -53,7 +53,7 @@
 
 <header id="pc-header">
 
-	<jsp:include page="/jsp/users/head.jsp"></jsp:include>
+<jsp:include page="/jsp/users/head.jsp"></jsp:include>
 	<!--  顶部    start-->
 	<div class="yHeader">
 		<!-- 导航   start  -->
@@ -106,7 +106,7 @@
 					<div class="checkout-box-bd">
 						<!-- 地址状态 0：默认选择；1：新增地址；2：修改地址 -->
 						<input type="hidden" name="Checkout[addressState]" id="addrState"   value="0">
-						<!-- 收货地址 -->
+						<%--<!-- 收货地址 -->
 						<div class="xm-box">
 							<div class="box-hd ">
 								<h2 class="title">收货地址</h2>
@@ -192,21 +192,24 @@
 								<!--点击弹出新增/收货地址界面end-->
 								<div class="xm-edit-addr-backdrop" id="J_editAddrBackdrop"></div>
 							</div>
-						</div>
+						</div>--%>
 						<!-- 收货地址 END-->
 						<div id="checkoutPayment">
+							<jsp:include page="/jsp/users/shdz/shdz.jsp"></jsp:include>
 							<!-- 支付方式 -->
-							<div class="xm-box">
+							<div class="xm-box" style="width: 990px!important;height: 100px!important;margin-top: 330px;">
 								<div class="box-hd ">
 									<h2 class="title">支付方式</h2>
 								</div>
 								<div>
-									<ul class="checkout-option-list clearfix J_optionList">
+									<ul class=" clearfix" style="margin-left: 30px;margin-top: 20px">
 										<li>
-											<input type="radio" name="paytype" value="1" checked="checked" data-labelauty="在线支付">
+											<input type="radio" name="paytype" value="0" style="float: left"/>
+											<span style="font-size: 16px; float: left;margin-left: 5px;margin-right: 30px;">在线支付</span>
 										</li>
-										<li style=" display: inline-block;margin-left: -20px;">
-											<input type="radio" name="paytype" value="0" data-labelauty="货到付款">
+										<li>
+											<input type="radio" name="paytype" value="1" style="float: left"/>
+											<span style="font-size: 16px; float: left;margin-left: 5px;margin-right: 30px;">货到付款</span>
 										</li>
 									</ul>
 								</div>
@@ -218,12 +221,14 @@
 									<h2 class="title">收货方式</h2>
 								</div>
 								<div>
-									<ul class="checkout-option-list clearfix J_optionList">
+									<ul class=" clearfix" style="margin-left: 30px;margin-top: 20px">
 										<li>
-											<input type="radio" name="gainmethod" value="1" checked="checked" data-labelauty="快递配送">
+											<input type="radio" name="gainmethod" value="0" style="float: left"/>
+											<span style="font-size: 16px; float: left;margin-left: 5px;margin-right: 30px;">快递配送</span>
 										</li>
-										<li style=" display: inline-block;margin-left: -20px;">
-											<input type="radio" name="gainmethod" value="0" data-labelauty="货物自取">
+										<li>
+											<input type="radio" name="gainmethod" value="1" style="float: left"/>
+											<span style="font-size: 16px; float: left;margin-left: 5px;margin-right: 30px;">货物自取</span>
 										</li>
 									</ul>
 								</div>

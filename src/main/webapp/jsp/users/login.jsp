@@ -40,6 +40,7 @@
 			<div class="fr pc-login-box">
 				<div class="pc-login-title"><h2>用户登录&nbsp;&nbsp;&nbsp;${error}</h2></div>
 				<form id="code_input" action="${pageContext.request.contextPath}/CustomerLogin.action" method="post">
+					<input type="hidden" name="returnUrl" value="${param.returnUrl }"/>
 					<div class="pc-sign">
 						<input type="text" name="username" placeholder="用户名/邮箱/手机号">
 					</div>

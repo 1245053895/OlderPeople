@@ -3,10 +3,11 @@
 <mapper namespace="com.xh.mapper.customerMapper.CNNMapper">
     <select id="queryAllProduct" resultType="productCustom">
         SELECT
-          p.*,
-          p.Product_A productA,
-          p.Product_B productB,
-          p.Product_C productC
+        p.*,
+        p.Product_A productA,
+        p.Product_B productB,
+        p.Product_C productC
         FROM product p
+        LIMIT #{start},#{count};
     </select>
 </mapper>

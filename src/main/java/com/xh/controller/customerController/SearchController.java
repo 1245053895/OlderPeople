@@ -100,7 +100,8 @@ public class SearchController {
              */
             //taobao=getJson(taobao);
 
-            String modelPath = session.getServletContext().getRealPath(Constant.modelName);
+            //String modelPath = session.getServletContext().getRealPath(Constant.modelName);
+            String modelPath = session.getServletContext().getRealPath("WEB-INF"+ File.separator+"classes"+ File.separator+"config"+ File.separator+"cnn.modle");
             File modelFile=new File(modelPath);
             if(modelFile.exists()){
                 cnn=CNN.loadModel(modelPath);

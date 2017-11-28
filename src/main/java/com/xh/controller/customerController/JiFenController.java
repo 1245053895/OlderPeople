@@ -1,3 +1,4 @@
+/*
 package com.xh.controller.customerController;
 
 import com.xh.po.Gainaddres;
@@ -44,19 +45,27 @@ public class JiFenController {
         User user1 = (User) request.getSession().getAttribute("user");
 
         if (mygainid>0){order.setGainid(mygainid);}
-        order.setStatus(1);       /* 订单状态 订单新建时为1,表示该订单是待发货的订单*/
+        order.setStatus(1);       */
+/* 订单状态 订单新建时为1,表示该订单是待发货的订单*//*
+
         order.setPostfee(0.0);
         order.setPaystatus(1);
         order.setUserid(user1.getUserid());
         int a = 0 - order.getTotalcredit();
         order.setTotalcredit(a);
         String return2 = orderPayService.insertSelective2(order);
-        Integer orderid = order.getOrderid();  /*数据库返回的主键*/
+        Integer orderid = order.getOrderid();  */
+/*数据库返回的主键*//*
+
 
         Orderproduct orderproduct = new Orderproduct();
 
-        orderproduct.setOrderid(orderid);       /*主键是另外一张表的外键需要插入*/
-        orderproduct.setShoppingcount(shuliang);/*订单商品表的商品数量*/
+        orderproduct.setOrderid(orderid);       */
+/*主键是另外一张表的外键需要插入*//*
+
+        orderproduct.setShoppingcount(shuliang);*/
+/*订单商品表的商品数量*//*
+
         orderproduct.setProductid(productid);
         if (return2.equals("OK")) {
             orderPayService.insertSelective3(orderproduct);
@@ -67,4 +76,4 @@ public class JiFenController {
         return null;
 
     }
-}
+}*/

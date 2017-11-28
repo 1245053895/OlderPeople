@@ -320,7 +320,7 @@
      </div>
 </div>
 
-<div class="shade_content">
+<div class="shade_content" style="display: none">
     <div class="col-xs-12 shade_colse">
         <button onclick="javascript:onclick_close();">x</button>
     </div>

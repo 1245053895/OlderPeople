@@ -316,36 +316,35 @@
 			</c:if>
 			<%--<input id="Button1" type="button" value="点击弹出层" onclick="ShowDiv('MyDiv','fade')" />--%>
 			<!--弹出层时背景层DIV-->
-			<div id="fade" class="black_overlay">
+
+			<%--	<div id="fade" class="black_overlay">
 			</div>
 			<div id="MyDiv" class="white_content">
 				<div style="text-align: right; cursor: default; height: 40px;" id="move">
 					<span style="font-size: 16px;" onclick="CloseDiv('MyDiv','fade')">关闭</span>
-				</div>
+				</div>--%>
 
-
-
-				<form method="post" action="" name="allnotice">
+			<%--	<form method="post" action="" name="allnotice">
 					<div data-role="popup" id="myPopup" class="ui-content" style="width: 400px;height: 300px;margin-left: 30px  " >
 				<h1>欢迎!</h1> <div class="container1" style="color: #d10607"> 账号可用积分： <div id="myDiv1" style="margin-right: 20px"></div>
 						<div >要兑换的数量：<div id="myDiv2" style="margin-right: 20px"></div></div>
-						<%--保存兑换的数量--%>
+						&lt;%&ndash;保存兑换的数量&ndash;%&gt;
 						<input type="hidden" id="ace0" name="shuliang" value="88" />
 						<div >将消耗的积分：<div id="myDiv3"></div></div>
-						<%--保存消耗的积分--%>
+						&lt;%&ndash;保存消耗的积分&ndash;%&gt;
 						<input type="hidden" id="ace1" name="totalcredit" value="88" />
 					</div><br>
 
-						<%--保存商品id--%>
+						&lt;%&ndash;保存商品id&ndash;%&gt;
 						<input type="hidden" class="ace" name="productid" value="${productid}" />
 
 				<fieldset data-role="controlgroup" data-type="horizontal" style="font-size: 20px;height: 100px;">
 					<br>
 					<legend><strong>请选择您的收货收货方式：</strong></legend><br>
 					<label style="width: 160px;margin-left: 60px" for="male">  快递配送</label>
-					<input type="radio" name="gainmethod" id="male"   value="1">
+					<input type="radio" name="gainmethod" id="male"   value="0">
 					<label style="width: 160px;margin-left: 45px"  for="female">货物自取</label>
-					<input checked="checked" type="radio" name="gainmethod" id="female" value="0">
+					<input checked="checked" type="radio" name="gainmethod" id="female" value="1">
 				</fieldset></br></br>
 
 				<div class="Add_p_s"  id="testDiv"  style=" display:none;font-size: 15px;" >
@@ -354,8 +353,8 @@
 					<div class="formControls col-2"><span class="select-box">
 				<select class="select" name="mygainid">
 					<option value="-2" >请选择收货地址!如果没有地址，请前往个人中心添加！</option>
-					<%--<option value="-2" >${gainaddres}</option>--%>
-                    <%--判断地址gainid大于0--%>
+					&lt;%&ndash;<option value="-2" >${gainaddres}</option>&ndash;%&gt;
+                    &lt;%&ndash;判断地址gainid大于0&ndash;%&gt;
                      <c:forEach items="${gainaddres}" var="gainaddres1" varStatus="status">
 						 <option value="${gainaddres1.gainid}">${gainaddres1.gainaddress}</option>
 					 </c:forEach>
@@ -391,7 +390,7 @@
 
                     } 	 ;
 
-				</script>
+				</script>--%>
 
 <%--  </div>--%>
 <script type="text/javascript">

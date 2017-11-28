@@ -31,4 +31,6 @@ public interface OrderListService {
     public List<ProductCustom> queryProductByOrderId(int id);
 
     public boolean updateCommentByids(ProductCustom productCustom);
+
+    public Boolean updataOrderStatusZero(int orderid,int status);
 }

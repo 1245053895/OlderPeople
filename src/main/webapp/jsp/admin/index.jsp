@@ -266,7 +266,7 @@
 					<c:if test="${adminFirstViewCustom.firstviewaction.equals('1C')}">
 						<li><a href="#" class="dropdown-toggle"><i class="icon-desktop"></i><span class="menu-text"> 消息管理 </span><b class="arrow icon-angle-down"></b></a>
 							<ul class="submenu">
-								<li class="home"><a  href="javascript:void(0)" name="/LoginServlet"  title="用户消息" class="iframeurl"><i class="icon-double-angle-right"></i>用户消息</a></li>
+								<li class="home"><a  href="javascript:void(0)" name="/LoginServlet?username=${sessionScope.admin.adminname}"  title="用户消息" class="iframeurl"><i class="icon-double-angle-right"></i>用户消息</a></li>
 								<li class="home"><a  href="javascript:void(0)" name="/selectCommentRate.action" title="用户评论"  class="iframeurl"><i class="icon-double-angle-right"></i>用户评论</a></li>
 							</ul>
 						</li>

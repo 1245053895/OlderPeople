@@ -162,12 +162,12 @@
 				<li><a href="${pageContext.request.contextPath}/ShopFrontPage.action"  title="首页">首页</a></li>
 				<li><a href="${pageContext.request.contextPath}/ProductHot.action" target="_blank" title="热销专区">热销专区</a></li>
 				<li><a href="${pageContext.request.contextPath}/SelectNewProduct.action" target="_blank" title="新品专区">新品专区</a></li>
-				<li><a href="" target="_blank" title="积分商城">积分商城</a></li>
+				<li><a href="${pageContext.request.contextPath}/SelectProducCredits.action" target="_blank" title="积分商城">积分商城</a></li>
 				<li><a href="${pageContext.request.contextPath}/queryTotalCommentshop.action" target="_blank" title="好评专区">好评专区</a></li>
-				<li><a href="" target="_blank" title="关于我们">关于我们</a></li>
+				<li><a href="${pageContext.request.contextPath}/jsp/users/aboutus.jsp" target="_blank" title="关于我们">关于我们</a></li>
 			</ul>
+		</div>
 		<!-- 导航   end  -->
-	</div>
 	</div>
 
 </header>
@@ -211,13 +211,13 @@
 
 					<ul>
 						<li class="clearfix">
-							<div class="warn2" style="margin-left: 0px;border: none;display: none;">地址编号</div>
+							<div class="warn2" style="margin-left: 10px;border: none;display: none">地址编号</div>
 							<div class="warn2" style=" border-right:1px dashed transparent; ">收货人</div>
 							<div class="warn2" style="margin-left: 10px;border: none">详细地址</div>
 							<div class="warn2" style="margin-left: 10px;border: none">邮编</div>
 							<div class="warn2" style="margin-left: 10px;border: none">电话</div>
-							<div class="warn2" style="margin-left: 0px;border: none;width: 115px;text-align: right">操作</div>
-							<input type="button" class="warn2" style="width: 100px;float: left;margin-left: 10px;border: 1px;font-weight: 800;text-align:center;margin-top:6px;font-size:15px;background-color: #FF9100;color:white;border-radius: 5px" id="xz" onClick="xdz()" value="添加新地址">
+							<div class="warn2" style="margin-left: 10px;border: none">操作</div>
+							<input type="button" class="warn2" style="width: 50px;float: left;margin-left: 10px;border: 1px;font-weight: 800;text-align:center;margin-top:6px;font-size:15px;color: #FF9100;border-radius: 5px" id="xz" onClick="xdz()" value="新地址">
 
 						</li>
 
@@ -233,13 +233,13 @@
 						</script>
 						<form action="${pageContext.request.contextPath}/InsertGainAddress.action" method="post">
 							<li class="clearfix" style="display: none;background-color: #f5f5f5" id="dz">
-								<input name="userid" value="${user.userid}"  readonly="ture" class="warn2" style="margin-left: 10px;font-weight: normal;display: none">
-								<input name="gainname" placeholder="收货人姓名" class="warn2" style="margin-left: 10px;font-weight: normal;">
-								<input name="gainaddress" placeholder="地址" class="warn2" style="margin-left: 10px;font-weight: normal;">
-								<input name="gaincode" placeholder="邮编"  class="warn2" style="margin-left: 10px;font-weight: normal;">
-								<input name="gainmobile" placeholder="电话"  class="warn2" style="margin-left: 10px;font-weight: normal;">
-								<input  type="submit" value="保存" class="warn2" style="margin-left: 10px;font-weight: normal;border-radius: 3px;background-color:#ee4644;opacity:0.8;color: white;width: 80px;height: 25px;" onClick="bc()">
-								<input  value="取消" class="warn2" style="margin-left: 10px;font-weight: normal;border-radius: 3px;background-color:#6c90ab;opacity:0.7;color: white;width: 80px;height: 25px;" onClick="bc()">
+								<input name="userid" value="${user.userid}"  readonly="ture" class="warn2" style="margin-left: 10px;font-weight: normal;border-color: red;display: none">
+								<input name="gainname" placeholder="收货人姓名" class="warn2" style="margin-left: 10px;font-weight: normal;border-color: red">
+								<input name="gainaddress" placeholder="地址" class="warn2" style="margin-left: 10px;font-weight: normal;border-color: red">
+								<input name="gaincode" placeholder="邮编"  class="warn2" style="margin-left: 10px;font-weight: normal;border-color: red">
+								<input name="gainmobile" placeholder="电话"  class="warn2" style="margin-left: 10px;font-weight: normal;border-color: red">
+								<input  type="submit" value="保存" class="warn2" style="margin-left: 10px;font-weight: normal;border-radius: 10px;background-color: black;color: aliceblue;" onClick="bc()">
+								<input  value="取消" class="warn2" style="margin-left: 10px;font-weight: normal;border-radius: 10px;background-color: black;color: aliceblue;" onClick="bc()">
 							</li>
 						</form>
 
@@ -248,7 +248,7 @@
 							<form id="form${gainaddres1.gainid}" action="${pageContext.request.contextPath}/UpdateGainAdress.action" method="post">
 								<li class="clearfix" style="background-color: #f5f5f5">
 									<div class="warn2" style="margin-left: 10px;border: none;font-weight: normal;display: none">
-										<input  class="inputx  aa${gainaddres1.gainid}" name="gainid" value="${gainaddres1.gainid}" readonly="true">
+										<input  class="inputx  aa${gainaddres1.gainid}" name="gainid" value="${gainaddres1.gainid}" readonly="true" style="back">
 									</div>
 									<div class="warn2" style="margin-left: 10px;border: none;font-weight: normal">
 										<input  class="inputx  aa${gainaddres1.gainid}" name="gainname" value="${gainaddres1.gainname}" readonly="true">
@@ -266,133 +266,15 @@
 										<a href="javascript:void(0);" onclick="status(this,'${gainaddres1.gainid}')">修改</a>
 										<span style="margin: auto 4px">|</span>
 										<a title="删除" href="javascript:void(0);" onclick="user_del(this,'${gainaddres1.gainid}')">删除</a>
-										<span style="margin: auto 4px">|</span>
-										<a title="设为默认地址" href="javascript:void(0);" <c:if test="${gainaddres1.gainA.equals('1')}">style="background-color:#f4c0b1;"</c:if> onclick="moren(this,'${gainaddres1.gainid}')">默认</a>
-
 									</div>
 
+									<a title="默认" href="javascript:void(0);" <c:if test="${gainaddres1.gainA.equals('1')}">style="background-color: #f4dae5"</c:if> onclick="moren(this,'${gainaddres1.gainid}')">默认</a>
 								</li>
 							</form>
 						</c:forEach>
 
 					</ul>
 
-					<!-- 收货地址 -->
-					<!--
-                                            <div class="xm-box">
-
-                                                <div style="height: 36px"></div>
-
-                                                <div class="box-bd">
-                                                    <div class="clearfix xm-address-list" id="checkoutAddrList">
-                                                        <dl class="item" style="margin-left: 40px">
-                                                            <dt>
-                                                                <strong class="itemConsignee">留刘海</strong>
-                                                                <span class="itemTag tag">家</span>
-                                                            </dt>
-                                                            <dd>
-
-                                                                <p class="itemRegion">北京市 海淀区</p>
-                                                                <p class="itemStreet">北京市海淀区双榆树</p>
-                                                                <p class="tel itemTel">188010666666</p>
-                                                                <span class="edit-btn J_editAddr">编辑</span>
-                                                            </dd>
-                                                            <dd style="display:none">
-                                                                <input type="radio" name="Checkout[address]" class="addressId"  value="10140916720030323">
-                                                            </dd>
-                                                        </dl>
-                                                        <div class="item use-new-addr"  id="J_useNewAddr" data-state="off" style="margin-left: 10px">
-                                                            <span class="iconfont icon-add"><img src="images/add_cart.png" /></span>
-                                                            使用新地址
-                                                        </div>
-                                                    </div>
-                                                    <input type="hidden" name="newAddress[type]" id="newType" value="common">
-                                                    <input type="hidden" name="newAddress[consignee]" id="newConsignee">
-                                                    <input type="hidden" name="newAddress[province]" id="newProvince">
-                                                    <input type="hidden" name="newAddress[city]" id="newCity">
-                                                    <input type="hidden" name="newAddress[district]" id="newCounty">
-                                                    <input type="hidden" name="newAddress[address]" id="newStreet">
-                                                    <input type="hidden" name="newAddress[zipcode]" id="newZipcode">
-                                                    <input type="hidden" name="newAddress[tel]" id="newTel">
-                                                    <input type="hidden" name="newAddress[tag_name]" id="newTag">
-                    -->
-					<!--点击弹出新增/收货地址界面start-->
-					<!--
-                                                    <div class="xm-edit-addr-box" id="J_editAddrBox">
-                                                        <div class="bd">
-                                                            <div class="item">
-                                                                <label>收货人姓名<span>*</span></label>
-                                                                <input type="text" name="userAddress[consignee]" id="Consignee" class="input" placeholder="收货人姓名" maxlength="15" autocomplete='off'>
-                                                                <p class="tip-msg tipMsg"></p>
-                                                            </div>
-                                                            <div class="item">
-                                                                <label>联系电话<span>*</span></label>
-                                                                <input type="text" name="userAddress[tel]" class="input" id="Telephone" placeholder="11位手机号" autocomplete='off'>
-                                                                <p class="tel-modify-tip" id="telModifyTip"></p>
-                                                                <p class="tip-msg tipMsg"></p>
-                                                            </div>
-                                                            <div class="item">
-                                                                <label>地址<span>*</span></label>
-                                                                <select name="userAddress[province]" id="Provinces" class="select-1">
-                                                                    <option>省份/自治区</option>
-                                                                </select>
-                                                                <select name="userAddress[city]"  id="Citys" class="select-2" disabled>
-                                                                    <option>城市/地区/自治州</option>
-                                                                </select>
-                                                                <select name="userAddress[county]"  id="Countys" class="select-3" disabled>
-                                                                    <option>区/县</option>
-                                                                </select>
-                                                                <textarea   name="userAddress[street]" class="input-area" id="Street" placeholder="路名或街道地址，门牌号"></textarea>
-                                                                <p class="tip-msg tipMsg"></p>
-                                                            </div>
-                                                            <div class="item">
-                                                                <label>邮政编码<span>*</span></label>
-                                                                <input type="text" name="userAddress[zipcode]" id="Zipcode" class="input" placeholder="邮政编码"  autocomplete='off'>
-                                                                <p class="zipcode-tip" id="zipcodeTip"></p>
-                                                                <p class="tip-msg tipMsg"></p>
-                                                            </div>
-                                                            <div class="item">
-                                                                <label>地址标签<span>*</span></label>
-                                                                <input type="text" name="userAddress[tag]" id="Tag" class="input" placeholder='地址标签：如"家"、"公司"。限5个字内'  >
-                                                                <p class="tip-msg tipMsg"></p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="ft clearfix">
-                                                            <button  type="button"  class="btn btn-lineDake btn-small " id="J_editAddrCancel">取消</button>
-                                                            <button type="button" class="btn btn-primary  btn-small " id="J_editAddrOk">保存</button>
-                                                        </div>
-                                                    </div>
-                    -->
-					<!--点击弹出新增/收货地址界面end-->
-					<!--
-                                                    <div class="xm-edit-addr-backdrop" id="J_editAddrBackdrop"></div>
-                                                </div>                </div>
-                    -->
-					<!-- 收货地址 END-->
-
-
-					<!--
-                                            <li class="clearfix">
-                                                <div class="warn1"></div>
-                                                <div class="warn2">登录密码</div>
-                                                <div class="warn3">互联网账号存在被盗风险，建议您定期更改密码以保护账户安全。</div>
-                                                <div class="warn4"><a href="#">修改</a> </div>
-                                            </li>
-                    -->
-
-					<!--
-                                            <li class="clearfix">
-                                                <div class="warn1"></div>
-                                                <div class="warn2">手机验证</div>
-
-                                                <div class="warn3">134*****693  </div>
-                                                <span style="margin-left: -450px; height:33px; line-height:33px; float:left; color: #A8A8A8">若已丢失或停用，请立即更换，避免账户被盗</span>
-
-                                                <div class="warn4"><a href="#">更换</a> </div>
-                                            </li>
-                    -->
-
-					<!--					</ul>-->
                                         <div class="member-prompt">
                                             <p>安全提示：</p>
                                             <p>您当前IP地址是：<i class="reds">110.106.0.01</i>  北京市          上次登录的TP： 2015-09-16  <i class="reds">110.106.0.02 </i> 天津市</p>
@@ -516,7 +398,7 @@
     function status(obj,id) {
         if(flag){
             $(".aa"+id).removeAttr("readonly");
-            $(".aa"+id).css("border","1px #ee4644 solid");
+            $(".aa"+id).css("border","1px #E6E6FA solid");
             $(obj).text("提交");
             flag=false;
         }else {

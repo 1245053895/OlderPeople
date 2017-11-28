@@ -1,4 +1,5 @@
 ﻿<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%--
   Created by IntelliJ IDEA.
   User: Administrator
@@ -29,12 +30,12 @@
             <!-- 导航   start  -->
             <div class="yNavIndex">
                 <ul class="yMenuIndex">
-                    <li><a href="" target="_blank" title="首页">首页</a></li>
-                    <li><a href="" target="_blank" title="热销专区">热销专区</a></li>
-                    <li><a href="" target="_blank" title="新品专区">新品专区</a></li>
-                    <li><a href="" target="_blank" title="积分商城">积分商城</a></li>
-                    <li><a href="" target="_blank" title="合伙人">合伙人</a></li>
-                    <li><a href="" target="_blank" title="关于我们">关于我们</a></li>
+                    <li><a href="${pageContext.request.contextPath}/ShopFrontPage.action"  title="首页">首页</a></li>
+                    <li><a href="${pageContext.request.contextPath}/ProductHot.action" target="_blank" title="热销专区">热销专区</a></li>
+                    <li><a href="${pageContext.request.contextPath}/SelectNewProduct.action" target="_blank" title="新品专区">新品专区</a></li>
+                    <li><a href="${pageContext.request.contextPath}/SelectProducCredits.action" target="_blank" title="积分商城">积分商城</a></li>
+                    <li><a href="${pageContext.request.contextPath}/queryTotalCommentshop.action" target="_blank" title="好评专区">好评专区</a></li>
+                    <li><a href="${pageContext.request.contextPath}/jsp/users/aboutus.jsp" target="_blank" title="关于我们">关于我们</a></li>
                 </ul>
             </div>
             <!-- 导航   end  -->
@@ -43,316 +44,108 @@
     </header>
         <div id="wrap" class="clearfix" style="width:100%;background-color: #f5f5f5;">
             <section id="contents" style="margin-top: 40px;">
+
                 <h3 class="travel_title">
                     <i class="travel_icon tjy">
                     </i>
-                    积分出行爆款
+                    <c:forEach items="${productTypeExtends}" var="productTypeExtends1" varStatus="status">
+                       <c:if test="${status.index==0}">
+                         ${productTypeExtends.get(0).producttypename}爆款
+                       </c:if>
+                    </c:forEach>
                 </h3>
+
+
                 <ul class="rec_list">
-                    <li>
-                        <div class="rec_pic">
-                            <a href="#" target="_blank">
-                                <img src="${pageContext.request.contextPath}/jsp/users/jfsc/images/14506760823009.jpg" data-original="" width="360" height="225">
-                            </a>
-                        </div>
-                        <div class="rec_box">
-                            <div class="rec_title">
-                                <p class="font18 font_b">
-                                    <a href="#" target="_blank">
-                                        携程任我行电子券
-                                    </a>
-                                </p>
-                                携程礼品卡，劲享快捷安全支付，灵活机动全无忧 超长有
+                    <c:forEach items="${allHCproductList}"  var="allHCproductLists">
+                        <li>
+                            <div class="rec_pic">
+                                <a href="${pageContext.request.contextPath}/xiangqing.action?productid=${allHCproductLists.productid}" target="_blank">
+                                    <img src="${allHCproductLists.productpicture}" data-original="" width="360" height="225">
+                                </a>
                             </div>
-                            <p class="al_center font14">
-                                ￥
-                                <span class="font_orange font20">
-                                    500
-                                </span>
-                            </p>
-                            <p class="al_center font14">
-                                所需积分：
-                                <b class="font_redd font16">
-                                   3333
-                                </b>
-                            </p>
-                        </div>
-                        <div class="clear">
-                        </div>
-                    </li>
-                    <li>
-                        <div class="rec_pic">
-                            <a href="#" target="_blank">
-                                <img src="${pageContext.request.contextPath}/jsp/users/jfsc/images/14486133295565.jpg" data-original="" width="360" height="225">
-                            </a>
-                        </div>
-                        <div class="rec_box">
-                            <div class="rec_title">
-                                <p class="font18 font_b">
-                                    <a href="#" target="_blank">
-                                        【桔瓣精品游】【武屿伦比】厦门 、鼓
-                                    </a>
+                            <div class="rec_box">
+                                <div class="rec_title">
+                                    <p class="font18 font_b">
+                                        <a href="${pageContext.request.contextPath}/xiangqing.action?productid=${allHCproductLists.productid}" target="_blank">
+                                           ${allHCproductLists.productname}
+                                        </a>
+                                    </p>
+                                   ${allHCproductLists.productdescribe}
+                                </div>
+                                <p class="al_center font14">
+                                    <span class="font_orange font20" style="margin-bottom: 3px">
+                                           销量:${allHCproductLists.totalhotsale}
+                                    </span>
                                 </p>
-                                云水谣，"南靖云水谣"原名长教，位于漳州市南靖县境内
-                            </div>
-                            <p class="al_center font14">
-                                ￥
-                                <span class="font_orange font20">
-                                    3380
-                                </span>
-                            </p>
-                            <p class="al_center font14">
-                                所需积分：
-                                <b class="font_redd font16">
-                                    3333
-                                </b>
-                            </p>
-                        </div>
-                        <div class="clear">
-                        </div>
-                    </li>
-                    <li>
-                        <div class="rec_pic">
-                            <a href="#" target="_blank">
-                                <img src="${pageContext.request.contextPath}/jsp/users/jfsc/images/14486133295565.jpg" data-original="" width="360" height="225">
-                            </a>
-                        </div>
-                        <div class="rec_box">
-                            <div class="rec_title">
-                                <p class="font18 font_b">
-                                    <a href="#" target="_blank">
-                                        【桔瓣精品游】扬州瘦西湖、千垛油菜花
-                                    </a>
+
+
+                                <p class="al_center font14" style="margin-top: 4px">
+                                    ￥
+                                    <span class="font_orange font20">
+                                        ${allHCproductLists.productprice}
+                                    </span>
                                 </p>
-                                千垛景区以“垛田”特色地貌享誉全球。
-                            </div>
-                            <p class="al_center font14">
-                                ￥
-                                <span class="font_orange font20">
-                                    1980
-                                </span>
-                            </p>
-                            <p class="al_center font14">
-                                所需积分：
-                                <b class="font_redd font16">
-                                    3333
-                                </b>
-                            </p>
-                        </div>
-                        <div class="clear">
-                        </div>
-                    </li>
-                    <li>
-                        <div class="rec_pic">
-                            <a href="#" target="_blank">
-                                <img src="${pageContext.request.contextPath}/jsp/users/jfsc/images/14486133295565.jpg" data-original="" width="360" height="225">
-                            </a>
-                        </div>
-                        <div class="rec_box">
-                            <div class="rec_title">
-                                <p class="font18 font_b">
-                                    <a href="#" target="_blank">
-                                        【桔瓣精品游】长沙、韶山、张家界、凤
-                                    </a>
+                                <p class="al_center font14">
+                                    所需积分：
+                                    <b class="font_redd font16">
+                                       ${allHCproductLists.productdisabled}
+                                    </b>
                                 </p>
-                                大连出发--张家界国家森林公园成为中国第一个国家森林
                             </div>
-                            <p class="al_center font14">
-                                ￥
-                                <span class="font_orange font20">
-                                    2380
-                                </span>
-                            </p>
-                            <p class="al_center font14">
-                                所需积分：
-                                <b class="font_redd font16">
-                                    3333
-                                </b>
-                            </p>
-                        </div>
-                        <div class="clear">
-                        </div>
-                    </li>
+                            <div class="clear">
+                            </div>
+                        </li>
+                    </c:forEach>
+
                     <div class="clear">
                     </div>
                 </ul>
                 <ul class="goods_list2 h320 clearfix">
                 </ul>
-                <h3 class="travel_title">
-                    老年出行
-                </h3>
+
+
+                  <h3 class="travel_title">
+                      <c:forEach items="${productTypeExtends}" var="productTypeExtends1" varStatus="status">
+                      <c:if test="${status.index==0}">
+                          ${productTypeExtends.get(0).producttypename}
+                      </c:if>
+                      </c:forEach>
+                 </h3>
+
                 <ul class="goods_list2 h320 clearfix">
+                    <c:forEach items="${pagination.list}" var="allproductLists">
                     <li>
                         <div class="goods_pic2">
-                            <a href="#" target="_blank">
-                                <img src="${pageContext.request.contextPath}/jsp/users/jfsc/images/14486133295565.jpg" data-original="" width="280" height="280">
+                            <a href="${pageContext.request.contextPath}/xiangqing.action?productid=${allproductLists.productid}" target="_blank">
+                                <img src="${allproductLists.productpicture}" data-original="" width="280" height="280">
                             </a>
                         </div>
 
                         <div class="goods_title2">
-                            <a href="#" target="_blank">
-                                【桔瓣周边游】成都牛背山三日游
+                            <a href="${pageContext.request.contextPath}/xiangqing.action?productid=${allproductLists.productid}" target="_blank">
+                                【${allproductLists.productname}】${allproductLists.productdescribe}
                             </a>
                             <p class="al_center font14">
-                                ￥  3380
+                                ￥  ${allproductLists.productprice}
                             </p>
                             <p class="al_center font14">
                                 所需积分：
                                 <b class="font_redd font16">
-                                    3333
+                                    ${allproductLists.productdisabled}
                                 </b>
                             </p>
                         </div>
                     </li>
-                    <li>
-                        <div class="goods_pic2">
-                            <a href="#" target="_blank">
-                                <img src="${pageContext.request.contextPath}/jsp/users/jfsc/images/14585455211577.jpg" data-original="" width="280" height="280">
-                            </a>
-                        </div>
-                        <div class="goods_title2">
-                            <a href="#" target="_blank">
-                                【桔瓣周边游】【清明踏青】本溪水洞 花溪沐温泉豪华二日游
-                            </a>
-                            <p class="al_center font14">
-                                ￥  3380
-                            </p>
-                            <p class="al_center font14">
-                                所需积分：
-                                <b class="font_redd font16">
-                                    3333
-                                </b>
-                            </p>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="goods_pic2">
-                            <a href="#" target="_blank">
-                                <img src="${pageContext.request.contextPath}/jsp/users/jfsc/images/14520681338022.jpg" data-original="" width="280" height="280">
-                            </a>
-                        </div>
-                        <div class="goods_title2">
-                            <a href="#" target="_blank">
-                                【桔瓣周边游】成都-乐山、峨眉山二日
-                            </a>
-                            <p class="al_center font14">
-                                ￥  3380
-                            </p>
-                            <p class="al_center font14">
-                                所需积分：
-                                <b class="font_redd font16">
-                                    3333
-                                </b>
-                            </p>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="goods_pic2">
-                            <a href="#" target="_blank">
-                                <img src="${pageContext.request.contextPath}/jsp/users/jfsc/images/14519740734136.jpg" data-original="" width="280" height="280">
-                            </a>
-                        </div>
-                        <div class="goods_title2">
-                            <a href="#" target="_blank">
-                                【桔瓣周边游】成都→峨眉山往返套餐二日游
-                            </a>
-                            <p class="al_center font14">
-                                ￥  3380
-                            </p>
-                            <p class="al_center font14">
-                                所需积分：
-                                <b class="font_redd font16">
-                                    3333
-                                </b>
-                            </p>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="goods_pic2">
-                            <a href="#" target="_blank">
-                                <img src="${pageContext.request.contextPath}/jsp/users/jfsc/images/14519766614516.jpg" data-original="" width="280" height="280">
-                            </a>
-                        </div>
-                        <div class="goods_title2">
-                            <a href="#" target="_blank">
-                                【桔瓣周边游】成都→九寨沟往返套餐（含票）三日自由游
-                            </a>
-                            <p class="al_center font14">
-                                ￥  3380
-                            </p>
-                            <p class="al_center font14">
-                                所需积分：
-                                <b class="font_redd font16">
-                                    3333
-                                </b>
-                            </p>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="goods_pic2">
-                            <a href="#" target="_blank">
-                                <img src="${pageContext.request.contextPath}/jsp/users/jfsc/images/14519790275435.jpg" data-original="" width="280" height="280">
-                            </a>
-                        </div>
-                        <div class="goods_title2">
-                            <a href="#" target="_blank">
-                                【桔瓣周边游】成都→乐山、峨眉山往返套餐二日游
-                            </a>
-                            <p class="al_center font14">
-                                ￥  3380
-                            </p>
-                            <p class="al_center font14">
-                                所需积分：
-                                <b class="font_redd font16">
-                                    3333
-                                </b>
-                            </p>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="goods_pic2">
-                            <a href="#" target="_blank">
-                                <img src="${pageContext.request.contextPath}/jsp/users/jfsc/images/14519806595371.jpg" data-original="" width="280" height="280">
-                            </a>
-                        </div>
-                        <div class="goods_title2">
-                            <a href="#" target="_blank">
-                                【桔瓣周边游】成都-海螺沟往返套餐三日游
-                            </a>
-                            <p class="al_center font14">
-                                ￥  3380
-                            </p>
-                            <p class="al_center font14">
-                                所需积分：
-                                <b class="font_redd font16">
-                                    3333
-                                </b>
-                            </p>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="goods_pic2">
-                            <a href="#" target="_blank">
-                                <img src="${pageContext.request.contextPath}/jsp/users/jfsc/images/14520520183562.jpg" data-original="" width="280" height="280">
-                            </a>
-                        </div>
-                        <div class="goods_title2">
-                            <a href="#" target="_blank">
-                                【桔瓣周边游】成都-九鼎山往返套餐一日游
-                            </a>
-                            <p class="al_center font14">
-                                ￥  3380
-                            </p>
-                            <p class="al_center font14">
-                                所需积分：
-                                <b class="font_redd font16">
-                                    3333
-                                </b>
-                            </p>
-                        </div>
-                    </li>
+                    </c:forEach>
                 </ul>
+                <div style="float: right;font-size:20px">
+                <c:forEach items="${pagination.pageView }" var="page">
+                    ${page }
+                </c:forEach>
+                </div>
             </section>
+
         </div>
 
     </body>

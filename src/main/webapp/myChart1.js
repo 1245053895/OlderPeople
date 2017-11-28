@@ -1,6 +1,10 @@
 $(document).ready(function(){
     var myChart = echarts.init(document.getElementById('Statistics1'));
     var	option = {
+        backgroundColor: '#c9c7cc',
+        color:['#40e0d0', '#ffa500','#cd5c5c','#ba55d3','#ff69b4','#6495ed','#32cd32','#B5C334','#FCCE10','#E87C25','#27727B',
+            '#FE8463','#9BCA63','#FAD860','#F3A43B','#60C0DD',
+            '#D7504B','#C6E579','#F4E001','#F0805A','#26C0C0'],
         title : {
             text: '各个商品类型的订单数',
             subtext: '副标题',

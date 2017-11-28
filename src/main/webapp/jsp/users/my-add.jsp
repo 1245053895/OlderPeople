@@ -201,9 +201,9 @@
 									<dl class="item" >
 										<dt>
 											<strong class="itemConsignee">${gainaddres.gainname}</strong>
-											<span class="tag">修改</span>
-											<span class="tag">删除</span>
-										</dt>
+										<%--	<span class="tag" onclick="">修改</span>
+											<span class="tag">删除</span>--%>
+										<%--</dt>
 										<br/>
 										<dd>
 											<p class="itemRegion">${gainaddres.gainaddress}</p>
@@ -214,54 +214,20 @@
 											<input type="radio" name="Checkout[address]" class="addressId"  value="10140916720030323">
 										</dd>
 									</dl>
-								</c:forEach>
+								</c:forEach>--%>
 
-								&lt;%&ndash;	<dl class="item" >
+
+							<%--		<dl class="item" id="newadr" style="display: none">
 										<dt>
-											<strong class="itemConsignee">姓名</strong>
-											<span class="tag">修改1</span>
-											<span class="tag">删除</span>
-										</dt>
-										<br/>
-										<dd>
-											<p class="itemRegion">地址</p>
-											<p class="itemStreet">电话</p>
-											<p class="tel">邮箱</p>
-										</dd>
-										<dd style="display:none">
-											<input type="radio" name="Checkout[address]" class="addressId"  value="10140916720030323">
-										</dd>
-									</dl>
-
-									<dl class="item" >
-										<dt>
-											<strong class="itemConsignee">姓名</strong>
-											<span class="tag">修改</span>
-											<span class="tag">删除</span>
-										</dt>
-										<br/>
-										<dd>
-											<p class="itemRegion">地址</p>
-											<p class="itemStreet">电话</p>
-											<p class="tel">邮箱</p>
-										</dd>
-										<dd style="display:none">
-											<input type="radio" name="Checkout[address]" class="addressId"  value="10140916720030323">
-										</dd>
-									</dl>&ndash;%&gt;
-
-
-									<dl class="item" id="newadr" style="display: none">
-										<dt>
-											<strong class="itemConsignee"><input class="itemRegion" placeholder="请填写收件人姓名" style="border: hidden;width: 120px"></strong>
+											<strong class="itemConsignee"><input class="itemRegion" name="gainname" placeholder="请填写收件人姓名" style="border: hidden;width: 120px"></strong>
 											<span class="tag" onclick="quxiao()">取消</span>
 											<span class="tag" onclick="queding()">确定</span>
 										</dt>
 										<br/>
 										<dd>
-											<input class="itemRegion" placeholder="请填写收件人的地址" style="border: hidden">
-											<input class="itemStreet" placeholder="请填写收件人的手机号" style="border: hidden">
-											<input class="tel" placeholder="请填写邮编" style="border: hidden">
+											<input class="itemRegion" name="gainaddress" placeholder="请填写收件人的地址" style="border: hidden">
+											<input class="itemStreet" name="gainmobile" placeholder="请填写收件人的手机号" style="border: hidden">
+											<input class="tel" name="gaincode" placeholder="请填写邮编" style="border: hidden">
 										</dd>
 										<dd style="display:none">
 											<input type="radio" name="Checkout[address]" class="addressId"  value="10140916720030323">
@@ -275,35 +241,34 @@
                                         function quxiao() {
                                             document.getElementById("newadr").style.display = "none"
                                         }
-									</script>
+									</script>--%>
 
 
-
-									<div class="use-new-addr"  id="J_useNewAddr" data-state="off" onclick="xzdz()">
+								<%--	<div class="use-new-addr"  id="J_useNewAddr" data-state="off" onclick="xzdz()">
 										<span class="iconfont icon-add"><img src="${pageContext.request.contextPath}/jsp/users/images/add_cart.png" /></span>
 										新增收货地址
 									</div>
-								</div>
-								<input type="hidden" name="newAddress[type]" id="newType" value="common">
-								<input type="hidden" name="newAddress[consignee]" id="newConsignee">
-								<input type="hidden" name="newAddress[province]" id="newProvince">
-								<input type="hidden" name="newAddress[city]" id="newCity">
-								<input type="hidden" name="newAddress[district]" id="newCounty">
-								<input type="hidden" name="newAddress[address]" id="newStreet">
-								<input type="hidden" name="newAddress[zipcode]" id="newZipcode">
-								<input type="hidden" name="newAddress[tel]" id="newTel">
-								<input type="hidden" name="newAddress[tag_name]" id="newTag">
+								</div>--%>
+								<%--<input type="hidden" name="newAddress[type]" id="newType" value="common">--%>
+								<%--<input type="hidden" name="newAddress[consignee]" id="newConsignee">--%>
+								<%--<input type="hidden" name="newAddress[province]" id="newProvince">--%>
+								<%--<input type="hidden" name="newAddress[city]" id="newCity">--%>
+								<%--<input type="hidden" name="newAddress[district]" id="newCounty">--%>
+							<%--<input type="hidden" name="newAddress[address]" id="newStreet">--%>
+								<%--<input type="hidden" name="newAddress[zipcode]" id="newZipcode">--%>
+								<%--<input type="hidden" name="newAddress[tel]" id="newTel">--%>
+								<%--<input type="hidden" name="newAddress[tag_name]" id="newTag">--%>
 								<!--点击弹出新增/收货地址界面start-->
-								<div class="xm-edit-addr-box" id="J_editAddrBox">
+								<%--<div class="xm-edit-addr-box" id="J_editAddrBox">
 									<div class="bd">
 										<div class="item">
 											<label>收货人姓名<span>*</span></label>
-											<input type="text" name="userAddress[consignee]" id="Consignee" class="input" placeholder="收货人姓名" maxlength="15" autocomplete='off'>
+											<input type="text" name="gainname" class="input" placeholder="收货人姓名" maxlength="15" autocomplete='off'>
 											<p class="tip-msg tipMsg"></p>
 										</div>
 										<div class="item">
 											<label>联系电话<span>*</span></label>
-											<input type="text" name="userAddress[tel]" class="input" id="Telephone" placeholder="11位手机号" autocomplete='off'>
+											<input type="text" name="gainmobile" class="input"  placeholder="11位手机号" autocomplete='off'>
 											<p class="tel-modify-tip" id="telModifyTip"></p>
 											<p class="tip-msg tipMsg"></p>
 										</div>
@@ -371,11 +336,11 @@
 								<div>
 									<ul class=" clearfix" style="margin-left: 30px;margin-top: 20px">
 										<li>
-											<input type="radio" name="gainmethod" value="快递配送" style="float: left"/>
+											<input type="radio" name="gainmethod" value="0" style="float: left"/>
 											<span style="font-size: 16px; float: left;margin-left: 5px;margin-right: 30px;">快递配送</span>
 										</li>
 										<li>
-											<input type="radio" name="gainmethod" value="货物自取" style="float: left"/>
+											<input type="radio" name="gainmethod" value="1" style="float: left"/>
 											<span style="font-size: 16px; float: left;margin-left: 5px;margin-right: 30px;">货物自取</span>
 										</li>
 									</ul>

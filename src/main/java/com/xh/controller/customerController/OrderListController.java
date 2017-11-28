@@ -1,5 +1,6 @@
 package com.xh.controller.customerController;
 
+import com.sun.org.apache.regexp.internal.RE;
 import com.sun.org.apache.xpath.internal.operations.Mod;
 import com.xh.po.Favorites;
 import com.xh.po.User;
@@ -11,6 +12,7 @@ import com.xh.service.customerService.OrderListService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -309,6 +311,13 @@ public class OrderListController  {
         return "/jsp/users/my-pingjia.jsp";
     }
 
+    /**
+     * 更新评论通过id
+     * @param session
+     * @param model
+     * @param data
+     * @return
+     */
     @RequestMapping(value = "/updateCommentByids", method ={ RequestMethod.GET,RequestMethod.POST})
     public @ResponseBody Map updateCommentByids(HttpSession session , Model model, String[] data){
         User user= (User) session.getAttribute("user");
@@ -323,6 +332,20 @@ public class OrderListController  {
         return map;
     }
 
+    /**
+     * 取消订单
+     * @param session
+     * @param model
+     * @param id
+     * @return
+     */
+    @RequestMapping(value = "/updataOrderStatusZero", method ={ RequestMethod.GET,RequestMethod.POST})
+    public @ResponseBody Map updataOrderStatusZero(HttpSession session , Model model, int id){
+        Map map=new HashMap();
+        Boolean flag=orderListService.updataOrderStatusZero(id,0);//将对应订单状态变为0 （关闭）
+        map.put("d",flag);
+        return map;
+    }
 
 
 

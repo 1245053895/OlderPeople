@@ -5,10 +5,25 @@
     <select id="SelectProductType" resultType="com.xh.po.vo.ProductTypeExtend" >
         SELECT ProductTypeId,ProductTypeName FROM producttype Limit 6
     </select>
-    <!--通过商品类型查询商品中的商品Id-->
-    <select id="SelectProductByTypeId" resultType="com.xh.po.Product">
+    <select id="SelectProductByTypeId" resultType="com.xh.po.vo.TotalCreditsById">
         SELECT ProductId,ProductName,ProductPrice,ProductPicture ,ProductDescribe FROM product
         WHERE product.ProductTypeId=#{productid}
+    </select>
+    <!--通过商品类型查询商品中的商品Id--><!--查询商品结果集-->
+    <select id="SelectProductByTypeIdPage" resultType="com.xh.po.vo.TotalCreditsById">
+        SELECT ProductId,ProductName,ProductPrice,ProductPicture ,ProductDescribe FROM product
+        WHERE product.ProductTypeId=#{producttypeid} limit #{startRow},#{pageSize}
+    </select>
+    <!--统计商品总数根据类型id-->
+    <select id="SelectCount" parameterType="totalCreditsById" resultType="Integer">
+        select count(*)
+        from product
+        WHERE ProductTypeId=#{producttypeid};
+    </select>
+    <!--只查六个-->
+    <select id="SelectProductByTypeIdLimitSix" resultType="com.xh.po.Product">
+        SELECT ProductId,ProductName,ProductPrice,ProductPicture ,ProductDescribe FROM product
+        WHERE product.ProductTypeId=#{productid} Limit 6
     </select>
     <!--只查询两个-->
     <select id="SelectProductByTypeIdLimit" resultType="com.xh.po.Product">

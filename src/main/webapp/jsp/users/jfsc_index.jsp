@@ -185,7 +185,7 @@
                     <li>
                         <div class="spe_pic">
                             <a href="${pageContext.request.contextPath}/xiangqing.action?productid=${productLists1.productid}" target="_blank">
-                                <img src="${productLists1.productpicture}" data-original="" width="360" height="225"
+                                <img src="${productLists1.productpicture}" data-original="" width="200" height="225"
                                      style="display: inline;">
                             </a>
                         </div>

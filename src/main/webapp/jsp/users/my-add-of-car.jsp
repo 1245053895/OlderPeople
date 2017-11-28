@@ -272,6 +272,35 @@
 										</dl>
 
 										<script type="text/javascript">
+											$("#sub_setID").click(function () {
+											    var name=$("#name_").val();
+											    var address=$("#address").val();
+											    var phone=$("#phone").val();
+											    var number_this=$("#number_this").val();
+											    if(name!=""&&address!=""&&phone!=""&&number_this!=""){
+											        var html= "<div class='add_mi'>"+
+                                                        "<p style='border-bottom:1px dashed #ccc;line-height:28px;'>"+name+"</p>"+
+                                                        "<p>"+address+"</p>"+
+                                                        "<span>电话："+phone+"</span>"+
+                                                    "<p>邮编："+number_this+"</p>"+
+                                                    "</div>";
+											        $(".Caddress").find(".add_mi").each(function (i) {
+											            var input_out=$(".Caddress").find(".add_mi");
+														if(i==input_out.length-1){
+											                $(input_out[i]).after(html);
+														}
+                                                    });
+											        /*隐藏输入的框*/
+											        $(this).parents("div[class='shade_content']").hide();
+											        /*给新增的地址选择一个可以选的图形*/
+                                                    $('.Caddress .add_mi').click(function() {
+                                                        $(this).css('background', 'url("${pageContext.request.contextPath}/jsp/users/shdz/images/mail_1.jpg") no-repeat').siblings('.add_mi').css('background', 'url("${pageContext.request.contextPath}/jsp/users/shdz/images/mail.jpg") no-repeat')
+                                                    });
+												}else {
+											        alert("请输入内容");
+												}
+                                            })
+
 
                                             function myfun() {
 

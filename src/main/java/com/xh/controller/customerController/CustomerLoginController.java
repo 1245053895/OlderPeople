@@ -352,7 +352,7 @@ public class CustomerLoginController {
        User user=(User) session.getAttribute("user");
        Integer id=user.getUserid();
         String sqlPath = null;
-        if (userC != null && userC.getOriginalFilename() != null) {
+        if (userC != null && userC.getOriginalFilename() != null){
             String path = session.getServletContext().getRealPath("/jsp/admin/images/upload");
             String realName = userC.getOriginalFilename();
             String realFilePath = path + File.separator + realName;
@@ -366,7 +366,7 @@ public class CustomerLoginController {
             UserAndBrithday userAndBrithday=customerInformationService.SelectCustomerInformation(id);
           // User user1=userLoginService.queryUserPic(user); /*根据用户的id查询用户的账号，用户名和头像*/
            model.addAttribute("userAndBrithday",userAndBrithday);
-            return "/jsp/users/user.jsp";
+            return "redirect:/CustomerInformation.action";
         }
         return null;
     }

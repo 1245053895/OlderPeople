@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -86,6 +87,7 @@ public class OrderPayController {
                 order.setRealpay(order.getAmountpay() + 15);
             }
             order.setStatus(1);       /* 订单状态 订单新建时为1,表示该订单是待发货的订单*/
+            order.setEndtime(new Date());/*插入订单的结束时间，个人中心中个人积分的显示所需要*/
             String return2 = orderPayService.insertSelective2(order);
             Integer orderid = order.getOrderid();  /*数据库返回的主键*/
             orderproduct.setOrderid(orderid);       /*主键是另外一张表的外键需要插入*/
@@ -178,6 +180,7 @@ public class OrderPayController {
                 order.setRealpay(order.getAmountpay());
             }
             order.setStatus(1);
+            order.setEndtime(new Date());/*插入订单的结束时间，个人中心中个人积分的显示所需要*/
             String return2 = orderPayService.insertSelective2(order);
             Integer orderid = order.getOrderid();  /*数据库返回的主键*/
             orderproduct.setOrderid(orderid);       /*主键是另外一张表的外键需要插入*/

@@ -698,6 +698,7 @@ function ajax1(url,productid) {
 
     function oneMei(basePath) {
 //        alert('您确定要删除吗？');
+        window.location.href = "http://localhost:8080/LoginPage.action?returnUrl=" + encodeURIComponent(window.location.href);
         $("#mainForm").attr("action",basePath + "querendingdan.action");
         $("#mainForm").submit();
     }

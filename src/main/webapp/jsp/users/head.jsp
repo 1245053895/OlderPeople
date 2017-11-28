@@ -232,7 +232,7 @@
     <div class="pc-header-con">
         <c:if test="${empty user.userid}">
             <div class="fl pc-header-link" >您好！欢迎来孝和集团电子商城
-                <a href="${pageContext.request.contextPath}/LoginPage.action" target="_blank">请登录</a>
+                <a href="javascript:;" onclick="login()" id="login">[登录]</a>&nbsp;
                 <a href="${pageContext.request.contextPath}/jsp/users/register.jsp" target="_blank"> 免费注册</a>
             </div>
         </c:if>
@@ -305,6 +305,7 @@
 
 <script type="text/javascript" src="http://www.softwhy.com/mytest/jQuery/jquery-1.8.3.js"></script>
 <script type="text/javascript">
+
     function oSearchSuggest(searchFuc)
     {
         var input = $('#gover_search_key');
@@ -421,6 +422,10 @@
         aData.push('<span class="num_right">约100个</span>'+keyword+'2012是假的');
         //将返回的数据传递给实现搜索输入框的输入提示js类
         searchSuggest.dataDisplay(aData);
+    }
+    //去登陆页面
+    function login(){
+        window.location.href = "http://localhost:8080/LoginPage.action?returnUrl=" + encodeURIComponent(window.location.href);
     }
 </script>
 </body>

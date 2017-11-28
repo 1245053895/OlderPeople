@@ -425,7 +425,7 @@
     }
     //去登陆页面
     function login(){
-        window.location.href = "http://localhost:8070/LoginPage.action?returnUrl=" + encodeURIComponent(window.location.href);
+        window.location.href = "http://localhost:8080/LoginPage.action?returnUrl=" + encodeURIComponent(window.location.href);
     }
 </script>
 </body>

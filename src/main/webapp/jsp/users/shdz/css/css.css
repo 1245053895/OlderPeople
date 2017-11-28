@@ -88,7 +88,7 @@ a{text-decoration:none;color: #5A5A5A;font-family: '微软雅黑';font-size: 12p
 /* 购物车 */
 .Caddress{width: 1210px;margin: auto;position: relative;height: 220px;}
 .Ccart{width: 100px;height: 20px;position: absolute;background: #ECECEC;right: 5px;line-height: 20px;text-align: center;top: -21px;}
-.Caddress .add_mi{height: 106px;float: left;margin-right: 5px; background: url(../images/mail.jpg) no-repeat;padding: 6px 17px;}
+.Caddress .add_mi{height: 130px;float: left;margin-right: 5px; background: url(../images/mail.jpg) no-repeat;padding: 10px 17px;}
 .Caddress .add_mi p{font-size: 12px;line-height: 20px;margin-bottom: 5px;color: #666;width: 203px;}
 .Cbox{width: 1210px;margin:15px auto;overflow: hidden}
 .Cprice{width: 1210px;margin:20px auto;overflow: hidden; background: #F3F3F3}
@@ -98,8 +98,8 @@ a{text-decoration:none;color: #5A5A5A;font-family: '微软雅黑';font-size: 12p
     float:left;
     _display:inline;
     width:197px;
-    height:73px;
-    padding:15px 18px;
+    height:75px;
+    padding:30px 13px;
     position:relative;
     margin:0 20px 10px 10px;
     cursor:pointer;

@@ -114,8 +114,14 @@ public class OrderPayController {
 
 //  购物车页面  点击“去付款 ”之后的功能步骤********************************************
     @RequestMapping(value = "/myTset.action", method = {RequestMethod.GET, RequestMethod.POST})
-     public String myTest(HttpSession session,Model model,Integer[] shopcarid,Integer[] orderamount) {
-//  第一步   修改购物车商品数量
+     public String myTest(HttpServletRequest request,Model model,Integer[] shopcarid,Integer[] orderamount) {
+        HttpSession session=request.getSession();
+        User user=(User) session.getAttribute("user");
+        Integer userid=user.getUserid();   /*得到登录用户的id，根据用户的id来查找收货地址*/
+        List<Gainaddres> gainaddresList=  userLoginService.selectGainAddressByUserId(userid); /*根据用户的id查询出该用户的收货地址*/
+        model.addAttribute("gainaddresList",gainaddresList);/*保存用户的收货地址，在页面显示*/
+
+        //  第一步   修改购物车商品数量
         for (int i=0;i<shopcarid.length;i++){
             System.out.println(shopcarid[i] +" "+orderamount[i]);
             Shopcar shopcar=new Shopcar();shopcar.setShopcarid(shopcarid[i]);shopcar.setOrderamount(orderamount[i]);
@@ -171,7 +177,7 @@ public class OrderPayController {
                 order.setPostfee(0.0);
                 order.setRealpay(order.getAmountpay());
             }
-            order.setStatus(0);
+            order.setStatus(1);
             String return2 = orderPayService.insertSelective2(order);
             Integer orderid = order.getOrderid();  /*数据库返回的主键*/
             orderproduct.setOrderid(orderid);       /*主键是另外一张表的外键需要插入*/
@@ -189,7 +195,7 @@ public class OrderPayController {
                 }
 
                 //        判断支付方式  1在线支付------返回付款页面  0货到付款------返回购买成功页面
-                if (order.getPaytype() == 1) {
+                if (order.getPaytype() == 0) {
 
 
                     return "/jsp/users/my-apy.jsp";

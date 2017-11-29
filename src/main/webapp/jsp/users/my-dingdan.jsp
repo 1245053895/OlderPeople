@@ -535,7 +535,7 @@
                             break;
                         case 1:
                             htmlStr3 += "<div class='ci5 height" + index + "'><p>待发货</p><p><a href='#'>订单分析</a></p></div>\n";
-                            htmlStr3 += "<div class='ci5 ci8 height" + index + "'><p><a href='#' class='member-touch'>提醒发货</a> </p> <p><a class='cancelOrder' href='javascript:cancelOrder("+ content.orderid +" );'>取消订单</a> </p></div>\n";
+                            htmlStr3 += "<div class='ci5 ci8 height" + index + "'><p><a href='#' class='member-touch'>提醒发货</a> </p> <p><a class='cancelOrder flag"+ content.orderid +"' href='javascript:cancelOrder("+ content.orderid +");'>取消订单</a> </p></div>\n";
                             break;
                         case 2:
                             htmlStr3 += "<div class='ci5 height" + index + "'><p>已发货</p>"+wl+" <p><a href='#'>订单分析</a></p></div>\n";
@@ -1070,11 +1070,12 @@
 		}
 
     }
-    function cancelOrder(orderId) {
+    function cancelOrder(orderId,obj) {
 		var flag=ajax("updataOrderStatusZero.action",orderId);
 		if(flag==1){
+            $(".flag"+orderId).parent().hide();
 		    alert("取消成功！");
-		    $(".cancelOrder").hide();
+		    //$(".cancelOrder").hide();
 		}else {
             alert("取消失败！");
 		}

@@ -232,7 +232,13 @@
 
     <!--根据用户的id查询出该用户的收货地址-->
     <select id="selectGainAddressByUserId" parameterType="Integer" resultType="gainaddres">
-        SELECT * FROM gainaddres WHERE UserId=#{userid}
+        SELECT
+          g.* ,
+          g.Gain_A gainA,
+          g.Gain_B gainB,
+          g.Gain_C gainC
+        FROM gainaddres g
+        WHERE UserId=#{userid}
     </select>
 
 

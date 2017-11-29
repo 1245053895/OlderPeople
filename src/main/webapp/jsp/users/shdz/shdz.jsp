@@ -305,13 +305,26 @@
             <h2 class="shdztitle">收货地址</h2>
         </div>
      <c:forEach items="${gainaddresList}" var="gainaddres">
-        <div class="add_mi">
-            <%--<input name="gainid" value="${gainaddres.gainid}" style="display: none">--%>
-            <p style="border-bottom:1px dashed #ccc;line-height:28px;"><input type="checkbox" name="gainname" value="${gainaddres.gainname}" style="display: none">${gainaddres.gainname}</p>
-            <p><input type="checkbox" name="gainaddress" value="${gainaddres.gainaddress}" style="display: none" >${gainaddres.gainaddress}</p>
-            <span>电话：<input type="checkbox" name="gainmobile" value="${gainaddres.gainmobile}" style="display: none">${gainaddres.gainmobile}</span>
-            <p>邮编：<input type="checkbox" name="gaincode" value="${gainaddres.gaincode}" style="display: none">${gainaddres.gaincode}</p>
-        </div>
+         <c:if test="${gainaddres.gainA==1}">
+             <div class="add_mi" style="background:url('${pageContext.request.contextPath}/jsp/users/shdz/images/mail_1.jpg') no-repeat">
+                     <%--<input name="gainid" value="${gainaddres.gainid}" style="display: none">--%>
+                 <p style="border-bottom:1px dashed #ccc;line-height:28px;"><input type="checkbox" checked="true" name="gainname" value="${gainaddres.gainname}" style="display: none">${gainaddres.gainname}</p>
+                 <p><input type="checkbox" checked="true" name="gainaddress" value="${gainaddres.gainaddress}" style="display: none" >${gainaddres.gainaddress}</p>
+                 <span>电话：<input type="checkbox" checked="true" name="gainmobile" value="${gainaddres.gainmobile}" style="display: none">${gainaddres.gainmobile}</span>
+                 <p>邮编：<input type="checkbox" checked="true" name="gaincode" value="${gainaddres.gaincode}" style="display: none">${gainaddres.gaincode}</p>
+             </div>
+         </c:if>
+         <c:if test="${gainaddres.gainA==0}">
+             <div class="add_mi">
+                     <%--<input name="gainid" value="${gainaddres.gainid}" style="display: none">--%>
+                 <p style="border-bottom:1px dashed #ccc;line-height:28px;"><input type="checkbox" name="gainname" value="${gainaddres.gainname}" style="display: none">${gainaddres.gainname}</p>
+                 <p><input type="checkbox" name="gainaddress" value="${gainaddres.gainaddress}" style="display: none" >${gainaddres.gainaddress}</p>
+                 <span>电话：<input type="checkbox" name="gainmobile" value="${gainaddres.gainmobile}" style="display: none">${gainaddres.gainmobile}</span>
+                 <p>邮编：<input type="checkbox" name="gaincode" value="${gainaddres.gaincode}" style="display: none">${gainaddres.gaincode}</p>
+             </div>
+         </c:if>
+         
+
      </c:forEach>
    <%-- <div class="add_mi">
         <p style="border-bottom:1px dashed #ccc;line-height:28px;">陈思顶</p>
@@ -343,19 +356,19 @@
             <%--<form action="" method="post">--%>
                 <div class="col-xs-12">
                     <span class="span_style" class="span_sty">收&nbsp;件&nbsp;人&nbsp;</span>
-                    <input class="input_style" type="text" name="<%--gainname--%>" id="name_" value="" placeholder="&nbsp;&nbsp;请输入您的姓名" />
+                    <input class="input_style" type="text" name="gainname" id="name_" value="" placeholder="&nbsp;&nbsp;请输入您的姓名" />
                 </div>
                 <div class="col-xs-12">
                     <span class="span_style">详细地址</span>
-                    <input class="input_style" type="text" name="<%--gainaddress--%>" id="address" value="" placeholder="&nbsp;&nbsp;请输入您的详细地址" />
+                    <input class="input_style" type="text" name="gainaddress" id="address" value="" placeholder="&nbsp;&nbsp;请输入您的详细地址" />
                 </div>
                 <div class="col-xs-12">
                     <span class="span_style">手机号码</span>
-                    <input class="input_style" type="number" name="<%--gainmobile--%>" id="phone" value="" placeholder="&nbsp;&nbsp;请输入您的手机号码" />
+                    <input class="input_style" type="number" name="gainmobile" id="phone" value="" placeholder="&nbsp;&nbsp;请输入您的手机号码" />
                 </div>
                 <div class="col-xs-12">
                     <span class="span_style">邮政编码</span>
-                    <input class="input_style" type="email" name="<%--gaincode--%>" id="number_this" value="" placeholder="&nbsp;&nbsp;请输入您的邮政编号" />
+                    <input class="input_style" type="email" name="gaincode" id="number_this" value="" placeholder="&nbsp;&nbsp;请输入您的邮政编号" />
                 </div>
                 <div class="col-xs-12">
                     <input class="btn_remove" type="button" onclick="javascript:onclick_close();" value="取消" />

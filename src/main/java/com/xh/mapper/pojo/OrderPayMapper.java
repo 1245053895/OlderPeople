@@ -12,4 +12,6 @@ public interface OrderPayMapper {
     int  insertSelective2(Order order);
     void   insertSelective3(Orderproduct orderproduct);
     Gainaddres selectGainId(Gainaddres gainaddres);
+
+    public Gainaddres IsGainAddress(Gainaddres gainaddres);
 }

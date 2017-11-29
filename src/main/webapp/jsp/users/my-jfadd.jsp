@@ -84,7 +84,9 @@
                         <input type="hidden" name="Checkout[addressState]" id="addrState"   value="0">
                         <!-- 收货地址 -->
                         <%--<div>--%>
-
+            <c:if test="${totalCreditsById.totalCredits}<${product.productdisabled}&&${totalCreditsById.totalCredits}==null">
+                   alert("您的积分不足以兑换此商品");
+            </c:if>
                         <%--</div>--%>
                         <!-- 收货地址 END-->
                         <div id="checkoutPayment">
@@ -97,11 +99,11 @@
                                 <div>
                                     <ul class=" clearfix" style="margin-left: 30px;margin-top: 20px">
                                         <li>
-                                            <input type="radio" name="paytype" value="0" style="float: left"/>
+                                            <input type="radio" checked="true" name="paytype" value="0" style="float: left"/>
                                             <span style="font-size: 16px; float: left;margin-left: 5px;margin-right: 30px;">在线支付</span>
                                         </li>
                                         <li>
-                                            <input type="radio" name="paytype" value="1" style="float: left"/>
+                                            <input type="radio"  name="paytype" value="1" style="float: left"/>
                                             <span style="font-size: 16px; float: left;margin-left: 5px;margin-right: 30px;">货到付款</span>
                                         </li>
                                     </ul>
@@ -116,7 +118,7 @@
                                 <div>
                                     <ul class=" clearfix" style="margin-left: 30px;margin-top: 20px">
                                         <li>
-                                            <input type="radio" name="gainmethod" value="0" style="float: left"/>
+                                            <input type="radio" checked="true" name="gainmethod" value="0" style="float: left"/>
                                             <span style="font-size: 16px; float: left;margin-left: 5px;margin-right: 30px;">快递配送</span>
                                         </li>
                                         <li>
@@ -243,7 +245,7 @@
 
                                         <div class="checkout-count clearfix">
                                             <div class="checkout-count-extend xm-add-buy">
-                                                <h2 class="title">会员留言</h2></br>
+                                                <h2 class="title">用户留言</h2></br>
                                                 <input type="text" style="background-color: #f5f5f5" placeholder="点击输入留言信息" name="buyerrequest"/>
 
                                             </div>
@@ -325,11 +327,11 @@
                             <input type="hidden" id="couponValue" name="Checkout[couponsValue]">
                             <div class="checkout-confirm">
 
-                                <a href="#" class="btn btn-lineDakeLight btn-back-cart">返回购物车</a>
+                                <a href="/jsp/users/my-dingdan.jsp?flag=2" class="btn btn-lineDakeLight btn-back-cart">返回购物车</a>
                                 <%--<input type="hidden" class="ace" name="userid" value="${sessionScope.user.userid}" />--%>
                                 <input type="hidden" class="ace" name="userid" value="5" />
                                 <%--这里传入userid  userid=${sessionScope.user.userid}  --%>
-                                <a href="javascript:jiesuan('<%=basePath%>');" class="btn btn-primary">立即下单</a>
+                                <a href="javascript:duihuan('<%=basePath%>');" class="btn btn-primary">立即下单</a>
 
                             </div>
                         </div>
@@ -518,10 +520,11 @@
 
 <script type="text/javascript">
 
-    function jiesuan(basePath) {
-        alert('确定兑换？');
-        $("#checkoutForm").attr("action",basePath + "duihuan.action");
-        $("#checkoutForm").submit();
+    function duihuan(basePath) {
+        if(confirm("确定兑换此商品？")){
+            $("#checkoutForm").attr("action",basePath + "duihuan.action");
+            $("#checkoutForm").submit();
+        }
     }
 
 </script>

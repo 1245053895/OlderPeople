@@ -154,7 +154,6 @@
 </c:if>
 
 <header id="pc-header">
-
 	<jsp:include page="/jsp/users/head.jsp"></jsp:include>
 	<%--</div>--%>
 	<!--  顶部    start-->
@@ -174,8 +173,6 @@
 	</div>
 
 </header>
-<%--<input type="hidden" class="ace" name="shopcarid" value="+content.shopcarid+" />
-<input class="input"   name="orderamount" value="+content.orderamount+">--%>
 
 <!--
 <div class="containers center"><div class="pc-nav-item"><a href="#">首页</a> &gt; <a href="#">会员中心 </a> &gt; <a href="#">商城快讯</a></div></div>
@@ -538,7 +535,7 @@
                             break;
                         case 1:
                             htmlStr3 += "<div class='ci5 height" + index + "'><p>待发货</p><p><a href='#'>订单分析</a></p></div>\n";
-                            htmlStr3 += "<div class='ci5 ci8 height" + index + "'><p><a href='#' class='member-touch'>提醒发货</a> </p> <p><a class='cancelOrder' href='javascript:cancelOrder("+ content.orderid +" );'>取消订单</a> </p></div>\n";
+                            htmlStr3 += "<div class='ci5 ci8 height" + index + "'><p><a href='#' class='member-touch'>提醒发货</a> </p> <p><a class='cancelOrder flag"+ content.orderid +"' href='javascript:cancelOrder("+ content.orderid +");'>取消订单</a> </p></div>\n";
                             break;
                         case 2:
                             htmlStr3 += "<div class='ci5 height" + index + "'><p>已发货</p>"+wl+" <p><a href='#'>订单分析</a></p></div>\n";
@@ -1079,11 +1076,12 @@
 		}
 
     }
-    function cancelOrder(orderId) {
+    function cancelOrder(orderId,obj) {
 		var flag=ajax("updataOrderStatusZero.action",orderId);
 		if(flag==1){
+            $(".flag"+orderId).parent().hide();
 		    alert("取消成功！");
-		    $(".cancelOrder").hide();
+		    //$(".cancelOrder").hide();
 		}else {
             alert("取消失败！");
 		}

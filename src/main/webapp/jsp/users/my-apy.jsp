@@ -97,11 +97,10 @@
         </form>
     </div>
 
-   <%-- <script type="text/javascript">
-        function wancheng(basePath) {
-            $("#wancheng").attr("action",basePath + "wanCheng.action");
-            $("#wancheng").submit();
+   <script type="text/javascript">
+        function cancel(){
+            window.history.back(-1);
         }
-    </script>--%>
+    </script>
 </body>
 </html>

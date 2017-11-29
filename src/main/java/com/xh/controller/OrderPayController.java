@@ -67,8 +67,10 @@ public class OrderPayController {
 
     //商品详情的结算
     @RequestMapping(value = "/jieSuan.action", method = {RequestMethod.GET, RequestMethod.POST})
-    public String jieSuan(HttpServletRequest request,Model model, String[] productid, Gainaddres gainaddres, Order order, Orderproduct orderproduct
+    public String jieSuan(HttpSession session,HttpServletRequest request,Model model, String[] productid, Gainaddres gainaddres, Order order, Orderproduct orderproduct
             , String[] productname) {
+        User user=(User)session.getAttribute("user");
+        gainaddres.setUserid(user.getUserid());
         model.addAttribute("productname", productname);  /*保存商品名称*/
         model.addAttribute("totalcredit", order.getTotalcredit());  /*保存用户此次购买可获得的积分*/
         List<Pay> pays= userLoginService.queryPayMethod();/*支付方式的页面显示*/

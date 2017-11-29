@@ -382,12 +382,17 @@ public class CustomerLoginController {
        Product product= userLoginService.jifenPage(productid);
         TotalCreditsById totalCreditsById = userLoginService.queryTotalCriditsById(userid);
         Integer Productdisabled= product.getProductdisabled();
-        Integer TotalCredits= totalCreditsById.getTotalCredits();
-        Integer shenyuCredits=TotalCredits-Productdisabled;
+        if(totalCreditsById.getTotalCredits()!=null){
+            Integer TotalCredits= totalCreditsById.getTotalCredits();
+            Integer shenyuCredits=TotalCredits-Productdisabled;
+            model.addAttribute("shenyuCredits",shenyuCredits);
+        }else{
+            return "/jsp/users/my-jfadd.jsp";
+        }
         model.addAttribute("gainaddresList",gainaddresList);/*保存用户的收货地址，在页面显示*/
         model.addAttribute("product",product);
         model.addAttribute("totalCreditsById",totalCreditsById);
-        model.addAttribute("shenyuCredits",shenyuCredits);
+
         return "/jsp/users/my-jfadd.jsp";
     }
 

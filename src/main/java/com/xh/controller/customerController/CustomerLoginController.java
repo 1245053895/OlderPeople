@@ -378,11 +378,13 @@ public class CustomerLoginController {
         HttpSession session=request.getSession();
         User user=(User)session.getAttribute("user");
         Integer userid=user.getUserid();
+        List<Gainaddres> gainaddresList=  userLoginService.selectGainAddressByUserId(userid); /*根据用户的id查询出该用户的收货地址*/
        Product product= userLoginService.jifenPage(productid);
         TotalCreditsById totalCreditsById = userLoginService.queryTotalCriditsById(userid);
         Integer Productdisabled= product.getProductdisabled();
         Integer TotalCredits= totalCreditsById.getTotalCredits();
         Integer shenyuCredits=TotalCredits-Productdisabled;
+        model.addAttribute("gainaddresList",gainaddresList);/*保存用户的收货地址，在页面显示*/
         model.addAttribute("product",product);
         model.addAttribute("totalCreditsById",totalCreditsById);
         model.addAttribute("shenyuCredits",shenyuCredits);
@@ -391,8 +393,14 @@ public class CustomerLoginController {
 
 //兑换成功的页面显示
     @RequestMapping("/duihuan.action")
-    public String duihuan(){
-        return "/jsp/users/my-apy-suc.jsp";
+    public String duihuan(Model model,Order order,Gainaddres gainaddres){
+        List<Pay> pays= userLoginService.queryPayMethod();/*支付方式的页面显示*/
+        model.addAttribute("pays",pays);
+        if(order.getPaytype()==0){
+            return "/jsp/users/my-jfapy.jsp";
+
+        }
+        return "/jsp/users/my-jfapy-suc.jsp";
     }
 
 

@@ -607,9 +607,11 @@
 <script type="text/javascript">
 
 function jiesuan(basePath) {
-       alert('前去付款？');
-    $("#checkoutForm").attr("action",basePath + "jieSuan.action");
-    $("#checkoutForm").submit();
+   if(confirm('前去付款？')){
+	   $("#checkoutForm").attr("action",basePath + "jieSuan.action");
+	   $("#checkoutForm").submit();
+   }
+
 }
 
 </script>

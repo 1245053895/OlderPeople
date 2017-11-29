@@ -116,11 +116,11 @@
     <div class="bg"></div>
     <div class="search-wrapper">
         <div class="input-holder">
-            <form id="uploadForm" action="" method="post" enctype="multipart/form-data">
-                <input type="text" name="input_text" class="search-input" placeholder="请输入关键词" />
-                <button class="search-icon" onClick="searchToggle(this, event);"><span></span></button>
-                <div class="search-select"></div>
-                <div class="upload_image">
+            <input type="text" name="input_text" class="search-input" placeholder="请输入关键词" />
+            <button class="search-icon" onClick="searchToggle(this, event);"><span></span></button>
+            <div class="search-select"></div>
+            <div class="upload_image">
+                <form id="uploadForm" action="" method="post" enctype="multipart/form-data">
                     <div class="select_img">
                         <div id="select_area"></div>
                         <input type="file" id="imageFile" style="filter:alpha(opacity=0);opacity:0;width: 0;height: 0;"/>
@@ -134,14 +134,14 @@
                         </div>
                         <div class="header-tip"></div>
                     </div>
-                </div>
-                <div class="result-suggest">
-                    <ul>
-                        <li>老人</li>
-                        <li>老年得出</li>
-                    </ul>
-                </div>
-            </form>
+                </form>
+            </div>
+            <div class="result-suggest">
+                <ul>
+                    <li>老人</li>
+                    <li>老年得出</li>
+                </ul>
+            </div>
         </div>
         <span class="close" onClick="searchToggle(this, event);"></span>
         <div class="result-container">

@@ -83,136 +83,45 @@
                         <!-- 地址状态 0：默认选择；1：新增地址；2：修改地址 -->
                         <input type="hidden" name="Checkout[addressState]" id="addrState"   value="0">
                         <!-- 收货地址 -->
-                        <div class="xm-box">
-                            <div class="box-hd ">
-                                <h2 class="title">收货地址</h2>
-                                <!---->
-                            </div>
-                            <div class="box-bd">
-                                <div class="clearfix xm-address-list" id="checkoutAddrList">
-                                    <dl class="item" >
-                                        <dt>
-                                            <strong class="itemConsignee">陈思顶</strong>
-                                            <span class="tag">修改</span>
-                                            <span class="tag">删除</span>
-                                        </dt>
-                                        <br/>
-                                        <dd>
-                                            <p class="itemRegion">贵州省 贵阳市</p>
-                                            <p class="itemStreet">贵州省仁怀市贵州大学北校区</p>
-                                            <p class="tel">188010666666</p>
-                                        </dd>
-                                        <dd style="display:none">
-                                            <input type="radio" name="Checkout[address]" class="addressId"  value="10140916720030323">
-                                        </dd>
-                                    </dl>
+                        <%--<div>--%>
 
-
-                                    <dl class="item" id="newadr" style="display: none">
-                                        <dt>
-                                            <strong class="itemConsignee"><input class="itemRegion" placeholder="请填写收件人姓名" style="border: hidden;width: 120px"></strong>
-                                            <span class="tag" onclick="quxiao()">取消</span>
-                                            <span class="tag" onclick="queding()">确定</span>
-                                        </dt>
-                                        <br/>
-                                        <dd>
-                                            <input class="itemRegion" placeholder="请填写省份、城市" style="border: hidden">
-                                            <input class="itemStreet" placeholder="请填写详细地址" style="border: hidden">
-                                            <input class="tel" placeholder="请填写收件人手机号" style="border: hidden">
-                                        </dd>
-                                        <dd style="display:none">
-                                            <input type="radio" name="Checkout[address]" class="addressId"  value="10140916720030323">
-                                        </dd>
-                                    </dl>
-
-                                    <script>
-                                        function xzdz() {
-                                            document.getElementById("newadr").style.display = "block"
-                                        }
-                                        function quxiao() {
-                                            document.getElementById("newadr").style.display = "none"
-                                        }
-                                    </script>
-
-
-
-                                    <div class="use-new-addr"  id="J_useNewAddr" data-state="off" onclick="xzdz()">
-                                        <span class="iconfont icon-add"><img src="${pageContext.request.contextPath}/jsp/users/images/add_cart.png" /></span>
-                                        新增收货地址
-                                    </div>
-                                </div>
-                                <input type="hidden" name="newAddress[type]" id="newType" value="common">
-                                <input type="hidden" name="newAddress[consignee]" id="newConsignee">
-                                <input type="hidden" name="newAddress[province]" id="newProvince">
-                                <input type="hidden" name="newAddress[city]" id="newCity">
-                                <input type="hidden" name="newAddress[district]" id="newCounty">
-                                <input type="hidden" name="newAddress[address]" id="newStreet">
-                                <input type="hidden" name="newAddress[zipcode]" id="newZipcode">
-                                <input type="hidden" name="newAddress[tel]" id="newTel">
-                                <input type="hidden" name="newAddress[tag_name]" id="newTag">
-                                <!--点击弹出新增/收货地址界面start-->
-                                <div class="xm-edit-addr-box" id="J_editAddrBox">
-                                    <div class="bd">
-                                        <div class="item">
-                                            <label>收货人姓名<span>*</span></label>
-                                            <input type="text" name="userAddress[consignee]" id="Consignee" class="input" placeholder="收货人姓名" maxlength="15" autocomplete='off'>
-                                            <p class="tip-msg tipMsg"></p>
-                                        </div>
-                                        <div class="item">
-                                            <label>联系电话<span>*</span></label>
-                                            <input type="text" name="userAddress[tel]" class="input" id="Telephone" placeholder="11位手机号" autocomplete='off'>
-                                            <p class="tel-modify-tip" id="telModifyTip"></p>
-                                            <p class="tip-msg tipMsg"></p>
-                                        </div>
-                                        <div class="item">
-                                            <label>地址<span>*</span></label>
-                                            <select name="userAddress[province]" id="Provinces" class="select-1">
-                                                <option>省份/自治区</option>
-                                            </select>
-                                            <select name="userAddress[city]"  id="Citys" class="select-2" disabled>
-                                                <option>城市/地区/自治州</option>
-                                            </select>
-                                            <select name="userAddress[county]"  id="Countys" class="select-3" disabled>
-                                                <option>区/县</option>
-                                            </select>
-                                            <textarea   name="userAddress[street]" class="input-area" id="Street" placeholder="路名或街道地址，门牌号"></textarea>
-                                            <p class="tip-msg tipMsg"></p>
-                                        </div>
-                                        <div class="item">
-                                            <label>邮政编码<span>*</span></label>
-                                            <input type="text" name="userAddress[zipcode]" id="Zipcode" class="input" placeholder="邮政编码"  autocomplete='off'>
-                                            <p class="zipcode-tip" id="zipcodeTip"></p>
-                                            <p class="tip-msg tipMsg"></p>
-                                        </div>
-                                        <div class="item">
-                                            <label>地址标签<span>*</span></label>
-                                            <input type="text" name="userAddress[tag]" id="Tag" class="input" placeholder='地址标签：如"家"、"公司"。限5个字内'  >
-                                            <p class="tip-msg tipMsg"></p>
-                                        </div>
-                                    </div>
-                                    <div class="ft clearfix">
-                                        <button  type="button"  class="btn btn-lineDake btn-small " id="J_editAddrCancel">取消</button>
-                                        <button type="button" class="btn btn-primary  btn-small " id="J_editAddrOk">保存</button>
-                                    </div>
-                                </div>
-                                <!--点击弹出新增/收货地址界面end-->
-                                <div class="xm-edit-addr-backdrop" id="J_editAddrBackdrop"></div>
-                            </div>
-                        </div>
+                        <%--</div>--%>
                         <!-- 收货地址 END-->
                         <div id="checkoutPayment">
+                            <jsp:include page="/jsp/users/shdz/shdz.jsp"></jsp:include>
+                            <!-- 支付方式 -->
+                            <div class="xm-box" style="width: 990px!important;height: 100px!important;margin-top: 330px;">
+                                <div class="box-hd ">
+                                    <h2 class="title">支付方式</h2>
+                                </div>
+                                <div>
+                                    <ul class=" clearfix" style="margin-left: 30px;margin-top: 20px">
+                                        <li>
+                                            <input type="radio" name="paytype" value="0" style="float: left"/>
+                                            <span style="font-size: 16px; float: left;margin-left: 5px;margin-right: 30px;">在线支付</span>
+                                        </li>
+                                        <li>
+                                            <input type="radio" name="paytype" value="1" style="float: left"/>
+                                            <span style="font-size: 16px; float: left;margin-left: 5px;margin-right: 30px;">货到付款</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- 支付方式 END-->
                             <!-- 收货方式-->
                             <div class="xm-box">
                                 <div class="box-hd ">
                                     <h2 class="title">收货方式</h2>
                                 </div>
                                 <div>
-                                    <ul class="checkout-option-list clearfix J_optionList">
+                                    <ul class=" clearfix" style="margin-left: 30px;margin-top: 20px">
                                         <li>
-                                            <input type="radio" name="gainmethod" value="0" checked="checked" data-labelauty="快递配送">
+                                            <input type="radio" name="gainmethod" value="0" style="float: left"/>
+                                            <span style="font-size: 16px; float: left;margin-left: 5px;margin-right: 30px;">快递配送</span>
                                         </li>
-                                        <li style=" display: inline-block;margin-left: -20px;">
-                                            <input type="radio" name="gainmethod" value="1" data-labelauty="货物自取">
+                                        <li>
+                                            <input type="radio" name="gainmethod" value="1" style="float: left"/>
+                                            <span style="font-size: 16px; float: left;margin-left: 5px;margin-right: 30px;">货物自取</span>
                                         </li>
                                     </ul>
                                 </div>
@@ -260,6 +169,39 @@
                                         </dl>
 
                                         <script type="text/javascript">
+
+                                            $("#sub_setID").click(function () {
+                                                var name=$("#name_").val();
+                                                var address=$("#address").val();
+                                                var phone=$("#phone").val();
+                                                var number_this=$("#number_this").val();
+                                                if(name!=""&&address!=""&&phone!=""&&number_this!=""){
+                                                    var html="<div class='add_mi'>"+
+                                                        "<p style='border-bottom:1px dashed #ccc;line-height:28px;'>"+name+"</p>"+
+                                                        "<p>"+address+"</p>"+
+                                                        "<span>电话："+phone+"</span>"+
+                                                        "<p>邮编："+number_this+"</p>"+
+                                                        "</div>";
+                                                    $(".Caddress").find(".add_mi").each(function (i) {
+
+                                                        var input_out = $(".Caddress").find(".add_mi");
+                                                        if(i==input_out.length-1){
+                                                            $(input_out[i]).after(html);
+                                                        }
+                                                        console.log(i+"yyy"+input_out.length);
+                                                    });
+                                                    $(this).parents("div[class='shade_content']").hide();
+
+                                                    $('.Caddress .add_mi').click(function() {
+                                                        $(this).css('background', 'url("${pageContext.request.contextPath}/jsp/users/shdz/images/mail_1.jpg") no-repeat').siblings('.add_mi').css('background', 'url("${pageContext.request.contextPath}/jsp/users/shdz/images/mail.jpg") no-repeat')
+                                                    });
+                                                }else {
+                                                    alert("请输入内容！")
+                                                }
+                                            });
+
+
+
 
                                             function myfun() {
 
@@ -309,10 +251,10 @@
                                             <div class="checkout-price">
                                                 <ul>
                                                     <li>
-                                                        订单总额：<span id="aaaa">${product.productprice}</span>
+                                                        订单金额：<span id="aaaa">${product.productprice}</span>
                                                     </li>
                                                     <%--amountpay 应付金额    realpay实付=应付+邮费postfee--%>
-                                                    <input type="hidden" class="ace" name="amountpay" value="" />
+                                                    <input type="hidden" class="ace" name="amountpay" value="${product.productprice}" />
                                                     <!--<li>
                                                         活动优惠：<span>-0元</span>
                                                         <script type="text/javascript">
@@ -323,7 +265,7 @@
                                                     <li>
                                                         <%--用户购买的所有商品积分和======（数量*积分）的和--%>
                                                         应付积分：<span id="couponDesc">${product.productdisabled}</span>
-                                                        <input type="hidden" class="ace" name="totalcredit" value="" />
+                                                        <input type="hidden" class="ace" name="totalcredit" value="${product.productdisabled}" />
                                                     </li>
 
                                            <c:if test="${product.productprice<88}">
@@ -331,14 +273,20 @@
                                                         运费：<span id="postageDesc">15元</span>
                                                     </li>
                                            </c:if>
-                                              <c:if test="${product.productprice>88}">
+                                              <c:if test="${product.productprice>=88}">
                                                        <li>
                                                           运费：<span id="postageDesc1">0元</span>
                                                        </li>
                                                 </c:if>
 
                                                 </ul>
-                                                <p class="checkout-total">应付总额：<span><strong id="<%--totalPrice--%>">null</strong>元</span></p>
+                                                <c:if test="${product.productprice<88}">
+                                                   <p class="checkout-total">应付总额：<span><strong id="<%--totalPrice--%>">15</strong>元</span></p>
+                                                </c:if>
+                                                <c:if test="${product.productprice>=88}">
+                                                    <p class="checkout-total">应付总额：<span><strong id="<%--totalPrice--%>">0</strong>元</span></p>
+                                                </c:if>
+
                                             </div>
                                             <!--  -->
                                         </div>

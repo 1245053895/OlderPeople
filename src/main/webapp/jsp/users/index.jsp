@@ -1219,7 +1219,13 @@
 		</div>
 
 	</section>
-
+	<!-- 右侧浮动 -->
+	<div id="float">
+		<a href="${pageContext.request.contextPath}/LoginServlet?username=${sessionScope.user.username}" class="consult" target="_blank"></a>
+		<a href="${pageContext.request.contextPath}/jsp/users/my-dingdan.jsp?flag=2" class="cart"></a>
+		<a href="${pageContext.request.contextPath}/jsp/users/my-dingdan.jsp?flag=1" class="cart1"></a>
+		<a href="javascript:void(0)" class="btn_top" style="display: none;"></a>
+	</div>
 
 
 <div style="height:100px"></div>
@@ -1312,6 +1318,6 @@
         $(this).find(".nav a").removeClass("hover");
     })
 </script>
-</header>
+
 </body>
 </html>

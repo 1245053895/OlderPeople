@@ -24,6 +24,7 @@
 	transition-duration: 0.5s;
 	transition-property: box-shadow;
 	margin-left: 10px;
+	background-color: white;
 }
 .rec_list li:hover {
 	-webkit-box-shadow: #CCC 0px 0px 15px;
@@ -40,12 +41,16 @@
 	overflow:hidden;
 }
 .rec_pic img {
-	height: 225px;
-	width: 360px;
+	height: 210px;
+	width:230px;
 	opacity: 0.9;
+	margin-left: 85px;
+	margin-top: 6px;
+
 }
 .rec_box {
-	background-color: #FFF;
+	background-color: #e0e0e0;
+	opacity: 0.6;
 	float: left;
 	height: 200px;
 	width: 200px;

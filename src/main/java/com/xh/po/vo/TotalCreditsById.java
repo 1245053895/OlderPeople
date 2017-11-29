@@ -20,6 +20,34 @@ public class TotalCreditsById extends Product{
     private Integer onegood;
     private Integer startpage;
 
+    //
+    private  Integer  productTypeId1;
+    private  Integer  productTypeId2;
+    private  Integer  productTypeId3;
+
+    public Integer getProductTypeId1() {
+        return productTypeId1;
+    }
+
+    public void setProductTypeId1(Integer productTypeId1) {
+        this.productTypeId1 = productTypeId1;
+    }
+
+    public Integer getProductTypeId2() {
+        return productTypeId2;
+    }
+
+    public void setProductTypeId2(Integer productTypeId2) {
+        this.productTypeId2 = productTypeId2;
+    }
+
+    public Integer getProductTypeId3() {
+        return productTypeId3;
+    }
+
+    public void setProductTypeId3(Integer productTypeId3) {
+        this.productTypeId3 = productTypeId3;
+    }
     public Integer getStartpage() {
         return startpage;
     }
@@ -109,4 +137,35 @@ public class TotalCreditsById extends Product{
     public void setTotalCredits(Integer totalCredits) {
         this.totalCredits = totalCredits;
     }
+
+
+    //附加字段
+    private Integer pageNo = 1;
+    private Integer pageSize = 10;
+    //开始行
+    private Integer startRow;
+
+    public Integer getPageNo() {
+        return pageNo;
+    }
+    public void setPageNo(Integer pageNo) {
+        //计算开始行
+        this.startRow = (pageNo-1)*pageSize;
+        this.pageNo = pageNo;
+    }
+    public Integer getPageSize() {
+        return pageSize;
+    }
+    public void setPageSize(Integer pageSize) {
+        //计算开始行
+        this.startRow = (pageNo-1)*pageSize;
+        this.pageSize = pageSize;
+    }
+    public Integer getStartRow() {
+        return startRow;
+    }
+    public void setStartRow(Integer startRow) {
+        this.startRow = startRow;
+    }
+
 }

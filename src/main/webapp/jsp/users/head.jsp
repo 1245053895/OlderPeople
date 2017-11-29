@@ -136,7 +136,6 @@
                     </div>
                 </form>
             </div>
-
             <div class="result-suggest">
                 <ul>
                     <li>老人</li>
@@ -154,15 +153,13 @@
             <%--这是广告--%>
         </div>
         <div class="product_center">
-            <a src="javascript:void(0);">
-                <div class="product_list">
-                    <div>
-                        <img src="${pageContext.request.contextPath}/jsp/users/images/wntj/cy.jpg">
-                    </div>
-                    <div class="product_name">金黄嫩茶叶</div>
-                    <div class="product_price"><em>149</em>元</div>
+            <div class="product_list">
+                <div>
+                    <img src="${pageContext.request.contextPath}/jsp/users/images/wntj/cy.jpg">
                 </div>
-            </a>
+                <div class="product_name">金黄嫩茶叶</div>
+                <div class="product_price"><em>149</em>元</div>
+            </div>
         </div>
     </div>
     <div class="loading">
@@ -211,7 +208,7 @@
     <div class="pc-header-con">
         <c:if test="${empty user.userid}">
             <div class="fl pc-header-link" >您好！欢迎来孝和集团电子商城
-                <a href="${pageContext.request.contextPath}/LoginPage.action" target="_blank">请登录</a>
+                <a href="javascript:;" onclick="login()" id="login">请登录</a>&nbsp;
                 <a href="${pageContext.request.contextPath}/jsp/users/register.jsp" target="_blank"> 免费注册</a>
             </div>
         </c:if>
@@ -246,7 +243,7 @@
 <div class="pc-header-logo clearfix">
     <div class="pc-fl-logo fl">
         <h1>
-            <a href="index.jsp"></a>
+            <a href="${pageContext.request.contextPath}/ShopFrontPage.action"></a>
         </h1>
     </div>
     <div class="head-form fl">
@@ -400,6 +397,10 @@
         aData.push('<span class="num_right">约100个</span>'+keyword+'2012是假的');
         //将返回的数据传递给实现搜索输入框的输入提示js类
         searchSuggest.dataDisplay(aData);
+    }
+    //去登陆页面
+    function login(){
+        window.location.href = "http://localhost:8070/LoginPage.action?returnUrl=" + encodeURIComponent(window.location.href);
     }
 </script>
 </body>

@@ -1,6 +1,7 @@
 package com.xh.controller.customerController;
 
 
+import com.xh.controller.page.Pagination;
 import com.xh.po.Product;
 import com.xh.po.Producttype;
 import com.xh.po.vo.ProductTypeExtend;
@@ -19,21 +20,20 @@ public class ProductTypeCustomerController {
     private ProductTypeService productTypeService;
     //查询商品类型中de商品
     @RequestMapping(value = "/SelectProductType.action",method = RequestMethod.GET)
-    public String SelectProductType(Model model ,Integer ProductTypeId){
+    public String SelectProductType(Model model ,Integer productTypeId,Integer pageNo){
         List<ProductTypeExtend> productTypeExtends=productTypeService.SelectProductType();
         for (ProductTypeExtend productTypeExtend:productTypeExtends){
             int id=productTypeExtend.getProducttypeid();
-            List<Product> products=productTypeService.SelectProductByTypeId(id);
+            List<Product> products=productTypeService.SelectProductByTypeIdLimitSix(id);
             productTypeExtend.setProduct(products);
         }
-        List<ProductTypeExtend> productTypeExtends1=productTypeService.SelectProductTpyeById(ProductTypeId);
-        List<Product> productss=productTypeService.SelectProductByTypeId(ProductTypeId);
+        List<ProductTypeExtend> productTypeExtends1=productTypeService.SelectProductTpyeById(productTypeId);
+        Pagination pagination=productTypeService.selectPaginationByQuery(productTypeId,pageNo);
+        model.addAttribute("pagination",pagination);
         model.addAttribute("productTypeExtends1",productTypeExtends1);
-        model.addAttribute("productss",productss);
         model.addAttribute("productTypeExtends",productTypeExtends);
         return "/jsp/users/my-all.jsp";
     }
 
-    //
 
 }

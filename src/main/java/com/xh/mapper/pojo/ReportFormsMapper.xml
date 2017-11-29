@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xh.mapper.pojo.ReportFormsMapper">
+
+
+    <!-- 待付款-->
+    <select id="selectGetCount1" parameterType="java.lang.Integer" resultType="com.xh.po.vo.ReportFormsString">
+select DATE_FORMAT(UpdateTime,'%Y%m') months,count(PayStatus) count1
+from `order`
+WHERE PayStatus=0 AND UpdateTime LIKE '%${_parameter}%'
+group by months;
+    </select>
+    <!--已付款-->
+    <select id="selectGetCount2" parameterType="java.lang.Integer" resultType="com.xh.po.vo.ReportFormsString">
+select DATE_FORMAT(UpdateTime,'%Y%m') months,count(PayStatus) count2
+from `order`
+WHERE PayStatus=1 AND UpdateTime LIKE  '%${_parameter}%'
+group by months;
+    </select>
+    <!--待发货-->
+    <select id="selectGetCount3" parameterType="java.lang.Integer" resultType="com.xh.po.vo.ReportFormsString">
+select DATE_FORMAT(UpdateTime,'%Y%m') months,count(`Status`) count3
+from `order`
+WHERE `Status`=1 AND UpdateTime LIKE  '%${_parameter}%'
+group by months;
+    </select>
+    <!--所有订单-->
+    <select id="selectGetCount4" parameterType="java.lang.Integer" resultType="com.xh.po.vo.ReportFormsString">
+select DATE_FORMAT(UpdateTime,'%Y%m') months,count(OrderId) count4
+from `order`
+WHERE UpdateTime LIKE  '%${_parameter}%'
+group by months;
+    </select>
+
+
+</mapper>

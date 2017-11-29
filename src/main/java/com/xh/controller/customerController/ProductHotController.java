@@ -1,5 +1,6 @@
 package com.xh.controller.customerController;
 
+import com.xh.controller.page.Pagination;
 import com.xh.po.vo.TotalCreditsById;
 import com.xh.service.customerService.ProductHotService;
 import com.xh.service.customerService.UserLoginService;
@@ -15,9 +16,9 @@ public class ProductHotController {
     @Autowired
     private ProductHotService productHotService;
     @RequestMapping(value = "/ProductHot.action")
-    public String ProductHot(Model model){
-        List<TotalCreditsById> totalCreditsByIds=productHotService.SelectHotProduct();
-        model.addAttribute("totalCreditsByIds",totalCreditsByIds);
+    public String ProductHot(Model model,Integer pageNo ){
+        Pagination pagination=productHotService.selectPaginationByQuery(pageNo);
+        model.addAttribute("pagination",pagination);
         return "/jsp/users/my-rx.jsp";
     }
 }

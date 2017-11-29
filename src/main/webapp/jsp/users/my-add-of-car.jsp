@@ -50,119 +50,21 @@
 </head>
 <body>
 
+
 <header id="pc-header">
-	<!--
-        <div class="pc-header-nav">
-            <div class="pc-header-con">
-                <div class="fl pc-header-link" >您好！，欢迎来云购物 <a href="login.html" target="_blank">请登录</a> <a href="register.html" target="_blank"> 免费注册</a></div>
-                <div class="fr pc-header-list top-nav">
-                    <ul>
-                        <li>
-                            <div class="nav"><i class="pc-top-icon"></i><a href="#">我的订单</a></div>
-                            <div class="con">
-                                <dl>
-                                    <dt><a href="">批发进货</a></dt>
-                                    <dd><a href="">已买到货品</a></dd>
-                                    <dd><a href="">优惠券</a></dd>
-                                    <dd><a href="">店铺动态</a></dd>
-                                </dl>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="nav"><i class="pc-top-icon"></i><a href="#">我的商城</a></div>
-                            <div class="con">
-                                <dl>
-                                    <dt><a href="">批发进货</a></dt>
-                                    <dd><a href="">已买到货品</a></dd>
-                                    <dd><a href="">优惠券</a></dd>
-                                    <dd><a href="">店铺动态</a></dd>
-                                </dl>
-                            </div>
-                        </li>
-                        <li><a href="#">我的云购</a></li>
-                        <li><a href="#">我的收藏</a></li>
-                        <li><a href="#">会员中心</a></li>
-                        <li><a href="#">客户服务</a></li>
-                        <li><a href="#">帮助中心</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    -->
-	<div class="pc-header-nav">
-		<div class="pc-header-con">
-			<div class="fl pc-header-link" >您好！，欢迎来孝和集团电子商城
-				<a href="login.html" target="_blank">请登录</a>
-				<a href="register.html" target="_blank"> 免费注册</a>
-			</div>
-			<div class="fr pc-header-list top-nav">
-				<ul>
-					<li><a href="#">我的收藏</a></li>
-					<li>
-						<div class="nav"><i class="pc-top-icon"></i><a href="#">个人中心</a></div>
-						<div class="con">
-							<dl>
-								<dt><a href="">个人资料</a></dt>
-								<dd><a href="">收货地址</a></dd>
-								<dd><a href="">修改登录密码</a></dd>
-								<dd><a href="">我的积分</a></dd>
-								<dd><a href="">已购买的宝贝</a></dd>
-							</dl>
-						</div>
-					</li>
 
-					<li>
-						<div class="nav"><i class="pc-top-icon"></i><a href="#">帮助中心</a></div>
-						<div class="con">
-							<dl>
-								<dt><a href="">积分说明</a></dt>
-								<dd><a href="">联系客服</a></dd>
-							</dl>
-						</div>
-					</li>
-
-				</ul>
-			</div>
-		</div>
-	</div>
-
-	<div class="pc-header-logo clearfix">
-		<div class="pc-fl-logo fl">
-			<h1>
-				<a href="index.jsp"></a>
-			</h1>
-		</div>
-		<div class="head-form fl">
-			<form class="clearfix">
-				<input class="search-text" accesskey="" id="key" autocomplete="off" placeholder="洗衣机" type="text">
-				<button class="button" onclick="search('key');return false;">搜索</button>
-			</form>
-			<div class="words-text clearfix">
-				<a href="#">制氧机</a>
-				<a href="#">代步车</a>
-				<a href="#">电动轮椅</a>
-				<a href="#">血糖仪</a>
-				<a href="#">血压计</a>
-				<a href="#">木制拐杖</a>
-				<a href="#">足浴盆</a>
-			</div>
-		</div>
-		<div class="fr pc-head-car">
-			<i class="icon-car"></i>
-			<a href="#">我的购物车</a>
-		</div>
-	</div>
+<jsp:include page="/jsp/users/head.jsp"></jsp:include>
 	<!--  顶部    start-->
 	<div class="yHeader">
 		<!-- 导航   start  -->
 		<div class="yNavIndex">
 			<ul class="yMenuIndex">
-				<li><a href="" target="_blank" title="首页">首页</a></li>
-				<li><a href="" target="_blank" title="热销专区">热销专区</a></li>
-				<li><a href="" target="_blank" title="新品专区">新品专区</a></li>
-				<li><a href="" target="_blank" title="积分商城">积分商城</a></li>
-				<li><a href="" target="_blank" title="合伙人">合伙人</a></li>
-				<li><a href="" target="_blank" title="关于我们">关于我们</a></li>
+				<li><a href="${pageContext.request.contextPath}/ShopFrontPage.action"  title="首页">首页</a></li>
+				<li><a href="${pageContext.request.contextPath}/ProductHot.action" target="_blank" title="热销专区">热销专区</a></li>
+				<li><a href="${pageContext.request.contextPath}/SelectNewProduct.action" target="_blank" title="新品专区">新品专区</a></li>
+				<li><a href="${pageContext.request.contextPath}/SelectProducCredits.action" target="_blank" title="积分商城">积分商城</a></li>
+				<li><a href="${pageContext.request.contextPath}/queryTotalCommentshop.action" target="_blank" title="好评专区">好评专区</a></li>
+				<li><a href="${pageContext.request.contextPath}/jsp/users/aboutus.jsp" target="_blank" title="关于我们">关于我们</a></li>
 			</ul>
 		</div>
 		<!-- 导航   end  -->
@@ -204,7 +106,7 @@
 					<div class="checkout-box-bd">
 						<!-- 地址状态 0：默认选择；1：新增地址；2：修改地址 -->
 						<input type="hidden" name="Checkout[addressState]" id="addrState"   value="0">
-						<!-- 收货地址 -->
+						<%--<!-- 收货地址 -->
 						<div class="xm-box">
 							<div class="box-hd ">
 								<h2 class="title">收货地址</h2>
@@ -290,21 +192,24 @@
 								<!--点击弹出新增/收货地址界面end-->
 								<div class="xm-edit-addr-backdrop" id="J_editAddrBackdrop"></div>
 							</div>
-						</div>
+						</div>--%>
 						<!-- 收货地址 END-->
 						<div id="checkoutPayment">
+							<jsp:include page="/jsp/users/shdz/shdz.jsp"></jsp:include>
 							<!-- 支付方式 -->
-							<div class="xm-box">
+							<div class="xm-box" style="width: 990px!important;height: 100px!important;margin-top: 330px;">
 								<div class="box-hd ">
 									<h2 class="title">支付方式</h2>
 								</div>
 								<div>
-									<ul class="checkout-option-list clearfix J_optionList">
+									<ul class=" clearfix" style="margin-left: 30px;margin-top: 20px">
 										<li>
-											<input type="radio" name="paytype" value="1" checked="checked" data-labelauty="在线支付">
+											<input type="radio" name="paytype" value="0" style="float: left"/>
+											<span style="font-size: 16px; float: left;margin-left: 5px;margin-right: 30px;">在线支付</span>
 										</li>
-										<li style=" display: inline-block;margin-left: -20px;">
-											<input type="radio" name="paytype" value="0" data-labelauty="货到付款">
+										<li>
+											<input type="radio" name="paytype" value="1" style="float: left"/>
+											<span style="font-size: 16px; float: left;margin-left: 5px;margin-right: 30px;">货到付款</span>
 										</li>
 									</ul>
 								</div>
@@ -316,12 +221,14 @@
 									<h2 class="title">收货方式</h2>
 								</div>
 								<div>
-									<ul class="checkout-option-list clearfix J_optionList">
+									<ul class=" clearfix" style="margin-left: 30px;margin-top: 20px">
 										<li>
-											<input type="radio" name="gainmethod" value="1" checked="checked" data-labelauty="快递配送">
+											<input type="radio" name="gainmethod" value="0" style="float: left"/>
+											<span style="font-size: 16px; float: left;margin-left: 5px;margin-right: 30px;">快递配送</span>
 										</li>
-										<li style=" display: inline-block;margin-left: -20px;">
-											<input type="radio" name="gainmethod" value="0" data-labelauty="货物自取">
+										<li>
+											<input type="radio" name="gainmethod" value="1" style="float: left"/>
+											<span style="font-size: 16px; float: left;margin-left: 5px;margin-right: 30px;">货物自取</span>
 										</li>
 									</ul>
 								</div>
@@ -365,6 +272,35 @@
 										</dl>
 
 										<script type="text/javascript">
+											$("#sub_setID").click(function () {
+											    var name=$("#name_").val();
+											    var address=$("#address").val();
+											    var phone=$("#phone").val();
+											    var number_this=$("#number_this").val();
+											    if(name!=""&&address!=""&&phone!=""&&number_this!=""){
+											        var html= "<div class='add_mi'>"+
+                                                        "<p style='border-bottom:1px dashed #ccc;line-height:28px;'>"+name+"</p>"+
+                                                        "<p>"+address+"</p>"+
+                                                        "<span>电话："+phone+"</span>"+
+                                                    "<p>邮编："+number_this+"</p>"+
+                                                    "</div>";
+											        $(".Caddress").find(".add_mi").each(function (i) {
+											            var input_out=$(".Caddress").find(".add_mi");
+														if(i==input_out.length-1){
+											                $(input_out[i]).after(html);
+														}
+                                                    });
+											        /*隐藏输入的框*/
+											        $(this).parents("div[class='shade_content']").hide();
+											        /*给新增的地址选择一个可以选的图形*/
+                                                    $('.Caddress .add_mi').click(function() {
+                                                        $(this).css('background', 'url("${pageContext.request.contextPath}/jsp/users/shdz/images/mail_1.jpg") no-repeat').siblings('.add_mi').css('background', 'url("${pageContext.request.contextPath}/jsp/users/shdz/images/mail.jpg") no-repeat')
+                                                    });
+												}else {
+											        alert("请输入内容");
+												}
+                                            })
+
 
                                             function myfun() {
 

@@ -3,13 +3,17 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 
+<style type="text/css">
+    #userList {list-style:none}
+</style>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>联系客服</title>
 <script type="text/javascript"  src="jquery-1.4.4.min.js"></script>
 <script type="text/javascript">
 	var  ws;
-	var url="ws://localhost:8070/chatSocket?username=${sessionScope.username}";
+	//此处改为服务器ip
+	var url="ws://127.0.0.1:8080/chatSocket?username=${sessionScope.username}";
 	
 	function connect(){
 		 if ('WebSocket' in window) {
@@ -22,11 +26,11 @@
          }
 		 ws.onmessage=function(event){
 			eval("var result="+event.data);
-			
+
 			if(result.alert!=undefined){
-				$("#content").append(result.alert+"<br/>");
+				$("#content").append("<p style=\"color: rgba(209,6,7,0.96);font-size: small;\">"+result.alert+"</p>");
 			}
-			
+
 			if(result.names!=undefined){
 				//$("#userList").html("<b>在线人员</b><br/>");
 				//$(result.names).each(function(){
@@ -41,10 +45,10 @@
 			}
 			
 			if(result.from!=undefined){
-				$("#content").append(result.date+"   "
-						+result.sendMsg+"<br/>");
+				$("#content").append( "<b style=\"color: rgba(209,6,7,0.96);font-size: large;background: rgba(242,35,255,0.2)\">"
+                    +result.date+"   "+"<b style=\"color: rgba(3,8,3,0.95)\">"+result.sendMsg+"</b>"+"</p>");
 			}
-			
+
 		 };
 	}//
 	
@@ -85,27 +89,28 @@
         #users{
             overflow: scroll;
         }
-    </style>
+        </style>
 
 </head>  
   
-<body onload="connect();">
+<body onload="connect();" style="background-image: url(bgpic2.jpg)">
 
 <div>
     <div id="msg" >
-        <div>  <h3>欢迎 ${sessionScope.username } 使用本系统！！</h3></div>
-        <p id="content" style="width: 400px;height: 380px; border: solid 1px;">
+
+        <p id="content" style="width: 565px;height: 380px;margin-top: 40px;margin-left: 490px;border-top:1px solid #EFEFEF;border-right:1px solid #EFEFEF;border-radius:3px;background-color: #EFEFEF;overflow-x: hidden;overflow-y: scroll">
         </p>
     </div>
     <div id="users"
-         style="width: 150px;height: 530px;border: solid 1px; position:absolute;left: 412px;top:8px;">
-        <ul id="userList">
+         style="width: 200px;height: 520px;border:1px solid #2e3238;border-radius:3px;position: absolute;float: left;left: 412px;top: 40px;margin-left: -115px;background-color: #2e3238;overflow-x: hidden;overflow-y: hidden">
+        <div style="font-size: 18px;color:#f9f8e2;margin-top: 20px;margin-left: 20px;">欢迎&nbsp;&nbsp;&nbsp; ${sessionScope.username }* * *</div>
+        <ul id="userList" >
         </ul>
     </div>
-    <div id="send" style="width: 400px;height:80px;border: solid 1px;"
-         align="right">
-        <textarea style="width: 400px;height: 50px;" id="sendMsg"></textarea>
-        <input type="button" value="发送消息" onclick="send();">
+    <div id="send" style="width: 565px;height: 139px;margin-left: 490px;border-right:1px solid #ffffff;border-bottom:1px solid #ffffff;border-radius:3px;margin-top: -17px;background-color: white" align="right">
+        <textarea style="width:559px;height: 110px;background-color: white;border-color: transparent" id="sendMsg"></textarea>
+        <input type="button" value="发送消息" onclick="send();" style="width: 80px;">
     </div>  </div>
+
 </body>
 </html>

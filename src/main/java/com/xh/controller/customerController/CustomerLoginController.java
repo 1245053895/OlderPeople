@@ -48,7 +48,7 @@ public class CustomerLoginController {
             List<Product> products = productTypeService.SelectProductByTypeIdLimit(id);
             productTypeExtend.setProduct(products);
         }
-        //得到主页导航栏商品类型了所有商品
+        //得到主页导航栏商品类型所有商品
         List<ProductTypeExtend> productTypeExtends1 = productTypeService.SelectProductType();
         for (ProductTypeExtend productTypeExtend1 : productTypeExtends1) {
             int id = productTypeExtend1.getProducttypeid();
@@ -68,7 +68,7 @@ public class CustomerLoginController {
 
     //前端用户登录的验证
     @RequestMapping("/CustomerLogin.action")
-    public String CustomerLogin(String username, String password, HttpServletRequest request, HttpServletResponse response, Model model) {
+    public String CustomerLogin(String username, String password, HttpServletRequest request,String returnUrl, HttpServletResponse response, Model model) {
         Userlog userlog = new Userlog();
         if (username != null) {
             if (password != null) {
@@ -96,7 +96,7 @@ public class CustomerLoginController {
                           }else {
                               userLoginService.AutoIncreaeOne(user.getUserid());
                           }
-                            return "redirect:/ShopFrontPage.action";//"/jsp/users/index.jsp";
+                            return "redirect:" + returnUrl;//"/jsp/users/index.jsp";
                         } else {
                             model.addAttribute("error", "密码不正确");
                         }
@@ -352,7 +352,7 @@ public class CustomerLoginController {
        User user=(User) session.getAttribute("user");
        Integer id=user.getUserid();
         String sqlPath = null;
-        if (userC != null && userC.getOriginalFilename() != null) {
+        if (userC != null && userC.getOriginalFilename() != null){
             String path = session.getServletContext().getRealPath("/jsp/admin/images/upload");
             String realName = userC.getOriginalFilename();
             String realFilePath = path + File.separator + realName;
@@ -366,9 +366,41 @@ public class CustomerLoginController {
             UserAndBrithday userAndBrithday=customerInformationService.SelectCustomerInformation(id);
           // User user1=userLoginService.queryUserPic(user); /*根据用户的id查询用户的账号，用户名和头像*/
            model.addAttribute("userAndBrithday",userAndBrithday);
-            return "/jsp/users/user.jsp";
+            return "redirect:/CustomerInformation.action";
         }
         return null;
+    }
+
+
+   //立即兑换页面的订单确认页面的显示
+    @RequestMapping("/jifenPage.action")
+    public String jifenPage(HttpServletRequest request,Model model,Integer productid){
+        HttpSession session=request.getSession();
+        User user=(User)session.getAttribute("user");
+        Integer userid=user.getUserid();
+        List<Gainaddres> gainaddresList=  userLoginService.selectGainAddressByUserId(userid); /*根据用户的id查询出该用户的收货地址*/
+       Product product= userLoginService.jifenPage(productid);
+        TotalCreditsById totalCreditsById = userLoginService.queryTotalCriditsById(userid);
+        Integer Productdisabled= product.getProductdisabled();
+        Integer TotalCredits= totalCreditsById.getTotalCredits();
+        Integer shenyuCredits=TotalCredits-Productdisabled;
+        model.addAttribute("gainaddresList",gainaddresList);/*保存用户的收货地址，在页面显示*/
+        model.addAttribute("product",product);
+        model.addAttribute("totalCreditsById",totalCreditsById);
+        model.addAttribute("shenyuCredits",shenyuCredits);
+        return "/jsp/users/my-jfadd.jsp";
+    }
+
+//兑换成功的页面显示
+    @RequestMapping("/duihuan.action")
+    public String duihuan(Model model,Order order,Gainaddres gainaddres){
+        List<Pay> pays= userLoginService.queryPayMethod();/*支付方式的页面显示*/
+        model.addAttribute("pays",pays);
+        if(order.getPaytype()==0){
+            return "/jsp/users/my-jfapy.jsp";
+
+        }
+        return "/jsp/users/my-jfapy-suc.jsp";
     }
 
 

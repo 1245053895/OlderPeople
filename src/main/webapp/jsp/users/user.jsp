@@ -204,19 +204,19 @@
 <body>
 
 <header id="pc-header">
+
 	<jsp:include page="/jsp/users/head.jsp"></jsp:include>
-	<%--</div>--%>
 	<!--  顶部    start-->
 	<div class="yHeader">
 		<!-- 导航   start  -->
 		<div class="yNavIndex">
 			<ul class="yMenuIndex">
-				<li><a href="" target="_blank" title="首页">首页</a></li>
-				<li><a href="" target="_blank" title="热销专区">热销专区</a></li>
-				<li><a href="" target="_blank" title="新品专区">新品专区</a></li>
-				<li><a href="" target="_blank" title="积分商城">积分商城</a></li>
-				<li><a href="" target="_blank" title="合伙人">合伙人</a></li>
-				<li><a href="" target="_blank" title="关于我们">关于我们</a></li>
+				<li><a href="${pageContext.request.contextPath}/ShopFrontPage.action"  title="首页">首页</a></li>
+				<li><a href="${pageContext.request.contextPath}/ProductHot.action" target="_blank" title="热销专区">热销专区</a></li>
+				<li><a href="${pageContext.request.contextPath}/SelectNewProduct.action" target="_blank" title="新品专区">新品专区</a></li>
+				<li><a href="${pageContext.request.contextPath}/SelectProducCredits.action" target="_blank" title="积分商城">积分商城</a></li>
+				<li><a href="${pageContext.request.contextPath}/queryTotalCommentshop.action" target="_blank" title="好评专区">好评专区</a></li>
+				<li><a href="${pageContext.request.contextPath}/jsp/users/aboutus.jsp" target="_blank" title="关于我们">关于我们</a></li>
 			</ul>
 		</div>
 		<!-- 导航   end  -->
@@ -236,8 +236,8 @@
 					<img src="${userAndBrithday.userC}" id="xmTanImg" width="1000px" height="100px" style="width: 80px;height: 80px;margin-right: 12px;border-radius: 2px"/>
 				</div>
 					<div class="fl">
-						用户名：${userAndBrithday.username}<br>
-						账号：${userAndBrithday.userid}<br><br>
+						用户名：${userAndBrithday.userrealname}<br>
+						账号：${userAndBrithday.username}<br><br>
 					</div>
 					<div class="f1">
 						<button onclick="$('#xdaTanFileImg').click();" class="btn btn-success" type="button" style="background-color: #ea4949;border: none;border-radius: 10%;color: #FFFFFF;font-size: 8px">更换头像</button>
@@ -277,8 +277,8 @@
 							<div class="warn2">性别</div>
 							<span class="warn3">
 								<ul style="height: 0px;margin-top: -10px;margin-left: -25px">
-									<li style="border-bottom: 0px;"><input  type="radio" name="usersex" data-labelauty="男" value="1" <c:if test="${userAndBrithday.usersex==1}">checked></c:if></li>
-									<li style="border-bottom: 0px;"><input type="radio" name="usersex" data-labelauty="女" value="0" <c:if test="${userAndBrithday.usersex==0}">checked></c:if></li>
+									<li style="border-bottom: 0px;font-size: 16px">男 &nbsp <input  type="radio" name="usersex" data-labelauty="男" value="1" <c:if test="${userAndBrithday.usersex==1}">checked></c:if></li>
+									<li style="border-bottom: 0px;font-size: 16px">女 &nbsp<input type="radio" name="usersex" data-labelauty="女" value="0" <c:if test="${userAndBrithday.usersex==0}">checked></c:if></li>
 								</ul>
 							</span>
 
@@ -297,49 +297,155 @@
 							<div class="warn3">
 								<select style="width: 80px" name = "Year">
 									<option selected = "selected">${temp[0]}</option>
-									<option value = "2014">2018</option>
-									<option value = "2015">2017</option>
+									<option value = "2018">2018</option>
+									<option value = "2017">2017</option>
 									<option value = "2016">2016</option>
-									<option value = "2017">2015</option>
-									<option value = "2018">2014</option>
-									<option value = "2014">2013</option>
-									<option value = "2015">2012</option>
-									<option value = "2016">2011</option>
-									<option value = "2017">2010</option>
-									<option value = "2018">2009</option>
-									<option value = "2014">2008</option>
-									<option value = "2015">2007</option>
-									<option value = "2016">2006</option>
-									<option value = "2017">2005</option>
-									<option value = "2018">2004</option>
-									<option value = "2014">2003</option>
-									<option value = "2015">2002</option>
-									<option value = "2016">2001</option>
-									<option value = "2017">2000</option>
-									<option value = "2018">1998</option>
-									<option value = "2018">1997</option>
-									<option value = "2018">1996</option>
-									<option value = "2018">1995</option>
-									<option value = "2018">1994</option>
-									<option value = "2018">1993</option>
-									<option value = "2018">1992</option>
-									<option value = "2018">1991</option>
-									<option value = "2018">1990</option>
+									<option value = "2015">2015</option>
+									<option value = "2014">2014</option>
+									<option value = "2013">2013</option>
+									<option value = "2012">2012</option>
+									<option value = "2011">2011</option>
+									<option value = "2010">2010</option>
+									<option value = "2009">2009</option>
+									<option value = "2008">2008</option>
+									<option value = "2007">2007</option>
+									<option value = "2006">2006</option>
+									<option value = "2005">2005</option>
+									<option value = "2004">2004</option>
+									<option value = "2003">2003</option>
+									<option value = "2002">2002</option>
+									<option value = "2001">2001</option>
+									<option value = "2000">2000</option>
+									<option value = "1999">1999</option>
+									<option value = "1998">1998</option>
+									<option value = "1997">1997</option>
+									<option value = "1996">1996</option>
+									<option value = "1995">1995</option>
+									<option value = "1994">1994</option>
+									<option value = "1993">1993</option>
+									<option value = "1992">1992</option>
+									<option value = "1991">1991</option>
+									<option value = "1991">1990</option>
+									<option value = "1999">1989</option>
+									<option value = "1998">1988</option>
+									<option value = "1997">1987</option>
+									<option value = "1996">1986</option>
+									<option value = "1995">1985</option>
+									<option value = "1994">1984</option>
+									<option value = "1993">1983</option>
+									<option value = "1992">1982</option>
+									<option value = "1991">1981</option>
+									<option value = "1991">1980</option>
+									<option value = "1999">1979</option>
+									<option value = "1998">1978</option>
+									<option value = "1997">1977</option>
+									<option value = "1996">1976</option>
+									<option value = "1995">1975</option>
+									<option value = "1994">1974</option>
+									<option value = "1993">1973</option>
+									<option value = "1992">1972</option>
+									<option value = "1991">1971</option>
+									<option value = "1991">1970</option>
+									<option value = "1999">1969</option>
+									<option value = "1998">1968</option>
+									<option value = "1997">1967</option>
+									<option value = "1996">1966</option>
+									<option value = "1995">1965</option>
+									<option value = "1994">1964</option>
+									<option value = "1993">1963</option>
+									<option value = "1992">1962</option>
+									<option value = "1991">1961</option>
+									<option value = "1991">1960</option>
+
+									<option value = "1999">1959</option>
+									<option value = "1998">1958</option>
+									<option value = "1997">1957</option>
+									<option value = "1996">1956</option>
+									<option value = "1995">1955</option>
+									<option value = "1994">1954</option>
+									<option value = "1993">1953</option>
+									<option value = "1992">1952</option>
+									<option value = "1991">1951</option>
+									<option value = "1991">1950</option>
+
+									<option value = "1999">1949</option>
+									<option value = "1998">1948</option>
+									<option value = "1997">1947</option>
+									<option value = "1996">1946</option>
+									<option value = "1995">1945</option>
+									<option value = "1994">1944</option>
+									<option value = "1993">1943</option>
+									<option value = "1992">1942</option>
+									<option value = "1991">1941</option>
+									<option value = "1991">1940</option>
+
+									<option value = "1999">1939</option>
+									<option value = "1998">1938</option>
+									<option value = "1997">1937</option>
+									<option value = "1996">1936</option>
+									<option value = "1995">1935</option>
+									<option value = "1994">1934</option>
+									<option value = "1993">1933</option>
+									<option value = "1992">1932</option>
+									<option value = "1991">1931</option>
+									<option value = "1991">1930</option>
 
 
 
 								</select> 年
 								<select style="margin-left: 20px;width: 60px" name = "Month">
 									<option>${temp[1]}</option>
+									<option value = "01">01</option>
 									<option value = "02">02</option>
 									<option value = "03">03</option>
 									<option value = "04">04</option>
+									<option value = "05">05</option>
+									<option value = "06">06</option>
+									<option value = "07">07</option>
+									<option value = "08">08</option>
+									<option value = "09">09</option>
+									<option value = "10">10</option>
+									<option value = "11">11</option>
+									<option value = "12">12</option>
+
 								</select> 月
 								<select style="margin-left: 20px;width: 60px" name = "Day">
 									<option>${temp[2]}</option>
+									<option value = "01">01</option>
 									<option value = "02">02</option>
 									<option value = "03">03</option>
 									<option value = "04">04</option>
+									<option value = "05">05</option>
+									<option value = "06">06</option>
+									<option value = "07">07</option>
+									<option value = "08">08</option>
+									<option value = "09">09</option>
+									<option value = "10">10</option>
+									<option value = "11">11</option>
+									<option value = "12">12</option>
+									<option value = "13">13</option>
+									<option value = "14">14</option>
+									<option value = "15">15</option>
+									<option value = "16">16</option>
+									<option value = "17">17</option>
+									<option value = "18">18</option>
+									<option value = "19">19</option>
+									<option value = "20">20</option>
+									<option value = "21">21</option>
+									<option value = "22">22</option>
+									<option value = "23">23</option>
+									<option value = "24">24</option>
+									<option value = "25">25</option>
+									<option value = "26">26</option>
+									<option value = "27">27</option>
+									<option value = "28">28</option>
+									<option value = "29">29</option>
+									<option value = "30">30</option>
+									<option value = "31">31</option>
+
+
+
+
 								</select> 日
 							</div>
 

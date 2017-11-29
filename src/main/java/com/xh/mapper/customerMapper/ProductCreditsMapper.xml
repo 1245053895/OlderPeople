@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xh.mapper.customerMapper.ProductCreditsMapper">
+    <!--查询所有商品类型-->
+    <select id="SelectProductType" resultType="com.xh.po.vo.ProductTypeExtend">
+        SELECT ProductTypeId,ProductTypeName FROM producttype
+        WHERE ProductTypeId=#{producttypeid}
+    </select>
+    <!--查询出行类型-->
+    <select id="SelectTravelProductType" resultType="com.xh.po.vo.ProductTypeExtend" >
+        SELECT ProductTypeId,ProductTypeName FROM producttype WHERE ProductTypeId=1;
+    </select>
+    <!--查询健康类型-->
+    <select id="SelectHealthProductType" resultType="com.xh.po.vo.ProductTypeExtend" >
+        SELECT ProductTypeId,ProductTypeName FROM producttype WHERE ProductTypeId=2 OR ProductTypeId=3 ;
+    </select>
+    <!--查询生活类型-->
+    <select id="SelectLifeProductType" resultType="com.xh.po.vo.ProductTypeExtend" >
+        SELECT ProductTypeId,ProductTypeName FROM producttype WHERE ProductTypeId=4 OR ProductTypeId=5 OR ProductTypeId=6 ;
+    </select>
+    <!--根据商品类型限制查询商品-->
+    <select id="SelectCreditProductByTypeid" resultType="com.xh.po.Product">
+       SELECT ProductId ,ProductTypeId,ProductName,ProductPicture,ProductDescribe,ProductDisabled,ProductPrice FROM product
+       WHERE ProductTypeId=#{producttypeid} AND ProductDisabled!=0  Limit 4;
+    </select>
+    <!--根据商品类型Id查询所有商品-->
+    <select id="SelectCreditQuerry" resultType="com.xh.po.vo.TotalCreditsById">
+        SELECT ProductId ,ProductTypeId,ProductName,ProductPicture,ProductDescribe,ProductDisabled,ProductPrice FROM product
+        WHERE ProductTypeId=#{producttypeid} AND ProductDisabled!=0 limit #{startRow},#{pageSize}
+    </select>
+    <!--统计商品总数-->
+    <select id="SelectCount" parameterType="totalCreditsById" resultType="Integer">
+        select count(*)
+        from product
+        WHERE ProductTypeId=#{producttypeid} AND ProductDisabled!=0;
+    </select>
+
+    <!--查询所有特惠商品-->
+    <select id="SelectCrediDiscountQuerry"  resultType="com.xh.po.Product" >
+        SELECT ProductId ,ProductTypeId,ProductName,ProductPicture,ProductDescribe,ProductDisabled,ProductPrice FROM product
+        <where>
+            <if test="2>1" >
+                ProductDisabled*2 &lt; ProductPrice AND ProductDisabled!=0 Limit 4
+            </if>
+        </where>
+    </select>
+    <!--查询爆款商品-->
+    <select id="SelectHotCreditProduct" resultType="totalCreditsById">
+        SELECT  product.ProductId, productpicture, ProductName,ProductDescribe,ProductPrice,ProductDisabled,ProducthotSale,
+        COUNT(OrderId) totalhotsale  FROM orderproduct,product WHERE
+        product.ProductId=orderproduct.ProductId AND ProducthotSale=1 AND ProductDisabled!=0
+        GROUP BY orderproduct.ProductId limit 8;
+    </select>
+    <!--根据商品类型查询爆款商品-->
+    <select id="SelectHotCreditProductByTypeId" resultType="totalCreditsById">
+        SELECT  product.ProductId, productpicture, ProductName,ProductDescribe,ProductPrice,ProductDisabled,ProducthotSale,
+        COUNT(OrderId) totalhotsale  FROM orderproduct,product WHERE
+        product.ProductId=orderproduct.ProductId AND ProductTypeId=#{producttypeid} AND ProducthotSale=1 AND ProductDisabled!=0
+        GROUP BY orderproduct.ProductId
+    </select>
+    <select id="SelectHealthProduct" resultType="totalCreditsById">
+       SELECT  product.ProductId, productpicture, ProductName,ProductDescribe,ProductPrice,ProductDisabled,ProducthotSale,ProductTypeId,
+       COUNT(OrderId) totalhotsale  FROM orderproduct,product WHERE
+       product.ProductId=orderproduct.ProductId AND ProductTypeId=2 OR ProductTypeId=3 AND ProductDisabled!=0
+       GROUP BY orderproduct.ProductId
+    </select>
+
+</mapper>

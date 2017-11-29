@@ -166,12 +166,12 @@
 		<!-- 导航   start  -->
 		<div class="yNavIndex">
 			<ul class="yMenuIndex">
-				<li><a href="" target="_blank" title="首页">首页</a></li>
-				<li><a href="" target="_blank" title="热销专区">热销专区</a></li>
-				<li><a href="" target="_blank" title="新品专区">新品专区</a></li>
-				<li><a href="" target="_blank" title="积分商城">积分商城</a></li>
-				<li><a href="" target="_blank" title="好评专区">好评专区</a></li>
-				<li><a href="" target="_blank" title="关于我们">关于我们</a></li>
+				<li><a href="${pageContext.request.contextPath}/ShopFrontPage.action"  title="首页">首页</a></li>
+				<li><a href="${pageContext.request.contextPath}/ProductHot.action" target="_blank" title="热销专区">热销专区</a></li>
+				<li><a href="${pageContext.request.contextPath}/SelectNewProduct.action" target="_blank" title="新品专区">新品专区</a></li>
+				<li><a href="${pageContext.request.contextPath}/SelectProducCredits.action" target="_blank" title="积分商城">积分商城</a></li>
+				<li><a href="${pageContext.request.contextPath}/queryTotalCommentshop.action" target="_blank" title="好评专区">好评专区</a></li>
+				<li><a href="${pageContext.request.contextPath}/jsp/users/aboutus.jsp" target="_blank" title="关于我们">关于我们</a></li>
 			</ul>
 		</div>
 		<!-- 导航   end  -->
@@ -245,23 +245,23 @@
 							<%--<div class="warn3">互联网账号存在被盗风险，建议您定期更改密码以保护账户安全。</div>--%>
 							<%--<div class="warn4"><a href="#">修改</a> </div>--%>
 							<div class="warn2" style="margin-left: 10px;border: none">商品名称</div>
-							<div class="warn2" style="margin-left: 260px;border: none">积分变化</div>
-							<div class="warn2" style="margin-left: 200px;border: none">日期</div>
+							<div class="warn2" style="margin-left: 230px;border: none">积分变化</div>
+							<div class="warn2" style="margin-left: 700px;border: none;margin-top: -25px">日期</div>
 						</li>
 
 						<c:forEach items="${totalCreditsByIds}" var="totalCreditsById">
-						<li class="clearfix">
-							<div class="warn2" style="margin-left: 10px;border: none;font-weight: normal;width: 380px;height: 60px">
-								<a class="img" href=""><img src="${totalCreditsById.productpicture}" width="60px" height="60px"></a>
-								<a style="width: 290px;height: 40px;overflow: hidden;line-height: 20px;text-align: left;display: block">${totalCreditsById.productname}</a>
-								<span style="height: 20px;display: block;line-height: 20px;text-align: left">编号：${totalCreditsById.productid}</span>
-							</div>
-							<div class="warn2" style="margin-left: 15px;border: none;font-weight: normal;height: 60px">
-								<span style="font-size: 24px;font-weight: 700;text-align: center;color: #ea4949;line-height: 60px">+${totalCreditsById.productcredits}</span>
-							</div>
-							<div class="warn2" style="float: right;margin-right: -40px;border: none;font-weight: normal;height: 60px;width: 300px;line-height: 60px"><fmt:formatDate value="${totalCreditsById.endtime}" pattern="yyyy-MM-dd HH:mm:ss"/>
-							</div>
-						</li>
+							<li class="clearfix">
+								<div class="warn2" style="margin-left: 10px;border: none;font-weight: normal;width: 380px;height: 60px">
+									<a class="img" href=""><img src="${totalCreditsById.productpicture}" width="60px" height="60px"></a>
+									<a style="width: 290px;height: 40px;overflow: hidden;line-height: 20px;text-align: left;display: block">${totalCreditsById.productname}</a>
+										<%--<span style="height: 20px;display: block;line-height: 20px;text-align: left">编号：${totalCreditsById.productid}</span>--%>
+								</div>
+								<div class="warn2" style="margin-left: 15px;border: none;font-weight: normal;height: 60px">
+									<span style="font-size: 24px;font-weight: 700;text-align: center;color: #ea4949;line-height: 60px">+${totalCreditsById.productcredits}</span>
+								</div>
+								<div class="warn2" style="float: right;margin-right: -40px;border: none;font-weight: normal;height: 60px;width: 300px;line-height: 60px"><fmt:formatDate value="${totalCreditsById.endtime}" pattern="yyyy-MM-dd HH:mm:ss"/>
+								</div>
+							</li>
 						</c:forEach>
 
 						<!--

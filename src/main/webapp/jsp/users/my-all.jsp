@@ -145,7 +145,26 @@
 </head>
 <body>
 
+<header id="pc-header">
 
+	<jsp:include page="/jsp/users/head.jsp"></jsp:include>
+	<!--  顶部    start-->
+	<div class="yHeader" style="margin-top: 50px">
+		<!-- 导航   start  -->
+		<div class="yNavIndex">
+			<ul class="yMenuIndex">
+				<li><a href="${pageContext.request.contextPath}/ShopFrontPage.action"  title="首页">首页</a></li>
+				<li><a href="${pageContext.request.contextPath}/ProductHot.action" target="_blank" title="热销专区">热销专区</a></li>
+				<li><a href="${pageContext.request.contextPath}/SelectNewProduct.action" target="_blank" title="新品专区">新品专区</a></li>
+				<li><a href="${pageContext.request.contextPath}/SelectProducCredits.action" target="_blank" title="积分商城">积分商城</a></li>
+				<li><a href="${pageContext.request.contextPath}/queryTotalCommentshop.action" target="_blank" title="好评专区">好评专区</a></li>
+				<li><a href="${pageContext.request.contextPath}/jsp/users/aboutus.jsp" target="_blank" title="关于我们">关于我们</a></li>
+			</ul>
+		</div>
+		<!-- 导航   end  -->
+	</div>
+
+</header>
 
 
 <div class="center" style="background:#fff;">
@@ -182,7 +201,7 @@
 								<li class="wd">
 										<div class="dropdown-xl">
 												<dl>
-													<dt><a href="${pageContext.request.contextPath}/SelectProductType.action?ProductTypeId=${productTypeExtend.producttypeid}">${productTypeExtend.producttypename}</a></dt>
+													<dt><a href="${pageContext.request.contextPath}/SelectProductType.action?productTypeId=${productTypeExtend.producttypeid}">${productTypeExtend.producttypename}</a></dt>
 
 													<c:forEach items="${productTypeExtend.product}" var="product">
 														<dd><a  href="${pageContext.request.contextPath}/xiangqing.action?productid=${product.productid}" >${product.productname}</a></dd>
@@ -214,13 +233,13 @@
 						<div class="yScrollListIn">
 							<div class="yScrollListInList yScrollListInList1" style="display:block; width: 1180px;height: 100%;margin-left: -40px">
 								<ul style="width: 1180px;text-align: center">
-									<c:forEach items="${productss}" var="products">
+									<c:forEach items="${pagination.list}" var="products">
 										<li style="text-align: center">
 											<div class="row" style="margin-left: 10px;">
 												<dl>
 													<dd><a>${products.productname}</a></dd>
 													<dt><a href="${pageContext.request.contextPath}/xiangqing.action?productid=${products.productid}"><img src="${products.productpicture}"></a></dt>
-													<dd class="name"><a href="${pageContext.request.contextPath}/xiangqing.action?ProductTypeId=${products.productid}">${products.productname}</a></dd>
+													<dd class="name"><a href="${pageContext.request.contextPath}/xiangqing.action?productid=${products.productid}">${products.productname}</a></dd>
 
 													<dd style="color: #ec1611;font: 13px/33px '微软雅黑'">${products.productprice}</dd>
 												</dl>
@@ -231,84 +250,12 @@
 							</div>
 						</div>
 					</div>
+				<div style="float: right">
+				<c:forEach items="${pagination.pageView }" var="page">
+					${page }
+				</c:forEach>
 				</div>
 			</div>
-<%--				<div class="pc-nav-digit clearfix">
-					<ul>
-						<li>
-							<div class="digit1"><a href="#"><img src="images/shangpinxiangqing/X-1.png" width="100%"></a></div>
-							<div class="digit2"><a href="#">家用电器</a></div>
-						</li>
-						<li>
-							<div class="digit1"><a href="#"><img src="images/shangpinxiangqing/X-1.png" width="100%"></a></div>
-							<div class="digit2"><a href="#">家用电器</a></div>
-						</li>
-						<li>
-							<div class="digit1"><a href="#"><img src="images/shangpinxiangqing/X-1.png" width="100%"></a></div>
-							<div class="digit2"><a href="#">家用电器</a></div>
-						</li>
-						<li>
-							<div class="digit1"><a href="#"><img src="images/shangpinxiangqing/X-1.png" width="100%"></a></div>
-							<div class="digit2"><a href="#">家用电器</a></div>
-						</li>
-						<li>
-							<div class="digit1"><a href="#"><img src="images/shangpinxiangqing/X-1.png" width="100%"></a></div>
-							<div class="digit2"><a href="#">家用电器</a></div>
-						</li>
-						<li>
-							<div class="digit1"><a href="#"><img src="images/shangpinxiangqing/X-1.png" width="100%"></a></div>
-							<div class="digit2"><a href="#">家用电器</a></div>
-						</li>
-						<li>
-							<div class="digit1"><a href="#"><img src="images/shangpinxiangqing/X-1.png" width="100%"></a></div>
-							<div class="digit2"><a href="#">家用电器</a></div>
-						</li>
-						<li>
-							<div class="digit1"><a href="#"><img src="images/shangpinxiangqing/X-1.png" width="100%"></a></div>
-							<div class="digit2"><a href="#">家用电器</a></div>
-						</li>
-						<li>
-							<div class="digit1"><a href="#"><img src="images/shangpinxiangqing/X-1.png" width="100%"></a></div>
-							<div class="digit2"><a href="#">家用电器</a></div>
-						</li>
-						<li>
-							<div class="digit1"><a href="#"><img src="images/shangpinxiangqing/X-1.png" width="100%"></a></div>
-							<div class="digit2"><a href="#">家用电器</a></div>
-						</li>
-						<li>
-							<div class="digit1"><a href="#"><img src="images/shangpinxiangqing/X-1.png" width="100%"></a></div>
-							<div class="digit2"><a href="#">家用电器</a></div>
-						</li>
-						<li>
-							<div class="digit1"><a href="#"><img src="images/shangpinxiangqing/X-1.png" width="100%"></a></div>
-							<div class="digit2"><a href="#">家用电器</a></div>
-						</li>
-					</ul>
-				</div>--%>
-			</div>
-
-			<div style="padding-top:30px;">
-				<div class="member-pages clearfix">
-					<div class="fr pc-search-g">
-						<a href="#" class="fl pc-search-f">上一页</a>
-						<a class="current" href="#">1</a>
-						<a href="javascript:;">2</a>
-						<a href="javascript:;">3</a>
-						<a href="javascript:;">4</a>
-						<a href="javascript:;">5</a>
-						<a href="javascript:;">6</a>
-						<a href="javascript:;">7</a>
-						<span class="pc-search-di">…</span>
-						<a onclick="SEARCH.page(3, true)" href="javascript:;" class="pc-search-n" title="使用方向键右键也可翻到下一页哦！">下一页</a>
-						<span class="pc-search-y">
-                        <em>  共20页    到第</em>
-                        <input type="text" placeholder="1" class="pc-search-j">
-                        <em>页</em>
-                        <a class="confirm" href="#">确定</a>
-                    </span>
-
-					</div>
-				</div>
 			</div>
 		</div>
 

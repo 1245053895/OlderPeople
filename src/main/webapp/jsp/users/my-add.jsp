@@ -28,8 +28,112 @@
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/jsp/users/css/car/base.css">
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/jsp/users/css/car/home.css">
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/jsp/users/css/jquery-labelauty.css">
+	<link rel="stylesheet" type="text/css" href="css/styledz.css">
+	<link rel="stylesheet" type="text/css" href="css/css.css" />
 	<script src="${pageContext.request.contextPath}/jsp/users/js/jquery-1.8.3.min.js"></script>
 	<script src="${pageContext.request.contextPath}/jsp/users/js/jquery-labelauty.js"></script>
+	<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+	<script type="text/javascript">
+        $(function() {
+            var region = $("#region");
+            var address = $("#address");
+            var number_this = $("#number_this");
+            var name = $("#name_");
+            var phone = $("#phone");
+            $("#sub_setID").click(function() {
+                var input_out = $(".input_style");
+                for (var i = 0; i <= input_out.length; i++) {
+                    if ($(input_out[i]).val() == "") {
+                        $(input_out[i]).css("border", "1px solid red");
+
+                        return false;
+                    } else {
+                        $(input_out[i]).css("border", "1px solid #cccccc");
+                    }
+                }
+            });
+            var span_momey = $(".span_momey");
+            var b = 0;
+            for (var i = 0; i < span_momey.length; i++) {
+                b += parseFloat($(span_momey[i]).html());
+            }
+            var out_momey = $(".out_momey");
+            out_momey.html(b);
+            $(".shade_content").hide();
+            $(".shade").hide();
+            $('.nav_mini ul li').hover(function() {
+                $(this).find('.two_nav').show(100);
+            }, function() {
+                $(this).find('.two_nav').hide(100);
+            })
+            $('.left_nav').hover(function() {
+                $(this).find('.nav_mini').show(100);
+            }, function() {
+                $(this).find('.nav_mini').hide(100);
+            })
+            $('#jia').click(function() {
+                $('input[name=num]').val(parseInt($('input[name=num]').val()) + 1);
+            })
+            $('#jian').click(function() {
+                $('input[name=num]').val(parseInt($('input[name=num]').val()) - 1);
+            })
+            $('.Caddress .add_mi').click(function() {
+                $(this).css('background', 'url("images/mail_1.jpg") no-repeat').siblings('.add_mi').css('background', 'url("images/mail.jpg") no-repeat')
+            })
+        })
+        var x = Array();
+
+        function func(a, b) {
+            x[b] = a.html();
+            alert(x)
+            a.css('border', '2px solid #f00').siblings('.min_mx').css('border', '2px solid #ccc');
+        }
+
+        function onclick_close() {
+            var shade_content = $(".shade_content");
+            var shade = $(".shade");
+            if (confirm("确认关闭么！此操作不可恢复")) {
+                shade_content.hide();
+                shade.hide();
+            }
+        }
+
+        function onclick_open() {
+            $(".shade_content").show();
+            $(".shade").show();
+            var input_out = $(".input_style");
+            for (var i = 0; i <= input_out.length; i++) {
+                if ($(input_out[i]).val() != "") {
+                    $(input_out[i]).val("");
+                }
+            }
+        }
+
+        function onclick_remove(r) {
+            if (confirm("确认删除么！此操作不可恢复")) {
+                var out_momey = $(".out_momey");
+                var input_val = $(r).parent().prev().children().eq(1).val();
+                var span_html = $(r).parent().prev().prev().children().html();
+                var out_add = parseFloat(input_val).toFixed(2) * parseFloat(span_html).toFixed(2);
+                var reduce = parseFloat(out_momey.html()).toFixed(2)- parseFloat(out_add).toFixed(2);
+                console.log(parseFloat(reduce).toFixed(2));
+                out_momey.text(parseFloat(reduce).toFixed(2))
+                $(r).parent().parent().remove();
+            }
+        }
+
+        function onclick_btnAdd(a) {
+            var out_momey = $(".out_momey");
+            var input_ = $(a).prev();
+            var input_val = $(a).prev().val();
+            var input_add = parseInt(input_val) + 1;
+            input_.val(input_add);
+            var btn_momey = parseFloat($(a).parent().prev().children().html());
+            var out_momey_float = parseFloat(out_momey.html()) + btn_momey;
+            out_momey.text(out_momey_float.toFixed(2));
+        }
+
+	</script>
 	<script>
         $(function(){
             $(':input').labelauty();
@@ -39,9 +143,9 @@
 </head>
 <body>
 
-<%--<header id="pc-header">
+<header id="pc-header">
 	<jsp:include page="/jsp/users/head.jsp"></jsp:include>
-</header>--%>
+</header>
 
 <div class="center" style="background:#fff;margin-top: -15px;">
 	<div class="pay_lc1">
@@ -83,170 +187,26 @@
 						<!-- 地址状态 0：默认选择；1：新增地址；2：修改地址 -->
 						<input type="hidden" name="Checkout[addressState]" id="addrState"   value="0">
 						<!-- 收货地址 -->
-						<div class="xm-box">
-							<div class="box-hd ">
-								<h2 class="title">收货地址</h2>
-								<!---->
-							</div>
-							<div class="box-bd">
-								<div class="clearfix xm-address-list" id="checkoutAddrList">
-									<dl class="item" >
-										<dt>
-											<strong class="itemConsignee">姓名</strong>
-											<span class="tag">修改</span>
-											<span class="tag">删除</span>
-										</dt>
-										<br/>
-										<dd>
-											<p class="itemRegion">地址</p>
-											<p class="itemStreet">电话</p>
-											<p class="tel">邮箱</p>
-										</dd>
-										<dd style="display:none">
-											<input type="radio" name="Checkout[address]" class="addressId"  value="10140916720030323">
-										</dd>
-									</dl>
+						<%--<div>--%>
 
-									<dl class="item" >
-										<dt>
-											<strong class="itemConsignee">姓名</strong>
-											<span class="tag">修改1</span>
-											<span class="tag">删除</span>
-										</dt>
-										<br/>
-										<dd>
-											<p class="itemRegion">地址</p>
-											<p class="itemStreet">电话</p>
-											<p class="tel">邮箱</p>
-										</dd>
-										<dd style="display:none">
-											<input type="radio" name="Checkout[address]" class="addressId"  value="10140916720030323">
-										</dd>
-									</dl>
-
-									<dl class="item" >
-										<dt>
-											<strong class="itemConsignee">姓名</strong>
-											<span class="tag">修改</span>
-											<span class="tag">删除</span>
-										</dt>
-										<br/>
-										<dd>
-											<p class="itemRegion">地址</p>
-											<p class="itemStreet">电话</p>
-											<p class="tel">邮箱</p>
-										</dd>
-										<dd style="display:none">
-											<input type="radio" name="Checkout[address]" class="addressId"  value="10140916720030323">
-										</dd>
-									</dl>
-
-
-									<dl class="item" id="newadr" style="display: none">
-										<dt>
-											<strong class="itemConsignee"><input class="itemRegion" placeholder="请填写收件人姓名" style="border: hidden;width: 120px"></strong>
-											<span class="tag" onclick="quxiao()">取消</span>
-											<span class="tag" onclick="queding()">确定</span>
-										</dt>
-										<br/>
-										<dd>
-											<input class="itemRegion" placeholder="请填写收件人的地址" style="border: hidden">
-											<input class="itemStreet" placeholder="请填写收件人的手机号" style="border: hidden">
-											<input class="tel" placeholder="请填写邮编" style="border: hidden">
-										</dd>
-										<dd style="display:none">
-											<input type="radio" name="Checkout[address]" class="addressId"  value="10140916720030323">
-										</dd>
-									</dl>
-
-									<script>
-                                        function xzdz() {
-                                            document.getElementById("newadr").style.display = "block"
-                                        }
-                                        function quxiao() {
-                                            document.getElementById("newadr").style.display = "none"
-                                        }
-									</script>
-
-
-
-									<div class="use-new-addr"  id="J_useNewAddr" data-state="off" onclick="xzdz()">
-										<span class="iconfont icon-add"><img src="${pageContext.request.contextPath}/jsp/users/images/add_cart.png" /></span>
-										新增收货地址
-									</div>
-								</div>
-								<input type="hidden" name="newAddress[type]" id="newType" value="common">
-								<input type="hidden" name="newAddress[consignee]" id="newConsignee">
-								<input type="hidden" name="newAddress[province]" id="newProvince">
-								<input type="hidden" name="newAddress[city]" id="newCity">
-								<input type="hidden" name="newAddress[district]" id="newCounty">
-								<input type="hidden" name="newAddress[address]" id="newStreet">
-								<input type="hidden" name="newAddress[zipcode]" id="newZipcode">
-								<input type="hidden" name="newAddress[tel]" id="newTel">
-								<input type="hidden" name="newAddress[tag_name]" id="newTag">
-								<!--点击弹出新增/收货地址界面start-->
-								<div class="xm-edit-addr-box" id="J_editAddrBox">
-									<div class="bd">
-										<div class="item">
-											<label>收货人姓名<span>*</span></label>
-											<input type="text" name="userAddress[consignee]" id="Consignee" class="input" placeholder="收货人姓名" maxlength="15" autocomplete='off'>
-											<p class="tip-msg tipMsg"></p>
-										</div>
-										<div class="item">
-											<label>联系电话<span>*</span></label>
-											<input type="text" name="userAddress[tel]" class="input" id="Telephone" placeholder="11位手机号" autocomplete='off'>
-											<p class="tel-modify-tip" id="telModifyTip"></p>
-											<p class="tip-msg tipMsg"></p>
-										</div>
-										<div class="item">
-											<label>地址<span>*</span></label>
-											<select name="userAddress[province]" id="Provinces" class="select-1">
-												<option>省份/自治区</option>
-											</select>
-											<select name="userAddress[city]"  id="Citys" class="select-2" disabled>
-												<option>城市/地区/自治州</option>
-											</select>
-											<select name="userAddress[county]"  id="Countys" class="select-3" disabled>
-												<option>区/县</option>
-											</select>
-											<textarea   name="userAddress[street]" class="input-area" id="Street" placeholder="路名或街道地址，门牌号"></textarea>
-											<p class="tip-msg tipMsg"></p>
-										</div>
-										<div class="item">
-											<label>邮政编码<span>*</span></label>
-											<input type="text" name="userAddress[zipcode]" id="Zipcode" class="input" placeholder="邮政编码"  autocomplete='off'>
-											<p class="zipcode-tip" id="zipcodeTip"></p>
-											<p class="tip-msg tipMsg"></p>
-										</div>
-										<div class="item">
-											<label>地址标签<span>*</span></label>
-											<input type="text" name="userAddress[tag]" id="Tag" class="input" placeholder='地址标签：如"家"、"公司"。限5个字内'  >
-											<p class="tip-msg tipMsg"></p>
-										</div>
-									</div>
-									<div class="ft clearfix">
-										<button  type="button"  class="btn btn-lineDake btn-small " id="J_editAddrCancel">取消</button>
-										<button type="button" class="btn btn-primary  btn-small " id="J_editAddrOk">保存</button>
-									</div>
-								</div>
-								<!--点击弹出新增/收货地址界面end-->
-								<div class="xm-edit-addr-backdrop" id="J_editAddrBackdrop"></div>
-							</div>
-						</div>
+						<%--</div>--%>
 						<!-- 收货地址 END-->
 						<div id="checkoutPayment">
+							<jsp:include page="/jsp/users/shdz/shdz.jsp"></jsp:include>
 							<!-- 支付方式 -->
-							<div class="xm-box">
+							<div class="xm-box" style="width: 990px!important;height: 100px!important;margin-top: 330px;">
 								<div class="box-hd ">
 									<h2 class="title">支付方式</h2>
 								</div>
 								<div>
-									<ul class="checkout-option-list clearfix J_optionList">
+									<ul class=" clearfix" style="margin-left: 30px;margin-top: 20px">
 										<li>
-											<input type="radio" name="paytype" value="0" checked="checked" data-labelauty="在线支付">
+											<input type="radio" name="paytype" value="0" style="float: left"/>
+											<span style="font-size: 16px; float: left;margin-left: 5px;margin-right: 30px;">在线支付</span>
 										</li>
-										<li style=" display: inline-block;margin-left: -20px;">
-											<input type="radio" name="paytype" value="1" data-labelauty="货到付款">
+										<li>
+											<input type="radio" name="paytype" value="1" style="float: left"/>
+											<span style="font-size: 16px; float: left;margin-left: 5px;margin-right: 30px;">货到付款</span>
 										</li>
 									</ul>
 								</div>
@@ -258,12 +218,14 @@
 									<h2 class="title">收货方式</h2>
 								</div>
 								<div>
-									<ul class="checkout-option-list clearfix J_optionList">
+									<ul class=" clearfix" style="margin-left: 30px;margin-top: 20px">
 										<li>
-											<input type="radio" name="gainmethod" value="0" checked="checked" data-labelauty="快递配送">
+											<input type="radio" name="gainmethod" value="0" style="float: left"/>
+											<span style="font-size: 16px; float: left;margin-left: 5px;margin-right: 30px;">快递配送</span>
 										</li>
-										<li style=" display: inline-block;margin-left: -20px;">
-											<input type="radio" name="gainmethod" value="1" data-labelauty="货物自取">
+										<li>
+											<input type="radio" name="gainmethod" value="1" style="float: left"/>
+											<span style="font-size: 16px; float: left;margin-left: 5px;margin-right: 30px;">货物自取</span>
 										</li>
 									</ul>
 								</div>
@@ -273,7 +235,7 @@
 							<!-- 商品清单 -->
 							<div id="checkoutGoodsList" class="checkout-goods-box">
 								<div class="xm-box">
-									<div class="box-hd">
+									<div class="box-hd" style="border-bottom: 1px solid #dfdfdf">
 										<h2 class="title">确认订单信息</h2>
 									</div>
 									<div class="box-bd">
@@ -298,12 +260,12 @@
 													</div>
 													<input type="hidden" class="ace" name="productname" value="${productList[0].productname}" />
 													<input type="hidden" class="ace" name="productid" value="${productList[0].productid}" />
-													<div  id="jisuan0" class="col col-2"  style="text-align: left">${productList[0].productprice}</div>
+													<div  id="jisuan0" class="col col-2"  style="text-align: left;width: 137px;">${productList[0].productprice}</div>
 													<input type="hidden" class="ace" name="productprice" value="${productList[0].productprice}" />
 													<input type="hidden" class="ace" name="payprice" value="${productList[0].productprice}" />
-													<div id="jisuan1" class="col col-3" style="text-align: left">${idList[0]}</div>
+													<div id="jisuan1" class="col col-3" style="text-align: left;width: 100px;">${idList[0]}</div>
 													<input type="hidden" class="ace" name="shoppingcount" value="${idList[0]}" />
-													<div id="jisuan2" class="col col-4" style="text-align: left">${zongjia[0]}</div>
+													<div id="jisuan2" class="col col-4" style="text-align: left;width:55px;">${zongjia[0]}</div>
 													<input type="hidden" class="ace" name="totalmoneycount" value="${zongjia[0]}" />
 												</div>
 											</dd>
@@ -311,6 +273,38 @@
 										</dl>
 
 										<script type="text/javascript">
+											$("#sub_setID").click(function () {
+												var name=$("#name_").val();
+                                                var address=$("#address").val();
+                                                var phone=$("#phone").val();
+                                                var number_this=$("#number_this").val();
+                                                if(name!=""&&address!=""&&phone!=""&&number_this!=""){
+													var html="<div class='add_mi'>"+
+																"<p style='border-bottom:1px dashed #ccc;line-height:28px;'>"+name+"</p>"+
+																	"<p>"+address+"</p>"+
+																	"<span>电话："+phone+"</span>"+
+																"<p>邮编："+number_this+"</p>"+
+																"</div>";
+													$(".Caddress").find(".add_mi").each(function (i) {
+
+                                                        var input_out = $(".Caddress").find(".add_mi");
+                                                        if(i==input_out.length-1){
+                                                            $(input_out[i]).after(html);
+                                                    	}
+                                                        console.log(i+"yyy"+input_out.length);
+                                                    });
+													$(this).parents("div[class='shade_content']").hide();
+
+                                                    $('.Caddress .add_mi').click(function() {
+                                                        $(this).css('background', 'url("${pageContext.request.contextPath}/jsp/users/shdz/images/mail_1.jpg") no-repeat').siblings('.add_mi').css('background', 'url("${pageContext.request.contextPath}/jsp/users/shdz/images/mail.jpg") no-repeat')
+                                                    });
+												}else {
+                                                    alert("请输入内容！")
+												}
+
+
+
+                                            });
 
                                             function myfun() {
 
@@ -613,9 +607,11 @@
 <script type="text/javascript">
 
 function jiesuan(basePath) {
-       alert('前去付款？');
-    $("#checkoutForm").attr("action",basePath + "jieSuan.action");
-    $("#checkoutForm").submit();
+   if(confirm('前去付款？')){
+	   $("#checkoutForm").attr("action",basePath + "jieSuan.action");
+	   $("#checkoutForm").submit();
+   }
+
 }
 
 </script>

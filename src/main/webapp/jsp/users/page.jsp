@@ -14,6 +14,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+	<script type="text/javascript">
+        var root="<%=path%>";
+	</script>
 	<meta charset="UTF-8">
 	<meta name="Generator" content="EditPlus®">
 	<meta name="Author" content="">
@@ -118,7 +121,7 @@
 
             $(".Xcontent32").click(function(){
                 var num = $(".input").val()
-                if(num>0){
+                if(num>1){
                     $(".input").val(num-1);
                 }
 
@@ -143,6 +146,58 @@
 			overflow: scroll;
 		}
 	</style>
+
+
+
+
+	<style>
+		.black_overlay{
+			display: none;
+			position: absolute;
+			top: 0%;
+			left: 0%;
+			width: 100%;
+			height: 100%;
+			background-color: black;
+			z-index:1001;
+			-moz-opacity: 0.8;
+			opacity:.80;
+			filter: alpha(opacity=80);
+		}
+		.white_content {
+			display: none;
+			position: absolute;
+			top: 10%;
+			left: 30%;
+			width: 500px;
+			height: 400px;
+			border: 16px solid lightblue;
+			background-color: white;
+			z-index:1002;
+			overflow: auto;
+		}
+
+		.container1 div{
+		  display:inline;
+		}
+	</style>
+	<script type="text/javascript">
+        //弹出隐藏层
+        function ShowDiv(show_div,bg_div){
+            document.getElementById(show_div).style.display='block';
+            document.getElementById(bg_div).style.display='block' ;
+            var bgdiv = document.getElementById(bg_div);
+            bgdiv.style.width = document.body.scrollWidth;
+// bgdiv.style.height = $(document).height();
+            $("#"+bg_div).height($(document).height());
+        };
+        //关闭弹出层
+        function CloseDiv(show_div,bg_div)
+        {
+            document.getElementById(show_div).style.display='none';
+            document.getElementById(bg_div).style.display='none';
+        };
+	</script>
 </head>
 <body>
 
@@ -154,12 +209,12 @@
 		<!-- 导航   start  -->
 		<div class="yNavIndex">
 			<ul class="yMenuIndex">
-				<li><a href="" target="_blank" title="首页">首页</a></li>
-				<li><a href="" target="_blank" title="热销专区">热销专区</a></li>
-				<li><a href="" target="_blank" title="新品专区">新品专区</a></li>
-				<li><a href="" target="_blank" title="积分商城">积分商城</a></li>
-				<li><a href="" target="_blank" title="合伙人">合伙人</a></li>
-				<li><a href="" target="_blank" title="关于我们">关于我们</a></li>
+				<li><a href="${pageContext.request.contextPath}/ShopFrontPage.action"  title="首页">首页</a></li>
+				<li><a href="${pageContext.request.contextPath}/ProductHot.action" target="_blank" title="热销专区">热销专区</a></li>
+				<li><a href="${pageContext.request.contextPath}/SelectNewProduct.action" target="_blank" title="新品专区">新品专区</a></li>
+				<li><a href="${pageContext.request.contextPath}/SelectProducCredits.action" target="_blank" title="积分商城">积分商城</a></li>
+				<li><a href="${pageContext.request.contextPath}/queryTotalCommentshop.action" target="_blank" title="好评专区">好评专区</a></li>
+				<li><a href="${pageContext.request.contextPath}/jsp/users/aboutus.jsp" target="_blank" title="关于我们">关于我们</a></li>
 			</ul>
 		</div>
 		<!-- 导航   end  -->
@@ -204,6 +259,11 @@
 			<div class="Xcontent14 clearfix"><a href="#"><p>${myProduct.productname}</p></a></div>
 			<div class="Xcontent15 clearfix red fl" style="margin-top:15px;margin-right: 8px;">${myProduct.productdescribe}</div>
 			<div class="Xcontent16 clearfix"><p style="margin-top:14px;">更多惊喜，你值得拥有！</p></div>
+			<c:if test="${myProduct.productdisabled>0}">
+			<div class="Xcontent15 clearfix red fl"><p style="margin-top:14px;font-size: 30px;">消耗 <strong id="aaa">${myProduct.productdisabled}</strong> 积分可兑换</p></div>
+			</c:if>
+			<div  style="height:14px;"></div>
+
 			<div class="Xcontent17">
 				<p class="Xcontent18">售价</p>
 				<p class="Xcontent19">￥<span id="price">90</span></p>
@@ -248,26 +308,159 @@
 				<div class="Xcontent32"><img src="${pageContext.request.contextPath}/jsp/users/images/shangpinxiangqing/X15.png"></div>
 				<form>
 					<%--max为库存量--%>
-					<input class="input" style="padding-left:0px;" name="shuliang" value="1"></form>
+					<input id="bbb" class="input" style="padding-left:0px;" name="shuliang" value="1"></form>
 				<div class="Xcontent33"><img src="${pageContext.request.contextPath}/jsp/users/images/shangpinxiangqing/16.png"></div>
 				<div class="Xcontent36" id="shoucang">
 					<a href=""><img src="${pageContext.request.contextPath}/jsp/users/images/shoucang.png" height="15px" width="15px"></a>
 					<a href="">收藏宝贝</a>
 				</div>
 				<div class="Xcontent36">
-					<a href=""><img src="${pageContext.request.contextPath}/jsp/users/images/kefu.png" height="15px" width="15px"></a>
-					<a href="#">联系客服</a>
+					<a href="jsp/admin/chat/login.jsp" target="_blank"><img src="${pageContext.request.contextPath}/jsp/users/images/kefu.png" height="15px" width="15px"></a>
+					<a href="jsp/admin/chat/login.jsp" target="_blank">联系客服</a>
 				</div>
 			</div>
 
 			<input type="hidden" class="ace" name="productid" value="${productid}" />
 			<div class="Xcontent34"><a href="javascript:oneMei('<%=basePath%>');">立即购买</a></div>
-			<div class="Xcontent341"><a href="#">立即兑换</a></div>
 			<div class="Xcontent35"><a href="javascript:void(0)">加入购物车</a></div>
 
-		</ol>
-	</ul>
-</div></form>
+			<c:if test="${myProduct.productdisabled>0}">
+			<div class="Xcontent341"><a id="submit" href="/jifenPage.action?productid=${productid}" onclick="ShowDiv('MyDiv','fade')">立即兑换</a></div>
+			</c:if>
+			<%--<input id="Button1" type="button" value="点击弹出层" onclick="ShowDiv('MyDiv','fade')" />--%>
+			<!--弹出层时背景层DIV-->
+
+			<%--	<div id="fade" class="black_overlay">
+			</div>
+			<div id="MyDiv" class="white_content">
+				<div style="text-align: right; cursor: default; height: 40px;" id="move">
+					<span style="font-size: 16px;" onclick="CloseDiv('MyDiv','fade')">关闭</span>
+				</div>--%>
+
+			<%--	<form method="post" action="" name="allnotice">
+					<div data-role="popup" id="myPopup" class="ui-content" style="width: 400px;height: 300px;margin-left: 30px  " >
+				<h1>欢迎!</h1> <div class="container1" style="color: #d10607"> 账号可用积分： <div id="myDiv1" style="margin-right: 20px"></div>
+						<div >要兑换的数量：<div id="myDiv2" style="margin-right: 20px"></div></div>
+						&lt;%&ndash;保存兑换的数量&ndash;%&gt;
+						<input type="hidden" id="ace0" name="shuliang" value="88" />
+						<div >将消耗的积分：<div id="myDiv3"></div></div>
+						&lt;%&ndash;保存消耗的积分&ndash;%&gt;
+						<input type="hidden" id="ace1" name="totalcredit" value="88" />
+					</div><br>
+
+						&lt;%&ndash;保存商品id&ndash;%&gt;
+						<input type="hidden" class="ace" name="productid" value="${productid}" />
+
+				<fieldset data-role="controlgroup" data-type="horizontal" style="font-size: 20px;height: 100px;">
+					<br>
+					<legend><strong>请选择您的收货收货方式：</strong></legend><br>
+					<label style="width: 160px;margin-left: 60px" for="male">  快递配送</label>
+					<input type="radio" name="gainmethod" id="male"   value="0">
+					<label style="width: 160px;margin-left: 45px"  for="female">货物自取</label>
+					<input checked="checked" type="radio" name="gainmethod" id="female" value="1">
+				</fieldset></br></br>
+
+				<div class="Add_p_s"  id="testDiv"  style=" display:none;font-size: 15px;" >
+					<label class="form-label col-2" ><strong style="font-size: 20px">收货地址：</strong></label>
+					<div style="height: 20px"></div>
+					<div class="formControls col-2"><span class="select-box">
+				<select class="select" name="mygainid">
+					<option value="-2" >请选择收货地址!如果没有地址，请前往个人中心添加！</option>
+					&lt;%&ndash;<option value="-2" >${gainaddres}</option>&ndash;%&gt;
+                    &lt;%&ndash;判断地址gainid大于0&ndash;%&gt;
+                     <c:forEach items="${gainaddres}" var="gainaddres1" varStatus="status">
+						 <option value="${gainaddres1.gainid}">${gainaddres1.gainaddress}</option>
+					 </c:forEach>
+				</select>
+				</span></div></div></br>
+
+
+				<p style="text-align: center;margin-top: 30px">
+					<input style="width: 80px;margin-left: 80px" class="button" type="button" onclick="addPointProductOrder()" data-inline="true" id="formbutton"  value="确认兑换">
+					<input style="width: 80px;margin-left: 80px" class="button" type="button"  data-inline="true"  onclick="CloseDiv('MyDiv','fade')" value="取消兑换"> </p>
+			</div>
+</form>
+				<script type="text/javascript">
+                    function addPointProductOrder(){
+                        /* var btn = document.getElementById("firstbuy");
+                         btn.onclick = function(){  */
+
+
+                        var hh1= document.getElementById("myDiv1").innerText;
+                        var hh2= document.getElementById("myDiv3").innerText;
+//                        alert(hh1);alert(hh2);alert(hh1-hh2);
+                        if(hh1-hh2 <0 ){
+
+                            alert("对不起！您的积分不够！");
+
+                            return false;
+                        }else{
+
+                            document.allnotice.action = "${pageContext.request.contextPath}/jiFenDingDan.action";
+                            document.allnotice.submit();
+
+                        }
+
+                    } 	 ;
+
+				</script>--%>
+
+<%--  </div>--%>
+<script type="text/javascript">
+    document.getElementById("male").onclick=function(){
+        document.getElementById("testDiv").style.display="block";
+    }
+
+    document.getElementById("female").onclick=function(){
+            document.getElementById("testDiv").style.display="none";
+        }
+
+
+   $(function () {
+		$("#submit").click(function () {
+            $.ajax({
+                type : 'post',
+                async : false,
+                url : root+'/userJiFen.action',
+
+                data : '{}',
+                contentType : 'application/json;charset=utf-8',        //返回数据形式为json
+                success : function(result) {
+                    //请求成功时执行该函数内容，result即为服务器返回的json对象
+                    if (result) {
+//                        alert(result.creditscore);
+                        $('#myDiv1').html(result.creditscore);
+
+                        var a1= document.getElementById("aaa").innerHTML;
+//                                              alert(a1);
+                        var b1= document.getElementById("bbb");
+                        $('#myDiv2').html(b1.value);
+                        document.getElementById("ace0").value=b1.value;
+//                        alert(b1.value);
+                        var c1=a1*(b1.value);
+                        $('#myDiv3').html(c1);
+//                        alert(c1);
+                        document.getElementById("ace1").value=c1;
+
+                    }
+                },
+                error : function(errorMsg) {
+                    //请求失败时执行该函数
+                    alert("请求数据失败!");
+                }
+            } )
+
+        })
+   })
+
+
+</script>
+
+
+			</ol>
+		</ul>
+	</div>
+</form>
 
 <div class="containers center clearfix" style="margin-top:20px; background:#fff;">
 	<div class="pc-info fr" style="padding-left:10px; padding-top:20px;float: left;margin-left: 100px;margin-top: -100px;">
@@ -737,7 +930,7 @@
 
 
        /* 商品加入收藏夹的ajax实现传值*/
-        $(".Xcontent36").click(function () {
+        $("#shoucang").click(function () {
             var productid=${myProduct.productid}
             if(${sessionScope.user==null}){
                 alert("请先登录！");
@@ -803,6 +996,7 @@ function ajax1(url,productid) {
 
     function oneMei(basePath) {
 //        alert('您确定要删除吗？');
+        window.location.href = "http://localhost:8080/LoginPage.action?returnUrl=" + encodeURIComponent(window.location.href);
         $("#mainForm").attr("action",basePath + "querendingdan.action");
         $("#mainForm").submit();
     }

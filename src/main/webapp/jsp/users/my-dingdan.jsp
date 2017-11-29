@@ -154,6 +154,7 @@
 </c:if>
 
 <header id="pc-header">
+
 	<jsp:include page="/jsp/users/head.jsp"></jsp:include>
 	<%--</div>--%>
 	<!--  顶部    start-->
@@ -161,18 +162,20 @@
 		<!-- 导航   start  -->
 		<div class="yNavIndex">
 			<ul class="yMenuIndex">
-				<li><a href="" target="_blank" title="首页">首页</a></li>
-				<li><a href="" target="_blank" title="热销专区">热销专区</a></li>
-				<li><a href="" target="_blank" title="新品专区">新品专区</a></li>
-				<li><a href="" target="_blank" title="积分商城">积分商城</a></li>
-				<li><a href="" target="_blank" title="合伙人">合伙人</a></li>
-				<li><a href="" target="_blank" title="关于我们">关于我们</a></li>
+				<li><a href="${pageContext.request.contextPath}/ShopFrontPage.action"  title="首页">首页</a></li>
+				<li><a href="${pageContext.request.contextPath}/ProductHot.action" target="_blank" title="热销专区">热销专区</a></li>
+				<li><a href="${pageContext.request.contextPath}/SelectNewProduct.action" target="_blank" title="新品专区">新品专区</a></li>
+				<li><a href="${pageContext.request.contextPath}/SelectProducCredits.action" target="_blank" title="积分商城">积分商城</a></li>
+				<li><a href="${pageContext.request.contextPath}/queryTotalCommentshop.action" target="_blank" title="好评专区">好评专区</a></li>
+				<li><a href="${pageContext.request.contextPath}/jsp/users/aboutus.jsp" target="_blank" title="关于我们">关于我们</a></li>
 			</ul>
 		</div>
 		<!-- 导航   end  -->
 	</div>
 
 </header>
+<%--<input type="hidden" class="ace" name="shopcarid" value="+content.shopcarid+" />
+<input class="input"   name="orderamount" value="+content.orderamount+">--%>
 
 <!--
 <div class="containers center"><div class="pc-nav-item"><a href="#">首页</a> &gt; <a href="#">会员中心 </a> &gt; <a href="#">商城快讯</a></div></div>
@@ -811,6 +814,7 @@
             "   </div>\n" +
             "   <div class='pc-shopping-cart center'>\n" +
             "    <div class='pc-shopping-tab'>\n" +
+            "	   <form name='submitForm' action='${pageContext.request.contextPath}/myTset.action' method='POST'>"+
             "     <table>\n" +
             "      <thead>\n" +
 			"<thead>\n" +
@@ -835,6 +839,7 @@
             "      <tbody id='car'>\n" +
             "      </tbody>\n" +
             "     </table>\n" +
+            "	   </form>"+
             "    </div>\n" +
             "   </div>\n" +
 			"   <div style='height:10px'></div>\n" +
@@ -848,7 +853,7 @@
             "     <div class='fr pc-shop-fr'>\n" +
             "      <p>共有 <em class='red pc-shop-shu' id='count'>0</em> 款商品，总计（含运费）</p>\n" +
             "      <span id='sum'>¥0.00</span>\n" +
-            "      <a href='#'>去付款</a>\n" +
+            "      <a href='javascript:submitForm()' >去付款</a>\n" +
             "     </div>\n" +
             "    </div>\n" +
             "   </div>"+
@@ -918,7 +923,7 @@
             $("#id_head").css("visibility","visible");
             $.each( data, function(index, content) {
                 var html="<tr id='tr_"+content.shopcarid+"'>\n" +
-                    "        <th><input type='checkbox' name='stuCheckBox' value='"+content.shopcarid+"' style='margin-left:15px; float:left'></th>\n" +
+                    "        <th><input type='checkbox' name='shopcarid' value='"+content.shopcarid+"' style='margin-left:15px; float:left'></th>\n" +
                     "        <th class='tab-th-1'>\n" +
                     "         <a href='${pageContext.request.contextPath}/xiangqing.action?productid="+content.productid+"' target='blank' style='border: 0px;'><img src='/"+content.productpicture+"' style='height: 120px;width: 120px;max-width:200px;margin-left: 50px' alt='"+content.productname+"' title='"+content.productname+"'></a>\n" +
                     "         <a href='${pageContext.request.contextPath}/xiangqing.action?productid="+content.productid+"' target='blank' style='margin-left: 50px;width: 200px' class='tab-title'>"+content.productname+"</a>\n" +
@@ -934,7 +939,7 @@
                     "        </th>\n" +
                     "        <th class='tab-th-2'>\n" +
                     "         <div onclick='minus(this)' class='Xcontent32'><img src='images/shangpinxiangqing/X15.png'></div>\n" +
-                    "         <input class='input' type='number' max='1000' oninput='computations(this)' onpropertychange='computations(this)' value='"+content.orderamount+"'>" +
+                    "         <input class='input' name='orderamount' type='number' max='1000' oninput='computations(this)' onpropertychange='computations(this)' value='"+content.orderamount+"'>" +
                     "         <div onclick='add(this)' class='Xcontent33'><img src='images/shangpinxiangqing/16.png'></div>\n" +
                     "        </th>\n" +
                     "        <th class='red'>￥<span id='xiaoji'>"+content.productprice*content.orderamount+"</span></th>\n" +
@@ -970,14 +975,14 @@
             /*全选 反选*/
             $('input[name="s_all"]').click(function(){
                 if($(this).is(':checked')){
-                    $('input[name="stuCheckBox"]').each(function(){
+                    $('input[name="shopcarid"]').each(function(){
                         //此处如果用attr，会出现第三次失效的情况
                         $(this).prop("checked",true);
                         $('input[name="s_all"]').prop("checked",true);
                         summing();
                     });
                 }else{
-                    $('input[name="stuCheckBox"]').each(function(){
+                    $('input[name="shopcarid"]').each(function(){
                         $(this).removeAttr("checked",false);
                         $('input[name="s_all"]').removeAttr("checked",false);
                         summing();
@@ -986,11 +991,15 @@
 
             });
             //选择商品计算总计
-            $('input[name="stuCheckBox"]').click(function () {
+            $('input[name="shopcarid"]').click(function () {
                 summing();
             });
 
         }
+    }
+    function submitForm() {
+        console.log("uuuu");
+		$("form[name='submitForm']").submit();
     }
     function queryCommentsByUserId(id) {
         $.ajax({
@@ -1177,7 +1186,7 @@
     //批量删除
 	function batchDeleteShopCar() {
         var ids=new Array();
-        $('input[name="stuCheckBox"]').each(function(){
+        $('input[name="shopcarid"]').each(function(){
             if($(this).is(':checked')){
                 console.log($(this).val());
                 ids.push($(this).val());
@@ -1185,7 +1194,7 @@
         });
         var  data=ajax("delectBatchDeleteShopCar.action",ids);
         if(data==1){
-            $('input[name="stuCheckBox"]').each(function(){
+            $('input[name="shopcarid"]').each(function(){
                 if($(this).is(':checked')){
                     $(this).parents("tr").remove();
                 }
@@ -1228,7 +1237,7 @@
     //计算总计
     function summing() {
         var count=0,sum=0;
-        $('input[name="stuCheckBox"]').each(function () {
+        $('input[name="shopcarid"]').each(function () {
             if($(this).is(':checked')){
                 sum+=parseInt($(this).parent().siblings("th").find("#xiaoji").text());
                 count++;

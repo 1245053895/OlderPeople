@@ -22,12 +22,12 @@
         <!-- 导航   start  -->
         <div class="yNavIndex">
             <ul class="yMenuIndex">
-                <li><a href="" target="_blank" title="首页">首页</a></li>
-                <li><a href="" target="_blank" title="热销专区">热销专区</a></li>
-                <li><a href="" target="_blank" title="新品专区">新品专区</a></li>
-                <li><a href="" target="_blank" title="积分商城">积分商城</a></li>
-                <li><a href="" target="_blank" title="合伙人">好评专区</a></li>
-                <li><a href="" target="_blank" title="关于我们">关于我们</a></li>
+                <li><a href="${pageContext.request.contextPath}/ShopFrontPage.action"  title="首页">首页</a></li>
+                <li><a href="${pageContext.request.contextPath}/ProductHot.action" target="_blank" title="热销专区">热销专区</a></li>
+                <li><a href="${pageContext.request.contextPath}/SelectNewProduct.action" target="_blank" title="新品专区">新品专区</a></li>
+                <li><a href="${pageContext.request.contextPath}/SelectProducCredits.action" target="_blank" title="积分商城">积分商城</a></li>
+                <li><a href="${pageContext.request.contextPath}/queryTotalCommentshop.action" target="_blank" title="好评专区">好评专区</a></li>
+                <li><a href="${pageContext.request.contextPath}/jsp/users/aboutus.jsp" target="_blank" title="关于我们">关于我们</a></li>
             </ul>
         </div>
         <!-- 导航   end  -->
@@ -143,11 +143,12 @@
         <a href="/queryTotalCommentshop.action?currentpage=2" class="<c:if test='${totalCreditsByIds.get(0).startpage==15}'>on</c:if>">2</a>
         <a href="/queryTotalCommentshop.action?currentpage=3" class="<c:if test='${totalCreditsByIds.get(0).startpage==30}'>on</c:if>">3</a>
         <a href="/queryTotalCommentshop.action?currentpage=4" class="<c:if test='${totalCreditsByIds.get(0).startpage==45}'>on</c:if>">4</a>
-        <a href="#">5</a>
-        <a href="#">6</a>
+        <a href="/queryTotalCommentshop.action?currentpage=5" class="<c:if test='${totalCreditsByIds.get(0).startpage==60}'>on</c:if>">5</a>
+        <%--<a href="/queryTotalCommentshop.action?currentpage=6" class="<c:if test='${totalCreditsByIds.get(0).startpage==75}'>on</c:if>">6</a>
+        <a href="/queryTotalCommentshop.action?currentpage=7" class="<c:if test='${totalCreditsByIds.get(0).startpage==90}'>on</c:if>">7</a>--%>
         <span>...</span>
         <a href="#" class="next">下一页></a>
-        共50页 到第<input type="text" value="1" />页  <a href="#" class="sub">确定</a>
+        共5页 到第<input type="text" value="1" />页  <a href="#" class="sub">确定</a>
     </div>
 </div>
 </body>

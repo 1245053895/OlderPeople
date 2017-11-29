@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -25,9 +26,14 @@ public class OrderPayController {
     private UserLoginService userLoginService;
 
 
-    //    详情页面的单个商品购买
+    //   详情页面的单个商品购买
     @RequestMapping(value = "/querendingdan.action", method = {RequestMethod.GET, RequestMethod.POST})
-    public String QuerryAllPay44(Model model, String[] productid, String[] shuliang) {
+    public String QuerryAllPay44(HttpServletRequest request,Model model, String[] productid, String[] shuliang) {
+        HttpSession session=request.getSession();
+        User user=(User) session.getAttribute("user");
+        Integer userid=user.getUserid();   /*得到登录用户的id，根据用户的id来查找收货地址*/
+        List<Gainaddres> gainaddresList=  userLoginService.selectGainAddressByUserId(userid); /*根据用户的id查询出该用户的收货地址*/
+        model.addAttribute("gainaddresList",gainaddresList);
 
         List<Integer> idList = new ArrayList<Integer>();
         for (String id : shuliang) {
@@ -81,6 +87,7 @@ public class OrderPayController {
                 order.setRealpay(order.getAmountpay() + 15);
             }
             order.setStatus(1);       /* 订单状态 订单新建时为1,表示该订单是待发货的订单*/
+            order.setEndtime(new Date());/*插入订单的结束时间，个人中心中个人积分的显示所需要*/
             String return2 = orderPayService.insertSelective2(order);
             Integer orderid = order.getOrderid();  /*数据库返回的主键*/
             orderproduct.setOrderid(orderid);       /*主键是另外一张表的外键需要插入*/
@@ -109,8 +116,14 @@ public class OrderPayController {
 
 //  购物车页面  点击“去付款 ”之后的功能步骤********************************************
     @RequestMapping(value = "/myTset.action", method = {RequestMethod.GET, RequestMethod.POST})
-     public String myTest(HttpSession session,Model model,Integer[] shopcarid,Integer[] orderamount) {
-//  第一步   修改购物车商品数量
+     public String myTest(HttpServletRequest request,Model model,Integer[] shopcarid,Integer[] orderamount) {
+        HttpSession session=request.getSession();
+        User user=(User) session.getAttribute("user");
+        Integer userid=user.getUserid();   /*得到登录用户的id，根据用户的id来查找收货地址*/
+        List<Gainaddres> gainaddresList=  userLoginService.selectGainAddressByUserId(userid); /*根据用户的id查询出该用户的收货地址*/
+        model.addAttribute("gainaddresList",gainaddresList);/*保存用户的收货地址，在页面显示*/
+
+        //  第一步   修改购物车商品数量
         for (int i=0;i<shopcarid.length;i++){
             System.out.println(shopcarid[i] +" "+orderamount[i]);
             Shopcar shopcar=new Shopcar();shopcar.setShopcarid(shopcarid[i]);shopcar.setOrderamount(orderamount[i]);
@@ -166,7 +179,8 @@ public class OrderPayController {
                 order.setPostfee(0.0);
                 order.setRealpay(order.getAmountpay());
             }
-            order.setStatus(0);
+            order.setStatus(1);
+            order.setEndtime(new Date());/*插入订单的结束时间，个人中心中个人积分的显示所需要*/
             String return2 = orderPayService.insertSelective2(order);
             Integer orderid = order.getOrderid();  /*数据库返回的主键*/
             orderproduct.setOrderid(orderid);       /*主键是另外一张表的外键需要插入*/
@@ -184,7 +198,7 @@ public class OrderPayController {
                 }
 
                 //        判断支付方式  1在线支付------返回付款页面  0货到付款------返回购买成功页面
-                if (order.getPaytype() == 1) {
+                if (order.getPaytype() == 0) {
 
 
                     return "/jsp/users/my-apy.jsp";

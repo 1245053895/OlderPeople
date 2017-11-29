@@ -372,6 +372,30 @@ public class CustomerLoginController {
     }
 
 
+   //立即兑换页面的订单确认页面的显示
+    @RequestMapping("/jifenPage.action")
+    public String jifenPage(HttpServletRequest request,Model model,Integer productid){
+        HttpSession session=request.getSession();
+        User user=(User)session.getAttribute("user");
+        Integer userid=user.getUserid();
+       Product product= userLoginService.jifenPage(productid);
+        TotalCreditsById totalCreditsById = userLoginService.queryTotalCriditsById(userid);
+        Integer Productdisabled= product.getProductdisabled();
+        Integer TotalCredits= totalCreditsById.getTotalCredits();
+        Integer shenyuCredits=TotalCredits-Productdisabled;
+        model.addAttribute("product",product);
+        model.addAttribute("totalCreditsById",totalCreditsById);
+        model.addAttribute("shenyuCredits",shenyuCredits);
+        return "/jsp/users/my-jfadd.jsp";
+    }
+
+//兑换成功的页面显示
+    @RequestMapping("/duihuan.action")
+    public String duihuan(){
+        return "/jsp/users/my-apy-suc.jsp";
+    }
+
+
 
 }
 

@@ -216,6 +216,12 @@ public class UserLoginServiceImpl implements UserLoginService {
     }
 
     @Override
+    public Product jifenPage(Integer productid) {
+       Product product= userLoginMapper.jifenPage(productid);
+        return product;
+    }
+
+    @Override
     public List<User> SelectAllQuerry() {
         List<User> userList1 =userLoginMapper.SelectAllQuerry();
         return userList1;

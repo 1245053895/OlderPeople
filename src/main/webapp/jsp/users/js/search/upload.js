@@ -113,8 +113,12 @@ function ajaxUploadImg(files) {
         contentType:false, //必须false才会避开jQuery对 formdata 的默认处理 , XMLHttpRequest会对 formdata 进行正确的处理
         processData: false, //必须false才会自动加上正确的Content-Type
         url: "/uploadSearchImage.action",
+        timeout: 15000,
         data: fd,
         success: function (msg) {
+            $(".loading").hide(800,function () {
+                //处理加载逻辑
+            });
             $(".upload_image").hide(500);
             $(".result-list").hide(1000,function () {
                 $(".result-list").show(1000);
@@ -158,7 +162,15 @@ function ajaxUploadImg(files) {
         },
         error: function (msg) {
             debugger;
-            alert("error");
+            alert("加载失败!");
+            $(".loading").hide(800,function () {
+                //处理加载逻辑
+            });
+        },
+        beforeSend:function () {
+            $(".loading").show(800,function () {
+                //处理加载逻辑
+            });
         }
     });
 

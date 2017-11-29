@@ -236,7 +236,20 @@
 <div class="Xcontent">
 	<ul class="Xcontent01">
 <%--${myProduct.images[0]}--%>
-		<div class="Xcontent06"><img src="${pageContext.request.contextPath}/${myProduct.images[0]}"></div>
+		<div class="Xcontent06">
+			<img src="${pageContext.request.contextPath}/${myProduct.images[0]}">
+			<div id="mask" style="display:none;position: absolute ;top: 220px;left: 400px;width: 143px;height: 143px;background-color: rgba(200,200,200,0.8)"></div>
+			<div id="enlarge" style="display: none;position: relative; top: -430px;left: 440px;width: 430px;height: 430px;border: 1px #000000 solid;overflow: hidden;">
+				<div id="enlarge_img" style="position: absolute;width: 1290px;height: 1290px;max-width: 1290px;max-height: 1290px;
+										/*background-image: url('/jsp/admin/images/upload/hlc6.1.jpg');*/
+										background-repeat:no-repeat;
+										background-attachment: scroll;
+										background-position: -100px 0px;
+										background-color: transparent;
+										background-size: 1290px 1290px">
+				</div>
+			</div>
+		</div>
 		<ol class="Xcontent08">
 			<c:forEach items="${myProduct.images}" var="it" varStatus="status">
 			<div class="Xcontent07"><img  src="${pageContext.request.contextPath}/${it}"></div>
@@ -312,7 +325,7 @@
 			<div class="Xcontent35"><a href="javascript:void(0)">加入购物车</a></div>
 
 			<c:if test="${myProduct.productdisabled>0}">
-			<div class="Xcontent341"><a id="submit" href="#" onclick="ShowDiv('MyDiv','fade')">立即兑换</a></div>
+			<div class="Xcontent341"><a id="submit" href="/jifenPage.action?productid=${productid}" onclick="ShowDiv('MyDiv','fade')">立即兑换</a></div>
 			</c:if>
 			<%--<input id="Button1" type="button" value="点击弹出层" onclick="ShowDiv('MyDiv','fade')" />--%>
 			<!--弹出层时背景层DIV-->
@@ -443,61 +456,22 @@
 
 </script>
 
-			</div>
 
-
-
-		</ol>
-	</ul>
-</div></form>
+			</ol>
+		</ul>
+	</div>
+</form>
 
 <div class="containers center clearfix" style="margin-top:20px; background:#fff;">
 	<div class="pc-info fr" style="padding-left:10px; padding-top:20px;float: left;margin-left: 100px;margin-top: -100px;">
 		<div class="pc-overall">
 			<ul id="H-table1" class="brand-tab H-table1 H-table-shop clearfix ">
 				<li class="cur"><a href="javascript:void(0);">商品介绍</a></li>
-				<%--<li><a href="javascript:void(0);">商品评价<em class="reds">(91)</em></a></li>--%>
-				<%--<li><a href="javascript:void(0);">售后保障</a></li>--%>
+				<li><a href="#top" target="_self">商品评价</a></li>
+			<%--<li><a href="javascript:void(0);">售后保障</a></li>--%>
 			</ul>
 			<div class="pc-term clearfix">
 				<div class="H-over1 pc-text-word clearfix">
-					<ul class="clearfix">
-					<%--	<li>
-					<p>屏幕尺寸：4.8英寸</p>
-					<p>分辨率：1280×720(HD,720P) </p>
-				</li>
-					<li>
-						<p>后置摄像头：800万像素</p>
-						<p>分辨率：1280×720(HD,720P) </p>
-					</li>
-					<li>
-						<p>前置摄像头：190万像素</p>
-						<p>分辨率：1280×720(HD,720P) </p>
-					</li>
-					<li>
-						<p>3G：电信(CDMA2000)</p>
-						<p>2G：移动/联通(GSM)/电信(CDMA </p>
-					</li>--%>
-					</ul>
-					<div class="pc-line"></div>
-					<ul class="clearfix">
-						<%--<li>
-							<p>商品名称：三星I939I</p>
-							<p>商品毛重：360.00g </p>
-						</li>
-						<li>
-							<p>商品编号：1089266</p>
-							<p>商品产地：中国大陆</p>
-						</li>
-						<li>
-							<p>品牌： 三星（SAMSUNG）</p>
-							<p>系统：安卓（Android </p>
-						</li>
-						<li>
-							<p>上架时间：2015-03-30 09:07:18</p>
-							<p>机身颜色：白色</p>
-						</li>--%>
-					</ul>
 					<div style="margin-left: 30px;margin-right:30px ">
 						<c:forEach items="${myProduct.images1}" var="it" varStatus="status">
 							<div style="text-align:center;margin-left: 200px;"><img src="${pageContext.request.contextPath}/${it}"width="70%";height="100%"></div>
@@ -529,8 +503,9 @@
 				</div>
 			</div>
 		</div>
-		<div class="pc-overall">
-			<ul class="brand-tab H-table H-table-shop clearfix " id="H-table" style="margin-left:0;">
+		<a name="top" id="top"></a>
+		<div id="pinglun" class="pc-overall" style="">
+			<ul id="pingjia" class="brand-tab H-table H-table-shop clearfix" id="H-table" style="margin-left:0;">
 				<li class="cur"><a href="javascript:void(0);">全部评价（<span>${pingJiaShu.goodcommentcount}</span>）</a></li>
 				<li><a href="javascript:void(0);">好评<em class="reds">（<span>${pingJiaShu003}</span>）</em></a></li>
 				<li><a href="javascript:void(0);">中评<em class="reds">（<span>${pingJiaShu002}</span>）</em></a></li>
@@ -543,34 +518,34 @@
 
 				</div>
 				<div class="H-over  pc-comments clearfix" id="column10086" style="height: 530px;">
-					<ul class="clearfix">
+					<ul id="pingjiashu" class="clearfix">
 						<c:forEach items="${pingJiaList}" var="itss" varStatus="status">
-						<li class="clearfix">
-							<div class="column1" >
-								<%--<p class="clearfix"><a href="#">回复<em>（90）</em></a> <a href="#">赞<em>（90）</em></a> </p>--%>
-								<p style="float: right;margin-left: 50px">${itss.ccomment}</p>
-									<p class="column5" style="float: right;margin-left: 130px"><span style="float: right;margin-left: 30px">评论用户：${itss.username}</span><span>日期时间：<f:formatDate value="${itss.commenttime}" pattern="yyyy-MM-dd HH:mm:ss"/></span></p>
-							</div>
+							<li class="clearfix">
+								<div class="column1" >
+									<%--<p class="clearfix"><a href="#">回复<em>（90）</em></a> <a href="#">赞<em>（90）</em></a> </p>--%>
+									<p style="float: right;margin-left: 50px">${itss.ccomment}</p>
+										<p class="column5" style="float: right;margin-left: 130px"><span style="float: right;margin-left: 30px">评论用户：${itss.username}</span><span>日期时间：<f:formatDate value="${itss.commenttime}" pattern="yyyy-MM-dd HH:mm:ss"/></span></p>
+								</div>
 
-							<c:if test="${itss.goodcomment==0}">
-							<div class="column2" style="float: right;margin-right: 90px"><img src="${pageContext.request.contextPath}/jsp/users/img/icon/star0.png"></div>
-							</c:if>
-							<c:if test="${itss.goodcomment==1}">
-								<div class="column2" style="float: right;margin-right: 90px"><img src="${pageContext.request.contextPath}/jsp/users/img/icon/star1.png"></div>
-							</c:if>
-							<c:if test="${itss.goodcomment==2}">
-								<div class="column2" style="float: right;margin-right: 90px"><img src="${pageContext.request.contextPath}/jsp/users/img/icon/star2.png"></div>
-							</c:if>
-							<c:if test="${itss.goodcomment==3}">
-								<div class="column2" style="float: right;margin-right: 90px"><img src="${pageContext.request.contextPath}/jsp/users/img/icon/star3.png"></div>
-							</c:if>
-							<c:if test="${itss.goodcomment==4}">
-								<div class="column2" style="float: right;margin-right: 90px"><img src="${pageContext.request.contextPath}/jsp/users/img/icon/star4.png"></div>
-							</c:if>
-							<c:if test="${itss.goodcomment==5}">
-								<div class="column2" style="float: right;margin-right: 90px"><img src="${pageContext.request.contextPath}/jsp/users/img/icon/star5.png"></div>
-							</c:if>
-						</li>
+								<c:if test="${itss.goodcomment==0}">
+								<div class="column2 a00" style="float: right;margin-right: 90px"><img src="${pageContext.request.contextPath}/jsp/users/img/icon/star0.png"></div>
+								</c:if>
+								<c:if test="${itss.goodcomment==1}">
+									<div class="column2 a11" style="float: right;margin-right: 90px"><img src="${pageContext.request.contextPath}/jsp/users/img/icon/star1.png"></div>
+								</c:if>
+								<c:if test="${itss.goodcomment==2}">
+									<div class="column2 a22" style="float: right;margin-right: 90px"><img src="${pageContext.request.contextPath}/jsp/users/img/icon/star2.png"></div>
+								</c:if>
+								<c:if test="${itss.goodcomment==3}">
+									<div class="column2 a33" style="float: right;margin-right: 90px"><img src="${pageContext.request.contextPath}/jsp/users/img/icon/star3.png"></div>
+								</c:if>
+								<c:if test="${itss.goodcomment==4}">
+									<div class="column2 a44" style="float: right;margin-right: 90px"><img src="${pageContext.request.contextPath}/jsp/users/img/icon/star4.png"></div>
+								</c:if>
+								<c:if test="${itss.goodcomment==5}">
+									<div class="column2 a55" style="float: right;margin-right: 90px"><img src="${pageContext.request.contextPath}/jsp/users/img/icon/star5.png"></div>
+								</c:if>
+							</li>
 						</c:forEach>
 					</ul>
 				</div>
@@ -776,6 +751,149 @@
 	</div>
 </footer>
 <script type="text/javascript">
+
+    $("#pingjia").find("li").click(function (i) {
+        console.log(i);
+        if($(this).hasClass("cur")){
+            $(this).removeClass("cur");
+            $(this).siblings("li").addClass("cur");
+        }
+        if(!$(this).hasClass("cur")){
+            $(this).addClass("cur");
+            $(this).siblings("li").removeClass("cur");
+        }
+    });
+	$("#pingjia").find("li").each(function (i) {
+		switch (i){
+			case 0:
+				console.log(i);
+				$(this).click(function () {
+                    getPinglun(0);
+                });
+			    break;
+			case 1:
+                console.log(i);
+                $(this).click(function () {
+                    getPinglun(1);
+                });
+				break;
+            case 2:
+                console.log(i);
+                $(this).click(function () {
+                    getPinglun(2);
+                });
+                break;
+            case 3:
+                console.log(i);
+                $(this).click(function () {
+                    getPinglun(3);
+                });
+                break;
+			default:
+                console.log(i);
+			    break
+		}
+    })
+	function getPinglun(i) {
+		if(i==0){
+			$(".a00").parents("li").show();
+			$(".a11").parents("li").show();
+			$(".a22").parents("li").show();
+			$(".a33").parents("li").show();
+			$(".a44").parents("li").show();
+			$(".a55").parents("li").show();
+		}
+		if(i==1){
+            $(".a00").parents("li").hide();
+            $(".a11").parents("li").hide();
+            $(".a22").parents("li").hide();
+            $(".a33").parents("li").hide();
+            $(".a44").parents("li").show();
+            $(".a55").parents("li").show();
+		}
+		if(i==2){
+            $(".a00").parents("li").hide();
+            $(".a11").parents("li").hide();
+            $(".a22").parents("li").show();
+            $(".a33").parents("li").show();
+            $(".a44").parents("li").hide();
+            $(".a55").parents("li").hide();
+		}
+		if(i==3){
+            $(".a00").parents("li").show();
+            $(".a11").parents("li").show();
+            $(".a22").parents("li").hide();
+            $(".a33").parents("li").hide();
+            $(".a44").parents("li").hide();
+            $(".a55").parents("li").hide();
+		}
+
+    }
+
+	 $(".Xcontent06").mouseover(function (event) {
+		 $("#enlarge").show();
+		 $("#mask").show();
+         $(".Xcontent06").mousemove(function (event) {
+             var offset = $(this).offset();
+             var relativeX = event.pageX - offset.left;
+             var relativeY = event.pageY - offset.top;
+			 var top,left;
+
+             $("#enlarge_img").css("background-image","url("+$(this).children("img").attr('src')+")");
+             if(relativeX<71){
+                 if(relativeY<71){
+                     top=offset.top;
+                     left=offset.left;
+				 }else if(relativeY>357){
+                     top=offset.top+289;
+                     left=offset.left;
+                 }else {
+                     top=relativeY+offset.top-72;
+                     left=offset.left;
+				 }
+             }else if(relativeX>357){
+                 if(relativeY<73){
+                     top=offset.top;
+                     left=offset.left+286;
+                 }else if(relativeY>357){
+                     top=offset.top+289;
+                     left=offset.left+286;
+                 }else {
+                     top=relativeY+offset.top-72;
+                     left=offset.left+286;
+                 }
+			 }else if(relativeX<=360&&relativeX>=71){
+                 if(relativeY<73){
+                     top=offset.top;
+                     left=relativeX+offset.left-72;
+                 }else if(relativeY>357){
+                     top=offset.top+289;
+                     left=relativeX+offset.left-72;
+                 }else {
+                     left=relativeX+offset.left-72;
+                     top=relativeY+offset.top-72;
+                 }
+			 }
+             //console.log((relativeX+400+72)+" "+(relativeY+220+72));
+             $("#mask").offset({top:top,left:left});
+             $("#enlarge_img").css("background-position",-(relativeX)*2+"px "+-(relativeY)*2+"px");
+
+             /*if(relativeX>143&&relativeX<286&&relativeY>143&&relativeY<286){
+                 $("#mask").offset({top:-((relativeY-220+72)),left:-((relativeX-400)+72)});
+                 //$("#enlarge_img").css("background-position",(relativeX*2)+"px "+(relativeY*2)+"px");
+			 }else*/
+
+         });
+     });
+     $(".Xcontent06").mouseout(function (event) {
+         $("#enlarge").hide();
+         $("#mask").hide();
+     });
+
+
+
+
+
 	/*商品加入购物车的ajax*/
 	$(".Xcontent35").click(function () {
         console.log($("#price").text());
@@ -901,6 +1019,8 @@ function ajax1(url,productid) {
 </script>
 
 <script type="text/javascript">
+
+
 
     $(".li-ul-ss").find("li").click(function(){
         var index=$(this).index();

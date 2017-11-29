@@ -123,4 +123,8 @@ public interface UserLoginMapper {
     //根据用户的id查询出该用户对应的收货地址
     public List<Gainaddres> selectGainAddressByUserId(Integer userid);
 
+
+    //立即兑换订单确认页面的显示,查询商品的图片，名称，积分，价钱
+    public Product jifenPage(Integer productid);
+
 }

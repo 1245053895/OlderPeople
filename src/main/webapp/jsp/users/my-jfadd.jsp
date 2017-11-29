@@ -209,10 +209,10 @@
                                 <div>
                                     <ul class="checkout-option-list clearfix J_optionList">
                                         <li>
-                                            <input type="radio" name="gainmethod" value="1" checked="checked" data-labelauty="快递配送">
+                                            <input type="radio" name="gainmethod" value="0" checked="checked" data-labelauty="快递配送">
                                         </li>
                                         <li style=" display: inline-block;margin-left: -20px;">
-                                            <input type="radio" name="gainmethod" value="0" data-labelauty="货物自取">
+                                            <input type="radio" name="gainmethod" value="1" data-labelauty="货物自取">
                                         </li>
                                     </ul>
                                 </div>
@@ -237,22 +237,22 @@
                                                 <div class="item-row">
                                                     <div class="col col-1" style="width: 175px">
                                                         <div class="g-pic">
-                                                            <img src="${pageContext.request.contextPath}/${productList[0].productpicture}" width="40" height="40" />
+                                                            <img src="${product.productpicture}" width="40" height="40" />
                                                         </div>
                                                         <div class="g-info">
                                                             <a href="#" target="_blank">
-                                                                ${productList[0].productname}
+                                                                ${product.productname}
                                                             </a>
                                                         </div>
                                                     </div>
                                                     <input type="hidden" class="ace" name="productname" value="" />
                                                     <input type="hidden" class="ace" name="productid" value="" />
-                                                    <div  id="jisuan0" class="col col-2"  style="text-align: left;width: 25px;"></div>
+                                                    <div  id="jisuan0" class="col col-2"  style="text-align: left;width: 25px;">${product.productdisabled}</div>
                                                     <input type="hidden" class="ace" name="productprice" value="" />
                                                     <input type="hidden" class="ace" name="payprice" value="" />
-                                                    <div id="jisuan1" class="col col-3" style="text-align: left;width: 20px;"></div>
+                                                    <div id="jisuan1" class="col col-3" style="text-align: left;width: 20px;">${totalCreditsById.totalCredits}</div>
                                                     <input type="hidden" class="ace" name="shoppingcount" value="" />
-                                                    <div id="jisuan2" class="col col-4" style="text-align: left"></div>
+                                                    <div id="jisuan2" class="col col-4" style="text-align: left">${shenyuCredits}</div>
                                                     <input type="hidden" class="ace" name="totalmoneycount" value="" />
                                                 </div>
                                             </dd>
@@ -309,10 +309,10 @@
                                             <div class="checkout-price">
                                                 <ul>
                                                     <li>
-                                                        订单总额：<span id="aaaa"></span>
+                                                        订单总额：<span id="aaaa">${product.productprice}</span>
                                                     </li>
                                                     <%--amountpay 应付金额    realpay实付=应付+邮费postfee--%>
-                                                    <input type="hidden" class="ace" name="amountpay" value="${zongjia[0]}" />
+                                                    <input type="hidden" class="ace" name="amountpay" value="" />
                                                     <!--<li>
                                                         活动优惠：<span>-0元</span>
                                                         <script type="text/javascript">
@@ -322,14 +322,23 @@
                                                     </li>-->
                                                     <li>
                                                         <%--用户购买的所有商品积分和======（数量*积分）的和--%>
-                                                        应付积分：<span id="couponDesc"></span>
+                                                        应付积分：<span id="couponDesc">${product.productdisabled}</span>
                                                         <input type="hidden" class="ace" name="totalcredit" value="" />
                                                     </li>
+
+                                           <c:if test="${product.productprice<88}">
                                                     <li>
-                                                        运费：<span id="postageDesc">0元</span>
+                                                        运费：<span id="postageDesc">15元</span>
                                                     </li>
+                                           </c:if>
+                                              <c:if test="${product.productprice>88}">
+                                                       <li>
+                                                          运费：<span id="postageDesc1">0元</span>
+                                                       </li>
+                                                </c:if>
+
                                                 </ul>
-                                                <p class="checkout-total">应付总额：<span><strong id="totalPrice">${zongjia[0]}</strong>元</span></p>
+                                                <p class="checkout-total">应付总额：<span><strong id="<%--totalPrice--%>">null</strong>元</span></p>
                                             </div>
                                             <!--  -->
                                         </div>
@@ -562,8 +571,8 @@
 <script type="text/javascript">
 
     function jiesuan(basePath) {
-        alert('前去付款？');
-        $("#checkoutForm").attr("action",basePath + "jieSuan.action");
+        alert('确定兑换？');
+        $("#checkoutForm").attr("action",basePath + "duihuan.action");
         $("#checkoutForm").submit();
     }
 

@@ -93,11 +93,11 @@
 
 </head>  
   
-<body onload="connect();" >
+<body onload="connect();" style="background-image: url(bgpic2.jpg)">
 
 <div>
     <div id="msg" >
-        <div >  <h3>欢迎 ${sessionScope.username } 使用本系统！！</h3></div>
+
         <p id="content" style="width: 565px;height: 380px;margin-top: 40px;margin-left: 490px;border-top:1px solid #EFEFEF;border-right:1px solid #EFEFEF;border-radius:3px;background-color: #EFEFEF;overflow-x: hidden;overflow-y: scroll">
         </p>
     </div>

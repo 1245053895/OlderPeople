@@ -41,7 +41,7 @@
                 <dt>好评专区</dt>
             </dl>
         </div>
-<c:forEach items="${totalCreditsByIds}" var="totalCreditsById" varStatus="status">
+<c:forEach items="${pagination.list}" var="totalCreditsById" varStatus="status">
     <div class="item <c:if test='${status.index%5==4}'>last</c:if>">
             <dl>
                 <dt><a href="${pageContext.request.contextPath}/xiangqing.action?productid=${totalCreditsById.productid}"><img src="${totalCreditsById.productpicture}"/></a></dt>
@@ -138,17 +138,9 @@
         <div class="clear"></div>
     </div>
     <div class="page">
-        <a href="#" class="pre"> < 上一页 </a>
-        <a href="/queryTotalCommentshop.action?currentpage=1" class="<c:if test='${totalCreditsByIds.get(0).startpage==0}'>on</c:if>">1</a>
-        <a href="/queryTotalCommentshop.action?currentpage=2" class="<c:if test='${totalCreditsByIds.get(0).startpage==15}'>on</c:if>">2</a>
-        <a href="/queryTotalCommentshop.action?currentpage=3" class="<c:if test='${totalCreditsByIds.get(0).startpage==30}'>on</c:if>">3</a>
-        <a href="/queryTotalCommentshop.action?currentpage=4" class="<c:if test='${totalCreditsByIds.get(0).startpage==45}'>on</c:if>">4</a>
-        <a href="/queryTotalCommentshop.action?currentpage=5" class="<c:if test='${totalCreditsByIds.get(0).startpage==60}'>on</c:if>">5</a>
-        <%--<a href="/queryTotalCommentshop.action?currentpage=6" class="<c:if test='${totalCreditsByIds.get(0).startpage==75}'>on</c:if>">6</a>
-        <a href="/queryTotalCommentshop.action?currentpage=7" class="<c:if test='${totalCreditsByIds.get(0).startpage==90}'>on</c:if>">7</a>--%>
-        <span>...</span>
-        <a href="#" class="next">下一页></a>
-        共5页 到第<input type="text" value="1" />页  <a href="#" class="sub">确定</a>
+        <c:forEach items="${pagination.pageView }" var="page">
+            ${page }
+        </c:forEach>
     </div>
 </div>
 </body>

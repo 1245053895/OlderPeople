@@ -92,10 +92,16 @@ public interface UserLoginMapper {
     public void AutoIncreaseOne(Integer productid);
 
     //选出商品的图片，价格，名称，评论数
-    public List<TotalCreditsById> queryTotalCommentshop(Integer startpage);
+    public List<TotalCreditsById> queryTotalCommentshop(List<TotalCreditsById>totalCreditsById);
+    //选出商品的图片，价格，名称，评论数
+    public List<TotalCreditsById> queryTotalCommentshop1(TotalCreditsById totalCreditsById);
+
+    //统计数量
+    public Integer SelectCount(TotalCreditsById totalCreditsById);
 
     //根据商品的id,查询出每个商品对应的好评度个数
-    public Integer EveryShopGoodComment(Integer productid);
+    public Integer EveryShopGoodComment( Integer productid);
+
 
 
        //向用户表中根据用户的id更新用户最近一次登录的时间

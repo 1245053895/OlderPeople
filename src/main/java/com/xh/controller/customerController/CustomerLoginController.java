@@ -1,5 +1,6 @@
 package com.xh.controller.customerController;
 
+import com.xh.controller.page.Pagination;
 import com.xh.po.*;
 import com.xh.po.vo.ProductTypeExtend;
 import com.xh.po.vo.TotalCreditsById;
@@ -333,15 +334,11 @@ public class CustomerLoginController {
 
 //好评专区
     @RequestMapping("/queryTotalCommentshop.action")
-    public String queryTotalCommentshop(Model model,@RequestParam(defaultValue = "1") Integer currentpage){
-        Integer startpage=(currentpage-1)*15;
-      List<TotalCreditsById> totalCreditsByIds=  userLoginService.queryTotalCommentshop(startpage);
-       for(TotalCreditsById totalCreditsById:totalCreditsByIds){
-           Integer onegood=  userLoginService.EveryShopGoodComment(totalCreditsById.getProductid());
-           totalCreditsById.setTotalgoodcomment(onegood);
-           totalCreditsById.setStartpage(startpage);
-       }
-        model.addAttribute("totalCreditsByIds",totalCreditsByIds);
+    public String queryTotalCommentshop( TotalCreditsById totalCreditsById,Model model,@RequestParam(defaultValue = "1") Integer pageNo,Integer productid){
+        Integer onegood=  userLoginService.EveryShopGoodComment(productid);
+        totalCreditsById.setTotalgoodcomment(onegood);
+        Pagination pagination=userLoginService.selectPaginationByQuery( productid,pageNo);
+        model.addAttribute("pagination",pagination);
         return "/jsp/users/rpzq.jsp";
     }
 
@@ -352,7 +349,7 @@ public class CustomerLoginController {
        User user=(User) session.getAttribute("user");
        Integer id=user.getUserid();
         String sqlPath = null;
-        if (userC != null && userC.getOriginalFilename() != null){
+        if (userC != null && userC.getOriginalFilename() != null) {
             String path = session.getServletContext().getRealPath("/jsp/admin/images/upload");
             String realName = userC.getOriginalFilename();
             String realFilePath = path + File.separator + realName;
@@ -366,7 +363,7 @@ public class CustomerLoginController {
             UserAndBrithday userAndBrithday=customerInformationService.SelectCustomerInformation(id);
           // User user1=userLoginService.queryUserPic(user); /*根据用户的id查询用户的账号，用户名和头像*/
            model.addAttribute("userAndBrithday",userAndBrithday);
-            return "redirect:/CustomerInformation.action";
+            return "/jsp/users/user.jsp";
         }
         return null;
     }

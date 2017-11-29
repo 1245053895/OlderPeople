@@ -3,11 +3,13 @@ package com.xh.po.vo;
 import com.xh.po.Product;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by KAIRUN on 2017/11/16.
  */
 public class TotalCreditsById extends Product{
+    List<TotalCreditsById> totalCreditsByIds;
     private Date endtime;
     private Integer userid;
     private Integer totalCredits;

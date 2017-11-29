@@ -1,5 +1,6 @@
 package com.xh.service.customerService;
 
+import com.xh.controller.page.Pagination;
 import com.xh.po.*;
 import com.xh.po.vo.TotalCreditsById;
 
@@ -89,11 +90,15 @@ public interface UserLoginService {
     public void AutoIncreaseOne(Integer productid);
 
 
+    //查询分页对象
+    public Pagination selectPaginationByQuery(Integer productid,Integer pageNo);
     //  //选出商品的图片，价格，名称，评论数
-    public List<TotalCreditsById> queryTotalCommentshop(Integer startpage);
+   /* public List<TotalCreditsById> queryTotalCommentshop(TotalCreditsById totalCreditsById);*/
+    public List<TotalCreditsById> queryTotalCommentshop1(TotalCreditsById totalCreditsById);
+
 
     //根据商品的id,查询出每个商品对应的好评度个数
-    public Integer EveryShopGoodComment(Integer productid);
+    public Integer EveryShopGoodComment(Integer productid );
 
 
 

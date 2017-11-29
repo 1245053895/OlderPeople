@@ -60,7 +60,7 @@ public class SearchController {
         //MultipartFile file = multipartRequest.getFiles("errPic");//获取文件集合  对应  jquery $("#imageFile").get(0).files
         // 获得第1张图片（根据前台的name名称得到上传的文件）
         MultipartFile img = multipartRequest.getFile("mypic"); //对应  jquery $("#imageFile").get(0).files[index]
-        if(data!=null){
+        if(data!=null&&!data.equals("")){
             List<Word> words = WordSegmenter.seg(data); //对商品名进行分词处理
             List<String> w=new ArrayList<String>();
             for(Word word:words){

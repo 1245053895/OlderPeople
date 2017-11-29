@@ -56,6 +56,7 @@ $(document).ready(function(){
             timeout: 15000,
             data: fd,
             success: function (msg) {
+                $(".product_center").find("div").remove();
                 $(".result-list").hide(10,function () {
                     $(".result-list").show(10);
                     //$(".upload_image").hide();

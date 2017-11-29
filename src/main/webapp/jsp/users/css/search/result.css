@@ -35,6 +35,7 @@
     width: auto;
     height: 170px;
     filter:alpha(opacity=0.9);
+    border-radius: 5%;
     opacity:0.9;
 }
 .product_name{

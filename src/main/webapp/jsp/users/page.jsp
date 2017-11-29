@@ -552,21 +552,6 @@
 
 			</div>
 		</div>
-		<%--<div class="clearfix">--%>
-			<%--<div class="fr pc-search-g pc-search-gs">--%>
-				<%--<a href="#" class="fl " style="display:none">上一页</a>--%>
-				<%--<a class="current" href="#">1</a>--%>
-				<%--<a href="javascript:;">2</a>--%>
-				<%--<a href="javascript:;">3</a>--%>
-				<%--<a href="javascript:;">4</a>--%>
-				<%--<a href="javascript:;">5</a>--%>
-				<%--<a href="javascript:;">6</a>--%>
-				<%--<a href="javascript:;">7</a>--%>
-				<%--<span class="pc-search-di">…</span>--%>
-				<%--<a href="javascript:;">1088</a>--%>
-				<%--<a href="javascript:;" class="" title="使用方向键右键也可翻到下一页哦！">下一页</a>--%>
-			<%--</div>--%>
-		<%--</div>--%>
 	</div>
 </div>
 <div style="height:100px"></div>

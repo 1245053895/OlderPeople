@@ -194,10 +194,10 @@ public class Util {
         return index;
     }
 
-    public static int[] getMaxTen(double[] out) {
-        int o[]=new int[10];
+    public static int[] getMaxTen(double[] out,int num) {
+        int o[]=new int[3];
         int index=0;
-        for (int j=0;j<5;j++) {
+        for (int j=0;j<3;j++) {
             double temp=0;
             for (int i = 0; i < out.length; i++) {
                 if (out[i] > temp) {
@@ -206,7 +206,7 @@ public class Util {
                 }
             }
             out[index]=0;
-            o[j] = index;
+            o[j] = index+num;
         }
         return o;
     }

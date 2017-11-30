@@ -66,7 +66,7 @@
 
     <!--个人中心我的积分显示-->
     <select id="queryAllById" parameterType="Integer" resultType="totalCreditsById">
-        SELECT ProductPicture,ProductName,product.ProductId, ProductCredits,order.EndTime FROM
+        SELECT ProductPicture,ProductName,product.ProductId, ProductCredits,order.CreateTime FROM
                product,`order`,orderproduct  WHERE `order`.UserId=#{userid} AND orderproduct.OrderId=`order`.OrderId
                AND orderproduct.ProductId=product.ProductId;
     </select>
@@ -78,6 +78,25 @@
                product,`order`,orderproduct  WHERE `order`.UserId=#{userid} AND orderproduct.OrderId=`order`.OrderId
                AND orderproduct.ProductId=product.ProductId;
     </select>
+
+    <!--查询每一个用户所购买的所有商品的总积分后更新用户表中用户的总积分-->
+    <update id="updateCreditsCore" parameterType="Integer">
+            UPDATE user SET CreditsCore=(SELECT sum(ProductCredits) as CreditsCore
+            FROM product,`order`,orderproduct
+            WHERE `order`.UserId=#{userid}
+             AND orderproduct.OrderId=`order`.OrderId
+             AND orderproduct.ProductId=product.ProductId) WHERE UserId=#{userid}
+    </update>
+
+    <!--查询用户表中用户自己的总积分-->
+    <select id="queryCreditsCore" parameterType="Integer" resultType="Integer">
+        SELECT `user`.CreditsCore FROM user WHERE UserId=#{userid}
+    </select>
+
+   <!--兑换商品后更新用户表中用户的积分信息-->
+    <update id="shenyuCreditsCore" parameterType="integer">
+        UPDATE `user` SET CreditsCore=#{shenyuCredits} WHERE UserId=#{userid}
+    </update>
 
 
     <!--查询出上市商品的图片，名称，描述，价格，展示在商城的首页-->
@@ -204,14 +223,27 @@
 
 
     <!--选出商品的图片，价格，名称，评论数-->
-    <select id="queryTotalCommentshop" resultType="totalCreditsById" parameterType="Integer">
+    <select id="queryTotalCommentshop" resultType="totalCreditsById">
             SELECT comment.ProductId,productpicture, ProductName,ProductPrice,
                  COUNT(`UserId`) shopComment FROM `comment`,product WHERE `comment`.ProductId=product.ProductId
-                 GROUP BY `comment`.ProductId LIMIT #{startpage},15
-    </select>
+                 GROUP BY `comment`.ProductId
+                <if test="startRow != null">
+                    limit #{startRow},#{pageSize}
+                </if>
 
+    </select>
+    <select id="SelectCount" parameterType="totalCreditsById" resultType="Integer">
+      SELECT count(*)
+      from (SELECT * from comment group by ProductId) as a
+      WHERE GoodComment>=4;
+    </select>
+    <select id="queryTotalCommentshop1" resultType="totalCreditsById" parameterType="Integer">
+        SELECT comment.ProductId,productpicture, ProductName,ProductPrice,
+        COUNT(`UserId`) shopComment FROM `comment`,product WHERE `comment`.ProductId=product.ProductId
+        GROUP BY `comment`.ProductId
+    </select>
     <!--根据商品的id,查询出每个商品对应的好评度个数-->
-    <select id="EveryShopGoodComment" parameterType="Integer" resultType="Integer">
+    <select id="EveryShopGoodComment" parameterType="totalCreditsById" resultType="Integer">
         SELECT COUNT(GoodComment) onegood  FROM `comment` WHERE ProductId=#{productid} AND
          GoodComment>=4
     </select>
@@ -247,7 +279,7 @@
     <!--立即兑换订单确认页面的显示-->
     <!--查询商品的图片，名称，积分，价钱-->
     <select id="jifenPage" parameterType="Integer" resultType="product">
-        SELECT ProductPicture,ProductName,ProductDisabled,ProductPrice  FROM product WHERE ProductId=#{productid}
+        SELECT ProductId, ProductPicture,ProductName,ProductDisabled,ProductPrice  FROM product WHERE ProductId=#{productid}
     </select>
 
 

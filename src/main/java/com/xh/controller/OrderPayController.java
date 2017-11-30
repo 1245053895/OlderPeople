@@ -76,6 +76,7 @@ public class OrderPayController {
         List<Pay> pays= userLoginService.queryPayMethod();/*支付方式的页面显示*/
         model.addAttribute("pays",pays);
         //        Gainaddres gainaddres   Order order    Orderproduct orderproduct
+        gainaddres.setGainA("0");/*设置新增地址不是默认地址，为0*/
         String return1 = orderPayService.insertSelective1(gainaddres);
         Integer gainid = gainaddres.getGainid();  /*数据库返回的主键*/
         order.setGainid(gainid);       /*主键是另外一张表的外键需要插入*/
@@ -90,6 +91,7 @@ public class OrderPayController {
             }
             order.setStatus(1);       /* 订单状态 订单新建时为1,表示该订单是待发货的订单*/
             order.setEndtime(new Date());/*插入订单的结束时间，个人中心中个人积分的显示所需要*/
+            order.setPaystatus(1);/*设置支付状态为已支付*/
             String return2 = orderPayService.insertSelective2(order);
             Integer orderid = order.getOrderid();  /*数据库返回的主键*/
             orderproduct.setOrderid(orderid);       /*主键是另外一张表的外键需要插入*/
@@ -168,6 +170,7 @@ public class OrderPayController {
     public String jieSuan(HttpSession session,Model model, Gainaddres gainaddres, Order order, Orderproduct orderproduct) {
 
         //  存入数据库      Gainaddres gainaddres   Order order    Orderproduct orderproduct
+        gainaddres.setGainA("0");/*设置新插入的地址不是默认地址，为0*/
         String return1 = orderPayService.insertSelective1(gainaddres);
         Integer gainid = gainaddres.getGainid();  /*数据库返回的主键*/
         order.setGainid(gainid);       /*主键是另外一张表的外键需要插入*/

@@ -237,7 +237,7 @@
 						<li class="clearfix">
 							<div class="warn1"></div>
 							<div class="warn2">可用的积分</div>
-							<div class="warn2" style="color: #ea4949;font-size: 16px;border: none">${totalCreditsById.totalCredits}</div>
+							<div class="warn2" style="color: #ea4949;font-size: 16px;border: none">${totalCreditsById}</div>
 						</li>
 						<li class="clearfix">
 							<%--<div class="warn1"></div>--%>
@@ -259,7 +259,7 @@
 								<div class="warn2" style="margin-left: 15px;border: none;font-weight: normal;height: 60px">
 									<span style="font-size: 24px;font-weight: 700;text-align: center;color: #ea4949;line-height: 60px">+${totalCreditsById.productcredits}</span>
 								</div>
-								<div class="warn2" style="float: right;margin-right: -40px;border: none;font-weight: normal;height: 60px;width: 300px;line-height: 60px"><fmt:formatDate value="${totalCreditsById.endtime}" pattern="yyyy-MM-dd HH:mm:ss"/>
+								<div class="warn2" style="float: right;margin-right: -40px;border: none;font-weight: normal;height: 60px;width: 300px;line-height: 60px"><fmt:formatDate value="${totalCreditsById.createtime}" pattern="yyyy-MM-dd HH:mm:ss"/>
 								</div>
 							</li>
 						</c:forEach>

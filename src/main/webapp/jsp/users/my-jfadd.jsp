@@ -84,9 +84,6 @@
                         <input type="hidden" name="Checkout[addressState]" id="addrState"   value="0">
                         <!-- 收货地址 -->
                         <%--<div>--%>
-            <c:if test="${totalCreditsById.totalCredits}<${product.productdisabled}&&${totalCreditsById.totalCredits}==null">
-                   alert("您的积分不足以兑换此商品");
-            </c:if>
                         <%--</div>--%>
                         <!-- 收货地址 END-->
                         <div id="checkoutPayment">
@@ -156,15 +153,16 @@
                                                             </a>
                                                         </div>
                                                     </div>
-                                                    <input type="hidden" class="ace" name="productname" value="" />
-                                                    <input type="hidden" class="ace" name="productid" value="" />
+                                                    <input type="hidden" class="ace" name="productname" value="${product.productname}" />
+                                                    <input type="hidden" class="ace" name="productid" value="${product.productid}" />
+                                                    <input type="hidden" class="ace" name="productdisabled" value="${product.productdisabled}" />
                                                     <div  id="jisuan0" class="col col-2"  style="text-align: left;width: 25px;">${product.productdisabled}</div>
-                                                    <input type="hidden" class="ace" name="productprice" value="" />
+                                                    <input type="hidden" class="ace" name="productprice" value="${product.productprice}" />
                                                     <input type="hidden" class="ace" name="payprice" value="" />
-                                                    <div id="jisuan1" class="col col-3" style="text-align: left;width: 20px;">${totalCreditsById.totalCredits}</div>
-                                                    <input type="hidden" class="ace" name="shoppingcount" value="" />
+                                                    <div id="jisuan1" class="col col-3" style="text-align: left;width: 20px;">${totalCreditsById}</div>
+                                                    <input type="hidden" class="ace" name="shoppingcount" value="1" />
                                                     <div id="jisuan2" class="col col-4" style="text-align: left">${shenyuCredits}</div>
-                                                    <input type="hidden" class="ace" name="totalmoneycount" value="" />
+                                                    <input type="hidden" class="ace" name="totalmoneycount" value="0" />
                                                 </div>
                                             </dd>
 
@@ -189,6 +187,7 @@
                                                         var input_out = $(".Caddress").find(".add_mi");
                                                         if(i==input_out.length-1){
                                                             $(input_out[i]).after(html);
+                                                            click_add_mi();
                                                         }
                                                         console.log(i+"yyy"+input_out.length);
                                                     });
@@ -331,7 +330,7 @@
                                 <%--<input type="hidden" class="ace" name="userid" value="${sessionScope.user.userid}" />--%>
                                 <input type="hidden" class="ace" name="userid" value="5" />
                                 <%--这里传入userid  userid=${sessionScope.user.userid}  --%>
-                                <a href="javascript:duihuan('<%=basePath%>');" class="btn btn-primary">立即下单</a>
+                                <a href="javascript:duihuan('<%=basePath%>');" class="btn btn-primary">立即兑换</a>
 
                             </div>
                         </div>

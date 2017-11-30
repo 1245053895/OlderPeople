@@ -290,6 +290,7 @@
                                                         var input_out = $(".Caddress").find(".add_mi");
                                                         if(i==input_out.length-1){
                                                             $(input_out[i]).after(html);
+                                                            click_add_mi();
                                                     	}
                                                         console.log(i+"yyy"+input_out.length);
                                                     });

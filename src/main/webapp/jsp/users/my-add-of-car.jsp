@@ -288,6 +288,7 @@
 											            var input_out=$(".Caddress").find(".add_mi");
 														if(i==input_out.length-1){
 											                $(input_out[i]).after(html);
+                                                            click_add_mi();
 														}
                                                     });
 											        /*隐藏输入的框*/

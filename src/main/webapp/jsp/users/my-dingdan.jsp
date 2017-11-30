@@ -144,18 +144,22 @@
             })
 
         })
+
+
 	</script>
 
 </head>
 <body>
 
-<c:if test="${sessionScope.user==null}">
+<c:if test="${sessionScope.user==null}" >
 	<jsp:forward page="${pageContext.request.contextPath}/LoginPage.action"></jsp:forward>
 </c:if>
 
+
+
 <header id="pc-header">
+
 	<jsp:include page="/jsp/users/head.jsp"></jsp:include>
-	<%--</div>--%>
 	<!--  顶部    start-->
 	<div class="yHeader">
 		<!-- 导航   start  -->
@@ -173,6 +177,8 @@
 	</div>
 
 </header>
+<%--<input type="hidden" class="ace" name="shopcarid" value="+content.shopcarid+" />
+<input class="input"   name="orderamount" value="+content.orderamount+">--%>
 
 <!--
 <div class="containers center"><div class="pc-nav-item"><a href="#">首页</a> &gt; <a href="#">会员中心 </a> &gt; <a href="#">商城快讯</a></div></div>

@@ -58,7 +58,12 @@
             })
             $('#jian').click(function() {
                 $('input[name=num]').val(parseInt($('input[name=num]').val()) - 1);
-            })
+            });
+            click_add_mi();
+
+        });
+
+        function click_add_mi() {
             $('.Caddress .add_mi').click(function() {
                 $(this).css('background', 'url("${pageContext.request.contextPath}/jsp/users/shdz/images/mail_1.jpg") no-repeat').siblings('.add_mi').css('background', 'url("${pageContext.request.contextPath}/jsp/users/shdz/images/mail.jpg") no-repeat');
                 $(this).find("input").each(function () {
@@ -68,11 +73,13 @@
                 $(this).siblings("div[class='add_mi']").each(function () {
                     $(this).find("input").each(function () {
                         $(this).removeAttr("checked",false);
-                        console.log($(this).val());
+                        console.log("***"+$(this).val());
                     });
                 });
             });
-        })
+        }
+
+
         var x = Array();
 
         function func(a, b) {
@@ -307,7 +314,6 @@
      <c:forEach items="${gainaddresList}" var="gainaddres">
          <c:if test="${gainaddres.gainA==1}">
              <div class="add_mi" style="background:url('${pageContext.request.contextPath}/jsp/users/shdz/images/mail_1.jpg') no-repeat">
-                     <%--<input name="gainid" value="${gainaddres.gainid}" style="display: none">--%>
                  <p style="border-bottom:1px dashed #ccc;line-height:28px;"><input type="checkbox" checked="true" name="gainname" value="${gainaddres.gainname}" style="display: none">${gainaddres.gainname}</p>
                  <p><input type="checkbox" checked="true" name="gainaddress" value="${gainaddres.gainaddress}" style="display: none" >${gainaddres.gainaddress}</p>
                  <span>电话：<input type="checkbox" checked="true" name="gainmobile" value="${gainaddres.gainmobile}" style="display: none">${gainaddres.gainmobile}</span>
@@ -316,7 +322,6 @@
          </c:if>
          <c:if test="${gainaddres.gainA==0}">
              <div class="add_mi">
-                     <%--<input name="gainid" value="${gainaddres.gainid}" style="display: none">--%>
                  <p style="border-bottom:1px dashed #ccc;line-height:28px;"><input type="checkbox" name="gainname" value="${gainaddres.gainname}" style="display: none">${gainaddres.gainname}</p>
                  <p><input type="checkbox" name="gainaddress" value="${gainaddres.gainaddress}" style="display: none" >${gainaddres.gainaddress}</p>
                  <span>电话：<input type="checkbox" name="gainmobile" value="${gainaddres.gainmobile}" style="display: none">${gainaddres.gainmobile}</span>

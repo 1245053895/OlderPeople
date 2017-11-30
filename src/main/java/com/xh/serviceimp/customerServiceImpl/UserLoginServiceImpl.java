@@ -1,12 +1,15 @@
 package com.xh.serviceimp.customerServiceImpl;
 
+import com.xh.controller.page.Pagination;
 import com.xh.mapper.customerMapper.UserLoginMapper;
 import com.xh.po.*;
 import com.xh.po.vo.TotalCreditsById;
 import com.xh.service.customerService.UserLoginService;
+import org.apdplat.word.vector.T;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -16,6 +19,7 @@ import java.util.List;
 public class UserLoginServiceImpl implements UserLoginService {
     @Autowired
     private UserLoginMapper userLoginMapper;
+
     @Override
     public User selectAllNameAndPwd(String username) {
         User user= userLoginMapper.selectAllNameAndPwd(username);
@@ -157,11 +161,58 @@ public class UserLoginServiceImpl implements UserLoginService {
         userLoginMapper.AutoIncreaseOne(productid);
     }
 
-    @Override
-    public List<TotalCreditsById> queryTotalCommentshop(Integer startpage) {
-      List<TotalCreditsById> ShoptotalCreditsByIds= userLoginMapper.queryTotalCommentshop(startpage);
-        return ShoptotalCreditsByIds;
+
+    //查询分页对象
+    public Pagination selectPaginationByQuery( Integer pageNo) {
+        int pageSize =15;
+        TotalCreditsById totalCreditsById = new TotalCreditsById();
+        List<TotalCreditsById> totalCreditsByIds = userLoginMapper.queryTotalCommentshop1(totalCreditsById);
+        List<TotalCreditsById> pageTemp = new ArrayList<TotalCreditsById>();
+        int count= userLoginMapper.SelectCount(totalCreditsById);
+        if(pageNo*pageSize<=count) {
+            for (int i = (pageNo - 1) * pageSize; i <pageNo * pageSize; i++) {
+                Integer negood = userLoginMapper.EveryShopGoodComment(totalCreditsByIds.get(i).getProductid());
+                totalCreditsByIds.get(i).setTotalgoodcomment(negood);
+                pageTemp.add(totalCreditsByIds.get(i));
+            }
+        }
+//        for (TotalCreditsById totalCreditsById1 : totalCreditsByIds) {
+//            Integer onegood = userLoginMapper.EveryShopGoodComment(totalCreditsById1.getProductid());
+//            totalCreditsById1.setTotalgoodcomment(onegood);
+//           int r= totalCreditsById1.getTotalgoodcomment();
+//           totalCreditsById.setTotalcomment(r);
+//        }
+
+        totalCreditsById.setPageNo(Pagination.cpn(pageNo));
+        totalCreditsById.setPageSize(pageSize);
+        int a = totalCreditsById.getPageNo();
+        StringBuilder params = new StringBuilder();
+
+        Pagination pagination = new Pagination(totalCreditsById.getPageNo(),
+                totalCreditsById.getPageSize(),
+                userLoginMapper.SelectCount(totalCreditsById));
+
+        //设置结果集
+        //   pagination.setList(userLoginMapper.queryTotalCommentshop(totalCreditsById));
+       /* pagination.setList(userLoginMapper.queryTotalCommentshop(totalCreditsById));*/
+        pagination.setList(pageTemp);
+        //分页展示
+        String url = "/queryTotalCommentshop.action";
+        pagination.pageView(url, params.toString());
+        return pagination;
     }
+
+    @Override
+    public List<TotalCreditsById> queryTotalCommentshop1(TotalCreditsById totalCreditsById) {
+        List<TotalCreditsById> totalCreditsByIds = userLoginMapper.queryTotalCommentshop1(totalCreditsById);
+        return totalCreditsByIds;
+    }
+
+  /*  @Override
+    public List<TotalCreditsById> queryTotalCommentshop(TotalCreditsById totalCreditsById) {
+      List<TotalCreditsById> ShoptotalCreditsByIds= userLoginMapper.queryTotalCommentshop(totalCreditsById);
+        return ShoptotalCreditsByIds;
+    }*/
 
     @Override
     public Integer EveryShopGoodComment(Integer productid) {
@@ -219,6 +270,22 @@ public class UserLoginServiceImpl implements UserLoginService {
     public Product jifenPage(Integer productid) {
        Product product= userLoginMapper.jifenPage(productid);
         return product;
+    }
+
+    @Override
+    public void updateCreditsCore(Integer userid) {
+        userLoginMapper.updateCreditsCore(userid);
+    }
+
+    @Override
+    public Integer queryCreditsCore(Integer userid) {
+      Integer CreditsCores=  userLoginMapper.queryCreditsCore(userid);
+        return CreditsCores;
+    }
+
+    @Override
+    public void shenyuCreditsCore(Integer shenyuCredits, Integer userid) {
+        userLoginMapper.shenyuCreditsCore(shenyuCredits,userid);
     }
 
     @Override

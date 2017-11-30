@@ -2,6 +2,7 @@ package com.xh.mapper.customerMapper;
 
 import com.xh.po.*;
 import com.xh.po.vo.TotalCreditsById;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -92,10 +93,17 @@ public interface UserLoginMapper {
     public void AutoIncreaseOne(Integer productid);
 
     //选出商品的图片，价格，名称，评论数
-    public List<TotalCreditsById> queryTotalCommentshop(Integer startpage);
+    public List<TotalCreditsById> queryTotalCommentshop(TotalCreditsById totalCreditsById);
+
+    //选出商品的图片，价格，名称，评论数
+    public List<TotalCreditsById> queryTotalCommentshop1(TotalCreditsById totalCreditsById);
+
+    //统计数量
+    public Integer SelectCount(TotalCreditsById totalCreditsById);
 
     //根据商品的id,查询出每个商品对应的好评度个数
-    public Integer EveryShopGoodComment(Integer productid);
+    public Integer EveryShopGoodComment( Integer productid);
+
 
 
        //向用户表中根据用户的id更新用户最近一次登录的时间
@@ -126,5 +134,16 @@ public interface UserLoginMapper {
 
     //立即兑换订单确认页面的显示,查询商品的图片，名称，积分，价钱
     public Product jifenPage(Integer productid);
+
+
+
+     //查询每一个用户所购买的所有商品的总积分后更新用户表中用户的总积分
+    public void updateCreditsCore(Integer userid);
+
+    //查询用户表中用户自己的总积分
+    public Integer queryCreditsCore(Integer userid);
+
+    //兑换商品后更新用户表中用户的积分为剩余积分
+    public  void  shenyuCreditsCore(@Param("shenyuCredits")Integer shenyuCredits, @Param("userid")Integer userid);
 
 }

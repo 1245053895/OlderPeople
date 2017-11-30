@@ -22,7 +22,7 @@ public class UserLoginServiceImpl implements UserLoginService {
 
     @Override
     public User selectAllNameAndPwd(String username) {
-        User user= userLoginMapper.selectAllNameAndPwd(username);
+        User user = userLoginMapper.selectAllNameAndPwd(username);
         return user;
     }
 
@@ -53,61 +53,61 @@ public class UserLoginServiceImpl implements UserLoginService {
 
     @Override
     public List<TotalCreditsById> queryAllById(Integer userid) {
-      List<TotalCreditsById> totalCreditsByIds=  userLoginMapper.queryAllById(userid);
-      return  totalCreditsByIds;
+        List<TotalCreditsById> totalCreditsByIds = userLoginMapper.queryAllById(userid);
+        return totalCreditsByIds;
     }
 
     @Override
     public TotalCreditsById queryTotalCriditsById(Integer userid) {
-       TotalCreditsById totalCreditsById= userLoginMapper.queryTotalCriditsById(userid);
+        TotalCreditsById totalCreditsById = userLoginMapper.queryTotalCriditsById(userid);
         return totalCreditsById;
     }
 
     @Override
     public List<Product> selectproduct() {
-      List<Product>  products= userLoginMapper.selectproduct();
+        List<Product> products = userLoginMapper.selectproduct();
         return products;
     }
 
     @Override
     public List<TotalCreditsById> hotSaleProduct() {
-        List<TotalCreditsById> hotsaleproducts= userLoginMapper.hotSaleProduct();
+        List<TotalCreditsById> hotsaleproducts = userLoginMapper.hotSaleProduct();
         return hotsaleproducts;
     }
 
     @Override
     public List<TotalCreditsById> Max10Comment() {
-     List<TotalCreditsById> top10products=  userLoginMapper.Max10Comment();
+        List<TotalCreditsById> top10products = userLoginMapper.Max10Comment();
         return top10products;
     }
 
     @Override
     public List<TotalCreditsById> selectjiangkang() {
-        List<TotalCreditsById> jiangkang=  userLoginMapper.selectjiangkang();
+        List<TotalCreditsById> jiangkang = userLoginMapper.selectjiangkang();
         return jiangkang;
     }
 
     @Override
     public List<TotalCreditsById> selectjujia() {
-        List<TotalCreditsById> jujia=  userLoginMapper.selectjujia();
+        List<TotalCreditsById> jujia = userLoginMapper.selectjujia();
         return jujia;
     }
 
     @Override
     public List<TotalCreditsById> selectyule() {
-        List<TotalCreditsById> yule=  userLoginMapper.selectyule();
+        List<TotalCreditsById> yule = userLoginMapper.selectyule();
         return yule;
     }
 
     @Override
     public List<TotalCreditsById> IsCredExchange() {
-        List<TotalCreditsById>  creditproducts= userLoginMapper.IsCredExchange();
+        List<TotalCreditsById> creditproducts = userLoginMapper.IsCredExchange();
         return creditproducts;
     }
 
     @Override
     public List<TotalCreditsById> StoreRecommendation() {
-        List<TotalCreditsById> Recommendations= userLoginMapper.StoreRecommendation();
+        List<TotalCreditsById> Recommendations = userLoginMapper.StoreRecommendation();
         return Recommendations;
     }
 
@@ -118,36 +118,36 @@ public class UserLoginServiceImpl implements UserLoginService {
 
     @Override
     public Shopcar IsSuccessInsert(Shopcar shopcar) {
-      Shopcar shopcar1=  userLoginMapper.IsSuccessInsert(shopcar);
+        Shopcar shopcar1 = userLoginMapper.IsSuccessInsert(shopcar);
         return shopcar1;
     }
 
     @Override
     public void InsertFavorites(Favorites favorites) {
-      userLoginMapper.InsertFavorites(favorites);
+        userLoginMapper.InsertFavorites(favorites);
     }
 
     @Override
     public Shopcar queryShopCar(Shopcar shopcar) {
-     Shopcar shopcar1=   userLoginMapper.queryShopCar(shopcar);
+        Shopcar shopcar1 = userLoginMapper.queryShopCar(shopcar);
         return shopcar1;
     }
 
     @Override
     public Favorites queryFavorite(Favorites favorites) {
-       Favorites favorites1= userLoginMapper.queryFavorite(favorites);
+        Favorites favorites1 = userLoginMapper.queryFavorite(favorites);
         return favorites1;
     }
 
     @Override
     public Favorites IsSuccess(Favorites favorites) {
-       Favorites favorites2= userLoginMapper.IsSuccess(favorites);
+        Favorites favorites2 = userLoginMapper.IsSuccess(favorites);
         return favorites2;
     }
 
     @Override
     public Integer queryLookcount(Integer productid) {
-      Integer ProductLookCount=  userLoginMapper.queryLookcount(productid);
+        Integer ProductLookCount = userLoginMapper.queryLookcount(productid);
         return ProductLookCount;
     }
 
@@ -227,7 +227,7 @@ public class UserLoginServiceImpl implements UserLoginService {
 
     @Override
     public Integer IsUserLoginNull(Integer userid) {
-      Integer userlogincount=  userLoginMapper.IsUserLoginNull(userid);
+        Integer userlogincount = userLoginMapper.IsUserLoginNull(userid);
         return userlogincount;
     }
 
@@ -245,7 +245,7 @@ public class UserLoginServiceImpl implements UserLoginService {
 
     @Override
     public List<Pay> queryPayMethod() {
-      List<Pay>  pays= userLoginMapper.queryPayMethod();
+        List<Pay> pays = userLoginMapper.queryPayMethod();
         return pays;
     }
 
@@ -256,13 +256,13 @@ public class UserLoginServiceImpl implements UserLoginService {
 
     @Override
     public User queryUserPic(User user) {
-       User user1= userLoginMapper.queryUserPic(user);
+        User user1 = userLoginMapper.queryUserPic(user);
         return user1;
     }
 
     @Override
     public List<Gainaddres> selectGainAddressByUserId(Integer userid) {
-      List<Gainaddres> gainaddres=  userLoginMapper.selectGainAddressByUserId(userid);
+        List<Gainaddres> gainaddres = userLoginMapper.selectGainAddressByUserId(userid);
         return gainaddres;
     }
 
@@ -290,11 +290,9 @@ public class UserLoginServiceImpl implements UserLoginService {
 
     @Override
     public List<User> SelectAllQuerry() {
-        List<User> userList1 =userLoginMapper.SelectAllQuerry();
+        List<User> userList1 = userLoginMapper.SelectAllQuerry();
         return userList1;
     }
-
-
 
 
 }

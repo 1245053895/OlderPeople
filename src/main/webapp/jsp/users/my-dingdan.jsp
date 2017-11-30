@@ -188,7 +188,7 @@
 	<div class="member-center clearfix">
 		<div class="member-left fl">
 			<div class="member-apart clearfix">
-				<div class="fl"><a href="#"><img src="img/mem.png"></a></div>
+				<div class="fl"><a href="#"><img src="${user.userC}"></a></div>
 				<div class="fl">
 					<p>用户名：</p>
 					<p><a href="#">${user.userrealname}</a></p>
@@ -342,6 +342,9 @@
     })(jQuery);
 
     $(document).ready(function(){
+
+
+
         var flag=$.getUrlParam('flag')
         console.log(flag);
 		check(flag);

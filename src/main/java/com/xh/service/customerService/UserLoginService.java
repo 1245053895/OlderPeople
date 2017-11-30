@@ -91,7 +91,7 @@ public interface UserLoginService {
 
 
     //查询分页对象
-    public Pagination selectPaginationByQuery(Integer productid,Integer pageNo);
+    public Pagination selectPaginationByQuery(Integer pageNo);
     //  //选出商品的图片，价格，名称，评论数
    /* public List<TotalCreditsById> queryTotalCommentshop(TotalCreditsById totalCreditsById);*/
     public List<TotalCreditsById> queryTotalCommentshop1(TotalCreditsById totalCreditsById);

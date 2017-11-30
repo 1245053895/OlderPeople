@@ -335,9 +335,8 @@ public class CustomerLoginController {
 //好评专区
     @RequestMapping("/queryTotalCommentshop.action")
     public String queryTotalCommentshop( TotalCreditsById totalCreditsById,Model model,@RequestParam(defaultValue = "1") Integer pageNo,Integer productid){
-        Integer onegood=  userLoginService.EveryShopGoodComment(productid);
-        totalCreditsById.setTotalgoodcomment(onegood);
-        Pagination pagination=userLoginService.selectPaginationByQuery( productid,pageNo);
+
+        Pagination pagination=userLoginService.selectPaginationByQuery(pageNo);
         model.addAttribute("pagination",pagination);
         return "/jsp/users/rpzq.jsp";
     }

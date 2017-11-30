@@ -204,10 +204,14 @@
 
 
     <!--选出商品的图片，价格，名称，评论数-->
-    <select id="queryTotalCommentshop" resultType="totalCreditsById" parameterType="Integer">
+    <select id="queryTotalCommentshop" resultType="totalCreditsById">
             SELECT comment.ProductId,productpicture, ProductName,ProductPrice,
                  COUNT(`UserId`) shopComment FROM `comment`,product WHERE `comment`.ProductId=product.ProductId
-                 GROUP BY `comment`.ProductId limit #{startRow},#{pageSize}
+                 GROUP BY `comment`.ProductId
+                <if test="startRow != null">
+                    limit #{startRow},#{pageSize}
+                </if>
+
     </select>
     <select id="SelectCount" parameterType="totalCreditsById" resultType="Integer">
       SELECT count(*)

@@ -21,7 +21,7 @@ public class ProductCreditsServiceimpl implements ProductCreditsService{
     public Pagination selectPaginationByQuery( Integer productTypeId,Integer pageNo){
        TotalCreditsById totalCreditsById=new TotalCreditsById();
        totalCreditsById.setPageNo(Pagination.cpn(pageNo));
-       totalCreditsById.setPageSize(4);
+       totalCreditsById.setPageSize(8);
        totalCreditsById.setProducttypeid(productTypeId);
 
 

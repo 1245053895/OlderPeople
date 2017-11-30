@@ -92,7 +92,8 @@ public interface UserLoginMapper {
     public void AutoIncreaseOne(Integer productid);
 
     //选出商品的图片，价格，名称，评论数
-    public List<TotalCreditsById> queryTotalCommentshop(List<TotalCreditsById>totalCreditsById);
+    public List<TotalCreditsById> queryTotalCommentshop(TotalCreditsById totalCreditsById);
+
     //选出商品的图片，价格，名称，评论数
     public List<TotalCreditsById> queryTotalCommentshop1(TotalCreditsById totalCreditsById);
 

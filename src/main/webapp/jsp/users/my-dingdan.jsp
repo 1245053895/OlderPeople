@@ -144,14 +144,17 @@
             })
 
         })
+
+
 	</script>
 
 </head>
 <body>
 
-<c:if test="${sessionScope.user==null}">
+<c:if test="${sessionScope.user==null}" >
 	<jsp:forward page="${pageContext.request.contextPath}/LoginPage.action"></jsp:forward>
 </c:if>
+
 
 
 <header id="pc-header">
@@ -339,6 +342,9 @@
     })(jQuery);
 
     $(document).ready(function(){
+
+
+
         var flag=$.getUrlParam('flag')
         console.log(flag);
 		check(flag);

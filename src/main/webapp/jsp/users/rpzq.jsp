@@ -42,6 +42,7 @@
             </dl>
         </div>
 <c:forEach items="${pagination.list}" var="totalCreditsById" varStatus="status">
+
     <div class="item <c:if test='${status.index%5==4}'>last</c:if>">
             <dl>
                 <dt><a href="${pageContext.request.contextPath}/xiangqing.action?productid=${totalCreditsById.productid}"><img src="${totalCreditsById.productpicture}"/></a></dt>
@@ -49,8 +50,11 @@
             </dl>
             <p class="p01"><font>￥</font><font>${totalCreditsById.productprice}</font></p>
             <p class="p02"><a href="#">${totalCreditsById.productname}</a></p>
-            <p class="p03"><span class="sp01">评价数：<b>${totalCreditsById.shopComment}</b></span><span>好评数：<strong>${totalCreditsById.totalgoodcomment}</strong></span></p>
+
+                  <p class="p03"><span class="sp01">评价数：<b>${totalCreditsById.shopComment}</b></span><span>
+                      好评数：<strong>${totalCreditsById.totalgoodcomment}</strong></span></p>
         </div>
+
 </c:forEach>
 
        <%-- <div class="item">

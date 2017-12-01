@@ -267,6 +267,28 @@ public class UserLoginServiceImpl implements UserLoginService {
     }
 
     @Override
+    public Product jifenPage(Integer productid) {
+       Product product= userLoginMapper.jifenPage(productid);
+        return product;
+    }
+
+    @Override
+    public void updateCreditsCore(Integer userid) {
+        userLoginMapper.updateCreditsCore(userid);
+    }
+
+    @Override
+    public Integer queryCreditsCore(Integer userid) {
+      Integer CreditsCores=  userLoginMapper.queryCreditsCore(userid);
+        return CreditsCores;
+    }
+
+    @Override
+    public void shenyuCreditsCore(Integer shenyuCredits, Integer userid) {
+        userLoginMapper.shenyuCreditsCore(shenyuCredits,userid);
+    }
+
+    @Override
     public List<User> SelectAllQuerry() {
         List<User> userList1 = userLoginMapper.SelectAllQuerry();
         return userList1;

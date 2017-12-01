@@ -500,3 +500,75 @@ body{width: 100%;overflow-x:hidden;}
 .float ul li .a04{background-image:url(../images/ico3.png);background-color: transparent;}
 .float ul li a:hover{background-color:#ee4644}
 .float ul li p a:hover{background-color: white;}
+
+#float {
+	width: 82px;
+	position: fixed;
+	right: 50%;
+	top: 55%;
+	margin-right:-670px;
+	-webkit-box-shadow: #DDD 0px 1px 5px;
+	-moz-box-shadow: #DDD 0px 1px 5px;
+	box-shadow: #DDD 0px 1px 5px;
+}
+#float .consult {
+	background-image: url(../jfsc/images/float_icon.png);
+	background-repeat: no-repeat;
+	background-position: center -77px;
+	background-size: 230px 230px;
+	display: block;
+	height: 76px;
+	width: 82px;
+}
+
+#float .cart {
+	background-image: url(../jfsc/images/float_icon.png);
+	background-repeat: no-repeat;
+	background-position: center bottom;
+	background-size: 230px 230px;
+	display: block;
+	height: 16px;
+	width: 16px;
+	font-size: 12px;
+	line-height: 16px;
+	color: #45BDFF;
+	text-align: center;
+	padding-top: 15px;
+	padding-right: 18px;
+	padding-bottom: 47px;
+	padding-left: 48px;
+}
+#float .cart1 {
+	background-image: url(../jfsc/images/float_icon.png);
+	background-repeat: no-repeat;
+	background-position: center top;
+	background-size:230px 230px;
+	display: block;
+	height: 16px;
+	width: 16px;
+	font-size: 12px;
+	line-height: 16px;
+	color: #45BDFF;
+	text-align: center;
+	padding-top: 15px;
+	padding-right: 18px;
+	padding-bottom: 47px;
+	padding-left: 48px;
+}
+#float .btn_top {
+	background-image: url(../jfsc/images/float_top.gif);
+	background-repeat: no-repeat;
+	background-position: center top;
+	display: block;
+	height: 39px;
+	width: 82px;
+	-webkit-transition: all 0s ease-in-out;
+	-moz-transition: all 0s ease-in-out;
+	-o-transition: all 0s ease-in-out;
+	transition: all 0s ease-in-out;
+}
+#float .btn_top:hover {
+	background-image: url(../jfsc/images/float_top.gif);
+	background-repeat: no-repeat;
+	background-position: center bottom;
+}

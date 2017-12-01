@@ -10,8 +10,9 @@
 }
 /*搜索结果*/
 .product_center{
+    overflow: scroll;
     width: 1200px;
-    height: 100%;
+    height: 700px;
     margin: 0px auto;
 }
 .product_list{
@@ -34,6 +35,7 @@
     width: auto;
     height: 170px;
     filter:alpha(opacity=0.9);
+    border-radius: 5%;
     opacity:0.9;
 }
 .product_name{
@@ -60,13 +62,50 @@
     text-shadow:5px 2px 6px #000;
 }
 
-/*广告位*/
-.product_advertising{
-    position: absolute;
+/*Loading*/
+.loading{
+    display: none;
+    position: fixed;
     width: 250px;
     height: 500px;
-    top: -100px;
-    left: -150px;
-    background-color: rgba(255,0,0,0.8);
+    top:10%;
+    left: 45%;
     z-index: 10000;
 }
+
+/*结果建议*/
+.result-suggest{
+    display: none;
+    position: fixed;
+    width: 450px;
+    height: 150px;
+    margin-top: 80px;
+}
+.result-suggest ul{
+    width: 390px;
+    margin: 0 auto;
+    background-color: rgba(255,255,255,0.9);
+}
+.result-suggest li {
+    width: 390px;
+    height: 25px;
+    font-size: 18px;
+    color: #F2F0F1;
+    background-color: rgba(0,0,0,0.4);
+}
+
+
+/*弹幕*/
+/*.barrage{
+    display: block;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+}
+.barrage_body{
+    margin: 10% auto;
+    width: 100%;
+    height:300px;
+    background-color: rgba(20,20,20,0.8);
+    z-index: 99999999999;
+}*/

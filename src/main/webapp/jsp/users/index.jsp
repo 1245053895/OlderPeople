@@ -24,8 +24,12 @@
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/jsp/users/css/style.css">
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/jsp/users/css/media_index.css">
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/jsp/users/css/mod.css">
+
 <%--	<link href="${pageContext.request.contextPath}/jsp/users/jfsc/css/index/style.css" rel="stylesheet" type="text/css">
 	<link href="${pageContext.request.contextPath}/jsp/users/jfsc/css/index/top.css" rel="stylesheet" type="text/css">--%>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/jsp/users/jfsc/js/jquery.min.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/jsp/users/jfsc/js/jquery.cookie.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/jsp/users/jfsc/js/juzi.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/jsp/users/js/jquery.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/jsp/users/js/index.js"></script>
 	<script type="text/javascript">
@@ -103,6 +107,60 @@
             });
 
         });
+	</script>
+
+	<script>
+        $(function(){
+            //代码初始化
+            var size=$('.rotaion_list li').size();
+            for (var i = 2; i <= size; i++) {
+                var li="<span>"+i+"</span >";
+                $('.yx-rotation-focus').append(li);
+            };
+            //手动控制轮播图
+            $('.rotaion_list li').eq(0).show();
+            $('.yx-rotation-focus span').eq(0).addClass('hover');
+            $('.yx-rotation-focus span').mouseover(function(){
+                $(this).addClass('hover').siblings().removeClass('hover');
+                var index=$(this).index();
+                i=index;
+                $('.rotaion_list li').eq(index).stop().fadeIn(300).siblings().stop().fadeOut(300);
+            })
+            //自动播放
+            var i=0;
+            var t=setInterval(move,1500);
+            //自动播放核心函数
+            function move(){
+                i++;
+                if(i==size){
+                    i=0;
+                }
+                $('.yx-rotation-focus span').eq(i).addClass('hover').siblings().removeClass('hover');
+                $('.rotaion_list li').eq(i).fadeIn(300).siblings().fadeOut(300);
+            }
+
+            //向右播放核心函数
+            function moveL(){
+                i--;
+                if(i==-1){
+                    i=size-1;
+                }
+                $('.yx-rotation-focus span').eq(i).addClass('hover').siblings().removeClass('hover');
+                $('.rotaion_list li').eq(i).fadeIn(300).siblings().fadeOut(300);
+            }
+            $('.yx-rotaion .left').click(function(){
+                moveL();
+            })
+            $('.yx-rotaion .right').click(function(){
+                move();
+            })
+            //鼠标移入移除
+            $('.yx-rotaion').hover(function(){
+                clearInterval(t);
+            },function(){
+                t=setInterval(move,1500);
+            })
+        })
 	</script>
 </head>
 <body>
@@ -186,6 +244,7 @@
 		</div>
 		<!-- 导航   end  -->
 	</div>
+</header>
 	<section>
 		<div class="wraper">
 			<section id="main" class="site-main clear_bottom">
@@ -976,8 +1035,8 @@
 									<li class="col">
 										<div class="row">
 											<dl>
-												<dt><a href="${pageContext.request.contextPath}/xiangqing.action?productid=${Recomends.productid}" ><img src="${Recomends.productpicture}"></a></dt>
-												<dd class="name"><a  href="${pageContext.request.contextPath}/xiangqing.action?productid=${Recomends.productid}">${Recomends.productname}</a></dd>
+												<dt><img src="${Recomends.productpicture}"></dt>
+												<dd class="name">${Recomends.productname}</dd>
 												<dd class="price">${Recomends.productprice}</dd>
 												<dd class="cmt">浏览次数${Recomends.productlookcount}</dd>
 											</dl>
@@ -1001,8 +1060,8 @@
 										<li class="col">
 											<div class="row">
 												<dl>
-													<dt><a href="${pageContext.request.contextPath}/xiangqing.action?productid=${Recomends.productid}" ><img src="${Recomends.productpicture}"></a></dt>
-													<dd class="name"><a  href="${pageContext.request.contextPath}/xiangqing.action?productid=${Recomends.productid}">${Recomends.productname}</a></dd>
+													<dt><img src="${Recomends.productpicture}"></dt>
+													<dd class="name">${Recomends.productname}</dd>
 													<dd class="price">${Recomends.productprice}</dd>
 													<dd class="cmt">浏览次数${Recomends.productlookcount}</dd>
 												</dl>
@@ -1097,7 +1156,13 @@
 		</div>
 
 	</section>
-
+	<!-- 右侧浮动 -->
+	<div id="float">
+		<a href="${pageContext.request.contextPath}/LoginServlet?username=${sessionScope.user.username}" class="consult" target="_blank"></a>
+		<a href="${pageContext.request.contextPath}/jsp/users/my-dingdan.jsp?flag=2" class="cart"></a>
+		<a href="${pageContext.request.contextPath}/jsp/users/my-dingdan.jsp?flag=1" class="cart1"></a>
+		<a href="javascript:void(0)" class="btn_top" style="display: none;"></a>
+	</div>
 
 
 <div style="height:100px"></div>
@@ -1190,6 +1255,6 @@
         $(this).find(".nav a").removeClass("hover");
     })
 </script>
-</header>
+
 </body>
 </html>

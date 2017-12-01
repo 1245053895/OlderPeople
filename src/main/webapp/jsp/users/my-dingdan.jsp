@@ -544,7 +544,7 @@
                             break;
                         case 1:
                             htmlStr3 += "<div class='ci5 height" + index + "'><p>待发货</p><p><a href='#'>订单分析</a></p></div>\n";
-                            htmlStr3 += "<div class='ci5 ci8 height" + index + "'><p><a href='#' class='member-touch'>提醒发货</a> </p> <p><a class='cancelOrder' href='javascript:cancelOrder("+ content.orderid +" );'>取消订单</a> </p></div>\n";
+                            htmlStr3 += "<div class='ci5 ci8 height" + index + "'><p><a href='#' class='member-touch'>提醒发货</a> </p> <p><a class='cancelOrder flag"+ content.orderid +"' href='javascript:cancelOrder("+ content.orderid +");'>取消订单</a> </p></div>\n";
                             break;
                         case 2:
                             htmlStr3 += "<div class='ci5 height" + index + "'><p>已发货</p>"+wl+" <p><a href='#'>订单分析</a></p></div>\n";
@@ -560,7 +560,7 @@
                             break;
                         case 5:
                             htmlStr3 += "<div class='ci5 height" + index + "'><p>拒收</p>"+wl+" <p><a href='#'>订单分析</a></p></div>\n";
-                            htmlStr3 += "<div class='ci5 ci8 height" + index + "'><p><a href='#' class='member-touch'>拒收理由</a> </p></div>\n";
+                            htmlStr3 += "<div class='ci5 ci8 height" + index + "'><p><a href='javascript:refuse(" + content.orderid + ");' class='member-touch'>拒收理由</a> </p></div>\n";
                             break;
                         case 6:
                             htmlStr3 += "<div class='ci5 height" + index + "'><p>申请退货</p>"+wl+" <p><a href='#'>订单分析</a></p></div>\n";
@@ -687,92 +687,97 @@
             $(".loading").find("img").css("display", "none");
             $(".loading").find("div").css("display", "none");
             $("#id_head").css("visibility", "visible");
-            $.each(data, function (index, content) {
-                console.log(content.shoppingcount);
-                var html="<li class='module' value='"+content.productid+"'>\n" +
-                    "          <ul class='shop-tools clearfix'>\n" ;
+            if(data!=null){
+                $.each(data, function (index, content) {
+                    console.log(content.shoppingcount);
+                    var html="<li class='module' value='"+content.productid+"'>\n" +
+                        "          <ul class='shop-tools clearfix'>\n" ;
 
-				if(content.isOnShopcar==0){
-                    html+="<li class='shop-tools-item1' style='background-position:-20px -20px;' value='"+content.productid+"' title='加入购物车'>置顶</li>";
-				}
-
-                html+="           <li class='shop-tools-item2' style='background-position:4px -98px;' value='"+content.productid+"' title='删除商品'>删除</li>\n" +
-                    "          </ul>\n" +
-                    "          <a href='${pageContext.request.contextPath}/xiangqing.action?productid="+content.productid+"' target='blank'><img src='/"+content.productpicture+"' style='overflow:hidden;width:125px;height: 125px' title='"+content.productname+"'></a>\n" +
-                    "          <a href='${pageContext.request.contextPath}/xiangqing.action?productid="+content.productid+"' target='blank'>"+content.productname+"</a>\n" +
-                    "          <p>￥"+content.productprice+" <i style='text-decoration: line-through;color: #666a6e;font-size: 11px;'>￥"+content.marketprice+"</i></p>\n" +
-                    "       </li>";
-
-                $("#favorites").append(html);
-
-                if(index==0){
-                    var i=0
-                    $("#H-table").find("li").each(function(){
-                        if(i==0){
-                            $(this).find("a").text("全部商品("+content.countNumb[0]+")");
-                        }
-                        if(i==1){
-                            $(this).find("a").text("热销商品("+content.countNumb[1]+")");
-                        }
-                        /*if(i==2){
-                            $(this).find("a").text("新品("+content.countNumb[2]+")");
-                        }*/
-                        if(i==3){
-                            $(this).find("a").text("已下架("+content.countNumb[3]+")");
-                        }
-                        if(i==2){
-                            $(this).find("a").text("积分兑换("+content.countNumb[4]+")");
-                        }
-                        i++;
-                    });
-                }
-            });
-
-            //商品移入购物车
-            $(".shop-tools-item1").click(function(){
-                var id = new Array();
-                id.push($(this).val());
-                id.push(1);//默认一个商品
-                //var s=$(this).siblings("li").val();
-                var data=ajax("insertShiftToCart.action",id);
-                if(data){
-                    $(this).remove();
-                    alert("移入成功!");
-                }else {
-                    alert("移入失败!");
-                }
-
-            });
-            //一键加入购物车
-            $(".member-shops").click(function () {
-                var flag=true;
-                var count=0;
-                $("li[class='module']").each(function(){
-                    if(!!$(this).find(".shop-tools-item1").val()){ //如果购物车中没有该商品 则加入购物车
-						count++;
-                        var id = new Array();
-                        id.push($(this).val());
-                        id.push(1);//默认一个商品
-                        var data=ajax("insertShiftToCart.action",id);
-                        if(data){
-                            flag=flag&&true;
-                        }else {
-                            flag=flag&&false;
-                        }
-                        $(this).find(".shop-tools-item1").remove();
-                	}
-                });
-                if(count>0){
-                    if(flag){
-                        alert("加入成功!");
-                    }else {
-                        alert("加入失败!");
+                    if(content.isOnShopcar==0){
+                        html+="<li class='shop-tools-item1' style='background-position:-20px -20px;' value='"+content.productid+"' title='加入购物车'>置顶</li>";
                     }
-				}else{
-                    alert("这些商品已经在购物车中!不要重复加入!")
-				}
 
-            })
+                    html+="           <li class='shop-tools-item2' style='background-position:4px -98px;' value='"+content.productid+"' title='删除商品'>删除</li>\n" +
+                        "          </ul>\n" +
+                        "          <a href='${pageContext.request.contextPath}/xiangqing.action?productid="+content.productid+"' target='blank'><img src='/"+content.productpicture+"' style='overflow:hidden;width:125px;height: 125px' title='"+content.productname+"'></a>\n" +
+                        "          <a href='${pageContext.request.contextPath}/xiangqing.action?productid="+content.productid+"' target='blank'>"+content.productname+"</a>\n" +
+                        "          <p>￥"+content.productprice+" <i style='text-decoration: line-through;color: #666a6e;font-size: 11px;'>￥"+content.marketprice+"</i></p>\n" +
+                        "       </li>";
+
+                    $("#favorites").append(html);
+
+                    if(index==0){
+                        var i=0
+                        $("#H-table").find("li").each(function(){
+                            if(i==0){
+                                $(this).find("a").text("全部商品("+content.countNumb[0]+")");
+                            }
+                            if(i==1){
+                                $(this).find("a").text("热销商品("+content.countNumb[1]+")");
+                            }
+                            /*if(i==2){
+                                $(this).find("a").text("新品("+content.countNumb[2]+")");
+                            }*/
+                            if(i==3){
+                                $(this).find("a").text("已下架("+content.countNumb[3]+")");
+                            }
+                            if(i==2){
+                                $(this).find("a").text("积分兑换("+content.countNumb[4]+")");
+                            }
+                            i++;
+                        });
+                    }
+                });
+
+                //商品移入购物车
+                $(".shop-tools-item1").click(function(){
+                    var id = new Array();
+                    id.push($(this).val());
+                    id.push(1);//默认一个商品
+                    //var s=$(this).siblings("li").val();
+                    var data=ajax("insertShiftToCart.action",id);
+                    if(data){
+                        $(this).remove();
+                        alert("移入成功!");
+                    }else {
+                        alert("移入失败!");
+                    }
+
+                });
+                //一键加入购物车
+                $(".member-shops").click(function () {
+                    var flag=true;
+                    var count=0;
+                    $("li[class='module']").each(function(){
+                        if(!!$(this).find(".shop-tools-item1").val()){ //如果购物车中没有该商品 则加入购物车
+                            count++;
+                            var id = new Array();
+                            id.push($(this).val());
+                            id.push(1);//默认一个商品
+                            var data=ajax("insertShiftToCart.action",id);
+                            if(data){
+                                flag=flag&&true;
+                            }else {
+                                flag=flag&&false;
+                            }
+                            $(this).find(".shop-tools-item1").remove();
+                        }
+                    });
+                    if(count>0){
+                        if(flag){
+                            alert("加入成功!");
+                        }else {
+                            alert("加入失败!");
+                        }
+                    }else{
+                        alert("这些商品已经在购物车中!不要重复加入!")
+                    }
+
+                });
+            }else {
+                alert("您没有收藏任何商品！");
+            }
+
 
 
             //一键移除收藏夹商品
@@ -1061,11 +1066,31 @@
         return(null);
     }
 
-    function cancelOrder(orderId) {
+
+    function refuse(orderId) {
+        var liyou=prompt("请填写理由","请在这里填写");
+        if(liyou!=null){
+            var data=new Array();
+            data.push(orderId);
+            data.push(liyou);
+            var flag=ajax("updataRefuseByOrderId.action",data);
+            if(flag==1){
+                alert("感谢填写！");
+                //$(".cancelOrder").hide();
+            }else {
+                alert("填写失败！");
+            }
+		}else {
+            alert("请填写内容！");
+		}
+
+    }
+    function cancelOrder(orderId,obj) {
 		var flag=ajax("updataOrderStatusZero.action",orderId);
 		if(flag==1){
+            $(".flag"+orderId).parent().hide();
 		    alert("取消成功！");
-		    $(".cancelOrder").hide();
+		    //$(".cancelOrder").hide();
 		}else {
             alert("取消失败！");
 		}

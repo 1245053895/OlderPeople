@@ -47,33 +47,31 @@
                         积分商品分类
                     </div>
                     <ul class="aside_list">
-                        <c:forEach items="${productTypeExtendsTraver}" var="productTypeExtendsTravers">
-                            <li>
-                                <a href="${pageContext.request.contextPath}/SelectCreditsProductQuerry.action?productTypeId=${productTypeExtendsTravers.producttypeid}" class="tra">
-                                   出行/${productTypeExtendsTravers.producttypename}...
-                                    <br>
-                                    <span class="en">
-                                            Travel
-                                        </span>
-                                </a>
-                            </li>
-                        </c:forEach>
 
+
+                        <li>
+
+                            <a href="#" class="tra">
+                                <c:forEach items="${productTypeExtendsTraver}" var="productTypeExtendsTravers" varStatus="status">
+                                    <div style="margin-left: 20px;">
+                                    <a href="${pageContext.request.contextPath}/SelectCreditsProductQuerry.action?productTypeId=${productTypeExtendsTravers.producttypeid}" style="float: left">
+                                            ${productTypeExtendsTravers.producttypename}...
+                                    </a>
+                                    </div>
+                                </c:forEach>
+                            </a>
+                        </li>
 
                         <li>
 
                             <a href="#" class="edu">
                                 <c:forEach items="${productTypeExtendsHealth}" var="productTypeExtendsHealths" varStatus="status">
-
+                                    <div style="margin-left: 20px;">
                                        <a href="${pageContext.request.contextPath}/SelectCreditsProductQuerry.action?productTypeId=${productTypeExtendsHealths.producttypeid}" style="float: left">
                                            ${productTypeExtendsHealths.producttypename}...
                                        </a>
-
+                                    </div>
                                 </c:forEach>
-                                <br>
-                                <span class="en">
-
-                                    </span>
                             </a>
                         </li>
 
@@ -81,14 +79,12 @@
                         <li>
                             <a href="#" class="spe">
                                 <c:forEach items="${productTypeExtendsLife}" var="productTypeExtendsLifes" varStatus="status">
+                                    <div style="margin-left: 20px;">
                                     <a href="${pageContext.request.contextPath}/SelectCreditsProductQuerry.action?productTypeId=${productTypeExtendsLifes.producttypeid}" style="float:left">
                                         ${productTypeExtendsLifes.producttypename}...
                                     </a>
+                                    </div>
                                 </c:forEach>
-                                <br>
-                                <span class="en">
-
-                                </span>
                             </a>
                         </li>
 
@@ -191,7 +187,7 @@
                         </div>
                         <div class="spe_box">
                             <div class="spe_title">
-                                <p class="font20 font_b">
+                                <p class="font20">
                                     <a href="${pageContext.request.contextPath}/xiangqing.action?productid=${productLists1.productid}">${productLists1.productname}</a>
                                 </p>
                                 <br style="height: 5px">

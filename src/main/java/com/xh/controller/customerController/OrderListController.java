@@ -194,7 +194,11 @@ public class OrderListController  {
         countNumb[2]=countNew;
         countNumb[3]=countdown;
         countNumb[4]=countdisabled;
-        favoritesCustoms.get(0).setCountNumb(countNumb);  //将统计结果存入第一个对象中
+        if(favoritesCustoms.size()==0){
+            return null;
+        }else{
+            favoritesCustoms.get(0).setCountNumb(countNumb);  //将统计结果存入第一个对象中
+        }
         return favoritesCustoms;
     }
 
@@ -347,6 +351,14 @@ public class OrderListController  {
         return map;
     }
 
+
+    @RequestMapping(value = "/updataRefuseByOrderId", method ={ RequestMethod.GET,RequestMethod.POST})
+    public @ResponseBody Map updataRefuseByOrderId(HttpSession session , Model model, String[] id){
+        Map map=new HashMap();
+        Boolean flag=orderListService.updataRefuseByOrderId(Integer.valueOf(id[0]),id[1]);//将对应订单状态变为0 （关闭）
+        map.put("d",flag);
+        return map;
+    }
 
 
 

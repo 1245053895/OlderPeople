@@ -187,12 +187,25 @@
     </update>
 
     <!--查询对应状态的订单-->
-    <select id="selectOrderIdById" parameterType="int" resultType="order">
+    <select id="selectOrderIdById" parameterType="int" resultType="com.xh.po.Order">
         SELECT
           *
         FROM `order` o
         WHERE
           o.OrderId=#{orderid} AND o.Status=#{status}
+    </select>
+
+
+    <update id="updataRefuseByOrderId" parameterType="string">
+        UPDATE `order` SET Order_A=#{liyou} WHERE OrderId=#{orderid}
+    </update>
+
+    <select id="selectRefuseByOrderId" parameterType="string" resultType="com.xh.po.Order">
+        SELECT
+          *
+        FROM `order` o
+        WHERE
+          o.OrderId=#{orderid} AND o.Order_A=#{liyou}
     </select>
 
 </mapper>

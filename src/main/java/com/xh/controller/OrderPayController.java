@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -66,13 +67,16 @@ public class OrderPayController {
 
     //商品详情的结算
     @RequestMapping(value = "/jieSuan.action", method = {RequestMethod.GET, RequestMethod.POST})
-    public String jieSuan(HttpServletRequest request,Model model, String[] productid, Gainaddres gainaddres, Order order, Orderproduct orderproduct
+    public String jieSuan(HttpSession session,HttpServletRequest request,Model model, String[] productid, Gainaddres gainaddres, Order order, Orderproduct orderproduct
             , String[] productname) {
+        User user=(User)session.getAttribute("user");
+        gainaddres.setUserid(user.getUserid());
         model.addAttribute("productname", productname);  /*保存商品名称*/
         model.addAttribute("totalcredit", order.getTotalcredit());  /*保存用户此次购买可获得的积分*/
         List<Pay> pays= userLoginService.queryPayMethod();/*支付方式的页面显示*/
         model.addAttribute("pays",pays);
         //        Gainaddres gainaddres   Order order    Orderproduct orderproduct
+        gainaddres.setGainA("0");/*设置新增地址不是默认地址，为0*/
         String return1 = orderPayService.insertSelective1(gainaddres);
         Integer gainid = gainaddres.getGainid();  /*数据库返回的主键*/
         order.setGainid(gainid);       /*主键是另外一张表的外键需要插入*/
@@ -86,6 +90,8 @@ public class OrderPayController {
                 order.setRealpay(order.getAmountpay() + 15);
             }
             order.setStatus(1);       /* 订单状态 订单新建时为1,表示该订单是待发货的订单*/
+            order.setEndtime(new Date());/*插入订单的结束时间，个人中心中个人积分的显示所需要*/
+            order.setPaystatus(1);/*设置支付状态为已支付*/
             String return2 = orderPayService.insertSelective2(order);
             Integer orderid = order.getOrderid();  /*数据库返回的主键*/
             orderproduct.setOrderid(orderid);       /*主键是另外一张表的外键需要插入*/
@@ -164,6 +170,7 @@ public class OrderPayController {
     public String jieSuan(HttpSession session,Model model, Gainaddres gainaddres, Order order, Orderproduct orderproduct) {
 
         //  存入数据库      Gainaddres gainaddres   Order order    Orderproduct orderproduct
+        gainaddres.setGainA("0");/*设置新插入的地址不是默认地址，为0*/
         String return1 = orderPayService.insertSelective1(gainaddres);
         Integer gainid = gainaddres.getGainid();  /*数据库返回的主键*/
         order.setGainid(gainid);       /*主键是另外一张表的外键需要插入*/
@@ -178,6 +185,7 @@ public class OrderPayController {
                 order.setRealpay(order.getAmountpay());
             }
             order.setStatus(1);
+            order.setEndtime(new Date());/*插入订单的结束时间，个人中心中个人积分的显示所需要*/
             String return2 = orderPayService.insertSelective2(order);
             Integer orderid = order.getOrderid();  /*数据库返回的主键*/
             orderproduct.setOrderid(orderid);       /*主键是另外一张表的外键需要插入*/

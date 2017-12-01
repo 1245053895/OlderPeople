@@ -302,5 +302,16 @@
         </trim>
     </insert>
 
+    <select id="IsGainAddress" parameterType="gainaddres" resultType="gainaddres">
+        SELECT *
+        FROM gainaddres g
+        WHERE
+          g.UserId=#{userid}
+          AND g.GainAddress LIKE #{gainaddress}
+          AND g.GainCode LIKE #{gaincode}
+          AND g.GainMobile LIKE #{gainmobile}
+          AND g.GainName LIKE #{gainname}
+    </select>
+
 
 </mapper>

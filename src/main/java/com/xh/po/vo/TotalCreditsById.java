@@ -3,13 +3,12 @@ package com.xh.po.vo;
 import com.xh.po.Product;
 
 import java.util.Date;
-import java.util.List;
 
 /**
  * Created by KAIRUN on 2017/11/16.
  */
 public class TotalCreditsById extends Product{
-    List<TotalCreditsById> totalCreditsByIds;
+    private Date createtime;
     private Date endtime;
     private Integer userid;
     private Integer totalCredits;
@@ -170,4 +169,11 @@ public class TotalCreditsById extends Product{
         this.startRow = startRow;
     }
 
+    public Date getCreatetime() {
+        return createtime;
+    }
+
+    public void setCreatetime(Date createtime) {
+        this.createtime = createtime;
+    }
 }

@@ -66,7 +66,7 @@
 
     <!--个人中心我的积分显示-->
     <select id="queryAllById" parameterType="Integer" resultType="totalCreditsById">
-        SELECT ProductPicture,ProductName,product.ProductId, ProductCredits,order.EndTime FROM
+        SELECT ProductPicture,ProductName,product.ProductId, ProductCredits,order.CreateTime FROM
                product,`order`,orderproduct  WHERE `order`.UserId=#{userid} AND orderproduct.OrderId=`order`.OrderId
                AND orderproduct.ProductId=product.ProductId;
     </select>
@@ -78,6 +78,25 @@
                product,`order`,orderproduct  WHERE `order`.UserId=#{userid} AND orderproduct.OrderId=`order`.OrderId
                AND orderproduct.ProductId=product.ProductId;
     </select>
+
+    <!--查询每一个用户所购买的所有商品的总积分后更新用户表中用户的总积分-->
+    <update id="updateCreditsCore" parameterType="Integer">
+            UPDATE user SET CreditsCore=(SELECT sum(ProductCredits) as CreditsCore
+            FROM product,`order`,orderproduct
+            WHERE `order`.UserId=#{userid}
+             AND orderproduct.OrderId=`order`.OrderId
+             AND orderproduct.ProductId=product.ProductId) WHERE UserId=#{userid}
+    </update>
+
+    <!--查询用户表中用户自己的总积分-->
+    <select id="queryCreditsCore" parameterType="Integer" resultType="Integer">
+        SELECT `user`.CreditsCore FROM user WHERE UserId=#{userid}
+    </select>
+
+   <!--兑换商品后更新用户表中用户的积分信息-->
+    <update id="shenyuCreditsCore" parameterType="integer">
+        UPDATE `user` SET CreditsCore=#{shenyuCredits} WHERE UserId=#{userid}
+    </update>
 
 
     <!--查询出上市商品的图片，名称，描述，价格，展示在商城的首页-->
@@ -245,7 +264,23 @@
 
     <!--根据用户的id查询出该用户的收货地址-->
     <select id="selectGainAddressByUserId" parameterType="Integer" resultType="gainaddres">
-        SELECT * FROM gainaddres WHERE UserId=#{userid}
+        SELECT
+          g.* ,
+          g.Gain_A gainA,
+          g.Gain_B gainB,
+          g.Gain_C gainC
+        FROM gainaddres g
+        WHERE UserId=#{userid}
     </select>
+
+
+
+
+    <!--立即兑换订单确认页面的显示-->
+    <!--查询商品的图片，名称，积分，价钱-->
+    <select id="jifenPage" parameterType="Integer" resultType="product">
+        SELECT ProductId, ProductPicture,ProductName,ProductDisabled,ProductPrice  FROM product WHERE ProductId=#{productid}
+    </select>
+
 
 </mapper>

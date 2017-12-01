@@ -126,5 +126,16 @@ public interface UserLoginService {
     //根据用户的id查询出该用户对应的收货地址
     public List<Gainaddres> selectGainAddressByUserId(Integer userid);
 
+    //立即兑换订单确认页面的显示,查询商品的图片，名称，积分，价钱
+    public Product jifenPage(Integer productid);
+
+    //查询每一个用户所购买的所有商品的总积分后更新用户表中用户的总积分
+    public void updateCreditsCore(Integer userid);
+
+    //查询用户表中用户自己的总积分
+    public Integer queryCreditsCore(Integer userid);
+
+    //兑换商品后更新用户表中用户的积分为剩余积分
+    public  void  shenyuCreditsCore(Integer shenyuCredits,Integer userid);
 
 }

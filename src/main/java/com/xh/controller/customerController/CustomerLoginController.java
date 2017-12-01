@@ -155,7 +155,7 @@ public class CustomerLoginController {
     @RequestMapping("/UpdataPwdPage.action")
     public String UpdataPwdPage(Model model,HttpServletRequest request) {
         HttpSession session=request.getSession();
-       User user=(User) session.getAttribute("user");
+        User user=(User) session.getAttribute("user");
         Integer id=user.getUserid();
         UserAndBrithday userAndBrithday=customerInformationService.SelectCustomerInformation(id);
         model.addAttribute("userAndBrithday",userAndBrithday);

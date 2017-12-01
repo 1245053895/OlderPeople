@@ -8,8 +8,11 @@
         ORDER BY ProductLookCount DESC LIMIT 0,20;
     </select>
     <!--查询商品的购买次数-->
-    <select id="SelectShopingCount" resultType="com.xh.po.Orderproduct">
-        SELECT sum(ShoppingCount) FROM orderproduct
-        WHERE ProductId=#{productid}
+    <select id="SelectShopingCount" resultType="com.xh.po.vo.TuiJian">
+       SELECT a.ProductId AS productid,SUM(ShoppingCount) AS shuliang,ProductName AS productname,ProductPrice AS productprice,Product_B AS productpicture
+       FROM orderproduct a,product b
+       WHERE a.ProductId=b.ProductId
+       GROUP BY ProductId
+       ORDER BY SUM(ShoppingCount) DESC
     </select>
 </mapper>

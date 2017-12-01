@@ -976,8 +976,8 @@
 									<li class="col">
 										<div class="row">
 											<dl>
-												<dt><img src="${Recomends.productpicture}"></dt>
-												<dd class="name">${Recomends.productname}</dd>
+												<dt><a href="${pageContext.request.contextPath}/xiangqing.action?productid=${Recomends.productid}" ><img src="${Recomends.productpicture}"></a></dt>
+												<dd class="name"><a  href="${pageContext.request.contextPath}/xiangqing.action?productid=${Recomends.productid}">${Recomends.productname}</a></dd>
 												<dd class="price">${Recomends.productprice}</dd>
 												<dd class="cmt">浏览次数${Recomends.productlookcount}</dd>
 											</dl>
@@ -1001,8 +1001,8 @@
 										<li class="col">
 											<div class="row">
 												<dl>
-													<dt><img src="${Recomends.productpicture}"></dt>
-													<dd class="name">${Recomends.productname}</dd>
+													<dt><a href="${pageContext.request.contextPath}/xiangqing.action?productid=${Recomends.productid}" ><img src="${Recomends.productpicture}"></a></dt>
+													<dd class="name"><a  href="${pageContext.request.contextPath}/xiangqing.action?productid=${Recomends.productid}">${Recomends.productname}</a></dd>
 													<dd class="price">${Recomends.productprice}</dd>
 													<dd class="cmt">浏览次数${Recomends.productlookcount}</dd>
 												</dl>

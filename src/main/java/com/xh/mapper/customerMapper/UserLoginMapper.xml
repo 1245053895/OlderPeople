@@ -98,7 +98,7 @@
     <select id="Max10Comment" resultType="totalCreditsById">
       SELECT UserName, product.ProductId,    productpicture, ProductName,ProductDescribe,ProductPrice,
      product.ProductId, COUNT(`Comment`) totalcomment ,`Comment` FROM `comment` ,   product,`user`
-    WHERE product.ProductId=`comment`.ProductId AND `user`.UserId=`Comment`.UserId AND ProductTypeId=1
+    WHERE product.ProductId=`comment`.ProductId AND `user`.UserId=`comment`.UserId AND ProductTypeId=1
      GROUP BY ProductId
       ORDER BY totalcomment DESC LIMIT 0,8
     </select>
@@ -107,7 +107,7 @@
     <select id="selectjiangkang" resultType="totalCreditsById">
            SELECT  ProductTypeId, product.ProductId, UserName,  productpicture, ProductName,ProductDescribe,ProductPrice,
      product.ProductId, COUNT(`Comment`) totalcomment ,`Comment` FROM `comment` ,   product,user
-    WHERE product.ProductId=`comment`.ProductId AND `user`.UserId=`Comment`.UserId AND ProductTypeId=2
+    WHERE product.ProductId=`comment`.ProductId AND `user`.UserId=`comment`.UserId AND ProductTypeId=2
      GROUP BY ProductId
       ORDER BY totalcomment DESC LIMIT 0,8
     </select>
@@ -116,7 +116,7 @@
     <select id="selectjujia" resultType="totalCreditsById">
                SELECT UserName, ProductTypeId,    productpicture, ProductName,ProductDescribe,ProductPrice,
        product.ProductId, COUNT(`Comment`) totalcomment ,Comment  FROM `comment` ,   product,`user`
-      WHERE product.ProductId=`comment`.ProductId AND `user`.UserId=`Comment`.UserId AND ProductTypeId=4
+      WHERE product.ProductId=`comment`.ProductId AND `user`.UserId=`comment`.UserId AND ProductTypeId=4
      GROUP BY ProductId
       ORDER BY totalcomment DESC LIMIT 0,8
     </select>
@@ -125,7 +125,7 @@
     <select id="selectyule" resultType="totalCreditsById">
               SELECT   UserName,  ProductTypeId,    productpicture, ProductName,ProductDescribe,ProductPrice,
          product.ProductId, COUNT(`Comment`) totalcomment,`Comment` FROM `comment` ,   product,user
-       WHERE product.ProductId=`comment`.ProductId AND `user`.UserId=`Comment`.UserId  AND ProductTypeId=5
+       WHERE product.ProductId=`comment`.ProductId AND `user`.UserId=`comment`.UserId  AND ProductTypeId=5
        GROUP BY ProductId
        ORDER BY totalcomment DESC LIMIT 0,8
     </select>
@@ -136,7 +136,7 @@
   <select id="IsCredExchange" resultType="totalCreditsById">
           SELECT product.ProductId, productpicture, ProductName, ProductDisabled,ProductDescribe,ProductPrice,COUNT(`Comment`) totalcomment
             FROM product,comment WHERE  product.ProductId=`comment`.ProductId AND  ProductDisabled>0
-            GROUP BY `Comment`.ProductId
+            GROUP BY `comment`.ProductId
          ORDER BY totalcomment DESC LIMIT 0,8
   </select>
 

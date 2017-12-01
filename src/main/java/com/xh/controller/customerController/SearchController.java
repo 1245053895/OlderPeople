@@ -199,9 +199,30 @@ public class SearchController {
     }
 
     @RequestMapping(value = "/getSameProducts.action",method = {RequestMethod.GET,RequestMethod.POST})
-    public @ResponseBody String getSameProducts(HttpServletRequest request, HttpSession session, Model model) {
-        return null;
+    public @ResponseBody SearchResult getSameProducts(HttpServletRequest request, HttpSession session, Model model,String data) {
+        SearchResult searchResult =new SearchResult();;
+        if(data!=null&&!data.equals("")) {
+           /* List<Word> words = WordSegmenter.seg(data); //对商品名进行分词处理
+            List<String> w = new ArrayList<String>();
+            for (Word word : words) {
+                w.add(word.getText());
+            }
+            //List<ProductCustom> productCustoms=searchService.queryProductBySearch(w);*/
+
+            List<ProductCustom> productCustomsSuggest=searchService.queryProductByProductName(data);
+            List<String> suggest=new ArrayList<String>();
+            for(ProductCustom productCustom:productCustomsSuggest){
+                suggest.add(productCustom.getProductname());
+            }
+            searchResult.setSuggest(suggest);
+
+        }
+
+        return searchResult;
     }
+
+
+
 
     public String getJson(String image){
         String results=null;

@@ -311,6 +311,7 @@
         <div class="shdz ">
             <h2 class="shdztitle">收货地址</h2>
         </div>
+        <div class="add_mi" style="display: none"></div>
      <c:forEach items="${gainaddresList}" var="gainaddres">
          <c:if test="${gainaddres.gainA==1}">
              <div class="add_mi" style="background:url('${pageContext.request.contextPath}/jsp/users/shdz/images/mail_1.jpg') no-repeat">
@@ -328,8 +329,6 @@
                  <p>邮编：<input type="checkbox" name="gaincode" value="${gainaddres.gaincode}" style="display: none">${gainaddres.gaincode}</p>
              </div>
          </c:if>
-         
-
      </c:forEach>
    <%-- <div class="add_mi">
         <p style="border-bottom:1px dashed #ccc;line-height:28px;">陈思顶</p>

@@ -4,6 +4,7 @@ import com.xh.controller.page.Pagination;
 import com.xh.mapper.customerMapper.ProductHotMapper;
 import com.xh.mapper.customerMapper.RecommendMapper;
 import com.xh.po.vo.TotalCreditsById;
+import com.xh.po.vo.TuiJian;
 import com.xh.service.customerService.ProductHotService;
 import com.xh.service.customerService.RecommendService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,5 +34,11 @@ public class RecommendServiceipImpl implements RecommendService {
         }
         return randomHCproductList;
 
+    }
+
+    @Override
+    public List<TuiJian> SelectShopingCount() {
+        List<TuiJian> tuiJians=recommendMapper.SelectShopingCount();
+        return tuiJians;
     }
 }

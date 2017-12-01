@@ -208,4 +208,15 @@
           o.OrderId=#{orderid} AND o.Order_A=#{liyou}
     </select>
 
+
+    <select id="queryProductByProductId" parameterType="int" resultType="productCustom">
+        SELECT
+          p.*,
+          p.Product_A productA,
+          p.Product_B productB,
+          p.Product_C productC
+        FROM product p
+        WHERE p.ProductId=#{productid}
+    </select>
+
 </mapper>

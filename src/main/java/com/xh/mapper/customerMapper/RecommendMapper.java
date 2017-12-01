@@ -2,6 +2,7 @@ package com.xh.mapper.customerMapper;
 
 import com.xh.po.Orderproduct;
 import com.xh.po.vo.TotalCreditsById;
+import com.xh.po.vo.TuiJian;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -14,6 +15,6 @@ public interface RecommendMapper {
     //统计商品浏览的前二十条数据
     public List<TotalCreditsById> SelectRecommed();
     //查询商品购买次数
-    public Orderproduct SelectShopingCount(Integer productid);
+    public List<TuiJian> SelectShopingCount();
 
 }

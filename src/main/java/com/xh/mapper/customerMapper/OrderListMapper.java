@@ -47,4 +47,6 @@ public interface OrderListMapper {
     public void updataRefuseByOrderId(@Param("orderid")String orderid, @Param("liyou")String liyou);
 
     public Order selectRefuseByOrderId(@Param("orderid")String orderid, @Param("liyou")String liyou);
+
+    public ProductCustom queryProductByProductId(@Param("productid")int productid);
 }

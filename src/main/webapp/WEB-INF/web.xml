@@ -49,6 +49,10 @@
 
   </servlet-mapping>
 
+  <welcome-file-list>
+    <welcome-file>ShopFrontPage.action</welcome-file>
+  </welcome-file-list>
+
 
   <servlet>
     <description></description>

@@ -54,7 +54,7 @@
             <div class="dd" style="">
                 <%-- 已购买： 从数据库 购物车表中读出 C字段不为0--%>
                 <a href="/jsp/users/my-dingdan.jsp?flag=0">已兑换的商品</a>
-                <span>剩余积分  <a href="#" class="red" style="border-right: 1px transparent solid">${totalcredit}</a><span style="border-right: 1px #e0e0e0 solid;padding-right: 8px;">分</span></span>
+                <span>剩余积分  <a href="#" class="red" style="border-right: 1px transparent solid">${shenyuCredits}</a><span style="border-right: 1px #e0e0e0 solid;padding-right: 8px;">分</span></span>
                 <a href="#" style="border-right: 1px transparent solid">积分商城</a>
             </div>
         </div>

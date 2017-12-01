@@ -290,6 +290,8 @@ public class OrderListController  {
         shopCarCustom.setUserid(user.getUserid());
         shopCarCustom.setProductid(id[0]);//设置商品id
         shopCarCustom.setOrderamount(id[1]);//设置购买数量
+        ProductCustom productCustom=orderListService.queryProductByProductId(id[0]);//通过商品id 查询商品价格
+        shopCarCustom.setPrice(productCustom.getProductprice());
         Map map=new HashMap();
         if(orderListService.insertShiftToCart(shopCarCustom)){
             map.put("d",true);

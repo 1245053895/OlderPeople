@@ -144,19 +144,22 @@
             })
 
         })
+
+
 	</script>
 
 </head>
 <body>
 
-<c:if test="${sessionScope.user==null}">
+<c:if test="${sessionScope.user==null}" >
 	<jsp:forward page="${pageContext.request.contextPath}/LoginPage.action"></jsp:forward>
 </c:if>
+
+
 
 <header id="pc-header">
 
 	<jsp:include page="/jsp/users/head.jsp"></jsp:include>
-	<%--</div>--%>
 	<!--  顶部    start-->
 	<div class="yHeader">
 		<!-- 导航   start  -->
@@ -185,7 +188,7 @@
 	<div class="member-center clearfix">
 		<div class="member-left fl">
 			<div class="member-apart clearfix">
-				<div class="fl"><a href="#"><img src="img/mem.png"></a></div>
+				<div class="fl"><a href="#"><img src="${user.userC}"></a></div>
 				<div class="fl">
 					<p>用户名：</p>
 					<p><a href="#">${user.userrealname}</a></p>
@@ -339,6 +342,9 @@
     })(jQuery);
 
     $(document).ready(function(){
+
+
+
         var flag=$.getUrlParam('flag')
         console.log(flag);
 		check(flag);

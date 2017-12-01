@@ -35,4 +35,6 @@ public interface OrderListService {
     public Boolean updataOrderStatusZero(int orderid,int status);
 
     public Boolean updataRefuseByOrderId(Integer s, String s1);
+
+    public ProductCustom queryProductByProductId(int i);
 }

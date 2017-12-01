@@ -153,13 +153,15 @@
             <%--这是广告--%>
         </div>
         <div class="product_center">
-            <div class="product_list">
-                <div>
-                    <img src="${pageContext.request.contextPath}/jsp/users/images/wntj/cy.jpg">
+            <a src="javascript:void(0);">
+                <div class="product_list">
+                    <div>
+                        <img src="${pageContext.request.contextPath}/jsp/users/images/wntj/cy.jpg">
+                    </div>
+                    <div class="product_name">金黄嫩茶叶</div>
+                    <div class="product_price"><em>149</em>元</div>
                 </div>
-                <div class="product_name">金黄嫩茶叶</div>
-                <div class="product_price"><em>149</em>元</div>
-            </div>
+            </a>
         </div>
     </div>
     <div class="loading">

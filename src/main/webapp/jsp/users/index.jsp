@@ -24,8 +24,12 @@
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/jsp/users/css/style.css">
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/jsp/users/css/media_index.css">
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/jsp/users/css/mod.css">
+
 <%--	<link href="${pageContext.request.contextPath}/jsp/users/jfsc/css/index/style.css" rel="stylesheet" type="text/css">
 	<link href="${pageContext.request.contextPath}/jsp/users/jfsc/css/index/top.css" rel="stylesheet" type="text/css">--%>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/jsp/users/jfsc/js/jquery.min.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/jsp/users/jfsc/js/jquery.cookie.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/jsp/users/jfsc/js/juzi.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/jsp/users/js/jquery.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/jsp/users/js/index.js"></script>
 	<script type="text/javascript">
@@ -104,6 +108,60 @@
 
         });
 	</script>
+
+	<script>
+        $(function(){
+            //代码初始化
+            var size=$('.rotaion_list li').size();
+            for (var i = 2; i <= size; i++) {
+                var li="<span>"+i+"</span >";
+                $('.yx-rotation-focus').append(li);
+            };
+            //手动控制轮播图
+            $('.rotaion_list li').eq(0).show();
+            $('.yx-rotation-focus span').eq(0).addClass('hover');
+            $('.yx-rotation-focus span').mouseover(function(){
+                $(this).addClass('hover').siblings().removeClass('hover');
+                var index=$(this).index();
+                i=index;
+                $('.rotaion_list li').eq(index).stop().fadeIn(300).siblings().stop().fadeOut(300);
+            })
+            //自动播放
+            var i=0;
+            var t=setInterval(move,1500);
+            //自动播放核心函数
+            function move(){
+                i++;
+                if(i==size){
+                    i=0;
+                }
+                $('.yx-rotation-focus span').eq(i).addClass('hover').siblings().removeClass('hover');
+                $('.rotaion_list li').eq(i).fadeIn(300).siblings().fadeOut(300);
+            }
+
+            //向右播放核心函数
+            function moveL(){
+                i--;
+                if(i==-1){
+                    i=size-1;
+                }
+                $('.yx-rotation-focus span').eq(i).addClass('hover').siblings().removeClass('hover');
+                $('.rotaion_list li').eq(i).fadeIn(300).siblings().fadeOut(300);
+            }
+            $('.yx-rotaion .left').click(function(){
+                moveL();
+            })
+            $('.yx-rotaion .right').click(function(){
+                move();
+            })
+            //鼠标移入移除
+            $('.yx-rotaion').hover(function(){
+                clearInterval(t);
+            },function(){
+                t=setInterval(move,1500);
+            })
+        })
+	</script>
 </head>
 <body>
 
@@ -111,6 +169,9 @@
 
 	<c:if test="${ products==null|| hotsaleproducts==null|| top10products==null|| creditproducts==null|| jiankang==null|| jujia==null|| yule==null||  Recommendations==null}">
 		<jsp:forward page="${pageContext.request.contextPath}/selectproduct.action"></jsp:forward>
+	</c:if>
+	<c:if test="${ Recomend==null}">
+		<jsp:forward page="${pageContext.request.contextPath}/SelectRecommed.action"></jsp:forward>
 	</c:if>
 
 	<%--<c:if test="${empty productTypeExtends1||empty productTypeExtends}">
@@ -183,6 +244,7 @@
 		</div>
 		<!-- 导航   end  -->
 	</div>
+</header>
 	<section>
 		<div class="wraper">
 			<section id="main" class="site-main clear_bottom">
@@ -969,110 +1031,46 @@
 						<div class="m-slide-contain m-s2">
 							<div class="m-slide-item">
 								<ul class="m-cols m-col-5">
+									<c:forEach items="${Recomend}" var="Recomends" begin="0" end="4">
 									<li class="col">
 										<div class="row">
 											<dl>
-												<dt><img src="${pageContext.request.contextPath}/jsp/users/images/wntj/amy.jpg"></dt>
-												<dd class="name">按摩椅</dd>
-												<dd class="price">149元</dd>
-												<dd class="cmt">999人已购买</dd>
+												<dl>
+													<dt><a href="${pageContext.request.contextPath}/xiangqing.action?productid=${Recomends.productid}"><img src="${Recomends.productpicture}"></a></dt>
+													<dd class="name"><a href="${pageContext.request.contextPath}/xiangqing.action?productid=${Recomends.productid}">${Recomends.productname}</a></dd>
+													<dd class="price">${Recomends.productprice}</dd>
+													<dd class="cmt">浏览次数${Recomends.productlookcount}</dd>
+												</dl>
 											</dl>
 										</div>
 									</li>
-									<li class="col">
-										<div class="row">
-											<dl>
-												<dt><img src="${pageContext.request.contextPath}/jsp/users/images/wntj/amz.jpg"></dt>
-												<dd class="name">按摩枕</dd>
-												<dd class="price">149元</dd>
-												<dd class="cmt">999人已购买</dd>
-											</dl>
-										</div>
-									</li>
-									<li class="col">
-										<div class="row">
-											<dl>
-												<dt><img src="${pageContext.request.contextPath}/jsp/users/images/wntj/bjz.jpg"></dt>
-												<dd class="name">保健枕</dd>
-												<dd class="price">149元</dd>
-												<dd class="cmt">999人已购买</dd>
-											</dl>
-										</div>
-									</li>
-									<li class="col">
-										<div class="row">
-											<dl>
-												<dt><img src="${pageContext.request.contextPath}/jsp/users/images/wntj/crllk.jpg"></dt>
-												<dd class="name">成人拉拉裤</dd>
-												<dd class="price">149元</dd>
-												<dd class="cmt">999人已购买</dd>
-											</dl>
-										</div>
-									</li>
-									<li class="col">
-										<div class="row">
-											<dl>
-												<dt><img src="${pageContext.request.contextPath}/jsp/users/images/wntj/cy.jpg"></dt>
-												<dd class="name">金黄嫩茶叶</dd>
-												<dd class="price">149元</dd>
-												<dd class="cmt">999人已购买</dd>
-											</dl>
-										</div>
-									</li>
+									</c:forEach>
 								</ul>
+								<%--<c:forEach begin="0" end="4" step="1" items="${Recomend}" var="Recomends">
+									<li class="col sku-item " >
+										<dl class="row" >
+											<dt><a href="${pageContext.request.contextPath}/xiangqing.action?productid=${Recomends.productid}"><img src="${Recomends.productpicture}"></a></dt>
+											<dd class="name"><a href="${pageContext.request.contextPath}/xiangqing.action?productid=${Recomends.productid}">${Recomends.productname}</a></dd>
+											<dd class="price">${Recomends.productprice}</dd>
+										</dl>
+									</li>
+								</c:forEach>--%>
 							</div>
 							<div class="m-slide-item">
 								<ul class="m-cols m-col-5">
-									<li class="col">
-										<div class="row">
-											<dl>
-												<dt><img src="${pageContext.request.contextPath}/jsp/users/images/wntj/fhd.jpg"></dt>
-												<dd class="name">防滑垫</dd>
-												<dd class="price">149元</dd>
-												<dd class="cmt">999人已购买</dd>
-											</dl>
-										</div>
-									</li>
-									<li class="col">
-										<div class="row">
-											<dl>
-												<dt><img src="${pageContext.request.contextPath}/jsp/users/images/wntj/jrcd.jpg"></dt>
-												<dd class="name">加热床垫</dd>
-												<dd class="price">149元</dd>
-												<dd class="cmt">999人已购买</dd>
-											</dl>
-										</div>
-									</li>
-									<li class="col">
-										<div class="row">
-											<dl>
-												<dt><img src="${pageContext.request.contextPath}/jsp/users/images/wntj/pgzbq.jpg"></dt>
-												<dd class="name">皮革坐便器</dd>
-												<dd class="price">149元</dd>
-												<dd class="cmt">999人已购买</dd>
-											</dl>
-										</div>
-									</li>
-									<li class="col">
-										<div class="row">
-											<dl>
-												<dt><img src="${pageContext.request.contextPath}/jsp/users/images/wntj/zlj.jpg"></dt>
-												<dd class="name">足疗机</dd>
-												<dd class="price">149元</dd>
-												<dd class="cmt">999人已购买</dd>
-											</dl>
-										</div>
-									</li>
-									<li class="col">
-										<div class="row">
-											<dl>
-												<dt><img src="${pageContext.request.contextPath}/jsp/users/images/wntj/zyp.jpg"></dt>
-												<dd class="name">足浴盆</dd>
-												<dd class="price">149元</dd>
-												<dd class="cmt">999人已购买</dd>
-											</dl>
-										</div>
-									</li>
+									<c:forEach items="${Recomend}" var="Recomends" begin="5" end="9">
+										<li class="col">
+											<div class="row">
+												<dl>
+													<dt><a href="${pageContext.request.contextPath}/xiangqing.action?productid=${Recomends.productid}"><img src="${Recomends.productpicture}"></a></dt>
+													<dd class="name"><a href="${pageContext.request.contextPath}/xiangqing.action?productid=${Recomends.productid}">${Recomends.productname}</a></dd>
+													<dd class="price">${Recomends.productprice}</dd>
+													<dd class="cmt">浏览次数${Recomends.productlookcount}</dd>
+												</dl>
+											</div>
+										</li>
+									</c:forEach>
+
 								</ul>
 							</div>
 						</div>
@@ -1160,7 +1158,13 @@
 		</div>
 
 	</section>
-
+	<!-- 右侧浮动 -->
+	<div id="float">
+		<a href="${pageContext.request.contextPath}/LoginServlet?username=${sessionScope.user.username}" class="consult" target="_blank"></a>
+		<a href="${pageContext.request.contextPath}/jsp/users/my-dingdan.jsp?flag=2" class="cart"></a>
+		<a href="${pageContext.request.contextPath}/jsp/users/my-dingdan.jsp?flag=1" class="cart1"></a>
+		<a href="javascript:void(0)" class="btn_top" style="display: none;"></a>
+	</div>
 
 
 <div style="height:100px"></div>
@@ -1253,6 +1257,6 @@
         $(this).find(".nav a").removeClass("hover");
     })
 </script>
-</header>
+
 </body>
 </html>

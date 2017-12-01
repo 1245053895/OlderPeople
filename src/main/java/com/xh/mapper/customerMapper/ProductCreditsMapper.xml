@@ -8,7 +8,7 @@
     </select>
     <!--查询出行类型-->
     <select id="SelectTravelProductType" resultType="com.xh.po.vo.ProductTypeExtend" >
-        SELECT ProductTypeId,ProductTypeName FROM producttype WHERE ProductTypeId=1;
+        SELECT ProductTypeId,ProductTypeName FROM producttype WHERE ProductTypeId=1 OR ProductTypeId=4 ;
     </select>
     <!--查询健康类型-->
     <select id="SelectHealthProductType" resultType="com.xh.po.vo.ProductTypeExtend" >
@@ -16,7 +16,7 @@
     </select>
     <!--查询生活类型-->
     <select id="SelectLifeProductType" resultType="com.xh.po.vo.ProductTypeExtend" >
-        SELECT ProductTypeId,ProductTypeName FROM producttype WHERE ProductTypeId=4 OR ProductTypeId=5 OR ProductTypeId=6 ;
+        SELECT ProductTypeId,ProductTypeName FROM producttype WHERE ProductTypeId=5 OR ProductTypeId=6 ;
     </select>
     <!--根据商品类型限制查询商品-->
     <select id="SelectCreditProductByTypeid" resultType="com.xh.po.Product">

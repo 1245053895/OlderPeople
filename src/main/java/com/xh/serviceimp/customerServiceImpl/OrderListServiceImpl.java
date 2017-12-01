@@ -109,4 +109,9 @@ public class OrderListServiceImpl implements OrderListService {
         Order pc =orderListMapper.selectRefuseByOrderId(String.valueOf(orderid),liyou);
         return pc!=null;
     }
+
+    @Override
+    public ProductCustom queryProductByProductId(int id) {
+        return orderListMapper.queryProductByProductId(id);
+    }
 }

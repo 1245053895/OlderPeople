@@ -33,7 +33,7 @@
 
 <body>
 <div class="member-head" style="margin-top: 30px; margin-left: 200px;text-align: center">
-    <form id="wancheng" action="/wanCheng.action" method="post">
+    <form id="wancheng" action="/jifenWanCheng.action" method="post">
         <div class="pay_lc2">
             <span class="sp01">确认订单</span>
             <span class="sp02">在线支付</span>
@@ -86,10 +86,12 @@
                 <p>支付密码    ：<input type="text" placeholder="请输入支付密码" height="5px" style="margin-left: 12px;margin-top: 30px;"></p>
                 <div class="qrzf">
                     <%--付款成功 将 shopcar 的 C变为0   代表已付款--%>
+
+                    <input name="shenyuCredits" value="${shenyuCredits}" type="hidden">
                     <input type="hidden" class="ace" name="orderid" value="${orderid}" />
                     <input type="submit" value="确认支付"  class="qrzfbtn">
                     <%--<a href="javascript:jiesuan('<%=basePath%>');" class="qrzfbtn">确认支付</a>--%>
-                    <input type="button" onclick="cancel()" value="取消支付" class="qxzfbtn">
+                    <input type="button" onclick="houTui()" value="取消支付" class="qxzfbtn">
                 </div>
             </div>
 
@@ -97,11 +99,10 @@
     </form>
 </div>
 
-<%-- <script type="text/javascript">
-     function wancheng(basePath) {
-         $("#wancheng").attr("action",basePath + "wanCheng.action");
-         $("#wancheng").submit();
-     }
- </script>--%>
+<<script type="text/javascript">
+    function houTui(){
+        window.history.back(-1);
+    }
+ </script>
 </body>
 </html>

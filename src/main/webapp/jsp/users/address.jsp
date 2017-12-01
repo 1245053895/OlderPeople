@@ -239,7 +239,7 @@
 
 								<input name="gaincode" placeholder="邮编只能填数字"  class="warn2" onKeyUp="value=value.replace(/\D/g,'')" onafterpaste="value=value.replace(/\D/g,'')"  style="margin-left: 10px;font-weight: normal;border-color: red">
 								<input name="gainmobile" placeholder="电话"  class="warn2" style="margin-left: 10px;font-weight: normal;border-color: red">
-								<input  type="submit" value="保存" class="warn2" style="margin-left: 10px;font-weight: normal;border-radius: 10px;background-color: black;color: aliceblue;" onClick="bc()">
+								<input  type="submit" value="保存" class="warn2" style=" width :10px ;margin-left: 10px;font-weight: normal;border-radius: 10px;background-color: black;color: aliceblue;" onClick="bc()">
 								<input  value="取消" class="warn2" style="margin-left: 10px;font-weight: normal;border-radius: 10px;background-color: black;color: aliceblue;" onClick="bc()">
 							</li>
 						</form>

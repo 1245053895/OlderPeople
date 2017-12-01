@@ -13,7 +13,7 @@
 <script type="text/javascript">
 	var  ws;
 	//此处改为服务器ip
-	var url="ws://127.0.0.1:80/chatSocket?username=${sessionScope.username}";
+	var url="ws://127.0.0.1:8070/chatSocket?username=${sessionScope.username}";
 	
 	function connect(){
 		 if ('WebSocket' in window) {
@@ -95,23 +95,22 @@
   
 <body onload="connect();" style="background-image: url(bgpic2.jpg)">
 
-    <div>
-        <div id="msg" >
+<div>
+    <div id="msg" >
 
-            <p id="content" style="width: 565px;height: 380px;margin-top: 40px;margin-left: 490px;border-top:1px solid #EFEFEF;border-right:1px solid #EFEFEF;border-radius:3px;background-color: #EFEFEF;overflow-x: hidden;overflow-y: scroll">
-            </p>
-        </div>
-        <div id="users"
-             style="width: 200px;height: 520px;border:1px solid #2e3238;border-radius:3px;position: absolute;float: left;left: 412px;top: 40px;margin-left: -115px;background-color: #2e3238;overflow-x: hidden;overflow-y: hidden">
-            <div style="font-size: 18px;color:#f9f8e2;margin-top: 20px;margin-left: 20px;">欢迎&nbsp;&nbsp;&nbsp; ${sessionScope.username }* * *</div>
-            <ul id="userList" >
-            </ul>
-        </div>
-        <div id="send" style="width: 565px;height: 139px;margin-left: 490px;border-right:1px solid #ffffff;border-bottom:1px solid #ffffff;border-radius:3px;margin-top: -17px;background-color: white" align="right">
-            <textarea style="width:559px;height: 110px;background-color: white;border-color: transparent" id="sendMsg"></textarea>
-            <input type="button" value="发送消息" onclick="send();" style="width: 80px;">
-        </div>
+        <p id="content" style="width: 565px;height: 380px;margin-top: 40px;margin-left: 490px;border-top:1px solid #EFEFEF;border-right:1px solid #EFEFEF;border-radius:3px;background-color: #EFEFEF;overflow-x: hidden;overflow-y: scroll">
+        </p>
     </div>
+    <div id="users"
+         style="width: 200px;height: 520px;border:1px solid #2e3238;border-radius:3px;position: absolute;float: left;left: 412px;top: 40px;margin-left: -115px;background-color: #2e3238;overflow-x: hidden;overflow-y: hidden">
+        <div style="font-size: 18px;color:#f9f8e2;margin-top: 20px;margin-left: 20px;">欢迎&nbsp;&nbsp;&nbsp; ${sessionScope.username }* * *</div>
+        <ul id="userList" >
+        </ul>
+    </div>
+    <div id="send" style="width: 565px;height: 139px;margin-left: 490px;border-right:1px solid #ffffff;border-bottom:1px solid #ffffff;border-radius:3px;margin-top: -17px;background-color: white" align="right">
+        <textarea style="width:559px;height: 110px;background-color: white;border-color: transparent" id="sendMsg"></textarea>
+        <input type="button" value="发送消息" onclick="send();" style="width: 80px;">
+    </div>  </div>
 
 </body>
 </html>

@@ -17,4 +17,7 @@ public interface OrderPayService {
 
     void updateShopCarC(List<Integer> shopcarid);
     void updateOrderPayStatus(Integer orderid);
+
+    /*public Gainaddres IsGainAddress(Gainaddres gainaddres);*/
+
 }

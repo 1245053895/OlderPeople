@@ -325,7 +325,7 @@
 			<div class="Xcontent35"><a href="javascript:void(0)">加入购物车</a></div>
 
 			<c:if test="${myProduct.productdisabled>0}">
-			<div class="Xcontent341"><a id="submit" href="/jifenPage.action?productid=${productid}" onclick="ShowDiv('MyDiv','fade')">立即兑换</a></div>
+			<div class="Xcontent341"><a id="submit"  href="javascript:lijiduihuan();" onclick="ShowDiv('MyDiv','fade')">立即兑换</a></div>
 			</c:if>
 			<%--<input id="Button1" type="button" value="点击弹出层" onclick="ShowDiv('MyDiv','fade')" />--%>
 			<!--弹出层时背景层DIV-->
@@ -874,6 +874,18 @@
          $("#enlarge").hide();
          $("#mask").hide();
      });
+
+     function lijiduihuan() {
+         if(${sessionScope.user==null}){
+             alert("请先登录！")
+		 }else { var flag=ajax("isExchage.action",${myProduct.productid})
+             if(flag){
+                 window.location.href="/jifenPage.action?productid=${productid}";
+             }else {
+                 alert("积分不足！")
+             }}
+
+     }
 
 
 

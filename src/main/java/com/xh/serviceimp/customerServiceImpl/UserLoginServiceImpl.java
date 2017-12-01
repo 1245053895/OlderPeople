@@ -5,7 +5,7 @@ import com.xh.mapper.customerMapper.UserLoginMapper;
 import com.xh.po.*;
 import com.xh.po.vo.TotalCreditsById;
 import com.xh.service.customerService.UserLoginService;
-import org.apdplat.word.vector.T;
+/*import org.apdplat.word.vector.T;*/
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -3,7 +3,7 @@
 <mapper namespace="com.xh.mapper.customerMapper.RecommendMapper">
     <!--用户没有登录的时候查询浏览次数最多的前20条数据-->
     <select id="SelectRecommed" resultType="com.xh.po.vo.TotalCreditsById">
-        select ProductLookCount,ProductName,ProductPrice,ProductPicture
+        select ProductLookCount,ProductName,ProductPrice,ProductPicture,ProductId
         from product
         ORDER BY ProductLookCount DESC LIMIT 0,20;
     </select>

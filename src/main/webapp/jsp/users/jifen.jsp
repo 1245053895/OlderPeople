@@ -183,7 +183,7 @@
 	<div class="member-center clearfix">
 		<div class="member-left fl">
 			<div class="member-apart clearfix">
-				<div class="fl"><a href="#"><img src="${userAndBrithday.userC}"></a></div>
+				<div class="fl" style="width: 90px;margin-left: -20px;margin-right: 10px"><a href="#"><img src="${userAndBrithday.userC}"></a></div>
 				<div class="fl">
 					用户名：${userAndBrithday.userrealname}<br>
 					<%--<p></p>--%>
@@ -257,7 +257,16 @@
 										<%--<span style="height: 20px;display: block;line-height: 20px;text-align: left">编号：${totalCreditsById.productid}</span>--%>
 								</div>
 								<div class="warn2" style="margin-left: 15px;border: none;font-weight: normal;height: 60px">
-									<span style="font-size: 24px;font-weight: 700;text-align: center;color: #ea4949;line-height: 60px">+${totalCreditsById.productcredits}</span>
+									<c:if test="${totalCreditsById.totalCredit>=0}">
+										<span style="font-size: 24px;font-weight: 700;text-align: center;color: #ea4949;line-height: 60px">
+											+${totalCreditsById.productcredits}
+										</span>
+									</c:if>
+									<c:if test="${totalCreditsById.totalCredit<0}">
+										<span style="font-size: 24px;font-weight: 700;text-align: center;color: #ea4949;line-height: 60px">
+											${totalCreditsById.totalCredit}
+										</span>
+									</c:if>
 								</div>
 								<div class="warn2" style="float: right;margin-right: -40px;border: none;font-weight: normal;height: 60px;width: 300px;line-height: 60px"><fmt:formatDate value="${totalCreditsById.createtime}" pattern="yyyy-MM-dd HH:mm:ss"/>
 								</div>

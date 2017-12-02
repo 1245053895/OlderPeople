@@ -66,7 +66,7 @@
 
     <!--个人中心我的积分显示-->
     <select id="queryAllById" parameterType="Integer" resultType="totalCreditsById">
-        SELECT ProductPicture,ProductName,product.ProductId, ProductCredits,order.CreateTime FROM
+         SELECT ProductPicture,ProductName,product.ProductId, ProductCredits,order.CreateTime ,`order`.TotalCredit FROM
                product,`order`,orderproduct  WHERE `order`.UserId=#{userid} AND orderproduct.OrderId=`order`.OrderId
                AND orderproduct.ProductId=product.ProductId;
     </select>

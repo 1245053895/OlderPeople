@@ -156,31 +156,6 @@
 </header>
 <section id="member">
     <div class="member-center clearfix">
- <%--       <div class="member-left fl">
-            <div class="member-apart clearfix">
-                <div class="fl"><a href="#"><img src="img/mem.png"></a></div>
-                <div class="fl">
-                    <p>用户名：</p>
-                    <p><a href="#">亚里士多德</a></p>
-                    <p>账号：</p>
-                    <p>389323080</p>
-                </div>
-            </div>
-            <div class="member-lists" id="leftinfo">
-                <dl  onclick = "change(this);">
-                    <dt>我的商城</dt>
-                    <dd><a href="#">我的订单</a></dd>
-                    <dd><a href="#">我的购物车</a></dd>
-                    <dd><a href="#">我的收藏</a></dd>
-                    <dd><a href="#">我的评价</a></dd>
-                </dl>
-                <dl  onclick = "change(this);">
-                    <dt>客户服务</dt>
-                    <dd><a href="#">退货订单</a></dd>
-                    <dd><a href="#">退货/退款记录</a></dd>
-                </dl>
-            </div>
-        </div>--%>
         <div class="member-right fr">
             <div class="margin clearfix">
                 <div class="stystems_style">

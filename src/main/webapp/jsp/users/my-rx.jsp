@@ -74,5 +74,8 @@
     </div>
 </div>
 
+<div style="margin-top: 100px"></div>
+<jsp:include page="${pageContext.request.contextPath}/jsp/users/bottom.jsp"></jsp:include>
+
 </body>
 </html>

@@ -58,11 +58,28 @@
             })
             $('#jian').click(function() {
                 $('input[name=num]').val(parseInt($('input[name=num]').val()) - 1);
-            })
-            $('.Caddress .add_mi').click(function() {
-                $(this).css('background', 'url("${pageContext.request.contextPath}/jsp/users/shdz/images/mail_1.jpg") no-repeat').siblings('.add_mi').css('background', 'url("${pageContext.request.contextPath}/jsp/users/shdz/images/mail.jpg") no-repeat')
             });
-        })
+            click_add_mi();
+
+        });
+
+        function click_add_mi() {
+            $('.Caddress .add_mi').click(function() {
+                $(this).css('background', 'url("${pageContext.request.contextPath}/jsp/users/shdz/images/mail_1.jpg") no-repeat').siblings('.add_mi').css('background', 'url("${pageContext.request.contextPath}/jsp/users/shdz/images/mail.jpg") no-repeat');
+                $(this).find("input").each(function () {
+                    $(this).prop("checked",true);
+                    console.log($(this).val());
+                });
+                $(this).siblings("div[class='add_mi']").each(function () {
+                    $(this).find("input").each(function () {
+                        $(this).removeAttr("checked",false);
+                        console.log("***"+$(this).val());
+                    });
+                });
+            });
+        }
+
+
         var x = Array();
 
         function func(a, b) {
@@ -294,13 +311,24 @@
         <div class="shdz ">
             <h2 class="shdztitle">收货地址</h2>
         </div>
+        <div class="add_mi" style="display: none"></div>
      <c:forEach items="${gainaddresList}" var="gainaddres">
-        <div class="add_mi">
-            <p style="border-bottom:1px dashed #ccc;line-height:28px;">${gainaddres.gainname}</p>
-            <p>${gainaddres.gainaddress}</p>
-            <span>电话：${gainaddres.gainmobile}</span>
-            <p>邮编：${gainaddres.gaincode}</p>
-        </div>
+         <c:if test="${gainaddres.gainA==1}">
+             <div class="add_mi" style="background:url('${pageContext.request.contextPath}/jsp/users/shdz/images/mail_1.jpg') no-repeat">
+                 <p style="border-bottom:1px dashed #ccc;line-height:28px;"><input type="checkbox" checked="true" name="gainname" value="${gainaddres.gainname}" style="display: none">${gainaddres.gainname}</p>
+                 <p><input type="checkbox" checked="true" name="gainaddress" value="${gainaddres.gainaddress}" style="display: none" >${gainaddres.gainaddress}</p>
+                 <span>电话：<input type="checkbox" checked="true" name="gainmobile" value="${gainaddres.gainmobile}" style="display: none">${gainaddres.gainmobile}</span>
+                 <p>邮编：<input type="checkbox" checked="true" name="gaincode" value="${gainaddres.gaincode}" style="display: none">${gainaddres.gaincode}</p>
+             </div>
+         </c:if>
+         <c:if test="${gainaddres.gainA==0}">
+             <div class="add_mi">
+                 <p style="border-bottom:1px dashed #ccc;line-height:28px;"><input type="checkbox" name="gainname" value="${gainaddres.gainname}" style="display: none">${gainaddres.gainname}</p>
+                 <p><input type="checkbox" name="gainaddress" value="${gainaddres.gainaddress}" style="display: none" >${gainaddres.gainaddress}</p>
+                 <span>电话：<input type="checkbox" name="gainmobile" value="${gainaddres.gainmobile}" style="display: none">${gainaddres.gainmobile}</span>
+                 <p>邮编：<input type="checkbox" name="gaincode" value="${gainaddres.gaincode}" style="display: none">${gainaddres.gaincode}</p>
+             </div>
+         </c:if>
      </c:forEach>
    <%-- <div class="add_mi">
         <p style="border-bottom:1px dashed #ccc;line-height:28px;">陈思顶</p>
@@ -320,7 +348,7 @@
      </div>
 </div>
 
-<div class="shade_content">
+<div class="shade_content" style="display: none">
     <div class="col-xs-12 shade_colse">
         <button onclick="javascript:onclick_close();">x</button>
     </div>

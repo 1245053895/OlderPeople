@@ -15,7 +15,7 @@ public class Constant {
     public static boolean tag=true;//背景图是否画上或保存
     public static boolean draw=true;//
     public static double grayData[]=new double[784];
-    public static String modelName="WEB-INF"+ File.separator+"classes"+ File.separator+"config"+ File.separator+"cnn.modle";
+    public static String modelName="WEB-INF"+ File.separator+"classes"+ File.separator+"config"+ File.separator+"cnn";
     public static int imageWidth=28;
     public static int imageHeight=28;
 }

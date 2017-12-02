@@ -21,8 +21,10 @@ public class OrderPayServiceImpl implements OrderPayService {
 //    添加收货地址
     @Override
     public String insertSelective1(Gainaddres gainaddres) {
-        orderPayMapper.insertSelective1(gainaddres);
-
+        Gainaddres gainaddres1=orderPayMapper.IsGainAddress(gainaddres);
+        if(gainaddres1==null){
+            orderPayMapper.insertSelective1(gainaddres);
+        }
         return "OK";
     }
 //    添加订单信息
@@ -77,4 +79,11 @@ public class OrderPayServiceImpl implements OrderPayService {
     public void updateOrderPayStatus(Integer orderid) {
         productMapper1.updateOrderPayStatus(orderid);
     }
+
+    /*@Override
+    public Gainaddres IsGainAddress(Gainaddres gainaddres) {
+       Gainaddres gainaddres1= orderPayMapper.IsGainAddress(gainaddres);
+        return gainaddres1;
+    }*/
+
 }

@@ -33,4 +33,8 @@ public interface OrderListService {
     public boolean updateCommentByids(ProductCustom productCustom);
 
     public Boolean updataOrderStatusZero(int orderid,int status);
+
+    public Boolean updataRefuseByOrderId(Integer s, String s1);
+
+    public ProductCustom queryProductByProductId(int i);
 }

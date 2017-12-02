@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xh.mapper.customerMapper.RecommendMapper">
+    <!--用户没有登录的时候查询浏览次数最多的前20条数据-->
+    <select id="SelectRecommed" resultType="com.xh.po.vo.TotalCreditsById">
+        select ProductLookCount,ProductName,ProductPrice,ProductPicture,ProductId
+        from product
+        ORDER BY ProductLookCount DESC LIMIT 0,20;
+    </select>
+    <!--查询商品的购买次数-->
+    <select id="SelectShopingCount" resultType="com.xh.po.vo.TuiJian">
+       SELECT a.ProductId AS productid,SUM(ShoppingCount) AS shuliang,ProductName AS productname,ProductPrice AS productprice,Product_B AS productpicture
+       FROM orderproduct a,product b
+       WHERE a.ProductId=b.ProductId
+       GROUP BY ProductId
+       ORDER BY SUM(ShoppingCount) DESC
+    </select>
+</mapper>

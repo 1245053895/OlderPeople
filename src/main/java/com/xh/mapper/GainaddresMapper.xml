@@ -109,7 +109,7 @@
       Gain_A, Gain_B, Gain_C
       )
     values (#{gainid,jdbcType=INTEGER}, #{userid,jdbcType=INTEGER}, #{gainname,jdbcType=VARCHAR}, 
-      #{gainmobile,jdbcType=VARCHAR}, #{gainaddress,jdbcType=VARCHAR}, #{gaincode,jdbcType=INTEGER}, 
+      #{gainmobile,jdbcType=VARCHAR}, #{gainaddress,jdbcType=VARCHAR}, #{gaincode,jdbcType=INTEGER},
       #{gainA,jdbcType=VARCHAR}, #{gainB,jdbcType=VARCHAR}, #{gainC,jdbcType=VARCHAR}
       )
   </insert>

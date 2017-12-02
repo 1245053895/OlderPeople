@@ -20,7 +20,7 @@ public class ProductTypeServiceimpl implements ProductTypeService {
    public Pagination selectPaginationByQuery( Integer productTypeId,Integer pageNo){
        TotalCreditsById totalCreditsById=new TotalCreditsById();
        totalCreditsById.setPageNo(Pagination.cpn(pageNo));
-       totalCreditsById.setPageSize(6);
+       totalCreditsById.setPageSize(12);
        totalCreditsById.setProducttypeid(productTypeId);
 
 

@@ -204,7 +204,7 @@
 								<div>
 									<ul class=" clearfix" style="margin-left: 30px;margin-top: 20px">
 										<li>
-											<input type="radio" name="paytype" value="0" style="float: left"/>
+											<input type="radio" name="paytype" checked="true" value="0" style="float: left"/>
 											<span style="font-size: 16px; float: left;margin-left: 5px;margin-right: 30px;">在线支付</span>
 										</li>
 										<li>
@@ -223,7 +223,7 @@
 								<div>
 									<ul class=" clearfix" style="margin-left: 30px;margin-top: 20px">
 										<li>
-											<input type="radio" name="gainmethod" value="0" style="float: left"/>
+											<input type="radio" name="gainmethod" checked="true" value="0" style="float: left"/>
 											<span style="font-size: 16px; float: left;margin-left: 5px;margin-right: 30px;">快递配送</span>
 										</li>
 										<li>
@@ -272,6 +272,36 @@
 										</dl>
 
 										<script type="text/javascript">
+											$("#sub_setID").click(function () {
+											    var name=$("#name_").val();
+											    var address=$("#address").val();
+											    var phone=$("#phone").val();
+											    var number_this=$("#number_this").val();
+											    if(name!=""&&address!=""&&phone!=""&&number_this!=""){
+											        var html= "<div class='add_mi'>"+
+                                                        "<p style='border-bottom:1px dashed #ccc;line-height:28px;'>"+name+"</p>"+
+                                                        "<p>"+address+"</p>"+
+                                                        "<span>电话："+phone+"</span>"+
+                                                    "<p>邮编："+number_this+"</p>"+
+                                                    "</div>";
+											        $(".Caddress").find(".add_mi").each(function (i) {
+											            var input_out=$(".Caddress").find(".add_mi");
+														if(i==input_out.length-1){
+											                $(input_out[i]).after(html);
+                                                            click_add_mi();
+														}
+                                                    });
+											        /*隐藏输入的框*/
+											        $(this).parents("div[class='shade_content']").hide();
+											        /*给新增的地址选择一个可以选的图形*/
+                                                    $('.Caddress .add_mi').click(function() {
+                                                        $(this).css('background', 'url("${pageContext.request.contextPath}/jsp/users/shdz/images/mail_1.jpg") no-repeat').siblings('.add_mi').css('background', 'url("${pageContext.request.contextPath}/jsp/users/shdz/images/mail.jpg") no-repeat')
+                                                    });
+												}else {
+											        alert("请输入内容");
+												}
+                                            })
+
 
                                             function myfun() {
 
@@ -319,7 +349,7 @@
 
 										<div class="checkout-count clearfix">
 											<div class="checkout-count-extend xm-add-buy">
-												<h2 class="title">会员留言</h2></br>
+												<h2 class="title">用户留言</h2></br>
 												<input type="text" style="background-color: #bcbfb1" placeholder="点击输入留言信息" name="buyerrequest"/>
 
 											</div>
@@ -372,7 +402,7 @@
 										</div>
 									</div>
 									<div class="modal-footer">
-										<a href="#" class="btn btn-disabled J_chooseProBtn">加入购物车</a>
+										<a href="/jsp/users/my-dingdan.jsp?flag=2" class="btn btn-disabled J_chooseProBtn">加入购物车</a>
 									</div>
 								</div>
 								<!--E 加价购 产品选择弹框 -->
@@ -386,7 +416,7 @@
 							<input type="hidden" id="couponValue" name="Checkout[couponsValue]">
 							<div class="checkout-confirm">
 
-								<a href="#" class="btn btn-lineDakeLight btn-back-cart">返回购物车</a>
+								<a href="/jsp/users/my-dingdan.jsp?flag=2" class="btn btn-lineDakeLight btn-back-cart">返回购物车</a>
 								<%--<input type="hidden" class="ace" name="userid" value="${sessionScope.user.userid}" />--%>
 								<input type="hidden" class="ace" name="userid" value="11" />
 								<%--这里传入userid  userid=${sessionScope.user.userid}  --%>
@@ -580,9 +610,10 @@
 <script type="text/javascript">
 
 function jiesuan(basePath) {
-       alert('前去付款？');
-    $("#checkoutForm").attr("action",basePath + "jieSuanForCar.action");
-    $("#checkoutForm").submit();
+      if(confirm('确认购买？')){
+          $("#checkoutForm").attr("action",basePath + "jieSuanForCar.action");
+          $("#checkoutForm").submit();
+	  }
 }
 
 </script>

@@ -145,8 +145,26 @@
 </head>
 <body>
 
+<header id="pc-header">
 
+	<jsp:include page="/jsp/users/head.jsp"></jsp:include>
+	<!--  顶部    start-->
+	<div class="yHeader" style="margin-top: 50px">
+		<!-- 导航   start  -->
+		<div class="yNavIndex">
+			<ul class="yMenuIndex">
+				<li><a href="${pageContext.request.contextPath}/ShopFrontPage.action"  title="首页">首页</a></li>
+				<li><a href="${pageContext.request.contextPath}/ProductHot.action" target="_blank" title="热销专区">热销专区</a></li>
+				<li><a href="${pageContext.request.contextPath}/SelectNewProduct.action" target="_blank" title="新品专区">新品专区</a></li>
+				<li><a href="${pageContext.request.contextPath}/SelectProducCredits.action" target="_blank" title="积分商城">积分商城</a></li>
+				<li><a href="${pageContext.request.contextPath}/queryTotalCommentshop.action" target="_blank" title="好评专区">好评专区</a></li>
+				<li><a href="${pageContext.request.contextPath}/jsp/users/aboutus.jsp" target="_blank" title="关于我们">关于我们</a></li>
+			</ul>
+		</div>
+		<!-- 导航   end  -->
+	</div>
 
+</header>
 
 
 <div class="center" style="background:#fff;">
@@ -173,7 +191,7 @@
 				</ul>
 			</div>--%>
 
-	<div class="container" style="margin-top: -20px;">
+	<div class="container" style="margin-top: -20px; ">
 		<div class="navbar">
 			<div class="navbar-inner" style="border-bottom: 1px #3a87ad solid">
 				<ul class="nav nav-pills" style="width: 100px;">
@@ -200,7 +218,7 @@
 		</div>
 	</div>
 
-			<div style="width: 1180px;margin:0px auto;" >
+			<div style="width: 1180px;margin:0px auto;height: 800px;" >
 
 				<div style="width: 150px;margin-left: 20px;font-size: 18px;">
 					<img src="/jsp/users/images/dingwei.png" width="50px" height="50px">
@@ -208,16 +226,15 @@
 					<h4 style="margin-top: -30px;margin-left: 45px;">${productTypeExtends11.producttypename}</h4>
 					</c:forEach>
 				</div>
-				<div class="time-border">
 
 
-					<div class="yScrollList" style="width: 1180px;height: 100%">
-						<div class="yScrollListIn">
-							<div class="yScrollListInList yScrollListInList1" style="display:block; width: 1180px;height: 100%;margin-left: -40px">
-								<ul style="width: 1180px;text-align: center">
+					<div class="yScrollList" style="width: 1250px;height: 620px;">
+						<div class="yScrollListIn" style="height: 620px;width: 1250px">
+							<div class="yScrollListInList yScrollListInList1" style="display:block; width: 1250px;height: 620px;margin-left: -40px">
+								<ul style="width: 1180px;text-align: center;height: 620px;">
 									<c:forEach items="${pagination.list}" var="products">
 										<li style="text-align: center">
-											<div class="row" style="margin-left: 10px;">
+											<div class="row">
 												<dl>
 													<dd><a>${products.productname}</a></dd>
 													<dt><a href="${pageContext.request.contextPath}/xiangqing.action?productid=${products.productid}"><img src="${products.productpicture}"></a></dt>

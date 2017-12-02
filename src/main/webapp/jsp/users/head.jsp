@@ -21,6 +21,7 @@
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/jsp/users/css/search/search.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/jsp/users/css/search/upload.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/jsp/users/css/search/result.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/jsp/users/css/search/loading.css">
     <script type="text/javascript" src="${pageContext.request.contextPath}/jsp/users/js/jquery.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/jsp/users/js/jquery-1.8.3.min.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/jsp/users/js/index.js"></script>
@@ -115,7 +116,7 @@
     <div class="bg"></div>
     <div class="search-wrapper">
         <div class="input-holder">
-            <input type="text" class="search-input" placeholder="请输入关键词" />
+            <input type="text" name="input_text" class="search-input" placeholder="请输入关键词" />
             <button class="search-icon" onClick="searchToggle(this, event);"><span></span></button>
             <div class="search-select"></div>
             <div class="upload_image">
@@ -135,90 +136,67 @@
                     </div>
                 </form>
             </div>
+            <div class="result-suggest">
+                <ul>
+                    <li>老人</li>
+                    <li>老年得出</li>
+                </ul>
+            </div>
         </div>
         <span class="close" onClick="searchToggle(this, event);"></span>
         <div class="result-container">
+
         </div>
     </div>
     <div class="result-list">
         <div class="product_advertising">
-            <div>
-                这是一个广告
-            </div>
+            <%--这是广告--%>
         </div>
         <div class="product_center">
-            <div class="product_list">
-                <div>
-                    <img src="${pageContext.request.contextPath}/jsp/users/images/wntj/cy.jpg">
+            <a src="javascript:void(0);">
+                <div class="product_list">
+                    <div>
+                        <img src="${pageContext.request.contextPath}/jsp/users/images/wntj/cy.jpg">
+                    </div>
+                    <div class="product_name">金黄嫩茶叶</div>
+                    <div class="product_price"><em>149</em>元</div>
                 </div>
-                <div class="product_name">金黄嫩茶叶</div>
-                <div class="product_price"><em>149</em>元</div>
+            </a>
+        </div>
+    </div>
+    <div class="loading">
+        <div class="circle-loader">
+            <div class="circle-line">
+                <div class="circle circle-blue"></div>
+                <div class="circle circle-blue"></div>
+                <div class="circle circle-blue"></div>
             </div>
-            <div class="product_list">
-                <div>
-                    <img src="${pageContext.request.contextPath}/jsp/users/images/wntj/cy.jpg">
-                </div>
-                <div class="product_name">金黄嫩茶叶</div>
-                <div class="product_price"><em>149</em>元</div>
+            <div class="circle-line">
+                <div class="circle circle-yellow"></div>
+                <div class="circle circle-yellow"></div>
+                <div class="circle circle-yellow"></div>
             </div>
-            <div class="product_list">
-                <div>
-                    <img src="${pageContext.request.contextPath}/jsp/users/images/wntj/cy.jpg">
-                </div>
-                <div class="product_name">金黄嫩茶叶</div>
-                <div class="product_price"><em>149</em>元</div>
+            <div class="circle-line">
+                <div class="circle circle-red"></div>
+                <div class="circle circle-red"></div>
+                <div class="circle circle-red"></div>
             </div>
-            <div class="product_list">
-                <div>
-                    <img src="${pageContext.request.contextPath}/jsp/users/images/wntj/cy.jpg">
-                </div>
-                <div class="product_name">金黄嫩茶叶</div>
-                <div class="product_price"><em>149</em>元</div>
-            </div>
-            <div class="product_list">
-                <div>
-                    <img src="${pageContext.request.contextPath}/jsp/users/images/wntj/cy.jpg">
-                </div>
-                <div class="product_name">金黄嫩茶叶</div>
-                <div class="product_price"><em>149</em>元</div>
-            </div>
-            <div class="product_list">
-                <div>
-                    <img src="${pageContext.request.contextPath}/jsp/users/images/wntj/cy.jpg">
-                </div>
-                <div class="product_name">金黄嫩茶叶</div>
-                <div class="product_price"><em>149</em>元</div>
-            </div>
-            <div class="product_list">
-                <div>
-                    <img src="${pageContext.request.contextPath}/jsp/users/images/wntj/cy.jpg">
-                </div>
-                <div class="product_name">金黄嫩茶叶</div>
-                <div class="product_price"><em>149</em>元</div>
-            </div>
-            <div class="product_list">
-                <div>
-                    <img src="${pageContext.request.contextPath}/jsp/users/images/wntj/cy.jpg">
-                </div>
-                <div class="product_name">金黄嫩茶叶</div>
-                <div class="product_price"><em>149</em>元</div>
-            </div>
-            <div class="product_list">
-                <div>
-                    <img src="${pageContext.request.contextPath}/jsp/users/images/wntj/cy.jpg">
-                </div>
-                <div class="product_name">金黄嫩茶叶</div>
-                <div class="product_price"><em>149</em>元</div>
-            </div>
-            <div class="product_list">
-                <div>
-                    <img src="${pageContext.request.contextPath}/jsp/users/images/wntj/cy.jpg">
-                </div>
-                <div class="product_name">金黄嫩茶叶</div>
-                <div class="product_price"><em>149</em>元</div>
+            <div class="circle-line">
+                <div class="circle circle-green"></div>
+                <div class="circle circle-green"></div>
+                <div class="circle circle-green"></div>
             </div>
         </div>
     </div>
+    <%--弹幕--%>
+    <%--<div class="barrage">
+        <div class="barrage_body">
+            <div>
+                6666
+            </div>
+        </div>
+
+    </div>--%>
 </div>
 
 <script>
@@ -271,11 +249,11 @@
         </h1>
     </div>
     <div class="head-form fl">
-        <form class="clearfix">
+        <form class="clearfix" onsubmit="return false">
             <div class="gover_search">
                 <div class="gover_search_form clearfix">
                     <%--<span class="search_t">关键词匹配搜索</span>--%>
-                    <input type="text" class="input_search_key" id="gover_search_key" placeholder="请输入关键词搜索" />
+                    <input type="text" class="input_search_key" id="gover_search_key" autocomplete="off" placeholder="请输入关键词搜索" />
                     <%--<button type="submit" class="search_btn">搜索</button>--%>
                     <button class="button" onclick="search('key');return false;" style="margin-left: -5px;margin-top: -1px;"> 搜索</button>
                     <div class="search_suggest" id="gov_search_suggest">
@@ -284,8 +262,8 @@
                     </div>
                 </div>
             </div>
-
         </form>
+
         <div class="words-text clearfix">
             <a href="#">制氧机</a>
             <a href="#">代步车</a>
@@ -305,7 +283,6 @@
 
 <script type="text/javascript" src="http://www.softwhy.com/mytest/jQuery/jquery-1.8.3.js"></script>
 <script type="text/javascript">
-
     function oSearchSuggest(searchFuc)
     {
         var input = $('#gover_search_key');
@@ -411,22 +388,51 @@
     //这是一个模似函数，实现向后台发送ajax查询请求，并返回一个查询结果数据，传递给前台的JS,再由前台JS来展示数据。本函数由程序员进行修改实现查询的请求
     //参数为一个字符串，是搜索输入框中当前的内容
     function sendKeyWordToBack(keyword){
-        var aData = [];
-        aData.push('<span class="num_right">约100个</span>'+keyword+'返回数据1');
-        aData.push('<span class="num_right">约200个</span>'+keyword+'返回数据2');
-        aData.push('<span class="num_right">约100个</span>'+keyword+'返回数据3');
-        aData.push('<span class="num_right">约50000个</span>'+keyword+'返回数据4');
-        aData.push('<span class="num_right">约1044个</span>'+keyword+'2012是真的');
-        aData.push('<span class="num_right">约100个</span>'+keyword+'2012是假的');
-        aData.push('<span class="num_right">约100个</span>'+keyword+'2012是真的');
-        aData.push('<span class="num_right">约100个</span>'+keyword+'2012是假的');
-        //将返回的数据传递给实现搜索输入框的输入提示js类
-        searchSuggest.dataDisplay(aData);
+        var fd = new FormData();
+        fd.append("data",keyword);
+        $.ajax({
+            type: "POST",
+            contentType:false, //必须false才会避开jQuery对 formdata 的默认处理 , XMLHttpRequest会对 formdata 进行正确的处理
+            processData: false, //必须false才会自动加上正确的Content-Type
+            url: "/getSameProducts.action",
+            timeout: 15000,
+            data: fd,
+            success: function (msg) {
+                var aData = [];
+                $.each( msg.suggest, function(index, content) {
+                    aData.push(content);
+                });
+                //将返回的数据传递给实现搜索输入框的输入提示js类
+                searchSuggest.dataDisplay(aData);
+            },
+            error: function (msg) {
+
+            },
+            beforeSend:function () {
+
+            }
+        });
     }
+
+    function search() {
+        var val=$(".input_search_key").val();
+        console.log(val);
+        $('.search-wrapper').addClass('active');
+        $(".search_my").find(".bg").show();
+        $(".search-wrapper").css({"top":"15%","left":"50%"});
+        $(".result-container").show();
+        $("input[class='search-input']").val(val);
+        var fd = new FormData();
+        fd.append("data",val);
+        ajax(fd);
+
+    }
+
     //去登陆页面
     function login(){
-        window.location.href = "http://localhost:8070/LoginPage.action?returnUrl=" + encodeURIComponent(window.location.href);
+        window.location.href = "${pageContext.request.contextPath}/LoginPage.action?returnUrl=" + encodeURIComponent(window.location.href);
     }
+
 </script>
 </body>
 </html>

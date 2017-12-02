@@ -18,6 +18,15 @@ import java.util.TimerTask;
 public class MyTimer extends TimerTask {
     CNN cnn;
     List<ProductCustom> productCustoms;
+    String modelPath;
+    int num;
+
+    public MyTimer(List<ProductCustom> productCustoms, String modelPath,int num) {
+        this.productCustoms=productCustoms;
+        this.modelPath=modelPath;
+        this.num=num;
+    }
+
     /*public MyTimer(List<ProductCustom> productCustoms){
         this.productCustoms=productCustoms;
     }*/
@@ -25,49 +34,44 @@ public class MyTimer extends TimerTask {
     public void run() {
         Map<String,Double> map=new HashMap<String,Double>();
         WebApplicationContext webApplicationContext = ContextLoader.getCurrentWebApplicationContext();
-        CNNService cnnService = webApplicationContext.getBean(CNNServiceImpl.class);
-        productCustoms = cnnService.queryAllProduct();
-        /*servletContextEvent.getServletContext().setAttribute("productCustoms", productCustoms);*/
-
         ServletContext servletContext = webApplicationContext.getServletContext();
-        // 得到模型绝对路径
-        String modelPath = servletContext.getRealPath(Constant.modelName);
-        File modelFile=new File(modelPath);
+        String modelPathReal = servletContext.getRealPath(modelPath);
+        File modelPathFile=new File(modelPathReal);
         for (ProductCustom productCustom:productCustoms){
 
             String imgPath = servletContext.getRealPath(File.separator+productCustom.getProductpicture());
             double productId=productCustom.getProductid();
-            map.put(imgPath,productId);
+            map.put(imgPath,productId-num);
             String productImgStrB=productCustom.getProductB();
             String productImgStrC=productCustom.getProductC();
             String productImgStr=productImgStrB+","+productImgStrC;
             String []productImgs=productImgStr.split(",");
             for (String productImg:productImgs){
                 String productP = servletContext.getRealPath(File.separator+productImg);
-                map.put(productP,productId);
+                map.put(productP,productId-num);
             }
         }
         //String path="D:"+File.separator+"img"+File.separator+"test";
         DataUtil dataUtil=DataUtil.load(map);
-        if(modelFile.exists()){ //如果模型已经存在
-            cnn=CNN.loadModel(modelPath);
+        if(modelPathFile.exists()){ //如果模型已经存在
+            cnn=CNN.loadModel(modelPathReal);
             if(cnn==null){
                 cnn= CreateCNN.getCNN(1,productCustoms.size()+1);
-                cnn.train(dataUtil,2000);
+                cnn.train(dataUtil,400);
             }else {
                 int out=cnn.getLayers().size()-1; //cnn输出层
                 int outNum=cnn.getLayers().get(out).getOutMapNum();
                 if(outNum<productCustoms.size()){
                     cnn= CreateCNN.getCNN(1,productCustoms.size()+1);
-                    cnn.train(dataUtil,2000);
+                    cnn.train(dataUtil,400);
                 }else {
-                    cnn.train(dataUtil,20);
+                    cnn.train(dataUtil,400);
                 }
             }
         }else{
             cnn= CreateCNN.getCNN(1,productCustoms.size()+1);
-            cnn.train(dataUtil,2000);
+            cnn.train(dataUtil,300);
         }
-        cnn.saveModel(modelPath);
+        cnn.saveModel(modelPathReal);
     }
 }

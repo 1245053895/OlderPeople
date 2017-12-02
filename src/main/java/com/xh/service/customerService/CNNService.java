@@ -8,5 +8,5 @@ import java.util.List;
 
 public interface CNNService {
 
-    public List<ProductCustom> queryAllProduct();
+    public List<ProductCustom> queryAllProduct(int start,int count);
 }

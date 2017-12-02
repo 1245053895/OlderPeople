@@ -170,6 +170,9 @@
 	<c:if test="${ products==null|| hotsaleproducts==null|| top10products==null|| creditproducts==null|| jiankang==null|| jujia==null|| yule==null||  Recommendations==null}">
 		<jsp:forward page="${pageContext.request.contextPath}/selectproduct.action"></jsp:forward>
 	</c:if>
+	<c:if test="${ Recomend==null}">
+		<jsp:forward page="${pageContext.request.contextPath}/SelectRecommed.action"></jsp:forward>
+	</c:if>
 
 	<%--<c:if test="${empty productTypeExtends1||empty productTypeExtends}">
 		<jsp:forward page="${pageContext.request.contextPath}/ShopFrontPage.action"></jsp:forward>
@@ -1028,110 +1031,46 @@
 						<div class="m-slide-contain m-s2">
 							<div class="m-slide-item">
 								<ul class="m-cols m-col-5">
+									<c:forEach items="${Recomend}" var="Recomends" begin="0" end="4">
 									<li class="col">
 										<div class="row">
 											<dl>
-												<dt><img src="${pageContext.request.contextPath}/jsp/users/images/wntj/amy.jpg"></dt>
-												<dd class="name">按摩椅</dd>
-												<dd class="price">149元</dd>
-												<dd class="cmt">999人已购买</dd>
+												<dl>
+													<dt><a href="${pageContext.request.contextPath}/xiangqing.action?productid=${Recomends.productid}"><img src="${Recomends.productpicture}"></a></dt>
+													<dd class="name"><a href="${pageContext.request.contextPath}/xiangqing.action?productid=${Recomends.productid}">${Recomends.productname}</a></dd>
+													<dd class="price">${Recomends.productprice}</dd>
+													<dd class="cmt">浏览次数${Recomends.productlookcount}</dd>
+												</dl>
 											</dl>
 										</div>
 									</li>
-									<li class="col">
-										<div class="row">
-											<dl>
-												<dt><img src="${pageContext.request.contextPath}/jsp/users/images/wntj/amz.jpg"></dt>
-												<dd class="name">按摩枕</dd>
-												<dd class="price">149元</dd>
-												<dd class="cmt">999人已购买</dd>
-											</dl>
-										</div>
-									</li>
-									<li class="col">
-										<div class="row">
-											<dl>
-												<dt><img src="${pageContext.request.contextPath}/jsp/users/images/wntj/bjz.jpg"></dt>
-												<dd class="name">保健枕</dd>
-												<dd class="price">149元</dd>
-												<dd class="cmt">999人已购买</dd>
-											</dl>
-										</div>
-									</li>
-									<li class="col">
-										<div class="row">
-											<dl>
-												<dt><img src="${pageContext.request.contextPath}/jsp/users/images/wntj/crllk.jpg"></dt>
-												<dd class="name">成人拉拉裤</dd>
-												<dd class="price">149元</dd>
-												<dd class="cmt">999人已购买</dd>
-											</dl>
-										</div>
-									</li>
-									<li class="col">
-										<div class="row">
-											<dl>
-												<dt><img src="${pageContext.request.contextPath}/jsp/users/images/wntj/cy.jpg"></dt>
-												<dd class="name">金黄嫩茶叶</dd>
-												<dd class="price">149元</dd>
-												<dd class="cmt">999人已购买</dd>
-											</dl>
-										</div>
-									</li>
+									</c:forEach>
 								</ul>
+								<%--<c:forEach begin="0" end="4" step="1" items="${Recomend}" var="Recomends">
+									<li class="col sku-item " >
+										<dl class="row" >
+											<dt><a href="${pageContext.request.contextPath}/xiangqing.action?productid=${Recomends.productid}"><img src="${Recomends.productpicture}"></a></dt>
+											<dd class="name"><a href="${pageContext.request.contextPath}/xiangqing.action?productid=${Recomends.productid}">${Recomends.productname}</a></dd>
+											<dd class="price">${Recomends.productprice}</dd>
+										</dl>
+									</li>
+								</c:forEach>--%>
 							</div>
 							<div class="m-slide-item">
 								<ul class="m-cols m-col-5">
-									<li class="col">
-										<div class="row">
-											<dl>
-												<dt><img src="${pageContext.request.contextPath}/jsp/users/images/wntj/fhd.jpg"></dt>
-												<dd class="name">防滑垫</dd>
-												<dd class="price">149元</dd>
-												<dd class="cmt">999人已购买</dd>
-											</dl>
-										</div>
-									</li>
-									<li class="col">
-										<div class="row">
-											<dl>
-												<dt><img src="${pageContext.request.contextPath}/jsp/users/images/wntj/jrcd.jpg"></dt>
-												<dd class="name">加热床垫</dd>
-												<dd class="price">149元</dd>
-												<dd class="cmt">999人已购买</dd>
-											</dl>
-										</div>
-									</li>
-									<li class="col">
-										<div class="row">
-											<dl>
-												<dt><img src="${pageContext.request.contextPath}/jsp/users/images/wntj/pgzbq.jpg"></dt>
-												<dd class="name">皮革坐便器</dd>
-												<dd class="price">149元</dd>
-												<dd class="cmt">999人已购买</dd>
-											</dl>
-										</div>
-									</li>
-									<li class="col">
-										<div class="row">
-											<dl>
-												<dt><img src="${pageContext.request.contextPath}/jsp/users/images/wntj/zlj.jpg"></dt>
-												<dd class="name">足疗机</dd>
-												<dd class="price">149元</dd>
-												<dd class="cmt">999人已购买</dd>
-											</dl>
-										</div>
-									</li>
-									<li class="col">
-										<div class="row">
-											<dl>
-												<dt><img src="${pageContext.request.contextPath}/jsp/users/images/wntj/zyp.jpg"></dt>
-												<dd class="name">足浴盆</dd>
-												<dd class="price">149元</dd>
-												<dd class="cmt">999人已购买</dd>
-											</dl>
-										</div>
-									</li>
+									<c:forEach items="${Recomend}" var="Recomends" begin="5" end="9">
+										<li class="col">
+											<div class="row">
+												<dl>
+													<dt><a href="${pageContext.request.contextPath}/xiangqing.action?productid=${Recomends.productid}"><img src="${Recomends.productpicture}"></a></dt>
+													<dd class="name"><a href="${pageContext.request.contextPath}/xiangqing.action?productid=${Recomends.productid}">${Recomends.productname}</a></dd>
+													<dd class="price">${Recomends.productprice}</dd>
+													<dd class="cmt">浏览次数${Recomends.productlookcount}</dd>
+												</dl>
+											</div>
+										</li>
+									</c:forEach>
+
 								</ul>
 							</div>
 						</div>

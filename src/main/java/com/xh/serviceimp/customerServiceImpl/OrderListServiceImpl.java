@@ -102,4 +102,16 @@ public class OrderListServiceImpl implements OrderListService {
         Order pc =orderListMapper.selectOrderIdById(orderid,status);
         return pc!=null;
     }
+
+    @Override
+    public Boolean updataRefuseByOrderId(Integer orderid, String liyou) {
+        orderListMapper.updataRefuseByOrderId(String.valueOf(orderid),liyou);
+        Order pc =orderListMapper.selectRefuseByOrderId(String.valueOf(orderid),liyou);
+        return pc!=null;
+    }
+
+    @Override
+    public ProductCustom queryProductByProductId(int id) {
+        return orderListMapper.queryProductByProductId(id);
+    }
 }

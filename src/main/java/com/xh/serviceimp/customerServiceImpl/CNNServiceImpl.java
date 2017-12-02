@@ -14,7 +14,7 @@ public class CNNServiceImpl implements CNNService {
     @Autowired
     private CNNMapper cnnMapper;
     @Override
-    public List<ProductCustom> queryAllProduct() {
-        return cnnMapper.queryAllProduct();
+    public List<ProductCustom> queryAllProduct(int start,int count) {
+        return cnnMapper.queryAllProduct(start,count);
     }
 }

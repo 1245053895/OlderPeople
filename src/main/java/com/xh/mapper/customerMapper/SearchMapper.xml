@@ -20,6 +20,8 @@
         <where>
             <foreach collection="list" index="index" item="item" open="" separator="" close="">
                 OR p.ProductName LIKE '%${item}%'
+                OR p.ProductPrice LIKE '%${item}%'
+                OR p.ProductDescribe LIKE '%${item}%'
             </foreach>
         </where>
     </select>
@@ -37,6 +39,16 @@
                 #{id}
             </foreach>
         </where>
+    </select>
+
+    <select id="queryProductByProductName" resultType="com.xh.po.vo.ProductCustom" parameterType="string">
+        SELECT
+        p.*,
+        p.Product_A productA,
+        p.Product_B productB,
+        p.Product_C productC
+        FROM product p
+        WHERE p.ProductName LIKE '%${_parameter}%'
     </select>
 
 </mapper>

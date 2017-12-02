@@ -179,9 +179,9 @@
 			<div class="member-apart clearfix">
 				<div class="fl"><a href="#"><img src="${userAndBrithday.userC}"></a></div>
 				<div class="fl">
-					用户名：${userAndBrithday.username}<br>
+					用户名：${userAndBrithday.userrealname}<br>
 					<%--<p></p>--%>
-					账号：${userAndBrithday.userid}
+					账号：${userAndBrithday.username}
 					<%--<p></p>--%>
 				</div>
 			</div>
@@ -236,9 +236,10 @@
 								<input name="userid" value="${user.userid}"  readonly="ture" class="warn2" style="margin-left: 10px;font-weight: normal;border-color: red;display: none">
 								<input name="gainname" placeholder="收货人姓名" class="warn2" style="margin-left: 10px;font-weight: normal;border-color: red">
 								<input name="gainaddress" placeholder="地址" class="warn2" style="margin-left: 10px;font-weight: normal;border-color: red">
-								<input name="gaincode" placeholder="邮编"  class="warn2" style="margin-left: 10px;font-weight: normal;border-color: red">
+
+								<input name="gaincode" placeholder="邮编只能填数字"  class="warn2" onKeyUp="value=value.replace(/\D/g,'')" onafterpaste="value=value.replace(/\D/g,'')"  style="margin-left: 10px;font-weight: normal;border-color: red">
 								<input name="gainmobile" placeholder="电话"  class="warn2" style="margin-left: 10px;font-weight: normal;border-color: red">
-								<input  type="submit" value="保存" class="warn2" style="margin-left: 10px;font-weight: normal;border-radius: 10px;background-color: black;color: aliceblue;" onClick="bc()">
+								<input  type="submit" value="保存" class="warn2" style=" width :10px ;margin-left: 10px;font-weight: normal;border-radius: 10px;background-color: black;color: aliceblue;" onClick="bc()">
 								<input  value="取消" class="warn2" style="margin-left: 10px;font-weight: normal;border-radius: 10px;background-color: black;color: aliceblue;" onClick="bc()">
 							</li>
 						</form>
@@ -248,7 +249,7 @@
 							<form id="form${gainaddres1.gainid}" action="${pageContext.request.contextPath}/UpdateGainAdress.action" method="post">
 								<li class="clearfix" style="background-color: #f5f5f5">
 									<div class="warn2" style="margin-left: 10px;border: none;font-weight: normal;display: none">
-										<input  class="inputx  aa${gainaddres1.gainid}" name="gainid" value="${gainaddres1.gainid}" readonly="true" style="back">
+										<input  class="inputx  aa${gainaddres1.gainid}" name="gainid" value="${gainaddres1.gainid}" readonly="true" >
 									</div>
 									<div class="warn2" style="margin-left: 10px;border: none;font-weight: normal">
 										<input  class="inputx  aa${gainaddres1.gainid}" name="gainname" value="${gainaddres1.gainname}" readonly="true">
@@ -257,6 +258,7 @@
 										<input  class="inputx  aa${gainaddres1.gainid}" name="gainaddress" value="${gainaddres1.gainaddress}"  readonly="true">
 									</div>
 									<div class="warn2" style="margin-left: 10px;border: none;font-weight: normal">
+
 										<input  class="inputx aa${gainaddres1.gainid}" name="gaincode" value="${gainaddres1.gaincode}" readonly="true">
 									</div>
 									<div class="warn2" style="margin-left: 10px;border: none;font-weight: normal">

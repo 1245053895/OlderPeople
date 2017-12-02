@@ -46,7 +46,7 @@
                         <a href="${pageContext.request.contextPath}/xiangqing.action?productid=${totalCreditsByIds1.productid}" class="title">${totalCreditsByIds1.productname}</a>
                         <p style="font-size: 18px;font-weight:500;color: #0b6cbc;margin-top: 0px;"><font>销量</font>${totalCreditsByIds1.totalhotsale}</p>
                         <p><font>￥</font>${totalCreditsByIds1.productprice}<font>0</font></p>
-                        <a href="#" class="buy"></a>
+                        <a href="${pageContext.request.contextPath}/xiangqing.action?productid=${totalCreditsByIds1.productid}" class="buy"></a>
                         <a  href="${pageContext.request.contextPath}/xiangqing.action?productid=${totalCreditsByIds1.productid}">
                             <img  style="width: 180px;height: 200px;" src="${totalCreditsByIds1.productpicture}"/>
                         </a>

@@ -260,10 +260,10 @@
 	overflow:hidden;
 }
 #special .spe_pic img {
-	height: 210px;
-	width:230px;
+	height: 220px;
+	width:225px;
 	opacity: 0.9;
-	margin-left: 85px;
+	margin-left: 70px;
 	margin-top: 6px;
 	/*transition-duration: .7s;
 	-moz-transition-duration: .7s;

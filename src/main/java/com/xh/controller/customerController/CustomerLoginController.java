@@ -426,8 +426,6 @@ public class CustomerLoginController {
         gainaddres.setGainmobile(gainmobile);
         String gainaddress=gainaddres.getGainaddress().replaceAll(",", "");
         gainaddres.setGainaddress(gainaddress);
-
-
         User user = (User) session.getAttribute("user");
         Product product1=  userLoginService.jifenPage(product.getProductid());/*查询出该商品的信息，及兑换该商品需要多少积分*/
         Integer totalCreditsById = userLoginService.queryCreditsCore(user.getUserid());/*得到用户的总积分*/

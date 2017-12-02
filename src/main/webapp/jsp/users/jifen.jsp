@@ -185,9 +185,9 @@
 			<div class="member-apart clearfix">
 				<div class="fl"><a href="#"><img src="${userAndBrithday.userC}"></a></div>
 				<div class="fl">
-					用户名：${userAndBrithday.username}<br>
+					用户名：${userAndBrithday.userrealname}<br>
 					<%--<p></p>--%>
-					账号：${userAndBrithday.userid}
+					账号：${userAndBrithday.username}
 					<%--<p></p>--%>
 				</div>
 			</div>

@@ -80,10 +80,11 @@ public class OrderPayServiceImpl implements OrderPayService {
         productMapper1.updateOrderPayStatus(orderid);
     }
 
-    /*@Override
+
+    @Override
     public Gainaddres IsGainAddress(Gainaddres gainaddres) {
        Gainaddres gainaddres1= orderPayMapper.IsGainAddress(gainaddres);
         return gainaddres1;
-    }*/
+    }
 
 }

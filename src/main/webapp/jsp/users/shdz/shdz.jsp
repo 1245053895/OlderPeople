@@ -315,6 +315,7 @@
      <c:forEach items="${gainaddresList}" var="gainaddres">
          <c:if test="${gainaddres.gainA==1}">
              <div class="add_mi" style="background:url('${pageContext.request.contextPath}/jsp/users/shdz/images/mail_1.jpg') no-repeat">
+                <%-- <input type="hidden" name="gainid" value="${gainaddres.gainid}">--%>
                  <p style="border-bottom:1px dashed #ccc;line-height:28px;"><input type="checkbox" checked="true" name="gainname" value="${gainaddres.gainname}" style="display: none">${gainaddres.gainname}</p>
                  <p><input type="checkbox" checked="true" name="gainaddress" value="${gainaddres.gainaddress}" style="display: none" >${gainaddres.gainaddress}</p>
                  <span>电话：<input type="checkbox" checked="true" name="gainmobile" value="${gainaddres.gainmobile}" style="display: none">${gainaddres.gainmobile}</span>
@@ -323,6 +324,7 @@
          </c:if>
          <c:if test="${gainaddres.gainA==0}">
              <div class="add_mi">
+                 <%--<input type="hidden" name="gainid" value="${gainaddres.gainid}">--%>
                  <p style="border-bottom:1px dashed #ccc;line-height:28px;"><input type="checkbox" name="gainname" value="${gainaddres.gainname}" style="display: none">${gainaddres.gainname}</p>
                  <p><input type="checkbox" name="gainaddress" value="${gainaddres.gainaddress}" style="display: none" >${gainaddres.gainaddress}</p>
                  <span>电话：<input type="checkbox" name="gainmobile" value="${gainaddres.gainmobile}" style="display: none">${gainaddres.gainmobile}</span>

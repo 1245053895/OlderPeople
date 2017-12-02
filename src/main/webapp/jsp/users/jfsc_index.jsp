@@ -460,5 +460,7 @@
         })
     </script>
 
+    <jsp:include page="${pageContext.request.contextPath}/jsp/users/bottom.jsp"></jsp:include>
+
     </body>
 </html>

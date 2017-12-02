@@ -107,21 +107,7 @@
 	</div>
 </section>
 
-<footer>
-	<div class="center">
-		<div class="pc-footer-login">
-			<p>
-				<!--<a>关于我们</a> 招聘信息 联系我们 商家入驻 商家后台 商家社区 ©2017 Yungouwu.com 北京云购物网络有限公司-->
-				<a href="">关于我们</a><span  style="color:#999"> | </span>
-				<a href="">招聘信息</a><span  style="color:#999"> | </span>
-				<a href="">联系我们</a><span  style="color:#999"> | </span>
-				<a href="">后台管理</a><span  style="color:#999"> | </span>
-				©2017 上海孝和集团电子商城
-			</p>
-			<p style="color:#999">营业执照注册号：990106000129004 | 网络文化经营许可证：北网文（2016）0349-219号 | 增值电信业务经营许可证：京2-20110349 | 安全责任书 | 京公网安备 99010602002329号 </p>
-		</div>
-	</div>
-</footer>
+<jsp:include page="${pageContext.request.contextPath}/jsp/users/bottom.jsp"></jsp:include>
 
 </body>
 </html>

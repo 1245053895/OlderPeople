@@ -281,6 +281,14 @@
     </div>
 </div>
 
+<!-- 右侧浮动 -->
+<div id="float" style="right: 45%;">
+    <a href="${pageContext.request.contextPath}/LoginServlet?username=${sessionScope.user.username}" class="consult" target="_blank"></a>
+    <a href="${pageContext.request.contextPath}/jsp/users/my-dingdan.jsp?flag=2" class="cart"></a>
+    <a href="${pageContext.request.contextPath}/jsp/users/my-dingdan.jsp?flag=1" class="cart1"></a>
+    <a href="javascript:void(0)" class="btn_top" style="display: none;"></a>
+</div>
+
 <script type="text/javascript" src="http://www.softwhy.com/mytest/jQuery/jquery-1.8.3.js"></script>
 <script type="text/javascript">
     function oSearchSuggest(searchFuc)

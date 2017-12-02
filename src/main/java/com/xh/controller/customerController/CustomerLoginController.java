@@ -125,10 +125,12 @@ public class CustomerLoginController {
     public String ExitLogin(HttpServletRequest request, HttpServletResponse response, Userlog userlog) {
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
-        userlog.setUserid(user.getUserid());
-        userlog.setEndlogintime(new Date());
-        userLoginService.updateEndLoginTime(userlog);
-        session.removeAttribute("user");
+        if(user!=null){
+            userlog.setUserid(user.getUserid());
+            userlog.setEndlogintime(new Date());
+            userLoginService.updateEndLoginTime(userlog);
+            session.removeAttribute("user");
+        }
         return "redirect:/ShopFrontPage.action";
     }
 

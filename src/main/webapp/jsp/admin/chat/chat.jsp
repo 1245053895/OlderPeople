@@ -13,7 +13,7 @@
 <script type="text/javascript">
 	var  ws;
 	//此处改为服务器ip
-	var url="ws://127.0.0.1:80/chatSocket?username=${sessionScope.username}";
+	var url="ws://127.0.0.1:8070/chatSocket?username=${sessionScope.username}";
 	
 	function connect(){
 		 if ('WebSocket' in window) {
@@ -103,7 +103,7 @@
     </div>
     <div id="users"
          style="width: 200px;height: 520px;border:1px solid #2e3238;border-radius:3px;position: absolute;float: left;left: 412px;top: 40px;margin-left: -115px;background-color: #2e3238;overflow-x: hidden;overflow-y: hidden">
-        <div style="font-size: 18px;color:#f9f8e2;margin-top: 20px;margin-left: 20px;">欢迎&nbsp;&nbsp;&nbsp; ${sessionScope.username }* * *</div>
+        <div style="font-size: 18px;color:#f9f8e2;margin-top: 20px;margin-left: 20px;">欢迎&nbsp;&nbsp;&nbsp; ${sessionScope.username }</div>
         <ul id="userList" >
         </ul>
     </div>

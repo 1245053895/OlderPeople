@@ -18,6 +18,7 @@
         <link href="${pageContext.request.contextPath}/jsp/users/jfsc/css/style.css" rel="stylesheet" type="text/css" />
         <link href="${pageContext.request.contextPath}/jsp/users/jfsc/css/content.css" rel="stylesheet" type="text/css" />
         <link href="${pageContext.request.contextPath}/jsp/users/jfsc/css/common.css" rel="stylesheet" type="text/css" />
+        <link href="${pageContext.request.contextPath}/jsp/users/css/rexiao.css" type="text/css" rel="stylesheet" />
 
     </head>
 
@@ -42,8 +43,8 @@
         </div>
 
     </header>
-        <div id="wrap" class="clearfix" style="width:100%;background-color: #f5f5f5;">
-            <section id="contents" style="margin-top: 40px;">
+        <div id="wrap" class="clearfix" style="width:100%;background-color: #f5f5f5;padding-top: 40px;">
+            <section id="contents">
 
                 <h3 class="travel_title">
                     <i class="travel_icon tjy">
@@ -66,7 +67,7 @@
                             </div>
                             <div class="rec_box">
                                 <div class="rec_title">
-                                    <p class="font18 font_b">
+                                    <p class="font18" style="margin-bottom: 8px;">
                                         <a href="${pageContext.request.contextPath}/xiangqing.action?productid=${allHCproductLists.productid}" target="_blank">
                                            ${allHCproductLists.productname}
                                         </a>
@@ -74,7 +75,7 @@
                                    ${allHCproductLists.productdescribe}
                                 </div>
                                 <p class="al_center font14">
-                                    <span class="font_orange font20" style="margin-bottom: 3px">
+                                    <span class="font_orange font16">
                                            销量:${allHCproductLists.totalhotsale}
                                     </span>
                                 </p>
@@ -82,13 +83,13 @@
 
                                 <p class="al_center font14" style="margin-top: 4px">
                                     ￥
-                                    <span class="font_orange font20">
+                                    <span class="font_orange font16">
                                         ${allHCproductLists.productprice}
                                     </span>
                                 </p>
-                                <p class="al_center font14">
+                                <p class="al_center font16" style="margin-top: 10px;">
                                     所需积分：
-                                    <b class="font_redd font16">
+                                    <b class="font_redd font20">
                                        ${allHCproductLists.productdisabled}
                                     </b>
                                 </p>
@@ -139,10 +140,10 @@
                     </li>
                     </c:forEach>
                 </ul>
-                <div style="float: right;font-size:20px">
-                <c:forEach items="${pagination.pageView }" var="page">
-                    ${page }
-                </c:forEach>
+                <div class="page">
+                    <c:forEach items="${pagination.pageView }" var="page">
+                        ${page }
+                    </c:forEach>
                 </div>
             </section>
 

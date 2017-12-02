@@ -41,10 +41,10 @@
 	overflow:hidden;
 }
 .rec_pic img {
-	height: 210px;
-	width:230px;
+	height: 220px;
+	width:225px;
 	opacity: 0.9;
-	margin-left: 85px;
+	margin-left: 65px;
 	margin-top: 6px;
 
 }
@@ -63,7 +63,8 @@
 	font-size: 14px;
 	color: #000;
 	text-align: center;
-	height: 120px;
+	height: 75px;
+	margin-top: 30px;
 }
 .rec_title a {
 	color: #000;
@@ -273,8 +274,10 @@ dl.screening dd a.select {
 	overflow: hidden;
 }
 .goods_pic2 img {
-	height: 280px;
-	width: 280px;
+	height: 225px;
+	width: 220px;
+	margin-top: 30px;
+	margin-left: 30px;
 	opacity: 0.9;
 }
 .goods_title2 {

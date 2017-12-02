@@ -259,16 +259,17 @@
 			<div class="Xcontent14 clearfix"><a href="#"><p>${myProduct.productname}</p></a></div>
 			<div class="Xcontent15 clearfix red fl" style="margin-top:15px;margin-right: 8px;">${myProduct.productdescribe}</div>
 			<div class="Xcontent16 clearfix"><p style="margin-top:14px;">更多惊喜，你值得拥有！</p></div>
-			<c:if test="${myProduct.productdisabled>0}">
-			<div class="Xcontent15 clearfix red fl"><p style="margin-top:14px;font-size: 30px;">消耗 <strong id="aaa">${myProduct.productdisabled}</strong> 积分可兑换</p></div>
-			</c:if>
+
 			<div  style="height:14px;"></div>
 
-			<div class="Xcontent17">
+			<div class="Xcontent17" style="margin-top: 0px;">
 				<p class="Xcontent18">售价</p>
 				<p class="Xcontent19">￥<span id="price">90</span></p>
 				<p class="Xcontent18">原价</p>
 				<p class="Xcontent181">￥<span></span></p>
+				<c:if test="${myProduct.productdisabled>0}">
+					<div class="Xcontent15 clearfix fl"><p style="margin-top: 18px;margin-left: 35px;">消耗 <span id="aaa" class="red"  style="font-size: 28px;color: #cd2426">${myProduct.productdisabled}</span> 积分可兑换</p></div>
+				</c:if>
 				<!--<div class="Xcontent20">
 					<p class="Xcontent21">促销</p>
 					<img src="images/shangpinxiangqing/X12.png">

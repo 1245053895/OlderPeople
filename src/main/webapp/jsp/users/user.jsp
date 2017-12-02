@@ -17,7 +17,7 @@
 	<meta name="Description" content="">
 	<meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE">
 	<meta name="renderer" content="webkit">
-	<title>购物商城-个人中心</title>
+	<title>购物商城-个人资料</title>
 	<link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/jsp/users/img/icon/favicon.ico">
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/jsp/users/css/base.css">
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/jsp/users/css/home.css">
@@ -276,9 +276,9 @@
 							<div class="warn1"></div>
 							<div class="warn2">性别</div>
 							<span class="warn3">
-								<ul style="height: 0px;margin-top: -10px;margin-left: -25px">
-									<li style="border-bottom: 0px;font-size: 16px">男 &nbsp <input  type="radio" name="usersex" data-labelauty="男" value="1" <c:if test="${userAndBrithday.usersex==1}">checked></c:if></li>
-									<li style="border-bottom: 0px;font-size: 16px">女 &nbsp<input type="radio" name="usersex" data-labelauty="女" value="0" <c:if test="${userAndBrithday.usersex==0}">checked></c:if></li>
+								<ul style="height: 0px;margin-top: -10px;margin-left: -10px">
+									<li style="border-bottom: 0px;font-size: 16px">&nbsp;男 <input type="radio" name="usersex" data-labelauty="男" value="1" <c:if test="${userAndBrithday.usersex==1}">checked></c:if></li>
+									<li style="border-bottom: 0px;font-size: 16px">&nbsp;女 <input type="radio" name="usersex" data-labelauty="女" value="0" <c:if test="${userAndBrithday.usersex==0}">checked></c:if></li>
 								</ul>
 							</span>
 

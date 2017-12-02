@@ -705,7 +705,7 @@ a{
 .yScrollListInList ul{width:2238px;height:275px;position:absolute;top:0;left:60px;overflow:hidden;}
 .yScrollListInList ul li{width:155px;height:275px;float:left;margin-right:40px; text-align:left;}
 
-.yScrollListInList ul li img{width:140px;height:140px;display:block;margin-left:10px;margin-top:12px; transition:left 0.3s ease 0s; position:relative; left:0;}
+.yScrollListInList ul li img{width:140px;height:140px;display:block;margin-left:20px;margin-top:12px; transition:left 0.3s ease 0s; position:relative; left:0;}
 .yScrollListInList ul li img:hover {left:-8px;}
 /*.yScrollListInList ul li img{width:140px;height:140px;display:block;margin-left:10px;margin-top:12px;  position:relative; left:0; transform:scaleY(1); transition:all 0.6s ease-in-out 0s;}*/
 /*.yScrollListInList ul li img:hover {transform:scale(1.2);}*/

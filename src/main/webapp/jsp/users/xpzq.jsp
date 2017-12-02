@@ -15,6 +15,7 @@
     <title>新品专区</title>
     <link href="${pageContext.request.contextPath}/jsp/users/css/jfscstyle.css" rel="stylesheet" type="text/css">
     <link href="${pageContext.request.contextPath}/jsp/users/css/top.css" rel="stylesheet" type="text/css">
+    <link href="${pageContext.request.contextPath}/jsp/users/css/rexiao.css" type="text/css" rel="stylesheet" />
 </head>
 <body>
 <header id="pc-header">
@@ -76,7 +77,7 @@
             </ul>
             <!-- 新品专区 end -->
         </div>
-        <div style="margin-top: 20px;font-size: 20px;float: right;" >
+        <div class="page">
             <c:forEach items="${pagination.pageView }" var="page">
                 ${page }
             </c:forEach>

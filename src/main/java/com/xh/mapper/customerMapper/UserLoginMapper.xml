@@ -66,7 +66,7 @@
 
     <!--个人中心我的积分显示-->
     <select id="queryAllById" parameterType="Integer" resultType="totalCreditsById">
-        SELECT ProductPicture,ProductName,product.ProductId, ProductCredits,order.CreateTime FROM
+         SELECT ProductPicture,ProductName,product.ProductId, ProductCredits,order.CreateTime ,`order`.TotalCredit FROM
                product,`order`,orderproduct  WHERE `order`.UserId=#{userid} AND orderproduct.OrderId=`order`.OrderId
                AND orderproduct.ProductId=product.ProductId;
     </select>
@@ -74,18 +74,15 @@
 
 <!--每一个用户所购买的所有商品的总积分-->
     <select id="queryTotalCriditsById" parameterType="Integer" resultType="totalCreditsById">
-        SELECT sum(ProductCredits) totalCredits FROM
-               product,`order`,orderproduct  WHERE `order`.UserId=#{userid} AND orderproduct.OrderId=`order`.OrderId
-               AND orderproduct.ProductId=product.ProductId;
+        SELECT SUM(TotalCredit) as totalCredits FROM `order`  WHERE UserId=#{userid}
     </select>
 
     <!--查询每一个用户所购买的所有商品的总积分后更新用户表中用户的总积分-->
     <update id="updateCreditsCore" parameterType="Integer">
-            UPDATE user SET CreditsCore=(SELECT sum(ProductCredits) as CreditsCore
-            FROM product,`order`,orderproduct
-            WHERE `order`.UserId=#{userid}
-             AND orderproduct.OrderId=`order`.OrderId
-             AND orderproduct.ProductId=product.ProductId) WHERE UserId=#{userid}
+            UPDATE user SET CreditsCore=
+                (SELECT SUM(TotalCredit) as  totalCredits
+                  FROM `order`  WHERE UserId=#{userid})
+                  WHERE UserId=#{userid}
     </update>
 
     <!--查询用户表中用户自己的总积分-->
@@ -117,7 +114,7 @@
     <select id="Max10Comment" resultType="totalCreditsById">
       SELECT UserName, product.ProductId,    productpicture, ProductName,ProductDescribe,ProductPrice,
      product.ProductId, COUNT(`Comment`) totalcomment ,`Comment` FROM `comment` ,   product,`user`
-    WHERE product.ProductId=`comment`.ProductId AND `user`.UserId=`Comment`.UserId AND ProductTypeId=1
+    WHERE product.ProductId=`comment`.ProductId AND `user`.UserId=`comment`.UserId AND ProductTypeId=1
      GROUP BY ProductId
       ORDER BY totalcomment DESC LIMIT 0,8
     </select>
@@ -125,8 +122,8 @@
     <!--查询出热评健康中,(评论数最多的前十)商品的图片，名称，描述，价格，展示在商城的首页，这类商品的评论人数和评论内容评论者-->
     <select id="selectjiangkang" resultType="totalCreditsById">
            SELECT  ProductTypeId, product.ProductId, UserName,  productpicture, ProductName,ProductDescribe,ProductPrice,
-     product.ProductId, COUNT(`Comment`) totalcomment ,`Comment` FROM `comment` ,   product,user
-    WHERE product.ProductId=`comment`.ProductId AND `user`.UserId=`Comment`.UserId AND ProductTypeId=2
+     product.ProductId, COUNT(`Comment`) totalcomment ,`Comment` FROM `comment`,product,user
+    WHERE product.ProductId=`comment`.ProductId AND `user`.UserId=`comment`.UserId AND ProductTypeId=2
      GROUP BY ProductId
       ORDER BY totalcomment DESC LIMIT 0,8
     </select>
@@ -134,8 +131,8 @@
     <!--查询出热评居家中(评论数最多的前十)商品的图片，名称，描述，价格，展示在商城的首页，这类商品的评论人数和评论内容评论者-->
     <select id="selectjujia" resultType="totalCreditsById">
                SELECT UserName, ProductTypeId,    productpicture, ProductName,ProductDescribe,ProductPrice,
-       product.ProductId, COUNT(`Comment`) totalcomment ,Comment  FROM `comment` ,   product,`user`
-      WHERE product.ProductId=`comment`.ProductId AND `user`.UserId=`Comment`.UserId AND ProductTypeId=4
+       product.ProductId, COUNT(`Comment`) totalcomment ,Comment  FROM `comment` ,product,`user`
+      WHERE product.ProductId=`comment`.ProductId AND `user`.UserId=`comment`.UserId AND ProductTypeId=4
      GROUP BY ProductId
       ORDER BY totalcomment DESC LIMIT 0,8
     </select>
@@ -143,8 +140,8 @@
     <!--查询出热评娱乐中(评论数最多的前十)商品的图片，名称，描述，价格，展示在商城的首页，这类商品的评论人数，评价者，和评论内容-->
     <select id="selectyule" resultType="totalCreditsById">
               SELECT   UserName,  ProductTypeId,    productpicture, ProductName,ProductDescribe,ProductPrice,
-         product.ProductId, COUNT(`Comment`) totalcomment,`Comment` FROM `comment` ,   product,user
-       WHERE product.ProductId=`comment`.ProductId AND `user`.UserId=`Comment`.UserId  AND ProductTypeId=5
+         product.ProductId, COUNT(`Comment`) totalcomment,`Comment` FROM `comment` ,product,user
+       WHERE product.ProductId=`comment`.ProductId AND `user`.UserId=`comment`.UserId  AND ProductTypeId=5
        GROUP BY ProductId
        ORDER BY totalcomment DESC LIMIT 0,8
     </select>
@@ -155,7 +152,7 @@
   <select id="IsCredExchange" resultType="totalCreditsById">
           SELECT product.ProductId, productpicture, ProductName, ProductDisabled,ProductDescribe,ProductPrice,COUNT(`Comment`) totalcomment
             FROM product,comment WHERE  product.ProductId=`comment`.ProductId AND  ProductDisabled>0
-            GROUP BY `Comment`.ProductId
+            GROUP BY `comment`.ProductId
          ORDER BY totalcomment DESC LIMIT 0,8
   </select>
 

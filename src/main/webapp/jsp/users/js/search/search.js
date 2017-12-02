@@ -48,41 +48,45 @@ $(document).ready(function(){
         var data=$(this).val();
         var fd = new FormData();
         fd.append("data",data);
-        $.ajax({
-            type: "POST",
-            contentType:false, //必须false才会避开jQuery对 formdata 的默认处理 , XMLHttpRequest会对 formdata 进行正确的处理
-            processData: false, //必须false才会自动加上正确的Content-Type
-            url: "/uploadSearchImage.action",
-            timeout: 15000,
-            data: fd,
-            success: function (msg) {
-                $(".product_center").find("div").remove();
-                $(".result-list").hide(10,function () {
-                    $(".result-list").show(10);
-                    //$(".upload_image").hide();
-                });
-                var jsonString = msg;
-                $.each( jsonString.productCustoms, function(index, content) {
-                    var html="<a target='_blank' href='/xiangqing.action?productid="+content.productid+"'><div class='product_list'>\n" +
-                        "<div>\n" +
-                        "<img src='/"+content.productpicture+"'>\n" +
-                        "</div>\n" +
-                        "<div class='product_name'>"+content.productname+"</div>\n" +
-                        "<div class='product_price'><em>"+content.productprice+"</em>元</div>\n" +
-                        "</div></a>";
-                    $(".product_center").append(html);
-                });
-            },
-            error: function (msg) {
-
-            },
-            beforeSend:function () {
-
-            }
-        });
+        ajax(fd);
     });
 
 });
+
+function ajax(fd) {
+    $.ajax({
+        type: "POST",
+        contentType:false, //必须false才会避开jQuery对 formdata 的默认处理 , XMLHttpRequest会对 formdata 进行正确的处理
+        processData: false, //必须false才会自动加上正确的Content-Type
+        url: "/uploadSearchImage.action",
+        timeout: 15000,
+        data: fd,
+        success: function (msg) {
+            $(".product_center").find("div").remove();
+            $(".result-list").hide(10,function () {
+                $(".result-list").show(10);
+                //$(".upload_image").hide();
+            });
+            var jsonString = msg;
+            $.each( jsonString.productCustoms, function(index, content) {
+                var html="<a target='_blank' href='/xiangqing.action?productid="+content.productid+"'><div class='product_list'>\n" +
+                    "<div>\n" +
+                    "<img src='/"+content.productpicture+"'>\n" +
+                    "</div>\n" +
+                    "<div class='product_name'>"+content.productname+"</div>\n" +
+                    "<div class='product_price'><em>"+content.productprice+"</em>元</div>\n" +
+                    "</div></a>";
+                $(".product_center").append(html);
+            });
+        },
+        error: function (msg) {
+
+        },
+        beforeSend:function () {
+
+        }
+    });
+}
 
 function searchToggle(obj, evt){
     var container = $(obj).closest('.search-wrapper');

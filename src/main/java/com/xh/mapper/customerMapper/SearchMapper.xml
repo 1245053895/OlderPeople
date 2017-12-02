@@ -48,7 +48,7 @@
         p.Product_B productB,
         p.Product_C productC
         FROM product p
-        WHERE p.ProductName LIKE '${_parameter}%'
+        WHERE p.ProductName LIKE '%${_parameter}%'
     </select>
 
 </mapper>

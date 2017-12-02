@@ -136,7 +136,6 @@
                     </div>
                 </form>
             </div>
-
             <div class="result-suggest">
                 <ul>
                     <li>老人</li>
@@ -250,11 +249,11 @@
         </h1>
     </div>
     <div class="head-form fl">
-        <form class="clearfix">
+        <form class="clearfix" onsubmit="return false">
             <div class="gover_search">
                 <div class="gover_search_form clearfix">
                     <%--<span class="search_t">关键词匹配搜索</span>--%>
-                    <input type="text" class="input_search_key" id="gover_search_key" placeholder="请输入关键词搜索" />
+                    <input type="text" class="input_search_key" id="gover_search_key" autocomplete="off" placeholder="请输入关键词搜索" />
                     <%--<button type="submit" class="search_btn">搜索</button>--%>
                     <button class="button" onclick="search('key');return false;" style="margin-left: -5px;margin-top: -1px;"> 搜索</button>
                     <div class="search_suggest" id="gov_search_suggest">
@@ -263,8 +262,8 @@
                     </div>
                 </div>
             </div>
-
         </form>
+
         <div class="words-text clearfix">
             <a href="#">制氧机</a>
             <a href="#">代步车</a>
@@ -280,6 +279,14 @@
         <a href="${pageContext.request.contextPath}/jsp/users/my-dingdan.jsp?flag=2" target="_blank">我的购物车</a>
         <em>10</em>
     </div>
+</div>
+
+<!-- 右侧浮动 -->
+<div id="float" style="right: 45%;">
+    <a href="${pageContext.request.contextPath}/LoginServlet?username=${sessionScope.user.username}" class="consult" target="_blank"></a>
+    <a href="${pageContext.request.contextPath}/jsp/users/my-dingdan.jsp?flag=2" class="cart"></a>
+    <a href="${pageContext.request.contextPath}/jsp/users/my-dingdan.jsp?flag=1" class="cart1"></a>
+    <a href="javascript:void(0)" class="btn_top" style="display: none;"></a>
 </div>
 
 <script type="text/javascript" src="http://www.softwhy.com/mytest/jQuery/jquery-1.8.3.js"></script>
@@ -389,22 +396,51 @@
     //这是一个模似函数，实现向后台发送ajax查询请求，并返回一个查询结果数据，传递给前台的JS,再由前台JS来展示数据。本函数由程序员进行修改实现查询的请求
     //参数为一个字符串，是搜索输入框中当前的内容
     function sendKeyWordToBack(keyword){
-        var aData = [];
-        aData.push('<span class="num_right">约100个</span>'+keyword+'返回数据1');
-        aData.push('<span class="num_right">约200个</span>'+keyword+'返回数据2');
-        aData.push('<span class="num_right">约100个</span>'+keyword+'返回数据3');
-        aData.push('<span class="num_right">约50000个</span>'+keyword+'返回数据4');
-        aData.push('<span class="num_right">约1044个</span>'+keyword+'2012是真的');
-        aData.push('<span class="num_right">约100个</span>'+keyword+'2012是假的');
-        aData.push('<span class="num_right">约100个</span>'+keyword+'2012是真的');
-        aData.push('<span class="num_right">约100个</span>'+keyword+'2012是假的');
-        //将返回的数据传递给实现搜索输入框的输入提示js类
-        searchSuggest.dataDisplay(aData);
+        var fd = new FormData();
+        fd.append("data",keyword);
+        $.ajax({
+            type: "POST",
+            contentType:false, //必须false才会避开jQuery对 formdata 的默认处理 , XMLHttpRequest会对 formdata 进行正确的处理
+            processData: false, //必须false才会自动加上正确的Content-Type
+            url: "/getSameProducts.action",
+            timeout: 15000,
+            data: fd,
+            success: function (msg) {
+                var aData = [];
+                $.each( msg.suggest, function(index, content) {
+                    aData.push(content);
+                });
+                //将返回的数据传递给实现搜索输入框的输入提示js类
+                searchSuggest.dataDisplay(aData);
+            },
+            error: function (msg) {
+
+            },
+            beforeSend:function () {
+
+            }
+        });
     }
+
+    function search() {
+        var val=$(".input_search_key").val();
+        console.log(val);
+        $('.search-wrapper').addClass('active');
+        $(".search_my").find(".bg").show();
+        $(".search-wrapper").css({"top":"15%","left":"50%"});
+        $(".result-container").show();
+        $("input[class='search-input']").val(val);
+        var fd = new FormData();
+        fd.append("data",val);
+        ajax(fd);
+
+    }
+
     //去登陆页面
     function login(){
-        window.location.href = "http://localhost:8080/LoginPage.action?returnUrl=" + encodeURIComponent(window.location.href);
+        window.location.href = "${pageContext.request.contextPath}/LoginPage.action?returnUrl=" + encodeURIComponent(window.location.href);
     }
+
 </script>
 </body>
 </html>

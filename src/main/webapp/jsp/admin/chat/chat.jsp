@@ -13,7 +13,7 @@
 <script type="text/javascript">
 	var  ws;
 	//此处改为服务器ip
-	var url="ws://127.0.0.1:8080/chatSocket?username=${sessionScope.username}";
+	var url="ws://127.0.0.1:80/chatSocket?username=${sessionScope.username}";
 	
 	function connect(){
 		 if ('WebSocket' in window) {

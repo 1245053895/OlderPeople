@@ -36,12 +36,11 @@ public class CustomerLoginController {
     private UserLoginService userLoginService;
     @Autowired
     private ProductTypeService productTypeService;
+    @Autowired
+    private OrderPayService orderPayService;
 
     @Autowired
     private CustomerInformationService customerInformationService;
-
-    @Autowired
-    private OrderPayService orderPayService;
 
     //通过该url进入到商城的首页面
     @RequestMapping(value = "/ShopFrontPage.action", method = RequestMethod.GET)
@@ -73,7 +72,7 @@ public class CustomerLoginController {
 
     //前端用户登录的验证
     @RequestMapping("/CustomerLogin.action")
-    public String CustomerLogin(String username, String password, HttpServletRequest request, String returnUrl, HttpServletResponse response, Model model) {
+    public String CustomerLogin(String username, String password, HttpServletRequest request,String returnUrl, HttpServletResponse response, Model model) {
         Userlog userlog = new Userlog();
         if (username != null) {
             if (password != null) {
@@ -95,19 +94,19 @@ public class CustomerLoginController {
                             user.setUserid(user.getUserid());
                             user.setUserlogintime(new Date());
                             userLoginService.UpdateUserLoginTimeById(user);
-                            Integer userlogincount=  userLoginService.IsUserLoginNull(user.getUserid());
-                            if (userlogincount==null) {
-                                userLoginService.LoginCountOne(user.getUserid());
-                            } else {
-                                userLoginService.AutoIncreaeOne(user.getUserid());
-                            }
+                          Integer userlogincount=  userLoginService.IsUserLoginNull(user.getUserid());
+                          if(userlogincount==null){
+                              userLoginService.LoginCountOne(user.getUserid());
+                          }else {
+                              userLoginService.AutoIncreaeOne(user.getUserid());
+                          }
                             return "redirect:" + returnUrl;//"/jsp/users/index.jsp";
                         } else {
                             model.addAttribute("error", "密码不正确");
                         }
-                    } else {
-                        model.addAttribute("error", "该账号已被冻结");
-                    }
+                      }else {
+                            model.addAttribute("error","该账号已被冻结");
+                        }
                 } else {
                     model.addAttribute("error", "用户名不正确");
                 }
@@ -198,10 +197,10 @@ public class CustomerLoginController {
         UserAndBrithday userAndBrithday = customerInformationService.SelectCustomerInformation(id);
         model.addAttribute("userAndBrithday", userAndBrithday);
         List<TotalCreditsById> totalCreditsByIds = userLoginService.queryAllById(userid);
-        /*TotalCreditsById totalCreditsById = userLoginService.queryTotalCriditsById(userid)*/
-        ;
+        TotalCreditsById zongjifen = userLoginService.queryTotalCriditsById(userid);/*先查询用户所购买的商品总积分*/
         userLoginService.updateCreditsCore(userid);/*更新用户表中用户的总积分*/
-        Integer totalCreditsById = userLoginService.queryCreditsCore(userid);/*查询用户表中用户的总积分*/
+        Integer totalCreditsById = userLoginService.queryCreditsCore(userid);/*再查询用户表中用户的总积分*/
+         /* zongjifen.getTotalCredits()!=totalCreditsById*//*所购买商品的总积分不等于用户表当中的总积分，就更新*/
         model.addAttribute("totalCreditsByIds", totalCreditsByIds);
         model.addAttribute("totalCreditsById", totalCreditsById);
         return "/jsp/users/jifen.jsp";
@@ -427,8 +426,6 @@ public class CustomerLoginController {
         gainaddres.setGainmobile(gainmobile);
         String gainaddress=gainaddres.getGainaddress().replaceAll(",", "");
         gainaddres.setGainaddress(gainaddress);
-
-
         User user = (User) session.getAttribute("user");
         Product product1=  userLoginService.jifenPage(product.getProductid());/*查询出该商品的信息，及兑换该商品需要多少积分*/
         Integer totalCreditsById = userLoginService.queryCreditsCore(user.getUserid());/*得到用户的总积分*/
@@ -436,13 +433,19 @@ public class CustomerLoginController {
         Integer shenyuCredits = totalCreditsById - Productdisabled;/*得到兑换后还剩余多少积分*/
         model.addAttribute("shenyuCredits", shenyuCredits);
         Integer userid=user.getUserid();
-         userLoginService.shenyuCreditsCore(shenyuCredits,userid); /*更新用户表中用户的积分为剩余的多少积分*/                                                       /*更新用户表中该用户现在的积分为多少*/
+        /* userLoginService.shenyuCreditsCore(shenyuCredits,userid);*/ /*更新用户表中用户的积分为剩余的多少积分*/                                                       /*更新用户表中该用户现在的积分为多少*/
         List<Pay> pays = userLoginService.queryPayMethod();/*支付方式的页面显示*/
         model.addAttribute("pays", pays);
         gainaddres.setGainA("0");
         String result = orderPayService.insertSelective1(gainaddres);
         Integer gainid = gainaddres.getGainid();  /*数据库返回的主键*/
-        order.setGainid(gainid);       /*主键是另外一张表的外键需要插入*/
+        if(gainid==null){
+           Gainaddres gainaddres1= orderPayService.IsGainAddress(gainaddres);/*当没有新增的收货地址时，就查询已有的收货地址的id*/
+           Integer gainid1=gainaddres1.getGainid();/*将gainid插入到order表中去*/
+           order.setGainid(gainid1);
+        }else {
+            order.setGainid(gainid);       /*主键是另外一张表的外键需要插入,当是新增地址时，插入后可以得到新收货地址的id*/
+        }
         order.setUserid(user.getUserid());/*order表中的用户的id是外键*/
         if (result.equals("OK")) {
                                               /*实付金额与邮费*/
@@ -455,8 +458,9 @@ public class CustomerLoginController {
             }
             order.setStatus(1);       /* 订单状态 订单新建时为1,表示该订单是待发货的订单*/
             order.setEndtime(new Date());/*插入订单的结束时间，个人中心中个人积分的显示所需要*/
-          /*  order.setPaystatus(1);*//*设置支付状态为已支付*/
+            order.setPaystatus(1);/*设置支付状态为已支付*/
             order.setTotalcredit(-(product.getProductdisabled())); /*积分兑换后设置order表中订单的总积分为负的商品的积分*/
+            order.setUserid(userid);
             String return2 = orderPayService.insertSelective2(order);
             Integer orderid = order.getOrderid();  /*数据库返回的主键*/
             orderproduct.setOrderid(orderid);       /*主键是另外一张表的外键需要插入*/
@@ -474,10 +478,10 @@ public class CustomerLoginController {
                 }
                 orderPayService.insertSelective3(orderproduct);
                 // 判断支付方式  0在线支付------返回付款页面  1货到付款------
-                if (order.getPaytype() == 0) {
-                    return "/jsp/users/my-jfapy.jsp";
-                } else {
+                if (order.getPaytype() == 1||product.getProductprice()>=88) {
                     return "/jsp/users/my-jfapy-suc.jsp";
+                } else {
+                    return "/jsp/users/my-jfapy.jsp";
                 }
 
             }

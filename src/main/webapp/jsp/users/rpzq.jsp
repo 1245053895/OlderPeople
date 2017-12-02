@@ -41,102 +41,21 @@
                 <dt>好评专区</dt>
             </dl>
         </div>
-<c:forEach items="${pagination.list}" var="totalCreditsById" varStatus="status">
+        <c:forEach items="${pagination.list}" var="totalCreditsById" varStatus="status">
 
-    <div class="item <c:if test='${status.index%5==4}'>last</c:if>">
-            <dl>
-                <dt><a href="${pageContext.request.contextPath}/xiangqing.action?productid=${totalCreditsById.productid}"><img src="${totalCreditsById.productpicture}"/></a></dt>
-                
-            </dl>
-            <p class="p01"><font>￥</font><font>${totalCreditsById.productprice}</font></p>
-            <p class="p02"><a href="#">${totalCreditsById.productname}</a></p>
+            <div class="item <c:if test='${status.index%5==4}'>last</c:if>">
+                    <dl>
+                        <dt><a href="${pageContext.request.contextPath}/xiangqing.action?productid=${totalCreditsById.productid}"><img src="${totalCreditsById.productpicture}"/></a></dt>
 
-                  <p class="p03"><span class="sp01">评价数：<b>${totalCreditsById.shopComment}</b></span><span>
-                      好评数：<strong>${totalCreditsById.totalgoodcomment}</strong></span></p>
-        </div>
+                    </dl>
+                    <p class="p01"><font>￥</font><font>${totalCreditsById.productprice}</font></p>
+                    <p class="p02"><a href="#">${totalCreditsById.productname}</a></p>
 
-</c:forEach>
+                          <p class="p03"><span class="sp01">评价数：<b>${totalCreditsById.shopComment}</b></span><span>
+                              好评数：<strong>${totalCreditsById.totalgoodcomment}</strong></span></p>
+                </div>
 
-       <%-- <div class="item">
-            <dl>
-                <dt><img src="${pageContext.request.contextPath}/jsp/users/images/rpsp/img39.jpg"/></dt>
-                   
-            </dl>
-            <p class="p01"><font>￥</font><font>1599.00</font></p>
-            <p class="p02"><a href="#">进口天然乳胶床垫弹簧1.51.8米双人软硬席梦思 椰梦维棕垫</a></p>
-            <p class="p03"><span class="sp01">评价数：<b>4523</b></span><span>好评数：<strong>3958</strong></span></p>
-        </div>
-        <div class="item">
-            <dl>
-                <dt><img src="${pageContext.request.contextPath}/jsp/users/images/rpsp/img39.jpg"/></dt>
-                
-            </dl>
-            <p class="p01"><font>￥</font><font>1599.00</font></p>
-            <p class="p02"><a href="#">进口天然乳胶床垫弹簧1.51.8米双人软硬席梦思 椰梦维棕垫</a></p>
-            <p class="p03"><span class="sp01">评价数：<b>4523</b></span><span>好评数：<strong>3958</strong></span></p>
-        </div>
-        <div class="item">
-            <dl>
-                <dt><img src="${pageContext.request.contextPath}/jsp/users/images/rpsp/img39.jpg"/></dt>
-                
-            </dl>
-            <p class="p01"><font>￥</font><font>1599.00</font></p>
-            <p class="p02"><a href="#">进口天然乳胶床垫弹簧1.51.8米双人软硬席梦思 椰梦维棕垫</a></p>
-            <p class="p03"><span class="sp01">评价数：<b>4523</b></span><span>好评数：<strong>3958</strong></span></p>
-        </div>
-        <div class="item last">
-            <dl>
-                <dt><img src="${pageContext.request.contextPath}/jsp/users/images/rpsp/img39.jpg"/></dt>
-                
-            </dl>
-            <p class="p01"><font>￥</font><font>1599.00</font></p>
-            <p class="p02"><a href="#">进口天然乳胶床垫弹簧1.51.8米双人软硬席梦思 椰梦维棕垫</a></p>
-            <p class="p03"><span class="sp01">评价数：<b>4523</b></span><span>好评数：<strong>3958</strong></span></p>
-        </div>
-        <div class="item">
-            <dl>
-                <dt><img src="${pageContext.request.contextPath}/jsp/users/images/rpsp/img39.jpg"/></dt>
-                
-            </dl>
-            <p class="p01"><font>￥</font><font>1599.00</font></p>
-            <p class="p02"><a href="#">进口天然乳胶床垫弹簧1.51.8米双人软硬席梦思 椰梦维棕垫</a></p>
-            <p class="p03"><span class="sp01">评价数：<b>4523</b></span><span>好评数：<strong>3958</strong></span></p>
-        </div>
-        <div class="item">
-            <dl>
-                <dt><img src="${pageContext.request.contextPath}/jsp/users/images/rpsp/img39.jpg"/></dt>
-                
-            </dl>
-            <p class="p01"><font>￥</font><font>1599.00</font></p>
-            <p class="p02"><a href="#">进口天然乳胶床垫弹簧1.51.8米双人软硬席梦思 椰梦维棕垫</a></p>
-            <p class="p03"><span class="sp01">评价数：<b>4523</b></span><span>好评数：<strong>3958</strong></span></p>
-        </div>
-        <div class="item">
-            <dl>
-                <dt><img src="${pageContext.request.contextPath}/jsp/users/images/rpsp/img39.jpg"/></dt>
-            </dl>
-            <p class="p01"><font>￥</font><font>1599.00</font></p>
-            <p class="p02"><a href="#">进口天然乳胶床垫弹簧1.51.8米双人软硬席梦思 椰梦维棕垫</a></p>
-            <p class="p03"><span class="sp01">评价数：<b>4523</b></span><span>好评数：<strong>3958</strong></span></p>
-        </div>
-        <div class="item">
-            <dl>
-                <dt><img src="${pageContext.request.contextPath}/jsp/users/images/rpsp/img39.jpg"/></dt>
-                
-            </dl>
-            <p class="p01"><font>￥</font><font>1599.00</font></p>
-            <p class="p02"><a href="#">进口天然乳胶床垫弹簧1.51.8米双人软硬席梦思 椰梦维棕垫</a></p>
-            <p class="p03"><span class="sp01">评价数：：<b>4523</b></span><span>好评数：<strong>3958</strong></span></p>
-        </div>
-        <div class="item last">
-            <dl>
-                <dt><img src="${pageContext.request.contextPath}/jsp/users/images/rpsp/img39.jpg"/></dt>
-                
-            </dl>
-            <p class="p01"><font>￥</font><font>1599.00</font></p>
-            <p class="p02"><a href="#">进口天然乳胶床垫弹簧1.51.8米双人软硬席梦思 椰梦维棕垫</a></p>
-            <p class="p03"><span class="sp01">评价数：<b>4523</b></span><span>好评数：<strong>3958</strong></span></p>
-        </div>--%>
+        </c:forEach>
 
 
         <div class="clear"></div>
@@ -147,5 +66,7 @@
         </c:forEach>
     </div>
 </div>
+<div style="margin-top: 50px"></div>
+<jsp:include page="${pageContext.request.contextPath}/jsp/users/bottom.jsp"></jsp:include>
 </body>
 </html>

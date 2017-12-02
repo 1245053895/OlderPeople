@@ -130,54 +130,9 @@
 </head>
 <body>
 
-<%--<header id="pc-header">
-	<div class="center">
-		<div class="pc-fl-logo">
-			<h1>
-				<a href="index.jsp"></a>
-			</h1>
-		</div>
-	</div>
-</header>--%>
-<%--<section>
-	<div class="pc-login-bj">
-		<div class="center clearfix">
-			<div class="fl"></div>
-			<div class="fr pc-login-box">
-				<div class="pc-login-title"><h2>用户注册</h2></div>
-				<form action="">
-					<div class="pc-sign">
-						<input type="text" placeholder="邮箱/手机号">
-					</div>
-					<div class="pc-sign">
-						<input type="password" placeholder="请输入您的密码">
-					</div>
-					<div class="pc-sign">
-						<input type="password" placeholder="请确认您的密码">
-					</div>
-					<div class="pc-sign">
-						<input type="password" placeholder="请输入您的验证码">
-					</div>
-					<div class="pc-submit-ss">
-						<input type="submit" value="立即注册" placeholder="">
-					</div>
-					<div class="pc-item-san clearfix">
-						<a href="#"><img src="img/icon/weixin.png" alt="">微信登录</a>
-						<a href="#"><img src="img/icon/weibo.png" alt="">微博登录</a>
-						<a href="#" style="margin-right:0"><img src="img/icon/tengxun.png" alt="">QQ登录</a>
-					</div>
-					<div class="pc-reg">
-
-						<a href="login.html" class="red">已有账号 请登录</a>
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
-</section>--%>
 <div class="wrap">
 	<div class="reg">
-		<div class="head">
+		<div class="head" style="height: 100px">
 			<a href="index.jsp" class="logo">
 				<img src="${pageContext.request.contextPath}/jsp/users/img/icon/logo2.png" height="90px" width="200px" style="margin-top: -12px;" />
 			</a>
@@ -235,7 +190,7 @@
 					<div class="fastway">
 						<h3>无需注册，即可登录</h3>
 					<div class="moreregister clearfix">
-						<a href="#"><img src="${pageContext.request.contextPath}/jsp/users/img/icon/weixin.png" alt="">微信登录</a>
+						<a href="#" style="margin-right: 45px"><img src="${pageContext.request.contextPath}/jsp/users/img/icon/weixin.png" alt="">微信登录</a>
 						<a href="#"><img src="${pageContext.request.contextPath}/jsp/users/img/icon/weibo.png" alt="">微博登录</a>
 						<a href="#" style="margin-right:0"><img src="${pageContext.request.contextPath}/jsp/users/img/icon/tengxun.png" alt="">QQ登录</a>
 					</div>

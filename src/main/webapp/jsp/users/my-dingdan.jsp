@@ -188,12 +188,12 @@
 	<div class="member-center clearfix">
 		<div class="member-left fl">
 			<div class="member-apart clearfix">
-				<div class="fl"><a href="#"><img src="${user.userC}"></a></div>
+				<div class="fl"><a href="#"><img src="${pageContext.request.contextPath}/${sessionScope.user.userC}"></a></div>
 				<div class="fl">
 					<p>用户名：</p>
-					<p><a href="#">${user.userrealname}</a></p>
+					<p><a href="#">${sessionScope.user.userrealname}</a></p>
 					<p>账号：</p>
-					<p>${user.username}</p>
+					<p>${sessionScope.user.username}</p>
 				</div>
 			</div>
 			<div class="member-lists" id="leftinfo">
@@ -202,24 +202,19 @@
 					<dd><a href="javascript:check('0');">我的订单</a></dd>
 					<dd><a href="javascript:check('2');">我的购物车</a></dd>
 					<dd><a href="javascript:check('1');">我的收藏</a></dd>
-					<%--<dd><a href="${pageContext.request.contextPath}/queryProductByOrderId.action?id=1">我的评价</a></dd>--%>
-					<%--<dd><a href="${pageContext.request.contextPath}/jsp/users/my-dingdan.jsp?flag=0">我的订单</a></dd>
-					<dd><a href="${pageContext.request.contextPath}/jsp/users/my-dingdan.jsp?flag=2">我的购物车</a></dd>
-					<dd><a href="${pageContext.request.contextPath}/jsp/users/my-car.jsp">我的收藏</a></dd>
-					<dd><a href="${pageContext.request.contextPath}/jsp/users/my-pingjia.jsp">我的评价</a></dd>--%>
 				</dl>
 				<dl  onclick = "change(this);">
 					<dt>客户服务</dt>
-					<dd><a href="#">联系客服</a></dd>
-					<dd><a href="#">关于我们</a></dd>
+					<dd><a href="/LoginServlet?username=${sessionScope.user.username}" target="_blank">联系客服</a></dd>
+					<dd><a href="${pageContext.request.contextPath}/jsp/users/aboutus.jsp" target="_blank">关于我们</a></dd>
 				</dl>
 			</div>
 		</div>
 		<div class="member-right fr">
 			<div class="member-head">
 				<div class="member-heels fl"></div>
-				<div class="member-backs member-icons fr"><a href="#">搜索</a></div>
-				<div class="member-about fr"><input placeholder="商品名称/商品编号/订单编号" type="text"></div>
+				<%--<div class="member-backs member-icons fr"><a href="#">搜索</a></div>
+				<div class="member-about fr"><input placeholder="商品名称/商品编号/订单编号" type="text"></div>--%>
 			</div>
 		</div>
 	</div>
@@ -281,13 +276,13 @@
         switch(flag){
             case '0':
                 $(".cur").find("a").addClass("dingdans"); //使全部订单按钮为选中状态
-                queryOrderByUserId(0,5);
+                queryOrderByUserId(0,100);
                 break;
             case '1':
                 queryFavoritesByUserId(0,24);
                 break;
             case '2':
-                queryShopCarByUserId(0,5);
+                queryShopCarByUserId(0,100);
                 break;
             case '3':
 
@@ -300,12 +295,12 @@
     function queryOrderByUserId(start,count,status,conditions) {
         var order="<div class='member-whole clearfix' id='dingdan'>\n" +
             "    <ul id='H-table' class='H-table'>\n" +
-            "     <li class='cur'><a href='javascript:queryOrderByUserId(0,5,-1);'>全部订单</a></li>\n" +
-            "     <li><a href='javascript:queryOrderByUserId(0,5,1);'>待发货</a></li>\n" +
-            "     <li><a href='javascript:queryOrderByUserId(0,5,2);'>已发货</a></li>\n" +
-            "     <li><a href='javascript:queryOrderByUserId(0,5,3);'>已签收</a></li>\n" +
-            "     <li><a href='javascript:queryOrderByUserId(0,5,4);'>已完成</a></li>\n" +
-            "     <li><a href='javascript:queryOrderByUserId(0,5,6);'>退货订单<em></em></a></li>\n" +
+            "     <li class='cur'><a href='javascript:queryOrderByUserId(0,100,-1);'>全部订单</a></li>\n" +
+            "     <li><a href='javascript:queryOrderByUserId(0,100,1);'>待发货</a></li>\n" +
+            "     <li><a href='javascript:queryOrderByUserId(0,100,2);'>已发货</a></li>\n" +
+            "     <li><a href='javascript:queryOrderByUserId(0,100,3);'>已签收</a></li>\n" +
+            "     <li><a href='javascript:queryOrderByUserId(0,100,4);'>已完成</a></li>\n" +
+            "     <li><a href='javascript:queryOrderByUserId(0,100,6);'>退货订单<em></em></a></li>\n" +
             "    </ul>\n" +
             "   </div>\n" +
             "   <div class='member-border'>\n" +
@@ -340,17 +335,8 @@
             "    </div>\n" +
             "    <div class='clearfix' style='padding:30px 20px;'>\n" +
             "     <div class='fr pc-search-g pc-search-gs'>\n" +
-            "      <a style='display:none' class='fl ' href='javascript:void(0);'>上一页</a>\n" +
-            "      <a href='javascript:queryOrderByUserId(0,5);' class='current'>1</a>\n" +
-            "      <a href='javascript:queryOrderByUserId(6,5);'>2</a>\n" +
-            "      <a href='javascript:queryOrderByUserId(11,5);'>3</a>\n" +
-            "      <a href='javascript:queryOrderByUserId(16,5);'>4</a>\n" +
-            "      <a href='javascript:queryOrderByUserId(21,5);'>5</a>\n" +
-            "      <a href='javascript:queryOrderByUserId(26,5);'>6</a>\n" +
-            "      <a href='javascript:queryOrderByUserId(31,5);'>7</a>\n" +
-            "      <span class='pc-search-di'>…</span>\n" +
-            "      <a href='javascript:;'>1088</a>\n" +
-            "      <a title='使用方向键右键也可翻到下一页哦！' class='' href='javascript:;'>下一页</a>\n" +
+            "      <a style='display:none' class='fl ' href='javascript:queryOrderByUserId(0,100);'>上一页</a>\n" +
+            "      <a class='' href='javascript:queryOrderByUserId(0,100);'>下一页</a>\n" +
             "     </div>\n" +
             "    </div>\n" +
             "\n" +
@@ -466,41 +452,41 @@
                             if (content.shippingcode != null || content.shippingcode != "") {
                                 htmlStr3 += wl
                             }
-                            htmlStr3 += "<p><a href='#'>订单分析</a></p></div>\n";
+                            htmlStr3 += "<!--<p><a href='#'>订单分析</a></p>--></div>\n";
 
-                            htmlStr3 += "<div class='ci5 ci8 height" + index + "'><p><a href='#' class='member-touch'>重新购买</a> </p></div>\n";
+                            htmlStr3 += "<div class='ci5 ci8 height" + index + "'><!--<p><a href='#' class='member-touch'>重新购买</a> </p>--></div>\n";
                             break;
                         case 1:
-                            htmlStr3 += "<div class='ci5 height" + index + "'><p>待发货</p><p><a href='#'>订单分析</a></p></div>\n";
+                            htmlStr3 += "<div class='ci5 height" + index + "'><p>待发货</p><!--<p><a href='#'>订单分析</a></p>--></div>\n";
                             htmlStr3 += "<div class='ci5 ci8 height" + index + "'><p><a href='#' class='member-touch'>提醒发货</a> </p> <p><a class='cancelOrder flag"+ content.orderid +"' href='javascript:cancelOrder("+ content.orderid +");'>取消订单</a> </p></div>\n";
                             break;
                         case 2:
-                            htmlStr3 += "<div class='ci5 height" + index + "'><p>已发货</p>"+wl+" <p><a href='#'>订单分析</a></p></div>\n";
+                            htmlStr3 += "<div class='ci5 height" + index + "'><p>已发货</p>"+wl+" <!--<p><a href='#'>订单分析</a></p>--></div>\n";
                             htmlStr3 += "<div class='ci5 ci8 height" + index + "'><p><a href='#' class='member-touch'>确认收货</a> </p></p></div>\n";
                             break;
                         case 3:
-                            htmlStr3 += "<div class='ci5 height" + index + "'><p>已签收</p>"+wl+" <p><a href='#'>订单分析</a></p></div>\n";
+                            htmlStr3 += "<div class='ci5 height" + index + "'><p>已签收</p>"+wl+" <!--<p><a href='#'>订单分析</a></p>--></div>\n";
                             htmlStr3 += "<div class='ci5 ci8 height" + index + "'><p><a href='javascript:void(0);'  class='member-touch comments'>评价</a></p><p><a href='#' class='member-touch'>售后服务</a></p></div>\n";
                             break;
                         case 4:
-                            htmlStr3 += "<div class='ci5 height" + index + "'><p>已完成</p>"+wl+" <p><a href='#'>订单分析</a></p></div>\n";
-                            htmlStr3 += "<div class='ci5 ci8 height" + index + "'><p>剩余15时20分</p><p><a href='#' class='member-touch'>再次购买</a></p><p><a href='javascript:void(0);'  class='member-touch comments'>评价</a></p><p><a href='#' class='member-touch'>售后服务</a></p></div>\n";
+                            htmlStr3 += "<div class='ci5 height" + index + "'><p>已完成</p>"+wl+" <!--<p><a href='#'>订单分析</a></p>--></div>\n";
+                            htmlStr3 += "<div class='ci5 ci8 height" + index + "'><p>剩余15时20分</p><!--<p><a href='' class='member-touch'>再次购买</a></p><p>--><a href='javascript:void(0);'  class='member-touch comments'>评价</a></p><p><a href='#' class='member-touch'>售后服务</a></p></div>\n";
                             break;
                         case 5:
-                            htmlStr3 += "<div class='ci5 height" + index + "'><p>拒收</p>"+wl+" <p><a href='#'>订单分析</a></p></div>\n";
+                            htmlStr3 += "<div class='ci5 height" + index + "'><p>拒收</p>"+wl+" <!--<p><a href='#'>订单分析</a></p>--></div>\n";
                             htmlStr3 += "<div class='ci5 ci8 height" + index + "'><p><a href='javascript:refuse(" + content.orderid + ");' class='member-touch'>拒收理由</a> </p></div>\n";
                             break;
                         case 6:
-                            htmlStr3 += "<div class='ci5 height" + index + "'><p>申请退货</p>"+wl+" <p><a href='#'>订单分析</a></p></div>\n";
+                            htmlStr3 += "<div class='ci5 height" + index + "'><p>申请退货</p>"+wl+" <!--<p><a href='#'>订单分析</a></p>--></div>\n";
                             htmlStr3 += "<div class='ci5 ci8 height" + index + "'><p><a href='#' class='member-touch'>撤销申请</a> </p></div>\n";
                             break;
                         case 7:
-                            htmlStr3 += "<div class='ci5 height" + index + "'><p>同意退货</p>"+wl+" <p><a href='#'>订单分析</a></p></div>\n";
+                            htmlStr3 += "<div class='ci5 height" + index + "'><p>同意退货</p>"+wl+"<!-- <p><a href='#'>订单分析</a></p>--></div>\n";
                             htmlStr3 += "<div class='ci5 ci8 height" + index + "'><p>剩余15时20分</p><p><a href='#' class='member-touch'>填写物流</a> </p><p><a href='#' class='member-touch'>撤销申请</a> </p></div>\n";
                             break;
                             break;
                         case 8:
-                            htmlStr3 += "<div class='ci5 height" + index + "'><p>拒绝退货</p>"+wl+" <p><a href='#'>订单分析</a></p></div>\n";
+                            htmlStr3 += "<div class='ci5 height" + index + "'><p>拒绝退货</p>"+wl+" <!--<p><a href='#'>订单分析</a></p>--></div>\n";
                             htmlStr3 += "<div class='ci5 ci8 height" + index + "'><p><a href='#' class='member-touch'>查看原因</a> </p></div>\n";
                             break;
                         default:
@@ -514,10 +500,6 @@
 					html.push(htmlStr1 + htmlStr2 + htmlStr3);
                 });
 
-                $(".comments").click(function () {
-                    console.log($(this).parents("li").find("em[id='order_id']").text()+"***");
-                    queryCommentsByUserId($(this).parents("li").find("em[id='order_id']").text());
-                });
                 $(".comments").click(function () {
                     console.log($(this).parents("li").find("em[id='order_id']").text()+"***");
                     queryCommentsByUserId($(this).parents("li").find("em[id='order_id']").text());
@@ -549,21 +531,6 @@
             "        </ul>\n" +
             "       </div>\n" +
             "      </div>\n" +
-            "     </div>\n" +
-            "    </div>\n" +
-            "    <div class='clearfix' style='padding:30px 20px;'>\n" +
-            "     <div class='fr pc-search-g pc-search-gs' style='margin-top: 50px;'>\n" +
-            "      <a style='display:none' class='fl ' href='#'>上一页</a>\n" +
-            "      <a href='#' class='current'>1</a>\n" +
-            "      <a href='javascript:;'>2</a>\n" +
-            "      <a href='javascript:;'>3</a>\n" +
-            "      <a href='javascript:;'>4</a>\n" +
-            "      <a href='javascript:;'>5</a>\n" +
-            "      <a href='javascript:;'>6</a>\n" +
-            "      <a href='javascript:;'>7</a>\n" +
-            "      <span class='pc-search-di'>…</span>\n" +
-            "      <a href='javascript:;'>1088</a>\n" +
-            "      <a title='使用方向键右键也可翻到下一页哦！' class='' href='javascript:;'>下一页</a>\n" +
             "     </div>\n" +
             "    </div>\n" +
             "   </div>";
@@ -740,10 +707,10 @@
     function queryShopCarByUserId(start,count,status,conditions) {
         var car="<div class='center ' id='dingdan'>\n" +
             "    <ul class='pc-shopping-title clearfix'>\n" +
-            "     <li><a href='javascript:queryShopCarByUserId(0,5,-1);'>全部商品</a></li>\n" +
-            "     <li><a href='javascript:queryShopCarByUserId(0,5,0);'>热销商品</a></li>\n" +
-            "     <li><a href='javascript:queryShopCarByUserId(0,5,1);'>新品</a></li>\n" +
-            "     <li><a href='javascript:queryShopCarByUserId(0,5,2);'>已下架</a></li>\n" +
+            "     <li><a href='javascript:queryShopCarByUserId(0,100,-1);'>全部商品</a></li>\n" +
+            "     <li><a href='javascript:queryShopCarByUserId(0,100,0);'>热销商品</a></li>\n" +
+            "     <li><a href='javascript:queryShopCarByUserId(0,100,1);'>新品</a></li>\n" +
+            "     <li><a href='javascript:queryShopCarByUserId(0,100,2);'>已下架</a></li>\n" +
             "    </ul>\n" +
             "   </div>\n" +
             "   <div class='pc-shopping-cart center'>\n" +
@@ -794,16 +761,7 @@
 			"    <div class='clearfix' style='padding:30px 20px;'>\n" +
             "     <div class='fr pc-search-g pc-search-gs'>\n" +
             "      <a style='display:none' class='fl ' href='javascript:void(0);'>上一页</a>\n" +
-            "      <a href='javascript:queryOrderByUserId(0,5);' class='current'>1</a>\n" +
-            "      <a href='javascript:queryOrderByUserId(6,5);'>2</a>\n" +
-            "      <a href='javascript:queryOrderByUserId(11,5);'>3</a>\n" +
-            "      <a href='javascript:queryOrderByUserId(16,5);'>4</a>\n" +
-            "      <a href='javascript:queryOrderByUserId(21,5);'>5</a>\n" +
-            "      <a href='javascript:queryOrderByUserId(26,5);'>6</a>\n" +
-            "      <a href='javascript:queryOrderByUserId(31,5);'>7</a>\n" +
-            "      <span class='pc-search-di'>…</span>\n" +
-            "      <a href='javascript:;'>1088</a>\n" +
-            "      <a title='使用方向键右键也可翻到下一页哦！' class='' href='javascript:;'>下一页</a>\n" +
+            "      <a title='' class='' href='javascript:;'>下一页</a>\n" +
             "     </div>\n" +
             "    </div>";
 
@@ -935,6 +893,7 @@
         console.log("uuuu");
 		$("form[name='submitForm']").submit();
     }
+    //通过用户id查询评价
     function queryCommentsByUserId(id) {
         $.ajax({
             url:"${pageContext.request.contextPath}/queryProductByOrderId.action",
@@ -963,9 +922,11 @@
             $(".member-head").nextAll("div").remove();
             $(".member-heels").text("我的评论");
             var doms = $.parseHTML( data, true );  //将字符串转为一个DOM元素的集合
-			// 会执行脚本代码
-            $(".member-right").append($(doms).find(".member-border"));
+			// 会执行脚本代码'
+			var html=$(doms).find(".member-border");
+            $(".member-right").append(html);
             $(".member-right").css("width","970px");
+            init(); //给发表评论注册点击事件
         }
 
     }
@@ -1004,7 +965,7 @@
             var flag=ajax("updataRefuseByOrderId.action",data);
             if(flag==1){
                 alert("感谢填写！");
-                //$(".cancelOrder").hide();
+                check('0');
             }else {
                 alert("填写失败！");
             }
@@ -1145,7 +1106,7 @@
             url:"${pageContext.request.contextPath}/"+url,
             async:false,
             type: 'POST',
-            data:{"id":data},
+            data:{"data":data},
             traditional: true,
             timeout: 5000,
             cache: false,
@@ -1196,7 +1157,55 @@
         summing();
     }
 
+    function init(){
+        $(".sp3").find("a").click(function () {
+            $(this).parents(".member-class").next().css("display","block");
+        });
+        $(".member-judge").click(function () {
+            var data=new Array();
+            data.push($(this).parents("li").next().find("input").val());
+            console.log($(this).parents("li[class='clearfix']").find("select").val()+"^^^");
+            console.log($(this).parents("ul").find("textarea").val()+"//");
+            data.push($(this).parents("li[class='clearfix']").find("select").val());//好评   0 评论id
+            data.push($(this).parents("ul").find("textarea").val());//评论内容
+            if(ajax("updateCommentByids.action",data)){
+                alert("谢谢您的评价!");
+            }else{
+                alert("评价失败!")
+            }
+            $(this).parents(".member-setup").css("display","none");
+        });
+    };
 
+    /*function ajax(url,data) {
+        var flag;
+        $.ajax({
+            url:"${pageContext.request.contextPath}/"+url,
+            async:false,
+            type: 'POST',
+            data:{"data":data},
+            traditional: true,
+            timeout: 5000,
+            cache: false,
+            success: succFunction, //成功执行方法
+            beforeSend: LoadFunction, //加载执行方法
+            error: erryFunction  //错误执行方法
+        });
+        function LoadFunction() {
+
+        }
+        function erryFunction(){
+            flag=0;
+        }
+        function succFunction(data) {
+            if(data) {
+                flag=1;
+            }else {
+                flag=0;
+            }
+        }
+        return flag;
+    }*/
 
     function sleep(n) { //n表示的毫秒数
         var start = new Date().getTime();

@@ -420,7 +420,7 @@
 					</div>
 				</header>
 				<section class="m-box line2">
-					<div class="span4">
+					<div class="span4" style="margin-right: -35px;">
 						<div class="row main-pic">
 							<img src="${pageContext.request.contextPath}/jsp/users/images/rxsp/left2.jpg">
 						</div>
@@ -483,7 +483,7 @@
 					</div>
 				</header>
 				<section class="m-box line2  clear_top  clear_bottom">
-					<div class="span4">
+					<div class="span4"  style="margin-right: -35px;">
 						<div class="row main-pic">
 							<img src="${pageContext.request.contextPath}/jsp/users/images/rxsp/left1.jpg">
 						</div>
@@ -633,7 +633,7 @@
 					</div>
 				</header>
 				<section class="m-box line2">
-					<div class="span4">
+					<div class="span4" style="margin-right: -35px;">
 						<div class="main-pic">
 							<img src="${pageContext.request.contextPath}/jsp/users/images/rxsp/left3.jpg">
 						</div>

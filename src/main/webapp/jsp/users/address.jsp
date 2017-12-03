@@ -247,7 +247,7 @@
 
 						<c:forEach items="${gainaddres}" var="gainaddres1">
 							<form id="form${gainaddres1.gainid}" action="${pageContext.request.contextPath}/UpdateGainAdress.action" method="post">
-								<li class="clearfix" style="background-color: #f5f5f5">
+								<li class="clearfix" style="background-color: #ffffff">
 									<div class="warn2" style="margin-left: 10px;border: none;font-weight: normal;display: none">
 										<input  class="inputx  aa${gainaddres1.gainid}" name="gainid" value="${gainaddres1.gainid}" readonly="true" >
 									</div>

@@ -44,7 +44,7 @@ public interface OrderListMapper {
 
     public Order selectOrderIdById(@Param("orderid")Integer orderid, @Param("status")Integer status);
 
-    public void updataRefuseByOrderId(@Param("orderid")String orderid, @Param("liyou")String liyou);
+    public void updataRefuseByOrderId(Order order);
 
     public Order selectRefuseByOrderId(@Param("orderid")String orderid, @Param("liyou")String liyou);
 

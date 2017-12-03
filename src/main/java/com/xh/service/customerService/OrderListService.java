@@ -1,6 +1,7 @@
 package com.xh.service.customerService;
 
 import com.xh.po.Favorites;
+import com.xh.po.Order;
 import com.xh.po.vo.FavoritesCustom;
 import com.xh.po.vo.OrderCustom;
 import com.xh.po.vo.ProductCustom;
@@ -34,7 +35,7 @@ public interface OrderListService {
 
     public Boolean updataOrderStatusZero(int orderid,int status);
 
-    public Boolean updataRefuseByOrderId(Integer s, String s1);
+    public Boolean updataRefuseByOrderId(Order order);
 
     public ProductCustom queryProductByProductId(int i);
 }

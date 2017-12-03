@@ -3,6 +3,7 @@ package com.xh.controller.customerController;
 import com.sun.org.apache.regexp.internal.RE;
 import com.sun.org.apache.xpath.internal.operations.Mod;
 import com.xh.po.Favorites;
+import com.xh.po.Order;
 import com.xh.po.User;
 import com.xh.po.vo.FavoritesCustom;
 import com.xh.po.vo.OrderCustom;
@@ -342,22 +343,33 @@ public class OrderListController  {
      * 取消订单
      * @param session
      * @param model
-     * @param id
+     * @param data
      * @return
      */
     @RequestMapping(value = "/updataOrderStatusZero", method ={ RequestMethod.GET,RequestMethod.POST})
-    public @ResponseBody Map updataOrderStatusZero(HttpSession session , Model model, int id){
+    public @ResponseBody Map updataOrderStatusZero(HttpSession session , Model model, int data){
         Map map=new HashMap();
-        Boolean flag=orderListService.updataOrderStatusZero(id,0);//将对应订单状态变为0 （关闭）
+        Boolean flag=orderListService.updataOrderStatusZero(data,0);//将对应订单状态变为0 （关闭）
         map.put("d",flag);
         return map;
     }
 
-
+    /**
+     * 通过订单id填写拒收理由
+     * @param session
+     * @param model
+     * @param data
+     * @return
+     */
     @RequestMapping(value = "/updataRefuseByOrderId", method ={ RequestMethod.GET,RequestMethod.POST})
-    public @ResponseBody Map updataRefuseByOrderId(HttpSession session , Model model, String[] id){
+    public @ResponseBody Map updataRefuseByOrderId(HttpSession session , Model model, String[] data){
         Map map=new HashMap();
-        Boolean flag=orderListService.updataRefuseByOrderId(Integer.valueOf(id[0]),id[1]);//将对应订单状态变为0 （关闭）
+        Order order=new Order();
+        order.setOrderid(Integer.valueOf(data[0]));
+        order.setClosetime(new Date());
+        order.setOrderA(data[1]);
+        order.setStatus(0);
+        Boolean flag=orderListService.updataRefuseByOrderId(order);//更新订单拒收理由，将对应订单状态变为0 （关闭）
         map.put("d",flag);
         return map;
     }

@@ -196,8 +196,8 @@
     </select>
 
 
-    <update id="updataRefuseByOrderId" parameterType="string">
-        UPDATE `order` SET Order_A=#{liyou} WHERE OrderId=#{orderid}
+    <update id="updataRefuseByOrderId" parameterType="order">
+        UPDATE `order` SET Order_A=#{orderA},Status=#{status},CloseTime=#{closetime} WHERE OrderId=#{orderid}
     </update>
 
     <select id="selectRefuseByOrderId" parameterType="string" resultType="com.xh.po.Order">

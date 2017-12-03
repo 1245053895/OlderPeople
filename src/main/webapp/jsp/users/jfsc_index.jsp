@@ -398,14 +398,6 @@
         </section>
     </div>
 
-    <!-- 右侧浮动 -->
-    <div id="float">
-        <a href="${pageContext.request.contextPath}/LoginServlet?username=${sessionScope.user.username}" class="consult" target="_blank"></a>
-        <a href="${pageContext.request.contextPath}/jsp/users/my-dingdan.jsp?flag=2" class="cart"></a>
-        <a href="${pageContext.request.contextPath}/jsp/users/my-dingdan.jsp?flag=1" class="cart1"></a>
-        <a href="javascript:void(0)" class="btn_top" style="display: none;"></a>
-    </div>
-
     <script>
         $(function(){
             //代码初始化

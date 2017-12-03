@@ -104,9 +104,9 @@ public class OrderListServiceImpl implements OrderListService {
     }
 
     @Override
-    public Boolean updataRefuseByOrderId(Integer orderid, String liyou) {
-        orderListMapper.updataRefuseByOrderId(String.valueOf(orderid),liyou);
-        Order pc =orderListMapper.selectRefuseByOrderId(String.valueOf(orderid),liyou);
+    public Boolean updataRefuseByOrderId(Order order) {
+        orderListMapper.updataRefuseByOrderId(order);
+        Order pc =orderListMapper.selectRefuseByOrderId(String.valueOf(order.getOrderid()),order.getOrderA());
         return pc!=null;
     }
 

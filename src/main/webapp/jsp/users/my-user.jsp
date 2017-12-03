@@ -25,8 +25,8 @@
 	<script type="text/javascript" src="${pageContext.request.contextPath}/jsp/users/js/index.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/jsp/users/js/modernizr-custom-v2.7.1.min.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/jsp/users/js/jquery.SuperSlide.js"></script>
-	<script src="http://cdn.bootcss.com/blueimp-md5/1.1.0/js/md5.js"></script>
-	<script src="http://cdn.bootcss.com/blueimp-md5/1.1.0/js/md5.min.js"></script>
+	<script src="${pageContext.request.contextPath}/jsp/users/js/md5.js"></script>
+	<script src="${pageContext.request.contextPath}/jsp/users/js/search/md5.min.js"></script>
 	<script type="text/javascript">
 
         var intDiff = parseInt(90000);//倒计时总秒数量
@@ -175,9 +175,9 @@
 			<div class="member-apart clearfix">
 				<div class="fl"><a href="#"><img src="${userAndBrithday.userC}"></a></div>
 				<div class="fl">
-					用户名：${userAndBrithday.username}<br>
+					用户名：${userAndBrithday.userrealname}<br>
 					<%--<p></p>--%>
-					账号：${userAndBrithday.userid}
+					账号：${userAndBrithday.username}
 					<%--<p></p>--%>
 				</div>
 			</div>
@@ -226,77 +226,95 @@
 					<ul>
 						<li class="clearfix">
 							<div class="warn1"></div>
-							<div class="warn2">登录密码</div>
-							<div class="warn3">互联网账号存在被盗风险，建议您定期更改密码以保护账户安全。</div>
-							<div class="warn4"><a href="#" onclick="mmyz()">修改</a> </div>
+							<div class="warn2">绑定手机号</div>
+							<div id="phone" class="warn3"></div>
+							<span style="margin-left: -400px; height:33px; line-height:33px; float:left; color: #A8A8A8;font-size: 12px">若已丢失或停用，请立即更换，避免账户被盗</span>
+							<div class="warn4"><a href="#" onclick="sjyz()">更换</a> </div>
 						</li>
 						<script>
                             function mmyz() {
-                                var yz = md5(prompt("请输入原始密码验证身份"));
-                                //yz为用户输入的密码，验证过后弹出新密码框；xmm的值是用户输入的新密码
-                                var password='${sessionScope.user.userpwd}';
-                                if (password!=yz){
-                                    alert("密码不正确，请重新输入");
-                                    return false;
-                                }
-                                var xmm = prompt("请输入新密码");
-                                if(xmm==""){
-                                    alert("密码不能为空");
-                                    return false;
+                                var p=prompt("请输入原始密码验证身份");
+                                if(p!=null){
+                                    var yz = md5(p);
+                                    //yz为用户输入的密码，验证过后弹出新密码框；xmm的值是用户输入的新密码
+                                    var password='${sessionScope.user.userpwd}';
+                                    if (password!=yz){
+                                        alert("密码不正确，请重新输入");
+                                        return false;
+                                    }
+                                    var xmm = md5(prompt("请输入新密码"));
+                                    if(xmm!=null){
+                                        if(xmm==""){
+                                            alert("密码不能为空");
+                                            return false;
+                                        }
+
+                                        $.ajax({
+                                            url:"${pageContext.request.contextPath}/updateLoginPassword.action",
+                                            data:{"userpwd":xmm},
+                                            type:"POST",
+                                            timeout:6000,
+                                            success:successFunction,
+                                            beforeSend:LoadFunction,
+                                            error:errorFunction
+                                        })
+                                        function LoadFunction() {
+
+                                        }
+                                        function successFunction(data) {
+                                            alert("密码修改成功");
+                                        }
+                                        function errorFunction() {
+
+                                        }
+									}
+
+                                }else {
+
+								}
+							}
+
+                            function sjyz() {
+                                var p=prompt("请输入登录密码验证身份")
+								if(p!=null){
+                                    var yz = md5(p);
+                                    var password='${sessionScope.user.userpwd}';
+                                    if (password!=yz){
+                                        alert("密码不正确，请重新输入");
+                                        return false;
+                                    }
+                                    var xsj = prompt("请输入新手机号")
+									if(xsj!=null){
+                                        if(xsj==""){
+                                            alert("输入的手机号不能为空");
+                                            return false;
+                                        }
+
+                                        $.ajax({
+                                            url:"${pageContext.request.contextPath}/updataLoginPhone.action",
+                                            data:{"userphone":xsj},
+                                            type:"post",
+                                            timeout:6000,
+                                            success:successfunction,
+                                            beforesend:loadfunction,
+                                            error:errorfunction,
+                                        })
+
+                                        function successfunction() {
+                                            alert("电话号码修改成功")
+
+                                        }
+                                        function loadfunction() {
+
+                                        }
+                                        function errorfunction() {
+
+                                        }
+									}
+								}else {
+
 								}
 
-                                $.ajax({
-                                    url:"${pageContext.request.contextPath}/updateLoginPassword.action",
-                                    data:{"userpwd":xmm},
-                                    type:"POST",
-                                    timeout:6000,
-                                    success:successFunction,
-                                    beforeSend:LoadFunction,
-                                    error:errorFunction
-                                })
-                                function LoadFunction() {
-
-                                }
-                                function successFunction(data) {
-                                    alert("密码修改成功");
-                                }
-                                function errorFunction() {
-
-                                }
-                            }
-                            function sjyz() {
-                                var yz = md5(prompt("请输入登录密码验证身份"));
-                                var password='${sessionScope.user.userpwd}';
-                                if (password!=yz){
-                                    alert("密码不正确，请重新输入");
-                                    return false;
-                                }
-                                var xsj = prompt("请输入新手机号")
-                                if(xsj==""){
-                                    alert("输入的手机号不能为空");
-                                    return false;
-                                }
-
-                                $.ajax({
-                                    url:"${pageContext.request.contextPath}/updataLoginPhone.action",
-                                    data:{"userphone":xsj},
-                                    type:"post",
-                                    timeout:6000,
-                                    success:successfunction,
-                                    beforesend:loadfunction,
-                                    error:errorfunction,
-                                })
-
-                                function successfunction() {
-                                    alert("电话号码修改成功")
-
-                                }
-                                function loadfunction() {
-
-                                }
-                                function errorfunction() {
-
-                                }
 
                             }
 						</script>
@@ -310,19 +328,13 @@
                         -->
 						<li class="clearfix">
 							<div class="warn1"></div>
-							<div class="warn2">绑定手机号</div>
-							<div id="phone" class="warn3"></div>
-							<span style="margin-left: -400px; height:33px; line-height:33px; float:left; color: #A8A8A8;font-size: 12px">若已丢失或停用，请立即更换，避免账户被盗</span>
-							<!--
-                                                        <div class="warn3">您验证的手机：
-                                                            <i class="reds">134*****693</i>
-                                                            若已丢失或停用，请立即更换，
-                                                            <i class="reds">避免账户被盗</i>
-                                                        </div>
-                            -->
-							<!--							<div class="warn5"><p>解绑请咨询搜小悦官方客服 <i>souyue@zhongsou.com  </i></p></div>-->
-							<div class="warn4"><a href="#" onclick="sjyz()">更换</a> </div>
+							<div class="warn2">登录密码</div>
+							<div class="warn3">互联网账号存在被盗风险，建议您定期更改密码以保护账户安全。</div>
+							<div class="warn4"><a href="#" onclick="mmyz()">修改</a> </div>
 						</li>
+
+
+
 						<!--
                                                 <li class="clearfix">
                                                     <div class="warn6"></div>

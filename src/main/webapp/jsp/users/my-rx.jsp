@@ -39,7 +39,7 @@
     <div class="idx02" id="idx04">
         <dl>
             <dt>热销产品</dt>
-            <dd>
+            <dd style="width: 1220px">
                 <c:forEach varStatus="status" items="${pagination.list}" var="totalCreditsByIds1" >
                     <div class="item <c:if test='${status.index%11==0}'>big</c:if>">
 

@@ -85,7 +85,13 @@ public class OrderPayController {
         gainaddres.setGainA("0");/*设置新增地址不是默认地址，为0*/
         String return1 = orderPayService.insertSelective1(gainaddres);
         Integer gainid = gainaddres.getGainid();  /*数据库返回的主键*/
-        order.setGainid(gainid);       /*主键是另外一张表的外键需要插入*/
+        if(gainid==null){
+            Gainaddres gainaddres1= orderPayService.IsGainAddress(gainaddres);/*当没有新增的收货地址时，就查询已有的收货地址的id*/
+            Integer gainid1=gainaddres1.getGainid();/*将gainid插入到order表中去*/
+            order.setGainid(gainid1);/*当所选的地址在数据库里已经存在，则将查出来的收货地址插入到order表中*/
+        }else {
+            order.setGainid(gainid);       /*主键是另外一张表的外键需要插入,当是新增地址时，插入后可以得到新收货地址的id*/
+        }
         if (return1.equals("OK")) {
                                                  /*实付金额与邮费*/
             if (order.getAmountpay() > 88) {
@@ -189,7 +195,13 @@ public class OrderPayController {
         gainaddres.setGainA("0");/*设置新插入的地址不是默认地址，为0*/
         String return1 = orderPayService.insertSelective1(gainaddres);
         Integer gainid = gainaddres.getGainid();  /*数据库返回的主键*/
-        order.setGainid(gainid);       /*主键是另外一张表的外键需要插入*/
+        if(gainid==null){
+            Gainaddres gainaddres1= orderPayService.IsGainAddress(gainaddres);/*当没有新增的收货地址时，就查询已有的收货地址的id*/
+            Integer gainid1=gainaddres1.getGainid();/*将gainid插入到order表中去*/
+            order.setGainid(gainid1);/*当所选的地址在数据库里已经存在，则将查出来的收货地址插入到order表中*/
+        }else {
+            order.setGainid(gainid);       /*主键是另外一张表的外键需要插入,当是新增地址时，插入后可以得到新收货地址的id*/
+        }
         if (return1.equals("OK")) {
                                                  /*实付金额与邮费*/
             if (order.getAmountpay() < 88) {

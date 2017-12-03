@@ -153,10 +153,10 @@
                 </c:if>
             </td>
             <td>
-                <c:if test="${order.paystatus==0}">
+                <c:if test="${order.paystatus==1}">
                     <span class="label label-success radius">已支付</span>
                 </c:if>
-                <c:if test="${order.paystatus==1}">
+                <c:if test="${order.paystatus==0}">
                     <span class="label label-defaunt radius">未支付</span>
                 </c:if>
 

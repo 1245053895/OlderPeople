@@ -125,10 +125,12 @@ public class CustomerLoginController {
     public String ExitLogin(HttpServletRequest request, HttpServletResponse response, Userlog userlog) {
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
-        userlog.setUserid(user.getUserid());
-        userlog.setEndlogintime(new Date());
-        userLoginService.updateEndLoginTime(userlog);
-        session.removeAttribute("user");
+        if(user!=null){
+            userlog.setUserid(user.getUserid());
+            userlog.setEndlogintime(new Date());
+            userLoginService.updateEndLoginTime(userlog);
+            session.removeAttribute("user");
+        }
         return "redirect:/ShopFrontPage.action";
     }
 
@@ -426,8 +428,6 @@ public class CustomerLoginController {
         gainaddres.setGainmobile(gainmobile);
         String gainaddress=gainaddres.getGainaddress().replaceAll(",", "");
         gainaddres.setGainaddress(gainaddress);
-
-
         User user = (User) session.getAttribute("user");
         Product product1=  userLoginService.jifenPage(product.getProductid());/*查询出该商品的信息，及兑换该商品需要多少积分*/
         Integer totalCreditsById = userLoginService.queryCreditsCore(user.getUserid());/*得到用户的总积分*/
@@ -441,7 +441,13 @@ public class CustomerLoginController {
         gainaddres.setGainA("0");
         String result = orderPayService.insertSelective1(gainaddres);
         Integer gainid = gainaddres.getGainid();  /*数据库返回的主键*/
-        order.setGainid(gainid);       /*主键是另外一张表的外键需要插入*/
+        if(gainid==null){
+           Gainaddres gainaddres1= orderPayService.IsGainAddress(gainaddres);/*当没有新增的收货地址时，就查询已有的收货地址的id*/
+           Integer gainid1=gainaddres1.getGainid();/*将gainid插入到order表中去*/
+           order.setGainid(gainid1);
+        }else {
+            order.setGainid(gainid);       /*主键是另外一张表的外键需要插入,当是新增地址时，插入后可以得到新收货地址的id*/
+        }
         order.setUserid(user.getUserid());/*order表中的用户的id是外键*/
         if (result.equals("OK")) {
                                               /*实付金额与邮费*/
@@ -454,7 +460,7 @@ public class CustomerLoginController {
             }
             order.setStatus(1);       /* 订单状态 订单新建时为1,表示该订单是待发货的订单*/
             order.setEndtime(new Date());/*插入订单的结束时间，个人中心中个人积分的显示所需要*/
-          /*  order.setPaystatus(1);*//*设置支付状态为已支付*/
+            order.setPaystatus(1);/*设置支付状态为已支付*/
             order.setTotalcredit(-(product.getProductdisabled())); /*积分兑换后设置order表中订单的总积分为负的商品的积分*/
             order.setUserid(userid);
             String return2 = orderPayService.insertSelective2(order);
@@ -474,10 +480,10 @@ public class CustomerLoginController {
                 }
                 orderPayService.insertSelective3(orderproduct);
                 // 判断支付方式  0在线支付------返回付款页面  1货到付款------
-                if (order.getPaytype() == 0) {
-                    return "/jsp/users/my-jfapy.jsp";
-                } else {
+                if (order.getPaytype() == 1||product.getProductprice()>=88) {
                     return "/jsp/users/my-jfapy-suc.jsp";
+                } else {
+                    return "/jsp/users/my-jfapy.jsp";
                 }
 
             }

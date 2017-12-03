@@ -21,6 +21,17 @@ public class TotalCreditsById extends Product{
     private Integer onegood;
     private Integer startpage;
 
+    /*用于显示用户所兑换商品后的积分为负*/
+    private Integer totalCredit;
+
+    public Integer getTotalCredit() {
+        return totalCredit;
+    }
+
+    public void setTotalCredit(Integer totalCredit) {
+        this.totalCredit = totalCredit;
+    }
+
     //
     private  Integer  productTypeId1;
     private  Integer  productTypeId2;

@@ -187,7 +187,7 @@
 			</div>
 			<div class="member-border">
 				<div class="member-column clearfix">
-					<span class="co1">商品信息</span>
+					<span class="co1" style="width: 300px">商品信息</span>
 					<span class="co2">购买时间</span>
 					<span class="co3">评价状态</span>
 				</div>
@@ -195,7 +195,7 @@
 					<div class="member-class clearfix">
 						<ul>
 							<li class="clearfix">
-								<div class="sp1">
+								<div class="sp1" style="width: 300px">
 									<span class="gr1"><a href="#"><img about="" title="" src="${pageContext.request.contextPath}/${productCustom.productpicture}" width="60" height="60"></a></span>
 									<span class="gr2"><a href="#">${productCustom.productname}</a></span>
 									<span class="gr3">X${productCustom.shoppingcount}</span>
@@ -204,13 +204,13 @@
 								<div class="sp2"><fmt:formatDate value="${productCustom.commenttime}" pattern="yyyy-MM-dd HH:mm:ss"/> </div>
 
 								<c:if test="${productCustom.comment==''||productCustom.comment==null}">
-									<div class="sp3">
+									<div class="sp3" style="width: 390px;padding:0px;height: 90px;line-height: 90px;text-align: center;">
 										<a href="javascript:void (0);">发表评价</a>
 									</div>
 								</c:if>
 								<c:if test="${productCustom.comment!=''}">
-									<div class="sp3" style="line-height: 90px">
-										<div style="margin-top: -30px;margin-left: -60px;line-height: normal;">${productCustom.comment}</div>
+									<div class="sp3" style="width: 390px;padding:0px;height: 90px;line-height: 90px;text-align: center;">
+										<div style="margin:0px;line-height: normal;">${productCustom.comment}</div>
 									</div>
 								</c:if>
 							</li>
@@ -298,63 +298,7 @@
                         }
                         return flag;
                     }
-
-
 				</script>
-
-				<%--<div class="member-class clearfix">
-					<ul>
-						<li class="clearfix">
-							<div class="sp1">
-								<span class="gr1"><a href="#"><img about="" title="" src="images/shangpinxiangqing/X1.png" width="60" height="60"></a></span>
-								<span class="gr2"><a href="#">红米Note2 标准版 白色 移动4G手机 双卡双待</a></span>
-								<span class="gr3">X1</span>
-							</div>
-							<div class="sp2">2015 - 09 -  02</div>
-							<div class="sp3"><a href="#">发表评价</a> </div>
-						</li>
-						<li class="clearfix">
-							<div class="sp1">
-								<span class="gr1"><a href="#"><img about="" title="" src="images/shangpinxiangqing/X1.png" width="60" height="60"></a></span>
-								<span class="gr2"><a href="#">红米Note2 标准版 白色 移动4G手机 双卡双待</a></span>
-								<span class="gr3">X1</span>
-							</div>
-							<div class="sp2">2015 - 09 -  02</div>
-							<div class="sp3"><a href="#">发表评价</a> </div>
-						</li>
-						<li class="clearfix">
-							<div class="sp1">
-								<span class="gr1"><a href="#"><img about="" title="" src="images/shangpinxiangqing/X1.png" width="60" height="60"></a></span>
-								<span class="gr2"><a href="#">红米Note2 标准版 白色 移动4G手机 双卡双待</a></span>
-								<span class="gr3">X1</span>
-							</div>
-							<div class="sp2">2015 - 09 -  02</div>
-							<div class="sp3"><a href="#">发表评价</a> </div>
-						</li>
-					</ul>
-				</div>--%>
-				<%--<div class="member-pages clearfix">
-					<div class="fr pc-search-g">
-						<a class="fl pc-search-f" href="#">上一页</a>
-						<a href="#" class="current">1</a>
-						<a href="javascript:;">2</a>
-						<a href="javascript:;">3</a>
-						<a href="javascript:;">4</a>
-						<a href="javascript:;">5</a>
-						<a href="javascript:;">6</a>
-						<a href="javascript:;">7</a>
-						<span class="pc-search-di">…</span>
-						<a title="使用方向键右键也可翻到下一页哦！" class="pc-search-n" href="javascript:;" onclick="SEARCH.page(3, true)">下一页</a>
-						<span class="pc-search-y">
-                        <em>  共20页    到第</em>
-                        <input class="pc-search-j" placeholder="1" type="text">
-                        <em>页</em>
-                        <a href="#" class="confirm">确定</a>
-                    </span>
-
-					</div>
-				</div>--%>
-
 			</div>
 		</div>
 	</div>

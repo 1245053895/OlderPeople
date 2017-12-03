@@ -23,7 +23,6 @@
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/jsp/users/css/style.css">
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/jsp/users/css/media_index.css">
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/jsp/users/css/mod.css">
-	<link href="${pageContext.request.contextPath}/jsp/users/css/rexiao.css" type="text/css" rel="stylesheet" />
 	<link id="bootstrap_221" rel="stylesheet" type="text/css" class="library" href="http://apps.bdimg.com/libs/bootstrap/3.3.4/css/bootstrap.min.css">
 	<script type="text/javascript" src="${pageContext.request.contextPath}/jsp/users/js/jquery.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/jsp/users/js/index.js"></script>
@@ -237,7 +236,7 @@
 										<li style="text-align: center">
 											<div class="row">
 												<dl>
-													<%--<dd><a>${products.productname}</a></dd>--%>
+													<dd><a>${products.productname}</a></dd>
 													<dt><a href="${pageContext.request.contextPath}/xiangqing.action?productid=${products.productid}"><img src="${products.productpicture}"></a></dt>
 													<dd class="name"><a href="${pageContext.request.contextPath}/xiangqing.action?productid=${products.productid}">${products.productname}</a></dd>
 
@@ -250,12 +249,11 @@
 							</div>
 						</div>
 					</div>
-				<div class="page">
+				<div style="float: right">
 				<c:forEach items="${pagination.pageView }" var="page">
 					${page }
 				</c:forEach>
 				</div>
-			</div>
 			</div>
 		</div>
 

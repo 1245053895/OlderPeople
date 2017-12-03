@@ -39,16 +39,16 @@
     <div class="idx02" id="idx04">
         <dl>
             <dt>热销产品</dt>
-            <dd>
+            <dd style="width: 1220px">
                 <c:forEach varStatus="status" items="${pagination.list}" var="totalCreditsByIds1" >
                     <div class="item <c:if test='${status.index%11==0}'>big</c:if>">
 
                         <a href="${pageContext.request.contextPath}/xiangqing.action?productid=${totalCreditsByIds1.productid}" class="title">${totalCreditsByIds1.productname}</a>
                         <p style="font-size: 18px;font-weight:500;color: #0b6cbc;margin-top: 0px;"><font>销量</font>${totalCreditsByIds1.totalhotsale}</p>
                         <p><font>￥</font>${totalCreditsByIds1.productprice}<font>0</font></p>
-                        <a href="${pageContext.request.contextPath}/xiangqing.action?productid=${totalCreditsByIds1.productid}" class="buy"></a>
+                        <a href="#" class="buy"></a>
                         <a  href="${pageContext.request.contextPath}/xiangqing.action?productid=${totalCreditsByIds1.productid}">
-                            <img  style="width: 180px;height: 200px;margin-bottom: 40px;" src="${totalCreditsByIds1.productpicture}"/>
+                            <img  style="width: 180px;height: 200px;" src="${totalCreditsByIds1.productpicture}"/>
                         </a>
                     </div>
                 </c:forEach>
@@ -67,7 +67,7 @@
             </dd>
         </dl>
     </div>
-    <div  class="page" >
+    <div style="margin-top: 20px;font-size: 20px;float: right;" >
         <c:forEach items="${pagination.pageView }" var="page">
             ${page }
         </c:forEach>

@@ -106,10 +106,24 @@
 			</div>
 		</div>
 		<div class="form-group"><label class="col-sm-1 control-label no-padding-right"><i>*</i>商品图片： </label>
-			<div class="form-group">
-				<input width="200px" height="200px"type="file" id="xdaTanFileImg" onchange="xmTanUploadImg(this)"   name="product_pic" style="display: none" />
+			<div class="form-group" style="float: left">
+				<input width="200px" height="200px"type="file" id="xdaTanFileImg" onchange="xmTanUploadImg(this)"  name="product_pic" style="display: none" />
 				<div id="xmTanDiv" class="col-sm-1">
-					<img src="${systemset.webicon}" id="xmTanImg" width="1000px" height="100px" style="width: 100px;height: 100px;margin-bottom: 10px"/>
+					<img src="" id="xmTanImg" width="1000px" height="100px" style="width: 100px;height: 100px;margin-bottom: 10px"/>
+					<button onclick="$('#xdaTanFileImg').click();" class="btn btn-success" type="button">上传图片</button>
+				</div>
+			</div>
+			<div class="form-group" style="float: left">
+				<input multiple="multiple" width="200px" height="200px"type="file" id="xdaTanFileImg1" onchange="xmTanUploadImg(this)"  name="product_picB[]" style="display: none" />
+				<div id="xmTanDiv1" class="col-sm-1">
+					<img src="" id="xmTanImg1" width="1000px" height="100px" style="width: 100px;height: 100px;margin-bottom: 10px"/>
+					<button onclick="$('#xdaTanFileImg').click();" class="btn btn-success" type="button">上传图片</button>
+				</div>
+			</div>
+			<div class="form-group" style="float: left">
+				<input multiple="multiple" width="200px" height="200px"type="file" id="xdaTanFileImg2" onchange="xmTanUploadImg(this)"  name="product_picC[]" style="display: none" />
+				<div id="xmTanDiv2" class="col-sm-1">
+					<img src="" id="xmTanImg2" width="1000px" height="100px" style="width: 100px;height: 100px;margin-bottom: 10px"/>
 					<button onclick="$('#xdaTanFileImg').click();" class="btn btn-success" type="button">上传图片</button>
 				</div>
 			</div>

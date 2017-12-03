@@ -187,7 +187,7 @@
                         </div>
                         <div class="spe_box">
                             <div class="spe_title">
-                                <p class="font20">
+                                <p class="font18">
                                     <a href="${pageContext.request.contextPath}/xiangqing.action?productid=${productLists1.productid}">${productLists1.productname}</a>
                                 </p>
                                 <br style="height: 5px">
@@ -195,7 +195,7 @@
                                 <br>
                             </div>
                             <p class="al_center font14">
-                                    <span class="font_orange font20">
+                                    <span class="font_orange font18">
                                      <fmt:formatNumber value="${productLists1.productprice* 1.2 }"  pattern="￥.0"/>
                                     </span>
                                 <span class="font_del font12">
@@ -203,7 +203,7 @@
                                     </span>
                                 <br/>
                                 <br/>
-                                <span class="font_redd font20">所需积分：${productLists1.productdisabled}分</span>
+                                <span class="font_redd font18">所需积分：${productLists1.productdisabled}分</span>
                             </p>
                         </div>
                         <div class="clear">
@@ -313,7 +313,7 @@
                             </span>
                         </span>
                     <span class="cn">
-                            老年健康/${productTypeExtendsHealths.producttypename}
+                            ${productTypeExtendsHealths.producttypename}
                         </span>
                     <span class="en">
                             Elderly health
@@ -362,7 +362,7 @@
                             </span>
                         </span>
                     <span class="cn">
-                            老年生活/${productTypeExtendsLifes.producttypename}
+                            ${productTypeExtendsLifes.producttypename}
                         </span>
                     <span class="en">
                            Elderly life

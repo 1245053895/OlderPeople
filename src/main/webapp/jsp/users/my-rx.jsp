@@ -48,7 +48,7 @@
                         <p><font>￥</font>${totalCreditsByIds1.productprice}<font>0</font></p>
                         <a href="${pageContext.request.contextPath}/xiangqing.action?productid=${totalCreditsByIds1.productid}" class="buy"></a>
                         <a  href="${pageContext.request.contextPath}/xiangqing.action?productid=${totalCreditsByIds1.productid}">
-                            <img  style="width: 180px;height: 200px;" src="${totalCreditsByIds1.productpicture}"/>
+                            <img  style="width: 180px;height: 200px;margin-bottom: 40px;" src="${totalCreditsByIds1.productpicture}"/>
                         </a>
                     </div>
                 </c:forEach>
@@ -67,7 +67,7 @@
             </dd>
         </dl>
     </div>
-    <div style="margin-top: 20px;font-size: 20px;float: right;" >
+    <div  class="page" >
         <c:forEach items="${pagination.pageView }" var="page">
             ${page }
         </c:forEach>

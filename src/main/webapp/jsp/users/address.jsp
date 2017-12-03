@@ -17,7 +17,7 @@
 	<meta name="Description" content="">
 	<meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE">
 	<meta name="renderer" content="webkit">
-	<title>购物商城-会员中心</title>
+	<title>购物商城-收货地址</title>
 	<link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/jsp/users/img/icon/favicon.ico">
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/jsp/users/css/base.css">
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/jsp/users/css/home.css">
@@ -212,12 +212,12 @@
 					<ul>
 						<li class="clearfix">
 							<div class="warn2" style="margin-left: 10px;border: none;display: none">地址编号</div>
-							<div class="warn2" style=" border-right:1px dashed transparent; ">收货人</div>
-							<div class="warn2" style="margin-left: 10px;border: none">详细地址</div>
-							<div class="warn2" style="margin-left: 10px;border: none">邮编</div>
-							<div class="warn2" style="margin-left: 10px;border: none">电话</div>
+							<div class="warn2" style=" border-right:1px dashed transparent; margin-left: -25px;">收货人</div>
+							<div class="warn2" style="margin-left: 10px;border: none;margin-left: 35px;">详细地址</div>
+							<div class="warn2" style="margin-left: 10px;border: none;margin-left: 40px;">邮编</div>
+							<div class="warn2" style="margin-left: 10px;border: none;margin-left: -22px;">电话</div>
 							<div class="warn2" style="margin-left: 10px;border: none">操作</div>
-							<input type="button" class="warn2" style="width: 50px;float: left;margin-left: 10px;border: 1px;font-weight: 800;text-align:center;margin-top:6px;font-size:15px;color: #FF9100;border-radius: 5px" id="xz" onClick="xdz()" value="新地址">
+							<input type="button" class="warn2" style="width:100px;float: left;margin-left: -35px;border: 1px;font-weight: 800;text-align:center;margin-top:6px;font-size:15px;color: white;background-color:#FF9100;border-radius: 5px" id="xz" onClick="xdz()" value="添加新地址">
 
 						</li>
 
@@ -234,13 +234,13 @@
 						<form action="${pageContext.request.contextPath}/InsertGainAddress.action" method="post">
 							<li class="clearfix" style="display: none;background-color: #f5f5f5" id="dz">
 								<input name="userid" value="${user.userid}"  readonly="ture" class="warn2" style="margin-left: 10px;font-weight: normal;border-color: red;display: none">
-								<input name="gainname" placeholder="收货人姓名" class="warn2" style="margin-left: 10px;font-weight: normal;border-color: red">
-								<input name="gainaddress" placeholder="地址" class="warn2" style="margin-left: 10px;font-weight: normal;border-color: red">
+								<input name="gainname" placeholder="收货人姓名" class="warn2" style="margin-left: 10px;font-weight: normal;border-color: #e0e0e0; border-right: 2px #e0e0e0 solid;">
+								<input name="gainaddress" placeholder="地址" class="warn2" style="margin-left: 10px;font-weight: normal;border-color: #e0e0e0; border-right: 2px #e0e0e0 solid;" >
 
-								<input name="gaincode" placeholder="邮编只能填数字"  class="warn2" onKeyUp="value=value.replace(/\D/g,'')" onafterpaste="value=value.replace(/\D/g,'')"  style="margin-left: 10px;font-weight: normal;border-color: red">
-								<input name="gainmobile" placeholder="电话"  class="warn2" style="margin-left: 10px;font-weight: normal;border-color: red">
-								<input  type="submit" value="保存" class="warn2" style=" width :10px ;margin-left: 10px;font-weight: normal;border-radius: 10px;background-color: black;color: aliceblue;" onClick="bc()">
-								<input  value="取消" class="warn2" style="margin-left: 10px;font-weight: normal;border-radius: 10px;background-color: black;color: aliceblue;" onClick="bc()">
+								<input name="gaincode" placeholder="邮编只能填数字"  class="warn2" onKeyUp="value=value.replace(/\D/g,'')" onafterpaste="value=value.replace(/\D/g,'')" style="margin-left: 10px;font-weight: normal;border-color: #e0e0e0; border-right: 2px #e0e0e0 solid;">
+								<input name="gainmobile" placeholder="电话"  class="warn2" style="margin-left: 10px;font-weight: normal;border-color: #e0e0e0; border-right: 2px #e0e0e0 solid;">
+								<input  type="submit" value="保存" class="warn2" style=" width :85px ;height:25px;margin-left: 45px;border-color:transparent;border-radius: 5px;background-color:#ea4949;color:white;" onClick="bc()">
+								<input  value="取消" class="warn2" style="width: 85px;height: 25px; margin-left: 10px;border-radius: 5px;background-color:#6c90ab;color:white;border-color: transparent" onClick="bc()">
 							</li>
 						</form>
 
@@ -252,16 +252,16 @@
 										<input  class="inputx  aa${gainaddres1.gainid}" name="gainid" value="${gainaddres1.gainid}" readonly="true" >
 									</div>
 									<div class="warn2" style="margin-left: 10px;border: none;font-weight: normal">
-										<input  class="inputx  aa${gainaddres1.gainid}" name="gainname" value="${gainaddres1.gainname}" readonly="true">
+										<input  class="inputx  aa${gainaddres1.gainid}" name="gainname" value="${gainaddres1.gainname}" readonly="true" style="padding-left:35px">
 									</div>
-									<div class="warn2" style="margin-left: 10px;border: none;font-weight: normal">
-										<input  class="inputx  aa${gainaddres1.gainid}" name="gainaddress" value="${gainaddres1.gainaddress}"  readonly="true">
+									<div class="warn2" style="margin-left: -60px;border: none;font-weight: normal">
+										<input  class="inputx  aa${gainaddres1.gainid}" name="gainaddress" value="${gainaddres1.gainaddress}"  readonly="true" style="width: 302px;">
 									</div>
-									<div class="warn2" style="margin-left: 10px;border: none;font-weight: normal">
+									<div class="warn2" style="margin-left: 130px;border: none;font-weight: normal">
 
-										<input  class="inputx aa${gainaddres1.gainid}" name="gaincode" value="${gainaddres1.gaincode}" readonly="true">
+										<input  class="inputx aa${gainaddres1.gainid}" name="gaincode" value="${gainaddres1.gaincode}" readonly="true" style="padding-left:35px;">
 									</div>
-									<div class="warn2" style="margin-left: 10px;border: none;font-weight: normal">
+									<div class="warn2" style="margin-left: -45px;border: none;font-weight: normal">
 										<input class="inputx  aa${gainaddres1.gainid}" name="gainmobile" value="${gainaddres1.gainmobile}" readonly="true">
 									</div>
 									<div class="warn2" style="margin-left: 10px;border: none;font-weight: normal">
@@ -270,7 +270,7 @@
 										<a title="删除" href="javascript:void(0);" onclick="user_del(this,'${gainaddres1.gainid}')">删除</a>
 									</div>
 
-									<a title="默认" href="javascript:void(0);" <c:if test="${gainaddres1.gainA.equals('1')}">style="background-color: #f4dae5"</c:if> onclick="moren(this,'${gainaddres1.gainid}')">默认</a>
+									<a title="默认" href="javascript:void(0);" <c:if test="${gainaddres1.gainA.equals('1')}">style="background-color: #f4c0b1;padding: 3px 10px;margin-left: -15px;"</c:if> onclick="moren(this,'${gainaddres1.gainid}')">默认</a>
 								</li>
 							</form>
 						</c:forEach>

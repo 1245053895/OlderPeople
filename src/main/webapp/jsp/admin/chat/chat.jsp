@@ -4,7 +4,7 @@
 <html>
 
 <style type="text/css">
-    #userList {list-style:none}
+    #userList {list-style:none;color: white;margin-top: 30px;}
 </style>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -13,7 +13,7 @@
 <script type="text/javascript">
 	var  ws;
 	//此处改为服务器ip
-	var url="ws://127.0.0.1:8070/chatSocket?username=${sessionScope.username}";
+	var url="ws://127.0.0.1:8080/chatSocket?username=${sessionScope.username}";
 	
 	function connect(){
 		 if ('WebSocket' in window) {
@@ -28,7 +28,7 @@
 			eval("var result="+event.data);
 
 			if(result.alert!=undefined){
-				$("#content").append("<p style=\"color: rgba(209,6,7,0.96);font-size: small;\">"+result.alert+"</p>");
+				$("#content").append("<p style=\"color:white;font-size: small;height: 30px;width:150px;line-height: 30px;text-align: center;margin-left: 225px;background: rgba(220,220,220,0.9)\">"+result.alert+"</p>");
 			}
 
 			if(result.names!=undefined){
@@ -37,16 +37,16 @@
 				//	$("#userList").append("<input type='checkbox' value='"+this+"' />"+this+"<br/>");
 				//});
 				
-				 var html = "<h3>在线人员</h3>";  
+				 var html = "<h3></h3>";
                 $(result.names).each(function() {  
-                 html += "<li><input type='radio' value='"+this+"'name='username'>"+this+"</li>";   
+                 html += "<li style='border-bottom: 1px #292c33 solid;border-top: 1px #292c33 solid;background-color: #43464c;padding: 15px;padding-left:45px;margin-left: -45px;'><input type='radio' value='"+this+"'name='username'n style='margin-left: 20px;margin-right: 25px;'>"+this+"</li>";
                     $("#userList").html(html);  
                 }); 
 			}
 			
 			if(result.from!=undefined){
-				$("#content").append( "<b style=\"color: rgba(209,6,7,0.96);font-size: large;background: rgba(242,35,255,0.2)\">"
-                    +result.date+"   "+"<b style=\"color: rgba(3,8,3,0.95)\">"+result.sendMsg+"</b>"+"</p>");
+				$("#content").append( "<b style=\"color: #4d4d4d;font-size: large;background: #EFEFEF;font-size: 14px;\">"
+                    +result.date+"   "+"<b style=\"color: rgba(3,8,3,0.95);font-size: 16px;\">"+result.sendMsg+"</b>"+"</p>");
 			}
 
 		 };

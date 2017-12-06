@@ -1,5 +1,6 @@
 package com.xh.mapper.customerMapper;
 
+import com.xh.po.Comment;
 import com.xh.po.Favorites;
 import com.xh.po.Order;
 import com.xh.po.Product;
@@ -49,4 +50,8 @@ public interface OrderListMapper {
     public Order selectRefuseByOrderId(@Param("orderid")String orderid, @Param("liyou")String liyou);
 
     public ProductCustom queryProductByProductId(@Param("productid")int productid);
+
+    public void insertComment(Comment comment);
+
+    List<ProductCustom> queryProductByOrderId2(int id);
 }

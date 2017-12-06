@@ -148,7 +148,7 @@
                                                              name="" class="input_style text_info" readonly="true"/>--%>
                             </td>
                             <td width="100px">
-                                <img src="/jsp/admin/images/<c:if test="${productAndTypeVos.productdisabled==1}">yes</c:if><c:if test="${productAndTypeVos.productdisabled==0}">no</c:if>.png" onclick="changeImgProductdisabled(this,${productAndTypeVos.productid},${productAndTypeVos.productdisabled})" alt="是" style="cursor:pointer;width:30px;height: 30px;"/>
+                                <img src="/jsp/admin/images/<c:if test="${productAndTypeVos.productdisabled>0}">yes</c:if><c:if test="${productAndTypeVos.productdisabled==0}">no</c:if>.png" onclick="changeImgProductdisabled(this,${productAndTypeVos.productid},${productAndTypeVos.productdisabled})" alt="是" style="cursor:pointer;width:30px;height: 30px;"/>
                                 <%--<input style="border-width: 0px;background-color: transparent;" type="text"
                                        value="<c:choose><c:when test="${productAndTypeVos.productdisabled==1}">1</c:when><c:otherwise>0</c:otherwise></c:choose>"
                                        name="" class="input_style text_info" readonly="true"/>--%>

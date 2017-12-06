@@ -298,7 +298,7 @@
 					</c:if>
 				</c:forEach>
 
-				<li class="home"><a href="javascript:void(0)" name="/readindex1.action" class="iframeurl" title="只能CEO看报表"><i class="icon-dashboard"></i><span class="menu-text"> 只能CEO看报表 </span></a></li>
+				<li class="home"><a href="javascript:void(0)" name="/readindex1.action" class="iframeurl" title="报表"><i class="icon-dashboard"></i><span class="menu-text"> 报表 </span></a></li>
 
 			</ul>
 

@@ -250,6 +250,7 @@ public class OrderPayController {
     //进行用户支付是否成功的处理   支付成功返回到 my-apy-suc
     @RequestMapping(value = "/wanCheng.action", method = {RequestMethod.GET, RequestMethod.POST})
     public String wanCheng(HttpSession session,Model model, Integer orderid,Order order) {
+        //
 
         //  此处需要进行支付是否成功验证
 
@@ -259,6 +260,7 @@ public class OrderPayController {
         orderPayService. updateOrderPayStatus(orderid);}
 
         List<Shopcar> myshopcarList= (List<Shopcar>) session.getAttribute("myshopcarList");
+
         if (myshopcarList!=null){
         List<Integer> idList = new ArrayList<Integer>();
         for (int i=0;i<myshopcarList.size();i++){

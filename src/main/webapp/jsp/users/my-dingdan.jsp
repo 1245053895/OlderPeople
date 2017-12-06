@@ -462,7 +462,7 @@
                             break;
                         case 2:
                             htmlStr3 += "<div class='ci5 height" + index + "'><p>已发货</p>"+wl+" <!--<p><a href='#'>订单分析</a></p>--></div>\n";
-                            htmlStr3 += "<div class='ci5 ci8 height" + index + "'><p><a href='#' class='member-touch'>确认收货</a> </p></p></div>\n";
+                            htmlStr3 += "<div class='ci5 ci8 height" + index + "'><p><a href='javascript:querenshouhuo(" + content.orderid + ");' class='member-touch'>确认收货</a> </p></p></div>\n";
                             break;
                         case 3:
                             htmlStr3 += "<div class='ci5 height" + index + "'><p>已签收</p>"+wl+" <!--<p><a href='#'>订单分析</a></p>--></div>\n";
@@ -955,7 +955,21 @@
         return(null);
     }
 
+    //确认收货
+    function querenshouhuo(orderId) {
+		var data=new Array();
+		data.push(orderId);
+		var flag=ajax("finishOrder.action",data);
+		if(flag==1){
+			alert("确认收货成功！");
+			check('0');
+		}else {
+			alert("确认收货失败！");
+		}
+		queryOrderByUserId(0,100);
+    }
 
+	//拒收理由
     function refuse(orderId) {
         var liyou=prompt("请填写理由","请在这里填写");
         if(liyou!=null){
@@ -1106,7 +1120,7 @@
             url:"${pageContext.request.contextPath}/"+url,
             async:false,
             type: 'POST',
-            data:{"data":data},
+            data:{"id":data},
             traditional: true,
             timeout: 5000,
             cache: false,
@@ -1169,6 +1183,7 @@
             data.push($(this).parents("li[class='clearfix']").find("select").val());//好评   0 评论id
             data.push($(this).parents("ul").find("textarea").val());//评论内容
             if(ajax("updateCommentByids.action",data)){
+                queryOrderByUserId(0,100);
                 alert("谢谢您的评价!");
             }else{
                 alert("评价失败!")
@@ -1176,36 +1191,6 @@
             $(this).parents(".member-setup").css("display","none");
         });
     };
-
-    /*function ajax(url,data) {
-        var flag;
-        $.ajax({
-            url:"${pageContext.request.contextPath}/"+url,
-            async:false,
-            type: 'POST',
-            data:{"data":data},
-            traditional: true,
-            timeout: 5000,
-            cache: false,
-            success: succFunction, //成功执行方法
-            beforeSend: LoadFunction, //加载执行方法
-            error: erryFunction  //错误执行方法
-        });
-        function LoadFunction() {
-
-        }
-        function erryFunction(){
-            flag=0;
-        }
-        function succFunction(data) {
-            if(data) {
-                flag=1;
-            }else {
-                flag=0;
-            }
-        }
-        return flag;
-    }*/
 
     function sleep(n) { //n表示的毫秒数
         var start = new Date().getTime();

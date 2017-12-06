@@ -190,14 +190,14 @@
     <div class="content_style" style="top: 10px">
         <form id="updateOrderShipping" action="${pageContext.request.contextPath}/updateOrderShipping.action" method="post">
             <input id="orderId" type="hidden" name="orderid">
-            <div class="form-group"><label class="col-sm-2 control-label no-padding-right" for="form-field-1">快递公司 </label>
+            <div class="form-group"><label class="col-sm-2 control-label no-padding-right" for="form-field-1" style="width: 90px;">快递公司 </label>
                 <div class="col-sm-9">
                     <select name="shippingname" class="form-control" id="form-field-select-1">
 
                     </select>
                 </div>
             </div>
-            <div class="form-group"><label class="col-sm-2 control-label no-padding-right" for="form-field-1"> 快递号 </label>
+            <div class="form-group"><label class="col-sm-2 control-label no-padding-right" for="form-field-1" style="width: 90px;"> 快递号 </label>
                 <div class="col-sm-9"><input  name="shippingcode" type="text" id="form-field-1" placeholder="快递号" class="col-xs-10" style="margin-left:0px;"></div>
             </div>
         </form>

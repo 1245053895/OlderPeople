@@ -1,6 +1,7 @@
 package com.xh.serviceimp.customerServiceImpl;
 
 import com.xh.mapper.customerMapper.OrderListMapper;
+import com.xh.po.Comment;
 import com.xh.po.Favorites;
 import com.xh.po.Order;
 import com.xh.po.vo.FavoritesCustom;
@@ -113,5 +114,15 @@ public class OrderListServiceImpl implements OrderListService {
     @Override
     public ProductCustom queryProductByProductId(int id) {
         return orderListMapper.queryProductByProductId(id);
+    }
+
+    @Override
+    public void insertComment(Comment comment) {
+        orderListMapper.insertComment(comment);
+    }
+
+    @Override
+    public List<ProductCustom> queryProductByOrderId2(int id) {
+        return orderListMapper.queryProductByOrderId2(id);
     }
 }

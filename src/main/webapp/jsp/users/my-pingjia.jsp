@@ -205,7 +205,7 @@
 
 								<c:if test="${productCustom.comment==''||productCustom.comment==null}">
 									<div class="sp3" style="width: 390px;padding:0px;height: 90px;line-height: 90px;text-align: center;">
-										<a href="javascript:void (0);">发表评价</a>
+										<a href="javascript:void (0);" style="margin: 0px auto;margin-top: 35px;margin-left: 200px ">发表评价</a>
 									</div>
 								</c:if>
 								<c:if test="${productCustom.comment!=''}">
@@ -223,11 +223,11 @@
 								<div class="member-score fl"><i class="reds">*</i>评分：</div>
 								<div class="member-star fl">
 									<select style="width: 50px;text-align: center">
-										<option>1</option>
-										<option>2</option>
-										<option>3</option>
-										<option>4</option>
 										<option>5</option>
+										<option>4</option>
+										<option>3</option>
+										<option>2</option>
+										<option>1</option>
 									</select>
 								</div>
 								<div class="member-judge fr">
@@ -261,6 +261,7 @@
                             data.push($(this).parents("li[class='clearfix']").find("select").val());//好评   0 评论id
 							data.push($(this).parents("ul").find("textarea").val());//评论内容
 							if(ajax("updateCommentByids.action",data)){
+
 								alert("谢谢您的评价!");
 							}else{
 							    alert("评价失败!")

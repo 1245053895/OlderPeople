@@ -170,6 +170,19 @@
         ORDER BY c.Comment,c.CommentTime DESC
     </select>
 
+    <select id="queryProductByOrderId2" resultType="com.xh.po.vo.ProductCustom" parameterType="int">
+        SELECT
+          p.*,
+          op.OrderId,
+          op.ProductId,
+          op.PayPrice,
+          op.ShoppingCount,
+          op.TotalMoneyCount
+        FROM orderproduct op
+          INNER JOIN product p ON p.ProductId=op.ProductId
+        WHERE op.OrderId=#{id}
+    </select>
+
     <!--Comment_C  是订单id-->
     <update id="updateCommentByids" parameterType="com.xh.po.vo.ProductCustom">
         UPDATE comment SET Comment=#{comment},GoodComment=#{goodcomment},CommentTime=#{commenttime} WHERE CommentId=#{commentid}
@@ -218,5 +231,10 @@
         FROM product p
         WHERE p.ProductId=#{productid}
     </select>
+
+    <!--评论表插入空的评论-->
+    <insert id="insertComment" parameterType="comment">
+        INSERT INTO comment(ProductId,UserId,Comment_C) VALUES (#{productid},#{userid},#{commentC})
+    </insert>
 
 </mapper>

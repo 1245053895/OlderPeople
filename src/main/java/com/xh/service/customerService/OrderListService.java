@@ -1,5 +1,6 @@
 package com.xh.service.customerService;
 
+import com.xh.po.Comment;
 import com.xh.po.Favorites;
 import com.xh.po.Order;
 import com.xh.po.vo.FavoritesCustom;
@@ -38,4 +39,8 @@ public interface OrderListService {
     public Boolean updataRefuseByOrderId(Order order);
 
     public ProductCustom queryProductByProductId(int i);
+
+    public void insertComment(Comment comment);
+
+    public List<ProductCustom> queryProductByOrderId2(int id);
 }

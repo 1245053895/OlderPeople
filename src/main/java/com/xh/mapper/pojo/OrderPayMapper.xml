@@ -313,5 +313,4 @@
           AND g.GainName LIKE #{gainname}
     </select>
 
-
 </mapper>

@@ -19,9 +19,9 @@ public class expressController {
     @RequestMapping(value="queryExpressBycode.action",method={RequestMethod.POST,RequestMethod.GET},produces={"text/html;charset=UTF-8;","application/json;"})
     public @ResponseBody String queryExpressBycode(String id) throws UnsupportedEncodingException {
         //name=new String(name.getBytes("iso8859-1"),"utf-8");
-        //String express="{\"status\":\"0\",\"msg\":\"ok\",\"result\":{\"number\":\"462587770684\",\"type\":\"zto\",\"list\":[{\"time\":\"2017-11-11 18:31:23\",\"status\":\"[重庆市] [重庆璧山]的派件已签收 感谢使用中通快递,期待再次为您服务!\"},{\"time\":\"2017-11-11 14:00:33\",\"status\":\"[重庆市] [重庆璧山]的温泉王志兴正在第1次派件 电话:13678462816 请保持电话畅通、耐心等待\"},{\"time\":\"2017-11-11 13:50:53\",\"status\":\"[重庆市] 快件到达 [重庆璧山]\"},{\"time\":\"2017-11-11 05:33:05\",\"status\":\"[重庆市] 快件离开 [重庆]已发往[重庆璧山]\"},{\"time\":\"2017-11-11 05:10:37\",\"status\":\"[重庆市] 快件到达 [重庆]\"},{\"time\":\"2017-11-10 00:51:09\",\"status\":\"[深圳市] 快件离开 [深圳中心]已发往[重庆]\"},{\"time\":\"2017-11-10 00:47:58\",\"status\":\"[深圳市] 快件到达 [深圳中心]\"},{\"time\":\"2017-11-09 22:48:38\",\"status\":\"[深圳市] 快件离开 [福田华强]已发往[重庆]\"},{\"time\":\"2017-11-09 20:53:07\",\"status\":\"[深圳市] [福田华强]的小菜已收件 电话:13000000000\"}],\"deliverystatus\":\"3\",\"issign\":\"1\"}}";
+        String express="{\"status\":\"0\",\"msg\":\"ok\",\"result\":{\"number\":\"462587770684\",\"type\":\"zto\",\"list\":[{\"time\":\"2017-11-11 18:31:23\",\"status\":\"[重庆市] [重庆璧山]的派件已签收 感谢使用中通快递,期待再次为您服务!\"},{\"time\":\"2017-11-11 14:00:33\",\"status\":\"[重庆市] [重庆璧山]的温泉王志兴正在第1次派件 电话:13678462816 请保持电话畅通、耐心等待\"},{\"time\":\"2017-11-11 13:50:53\",\"status\":\"[重庆市] 快件到达 [重庆璧山]\"},{\"time\":\"2017-11-11 05:33:05\",\"status\":\"[重庆市] 快件离开 [重庆]已发往[重庆璧山]\"},{\"time\":\"2017-11-11 05:10:37\",\"status\":\"[重庆市] 快件到达 [重庆]\"},{\"time\":\"2017-11-10 00:51:09\",\"status\":\"[深圳市] 快件离开 [深圳中心]已发往[重庆]\"},{\"time\":\"2017-11-10 00:47:58\",\"status\":\"[深圳市] 快件到达 [深圳中心]\"},{\"time\":\"2017-11-09 22:48:38\",\"status\":\"[深圳市] 快件离开 [福田华强]已发往[重庆]\"},{\"time\":\"2017-11-09 20:53:07\",\"status\":\"[深圳市] [福田华强]的小菜已收件 电话:13000000000\"}],\"deliverystatus\":\"3\",\"issign\":\"1\"}}";
         //express=new String(express.getBytes("iso8859-1"),"utf-8");
-        String express=null;
+        //String express=null;
         String host = "http://wuliu.market.alicloudapi.com";
         String path = "/kdi";
         String method = "GET";
@@ -49,7 +49,7 @@ public class expressController {
             //System.out.println(response.toString());
             //获取response的body
             //System.out.println(EntityUtils.toString(response.getEntity()));
-            express=EntityUtils.toString(response.getEntity());
+            //express=EntityUtils.toString(response.getEntity());
         } catch (Exception e) {
             e.printStackTrace();
         }

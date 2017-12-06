@@ -1,5 +1,6 @@
 package com.xh.mapper.pojo;
 
+import com.xh.po.Comment;
 import com.xh.po.Gainaddres;
 import com.xh.po.Order;
 import com.xh.po.Orderproduct;

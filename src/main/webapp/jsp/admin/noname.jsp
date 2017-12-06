@@ -88,7 +88,7 @@
                              <img src="/jsp/admin/images/<c:if test="${productAndTypeVos.producthotsale==1}">yes</c:if><c:if test="${productAndTypeVos.producthotsale==0}">no</c:if>.png" alt="是" style="cursor:pointer;width:30px;height: 30px;"/>
                          </td>
                          <td width="100px">
-                             <img src="/jsp/admin/images/<c:if test="${productAndTypeVos.productdisabled==1}">yes</c:if><c:if test="${productAndTypeVos.productdisabled==0}">no</c:if>.png" alt="是" style="cursor:pointer;width:30px;height: 30px;"/>
+                             <img src="/jsp/admin/images/<c:if test="${productAndTypeVos.productdisabled>0}">yes</c:if><c:if test="${productAndTypeVos.productdisabled==0}">no</c:if>.png" alt="是" style="cursor:pointer;width:30px;height: 30px;"/>
                          </td>
                      </tr>
                  </c:forEach>

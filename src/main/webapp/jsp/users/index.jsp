@@ -1026,7 +1026,7 @@
 						</div>
 					</div>
 				</header>
-				<section class="m-box">
+				<section class="m-box" style="height: 630px">
 					<div class="m-slide">
 						<div class="m-slide-contain m-s2">
 							<div class="m-slide-item">
@@ -1167,7 +1167,7 @@
 	</div>--%>
 
 
-<div style="height:100px"></div>
+<div style="height:100px;background-color: #F5F5F5"></div>
 
 <jsp:include page="${pageContext.request.contextPath}/jsp/users/bottom.jsp"></jsp:include>
 

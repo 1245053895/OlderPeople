@@ -2,6 +2,7 @@ package com.xh.controller.customerController;
 
 import com.sun.org.apache.regexp.internal.RE;
 import com.sun.org.apache.xpath.internal.operations.Mod;
+import com.xh.po.Comment;
 import com.xh.po.Favorites;
 import com.xh.po.Order;
 import com.xh.po.User;
@@ -19,10 +20,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Controller
 public class OrderListController  {
@@ -322,17 +320,17 @@ public class OrderListController  {
      * 更新评论通过id
      * @param session
      * @param model
-     * @param data
+     * @param id
      * @return
      */
     @RequestMapping(value = "/updateCommentByids", method ={ RequestMethod.GET,RequestMethod.POST})
-    public @ResponseBody Map updateCommentByids(HttpSession session , Model model, String[] data){
+    public @ResponseBody Map updateCommentByids(HttpSession session , Model model, String[] id){
         User user= (User) session.getAttribute("user");
         Map map=new HashMap();
         ProductCustom productCustom=new ProductCustom();
-        productCustom.setCommentid(Integer.valueOf(data[0]));
-        productCustom.setGoodcomment(Integer.valueOf(data[1]));
-        productCustom.setComment(data[2]);
+        productCustom.setCommentid(Integer.valueOf(id[0]));
+        productCustom.setGoodcomment(Integer.valueOf(id[1]));
+        productCustom.setComment(id[2]);
         productCustom.setCommenttime(new Date());
         boolean red=orderListService.updateCommentByids(productCustom);
         map.put("red",red);
@@ -373,6 +371,53 @@ public class OrderListController  {
         map.put("d",flag);
         return map;
     }
+
+    /**
+     * 确认收货
+     * @param session
+     * @param model
+     * @param id
+     * @return
+     */
+    @RequestMapping(value = "/finishOrder", method ={ RequestMethod.GET,RequestMethod.POST})
+    public @ResponseBody Map finishOrder(HttpSession session , Model model, int[] id) {
+        User user= (User) session.getAttribute("user");
+
+        Map map=new HashMap();
+        List<ProductCustom> productCustoms=orderListService.queryProductByOrderId2(id[0]);
+        for(ProductCustom productCustom:productCustoms){
+            Comment comment=new Comment();
+            int orderId=productCustom.getOrderId();
+            int userId=user.getUserid();
+            int productId=productCustom.getProductid();
+            comment.setCommentC(String.valueOf(orderId));
+            comment.setUserid(userId);
+            comment.setProductid(productId);
+            orderListService.insertComment(comment);
+        }
+        Boolean flag=orderListService.updataOrderStatusZero(id[0],3);//更新订单拒收理由，将对应订单状态变为0 （关闭）
+
+        map.put("d",flag);
+
+        return map;
+    }
+
+    /*<insert id="insertComment" parameterType="comment">
+    INSERT INTO comment(ProductId,UserId,Comment_C) VALUES (#{productid},#{userid},#{commentC})
+    </insert>
+            //评论表插入空的评论
+            for(Shopcar shopcar:myshopcarList){
+        Comment comment=new Comment();
+        int orderId=orderid;
+        int userId=shopcar.getUserid();
+        int productId=shopcar.getProductid();
+        comment.setCommentC(String.valueOf(orderId));
+        comment.setUserid(userId);
+        comment.setProductid(productId);
+        orderPayService.insertComment(comment);
+    }
+
+    //结束*/
 
 
 

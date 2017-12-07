@@ -341,13 +341,13 @@ public class OrderListController  {
      * 取消订单
      * @param session
      * @param model
-     * @param data
+     * @param id
      * @return
      */
     @RequestMapping(value = "/updataOrderStatusZero", method ={ RequestMethod.GET,RequestMethod.POST})
-    public @ResponseBody Map updataOrderStatusZero(HttpSession session , Model model, int data){
+    public @ResponseBody Map updataOrderStatusZero(HttpSession session , Model model, int id){
         Map map=new HashMap();
-        Boolean flag=orderListService.updataOrderStatusZero(data,0);//将对应订单状态变为0 （关闭）
+        Boolean flag=orderListService.updataOrderStatusZero(id,0);//将对应订单状态变为0 （关闭）
         map.put("d",flag);
         return map;
     }
@@ -356,16 +356,16 @@ public class OrderListController  {
      * 通过订单id填写拒收理由
      * @param session
      * @param model
-     * @param data
+     * @param id
      * @return
      */
     @RequestMapping(value = "/updataRefuseByOrderId", method ={ RequestMethod.GET,RequestMethod.POST})
-    public @ResponseBody Map updataRefuseByOrderId(HttpSession session , Model model, String[] data){
+    public @ResponseBody Map updataRefuseByOrderId(HttpSession session , Model model, String[] id){
         Map map=new HashMap();
         Order order=new Order();
-        order.setOrderid(Integer.valueOf(data[0]));
+        order.setOrderid(Integer.valueOf(id[0]));
         order.setClosetime(new Date());
-        order.setOrderA(data[1]);
+        order.setOrderA(id[1]);
         order.setStatus(0);
         Boolean flag=orderListService.updataRefuseByOrderId(order);//更新订单拒收理由，将对应订单状态变为0 （关闭）
         map.put("d",flag);

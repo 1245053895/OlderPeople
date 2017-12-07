@@ -23,7 +23,7 @@ public class Message {
 //	        date.getTime();  
 //	        String dateStr = sdf.format(date);  
 //	        String content = dateStr+" "+username+"说："+"<br>"+msg;
-		 	String content = username+"说："+"<br>"+msg;
+		 	String content = username+"说："+"<br>"+"&nbsp;"+msg;
 	        this.sendMsg = content;  
 	    }  
 	
@@ -33,7 +33,7 @@ public class Message {
 //	        date.getTime();  
 //	        String dateStr = sdf.format(date);  
 //	        String content = dateStr+" "+username+"对"+toUsername+"说："+"<br>"+msg;  
-	        String content = username+"对"+toUsername+"说："+"<br>"+msg; 
+	        String content = username+"对"+toUsername+"说："+"<br>"+"&nbsp;"+msg;
 	        this.sendMsg = content;  
 	    } 
 	

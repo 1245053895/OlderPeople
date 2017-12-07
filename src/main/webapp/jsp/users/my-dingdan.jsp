@@ -1050,22 +1050,26 @@
             //console.log(json.status);
             $(".number").find(".id").html(json.result.number);
             $(".number").find(".name").html(json.result.type);
-            $.each( json.result.list, function(index, content) {
-                console.log(json.status);
-                if (index == 0) {
-                    $("#express_ul").append("<li class='first' style='height:60px;'>\n" +
-                        "<p>" + content.time + "</p>\n" +
-                        " <p>" + content.status + "</p>\n" +
-                        " <span class='before'></span><span class='after'></span><i class='mh-icon mh-icon-new'></i></li>");
-                }else{
-                    $("#express_ul").append("<li  style='height:60px;'>\n" +
-                        "<p>" + content.time + "</p>\n" +
-                        " <p>" + content.status + "</p>\n" +
-                        " <span class='before'></span><span class='after'></span></li>");
-                }
-            });
-            $("#express_ul").append("<li style='margin-left:-100px;margin-top:50px;height: 120px;width: 100%;border-top: 1px #d3d3d3 solid'></li>");
-        }
+            if(json.result!="") {
+                $.each(json.result.list, function (index, content) {
+                    console.log(json.status);
+                    if (index == 0) {
+                        $("#express_ul").append("<li class='first' style='height:60px;'>\n" +
+                            "<p>" + content.time + "</p>\n" +
+                            " <p>" + content.status + "</p>\n" +
+                            " <span class='before'></span><span class='after'></span><i class='mh-icon mh-icon-new'></i></li>");
+                    } else {
+                        $("#express_ul").append("<li  style='height:60px;'>\n" +
+                            " <p>" + content.time + "</p>\n" +
+                            " <p>" + content.status + "</p>\n" +
+                            " <span class='before'></span><span class='after'></span></li>");
+                    }
+                });
+                $("#express_ul").append("<li style='margin-left:-100px;margin-top:50px;height: 120px;width: 100%;border-top: 1px #d3d3d3 solid'></li>");
+            }else{
+                $("#express_ul").append("没有查到快递信息！请检查快递单号是否正确或稍后再试！");
+            }
+		}
     }
 
     //通过id将购物车内商品移入收藏夹

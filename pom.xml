@@ -9,12 +9,12 @@
   <url>http://maven.apache.org</url>
   <dependencies>
     <!--websocket所需的包-->
-      <dependency>
+      <!--<dependency>
           <groupId>javax.websocket</groupId>
           <artifactId>javax.websocket-api</artifactId>
           <version>1.1</version>
           <scope>provided</scope>
-      </dependency>
+      </dependency>-->
       <dependency>
           <groupId>javax</groupId>
           <artifactId>javaee-api</artifactId>

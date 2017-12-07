@@ -13,7 +13,8 @@
 <script type="text/javascript">
 	var  ws;
 	//此处改为服务器ip
-	var url="ws://120.25.0.166:80/chatSocket?username=${sessionScope.username}";
+	//var url="ws://127.0.0.1:80/chatSocket?username=${sessionScope.username}";
+    var url="ws://120.25.0.166:80/chatSocket?username=${sessionScope.username}";
 	
 	function connect(){
 		 if ('WebSocket' in window) {
@@ -41,18 +42,28 @@
                 $(result.names).each(function() {  
                  html += "<li style='border-bottom: 1px #292c33 solid;border-top: 1px #292c33 solid;background-color: #43464c;padding: 15px;padding-left:45px;margin-left: -45px;'><input type='radio' value='"+this+"'name='username'n style='margin-left: 20px;margin-right: 25px;'>"+this+"</li>";
                     $("#userList").html(html);  
-                }); 
+                });
 			}
 			
 			if(result.from!=undefined){
-				$("#content").append( "<b style=\"color: #4d4d4d;font-size: large;background: #EFEFEF;font-size: 14px;\">"
+				$("#content").append( "<b style=\"color: #4d4d4d;font-size: large;margin-left:30px;ackground: #EFEFEF;font-size: 14px;\">"
                     +result.date+"   "+"<b style=\"color: rgba(3,8,3,0.95);font-size: 16px;\">"+result.sendMsg+"</b>"+"</p>");
 			}
-
+             var div = document.getElementById("content");
+             div.scrollTop = div.scrollHeight;
 		 };
-	}//
+	}
+
+    /*window.onload=function(){
+        var s = setInterval("sc()", 100);
+    }
+    function sc(){
+        var div = document.getElementById("content");
+        div.scrollTop = div.scrollHeight;
+    }*/
 	
-	function send() {  
+	function send() {
+
         var msg = $("#sendMsg").val();  
         var ss = $("input[name='username']:checked").val();  
         //alert($("input[name='username']:checked").val());
@@ -78,8 +89,8 @@
         obj = JSON.stringify(obj);  
         console.info(obj);  
         ws.send(obj);   
-        $("#sendMsg").val("");  
-    }  
+        $("#sendMsg").val("");
+    }
 </script>
 
     <style type="text/css">
@@ -89,6 +100,7 @@
         #users{
             overflow: scroll;
         }
+
         </style>
 
 </head>  

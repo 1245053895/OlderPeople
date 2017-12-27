@@ -45,6 +45,10 @@ public class Mytest {
 
     }
 
+    @Test
+    public void ssservise() {
+        System.out.println("dfsdf");
+    }
 
     @Test
     public void mapper() {
